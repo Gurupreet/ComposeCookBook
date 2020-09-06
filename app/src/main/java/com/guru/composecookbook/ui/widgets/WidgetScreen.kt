@@ -8,7 +8,6 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import com.google.android.material.chip.Chip
 
 @Composable
 fun WidgetScreen() {

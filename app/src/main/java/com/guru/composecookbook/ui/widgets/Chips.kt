@@ -39,7 +39,6 @@ fun Chips() {
 }
 
 
-
 //Inspired from jetcaster sample. I hope compose can add simple Chip UI element that can
 // support images or icons with multiple states.
 @Composable
