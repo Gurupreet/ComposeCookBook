@@ -33,6 +33,9 @@ Feel free to contribute and add more stuff as it's stil in alpha so new stuff is
 <div>
   <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200906-161629_ComposeDemo.jpg">
   <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200906-161500_ComposeDemo.jpg">
+  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200906-161609_ComposeDemo.jpg">
+  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200907-001949_ComposeDemo.jpg">
+  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200907-002000_ComposeDemo.jpg">
 </div>
 
 
