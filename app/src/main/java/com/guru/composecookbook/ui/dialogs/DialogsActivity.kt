@@ -1,0 +1,258 @@
+package com.guru.composecookbook.ui.dialogs
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.ColumnScope.gravity
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.unit.dp
+import androidx.ui.tooling.preview.Preview
+import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.typography
+
+
+class DialogsActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            ComposeCookBookTheme() {
+                DialogScreen(onBack = { onBackPressed() })
+            }
+        }
+    }
+
+    companion object {
+        fun newIntent(context: Context) = Intent(context, DialogsActivity::class.java)
+    }
+}
+
+@Composable
+fun DialogScreen(onBack: () -> Unit) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Dialogs") },
+                elevation = 8.dp,
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(asset = Icons.Default.ArrowBack)
+                    }
+                }
+
+            )
+        },
+        bodyContent = {
+            DialogsOptionList()
+        }
+    )
+}
+
+@Composable
+fun DialogsOptionList() {
+    //Here we are using power of making simple data classes act as stateful when using `by state`
+    var dialogState by remember { mutableStateOf(DialogState(false, DialogType.SIMPLE)) }
+
+    if (dialogState.showDialog) {
+        //if state of show dialog changes to true it shows dialog passing state as false for dismiss
+        showDialog(dialogState.dialogType) { dialogState = dialogState.copy(showDialog = false) }
+    }
+
+    // I am not sure why updating the `dialogState.showDialog = true` is not working. May be I am
+    // missing something. I had to update whole state via copy
+    ScrollableColumn(modifier = Modifier.padding(16.dp)) {
+        Button(
+            onClick = { dialogState = dialogState.copy(showDialog = true) },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(text = "Plain Message Dialog")
+        }
+        Button(
+            onClick = { dialogState = DialogState(true, DialogType.TITLE) },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(text = "Title Dialog")
+        }
+        Button(
+            onClick = { dialogState = DialogState(true, DialogType.VERTICALBUTTON) },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(text = "Dialog with Vertical buttons")
+        }
+        Button(
+            onClick = { dialogState = DialogState(true, DialogType.IMAGE) },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(text = "Dialog with Image")
+        }
+        Button(
+            onClick = { dialogState = DialogState(true, DialogType.LONGDIALOG) },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(text = "Long Dialog")
+        }
+        Button(
+            onClick = { dialogState = DialogState(true, DialogType.ROUNDED) },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(text = "Extra Rounded Dialog")
+        }
+    }
+}
+
+@Composable
+fun showDialog(type: DialogType, onDismiss: () -> Unit) {
+    val item = remember { DemoDataProvider.item }
+
+    when (type) {
+        DialogType.SIMPLE ->
+            AlertDialog(
+                text = {
+                    Text(item.subtitle)
+                },
+                buttons = {
+                    TextButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                    ) {
+                        Text(text = "Ok")
+                    }
+                },
+                onDismissRequest = onDismiss
+            )
+        DialogType.TITLE ->
+            AlertDialog(
+                title = { Text(text = item.title, style = typography.h6) },
+                text = {
+                    Text(item.subtitle)
+                },
+                buttons = {
+                    Row(modifier = Modifier.gravity(Alignment.End)) {
+                        TextButton(
+                            onClick = onDismiss,
+                            modifier = Modifier.padding(4.dp)
+                        ) {
+                            Text(text = "Cancel", color = Color.Gray)
+                        }
+                        TextButton(
+                            onClick = onDismiss,
+                            modifier = Modifier.padding(4.dp)
+                        ) {
+                            Text(text = "Ok")
+                        }
+                    }
+                },
+                onDismissRequest = onDismiss
+            )
+        DialogType.VERTICALBUTTON ->
+            AlertDialog(
+                title = { Text(text = item.title, style = typography.h6) },
+                text = {
+                    Text(item.subtitle)
+                },
+                buttons = {
+                    OutlinedButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.padding(8.dp).gravity(Alignment.End).width(100.dp)
+                    ) {
+                        Text(text = "Cancel")
+                    }
+                    Button(
+                        onClick = onDismiss,
+                        modifier = Modifier.padding(8.dp).gravity(Alignment.End).width(100.dp)
+                    ) {
+                        Text(text = "Ok")
+                    }
+                },
+                onDismissRequest = onDismiss
+            )
+        DialogType.IMAGE ->
+            AlertDialog(
+                title = { Text(text = item.title, style = typography.h6) },
+                text = {
+                    Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
+                    Image(asset = imageResource(DemoDataProvider.item.imageId))
+                },
+                buttons = {
+                    TextButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                    ) {
+                        Text(text = "Ok")
+                    }
+                },
+                onDismissRequest = onDismiss
+            )
+        DialogType.LONGDIALOG ->
+            AlertDialog(
+                title = { Text(text = item.title, style = typography.h6) },
+                text = {
+                    Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
+                    Image(asset = imageResource(DemoDataProvider.item.imageId))
+                    Text(
+                        item.subtitle + item.title + item.subtitle + item.title,
+                        style = typography.subtitle2
+                    )
+                },
+                buttons = {
+                    TextButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                    ) {
+                        Text(text = "Ok")
+                    }
+                },
+                onDismissRequest = onDismiss,
+            )
+        DialogType.ROUNDED ->
+            AlertDialog(
+                title = { Text(text = item.title, style = typography.h6) },
+                text = {
+                    Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
+                    Image(
+                        asset = imageResource(DemoDataProvider.item.imageId),
+                        modifier = Modifier.clip(RoundedCornerShape(16.dp))
+                    )
+                },
+                buttons = {
+                    TextButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                    ) {
+                        Text(text = "Ok")
+                    }
+                },
+                onDismissRequest = onDismiss,
+                shape = RoundedCornerShape(16.dp)
+            )
+
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview3() {
+    ComposeCookBookTheme {
+        DialogsOptionList()
+    }
+}
