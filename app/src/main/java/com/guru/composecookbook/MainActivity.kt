@@ -58,7 +58,7 @@ fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean
                     BottomNavType.WIDGETS -> WidgetScreen()
                     BottomNavType.ANIMATION -> AnimationScreen()
                     BottomNavType.DEMOUI -> DemoUIList()
-                    BottomNavType.PROFILE -> InstagramHome()
+                    BottomNavType.PROFILE -> Text(text = "Coming Soon..")
 
                 }
             }
