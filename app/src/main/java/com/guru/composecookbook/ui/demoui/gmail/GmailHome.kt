@@ -12,6 +12,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationExplode
 
 @Composable
 fun GmailHome() {
@@ -45,7 +48,11 @@ fun GmailHome() {
             )
         },
         floatingActionButton = {
-            GmailFloatingActionButton()
+            val rippleExplode = remember { mutableStateOf(false) }
+            GmailFloatingActionButton(rippleExplode)
+            if (rippleExplode.value) {
+                FloatMultiStateAnimationExplode(duration = 300)
+            }
         },
         bodyContent = {
             GmailContent()
@@ -54,11 +61,11 @@ fun GmailHome() {
 }
 
 @Composable
-fun GmailFloatingActionButton() {
+fun GmailFloatingActionButton(rippleExplode: MutableState<Boolean>) {
     ExtendedFloatingActionButton(
         text = { Text(text = "Compose") },
         icon = { Icon(asset = Icons.Outlined.Edit) },
-        onClick = {},
+        onClick = { rippleExplode.value = !rippleExplode.value },
         backgroundColor = MaterialTheme.colors.surface,
         contentColor = MaterialTheme.colors.primary
     )

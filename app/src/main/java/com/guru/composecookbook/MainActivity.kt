@@ -20,10 +20,9 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.theme.home.HomeScreen
+import com.guru.composecookbook.ui.home.HomeScreen
 import com.guru.composecookbook.ui.Animations.AnimationScreen
 import com.guru.composecookbook.ui.demoui.DemoUIList
-import com.guru.composecookbook.ui.demoui.instagram.InstagramHome
 import com.guru.composecookbook.ui.widgets.WidgetScreen
 
 class MainActivity : AppCompatActivity() {
@@ -69,7 +68,7 @@ fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean
 @Composable
 fun MainAppContent(darkTheme: MutableState<Boolean>) {
     //Default home screen state is always HOME
-    var homeScreenState = state { BottomNavType.HOME }
+    var homeScreenState = remember { mutableStateOf(BottomNavType.HOME) }
     Column(modifier = Modifier.fillMaxSize()) {
         HomeScreenContent(homeScreen = homeScreenState.value, darkTheme = darkTheme)
         BottomNavigationContent(homeScreenState)
@@ -115,7 +114,7 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    val darkThemeState = state { false }
+    val darkThemeState = mutableStateOf(false)
     BaseView(darkThemeState.value) {
         MainAppContent(darkThemeState)
     }

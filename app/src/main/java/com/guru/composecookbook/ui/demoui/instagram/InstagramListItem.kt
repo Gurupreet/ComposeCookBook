@@ -11,10 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.state
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -73,7 +70,7 @@ private fun InstagramLikesSection(post: Tweet) {
 @Composable
 private fun InstagramIconSection() {
     Row() {
-        var fav by state { false }
+        var fav by remember { mutableStateOf(false) }
         IconToggleButton(checked = fav, onCheckedChange = { fav = it }) {
             val icon = if (fav) Icons.Default.Favorite else Icons.Default.FavoriteBorder
             val tint = if (fav) Color.Red else MaterialTheme.colors.onBackground

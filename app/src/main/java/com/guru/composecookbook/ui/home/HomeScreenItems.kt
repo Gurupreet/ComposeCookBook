@@ -1,4 +1,4 @@
-package com.guru.composecookbook.theme.home
+package com.guru.composecookbook.ui.home
 
 sealed class HomeScreenItems {
     object Dialogs : HomeScreenItems()
@@ -11,6 +11,8 @@ sealed class HomeScreenItems {
     object BottomAppBar : HomeScreenItems()
     object BottomSheets : HomeScreenItems()
     object Modifiers : HomeScreenItems()
+    object ActivityAnimations: HomeScreenItems()
+    object ViewModelLiveData: HomeScreenItems()
 
     val name: String
         get() = when (this) {
@@ -24,10 +26,7 @@ sealed class HomeScreenItems {
             BottomSheets -> "BottomSheets"
             Layouts -> "Layouts"
             Modifiers -> "Modifiers"
+            ActivityAnimations -> "ActivityAnimations"
+            ViewModelLiveData -> "ViewModel + LiveData"
         }
-
-
-    //TODO
-    // Scafold with bottom bar, fab, doc fab
-    //Snackbar
 }

@@ -16,6 +16,8 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationExplode
 
 val twitterColor = Color(0xFF1DA1F2)
 
@@ -61,7 +64,11 @@ fun TwitterHome() {
             )
         },
         floatingActionButton = {
-            FloatingActionButton()
+            val rippleExplode = remember { mutableStateOf(false) }
+            FloatingActionButton(rippleExplode)
+            if (rippleExplode.value) {
+                FloatMultiStateAnimationExplode(duration = 300)
+            }
         },
         bodyContent = {
             TwitterHomeContent()
@@ -78,11 +85,11 @@ fun TwitterHomeContent() {
 }
 
 @Composable
-fun FloatingActionButton() {
+fun FloatingActionButton(rippleExplode: MutableState<Boolean>) {
     ExtendedFloatingActionButton(
         text = { Text(text = "Tweet") },
         icon = { Icon(asset = vectorResource(id = R.drawable.ic_twitter)) },
-        onClick = {},
+        onClick = { rippleExplode.value = !rippleExplode.value },
         backgroundColor = twitterColor
     )
 }

@@ -32,15 +32,20 @@ object AnimationDefinations {
 
     //float animation
     val floatPropKey = FloatPropKey()
-    val floatAnimDefinition = transitionDefinition<Int> {
-        state(AnimationState.START.ordinal) { this[floatPropKey] = 0f }
-        state(AnimationState.END.ordinal) { this[floatPropKey] = 100f }
+    fun floatAnimDefinition(
+        start: Float,
+        end: Float,
+        repeat: Boolean,
+        duration: Int = 2000
+    ) = transitionDefinition<Int> {
+        state(AnimationState.START.ordinal) { this[floatPropKey] = start }
+        state(AnimationState.END.ordinal) { this[floatPropKey] = end }
 
         transition(0, 2) {
             floatPropKey using repeatable(
-                iterations = Infinite,
+                iterations = if (repeat) Infinite else 1,
                 animation = tween(
-                    durationMillis = 2000,
+                    durationMillis = duration,
                     easing = LinearEasing
                 )
             )

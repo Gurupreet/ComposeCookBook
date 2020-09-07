@@ -68,7 +68,7 @@ fun TextInputs() {
         }
     )
 
-    var numberText by state { TextFieldValue("1334") }
+    var numberText = remember { TextFieldValue("1334") }
     OutlinedTextField(value = numberText,
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         keyboardType = KeyboardType.Number,

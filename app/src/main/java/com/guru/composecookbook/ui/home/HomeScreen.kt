@@ -1,4 +1,4 @@
-package com.guru.composecookbook.theme.home
+package com.guru.composecookbook.ui.home
 
 import android.content.Context
 import androidx.compose.foundation.Icon
@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.state
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.vectorResource
@@ -99,14 +96,20 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
         HomeScreenItems.Modifiers -> {
             DynamicUIActivity.newIntent(context, DynamicUiType.MODIFIERS.name, isDarkTheme)
         }
+        HomeScreenItems.ViewModelLiveData -> {
+            DynamicUIActivity.newIntent(context, DynamicUiType.MODIFIERS.name, isDarkTheme)
+        }
+        HomeScreenItems.ActivityAnimations -> {
+            DynamicUIActivity.newIntent(context, DynamicUiType.MODIFIERS.name, isDarkTheme)
+        }
     }
     context.startActivity(intent)
 }
 
 @Preview
 @Composable
-fun previewDemo() {
-    val state = state { false }
+fun PreviewHomeScreen() {
+    val state = remember { mutableStateOf(false) }
     HomeScreen(state)
 }
 

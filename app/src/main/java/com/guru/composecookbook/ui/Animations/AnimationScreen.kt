@@ -15,7 +15,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
@@ -26,6 +31,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
+import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography
 
 @Composable
@@ -78,6 +84,18 @@ fun AnimationScreenContent() {
         DpMultiStateAnimation()
         Spacer(modifier = Modifier.padding(8.dp))
         FloatMutliStateAnimation()
+        Spacer(modifier = Modifier.padding(8.dp))
+        val ripple = remember {  mutableStateOf(false) }
+        if (ripple.value) {
+            FloatMultiStateAnimationExplode(500)
+        }
+        Button(onClick = { ripple.value = !ripple.value}) {
+            Text(text = "Top top explode")
+        }
+        Spacer(modifier = Modifier.padding(8.dp))
+        FloatMultiStateAnimationCircleStrokeCanvas()
+        Spacer(modifier = Modifier.padding(8.dp))
+        FloatMultiStateAnimationCircleCanvas()
         Spacer(modifier = Modifier.padding(8.dp))
     }
 }
@@ -320,9 +338,85 @@ fun DpMultiStateAnimation() {
 @Composable
 fun FloatMutliStateAnimation() {
     var floatStateStart by remember { mutableStateOf(0) }
+    var floatStateFinal by remember { mutableStateOf(2) }
+    val floatAnim = transition(
+        definition = AnimationDefinations.floatAnimDefinition(0f, 100f, true),
+        initState = floatStateStart,
+        toState = floatStateFinal,
+        onStateChangeFinished = {
+            when (it) {
+                0 -> {
+                    floatStateStart = 0
+                    floatStateFinal = 2
+                }
+                2 -> {
+                    floatStateStart = 2
+                    floatStateFinal = 0
+                }
+            }
+        }
+    )
+
+    Card(backgroundColor = green500, modifier = Modifier.preferredSize(150.dp)) {
+        Image(
+            asset = imageResource(id = R.drawable.p2),
+            alpha = floatAnim[AnimationDefinations.floatPropKey]
+        )
+    }
+
+}
+
+@Composable
+fun FloatMultiStateAnimationCircleStrokeCanvas() {
+    var floatStateStart by remember { mutableStateOf(0) }
     var floadStateFinal by remember { mutableStateOf(2) }
     val floatAnim = transition(
-        definition = AnimationDefinations.floatAnimDefinition,
+        definition = AnimationDefinations.floatAnimDefinition(0f, 360f, true),
+        initState = floatStateStart,
+        toState = floadStateFinal,
+        onStateChangeFinished = {
+            when (it) {
+                0 -> {
+                    floatStateStart = 0
+                    floadStateFinal = 2
+                }
+                2 -> {
+                    floatStateStart = 2
+                    floadStateFinal = 0
+                }
+            }
+        }
+    )
+    val stroke = Stroke(8f)
+    Canvas(modifier = Modifier.padding(16.dp).preferredSize(100.dp)) {
+        val diameter = size.minDimension
+        val radius = diameter / 2f
+        val insideRadius = radius - stroke.width
+        val topLeftOffset = Offset(
+            10f,
+           10f
+        )
+        val size = Size(insideRadius * 2, insideRadius * 2)
+        var rotationAngle = floatAnim[AnimationDefinations.floatPropKey] - 90f
+        drawArc(
+            color = green500,
+            startAngle = rotationAngle,
+            sweepAngle = 150f,
+            topLeft = topLeftOffset,
+            size = size,
+            useCenter = false,
+            style = stroke,
+        )
+        rotationAngle += 40
+    }
+}
+
+@Composable
+fun FloatMultiStateAnimationCircleCanvas() {
+    var floatStateStart by remember { mutableStateOf(0) }
+    var floadStateFinal by remember { mutableStateOf(2) }
+    val floatAnim = transition(
+        definition = AnimationDefinations.floatAnimDefinition(0f, 200f, true),
         initState = floatStateStart,
         toState = floadStateFinal,
         onStateChangeFinished = {
@@ -339,14 +433,68 @@ fun FloatMutliStateAnimation() {
         }
     )
 
-    Card(backgroundColor = green500, modifier = Modifier.preferredSize(150.dp)) {
-        Image(
-            asset = imageResource(id = R.drawable.p2),
-            alpha = floatAnim[AnimationDefinations.floatPropKey]
+    Canvas(modifier = Modifier.padding(16.dp)) {
+        val centerOffset = Offset(
+            10f,
+            10f
+        )
+        val centerOffset2 = Offset(
+            220f,
+            10f
+        )
+        var radius = floatAnim[AnimationDefinations.floatPropKey]
+        drawCircle(
+            color = green200,
+            radius = radius,
+            center = centerOffset,
+        )
+        drawCircle(
+            color = green500,
+            radius = radius/2,
+            center = centerOffset,
+        )
+        drawCircle(
+            color = teal200,
+            radius = radius/4,
+            center = centerOffset,
         )
     }
-
 }
+
+@Composable
+fun FloatMultiStateAnimationExplode(duration: Int = 500) {
+    var floatStateStart by remember { mutableStateOf(0) }
+    var floadStateFinal by remember { mutableStateOf(2) }
+    val floatAnim = transition(
+        definition = AnimationDefinations.floatAnimDefinition(
+            0f, 2000f, false, duration),
+        initState = floatStateStart,
+        toState = floadStateFinal,
+        onStateChangeFinished = {
+            when (it) {
+                0 -> {
+                    floatStateStart = 0
+                    floadStateFinal = 2
+                }
+            }
+        }
+    )
+
+    Canvas(modifier = Modifier) {
+        val centerOffset = Offset(
+            10f,
+            10f
+        )
+        var radius = floatAnim[AnimationDefinations.floatPropKey]
+        drawCircle(
+            color = green200.copy(alpha = 0.8f),
+            radius = radius,
+            center = centerOffset,
+        )
+        radius += 500
+    }
+}
+
 
 
 
