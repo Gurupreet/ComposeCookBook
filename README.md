@@ -11,6 +11,16 @@ Jetpack Compose is Android’s modern toolkit for building native UI. It simplif
 ### Hint before start
 Please get **android studio 4.2 canary 8** or above to build this project [from here](https://developer.android.com/studio/preview/).
 
+## Contribution Info
+- All the contributions are welcomed keeping following points in mind.
+  - If it's a widget/tool/UI element newly added please add to Widget Screen
+  - Any feature showcase like Collapsing AppBar, BottomSheets, Dialogs etc add in HomeScreen list
+  - Any Demo UI please add to Demo UI section
+  - Try not to add new Icons/Images unless must needed.
+  - Please make sure whatever you add also supports dark mdoe as well.
+  Thanks happy coding 
+
+
 # I recently learned from many soures please check these out for more info: 
 
 ## Official
