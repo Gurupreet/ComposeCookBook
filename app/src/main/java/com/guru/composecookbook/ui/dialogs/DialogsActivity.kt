@@ -29,20 +29,30 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
 
 
 class DialogsActivity : AppCompatActivity() {
+
+    private val isDarkTheme: Boolean by lazy {
+        intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeCookBookTheme() {
+            ComposeCookBookTheme(isDarkTheme) {
                 DialogScreen(onBack = { onBackPressed() })
             }
         }
     }
 
     companion object {
-        fun newIntent(context: Context) = Intent(context, DialogsActivity::class.java)
+        const val DARK_THEME = "darkTheme"
+        fun newIntent(context: Context, isDarkTheme: Boolean) =
+            Intent(context, DialogsActivity::class.java).apply {
+                putExtra(DARK_THEME, isDarkTheme)
+            }
     }
 }
 

@@ -28,6 +28,7 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
+import com.guru.composecookbook.theme.twitterColor
 import com.guru.composecookbook.theme.typography
 
 @Composable

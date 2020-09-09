@@ -338,7 +338,7 @@ object DemoDataProvider {
         HomeScreenItems.Dialogs,
         HomeScreenItems.TabLayout,
         HomeScreenItems.Carousel,
-        HomeScreenItems.CollapsingAppBar,
+        HomeScreenItems.BottomAppBar,
         HomeScreenItems.BottomSheets,
     )
 

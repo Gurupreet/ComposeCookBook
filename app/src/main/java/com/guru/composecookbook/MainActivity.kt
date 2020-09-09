@@ -14,15 +14,19 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.home.HomeScreen
 import com.guru.composecookbook.ui.Animations.AnimationScreen
 import com.guru.composecookbook.ui.demoui.DemoUIList
+import com.guru.composecookbook.ui.home.HomeScreen
+import com.guru.composecookbook.ui.profile.ProfileScreen
 import com.guru.composecookbook.ui.widgets.WidgetScreen
 
 class MainActivity : AppCompatActivity() {
@@ -57,7 +61,7 @@ fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean
                     BottomNavType.WIDGETS -> WidgetScreen()
                     BottomNavType.ANIMATION -> AnimationScreen()
                     BottomNavType.DEMOUI -> DemoUIList()
-                    BottomNavType.PROFILE -> Text(text = "Coming Soon..")
+                    BottomNavType.PROFILE -> ProfileScreen()
 
                 }
             }

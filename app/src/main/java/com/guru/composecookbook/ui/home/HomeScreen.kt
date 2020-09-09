@@ -7,7 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.vectorResource
@@ -70,7 +73,7 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
             ListViewActivity.newIntent(context, homeScreenItems.type.toUpperCase(), isDarkTheme)
         }
         HomeScreenItems.Dialogs -> {
-            DialogsActivity.newIntent(context)
+            DialogsActivity.newIntent(context, isDarkTheme)
         }
         HomeScreenItems.TabLayout -> {
             DynamicUIActivity.newIntent(context, DynamicUiType.TABS.name, isDarkTheme)

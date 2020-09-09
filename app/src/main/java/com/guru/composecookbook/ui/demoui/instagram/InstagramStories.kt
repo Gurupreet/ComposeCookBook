@@ -1,9 +1,9 @@
 package com.guru.composecookbook.ui.demoui.instagram
 
-import androidx.compose.foundation.Border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.drawBorder
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
+import com.guru.composecookbook.theme.instagramGradient
 import com.guru.composecookbook.theme.typography
 
 @Composable
@@ -42,9 +43,9 @@ fun StoryListItem(post: Tweet) {
                 .preferredHeight(60.dp)
                 .preferredWidth(60.dp)
                 .clip(CircleShape)
-                .drawBorder(
+                .border(
                     shape = CircleShape,
-                    border = Border(
+                    border = BorderStroke(
                         3.dp,
                         color = Color.LightGray
                     )
@@ -55,12 +56,12 @@ fun StoryListItem(post: Tweet) {
                 .preferredHeight(60.dp)
                 .preferredWidth(60.dp)
                 .clip(CircleShape)
-                .drawBorder(
+                .border(
                     shape = CircleShape,
-                    border = Border(
+                    border = BorderStroke(
                         3.dp,
                         brush = LinearGradient(
-                            listOf(Color.Magenta, Color.Red, Color.Yellow),
+                            instagramGradient,
                             startX = 0f,
                             endX = 100f,
                             startY = 0f,

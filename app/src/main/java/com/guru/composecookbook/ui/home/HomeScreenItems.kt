@@ -11,8 +11,8 @@ sealed class HomeScreenItems {
     object BottomAppBar : HomeScreenItems()
     object BottomSheets : HomeScreenItems()
     object Modifiers : HomeScreenItems()
-    object ActivityAnimations: HomeScreenItems()
-    object ViewModelLiveData: HomeScreenItems()
+    object ActivityAnimations : HomeScreenItems()
+    object ViewModelLiveData : HomeScreenItems()
 
     val name: String
         get() = when (this) {

@@ -22,16 +22,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.twitterColor
 import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationExplode
-
-val twitterColor = Color(0xFF1DA1F2)
 
 @Composable
 fun TwitterHome() {

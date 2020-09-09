@@ -18,8 +18,7 @@ private val DarkColorPalette = darkColors(
     onBackground = Color.White,
     onSurface = Color.White,
     error = Color.Red,
-
-    )
+)
 
 private val LightColorPalette = lightColors(
     primary = green500,
@@ -31,7 +30,6 @@ private val LightColorPalette = lightColors(
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black
-
 )
 
 @Composable
