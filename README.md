@@ -7,25 +7,31 @@
   A Collection of all Jetpack compose UI elements, Layouts, Widgets and Demo screens to see it's potential.
 </div>
 <div align="center">
- <img src = "https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/composelogo.png" width = "200px"/>
+ <img src = "https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/composelogo.png" width = "300px"/>
 </div>
 
 <br />
 
 <div align="center">
-  <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
-  <img src = "https://img.shields.io/github/stars/Gurupreet/ComposeCookBook" />
-    <img src = "https://img.shields.io/github/stars/Gurupreet/ComposeCookBook" />
-      <img src = "https://img.shields.io/github/issues/Gurupreet/ComposeCookBook" />
-      <img src = "https://img.shields.io/github/pr/Gurupreet/ComposeCookBook" />
-    <img src = "https://img.shields.io/twitter/url?label=follow&style=social&url=https%3A%2F%2Ftwitter.com%2F_gurupreet" />
+  <a href = "https://github.com/Gurupreet/ComposeCookBook/network/">
+    <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
+  </a>
+  <a href = "https://github.com/Gurupreet/ComposeCookBook/stargazers">
+     <img src = "https://img.shields.io/github/stars/Gurupreet/ComposeCookBook" />
+  </a>
+  <a href = "https://github.com/Gurupreet/ComposeCookBook/issues">
+     <img src = "https://img.shields.io/github/issues/Gurupreet/ComposeCookBook" />
+  </a>  
+  <a href = "https://twitter.com/_gurupreet">
+     <img src = "https://img.shields.io/twitter/url?label=follow&style=social&url=https%3A%2F%2Ftwitter.com%2F_gurupreet" />
+  </a>
 </div>
 
 # Jetpack Compose
 Jetpack Compose is Android’s modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 
 
-### How to get started
+## How to get started
 Please get **android studio 4.2 canary 8** or above to build this project [from here](https://developer.android.com/studio/preview/).
 
 ## Features & Where to start
@@ -40,7 +46,7 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
 - Official Google Documentation
   - [Jetpack compose](https://developer.android.com/jetpack/compose)
   - [Jetpack compose Samples](https://github.com/android/compose-samples)
-  - [Jetpack Compose Codelabs] (https://codelabs.developers.google.com/codelabs/jetpack-compose-layouts/index.html#0)
+  - [Jetpack Compose Codelabs](https://codelabs.developers.google.com/codelabs/jetpack-compose-layouts/index.html#0)
   
 - [Compose Academy ](https://compose.academy/)
 
@@ -68,7 +74,11 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
 </div>
 
 
-### Please Share & Star the repository to keep me movtivated.
-<img src = "https://img.shields.io/github/stars/Gurupreet/ComposeCookBook" />
-<img src = "https://img.shields.io/twitter/url?label=follow&style=social&url=https%3A%2F%2Ftwitter.com%2F_gurupreet" />
+## Please Share & Star the repository to keep me movtivated.
+  <a href = "https://github.com/Gurupreet/ComposeCookBook/stargazers">
+     <img src = "https://img.shields.io/github/stars/Gurupreet/ComposeCookBook" />
+  </a>
+  <a href = "https://twitter.com/_gurupreet">
+     <img src = "https://img.shields.io/twitter/url?label=follow&style=social&url=https%3A%2F%2Ftwitter.com%2F_gurupreet" />
+  </a>
 
