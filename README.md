@@ -30,6 +30,9 @@
 # Jetpack Compose
 Jetpack Compose is Android’s modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 
+## Screens
+![Demo](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)
+![Demo2](https://media.giphy.com/media/j3ajRUVKla5FdSrr6a/giphy.gif)
 
 ## How to get started
 Please get **android studio 4.2 canary 8** or above to build this project [from here](https://developer.android.com/studio/preview/).
@@ -58,11 +61,6 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
   - Try not to add new Icons/Images unless must needed.
   - Please make sure whatever you add also supports dark mdoe as well.
   Thanks happy coding 
-
-
-## Screens
-![Demo](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)
-![Demo2](https://media.giphy.com/media/j3ajRUVKla5FdSrr6a/giphy.gif)
 
 ## Multiple DEMO UI and more coming 
 <div>
