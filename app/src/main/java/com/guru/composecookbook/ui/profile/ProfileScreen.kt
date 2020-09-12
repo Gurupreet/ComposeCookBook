@@ -30,6 +30,7 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 
 
 private val initialimageFloat = 170f
@@ -257,7 +258,7 @@ private fun TopBackground() {
         modifier = Modifier
             .preferredHeight(150.dp)
             .fillMaxWidth()
-            .background(brush = HorizontalGradient(gradientBluePurple, 0f, 500f))
+            .horizontalGradientBackground(gradientBluePurple)
     )
 }
 

@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.drawLayer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -94,6 +95,23 @@ fun AnimationScreenContent() {
         FloatMultiStateAnimationCircleStrokeCanvas()
         Spacer(modifier = Modifier.padding(8.dp))
         FloatMultiStateAnimationCircleCanvas()
+        Spacer(modifier = Modifier.padding(8.dp))
+        //
+        var draw by remember { mutableStateOf(false) }
+        Button(
+            onClick = { draw = !draw },
+            modifier = Modifier.drawLayer(
+                scaleX = animate(if (draw) 3f else 1f),
+                scaleY = animate(if (draw) 3f else 1f),
+                alpha = animate(if (draw) 1f else 0.5f),
+                translationX = animate(if (draw) 10f else 0f),
+                translationY = animate(if (draw) 10f else 0f),
+                clip = if (draw) true else false,
+                rotationX = animate(if (draw) 20f else 0f),
+            )
+        ) {
+            Text(text = "Draw layer Anim")
+        }
         Spacer(modifier = Modifier.padding(8.dp))
     }
 }

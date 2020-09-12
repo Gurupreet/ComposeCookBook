@@ -1,0 +1,139 @@
+package com.guru.composecookbook.ui.demoui.spotify
+
+import android.graphics.Bitmap
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.drawLayer
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.imageFromResource
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.palette.graphics.Palette
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.ui.tooling.preview.Preview
+import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.data.model.Item
+import com.guru.composecookbook.theme.gradientBluePurple
+import com.guru.composecookbook.theme.graySurface
+import com.guru.composecookbook.theme.instagramGradient
+import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.demoui.spotify.data.Album
+import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.ui.utils.horizontalGradientBackground
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
+@Composable
+fun SpotifyHomeGridItem(album: Album) {
+    val cardColor = if (isSystemInDarkTheme()) graySurface else  MaterialTheme.colors.background
+    Card(
+        elevation = 4.dp,
+        backgroundColor = cardColor,
+        modifier = Modifier
+            .clip(RoundedCornerShape(8.dp))
+            .padding(8.dp)
+            .clickable(onClick = {},)
+    ) {
+        Row(verticalGravity = Alignment.CenterVertically) {
+            Image(
+                asset = imageResource(id = album.imageId),
+                modifier = Modifier.preferredSize(55.dp),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = album.song,
+                style = typography.h6.copy(fontSize = 14.sp),
+                modifier = Modifier.padding(horizontal = 8.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun SpotifyLaneItem(album: Album) {
+    Column(modifier = Modifier.preferredWidth(180.dp).padding(8.dp)) {
+        Image(
+            asset = imageResource(id = album.imageId),
+            modifier = Modifier.preferredWidth(180.dp)
+                .preferredHeight(160.dp),
+            contentScale = ContentScale.Crop
+        )
+        Text(
+            text = "${album.song}: ${album.descriptions}",
+            style = typography.body2,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
+    }
+}
+
+@Composable
+fun SpotifySearchGridItem(album: Album) {
+    val imageBitmap = imageResource(id = album.imageId).asAndroidBitmap()
+    val swatch = remember(album.id) {  generateDominantColorState(imageBitmap) }
+    val dominantGradient = listOf(Color(swatch.rgb), Color(swatch.rgb).copy(alpha = 0.6f))
+
+    Row(
+        modifier = Modifier
+            .padding(8.dp)
+            .clickable(onClick = {})
+            .preferredHeight(100.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .horizontalGradientBackground(dominantGradient),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = album.song,
+            style = typography.h6.copy(fontSize = 14.sp),
+            modifier = Modifier.padding(8.dp)
+        )
+        Image(
+            asset = imageResource(id = album.imageId),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.preferredSize(70.dp)
+                .gravity(Alignment.Bottom)
+                .drawLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
+        )
+    }
+}
+
+@Preview
+@Composable
+fun PreviewSpotifyHomeGridItem() {
+    val album = remember {  SpotifyDataProvider.album }
+    SpotifyHomeGridItem(album)
+}
+
+fun generateDominantColorState(bitmap: Bitmap): Palette.Swatch {
+    return Palette.Builder(bitmap)
+        .resizeBitmapArea(0)
+        .clearFilters()
+        .maximumColorCount(8)
+        .generate().swatches.sortedByDescending { swatch -> swatch.population }.first()
+}
+
+@Preview
+@Composable
+fun PreviewLaneItem() {
+    val album = remember {  SpotifyDataProvider.album }
+    SpotifyLaneItem(album)
+}
+
+@Preview
+@Composable
+fun SpotifySearchGridItem() {
+    val album = remember {  SpotifyDataProvider.album }
+    SpotifySearchGridItem(album)
+}

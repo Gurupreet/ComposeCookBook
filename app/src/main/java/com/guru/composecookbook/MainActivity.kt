@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             ComposeCookBookTheme {
                 // A surface container using the 'background' color from the theme
-                val darkTheme = remember { mutableStateOf(false) }
+                val darkTheme = savedInstanceState { false }
                 BaseView(darkTheme.value) {
                     MainAppContent(darkTheme)
                 }
@@ -72,7 +73,7 @@ fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean
 @Composable
 fun MainAppContent(darkTheme: MutableState<Boolean>) {
     //Default home screen state is always HOME
-    var homeScreenState = remember { mutableStateOf(BottomNavType.HOME) }
+    var homeScreenState = savedInstanceState { BottomNavType.HOME }
     Column(modifier = Modifier.fillMaxSize()) {
         HomeScreenContent(homeScreen = homeScreenState.value, darkTheme = darkTheme)
         BottomNavigationContent(homeScreenState)
