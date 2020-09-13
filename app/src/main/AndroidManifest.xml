@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeCookBook">
         <activity
-            android:name=".ui.demoui.spotify.SpotifyDetailActivity"
+            android:name=".ui.demoui.spotify.details.SpotifyDetailActivity"
             android:label="@string/title_activity_spotify_detail"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
         <activity

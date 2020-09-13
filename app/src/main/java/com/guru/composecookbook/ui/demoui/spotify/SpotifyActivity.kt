@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -23,6 +24,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
+import com.guru.composecookbook.ui.utils.ComingSoon
 
 class SpotifyActivity : AppCompatActivity() {
 
@@ -86,10 +88,12 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
 
 @Composable
 fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
-    when(spotifyNavType) {
-        SpotifyNavType.HOME -> SpotifyHome()
-        SpotifyNavType.SEARCH -> SpotifySearchScreen()
-        SpotifyNavType.LIBRARY -> Text(text = "lib")
+    Crossfade(current = spotifyNavType) { spotifyNavType ->
+        when (spotifyNavType) {
+            SpotifyNavType.HOME -> SpotifyHome()
+            SpotifyNavType.SEARCH -> SpotifySearchScreen()
+            SpotifyNavType.LIBRARY -> ComingSoon()
+        }
     }
 }
     

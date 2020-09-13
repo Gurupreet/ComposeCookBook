@@ -8,10 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.drawWithContent
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.HorizontalGradient
-import androidx.compose.ui.graphics.LinearGradient
+import androidx.compose.ui.graphics.*
 
 // NOTE: Gradients extentions are Taken from offical Jetsnack smaple:
 
@@ -23,6 +20,16 @@ fun Modifier.horizontalGradientBackground(
         colors = gradientColors,
         startX = 0f,
         endX = size.width
+    )
+}
+
+fun Modifier.verticalGradientBackground(
+    colors: List<Color>
+) = gradientBackground(colors) { gradientColors, size ->
+    VerticalGradient(
+        colors = gradientColors,
+        startY = 0f,
+        endY = size.width
     )
 }
 

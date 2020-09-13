@@ -38,16 +38,7 @@ fun SpotifyHome() {
     val scrollState = rememberScrollState(0f)
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     Stack(modifier = Modifier.fillMaxSize()) {
-        ScrollableColumn(
-            scrollState = scrollState,
-            modifier = Modifier.horizontalGradientBackground(surfaceGradient).padding(8.dp)
-        ) {
-            Spacer(modifier = Modifier.height(50.dp))
-            SpotifyTitle("Good Evening")
-            HomeGridSection()
-            HomeLanesSection()
-            Spacer(modifier = Modifier.height(100.dp))
-        }
+        ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
         Icon(
             asset = Icons.Outlined.Settings,
             tint = MaterialTheme.colors.onSurface,
@@ -61,8 +52,22 @@ fun SpotifyHome() {
 }
 
 @Composable
+fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
+    ScrollableColumn(
+        scrollState = scrollState,
+        modifier = Modifier.horizontalGradientBackground(surfaceGradient).padding(8.dp)
+    ) {
+        Spacer(modifier = Modifier.height(50.dp))
+        SpotifyTitle("Good Evening")
+        HomeGridSection()
+        HomeLanesSection()
+        Spacer(modifier = Modifier.height(100.dp))
+    }
+}
+
+@Composable
 fun PlayerBottomBar(modifier: Modifier) {
-    val bottomBarHeight = 56.5.dp
+    val bottomBarHeight = 57.dp
     val backgroundColor =
         if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
     Row(
@@ -77,12 +82,12 @@ fun PlayerBottomBar(modifier: Modifier) {
             contentScale = ContentScale.Crop
         )
         Text(
-            text = "Someone Like you by Adele,Album 21",
+            text = "Someone Like you by Adele",
             style = typography.h6.copy(fontSize = 14.sp),
-            modifier = Modifier.padding(8.dp),
+            modifier = Modifier.padding(8.dp).weight(1f),
         )
-        Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(4.dp))
-        Icon(asset = Icons.Default.PlayArrow, modifier = Modifier.padding(4.dp))
+        Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp))
+        Icon(asset = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp))
     }
 }
 
@@ -107,7 +112,8 @@ fun HomeGridSection() {
 
 @Composable
 fun HomeLanesSection() {
-    SpotifyDataProvider.listOfSpotifyHomeLanes.forEachIndexed { index, lane ->
+    val categories = remember { SpotifyDataProvider.listOfSpotifyHomeLanes }
+    categories.forEachIndexed { index, lane ->
         SpotifyTitle(text = lane)
         SpotifyLane(index)
     }

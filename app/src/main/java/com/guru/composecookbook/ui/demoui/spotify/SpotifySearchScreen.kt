@@ -29,6 +29,7 @@ import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 fun SpotifySearchScreen() {
     val scrollState = rememberScrollState(0f)
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
+
     Stack(modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)) {
         Text(
             text = "Search",
@@ -83,6 +84,8 @@ fun SpotifySearchBar() {
 @Composable
 fun SpotifySearchGrid() {
     val items = remember { SpotifyDataProvider.albums }
+    //This is not Lazy at the moment Soon we will have LazyLayout coming then will
+    //Update it so we have better performance
     VerticalGrid {
         items.forEach {
            SpotifySearchGridItem(it)
