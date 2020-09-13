@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.widgets
+package com.guru.composecookbook.ui.learnwidgets
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

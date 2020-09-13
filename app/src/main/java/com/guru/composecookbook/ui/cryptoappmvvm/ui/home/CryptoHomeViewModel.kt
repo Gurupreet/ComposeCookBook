@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class CryptoHomeViewModel(
     cryptoRepository: CryptoRepository = DemoDIGraph.cryptoRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _viewStateFlow = MutableStateFlow(CryptoHomeUIState(isLoading = true))
     val viewStateFlow: StateFlow<CryptoHomeUIState> = _viewStateFlow

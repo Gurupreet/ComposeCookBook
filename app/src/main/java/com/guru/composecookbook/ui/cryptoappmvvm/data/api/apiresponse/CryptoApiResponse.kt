@@ -1,7 +1,5 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.data.api.apiresponse
 
-import java.sql.Struct
-
 data class CryptoApiResponse(
     val id: String,
     val symbol: String,

@@ -32,17 +32,24 @@ import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.utils.RotateIcon
 
 @Composable
 fun AnimationScreen() {
+    var animateIcon by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(text = "Animations") },
                 elevation = 8.dp,
                 navigationIcon = {
-                    IconButton(onClick = {}) {
-                        Icon(asset = Icons.Default.PlayArrow)
+                    IconButton(onClick = { animateIcon = !animateIcon}) {
+                        RotateIcon(
+                            state = animateIcon,
+                            asset = Icons.Filled.PlayArrow,
+                            angle = 1440f,
+                            duration = 3000
+                        )
                     }
                 }
             )
@@ -93,26 +100,63 @@ fun AnimationScreenContent() {
         }
         Spacer(modifier = Modifier.padding(8.dp))
         FloatMultiStateAnimationCircleStrokeCanvas()
-        Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(30.dp))
         FloatMultiStateAnimationCircleCanvas()
-        Spacer(modifier = Modifier.padding(8.dp))
-        //
+        Spacer(modifier = Modifier.padding(50.dp))
+        //draw layer animations
         var draw by remember { mutableStateOf(false) }
+        val modifier = Modifier.drawLayer(
+            scaleX = animate(if (draw) 3f else 1f),
+            scaleY = animate(if (draw) 3f else 1f),
+            shadowElevation = animate(if (draw) 20f else 5f),
+            translationX = animate(if (draw) 10f else 0f),
+            translationY = animate(if (draw) 10f else 0f),
+            clip = draw,
+            rotationZ = animate(if (draw) 360f else 0f))
+        Stack {
+            Image(asset = imageResource(id = R.drawable.adele21), modifier = modifier.preferredSize(150.dp))
+            Image(asset = imageResource(id = R.drawable.dualipa), modifier = modifier.preferredSize(140.dp))
+            Image(asset = imageResource(id = R.drawable.bp), modifier = modifier.preferredSize(130.dp))
+        }
+        Spacer(modifier = Modifier.padding(30.dp))
         Button(
             onClick = { draw = !draw },
-            modifier = Modifier.drawLayer(
-                scaleX = animate(if (draw) 3f else 1f),
-                scaleY = animate(if (draw) 3f else 1f),
-                alpha = animate(if (draw) 1f else 0.5f),
-                translationX = animate(if (draw) 10f else 0f),
-                translationY = animate(if (draw) 10f else 0f),
-                clip = if (draw) true else false,
-                rotationX = animate(if (draw) 20f else 0f),
-            )
+            modifier = Modifier.padding(20.dp)
         ) {
             Text(text = "Draw layer Anim")
         }
-        Spacer(modifier = Modifier.padding(8.dp))
+        var draw2 by remember { mutableStateOf(false) }
+        val modifier2 = Modifier.drawLayer(
+            rotationX = animate(if (draw2) -45f else 1f),
+            shadowElevation = animate(if (draw2) 20f else 5f))
+        Stack {
+            Image(
+                asset = imageResource(id = R.drawable.adele21),
+                modifier = modifier2.preferredSize(150.dp).drawLayer(
+                    rotationX = animate(if (draw2) -30f else 1f),
+                    shadowElevation = animate(if (draw2) 20f else 5f))
+            )
+            Image(
+                asset = imageResource(id = R.drawable.dualipa),
+                modifier = modifier2.preferredSize(150.dp).drawLayer(
+                    rotationX = animate(if (draw2) -40f else 1f),
+                    shadowElevation = animate(if (draw2) 30f else 10f))
+            )
+            Image(
+                asset = imageResource(id = R.drawable.edsheeran),
+                modifier = modifier2.preferredSize(150.dp).drawLayer(
+                    rotationX = animate(if (draw2) -50f else 1f),
+                    shadowElevation = animate(if (draw2) 40f else 20f))
+            )
+        }
+        Spacer(modifier = Modifier.padding(30.dp))
+        Button(
+            onClick = { draw2 = !draw2},
+            modifier = Modifier.padding(20.dp)
+        ) {
+            Text(text = "Draw layer Anim 2")
+        }
+        Spacer(modifier = Modifier.padding(300.dp))
     }
 }
 

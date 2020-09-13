@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.cryptoappmvvm.data.api
 import com.guru.composecookbook.ui.cryptoappmvvm.data.api.apiresponse.CryptoApiResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 
 interface CryptoApi {
 

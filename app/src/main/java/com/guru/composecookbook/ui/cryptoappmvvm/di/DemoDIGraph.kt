@@ -1,7 +1,6 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.di
 
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoApiMapper
-import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.data.api.CryptoApi
 import com.guru.composecookbook.ui.cryptoappmvvm.data.repository.CryptoRepositoryImpl
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,7 +22,7 @@ object DemoDIGraph {
         }.build()
     }
 
-    private val retrofit =  Retrofit.Builder()
+    private val retrofit = Retrofit.Builder()
         .client(okHttpClient)
         .baseUrl(BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create())

@@ -12,16 +12,17 @@ import kotlinx.coroutines.flow.flowOn
 class CryptoRepositoryImpl(
     private val cryptoApi: CryptoApi,
     private val cryptoApiMapper: CryptoApiMapper
-): CryptoRepository {
+) : CryptoRepository {
 
     @WorkerThread
     override suspend fun getAllCryptos() = flow {
         val response = cryptoApi.getAllCoins()
         if (response.isSuccessful && !response.body().isNullOrEmpty()) {
             val cryptoApiResponseList = response.body()
-            val cryptoList =  cryptoApiResponseList?.map {
-                    cryptoApiResponse -> cryptoApiMapper.map(cryptoApiResponse) }
-            emit(cryptoList ?:  emptyList<Crypto>())
+            val cryptoList = cryptoApiResponseList?.map { cryptoApiResponse ->
+                cryptoApiMapper.map(cryptoApiResponse)
+            }
+            emit(cryptoList ?: emptyList<Crypto>())
         } else {
             emit(error(response.message() ?: "Failed to load data"))
         }

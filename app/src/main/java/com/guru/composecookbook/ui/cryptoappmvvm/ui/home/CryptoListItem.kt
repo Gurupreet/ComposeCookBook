@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -47,7 +46,8 @@ fun CryptoListItem(crypto: Crypto) {
                 text = "$${crypto.price}",
                 style = typography.h6,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().gravity(Alignment.End))
+                modifier = Modifier.fillMaxWidth().gravity(Alignment.End)
+            )
             Text(
                 text = "${crypto.dailyChange.roundToThreeDecimals()}" +
                         "(${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
