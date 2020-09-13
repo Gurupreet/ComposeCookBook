@@ -58,7 +58,7 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
   - Any feature showcase like Collapsing AppBar, BottomSheets, Dialogs etc add in HomeScreen list
   - Any Demo UI please add to Demo UI section
   - Try not to add new Icons/Images unless must needed.
-  - Please make sure whatever you add also supports dark mdoe as well.
+  - Please make sure whatever you add also supports dark mode as well.
   Thanks happy coding 
 
 ## Multiple DEMO UI and more coming 
