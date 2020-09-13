@@ -43,7 +43,6 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
 - __Demo UI:__ Learn how demo UI have been made by using layouts, listviews and widgets.
 - __Animations:__ Animations are very interesting in compose. Checkout single value animations to get started.
 - __Others:__ After above steps feel free to deep dive into Tablayouts, carousell, Dialogs and BottomSheets 
-- __very cute:__ choo choo!
 
 ## Official Documentations
 - Official Google Documentation
