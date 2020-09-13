@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.ui.cryptoappmvvm.CryptoHomeActivity
 import com.guru.composecookbook.ui.demoui.spotify.SpotifyActivity
 
 @Composable
@@ -23,14 +24,22 @@ fun DemoUIList() {
         LazyColumnFor(items = demoUis) { title ->
             Button(
                 onClick = {
-                    if (title == "Spotify") {
-                        context.startActivity(
-                            SpotifyActivity.newIntent(context, false)
-                        )
-                    } else {
-                        context.startActivity(
-                            DemoUIHostActivity.newIntent(context, title, false)
-                        )
+                    when (title) {
+                        "Spotify" -> {
+                            context.startActivity(
+                                SpotifyActivity.newIntent(context, false)
+                            )
+                        }
+                        "CryptoApp+MVVM" -> {
+                            context.startActivity(
+                                CryptoHomeActivity.newIntent(context, false)
+                            )
+                        }
+                        else -> {
+                            context.startActivity(
+                                DemoUIHostActivity.newIntent(context, title, false)
+                            )
+                        }
                     }
                 },
                 modifier = Modifier.fillMaxWidth().padding(12.dp)

@@ -19,4 +19,5 @@
     <string name="spotify_nav_search">Search</string>
     <string name="spotify_nav_library">Your Library</string>
     <string name="title_activity_spotify_detail">SpotifyDetail</string>
+    <string name="title_activity_crypto_home">CryptoHome</string>
 </resources>
