@@ -3,22 +3,25 @@ package com.guru.composecookbook.ui.demoui.spotify
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.LibraryMusic
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
-import androidx.core.content.ContextCompat
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -96,12 +99,12 @@ fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
         }
     }
 }
-    
 
-@Preview    
+
+@Preview
 @Composable
 fun DefaultPreview() {
     ComposeCookBookTheme {
-       SpotifyAppContent()
+        SpotifyAppContent()
     }
 }

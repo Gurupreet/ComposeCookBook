@@ -8,7 +8,14 @@ object SpotifyDataProvider {
     fun spotifySurfaceGradient(isDark: Boolean) =
         if (isDark) listOf(graySurface, Color.Black) else listOf(Color.White, Color.LightGray)
 
-    val listOfSpotifyHomeLanes = listOf("Continue listening", "Popular Playlists", "Top Charts", "Recommended for today", "Bollywood", "Acoustic only")
+    val listOfSpotifyHomeLanes = listOf(
+        "Continue listening",
+        "Popular Playlists",
+        "Top Charts",
+        "Recommended for today",
+        "Bollywood",
+        "Acoustic only"
+    )
 
     val album = Album(
         id = 0,

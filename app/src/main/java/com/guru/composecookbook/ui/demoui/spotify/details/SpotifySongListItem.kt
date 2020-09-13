@@ -3,7 +3,10 @@ package com.guru.composecookbook.ui.demoui.spotify.details
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -19,7 +22,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
-import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
@@ -31,14 +33,14 @@ fun SpotifySongListItem(album: Album) {
         modifier = Modifier.padding(8.dp),
         verticalGravity = Alignment.CenterVertically,
     ) {
-       Image(
-           asset = imageResource(id = album.imageId),
-           contentScale = ContentScale.Crop,
-           modifier = Modifier.preferredSize(55.dp).padding(4.dp)
-       )
+        Image(
+            asset = imageResource(id = album.imageId),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.preferredSize(55.dp).padding(4.dp)
+        )
         Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
             Text(
-                text = album.song, 
+                text = album.song,
                 style = typography.h6.copy(fontSize = 16.sp),
                 color = MaterialTheme.colors.onSurface
             )

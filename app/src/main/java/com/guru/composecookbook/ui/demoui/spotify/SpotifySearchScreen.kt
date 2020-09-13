@@ -19,7 +19,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
-import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.VerticalGrid
@@ -37,8 +36,8 @@ fun SpotifySearchScreen() {
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(top = 80.dp, bottom = 40.dp)
-                .fillMaxSize().drawOpacity(1f - scrollState.value/200)
-        // Just reducing the opacity by small fraction when scroll happens
+                .fillMaxSize().drawOpacity(1f - scrollState.value / 200)
+            // Just reducing the opacity by small fraction when scroll happens
         )
         ScrollableColumn(
             scrollState = scrollState,
@@ -88,7 +87,7 @@ fun SpotifySearchGrid() {
     //Update it so we have better performance
     VerticalGrid {
         items.forEach {
-           SpotifySearchGridItem(it)
+            SpotifySearchGridItem(it)
         }
     }
 }

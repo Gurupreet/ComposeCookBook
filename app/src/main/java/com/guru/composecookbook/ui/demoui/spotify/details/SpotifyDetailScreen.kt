@@ -4,7 +4,6 @@ import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.gravity
-import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -29,8 +28,6 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoui.spotify.SpotifySearchBar
-import com.guru.composecookbook.ui.demoui.spotify.SpotifySearchGrid
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoui.spotify.generateDominantColorState
@@ -58,41 +55,43 @@ fun SpotifyDetailScreen(album: Album) {
 
 @Composable
 fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: List<Color>) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalGravity = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .horizontalGradientBackground(
-                    if (Dp(scrollState.value) < 1080.dp)
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalGravity = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalGradientBackground(
+                if (Dp(scrollState.value) < 1080.dp)
                     listOf(Color.Transparent, Color.Transparent) else surfaceGradient
-                )
-                .padding(horizontal = 8.dp, vertical = 4.dp)
-        ) {
-            Icon(asset = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
-            Text(
-                text = album.song,
-                color = MaterialTheme.colors.onSurface,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .drawOpacity((scrollState.value + 0.001f) / 1000)
             )
-            Icon(asset = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
-        }
+            .padding(horizontal = 8.dp, vertical = 4.dp)
+    ) {
+        Icon(asset = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
+        Text(
+            text = album.song,
+            color = MaterialTheme.colors.onSurface,
+            modifier = Modifier
+                .padding(16.dp)
+                .drawOpacity((scrollState.value + 0.001f) / 1000)
+        )
+        Icon(asset = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
+    }
 }
 
 @Composable
 fun TopSectionOverlay(scrollState: ScrollState) {
-        //slowly increase alpha till it reaches 1
-        val dynamicAlpha =
-            if (((scrollState.value+0.00f)/1000) > 1f) 1f else  (scrollState.value+0.00f)/1000
-        Box(
-            modifier = Modifier.fillMaxWidth()
-                .height(400.dp)
-                .background(MaterialTheme.colors.surface.copy(
+    //slowly increase alpha till it reaches 1
+    val dynamicAlpha =
+        if (((scrollState.value + 0.00f) / 1000) > 1f) 1f else (scrollState.value + 0.00f) / 1000
+    Box(
+        modifier = Modifier.fillMaxWidth()
+            .height(400.dp)
+            .background(
+                MaterialTheme.colors.surface.copy(
                     alpha = animate(dynamicAlpha)
-                ))
-        )
+                )
+            )
+    )
 }
 
 @Composable
@@ -143,7 +142,8 @@ fun ShuffleButton() {
     Button(
         onClick = {},
         backgroundColor = green700,
-        modifier = Modifier.padding(vertical = 12.dp, horizontal = 24.dp).gravity(Alignment.CenterHorizontally)
+        modifier = Modifier.padding(vertical = 12.dp, horizontal = 24.dp)
+            .gravity(Alignment.CenterHorizontally)
             .clip(CircleShape)
     ) {
         Text(

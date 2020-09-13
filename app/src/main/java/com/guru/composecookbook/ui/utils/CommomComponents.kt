@@ -14,7 +14,9 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun ComingSoon() {
-    Column(modifier = Modifier.fillMaxWidth().gravity(Alignment.CenterHorizontally).padding(50.dp)) {
+    Column(
+        modifier = Modifier.fillMaxWidth().gravity(Alignment.CenterHorizontally).padding(50.dp)
+    ) {
         Text(
             text = "Coming Soon",
             style = typography.h5,

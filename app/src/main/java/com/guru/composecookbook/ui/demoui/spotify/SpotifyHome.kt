@@ -1,11 +1,9 @@
 package com.guru.composecookbook.ui.demoui.spotify
 
-import androidx.annotation.IntDef
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRowFor
-import androidx.compose.foundation.lazy.LazyRowForIndexed
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -24,13 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
-import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.VerticalGrid
-import com.guru.composecookbook.ui.utils.diagonalGradientTint
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 
 @Composable
@@ -45,7 +40,7 @@ fun SpotifyHome() {
             modifier = Modifier
                 .gravity(Alignment.TopEnd)
                 .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
-                .drawOpacity(animate(1f - scrollState.value/200f))
+                .drawOpacity(animate(1f - scrollState.value / 200f))
         )
         PlayerBottomBar(Modifier.gravity(Alignment.BottomCenter))
     }
@@ -104,7 +99,7 @@ fun SpotifyTitle(text: String, modifier: Modifier = Modifier) {
 fun HomeGridSection() {
     val items = remember { SpotifyDataProvider.albums }
     VerticalGrid {
-        items.take(6).forEach { 
+        items.take(6).forEach {
             SpotifyHomeGridItem(album = it)
         }
     }
@@ -123,7 +118,7 @@ fun HomeLanesSection() {
 fun SpotifyLane(index: Int) {
     val itemsEven = remember { SpotifyDataProvider.albums }
     val itemsOdd = remember { SpotifyDataProvider.albums.asReversed() }
-    LazyRowFor(if (index%2 == 0) itemsEven else itemsOdd) {
+    LazyRowFor(if (index % 2 == 0) itemsEven else itemsOdd) {
         SpotifyLaneItem(album = it)
     }
 }
