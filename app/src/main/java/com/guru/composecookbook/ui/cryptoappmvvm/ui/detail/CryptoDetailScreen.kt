@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.detail
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -12,28 +11,22 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.ReadMore
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawOpacity
-import androidx.compose.ui.gesture.pressIndicatorGestureFilter
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToTwoDecimals
-import com.guru.composecookbook.ui.lists.VerticalListItemSmall
-import dev.chrisbanes.accompanist.coil.CoilImage
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.ui.lists.VerticalListItemSmall
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
@@ -48,8 +41,10 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
         val scrollState = rememberScrollState(0f)
         Stack(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             CryptoTopSection(crypto, scrollState, onBack)
-            ScrollableColumn(modifier = Modifier
-                .padding(top = 34.dp, start = 16.dp,end = 16.dp), scrollState = scrollState) {
+            ScrollableColumn(
+                modifier = Modifier
+                    .padding(top = 34.dp, start = 16.dp, end = 16.dp), scrollState = scrollState
+            ) {
                 Spacer(modifier = Modifier.height(150.dp))
                 //TODO: Charts
                 StatisticsSection(crypto)
@@ -62,7 +57,10 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 
 @Composable
 fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Unit) {
-    Column(modifier = Modifier.padding(16.dp).drawOpacity(animate((1 - scrollState.value/200).coerceIn(0f, 1f)))) {
+    Column(
+        modifier = Modifier.padding(16.dp)
+            .drawOpacity(animate((1 - scrollState.value / 200).coerceIn(0f, 1f)))
+    ) {
         Icon(
             asset = Icons.Default.ArrowBack,
             modifier = Modifier.padding(vertical = 8.dp).clickable(onClick = onBack)
@@ -108,7 +106,7 @@ fun CryptoFloatingActionButton() {
     ExtendedFloatingActionButton(
         icon = { Icon(asset = Icons.Default.Add) },
         text = { Text(text = "Trade") },
-        onClick = { pressed = !pressed},
+        onClick = { pressed = !pressed },
         backgroundColor = MaterialTheme.colors.primary,
         modifier = Modifier.width(animate(if (pressed) 200.dp else 120.dp))
     )
@@ -138,7 +136,7 @@ fun NewsSection(crypto: Crypto) {
                 modifier = Modifier.gravity(Alignment.End).clickable(onClick = {}).padding(16.dp)
             )
         }
-      
+
     }
 }
 
@@ -158,14 +156,14 @@ fun StatisticsSection(crypto: Crypto) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(16.dp),
         ) {
-           Column(modifier = Modifier.weight(1f)) {
-               Text(text = "24 High", style = typography.subtitle2)
-               Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-               Text(text = "24 Low", style = typography.subtitle2)
-               Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-               Text(text = "24 High", style = typography.subtitle2)
-               Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-           }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "24 High", style = typography.subtitle2)
+                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
+                Text(text = "24 Low", style = typography.subtitle2)
+                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
+                Text(text = "24 High", style = typography.subtitle2)
+                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
+            }
             Column(modifier = Modifier.weight(1f)) {
                 Text(text = "24 High", style = typography.subtitle2)
                 Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)

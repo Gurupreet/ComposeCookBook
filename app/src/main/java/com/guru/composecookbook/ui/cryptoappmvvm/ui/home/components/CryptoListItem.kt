@@ -32,7 +32,7 @@ fun CryptoListItem(
 ) {
     Row(
         modifier = Modifier.fillMaxWidth()
-            .clickable(onClick = {onCryptoHomeEvents(CryptoHomeEvents.OpenDetailScreen(crypto))})
+            .clickable(onClick = { onCryptoHomeEvents(CryptoHomeEvents.OpenDetailScreen(crypto)) })
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalGravity = Alignment.CenterVertically
@@ -64,7 +64,7 @@ fun CryptoListItem(
             )
         }
         AddButton(
-            onAddSelected = {onCryptoHomeEvents(CryptoHomeEvents.AddedToFav(crypto))}
+            onAddSelected = { onCryptoHomeEvents(CryptoHomeEvents.AddedToFav(crypto)) }
         )
     }
 }

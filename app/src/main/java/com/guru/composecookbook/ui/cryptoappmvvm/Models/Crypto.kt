@@ -11,4 +11,4 @@ data class Crypto(
     val dailyChangePercentage: Double,
     val high: Double,
     val low: Double
-): Serializable
+) : Serializable

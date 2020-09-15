@@ -10,7 +10,6 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
-import com.guru.composecookbook.ui.cryptoappmvvm.ui.detail.CryptoDetailScreen
 
 class CryptoDetailActivity : AppCompatActivity() {
 
@@ -37,7 +36,6 @@ class CryptoDetailActivity : AppCompatActivity() {
             }
     }
 }
-
 
 
 @Preview(showBackground = true)

@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.constraintlayout
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Divider
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
@@ -192,7 +191,6 @@ fun ConstraintLayoutBigListItem() {
         )
     }
 }
-
 
 
 @Preview

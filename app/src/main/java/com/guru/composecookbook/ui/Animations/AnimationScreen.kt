@@ -43,7 +43,7 @@ fun AnimationScreen() {
                 title = { Text(text = "Animations") },
                 elevation = 8.dp,
                 navigationIcon = {
-                    IconButton(onClick = { animateIcon = !animateIcon}) {
+                    IconButton(onClick = { animateIcon = !animateIcon }) {
                         RotateIcon(
                             state = animateIcon,
                             asset = Icons.Filled.PlayArrow,
@@ -112,11 +112,21 @@ fun AnimationScreenContent() {
             translationX = animate(if (draw) 10f else 0f),
             translationY = animate(if (draw) 10f else 0f),
             clip = draw,
-            rotationZ = animate(if (draw) 360f else 0f))
+            rotationZ = animate(if (draw) 360f else 0f)
+        )
         Stack {
-            Image(asset = imageResource(id = R.drawable.adele21), modifier = modifier.preferredSize(150.dp))
-            Image(asset = imageResource(id = R.drawable.dualipa), modifier = modifier.preferredSize(140.dp))
-            Image(asset = imageResource(id = R.drawable.bp), modifier = modifier.preferredSize(130.dp))
+            Image(
+                asset = imageResource(id = R.drawable.adele21),
+                modifier = modifier.preferredSize(150.dp)
+            )
+            Image(
+                asset = imageResource(id = R.drawable.dualipa),
+                modifier = modifier.preferredSize(140.dp)
+            )
+            Image(
+                asset = imageResource(id = R.drawable.bp),
+                modifier = modifier.preferredSize(130.dp)
+            )
         }
         Spacer(modifier = Modifier.padding(30.dp))
         Button(
@@ -128,30 +138,34 @@ fun AnimationScreenContent() {
         var draw2 by remember { mutableStateOf(false) }
         val modifier2 = Modifier.drawLayer(
             rotationX = animate(if (draw2) -45f else 1f),
-            shadowElevation = animate(if (draw2) 20f else 5f))
+            shadowElevation = animate(if (draw2) 20f else 5f)
+        )
         Stack {
             Image(
                 asset = imageResource(id = R.drawable.adele21),
                 modifier = modifier2.preferredSize(150.dp).drawLayer(
                     rotationX = animate(if (draw2) -30f else 1f),
-                    shadowElevation = animate(if (draw2) 20f else 5f))
+                    shadowElevation = animate(if (draw2) 20f else 5f)
+                )
             )
             Image(
                 asset = imageResource(id = R.drawable.dualipa),
                 modifier = modifier2.preferredSize(150.dp).drawLayer(
                     rotationX = animate(if (draw2) -40f else 1f),
-                    shadowElevation = animate(if (draw2) 30f else 10f))
+                    shadowElevation = animate(if (draw2) 30f else 10f)
+                )
             )
             Image(
                 asset = imageResource(id = R.drawable.edsheeran),
                 modifier = modifier2.preferredSize(150.dp).drawLayer(
                     rotationX = animate(if (draw2) -50f else 1f),
-                    shadowElevation = animate(if (draw2) 40f else 20f))
+                    shadowElevation = animate(if (draw2) 40f else 20f)
+                )
             )
         }
         Spacer(modifier = Modifier.padding(30.dp))
         Button(
-            onClick = { draw2 = !draw2},
+            onClick = { draw2 = !draw2 },
             modifier = Modifier.padding(20.dp)
         ) {
             Text(text = "Draw layer Anim 2")

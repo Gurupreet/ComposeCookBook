@@ -215,7 +215,7 @@ fun InterestsSection() {
 
 @Composable
 fun TopAppBarView(scroll: Float) {
-    if (scroll > initialimageFloat - 20) {
+    if (scroll > initialimageFloat+5) {
         TopAppBar(
             title = {
                 Text(text = name)
@@ -240,13 +240,13 @@ fun TopAppBarView(scroll: Float) {
 
 @Composable
 fun AnimatedImage(scroll: Float) {
-    val dynamicAnimationSizeValue =
-        if (initialimageFloat - scroll <= 0f) 10f else initialimageFloat - scroll
+    val dynamicAnimationSizeValue = (initialimageFloat - scroll).coerceIn(36f, initialimageFloat)
     Image(
         asset = imageResource(id = R.drawable.p1),
         contentScale = ContentScale.Crop,
-        modifier = Modifier.preferredSize(animate(Dp(dynamicAnimationSizeValue)))
+        modifier = Modifier
             .padding(start = 16.dp)
+            .preferredSize(animate(Dp(dynamicAnimationSizeValue)))
             .clip(CircleShape)
     )
 }

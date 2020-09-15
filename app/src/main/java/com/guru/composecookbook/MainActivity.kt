@@ -33,9 +33,9 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.Animations.AnimationScreen
 import com.guru.composecookbook.ui.demoui.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
+import com.guru.composecookbook.ui.learnwidgets.WidgetScreen
 import com.guru.composecookbook.ui.profile.ProfileScreen
 import com.guru.composecookbook.ui.utils.RotateIcon
-import com.guru.composecookbook.ui.learnwidgets.WidgetScreen
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

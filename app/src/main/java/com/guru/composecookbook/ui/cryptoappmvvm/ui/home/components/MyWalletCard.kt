@@ -6,19 +6,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExtendedFloatingActionButton
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Send
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
@@ -34,11 +27,6 @@ import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.draw.drawShadow
-import androidx.compose.ui.gesture.pressIndicatorGestureFilter
-import androidx.compose.ui.layout.ContentScale
 
 @Composable
 fun MyWalletCard() {
@@ -117,7 +105,7 @@ fun MyWalletCard() {
             elevation = 0.dp
         )
         ExtendedFloatingActionButton(
-        onClick = { extended = !extended },
+            onClick = { extended = !extended },
             modifier = Modifier
                 .padding(4.dp)
                 .border(1.dp, Color.White, RoundedCornerShape(8.dp))
