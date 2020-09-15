@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Divider
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.PlayArrow
 import androidx.compose.runtime.Composable
@@ -18,6 +19,8 @@ import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Duration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
 
 @Composable
@@ -40,6 +43,20 @@ fun ComingSoon() {
     }
 }
 
+
+@Composable
+fun HeadingSection(title: String = "", subtitle: String = "", modifier: Modifier = Modifier) {
+    Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        if (title.isNotEmpty()) {
+            Text(text = title, style = typography.h6.copy(fontSize = 14.sp))
+        }
+        if (title.isNotEmpty()) {
+            Text(text = subtitle, style = typography.subtitle2)
+        }
+        Divider()
+    }
+}
+
 @Composable
 fun RotateIcon(
     state: Boolean,
@@ -52,4 +69,10 @@ fun RotateIcon(
         modifier = modifier
             .drawLayer(rotationZ = animate(if (state) 0f else angle, tween(duration)))
     )
+}
+
+@Preview
+@Composable
+fun PreviewHeading() {
+    HeadingSection("Title", "this is subtutle")
 }

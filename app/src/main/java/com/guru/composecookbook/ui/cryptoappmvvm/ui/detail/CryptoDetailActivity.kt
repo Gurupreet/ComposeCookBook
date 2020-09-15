@@ -10,6 +10,7 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.detail.CryptoDetailScreen
 
 class CryptoDetailActivity : AppCompatActivity() {
 
@@ -21,7 +22,9 @@ class CryptoDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeCookBookTheme {
-                CryptoDetailScreen(crypto, onBackPressed())
+                CryptoDetailScreen(crypto) {
+                    onBackPressed()
+                }
             }
         }
     }
@@ -42,6 +45,8 @@ class CryptoDetailActivity : AppCompatActivity() {
 fun DefaultPreview6() {
     val crypto = CryptoDemoDataProvider.bitcoin
     ComposeCookBookTheme {
-        CryptoDetailScreen(crypto)
+        CryptoDetailScreen(crypto) {
+
+        }
     }
 }

@@ -13,10 +13,12 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.ReadMore
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawOpacity
+import androidx.compose.ui.gesture.pressIndicatorGestureFilter
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -28,10 +30,15 @@ import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToTwoDecimals
 import com.guru.composecookbook.ui.lists.VerticalListItemSmall
 import dev.chrisbanes.accompanist.coil.CoilImage
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 
 @Composable
 fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
     val crypto = remember { crypto }
+    val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     Scaffold(
         bottomBar = { CryptoBottomBar(crypto) },
         floatingActionButton = { CryptoFloatingActionButton() },
@@ -39,9 +46,10 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
         floatingActionButtonPosition = FabPosition.Center
     ) {
         val scrollState = rememberScrollState(0f)
-        Stack {
+        Stack(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             CryptoTopSection(crypto, scrollState, onBack)
-            ScrollableColumn(modifier = Modifier.padding(16.dp), scrollState = scrollState) {
+            ScrollableColumn(modifier = Modifier
+                .padding(top = 34.dp, start = 16.dp,end = 16.dp), scrollState = scrollState) {
                 Spacer(modifier = Modifier.height(150.dp))
                 //TODO: Charts
                 StatisticsSection(crypto)
@@ -96,16 +104,19 @@ fun CryptoBottomBar(crypto: Crypto) {
 
 @Composable
 fun CryptoFloatingActionButton() {
+    var pressed by remember { mutableStateOf(false) }
     ExtendedFloatingActionButton(
         icon = { Icon(asset = Icons.Default.Add) },
         text = { Text(text = "Trade") },
-        onClick = {},
-        backgroundColor = MaterialTheme.colors.primary
+        onClick = { pressed = !pressed},
+        backgroundColor = MaterialTheme.colors.primary,
+        modifier = Modifier.width(animate(if (pressed) 200.dp else 120.dp))
     )
 }
 
 @Composable
 fun NewsSection(crypto: Crypto) {
+    //TODO Add some crypto new api
     val valueModifier = Modifier.padding(bottom = 16.dp, top = 4.dp)
     Text(
         text = "Recent News",
