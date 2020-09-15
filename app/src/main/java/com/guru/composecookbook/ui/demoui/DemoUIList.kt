@@ -13,7 +13,7 @@ import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.ui.cryptoappmvvm.CryptoHomeActivity
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.ui.demoui.spotify.SpotifyActivity
 
 @Composable

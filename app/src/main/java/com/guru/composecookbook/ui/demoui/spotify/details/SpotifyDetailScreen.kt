@@ -72,7 +72,7 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
             color = MaterialTheme.colors.onSurface,
             modifier = Modifier
                 .padding(16.dp)
-                .drawOpacity((scrollState.value + 0.001f) / 1000)
+                .drawOpacity(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
         )
         Icon(asset = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
     }
@@ -81,8 +81,7 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
 @Composable
 fun TopSectionOverlay(scrollState: ScrollState) {
     //slowly increase alpha till it reaches 1
-    val dynamicAlpha =
-        if (((scrollState.value + 0.00f) / 1000) > 1f) 1f else (scrollState.value + 0.00f) / 1000
+    val dynamicAlpha = ((scrollState.value + 0.00f) / 1000).coerceIn(0f, 1f)
     Box(
         modifier = Modifier.fillMaxWidth()
             .height(400.dp)

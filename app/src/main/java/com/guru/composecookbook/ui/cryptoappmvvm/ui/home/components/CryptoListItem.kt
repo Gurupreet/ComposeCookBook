@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
+package com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
@@ -20,14 +20,20 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeEvents
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToThreeDecimals
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToTwoDecimals
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun CryptoListItem(crypto: Crypto) {
+fun CryptoListItem(
+    crypto: Crypto,
+    onCryptoHomeEvents: (CryptoHomeEvents) -> Unit
+) {
     Row(
-        modifier = Modifier.fillMaxWidth().clickable(onClick = {}).padding(16.dp),
+        modifier = Modifier.fillMaxWidth()
+            .clickable(onClick = {onCryptoHomeEvents(CryptoHomeEvents.OpenDetailScreen(crypto))})
+            .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalGravity = Alignment.CenterVertically
     ) {
@@ -50,19 +56,21 @@ fun CryptoListItem(crypto: Crypto) {
             )
             Text(
                 text = "${crypto.dailyChange.roundToThreeDecimals()}" +
-                        "(${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
+                        " (${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
                 style = typography.subtitle2,
                 color = if (crypto.dailyChange > 0) green500 else Color.Red,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth().gravity(Alignment.End)
             )
         }
-        AddButton()
+        AddButton(
+            onAddSelected = {onCryptoHomeEvents(CryptoHomeEvents.AddedToFav(crypto))}
+        )
     }
 }
 
 @Composable
-fun AddButton() {
+fun AddButton(onAddSelected: () -> Unit) {
     Text(
         text = "Add",
         style = typography.h6.copy(fontSize = 12.sp),
@@ -72,7 +80,7 @@ fun AddButton() {
                 border = BorderStroke(1.dp, MaterialTheme.colors.primaryVariant),
                 shape = RoundedCornerShape(12.dp)
             )
-            .clickable(onClick = {})
+            .clickable(onClick = { onAddSelected })
             .padding(vertical = 4.dp, horizontal = 24.dp)
     )
 }
@@ -81,5 +89,5 @@ fun AddButton() {
 @Composable
 fun PreviewCryptoItem() {
     val crypto = CryptoDemoDataProvider.bitcoin
-    CryptoListItem(crypto = crypto)
+    CryptoListItem(crypto = crypto, {})
 }

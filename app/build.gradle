@@ -58,6 +58,7 @@ dependencies {
     //Network libs
 
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.1"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha06'
     //Retrofit
     def retrofit_version = "2.6.1"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

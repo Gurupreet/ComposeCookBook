@@ -2,6 +2,8 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
+import com.guru.composecookbook.ui.cryptoappmvvm.Models.CryptoHomeUIState
 import com.guru.composecookbook.ui.cryptoappmvvm.data.repository.CryptoRepository
 import com.guru.composecookbook.ui.cryptoappmvvm.di.DemoDIGraph
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,5 +27,9 @@ class CryptoHomeViewModel(
                 )
             }
         }
+    }
+
+    fun addToFav(crypto: Crypto) {
+        //TODO add to room db
     }
 }

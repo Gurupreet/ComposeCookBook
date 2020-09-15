@@ -17,12 +17,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import androidx.ui.tooling.preview.Preview
+import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
+import com.guru.composecookbook.ui.cryptoappmvvm.Models.CryptoHomeUIState
+import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.CryptoListItem
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.MyWalletCard
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 
 
 @Composable
-fun CryptoHomeScreen() {
+fun CryptoHomeScreen(onCryptoHomeEvents: (CryptoHomeEvents) -> Unit) {
     val viewModel: CryptoHomeViewModel = viewModel()
     val uiState by viewModel.viewStateFlow.collectAsState()
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
@@ -30,21 +35,23 @@ fun CryptoHomeScreen() {
     Surface {
         Column(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             MyWalletCard()
-            Spacer(modifier = Modifier.height(8.dp))
-            CryptoList(uiState)
+            CryptoList(uiState, onCryptoHomeEvents)
         }
     }
 }
 
 @Composable
-fun CryptoList(uiState: CryptoHomeUIState) {
+fun CryptoList(uiState: CryptoHomeUIState, onCryptoHomeEvents: (CryptoHomeEvents) -> Unit) {
     if (uiState.cryptos.isEmpty()) {
         CircularProgressIndicator(
             modifier = Modifier.gravity(Alignment.CenterHorizontally).padding(24.dp)
         )
     } else {
         LazyColumnFor(items = uiState.cryptos) {
-            CryptoListItem(crypto = it)
+            CryptoListItem(
+                    it,
+                    onCryptoHomeEvents
+            )
         }
     }
 }
@@ -52,6 +59,7 @@ fun CryptoList(uiState: CryptoHomeUIState) {
 @Preview
 @Composable
 fun PreviewCryptoHomeScreen() {
-    CryptoHomeScreen()
+    val uiState = CryptoHomeUIState(CryptoDemoDataProvider.demoList, false)
+    CryptoList(uiState = uiState, {})
 }
 

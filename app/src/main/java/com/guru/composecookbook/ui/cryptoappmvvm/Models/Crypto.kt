@@ -1,5 +1,7 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.Models
 
+import java.io.Serializable
+
 data class Crypto(
     val symbol: String,
     val price: Double,
@@ -9,4 +11,4 @@ data class Crypto(
     val dailyChangePercentage: Double,
     val high: Double,
     val low: Double
-)
+): Serializable

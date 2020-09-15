@@ -17,6 +17,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.MyWalletCard
 import com.guru.composecookbook.ui.demoui.gmail.GmailListItem
 import com.guru.composecookbook.ui.demoui.youtube.YoutubeListItem
 
@@ -24,16 +25,16 @@ import com.guru.composecookbook.ui.demoui.youtube.YoutubeListItem
 fun ConstraintLayoutDemos() {
     ScrollableColumn(modifier = Modifier.padding(8.dp)) {
         ConstraintLayoutListItem()
-        Divider(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         ConstraintLayoutBigListItem()
-        Divider(modifier = Modifier.padding(8.dp))
-        val tweet = remember { DemoDataProvider.tweet }
+        Spacer(modifier = Modifier.height(20.dp))
+        val tweet = DemoDataProvider.tweet
         GmailListItem(tweet)
-        Divider(modifier = Modifier.padding(8.dp))
-        val tweets = remember {
-            DemoDataProvider.tweetList.filter { it.tweetImageId > 0 }
-        }
-        YoutubeListItem(tweets[0])
+        Spacer(modifier = Modifier.height(20.dp))
+        val tweet2 = DemoDataProvider.tweetList.filter { it.tweetImageId > 0 }.first()
+        YoutubeListItem(tweet2)
+        Spacer(modifier = Modifier.height(20.dp))
+        MyWalletCard()
     }
 }
 
@@ -191,6 +192,8 @@ fun ConstraintLayoutBigListItem() {
         )
     }
 }
+
+
 
 @Preview
 @Composable
