@@ -57,7 +57,7 @@ fun SpotifyDetailScreen(album: Album) {
 fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: List<Color>) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalGravity = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .horizontalGradientBackground(
@@ -156,7 +156,7 @@ fun ShuffleButton() {
 
 @Composable
 fun StackTopSection(album: Album, scrollState: ScrollState) {
-    Column(horizontalGravity = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.height(100.dp).fillMaxWidth())
         //animate as scroll value increase but not fast so divide by random number 50
         val dynamicValue =

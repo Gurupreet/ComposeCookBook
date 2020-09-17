@@ -71,7 +71,7 @@ fun StoryListItem(post: Tweet) {
                 )
         }
 
-    Column(horizontalGravity = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             asset = imageResource(id = post.authorImageId),
             contentScale = ContentScale.Crop,

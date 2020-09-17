@@ -62,7 +62,7 @@ fun AnimationScreen() {
 
 @Composable
 fun AnimationScreenContent() {
-    ScrollableColumn(horizontalGravity = Alignment.CenterHorizontally) {
+    ScrollableColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.padding(4.dp))
         Text("Single value animations using 'animate()'", style = typography.body1)
         SimpleColorAnimation()

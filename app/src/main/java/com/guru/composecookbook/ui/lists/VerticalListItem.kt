@@ -24,7 +24,7 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
 
     Column(modifier = modifier.fillMaxWidth().padding(16.dp)) {
         val imageModifier = Modifier
-            .preferredHeightIn(minHeight = 180.dp)
+            .preferredHeightIn(150.dp)
             .fillMaxWidth()
             .clip(shape = MaterialTheme.shapes.medium)
 

@@ -66,7 +66,7 @@ fun SpotifySearchBar() {
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.padding(4.dp),
-            verticalGravity = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(asset = Icons.Default.Search, tint = Color.LightGray)
             Text(

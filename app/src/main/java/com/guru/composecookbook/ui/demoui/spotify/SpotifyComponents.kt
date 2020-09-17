@@ -43,7 +43,7 @@ fun SpotifyHomeGridItem(album: Album) {
             .padding(8.dp)
             .clickable(onClick = {})
     ) {
-        Row(verticalGravity = Alignment.CenterVertically) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Image(
                 asset = imageResource(id = album.imageId),
                 modifier = Modifier.preferredSize(55.dp),

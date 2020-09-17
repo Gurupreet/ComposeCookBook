@@ -69,7 +69,7 @@ fun PlayerBottomBar(modifier: Modifier) {
         modifier = modifier.padding(bottom = bottomBarHeight)
             .fillMaxWidth()
             .background(color = backgroundColor),
-        verticalGravity = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             asset = imageResource(id = R.drawable.adele21),

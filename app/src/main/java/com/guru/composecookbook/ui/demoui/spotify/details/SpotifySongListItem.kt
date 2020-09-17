@@ -31,7 +31,7 @@ fun SpotifySongListItem(album: Album) {
     val album = remember(album.id) { album }
     Row(
         modifier = Modifier.padding(8.dp),
-        verticalGravity = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             asset = imageResource(id = album.imageId),

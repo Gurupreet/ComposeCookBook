@@ -35,7 +35,7 @@ fun CryptoListItem(
             .clickable(onClick = { onCryptoHomeEvents(CryptoHomeEvents.OpenDetailScreen(crypto)) })
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalGravity = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically
     ) {
         CoilImage(
             data = crypto.image,

@@ -159,7 +159,7 @@ fun GridListView() {
 fun GridOfTwo(item: Item) {
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
-        verticalGravity = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth()
     ) {
         GridListItem(item = item)

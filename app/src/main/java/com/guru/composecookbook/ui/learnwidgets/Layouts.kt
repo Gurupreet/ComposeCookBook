@@ -117,7 +117,7 @@ fun TypeOfColumns() {
     )
     Column(
         verticalArrangement = Arrangement.Center,
-        horizontalGravity = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = columnModifier
     ) {
         MultipleTexts()

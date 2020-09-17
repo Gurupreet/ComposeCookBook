@@ -52,7 +52,7 @@ fun InstagramListItem(post: Tweet) {
 private fun InstagramLikesSection(post: Tweet) {
     Row(
         modifier = Modifier.padding(start = 8.dp).fillMaxWidth(),
-        verticalGravity = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             asset = imageResource(id = post.authorImageId),
@@ -95,7 +95,7 @@ private fun InstagramIconSection() {
 private fun ProfileInfoSection(post: Tweet) {
     Row(
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
-        verticalGravity = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(

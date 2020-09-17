@@ -47,7 +47,7 @@ fun TwitterListItem(tweet: Tweet) {
 
 @Composable
 private fun NameAndHandle(tweet: Tweet) {
-    Row(verticalGravity = Alignment.CenterVertically) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
         //username
         Text(text = tweet.author, style = typography.h6, modifier = Modifier.padding(end = 4.dp))
         Icon(

@@ -94,7 +94,7 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
         BottomNavigationItem(
             icon = { Icon(asset = Icons.Outlined.Home) },
             selected = homeScreenState.value == BottomNavType.HOME,
-            onSelect = {
+            onClick = {
                 homeScreenState.value = BottomNavType.HOME
                 animate = false
             },
@@ -103,7 +103,7 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
         BottomNavigationItem(
             icon = { Icon(asset = Icons.Outlined.List) },
             selected = homeScreenState.value == BottomNavType.WIDGETS,
-            onSelect = {
+            onClick = {
                 homeScreenState.value = BottomNavType.WIDGETS
                 animate = false
             },
@@ -119,7 +119,7 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
                 )
             },
             selected = homeScreenState.value == BottomNavType.ANIMATION,
-            onSelect = {
+            onClick = {
                 homeScreenState.value = BottomNavType.ANIMATION
                 animate = true
             },
@@ -128,7 +128,7 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
         BottomNavigationItem(
             icon = { Icon(asset = Icons.Outlined.Dashboard) },
             selected = homeScreenState.value == BottomNavType.DEMOUI,
-            onSelect = {
+            onClick = {
                 homeScreenState.value = BottomNavType.DEMOUI
                 animate = false
             },
@@ -137,7 +137,7 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
         BottomNavigationItem(
             icon = { Icon(asset = Icons.Outlined.Person) },
             selected = homeScreenState.value == BottomNavType.PROFILE,
-            onSelect = {
+            onClick = {
                 homeScreenState.value = BottomNavType.PROFILE
                 animate = false
             },
