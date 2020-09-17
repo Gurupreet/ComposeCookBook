@@ -31,7 +31,6 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
@@ -141,7 +140,7 @@ fun AnimationScreenContent() {
                     shadowElevation = animate(if (draw2) 30f else 5f),
                     translationX = animate(target = if (draw2) 320f else 0f),
                     translationY = 0f,
-                ).clickable(onClick = {draw2 = !draw2})
+                ).clickable(onClick = { draw2 = !draw2 })
             )
             Image(
                 asset = imageResource(id = R.drawable.dualipa),
@@ -149,14 +148,14 @@ fun AnimationScreenContent() {
                     shadowElevation = animate(if (draw2) 30f else 10f),
                     translationX = animate(target = if (draw2) -320f else 0f),
                     translationY = animate(target = if (draw2) 0f else 30f)
-                ).clickable(onClick = {draw2 = !draw2})
+                ).clickable(onClick = { draw2 = !draw2 })
             )
             Image(
                 asset = imageResource(id = R.drawable.edsheeran),
                 modifier = Modifier.preferredSize(150.dp).drawLayer(
                     shadowElevation = animate(if (draw2) 30f else 5f),
                     translationY = animate(target = if (draw2) 0f else 50f)
-                ).clickable(onClick = {draw2 = !draw2})
+                ).clickable(onClick = { draw2 = !draw2 })
             )
         }
         Spacer(modifier = Modifier.padding(30.dp))
@@ -168,26 +167,26 @@ fun AnimationScreenContent() {
                 modifier = Modifier.preferredSize(150.dp).drawLayer(
                     shadowElevation = animate(if (draw3) 30f else 5f),
                     translationX = animate(target = if (draw3) 320f else 0f),
-                    rotationY =  animate(target = if (draw3) 45f else 0f),
+                    rotationY = animate(target = if (draw3) 45f else 0f),
                     translationY = 0f
-                ).clickable(onClick = {draw3 = !draw3})
+                ).clickable(onClick = { draw3 = !draw3 })
             )
             Image(
                 asset = imageResource(id = R.drawable.sam),
                 modifier = Modifier.preferredSize(150.dp).drawLayer(
                     shadowElevation = animate(if (draw3) 30f else 10f),
                     translationX = animate(target = if (draw3) -320f else 0f),
-                    rotationY =  animate(target = if (draw3) 45f else 0f),
+                    rotationY = animate(target = if (draw3) 45f else 0f),
                     translationY = animate(target = if (draw3) 0f else 30f)
-                    ).clickable(onClick = {draw3 = !draw3})
+                ).clickable(onClick = { draw3 = !draw3 })
             )
             Image(
                 asset = imageResource(id = R.drawable.billie),
                 modifier = Modifier.preferredSize(150.dp).drawLayer(
                     shadowElevation = animate(if (draw3) 30f else 5f),
                     translationY = animate(target = if (draw3) 0f else 50f),
-                    rotationY =  animate(target = if (draw3) 45f else 0f)
-                ).clickable(onClick = {draw3 = !draw3})
+                    rotationY = animate(target = if (draw3) 45f else 0f)
+                ).clickable(onClick = { draw3 = !draw3 })
             )
         }
         Spacer(modifier = Modifier.padding(30.dp))
@@ -195,30 +194,30 @@ fun AnimationScreenContent() {
 
         Stack {
             Image(
-                asset = imageResource(id = R.drawable.wolves),
+                asset = imageResource(id = R.drawable.imagindragon),
                 modifier = Modifier.preferredSize(150.dp).drawLayer(
                     shadowElevation = animate(if (draw4) 30f else 5f),
                     translationX = animate(target = if (draw4) 320f else 0f),
-                    rotationZ =  animate(target = if (draw4) 45f else 0f),
+                    rotationZ = animate(target = if (draw4) 45f else 0f),
                     translationY = 0f
-                ).clickable(onClick = {draw4 = !draw4})
+                ).clickable(onClick = { draw4 = !draw4 })
             )
             Image(
-                asset = imageResource(id = R.drawable.sam),
+                asset = imageResource(id = R.drawable.khalid),
                 modifier = Modifier.preferredSize(150.dp).drawLayer(
                     shadowElevation = animate(if (draw4) 30f else 10f),
                     translationX = animate(target = if (draw4) -320f else 0f),
-                    rotationZ =  animate(target = if (draw4) 45f else 0f),
+                    rotationZ = animate(target = if (draw4) 45f else 0f),
                     translationY = animate(target = if (draw4) 0f else 30f)
-                ).clickable(onClick = {draw4 = !draw4})
+                ).clickable(onClick = { draw4 = !draw4 })
             )
             Image(
-                asset = imageResource(id = R.drawable.billie),
+                asset = imageResource(id = R.drawable.camelia),
                 modifier = Modifier.preferredSize(150.dp).drawLayer(
                     shadowElevation = animate(if (draw4) 30f else 5f),
                     translationY = animate(target = if (draw4) 0f else 50f),
-                    rotationZ =  animate(target = if (draw4) 45f else 0f)
-                ).clickable(onClick = {draw4 = !draw4})
+                    rotationZ = animate(target = if (draw4) 45f else 0f)
+                ).clickable(onClick = { draw4 = !draw4 })
             )
         }
         Spacer(modifier = Modifier.padding(100.dp))

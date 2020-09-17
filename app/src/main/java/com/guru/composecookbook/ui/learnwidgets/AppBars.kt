@@ -4,15 +4,12 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.layout.ColumnScope.gravity
-import androidx.compose.foundation.layout.RowScope.align
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreHoriz
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
@@ -27,11 +24,9 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
-import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.twitterColor
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.SpotifyNavType
-import com.guru.composecookbook.ui.demoui.youtube.YoutubeChip
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
 
@@ -118,7 +113,7 @@ fun BottomAppBarDemo() {
         IconButton(onClick = {}) {
             Icon(asset = Icons.Default.MoreHoriz)
         }
-       TitleText(title = "Bottom App Bar")
+        TitleText(title = "Bottom App Bar")
     }
 }
 

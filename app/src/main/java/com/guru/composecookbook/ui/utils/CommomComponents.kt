@@ -57,8 +57,8 @@ fun HeadingSection(title: String = "", subtitle: String = "", modifier: Modifier
 @Composable
 fun TitleText(title: String, modifier: Modifier = Modifier) {
     Text(
-        text = title, 
-        style = typography.h6.copy(fontSize = 14.sp), 
+        text = title,
+        style = typography.h6.copy(fontSize = 14.sp),
         modifier = Modifier.padding(8.dp)
     )
 }

@@ -215,7 +215,7 @@ fun InterestsSection() {
 
 @Composable
 fun TopAppBarView(scroll: Float) {
-    if (scroll > initialimageFloat+5) {
+    if (scroll > initialimageFloat + 5) {
         TopAppBar(
             title = {
                 Text(text = name)

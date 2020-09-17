@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.SubtitleText
-import com.guru.composecookbook.ui.utils.TitleText
 
 @Composable
 fun TextDemo() {
@@ -41,7 +40,7 @@ fun TextDemo() {
 
     SubtitleText(subtitle = "font family dynamic")
     Row {
-        Text(text = "Default",  modifier = textModifier)
+        Text(text = "Default", modifier = textModifier)
         Text(
             text = "Cursive",
             style = typography.body1.copy(fontFamily = FontFamily.Cursive),
@@ -61,7 +60,7 @@ fun TextDemo() {
 
     SubtitleText(subtitle = "Text decorations")
     Row {
-        Text(text = "Default",  modifier = textModifier)
+        Text(text = "Default", modifier = textModifier)
         Text(
             text = "Underline",
             textDecoration = TextDecoration.Underline,
@@ -74,7 +73,12 @@ fun TextDemo() {
         )
         Text(
             text = "Monospace",
-            textDecoration = TextDecoration.combine(listOf(TextDecoration.Underline, TextDecoration.LineThrough)),
+            textDecoration = TextDecoration.combine(
+                listOf(
+                    TextDecoration.Underline,
+                    TextDecoration.LineThrough
+                )
+            ),
             modifier = textModifier
         )
     }
@@ -92,7 +96,6 @@ fun TextDemo() {
         modifier = textModifier,
         maxLines = 1
     )
-
 
 
 }
