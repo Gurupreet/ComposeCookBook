@@ -33,6 +33,8 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.RotateIcon
+import com.guru.composecookbook.ui.utils.SubtitleText
+import com.guru.composecookbook.ui.utils.TitleText
 
 @Composable
 fun AnimationScreen() {
@@ -64,16 +66,20 @@ fun AnimationScreen() {
 fun AnimationScreenContent() {
     ScrollableColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.padding(4.dp))
-        Text("Single value animations using 'animate()'", style = typography.body1)
+        TitleText(title = "Single value animations")
+        SubtitleText(subtitle = "animate(Color)")
         SimpleColorAnimation()
         Spacer(modifier = Modifier.padding(4.dp))
+        SubtitleText(subtitle = "animate(Color)+animate(Dp)")
         SingleScaleAndColorAnimation()
         Spacer(modifier = Modifier.padding(4.dp))
+        SubtitleText(subtitle = "animate(Dp)")
         SingleImageScaleAnimation()
         Spacer(modifier = Modifier.padding(4.dp))
+        SubtitleText(subtitle = "animateContentSize()")
         SingleAnimationContent()
         Spacer(modifier = Modifier.padding(8.dp))
-        Text("Visibility Animations: Experimental` ", style = typography.body1)
+        TitleText("Visibility Animations: Experimental`")
         Spacer(modifier = Modifier.padding(8.dp))
         VisibilityAnimationFAB()
         Spacer(modifier = Modifier.padding(8.dp))
@@ -83,14 +89,18 @@ fun AnimationScreenContent() {
         Spacer(modifier = Modifier.padding(8.dp))
         SlideInOutSample()
         Spacer(modifier = Modifier.padding(8.dp))
-        Text("Multi state animations using `transitionDefinition` ", style = typography.body1)
+        TitleText("Multi State Animations")
         Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Three different colorPropKey state with repeat")
         ColorMultistateAnimation()
         Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Different DpPropKey value states animation")
         DpMultiStateAnimation()
         Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Different FloatPropKey value states animation")
         FloatMutliStateAnimation()
         Spacer(modifier = Modifier.padding(8.dp))
+        TitleText("Multi State Animations on Canvas")
         val ripple = remember { mutableStateOf(false) }
         if (ripple.value) {
             FloatMultiStateAnimationExplode(500)
@@ -99,78 +109,119 @@ fun AnimationScreenContent() {
             Text(text = "Top top explode")
         }
         Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Circle stroke canvas drawing + rotation animation")
         FloatMultiStateAnimationCircleStrokeCanvas()
         Spacer(modifier = Modifier.padding(30.dp))
+        SubtitleText(subtitle = "Multiple Circle canvas+ Scaling radius")
         FloatMultiStateAnimationCircleCanvas()
         Spacer(modifier = Modifier.padding(50.dp))
         //draw layer animations
+        TitleText("DrawLayer changes + Single value animations")
         var draw by remember { mutableStateOf(false) }
-        val modifier = Modifier.drawLayer(
-            scaleX = animate(if (draw) 3f else 1f),
-            scaleY = animate(if (draw) 3f else 1f),
-            shadowElevation = animate(if (draw) 20f else 5f),
-            translationX = animate(if (draw) 10f else 0f),
-            translationY = animate(if (draw) 10f else 0f),
+        val modifier = Modifier.preferredSize(150.dp).drawLayer(
+            scaleX = animate(if (draw) 2f else 1f),
+            scaleY = animate(if (draw) 2f else 1f),
+            shadowElevation = animate(if (draw) 50f else 5f),
             clip = draw,
             rotationZ = animate(if (draw) 360f else 0f)
+        ).clickable(onClick = { draw = !draw })
+
+        Image(
+            asset = imageResource(id = R.drawable.bp),
+            modifier = modifier
         )
-        Stack {
-            Image(
-                asset = imageResource(id = R.drawable.adele21),
-                modifier = modifier.preferredSize(150.dp)
-            )
-            Image(
-                asset = imageResource(id = R.drawable.dualipa),
-                modifier = modifier.preferredSize(140.dp)
-            )
-            Image(
-                asset = imageResource(id = R.drawable.bp),
-                modifier = modifier.preferredSize(130.dp)
-            )
-        }
+
         Spacer(modifier = Modifier.padding(30.dp))
-        Button(
-            onClick = { draw = !draw },
-            modifier = Modifier.padding(20.dp)
-        ) {
-            Text(text = "Draw layer Anim")
-        }
         var draw2 by remember { mutableStateOf(false) }
-        val modifier2 = Modifier.drawLayer(
-            rotationX = animate(if (draw2) -45f else 1f),
-            shadowElevation = animate(if (draw2) 20f else 5f)
-        )
+
         Stack {
             Image(
                 asset = imageResource(id = R.drawable.adele21),
-                modifier = modifier2.preferredSize(150.dp).drawLayer(
-                    rotationX = animate(if (draw2) -30f else 1f),
-                    shadowElevation = animate(if (draw2) 20f else 5f)
-                )
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw2) 30f else 5f),
+                    translationX = animate(target = if (draw2) 320f else 0f),
+                    translationY = 0f,
+                ).clickable(onClick = {draw2 = !draw2})
             )
             Image(
                 asset = imageResource(id = R.drawable.dualipa),
-                modifier = modifier2.preferredSize(150.dp).drawLayer(
-                    rotationX = animate(if (draw2) -40f else 1f),
-                    shadowElevation = animate(if (draw2) 30f else 10f)
-                )
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw2) 30f else 10f),
+                    translationX = animate(target = if (draw2) -320f else 0f),
+                    translationY = animate(target = if (draw2) 0f else 30f)
+                ).clickable(onClick = {draw2 = !draw2})
             )
             Image(
                 asset = imageResource(id = R.drawable.edsheeran),
-                modifier = modifier2.preferredSize(150.dp).drawLayer(
-                    rotationX = animate(if (draw2) -50f else 1f),
-                    shadowElevation = animate(if (draw2) 40f else 20f)
-                )
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw2) 30f else 5f),
+                    translationY = animate(target = if (draw2) 0f else 50f)
+                ).clickable(onClick = {draw2 = !draw2})
             )
         }
         Spacer(modifier = Modifier.padding(30.dp))
-        Button(
-            onClick = { draw2 = !draw2 },
-            modifier = Modifier.padding(20.dp)
-        ) {
-            Text(text = "Draw layer Anim 2")
+        var draw3 by remember { mutableStateOf(false) }
+
+        Stack {
+            Image(
+                asset = imageResource(id = R.drawable.wolves),
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw3) 30f else 5f),
+                    translationX = animate(target = if (draw3) 320f else 0f),
+                    rotationY =  animate(target = if (draw3) 45f else 0f),
+                    translationY = 0f
+                ).clickable(onClick = {draw3 = !draw3})
+            )
+            Image(
+                asset = imageResource(id = R.drawable.sam),
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw3) 30f else 10f),
+                    translationX = animate(target = if (draw3) -320f else 0f),
+                    rotationY =  animate(target = if (draw3) 45f else 0f),
+                    translationY = animate(target = if (draw3) 0f else 30f)
+                    ).clickable(onClick = {draw3 = !draw3})
+            )
+            Image(
+                asset = imageResource(id = R.drawable.billie),
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw3) 30f else 5f),
+                    translationY = animate(target = if (draw3) 0f else 50f),
+                    rotationY =  animate(target = if (draw3) 45f else 0f)
+                ).clickable(onClick = {draw3 = !draw3})
+            )
         }
-        Spacer(modifier = Modifier.padding(300.dp))
+        Spacer(modifier = Modifier.padding(30.dp))
+        var draw4 by remember { mutableStateOf(false) }
+
+        Stack {
+            Image(
+                asset = imageResource(id = R.drawable.wolves),
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw4) 30f else 5f),
+                    translationX = animate(target = if (draw4) 320f else 0f),
+                    rotationZ =  animate(target = if (draw4) 45f else 0f),
+                    translationY = 0f
+                ).clickable(onClick = {draw4 = !draw4})
+            )
+            Image(
+                asset = imageResource(id = R.drawable.sam),
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw4) 30f else 10f),
+                    translationX = animate(target = if (draw4) -320f else 0f),
+                    rotationZ =  animate(target = if (draw4) 45f else 0f),
+                    translationY = animate(target = if (draw4) 0f else 30f)
+                ).clickable(onClick = {draw4 = !draw4})
+            )
+            Image(
+                asset = imageResource(id = R.drawable.billie),
+                modifier = Modifier.preferredSize(150.dp).drawLayer(
+                    shadowElevation = animate(if (draw4) 30f else 5f),
+                    translationY = animate(target = if (draw4) 0f else 50f),
+                    rotationZ =  animate(target = if (draw4) 45f else 0f)
+                ).clickable(onClick = {draw4 = !draw4})
+            )
+        }
+        Spacer(modifier = Modifier.padding(100.dp))
     }
 }
 
@@ -281,7 +332,7 @@ fun VisibilityAnimationFade() {
     ) {
         AnimatedVisibility(
             visibility,
-            modifier = Modifier.gravity(Alignment.CenterVertically),
+            modifier = Modifier.align(Alignment.CenterVertically),
             enter = fadeIn(1f),
             exit = fadeOut(0f)
         ) {
@@ -300,7 +351,7 @@ fun VisibilityAnimationShrinkExpand() {
     ) {
         AnimatedVisibility(
             visibility,
-            modifier = Modifier.gravity(Alignment.CenterVertically),
+            modifier = Modifier.align(Alignment.CenterVertically),
             enter = expandIn(Alignment.Center, { fullSize: IntSize -> fullSize * 4 }),
             exit = shrinkOut(Alignment.Center)
         ) {

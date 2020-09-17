@@ -30,9 +30,11 @@ fun WidgetScreenContent() {
         Column {
             AllButtons()
             Chips()
+            TextDemo()
             TextInputs()
             Loaders()
             Toggles()
+            AppBars()
             SnackBars()
             UICards()
         }

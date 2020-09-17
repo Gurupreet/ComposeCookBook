@@ -55,6 +55,20 @@ fun HeadingSection(title: String = "", subtitle: String = "", modifier: Modifier
 }
 
 @Composable
+fun TitleText(title: String, modifier: Modifier = Modifier) {
+    Text(
+        text = title, 
+        style = typography.h6.copy(fontSize = 14.sp), 
+        modifier = Modifier.padding(8.dp)
+    )
+}
+
+@Composable
+fun SubtitleText(subtitle: String, modifier: Modifier = Modifier) {
+    Text(text = subtitle, style = typography.subtitle2, modifier = modifier.padding(8.dp))
+}
+
+@Composable
 fun RotateIcon(
     state: Boolean,
     asset: VectorAsset,
@@ -72,5 +86,5 @@ fun RotateIcon(
 @Preview
 @Composable
 fun PreviewHeading() {
-    HeadingSection("Title", "this is subtutle")
+    HeadingSection("Title", "this is subtitle")
 }
