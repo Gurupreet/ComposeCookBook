@@ -15,7 +15,7 @@ object CryptoDemoDataProvider {
         1000.09,
         1992922,
         12223333,
-        120234333
+        120234333.99
     )
 
     val demoList = listOf(bitcoin, bitcoin.copy(symbol = "ETH", name = "Ethereum"))

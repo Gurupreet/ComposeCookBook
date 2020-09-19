@@ -12,5 +12,5 @@ data class CryptoApiResponse(
     val low_24h: Double,
     val price_change_24h: Double,
     val price_change_percentage_24h: Double,
-    val supply: Long
+    val total_supply: Double
 )

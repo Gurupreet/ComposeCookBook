@@ -1,10 +1,12 @@
 package com.guru.composecookbook.ui.carousel
 
+import androidx.compose.animation.animate
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +17,7 @@ import androidx.compose.material.icons.filled.Album
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lens
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -75,10 +78,10 @@ fun CarouselLayout() {
         }
         Spacer(modifier = Modifier.height(24.dp))
         //Pager 3
-        Pager(state = pagerState, modifier = Modifier.preferredHeight(200.dp)) {
+        Pager(state = pagerState, modifier = Modifier.preferredHeight(500.dp)) {
             val item = items[page]
             selectedPage.value = page
-            CarouselItemCard(item)
+            CarouselItemCard(item, pagerState, selectedPage)
         }
         Row(modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
             items.forEachIndexed { index, _ ->
@@ -134,11 +137,14 @@ fun CarouselItemCircle(item: Item) {
 }
 
 @Composable
-fun CarouselItemCard(item: Item) {
+fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableState<Int>) {
+    val isSelected =  selectedPage.value == pagerState.currentPage
+    val animateSize = if (isSelected) 280.dp else 180.dp
+    val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
-        elevation = 12.dp,
-        modifier = Modifier.preferredSize(200.dp).padding(24.dp)
-            .gravity(Alignment.CenterHorizontally),
+        elevation = animate(animateElevation),
+        modifier = Modifier . preferredSize (animate(animateSize)).padding(24.dp)
+            .align(Alignment.CenterHorizontally),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
         contentColor = MaterialTheme.colors.onPrimary
@@ -187,5 +193,5 @@ fun previewCarouselItemCircle() {
 @Composable
 fun previewCarouselItemCard() {
     val item = DemoDataProvider.item
-    CarouselItemCard(item = item)
+    //CarouselItemCard(item = item, PagerState())
 }

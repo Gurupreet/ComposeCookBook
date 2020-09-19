@@ -17,7 +17,7 @@ data class Crypto(
     val low: Double,
     val marketCap: Long,
     val volume: Long,
-    val supply: Long
+    val supply: Double?
 ) : Serializable {
 
     override fun equals(other: Any?): Boolean {
