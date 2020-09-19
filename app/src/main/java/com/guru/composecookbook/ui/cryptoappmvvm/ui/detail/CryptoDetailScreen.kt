@@ -3,6 +3,8 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.detail
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -12,16 +14,19 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.ReadMore
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.viewModel
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
+import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeViewModel
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToTwoDecimals
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.lists.VerticalListItemSmall
@@ -30,10 +35,9 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
-    val crypto = remember { crypto }
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     Scaffold(
-        bottomBar = { CryptoBottomBar(crypto) },
+        bottomBar = { CryptoBottomBar() },
         floatingActionButton = { CryptoFloatingActionButton() },
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center
@@ -48,6 +52,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
                 Spacer(modifier = Modifier.height(150.dp))
                 //TODO: Charts
                 StatisticsSection(crypto)
+                FavSection()
                 NewsSection(crypto)
                 Spacer(modifier = Modifier.height(100.dp))
             }
@@ -59,11 +64,12 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Unit) {
     Column(
         modifier = Modifier.padding(16.dp)
-            .drawOpacity(animate((1 - scrollState.value / 200).coerceIn(0f, 1f)))
+            .drawOpacity(animate((1 - scrollState.value / 150).coerceIn(0f, 1f)))
     ) {
+        Spacer(modifier = Modifier.height(25.dp))
         Icon(
             asset = Icons.Default.ArrowBack,
-            modifier = Modifier.padding(vertical = 8.dp).clickable(onClick = onBack)
+            modifier = Modifier.clickable(onClick = onBack).padding(vertical = 8.dp)
         )
         Row(modifier = Modifier.padding(top = 20.dp)) {
             Text(
@@ -87,7 +93,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
 }
 
 @Composable
-fun CryptoBottomBar(crypto: Crypto) {
+fun CryptoBottomBar() {
     BottomAppBar(
         cutoutShape = CircleShape
     ) {
@@ -113,8 +119,60 @@ fun CryptoFloatingActionButton() {
 }
 
 @Composable
+fun StatisticsSection(crypto: Crypto) {
+    val valueModifier = Modifier.padding(bottom = 16.dp, top = 4.dp)
+    Text(
+        text = "Statistics",
+        modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
+        style = typography.h5
+    )
+    Card(
+        modifier = Modifier.padding(vertical = 8.dp),
+        elevation = 8.dp,
+        shape = RoundedCornerShape(4.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "24 High", style = typography.subtitle2)
+                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
+                Text(text = "24 Low", style = typography.subtitle2)
+                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
+                Text(text = "24h Change", style = typography.subtitle2)
+                Text(text = crypto.dailyChange.roundToTwoDecimals(), modifier = valueModifier)
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "Volume", style = typography.subtitle2)
+                Text(text = crypto.volume.toString(), modifier = valueModifier)
+                Text(text = "Supply", style = typography.subtitle2)
+                Text(text = crypto.supply.toString(), modifier = valueModifier)
+                Text(text = "Market Cap", style = typography.subtitle2)
+                Text(text = crypto.marketCap.toString(), modifier = valueModifier)
+            }
+        }
+    }
+}
+
+@Composable
+fun FavSection() {
+    val viewModel: CryptoDetailViewModel = viewModel()
+    val favCryptos by viewModel.favCryptoLiveData.observeAsState(emptyList())
+    if (favCryptos.isNotEmpty()) {
+        Text(
+            text = "Favorite Cryptos",
+            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
+            style = typography.h5
+        )
+        LazyRowFor(items = favCryptos) {
+            FavoriteCryptoCard(crypto = it)
+        }
+    }
+}
+
+@Composable
 fun NewsSection(crypto: Crypto) {
-    //TODO Add some crypto new api
+    //TODO Add some crypto news api
     val valueModifier = Modifier.padding(bottom = 16.dp, top = 4.dp)
     Text(
         text = "Recent News",
@@ -137,41 +195,5 @@ fun NewsSection(crypto: Crypto) {
             )
         }
 
-    }
-}
-
-@Composable
-fun StatisticsSection(crypto: Crypto) {
-    val valueModifier = Modifier.padding(bottom = 16.dp, top = 4.dp)
-    Text(
-        text = "Statistics",
-        modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
-        style = typography.h5
-    )
-    Card(
-        modifier = Modifier.padding(vertical = 8.dp),
-        elevation = 8.dp,
-        shape = RoundedCornerShape(4.dp)
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(text = "24 High", style = typography.subtitle2)
-                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-                Text(text = "24 Low", style = typography.subtitle2)
-                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-                Text(text = "24 High", style = typography.subtitle2)
-                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-            }
-            Column(modifier = Modifier.weight(1f)) {
-                Text(text = "24 High", style = typography.subtitle2)
-                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-                Text(text = "24 High", style = typography.subtitle2)
-                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-                Text(text = "24 High", style = typography.subtitle2)
-                Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-            }
-        }
     }
 }

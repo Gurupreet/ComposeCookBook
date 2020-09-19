@@ -21,6 +21,8 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 val animationClockObservable = object : AnimationClockObservable {
     override fun subscribe(observer: AnimationClockObserver) {
@@ -35,76 +37,17 @@ val animationClockObservable = object : AnimationClockObservable {
 
 @Composable
 fun BottomSheetLayouts() {
-    var sheetState by remember { mutableStateOf(BottomSheetState(show = true)) }
-    var drawerState = rememberBottomDrawerState(initialValue = BottomDrawerValue.Open)
-
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text(
-            text = "TODO: NOT WORKING PROPERLY FIX OPEN CLOSE STATES",
-            style = typography.h6,
-            color = MaterialTheme.colors.onError
-        )
-        Button(
-            onClick = {
-                sheetState = sheetState.copy(show = true)
-                drawerState = BottomDrawerState(
-                    initialValue = BottomDrawerValue.Open,
-                    clock = animationClockObservable
-                )
-            },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
-        ) {
-            Text(text = "Simple bottom sheet")
-        }
-        Button(
-            onClick = {
-                sheetState =
-                    sheetState.copy(show = true, image = true, buttons = true, rounded = false)
-                drawerState.expand()
-            },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
-        ) {
-            Text(text = "Image and buttons")
-        }
-        Button(
-            onClick = {
-                sheetState = sheetState.copy(show = true, fullScree = true, rounded = false)
-                drawerState.expand()
-            },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
-        ) {
-            Text(text = "Full Screen")
-        }
-        Button(
-            onClick = {
-                sheetState =
-                    sheetState.copy(show = true, image = true, buttons = true, rounded = true)
-                drawerState.expand()
-            },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
-        ) {
-            Text(text = "Rounded Sheet")
-        }
-    }
-
-    // we have to use show because even in CLose state the BottomSheet drawer not letting me click
-    // on above UI somehow
-    if (sheetState.show) {
-        BottomSheetDrawer(drawerState, sheetState) {
-            // drawerState.expand()
-            sheetState = sheetState.copy(show = false)
-        }
-    }
-
-
+    // It is not actual bottomSheet but bottomDrawerLayout which shoul be used with bottomAppBar
+    BottomSheetDrawer()
 }
 
 
 @Composable
 fun BottomSheetDrawer(
-    drawerState: BottomDrawerState, sheetState: BottomSheetState, closeBottomSheet: () ->
-    Unit
 ) {
+    var sheetState by remember { mutableStateOf(BottomSheetState(show = true)) }
+    var drawerState = rememberBottomDrawerState(BottomDrawerValue.Closed)
+
     BottomDrawerLayout(
         drawerState = drawerState,
         drawerShape = if (sheetState.rounded) RoundedCornerShape(16.dp) else RectangleShape,
@@ -128,14 +71,58 @@ fun BottomSheetDrawer(
                 modifier = Modifier.padding(16.dp)
             )
             Button(
-                onClick = { closeBottomSheet() },
+                onClick = {  },
                 modifier = Modifier.fillMaxWidth().padding(8.dp)
             ) {
                 Text(text = "Close Sheet")
             }
         }
     ) {
-
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = "TODO: NOT WORKING PROPERLY FIX OPEN CLOSE STATES",
+                style = typography.h6,
+                color = MaterialTheme.colors.onError
+            )
+            Button(
+                onClick = {
+                    sheetState = sheetState.copy(show = true)
+                    drawerState.open()
+                },
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
+            ) {
+                Text(text = "Simple bottom sheet")
+            }
+            Button(
+                onClick = {
+                    sheetState =
+                        sheetState.copy(show = true, image = true, buttons = true, rounded = false)
+                    drawerState.open()
+                },
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
+            ) {
+                Text(text = "Image and buttons")
+            }
+            Button(
+                onClick = {
+                    sheetState = sheetState.copy(show = true, fullScree = true, rounded = false)
+                    drawerState.open()
+                },
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
+            ) {
+                Text(text = "Full Screen")
+            }
+            Button(
+                onClick = {
+                    sheetState =
+                        sheetState.copy(show = true, image = true, buttons = true, rounded = true)
+                    drawerState.open()
+                },
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
+            ) {
+                Text(text = "Rounded Sheet")
+            }
+        }
     }
 }
 

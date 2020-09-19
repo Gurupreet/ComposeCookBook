@@ -1,6 +1,6 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.data
 
-import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
+import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.data.api.apiresponse.CryptoApiResponse
 
 class CryptoApiMapper {
@@ -12,6 +12,9 @@ class CryptoApiMapper {
         dailyChange = cryptoApiResponse.price_change_24h,
         dailyChangePercentage = cryptoApiResponse.price_change_percentage_24h,
         high = cryptoApiResponse.high_24h,
-        low = cryptoApiResponse.low_24h
+        low = cryptoApiResponse.low_24h,
+        volume = cryptoApiResponse.total_volume,
+        supply = cryptoApiResponse.supply,
+        marketCap = cryptoApiResponse.market_cap
     )
 }

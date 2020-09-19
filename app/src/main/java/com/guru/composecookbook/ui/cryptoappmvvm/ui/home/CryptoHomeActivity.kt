@@ -10,12 +10,13 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.viewinterop.viewModel
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
+import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.detail.CryptoDetailActivity
 
 sealed class CryptoHomeEvents {
     data class AddedToFav(val crypto: Crypto) : CryptoHomeEvents()
     data class OpenDetailScreen(val crypto: Crypto) : CryptoHomeEvents()
+    data class RemoveFav(val crypto: Crypto): CryptoHomeEvents()
 }
 
 class CryptoHomeActivity : AppCompatActivity() {
@@ -30,6 +31,9 @@ class CryptoHomeActivity : AppCompatActivity() {
                         when (cryptoHomeEvent) {
                             is CryptoHomeEvents.AddedToFav -> {
                                 viewModel.addToFav(cryptoHomeEvent.crypto)
+                            }
+                            is CryptoHomeEvents.RemoveFav -> {
+                                viewModel.removeFav(cryptoHomeEvent.crypto)
                             }
                             is CryptoHomeEvents.OpenDetailScreen -> {
                                 startActivity(

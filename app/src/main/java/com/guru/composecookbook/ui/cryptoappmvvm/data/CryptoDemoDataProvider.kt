@@ -1,6 +1,6 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.data
 
-import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
+import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 
 object CryptoDemoDataProvider {
 
@@ -12,7 +12,10 @@ object CryptoDemoDataProvider {
         12.1,
         1.2,
         1044.01,
-        1000.09
+        1000.09,
+        1992922,
+        12223333,
+        120234333
     )
 
     val demoList = listOf(bitcoin, bitcoin.copy(symbol = "ETH", name = "Ethereum"))

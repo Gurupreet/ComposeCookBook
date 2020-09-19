@@ -1,9 +1,12 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.data.repository
 
-import com.guru.composecookbook.ui.cryptoappmvvm.Models.Crypto
+import androidx.lifecycle.LiveData
+import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import kotlinx.coroutines.flow.Flow
 
 interface CryptoRepository {
     suspend fun getAllCryptos(): Flow<List<Crypto>>
-    suspend fun getFavourite(): Flow<List<Crypto>>
+    suspend fun getFavourite(): LiveData<List<Crypto>>
+    suspend fun addFavorite(crypto: Crypto)
+    suspend fun removeFavorite(crypto: Crypto)
 }
