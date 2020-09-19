@@ -21,7 +21,7 @@ data class Crypto(
 ) : Serializable {
 
     override fun equals(other: Any?): Boolean {
-        return  (other as Crypto).symbol == symbol
+        return (other as Crypto).symbol == symbol
     }
 
 }

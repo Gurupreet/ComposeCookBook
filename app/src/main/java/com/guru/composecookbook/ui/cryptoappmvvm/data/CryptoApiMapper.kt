@@ -1,7 +1,7 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.data
 
-import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.data.api.apiresponse.CryptoApiResponse
+import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 
 class CryptoApiMapper {
     fun map(cryptoApiResponse: CryptoApiResponse) = Crypto(

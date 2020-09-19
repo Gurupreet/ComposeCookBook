@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.moviesappmvi.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "movies_table")
 data class Movie(

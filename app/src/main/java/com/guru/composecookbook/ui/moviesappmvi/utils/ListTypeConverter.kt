@@ -10,9 +10,10 @@ class ListTypeConverter {
         fun gettingListFromString(genreIds: String?): List<Int>? {
             val list = arrayListOf<Int>()
 
-            val array = genreIds?.split(",".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
+            val array =
+                genreIds?.split(",".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
             if (array.isNullOrEmpty()) {
-                return  null
+                return null
             }
             for (s in array) {
                 if (!s.isEmpty()) {

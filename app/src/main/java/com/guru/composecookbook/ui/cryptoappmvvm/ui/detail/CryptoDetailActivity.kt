@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
+import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 
 class CryptoDetailActivity : AppCompatActivity() {
 

@@ -1,7 +1,6 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
 
 import androidx.compose.animation.animate
-import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
@@ -10,7 +9,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumnFor
-import androidx.compose.material.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.ExtendedFloatingActionButton
+import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
@@ -25,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.blue
-import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.ui.cryptoappmvvm.Models.CryptoHomeUIState
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
@@ -54,9 +54,9 @@ fun CryptoHomeScreen(onCryptoHomeEvents: (CryptoHomeEvents) -> Unit) {
 
 @Composable
 fun CryptoFABButton(count: Int) {
-    val animateRotationModifier =  Modifier.drawLayer(
+    val animateRotationModifier = Modifier.drawLayer(
         //So on every count change this basically runs as we only add 1 at a time
-        rotationX = animate(if (count %2 == 0) 360f else 0f, tween(800))
+        rotationX = animate(if (count % 2 == 0) 360f else 0f, tween(800))
     )
     ExtendedFloatingActionButton(
         text = { Text(text = "$count coins", modifier = animateRotationModifier) },

@@ -63,7 +63,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-   // annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    // annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.1"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha06'

@@ -16,7 +16,7 @@ import com.guru.composecookbook.ui.cryptoappmvvm.ui.detail.CryptoDetailActivity
 sealed class CryptoHomeEvents {
     data class AddedToFav(val crypto: Crypto) : CryptoHomeEvents()
     data class OpenDetailScreen(val crypto: Crypto) : CryptoHomeEvents()
-    data class RemoveFav(val crypto: Crypto): CryptoHomeEvents()
+    data class RemoveFav(val crypto: Crypto) : CryptoHomeEvents()
 }
 
 class CryptoHomeActivity : AppCompatActivity() {

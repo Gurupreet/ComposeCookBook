@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.detail
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,7 +25,6 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
-import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeViewModel
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToTwoDecimals
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.lists.VerticalListItemSmall

@@ -6,17 +6,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExtendedFloatingActionButton
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
@@ -104,7 +100,12 @@ fun MyWalletCard() {
                     end.linkTo(horizontalCenterGuideline)
                     top.linkTo(asset.bottom, margin = 16.dp)
                 },
-            icon = { Icon(asset = Icons.Default.QrCodeScanner, tint = MaterialTheme.colors.onSurface) },
+            icon = {
+                Icon(
+                    asset = Icons.Default.QrCodeScanner,
+                    tint = MaterialTheme.colors.onSurface
+                )
+            },
             text = { Text(text = "Receive") },
             backgroundColor = Color.Transparent,
             elevation = 0.dp

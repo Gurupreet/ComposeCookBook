@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components
 
-import androidx.compose.animation.animate
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
@@ -72,7 +71,7 @@ fun CryptoListItem(
             onCheckedChange = { hasFav ->
                 if (hasFav)
                     onCryptoHomeEvents(CryptoHomeEvents.AddedToFav(crypto))
-                 else {
+                else {
                     onCryptoHomeEvents(CryptoHomeEvents.RemoveFav(crypto))
                 }
             }

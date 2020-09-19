@@ -4,7 +4,6 @@ import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -29,7 +28,7 @@ fun FavoriteCryptoCard(crypto: Crypto) {
                 )
             }
             Text(
-                text = crypto.price.roundToTwoDecimals()+" usd",
+                text = crypto.price.roundToTwoDecimals() + " usd",
                 style = typography.h6,
                 color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red
             )

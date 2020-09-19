@@ -15,7 +15,7 @@ import retrofit2.http.Query
 interface MovieApi {
 
     @GET("movie/now_playing?")
-    fun getMovies(@Query("page") page: Int ): Flow<Response<MovieListResponse>>
+    fun getMovies(@Query("page") page: Int): Flow<Response<MovieListResponse>>
 
     @GET("movie/{id}?")
     fun getMovieDetail(@Path("id") movieId: String): Flow<Response<Movie>>

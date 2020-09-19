@@ -21,8 +21,6 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 
 val animationClockObservable = object : AnimationClockObservable {
     override fun subscribe(observer: AnimationClockObserver) {
@@ -71,7 +69,7 @@ fun BottomSheetDrawer(
                 modifier = Modifier.padding(16.dp)
             )
             Button(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.fillMaxWidth().padding(8.dp)
             ) {
                 Text(text = "Close Sheet")

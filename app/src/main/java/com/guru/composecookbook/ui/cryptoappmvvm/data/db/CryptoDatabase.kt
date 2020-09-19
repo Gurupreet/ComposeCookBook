@@ -8,7 +8,7 @@ import com.guru.composecookbook.ui.cryptoappmvvm.data.db.daos.CryptoDao
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 
 @Database(entities = [Crypto::class], version = 3)
-abstract class CryptoDatabase: RoomDatabase() {
+abstract class CryptoDatabase : RoomDatabase() {
     abstract fun cryptoDao(): CryptoDao
 
     companion object {
