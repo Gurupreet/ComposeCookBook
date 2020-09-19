@@ -42,7 +42,7 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
 - __Home Screen:__ Start with Layouts, Modifiers and Simple Listviews
 - __Demo UI:__ Learn how demo UI have been made by using layouts, listviews and widgets.
 - __Animations:__ Animations are very interesting in compose. Checkout single value animations to get started.
-- __Others:__ After above steps feel free to deep dive into Tablayouts, carousell, Dialogs and BottomSheets 
+- __Others:__ After the above steps feel free to deep dive into Tablayouts, carousel, Dialogs and BottomSheets 
 
 ## Official Documentations
 - Official Google Documentation
@@ -57,8 +57,8 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
   - If it's a widget/tool/UI element newly added please add to Widget Screen
   - Any feature showcase like Collapsing AppBar, BottomSheets, Dialogs etc add in HomeScreen list
   - Any Demo UI please add to Demo UI section
-  - Try not to add new Icons/Images unless must needed.
-  - Please make sure whatever you add also supports dark mdoe as well.
+  - Try not to add new Icons/Images unless must be needed.
+  - Please make sure whatever you add also supports dark mode as well.
   Thanks happy coding 
 
 ## Multiple DEMO UI and more coming 
@@ -71,7 +71,7 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
 </div>
 
 
-## Please Share & Star the repository to keep me movtivated.
+## Please Share & Star the repository to keep me motivated.
   <a href = "https://github.com/Gurupreet/ComposeCookBook/stargazers">
      <img src = "https://img.shields.io/github/stars/Gurupreet/ComposeCookBook" />
   </a>
