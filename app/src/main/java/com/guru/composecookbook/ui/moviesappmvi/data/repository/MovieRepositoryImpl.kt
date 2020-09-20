@@ -19,7 +19,7 @@ class MovieRepositoryImpl(
         if (response.isSuccessful) {
             emit(response.body()?.movies ?: emptyList<Movie>())
         } else {
-            emit(error("Unable to load movies"))
+            emit(emptyList<Movie>())
         }
 
     }.flowOn(Dispatchers.IO)

@@ -8,6 +8,8 @@ data class Movie(
     @PrimaryKey val id: Long,
     val title: String,
     val poster_path: String?,
+    val release_date: String?,
+    val vote_average: Double?,
     val overview: String,
     val adult: Boolean,
     var tagline: String?,

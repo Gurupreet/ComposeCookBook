@@ -7,6 +7,8 @@ object DemoMovieDataProvider {
     val movie = Movie(
         id = 1,
         title = "Joker",
+        release_date = "21 Aug",
+        vote_average = 4.5,
         poster_path = "https://cdnb.artstation.com/p/assets/images/images/017/022/569/medium/amirhosein-naseri-new-age.jpg",
         overview = "This is a blockbuster movie starring Jaquin Phoenix by DC comics",
         adult = true,
