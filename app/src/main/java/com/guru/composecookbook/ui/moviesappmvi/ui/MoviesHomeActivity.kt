@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.moviesappmvi.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
 import androidx.compose.material.MaterialTheme
@@ -25,6 +26,7 @@ sealed class MoviesHomeInteractionEvents {
 class MoviesHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
             ComposeCookBookTheme {
                 MovieHomeScreen(

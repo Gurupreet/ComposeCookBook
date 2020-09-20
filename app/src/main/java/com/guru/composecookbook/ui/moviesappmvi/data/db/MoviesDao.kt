@@ -14,7 +14,7 @@ interface MoviesDao {
 
     @Transaction
     @Query("select * from movies_table")
-    fun getShowingMovies(): LiveData<List<Movie>>
+    fun getMyWatchlist(): LiveData<List<Movie>>
 
     @Query("DELETE FROM movies_table")
     fun deleteAll()

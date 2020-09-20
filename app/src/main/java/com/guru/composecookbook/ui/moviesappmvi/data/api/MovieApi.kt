@@ -15,13 +15,13 @@ import retrofit2.http.Query
 interface MovieApi {
 
     @GET("movie/now_playing?")
-    fun getMovies(@Query("page") page: Int): Flow<Response<MovieListResponse>>
+    suspend fun getMovies(@Query("page") page: Int): Response<MovieListResponse>
 
     @GET("movie/{id}?")
-    fun getMovieDetail(@Path("id") movieId: String): Flow<Response<Movie>>
+    suspend fun getMovieDetail(@Path("id") movieId: String): Response<Movie>
 
     @GET("movie/{movieId}/similar?")
-    fun getSimilarMovies(@Path("movieId") movieId: String): Flow<Response<MovieListResponse>>
+    suspend fun getSimilarMovies(@Path("movieId") movieId: String): Response<MovieListResponse>
 
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
@@ -31,7 +31,7 @@ interface MovieApi {
 
                 val url = chain.request().url
                     .newBuilder()
-                    .addQueryParameter("api_key", "BuildConfig.API_KEY")
+                    .addQueryParameter("api_key", "852eb333fbdf1f20f7da454df993da34")
                     .build()
                 val request = chain.request()
                     .newBuilder()

@@ -1,13 +1,16 @@
 package com.guru.composecookbook.ui.moviesappmvi.ui
 
+import android.graphics.Bitmap
 import androidx.compose.animation.animate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.layout.ColumnScope.gravity
+import androidx.compose.foundation.layout.RowScope.align
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -16,9 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.model.Item
@@ -27,12 +33,17 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.carousel.PagerState
 import com.guru.composecookbook.ui.moviesappmvi.data.DemoMovieDataProvider
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun MoviePagerItem(movie: Movie, isSelected: Boolean) {
-    val animateHeight = animate(if (isSelected) 400.dp else 360.dp)
-    val animateWidth = animate(if (isSelected) 280.dp else 200.dp)
+fun MoviePagerItem(movie: Movie, isSelected: Boolean, bitmap: MutableState<Bitmap>) {
+    val animateHeight = animate(if (isSelected) 600.dp else 360.dp)
+    val animateWidth = animate(if (isSelected) 340.dp else 320.dp)
     val animateElevation = if (isSelected) 12.dp else 2.dp
+    if (isSelected) {
+        bitmap.value = imageResource(id = R.drawable.camelia).asAndroidBitmap()
+    }
+    val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
     Card(
         elevation = animate(animateElevation),
         modifier = Modifier
@@ -41,26 +52,37 @@ fun MoviePagerItem(movie: Movie, isSelected: Boolean) {
             .padding(24.dp)
             .align(Alignment.CenterHorizontally),
         shape = RoundedCornerShape(16.dp),
-        backgroundColor = MaterialTheme.colors.background,
-        contentColor = MaterialTheme.colors.onPrimary
+        backgroundColor = MaterialTheme.colors.onBackground,
+        contentColor = MaterialTheme.colors.background
     ) {
-        Stack {
-            Image(
-                asset = imageResource(id = R.drawable.camelia),
+        Column {
+            CoilImage(
+                data = posterFullPath,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.padding(4.dp)
-                    .fillMaxSize()
+                modifier = Modifier.fillMaxWidth().preferredHeight(360.dp)
             )
-            Card(modifier = Modifier.align(Alignment.BottomCenter), elevation = 8.dp) {
-                Text(
-                    text = movie.title,
-                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp),
-                    style = typography.body2
-                )
+            Text(
+                text = movie.title,
+                modifier = Modifier.padding(8.dp),
+                style = typography.h6
+            )
+            Text(
+                text = movie.overview,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(8.dp)
+                    .weight(1f),
+                style = typography.subtitle2
+            )
+            Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
             }
         }
     }
 }
+
 
 @Preview
 @Composable

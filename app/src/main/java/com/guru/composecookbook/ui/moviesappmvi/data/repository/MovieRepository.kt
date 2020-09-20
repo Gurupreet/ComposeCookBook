@@ -1,8 +1,10 @@
 package com.guru.composecookbook.ui.moviesappmvi.data.repository
 
 import androidx.lifecycle.LiveData
+import com.guru.composecookbook.ui.moviesappmvi.data.api.apiresponses.MovieListResponse
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 interface MovieRepository {
 
