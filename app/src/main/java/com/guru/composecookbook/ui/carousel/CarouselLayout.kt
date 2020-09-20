@@ -48,7 +48,7 @@ fun CarouselLayout() {
         //FIX: There is something wrong with selected page value so two dots are ahead always
         Pager(state = pagerState, modifier = Modifier.preferredHeight(200.dp)) {
             val item = items[page]
-            selectedPage.value = page
+            selectedPage.value = pagerState.currentPage
             CarouselItem(item)
         }
         Row(modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
@@ -64,7 +64,7 @@ fun CarouselLayout() {
         //Pager 2
         Pager(state = pagerState, modifier = Modifier.preferredHeight(200.dp)) {
             val item = items[page]
-            selectedPage.value = page
+            selectedPage.value = pagerState.currentPage
             CarouselItemCircle(item)
         }
         Row(modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
@@ -80,7 +80,7 @@ fun CarouselLayout() {
         //Pager 3
         Pager(state = pagerState, modifier = Modifier.preferredHeight(500.dp)) {
             val item = items[page]
-            selectedPage.value = page
+            selectedPage.value = pagerState.currentPage
             CarouselItemCard(item, pagerState, selectedPage)
         }
         Row(modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
@@ -143,7 +143,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
         elevation = animate(animateElevation),
-        modifier = Modifier . preferredSize (animate(animateSize)).padding(24.dp)
+        modifier = Modifier . preferredSize(animate(animateSize)).padding(24.dp)
             .align(Alignment.CenterHorizontally),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,

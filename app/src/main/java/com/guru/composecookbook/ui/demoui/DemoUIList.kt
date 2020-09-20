@@ -15,6 +15,7 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.ui.demoui.spotify.SpotifyActivity
+import com.guru.composecookbook.ui.moviesappmvi.ui.MoviesHomeActivity
 
 @Composable
 fun DemoUIList() {
@@ -33,6 +34,11 @@ fun DemoUIList() {
                         "CryptoApp+MVVM" -> {
                             context.startActivity(
                                 CryptoHomeActivity.newIntent(context, false)
+                            )
+                        }
+                        "MoviesApp+MVVM" -> {
+                            context.startActivity(
+                                MoviesHomeActivity.newIntent(context, false)
                             )
                         }
                         else -> {

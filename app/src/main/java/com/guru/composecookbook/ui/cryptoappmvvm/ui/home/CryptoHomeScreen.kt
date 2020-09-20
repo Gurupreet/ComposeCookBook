@@ -2,10 +2,7 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
 
 import androidx.compose.animation.animate
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
-import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.lazy.LazyColumnFor
@@ -38,7 +35,7 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 
 
 @Composable
-fun CryptoHomeScreen(onCryptoHomeEvents: (CryptoHomeEvents) -> Unit) {
+fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit) {
     val viewModel: CryptoHomeViewModel = viewModel()
     val uiState by viewModel.viewStateFlow.collectAsState()
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
@@ -54,8 +51,8 @@ fun CryptoHomeScreen(onCryptoHomeEvents: (CryptoHomeEvents) -> Unit) {
     ) {
         Column(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             MyWalletCard()
-            ShowFavorites(showFave = showFavState, favCryptos = favCryptos)
-            CryptoList(uiState, favCryptos, onCryptoHomeEvents)
+            ShowFavorites(showFave = showFavState, favCryptos = favCryptos, onCryptoHomeInteractionEvents)
+            CryptoList(uiState, favCryptos, onCryptoHomeInteractionEvents)
         }
     }
 }
@@ -81,31 +78,40 @@ fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
 }
 
 @Composable
-fun ShowFavorites(showFave: Boolean, favCryptos: List<Crypto>) {
+fun ShowFavorites(
+    showFave: Boolean,
+    favCryptos: List<Crypto>,
+    onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
+) {
     Column(
         modifier = Modifier.padding(8.dp)
             .fillMaxWidth()
             .height(animate(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp))
     ) {
-        Text(text = "My Favorites", modifier = Modifier.padding(8.dp))
-        LazyRowFor(items = favCryptos) {
-            FavoriteItem(crypto = it)
+        Text(text = "My Favorites", modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
+        LazyRowFor(items = favCryptos) { crypto ->
+            FavoriteItem(crypto = crypto) {
+                onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.OpenDetailScreen(crypto))
+            }
         }
     }
 }
 
 @Composable
-fun FavoriteItem(crypto: Crypto) {
+fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
     Row(
         modifier = Modifier.padding(16.dp)
             .background(graySurface)
             .clip(RoundedCornerShape(8.dp))
+            .clickable(onClick = openCryptoDetail)
             .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         CoilImage(data = crypto.image, modifier = Modifier.size(24.dp))
         Text(
             text = crypto.symbol,
-            modifier = Modifier.padding(horizontal = 8.dp).height(24.dp),
+            style = typography.h6.copy(fontSize = 20.sp),
+            modifier = Modifier.padding(horizontal = 8.dp).height(32.dp),
             color = MaterialTheme.colors.onSurface,
             textAlign = TextAlign.Center
         )
@@ -116,7 +122,7 @@ fun FavoriteItem(crypto: Crypto) {
 fun CryptoList(
     uiState: CryptoHomeUIState,
     favCryptos: List<Crypto>,
-    onCryptoHomeEvents: (CryptoHomeEvents) -> Unit
+    onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
     if (uiState.cryptos.isEmpty()) {
         CircularProgressIndicator(
@@ -128,7 +134,7 @@ fun CryptoList(
             CryptoListItem(
                 it,
                 isFav,
-                onCryptoHomeEvents
+                onCryptoHomeInteractionEvents
             )
         }
     }
@@ -140,7 +146,7 @@ fun PreviewCryptoHomeScreen() {
     val uiState = CryptoHomeUIState(CryptoDemoDataProvider.demoList, false)
     val crypto = CryptoDemoDataProvider.bitcoin
     Column {
-        FavoriteItem(crypto = crypto)
+        FavoriteItem(crypto = crypto, {})
         CryptoList(uiState = uiState, emptyList(), {})
     }
 }

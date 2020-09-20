@@ -22,7 +22,7 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
-import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeEvents
+import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeInteractionEvents
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToThreeDecimals
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToTwoDecimals
 import dev.chrisbanes.accompanist.coil.CoilImage
@@ -31,11 +31,11 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun CryptoListItem(
     crypto: Crypto,
     isFav: Boolean = false,
-    onCryptoHomeEvents: (CryptoHomeEvents) -> Unit
+    onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth()
-            .clickable(onClick = { onCryptoHomeEvents(CryptoHomeEvents.OpenDetailScreen(crypto)) })
+            .clickable(onClick = { onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.OpenDetailScreen(crypto)) })
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
@@ -70,9 +70,9 @@ fun CryptoListItem(
             checked = isFav,
             onCheckedChange = { hasFav ->
                 if (hasFav)
-                    onCryptoHomeEvents(CryptoHomeEvents.AddedToFav(crypto))
+                    onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.AddedToFav(crypto))
                 else {
-                    onCryptoHomeEvents(CryptoHomeEvents.RemoveFav(crypto))
+                    onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.RemoveFav(crypto))
                 }
             }
         ) {

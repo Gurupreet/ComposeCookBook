@@ -35,7 +35,7 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     Scaffold(
-        bottomBar = { CryptoBottomBar() },
+        bottomBar = { CryptoBottomBar(onBack) },
         floatingActionButton = { CryptoFloatingActionButton() },
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center
@@ -45,9 +45,9 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
             CryptoTopSection(crypto, scrollState, onBack)
             ScrollableColumn(
                 modifier = Modifier
-                    .padding(top = 34.dp, start = 16.dp, end = 16.dp), scrollState = scrollState
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp), scrollState = scrollState
             ) {
-                Spacer(modifier = Modifier.height(150.dp))
+                Spacer(modifier = Modifier.height(200.dp))
                 //TODO: Charts
                 StatisticsSection(crypto)
                 FavSection()
@@ -64,11 +64,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
         modifier = Modifier.padding(16.dp)
             .drawOpacity(animate((1 - scrollState.value / 150).coerceIn(0f, 1f)))
     ) {
-        Spacer(modifier = Modifier.height(25.dp))
-        Icon(
-            asset = Icons.Default.ArrowBack,
-            modifier = Modifier.clickable(onClick = onBack).padding(vertical = 8.dp)
-        )
+        Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.padding(top = 20.dp)) {
             Text(
                 text = crypto.name,
@@ -91,12 +87,12 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
 }
 
 @Composable
-fun CryptoBottomBar() {
+fun CryptoBottomBar(onBack: () -> Unit) {
     BottomAppBar(
         cutoutShape = CircleShape
     ) {
-        IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.ReadMore)
+        IconButton(onClick = { onBack }) {
+            Icon(asset = Icons.Default.ArrowBack)
         }
         IconButton(onClick = {}) {
             Icon(asset = Icons.Default.MoreVert)

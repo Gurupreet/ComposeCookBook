@@ -13,9 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeCookBook">
         <activity
+            android:name=".ui.moviesappmvi.ui.MoviesHomeActivity"
+            android:label="@string/title_activity_movies_home"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+        <activity
             android:name=".ui.cryptoappmvvm.ui.detail.CryptoDetailActivity"
             android:label="@string/title_activity_crypto_detail"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
             android:name=".ui.cryptoappmvvm.ui.home.CryptoHomeActivity"
             android:label="@string/title_activity_crypto_home"

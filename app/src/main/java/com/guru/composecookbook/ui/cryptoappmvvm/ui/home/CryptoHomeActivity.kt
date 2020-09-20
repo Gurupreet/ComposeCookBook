@@ -13,10 +13,10 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.detail.CryptoDetailActivity
 
-sealed class CryptoHomeEvents {
-    data class AddedToFav(val crypto: Crypto) : CryptoHomeEvents()
-    data class OpenDetailScreen(val crypto: Crypto) : CryptoHomeEvents()
-    data class RemoveFav(val crypto: Crypto) : CryptoHomeEvents()
+sealed class CryptoHomeInteractionEvents {
+    data class AddedToFav(val crypto: Crypto) : CryptoHomeInteractionEvents()
+    data class OpenDetailScreen(val crypto: Crypto) : CryptoHomeInteractionEvents()
+    data class RemoveFav(val crypto: Crypto) : CryptoHomeInteractionEvents()
 }
 
 class CryptoHomeActivity : AppCompatActivity() {
@@ -27,24 +27,29 @@ class CryptoHomeActivity : AppCompatActivity() {
             ComposeCookBookTheme {
                 val viewModel: CryptoHomeViewModel = viewModel()
                 CryptoHomeScreen(
-                    onCryptoHomeEvents = { cryptoHomeEvent ->
-                        when (cryptoHomeEvent) {
-                            is CryptoHomeEvents.AddedToFav -> {
-                                viewModel.addToFav(cryptoHomeEvent.crypto)
-                            }
-                            is CryptoHomeEvents.RemoveFav -> {
-                                viewModel.removeFav(cryptoHomeEvent.crypto)
-                            }
-                            is CryptoHomeEvents.OpenDetailScreen -> {
-                                startActivity(
-                                    CryptoDetailActivity.newIntent(
-                                        this,
-                                        cryptoHomeEvent.crypto
-                                    )
-                                )
-                            }
-                        }
-                    }
+                    onCryptoHomeInteractionEvents = { handleInteractionEvents(it, viewModel) }
+                )
+            }
+        }
+    }
+
+    fun handleInteractionEvents(
+        cryptoHomeInteractionEvents: CryptoHomeInteractionEvents,
+        viewModel: CryptoHomeViewModel
+    ) {
+        when (cryptoHomeInteractionEvents) {
+            is CryptoHomeInteractionEvents.AddedToFav -> {
+                viewModel.addToFav(cryptoHomeInteractionEvents.crypto)
+            }
+            is CryptoHomeInteractionEvents.RemoveFav -> {
+                viewModel.removeFav(cryptoHomeInteractionEvents.crypto)
+            }
+            is CryptoHomeInteractionEvents.OpenDetailScreen -> {
+                startActivity(
+                    CryptoDetailActivity.newIntent(
+                        this,
+                        cryptoHomeInteractionEvents.crypto
+                    )
                 )
             }
         }
