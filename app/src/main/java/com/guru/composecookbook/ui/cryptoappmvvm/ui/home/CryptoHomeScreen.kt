@@ -8,7 +8,10 @@ import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.ExtendedFloatingActionButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
@@ -23,7 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
 import androidx.ui.tooling.preview.Preview
-import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.theme.blue
+import com.guru.composecookbook.theme.graySurface
+import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.cryptoappmvvm.Models.CryptoHomeUIState
 import com.guru.composecookbook.ui.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
@@ -51,7 +56,11 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
     ) {
         Column(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             MyWalletCard()
-            ShowFavorites(showFave = showFavState, favCryptos = favCryptos, onCryptoHomeInteractionEvents)
+            ShowFavorites(
+                showFave = showFavState,
+                favCryptos = favCryptos,
+                onCryptoHomeInteractionEvents
+            )
             CryptoList(uiState, favCryptos, onCryptoHomeInteractionEvents)
         }
     }

@@ -7,8 +7,6 @@ import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.moviesappmvi.data.repository.MovieRepository
 import com.guru.composecookbook.ui.moviesappmvi.di.MovieDIGraph
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEmpty
-import kotlinx.coroutines.flow.onErrorReturn
 import kotlinx.coroutines.launch
 
 class MoviesHomeViewModel(
@@ -27,7 +25,7 @@ class MoviesHomeViewModel(
                     } else {
                         errorLiveData.value = "Failed to load movies"
                     }
-            }
+                }
         }
     }
 }

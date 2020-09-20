@@ -35,7 +35,13 @@ fun CryptoListItem(
 ) {
     Row(
         modifier = Modifier.fillMaxWidth()
-            .clickable(onClick = { onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.OpenDetailScreen(crypto)) })
+            .clickable(onClick = {
+                onCryptoHomeInteractionEvents(
+                    CryptoHomeInteractionEvents.OpenDetailScreen(
+                        crypto
+                    )
+                )
+            })
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically

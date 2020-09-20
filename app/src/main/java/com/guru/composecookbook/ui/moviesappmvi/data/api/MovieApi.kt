@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.moviesappmvi.data.api
 
 import com.guru.composecookbook.ui.moviesappmvi.data.api.apiresponses.MovieListResponse
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
-import kotlinx.coroutines.flow.Flow
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Response

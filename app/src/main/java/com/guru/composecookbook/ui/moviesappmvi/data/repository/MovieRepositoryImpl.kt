@@ -1,9 +1,7 @@
 package com.guru.composecookbook.ui.moviesappmvi.data.repository
 
 import androidx.lifecycle.LiveData
-import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.moviesappmvi.data.api.MovieApi
-import com.guru.composecookbook.ui.moviesappmvi.data.api.apiresponses.MovieListResponse
 import com.guru.composecookbook.ui.moviesappmvi.data.db.MoviesDao
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import kotlinx.coroutines.Dispatchers
@@ -14,12 +12,12 @@ import kotlinx.coroutines.flow.flowOn
 class MovieRepositoryImpl(
     private val movieApi: MovieApi,
     private val moviesDao: MoviesDao
-): MovieRepository {
+) : MovieRepository {
 
-    override suspend fun getNowShowing(): Flow<List<Movie>> =  flow {
+    override suspend fun getNowShowing(): Flow<List<Movie>> = flow {
         val response = movieApi.getMovies(1)
         if (response.isSuccessful) {
-           emit(response.body()?.movies ?: emptyList<Movie>())
+            emit(response.body()?.movies ?: emptyList<Movie>())
         } else {
             emit(error("Unable to load movies"))
         }

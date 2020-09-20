@@ -2,13 +2,9 @@ package com.guru.composecookbook.ui.moviesappmvi.ui
 
 import android.graphics.Bitmap
 import androidx.compose.animation.animate
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
-import androidx.compose.foundation.layout.ColumnScope.gravity
-import androidx.compose.foundation.layout.RowScope.align
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
@@ -17,20 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
-import com.guru.composecookbook.data.model.Item
-import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.carousel.PagerState
 import com.guru.composecookbook.ui.moviesappmvi.data.DemoMovieDataProvider
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import dev.chrisbanes.accompanist.coil.CoilImage
@@ -88,5 +78,5 @@ fun MoviePagerItem(movie: Movie, isSelected: Boolean, bitmap: MutableState<Bitma
 @Composable
 fun PreviewMoviePagerItem() {
     val movie = DemoMovieDataProvider.movie
-   // MoviePagerItem(movie = movie, pagerState = PagerState(), selectedPage = )
+    // MoviePagerItem(movie = movie, pagerState = PagerState(), selectedPage = )
 }

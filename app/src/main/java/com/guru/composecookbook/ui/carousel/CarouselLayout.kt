@@ -138,12 +138,12 @@ fun CarouselItemCircle(item: Item) {
 
 @Composable
 fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableState<Int>) {
-    val isSelected =  selectedPage.value == pagerState.currentPage
+    val isSelected = selectedPage.value == pagerState.currentPage
     val animateSize = if (isSelected) 320.dp else 180.dp
     val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
         elevation = animate(animateElevation),
-        modifier = Modifier . preferredSize(animate(animateSize)).padding(24.dp)
+        modifier = Modifier.preferredSize(animate(animateSize)).padding(24.dp)
             .align(Alignment.CenterHorizontally),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
