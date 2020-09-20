@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.moviesappmvi.ui
 
-import android.graphics.Bitmap
 import android.util.Log
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.ScrollableColumn
@@ -10,7 +9,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.LibraryAdd
+import androidx.compose.material.icons.outlined.MovieCreation
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -19,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.platform.AnimationClockAmbient
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
@@ -28,7 +28,6 @@ import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.carousel.Pager
 import com.guru.composecookbook.ui.carousel.PagerState
-import com.guru.composecookbook.ui.demoui.spotify.SpotifyNavType
 import com.guru.composecookbook.ui.demoui.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 
@@ -44,10 +43,10 @@ fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -
 @Composable
 fun MovieHomeScreenContent() {
     //TODO dynamic gradient from poster right now It's just getting from local images
-    var imageId =  remember {  mutableStateOf(R.drawable.camelia) }
+    var imageId = remember { mutableStateOf(R.drawable.camelia) }
     val defaultBitmap = imageResource(id = imageId.value).asAndroidBitmap()
-    var currentBitmap =   mutableStateOf(defaultBitmap)
-    val swatch =  generateDominantColorState(currentBitmap.value)
+    var currentBitmap = mutableStateOf(defaultBitmap)
+    val swatch = generateDominantColorState(currentBitmap.value)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)
 
     ScrollableColumn(modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantColors)) {
@@ -99,58 +98,58 @@ fun MoviesPager(imageId: MutableState<Int>) {
 
 @Composable
 fun MoviesBottomBar() {
-        val bottomNavBackground =
-            if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
-        BottomNavigation(backgroundColor = bottomNavBackground) {
-            BottomNavigationItem(
-                icon = { Icon(asset = Icons.Outlined.MovieCreation) },
-                selected = true,
-                onClick = {  },
-                label = { Text(text = "Showing") },
-            )
-            BottomNavigationItem(
-                icon = { Icon(asset = Icons.Outlined.Search) },
-                selected = false,
-                onClick = {  },
-                label = { Text(text = "Search") }
-            )
-            BottomNavigationItem(
-                icon = { Icon(asset = Icons.Outlined.LibraryAdd) },
-                selected = false,
-                onClick = {  },
-                label = { Text(text = "Watchlist") }
-            )
-        }
+    val bottomNavBackground =
+        if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
+    BottomNavigation(backgroundColor = bottomNavBackground) {
+        BottomNavigationItem(
+            icon = { Icon(asset = Icons.Outlined.MovieCreation) },
+            selected = true,
+            onClick = { },
+            label = { Text(text = "Showing") },
+        )
+        BottomNavigationItem(
+            icon = { Icon(asset = Icons.Outlined.Search) },
+            selected = false,
+            onClick = { },
+            label = { Text(text = "Search") }
+        )
+        BottomNavigationItem(
+            icon = { Icon(asset = Icons.Outlined.LibraryAdd) },
+            selected = false,
+            onClick = { },
+            label = { Text(text = "Watchlist") }
+        )
+    }
 }
 
-enum class MovieNavType{
+enum class MovieNavType {
     SHOWING, TRENDING, WATCHLIST
 }
 
-val imageIds  =
-        listOf(
-            R.drawable.camelia,
-            R.drawable.khalid,
-            R.drawable.lana,
-            R.drawable.edsheeran,
-            R.drawable.dualipa,
-            R.drawable.sam,
-            R.drawable.marsh,
-            R.drawable.wolves,
-            R.drawable.camelia,
-            R.drawable.khalid,
-            R.drawable.lana,
-            R.drawable.edsheeran,
-            R.drawable.dualipa,
-            R.drawable.sam,
-            R.drawable.marsh,
-            R.drawable.wolves,
-            R.drawable.camelia,
-            R.drawable.khalid,
-            R.drawable.lana,
-            R.drawable.edsheeran,
-            R.drawable.dualipa,
-            R.drawable.sam,
-            R.drawable.marsh,
-            R.drawable.wolves,
-        )
+val imageIds =
+    listOf(
+        R.drawable.camelia,
+        R.drawable.khalid,
+        R.drawable.lana,
+        R.drawable.edsheeran,
+        R.drawable.dualipa,
+        R.drawable.sam,
+        R.drawable.marsh,
+        R.drawable.wolves,
+        R.drawable.camelia,
+        R.drawable.khalid,
+        R.drawable.lana,
+        R.drawable.edsheeran,
+        R.drawable.dualipa,
+        R.drawable.sam,
+        R.drawable.marsh,
+        R.drawable.wolves,
+        R.drawable.camelia,
+        R.drawable.khalid,
+        R.drawable.lana,
+        R.drawable.edsheeran,
+        R.drawable.dualipa,
+        R.drawable.sam,
+        R.drawable.marsh,
+        R.drawable.wolves,
+    )

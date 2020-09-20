@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.moviesappmvi.ui
 
-import android.graphics.Bitmap
 import androidx.compose.animation.animate
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
@@ -13,22 +12,15 @@ import androidx.compose.material.IconToggleButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
-import androidx.compose.material.icons.filled.PlaylistAdd
-import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
-import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.moviesappmvi.data.DemoMovieDataProvider
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie

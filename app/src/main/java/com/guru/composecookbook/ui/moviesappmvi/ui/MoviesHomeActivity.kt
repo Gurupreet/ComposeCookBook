@@ -18,6 +18,7 @@ sealed class MoviesHomeInteractionEvents {
     data class RemoveFromMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
 }
 
+//TODO: Interaction Events, DetailPage, Watchlist(Room database)
 class MoviesHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
