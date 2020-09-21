@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
@@ -18,17 +19,19 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @Composable
 fun TextInputs() {
     Text(text = "Text Inputs", style = typography.h6, modifier = Modifier.padding(8.dp))
 
-    var text = remember { TextFieldValue("Plain text...") }
+    var text by remember { mutableStateOf(TextFieldValue("")) }
 
     TextField(
         value = text,
         onValueChange = { newValue -> text = newValue },
-        modifier = Modifier.padding(8.dp),
+        modifier = Modifier.padding(8.dp).fillMaxWidth(),
         label = { Text("label") },
         placeholder = { Text("placeholder") }
     )
@@ -69,7 +72,7 @@ fun TextInputs() {
         }
     )
 
-    var numberText = remember { TextFieldValue("1334") }
+    var numberText by remember { mutableStateOf(TextFieldValue("")) }
     OutlinedTextField(value = numberText,
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         keyboardType = KeyboardType.Number,

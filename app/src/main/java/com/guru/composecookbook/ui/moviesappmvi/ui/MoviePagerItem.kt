@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.moviesappmvi.ui
 import androidx.compose.animation.animate
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,7 +28,7 @@ import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun MoviePagerItem(movie: Movie, isSelected: Boolean) {
+fun MoviePagerItem(movie: Movie, isSelected: Boolean, openMovieDetail: () -> Unit) {
     val animateHeight = animate(if (isSelected) 620.dp else 360.dp)
     val animateWidth = animate(if (isSelected) 340.dp else 320.dp)
     val animateElevation = if (isSelected) 12.dp else 2.dp
@@ -39,6 +40,7 @@ fun MoviePagerItem(movie: Movie, isSelected: Boolean) {
             .preferredWidth(animateWidth)
             .preferredHeight(animateHeight)
             .padding(24.dp)
+            .clickable(onClick = { openMovieDetail.invoke() })
             .align(Alignment.CenterHorizontally),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = MaterialTheme.colors.onBackground,

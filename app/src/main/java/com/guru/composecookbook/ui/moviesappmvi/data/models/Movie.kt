@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.moviesappmvi.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "movies_table")
 data class Movie(
@@ -19,4 +20,4 @@ data class Movie(
     val homepage: String?,
     val status: String?,
     var addedTime: Long?
-)
+): Serializable

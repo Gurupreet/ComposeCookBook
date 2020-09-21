@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.setContent
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
+import com.guru.composecookbook.ui.moviesappmvi.ui.details.MovieDetailActivity
 
 sealed class MoviesHomeInteractionEvents {
     data class OpenMovieDetail(val movie: Movie) : MoviesHomeInteractionEvents()
@@ -35,7 +36,14 @@ class MoviesHomeActivity : AppCompatActivity() {
     }
 
     fun handleInteractionEvents(interactionEvents: MoviesHomeInteractionEvents) {
+        when (interactionEvents) {
+            is MoviesHomeInteractionEvents.OpenMovieDetail -> {
+                startActivity(MovieDetailActivity.newIntent(this, interactionEvents.movie))
+                overridePendingTransition(0, 0)
+            }
 
+            else -> {}
+        }
     }
 
     companion object {

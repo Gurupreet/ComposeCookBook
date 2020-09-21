@@ -36,12 +36,12 @@ fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -
     Scaffold(
         bottomBar = { MoviesBottomBar() }
     ) {
-        MovieHomeScreenContent()
+        MovieHomeScreenContent(moviesHomeInteractionEvents)
     }
 }
 
 @Composable
-fun MovieHomeScreenContent() {
+fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
     //TODO dynamic gradient from poster right now It's just getting from local images
     var imageId = remember { mutableStateOf(R.drawable.camelia) }
     val defaultBitmap = imageResource(id = imageId.value).asAndroidBitmap()
@@ -49,19 +49,21 @@ fun MovieHomeScreenContent() {
     val swatch = generateDominantColorState(currentBitmap.value)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)
 
-    ScrollableColumn(modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantColors)) {
+    ScrollableColumn(
+        modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantColors)
+    ) {
         Spacer(modifier = Modifier.height(30.dp))
         Text(
             text = "Now Showing",
             style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
             modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally)
         )
-        MoviesPager(imageId)
+        MoviesPager(imageId, moviesHomeInteractionEvents)
     }
 }
 
 @Composable
-fun MoviesPager(imageId: MutableState<Int>) {
+fun MoviesPager(imageId: MutableState<Int>, moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
     val moviesViewModel: MoviesHomeViewModel = viewModel()
     val movies by moviesViewModel.nowShowingLiveData.observeAsState(emptyList())
     val error by moviesViewModel.errorLiveData.observeAsState()
@@ -79,7 +81,9 @@ fun MoviesPager(imageId: MutableState<Int>) {
             imageId.value = imageIds[pagerState.currentPage]
             val isSelected = pagerState.currentPage == page
 
-            MoviePagerItem(movie, isSelected)
+            MoviePagerItem(movie, isSelected) {
+                moviesHomeInteractionEvents(MoviesHomeInteractionEvents.OpenMovieDetail(movie))
+            }
         }
     } else {
         if (error.isNullOrEmpty()) {
