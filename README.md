@@ -39,9 +39,9 @@ List & Layouts             |  Widgets and building blocks| Animations
 ![](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)  |  ![](https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif) | ![](https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif)
 
 ### Demo UI
-Spotify             |  Instagram Demo | Twitter, Gmail, Youtube
-:-------------------------:|:-------------------------: | :-------------------------:
-![](https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif)  |  ![](https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif) | ![](https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif)
+Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                       | Profile
+:-------------------------:|:-------------------------: | :-------------------------: | :-------------------------:
+![](https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif)  |  ![](https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif) | ![](https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif) | ![](https://media.giphy.com/media/n3UTF9SzLpBGneFyj3/giphy.gif)
 
 
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
