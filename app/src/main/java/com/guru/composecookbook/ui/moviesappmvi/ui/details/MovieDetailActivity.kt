@@ -12,24 +12,27 @@ import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.IconToggleButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.viewModel
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
@@ -100,17 +103,11 @@ class MovieDetailActivity : AppCompatActivity() {
                                 style = typography.subtitle2
                             )
                             Spacer(modifier = Modifier.height(20.dp))
-                            Text(
-                                text = movie.overview,
-                                modifier = Modifier
-                                    .padding(8.dp),
-                                style = typography.subtitle2
-                            )
+                            SimilarMoviesSection(movie)
                             Spacer(modifier = Modifier.height(50.dp))
                             Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
                                 Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
                             }
-                            Spacer(modifier = Modifier.height(100.dp))
                         }
                     }
                 }
@@ -127,6 +124,26 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 }
 
+@Composable
+fun SimilarMoviesSection(currentMovie: Movie?) {
+    val viewModel: MovieDetailViewModel = viewModel()
+    viewModel.getSimilarMovies(currentMovie?.id.toString())
+    val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
+    similarMovies?.let { movies ->
+        Text(text = "Similar Movies", style = typography.h5, modifier = Modifier.padding(8.dp))
+        LazyRowFor(items = movies) { movie ->
+            CoilImage(
+                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                modifier = Modifier
+                    .preferredWidth(200.dp)
+                    .preferredHeight(300.dp)
+                    .padding(8.dp)
+                    .clip(RoundedCornerShape(12.dp)),
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable

@@ -24,6 +24,16 @@ class MovieRepositoryImpl(
 
     }.flowOn(Dispatchers.IO)
 
+    override suspend fun getSimilarMovies(movieId: String): Flow<List<Movie>> = flow {
+        val response = movieApi.getSimilarMovies(movieId)
+        if (response.isSuccessful) {
+            emit(response.body()?.movies ?: emptyList<Movie>())
+        } else {
+            emit(emptyList<Movie>())
+        }
+
+    }.flowOn(Dispatchers.IO)
+
     override suspend fun getMyWatchlist(): LiveData<List<Movie>> {
         return moviesDao.getMyWatchlist()
     }
