@@ -34,48 +34,20 @@
 Jetpack Compose is Android’s modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 
 ## Screens
-<div style="display:flex;">
-  <div id="overlay">
-    <h4>List & Layouts</h4>
-    <img src="https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif" />
-  </div>
-  <div id="overlay">
-    <h4>Widgets and building blocks</h4>
-    <img src="https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif" />
-  </div>
-    <div id="overlay">
-    <h4>Animations</h4>
-    <img src="https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif" />
-  </div>
-</div>
+List & Layouts             |  Widgets and building blocks| Animations
+:-------------------------:|:-------------------------: | :-------------------------:
+![](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)  |  ![](https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif) | ![](https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif)
 
 ### Demo UI
-<div style="display:flex;">
-  <div id="overlay">
-    <h4>Spotify Demo</h4>
-    <img src="https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif" />
-  </div>
-  <div id="overlay">
-    <h4>Instagram Demo</h4>
-    <img src="https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif" />
-  </div>
-    <div id="overlay">
-    <h4>Twitter, Gmail, Youtube</h4>
-    <img src="https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif" />
-  </div>
-</div>
+Spotify             |  Instagram Demo | Twitter, Gmail, Youtube
+:-------------------------:|:-------------------------: | :-------------------------:
+![](https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif)  |  ![](https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif) | ![](https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif)
+
 
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
-<div style="display:flex;">
-  <div id="overlay">
-    <h4>CryptoApp MVVM</h4>
-    <img src="https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif" />
-  </div>
-  <div id="overlay">
-    <h4>MovieApp MVI(In progress)</h4>
-    <img src="https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif" />
-  </div>
-</div>
+CryptoApp MVVM             |  MovieApp MVI(In progress)
+:-------------------------:|:-------------------------:
+![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif)
 
 
 ## How to get started
@@ -104,15 +76,6 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
   - Try not to add new Icons/Images unless must be needed.
   - Please make sure whatever you add also supports dark mode as well.
   Thanks happy coding 
-
-## Multiple DEMO UI and more coming 
-<div>
-  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200906-161629_ComposeDemo.jpg">
-  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200906-161500_ComposeDemo.jpg">
-  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200906-161609_ComposeDemo.jpg">
-  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200907-001949_ComposeDemo.jpg">
-  <img width="250" alt="portfolio_view" src="https://github.com/Gurupreet/ComposeCookBook/blob/master/screens/Screenshot_20200907-002000_ComposeDemo.jpg">
-</div>
 
 
 ## Please Share & Star the repository to keep me motivated.
