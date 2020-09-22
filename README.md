@@ -22,6 +22,9 @@
   <a href = "https://github.com/Gurupreet/ComposeCookBook/issues">
      <img src = "https://img.shields.io/github/issues/Gurupreet/ComposeCookBook" />
   </a>  
+    <a href = "https://github.com/Gurupreet/ComposeCookBook/blob/master/LICENSE">
+     <img src = "https://img.shields.io/github/license/Gurupreet/ComposeCookBook" />
+  </a> 
   <a href = "https://twitter.com/_gurupreet">
      <img src = "https://img.shields.io/twitter/url?label=follow&style=social&url=https%3A%2F%2Ftwitter.com%2F_gurupreet" />
   </a>
@@ -31,8 +34,49 @@
 Jetpack Compose is Android’s modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 
 ## Screens
-![Demo](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)
-![Demo2](https://media.giphy.com/media/j3ajRUVKla5FdSrr6a/giphy.gif)
+<div style="display:flex;">
+  <div id="overlay">
+    <h4>List & Layouts</h4>
+    <img src="https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif" />
+  </div>
+  <div id="overlay">
+    <h4>Widgets and building blocks</h4>
+    <img src="https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif" />
+  </div>
+    <div id="overlay">
+    <h4>Animations</h4>
+    <img src="https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif" />
+  </div>
+</div>
+
+### Demo UI
+<div style="display:flex;">
+  <div id="overlay">
+    <h4>Spotify Demo</h4>
+    <img src="https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif" />
+  </div>
+  <div id="overlay">
+    <h4>Instagram Demo</h4>
+    <img src="https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif" />
+  </div>
+    <div id="overlay">
+    <h4>Twitter, Gmail, Youtube</h4>
+    <img src="https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif" />
+  </div>
+</div>
+
+### Apps with Api, Retrofit, Room, Flow, Livedata Integration
+<div style="display:flex;">
+  <div id="overlay">
+    <h4>CryptoApp MVVM</h4>
+    <img src="https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif" />
+  </div>
+  <div id="overlay">
+    <h4>MovieApp MVI(In progress)</h4>
+    <img src="https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif" />
+  </div>
+</div>
+
 
 ## How to get started
 Please get **android studio 4.2 canary 8** or above to build this project [from here](https://developer.android.com/studio/preview/).
