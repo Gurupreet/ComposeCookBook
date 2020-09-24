@@ -15,10 +15,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.IconButton
 import androidx.compose.material.IconToggleButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
+import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -101,8 +103,11 @@ class MovieDetailActivity : AppCompatActivity() {
                                     modifier = Modifier.padding(8.dp),
                                     style = typography.h6
                                 )
-                                IconToggleButton(checked = false, onCheckedChange = {}) {
-                                    Icon(asset = Icons.Default.LibraryAdd)
+                                IconButton(onClick = {}) {
+                                    Icon(
+                                        asset = Icons.Default.LibraryAdd,
+                                        tint = MaterialTheme.colors.primary
+                                    )
                                 }
                             }
                             GenreSection(viewModel, movie.genre_ids)
@@ -174,12 +179,14 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
 }
 
 @Composable
-fun GenreSection(viewModel: MovieDetailViewModel, movieGenreIds: List<Int>) {
-    val genres by viewModel.genresLiveData.observeAsState(emptyList())
-    val movieGenres = genres.filter { movieGenreIds.contains(it.id) }.take(3)
-    Row {
-        movieGenres.forEach {
-            InterestTag(text = it.name)
+fun GenreSection(viewModel: MovieDetailViewModel, movieGenreIds: List<Int>?) {
+    movieGenreIds?.let { movieGenreIds ->
+        val genres by viewModel.genresLiveData.observeAsState(emptyList())
+        val movieGenres = genres.filter { movieGenreIds.contains(it.id) }.take(3)
+        Row {
+            movieGenres.forEach {
+                InterestTag(text = it.name)
+            }
         }
     }
 }

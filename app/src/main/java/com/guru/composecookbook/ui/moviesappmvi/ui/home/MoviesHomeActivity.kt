@@ -17,10 +17,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.material.icons.outlined.MovieCreation
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Subscriptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.viewinterop.viewModel
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
@@ -40,6 +42,7 @@ class MoviesHomeActivity : AppCompatActivity() {
         setContent {
             ComposeCookBookTheme {
                 val navType = savedInstanceState { MovieNavType.SHOWING }
+                val viewModel: MoviesHomeViewModel = viewModel()
                 Scaffold(
                     bottomBar = { MoviesBottomBar(navType) }
                 ) {
@@ -47,15 +50,19 @@ class MoviesHomeActivity : AppCompatActivity() {
                         when (navType.value) {
                             MovieNavType.SHOWING -> MovieHomeScreen(
                                 moviesHomeInteractionEvents = {
-                                    handleInteractionEvents(it)
+                                    handleInteractionEvents(it, viewModel)
                                 }
                             )
                             MovieNavType.TRENDING -> MovieTrendingScreen(
                                 moviesHomeInteractionEvents = {
-                                    handleInteractionEvents(it)
+                                    handleInteractionEvents(it, viewModel)
                                 }
                             )
-                            MovieNavType.WATCHLIST -> Text(text = "Watchlist")
+                            MovieNavType.WATCHLIST -> WatchlistScreen(
+                                moviesHomeInteractionEvents =  {
+                                    handleInteractionEvents(it, viewModel)
+                                }
+                            )
                         }
                     }
                 }
@@ -65,15 +72,21 @@ class MoviesHomeActivity : AppCompatActivity() {
         }
     }
 
-    fun handleInteractionEvents(interactionEvents: MoviesHomeInteractionEvents) {
+    fun handleInteractionEvents(
+        interactionEvents: MoviesHomeInteractionEvents,
+        viewModel: MoviesHomeViewModel
+    ) {
         when (interactionEvents) {
             is MoviesHomeInteractionEvents.OpenMovieDetail -> {
                 startActivity(MovieDetailActivity.newIntent(
                     this, interactionEvents.movie, interactionEvents.imageId))
                 overridePendingTransition(0, 0)
             }
-
-            else -> {
+            is MoviesHomeInteractionEvents.AddToMyWatchlist -> {
+                viewModel.addToMyWatchlist(interactionEvents.movie)
+            }
+            is MoviesHomeInteractionEvents.RemoveFromMyWatchlist -> {
+                viewModel.removeFromMyWatchlist(interactionEvents.movie)
             }
         }
     }
@@ -99,10 +112,10 @@ fun MoviesBottomBar(navType: MutableState<MovieNavType>) {
             label = { Text(text = "Showing") },
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Search) },
+            icon = { Icon(asset = Icons.Outlined.Subscriptions) },
             selected = navType.value == MovieNavType.TRENDING,
             onClick = { navType.value = MovieNavType.TRENDING },
-            label = { Text(text = "Search") }
+            label = { Text(text = "Trending") }
         )
         BottomNavigationItem(
             icon = { Icon(asset = Icons.Outlined.LibraryAdd) },

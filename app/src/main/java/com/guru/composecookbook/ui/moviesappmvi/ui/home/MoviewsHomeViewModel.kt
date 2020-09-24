@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.guru.composecookbook.R
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.moviesappmvi.data.repository.MovieRepository
 import com.guru.composecookbook.ui.moviesappmvi.di.MovieDIGraph
@@ -23,6 +22,9 @@ class MoviesHomeViewModel(
     val genresLiveData = liveData(Dispatchers.IO) {
         emitSource(movieRepository.getGenres())
     }
+    val myWatchlist = liveData(Dispatchers.IO) {
+        emitSource(movieRepository.getMyWatchlist())
+    }
 
     init {
         viewModelScope.launch {
@@ -36,5 +38,17 @@ class MoviesHomeViewModel(
                 }
             movieRepository.fetchAndSaveGenresToDatabase().collect { }
         }
+        viewModelScope.launch(Dispatchers.IO) {
+            movieRepository.getMyWatchlist()
+        }
     }
+
+    fun addToMyWatchlist(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
+            movieRepository.addToMyWatchlist(movie)
+        }
+
+    fun removeFromMyWatchlist(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
+        movieRepository.removeFromMyWatchlist(movie)
+    }
+
 }

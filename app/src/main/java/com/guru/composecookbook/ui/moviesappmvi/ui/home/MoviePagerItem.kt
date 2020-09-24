@@ -34,6 +34,7 @@ fun MoviePagerItem(
     movie: Movie,
     genres: List<Genre>,
     isSelected: Boolean,
+    addToWatchList: () -> Unit,
     openMovieDetail: () -> Unit
 ) {
     val animateHeight = animate(if (isSelected) 645.dp else 360.dp)
@@ -41,7 +42,9 @@ fun MoviePagerItem(
     val animateElevation = if (isSelected) 12.dp else 2.dp
     val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
 
-    val movieGenres = genres.filter { movie.genre_ids.contains(it.id) }.take(3)
+    val movieGenres = movie.genre_ids?.let {
+            movieGenreIds -> genres.filter { movieGenreIds.contains(it.id) }.take(3)
+    }
 
     Card(
         elevation = animate(animateElevation),
@@ -71,12 +74,12 @@ fun MoviePagerItem(
                     modifier = Modifier.padding(8.dp),
                     style = typography.h6
                 )
-                IconButton(onClick = { /* TODO add to watchlist */ }) {
-                    Icon(asset = Icons.Default.LibraryAdd)
+                IconButton(onClick = { addToWatchList.invoke() }) {
+                    Icon(asset = Icons.Default.LibraryAdd, tint = MaterialTheme.colors.primary)
                 }
             }
             Row {
-                movieGenres.forEach {
+                movieGenres?.forEach {
                     InterestTag(text = it.name)
                 }
             }

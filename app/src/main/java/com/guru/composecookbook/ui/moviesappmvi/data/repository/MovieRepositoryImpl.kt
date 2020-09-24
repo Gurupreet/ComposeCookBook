@@ -42,11 +42,11 @@ class MovieRepositoryImpl(
     }
 
     override suspend fun addToMyWatchlist(movie: Movie) {
-        // moviesDao.addMovieDetail(movie)
+         moviesDao.addToWatchList(movie)
     }
 
     override suspend fun removeFromMyWatchlist(movie: Movie) {
-        moviesDao.deleteAll()
+        moviesDao.removeFromMYWatchlist(movie)
     }
 
     override suspend fun getGenres(): LiveData<List<Genre>> = genreDao.getAllGenres()

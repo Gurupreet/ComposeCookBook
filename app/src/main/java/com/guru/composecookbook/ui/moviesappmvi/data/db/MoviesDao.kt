@@ -19,4 +19,7 @@ interface MoviesDao {
 
     @Query("select * from movies_table where id =:movieId")
     fun getMovieDetail(movieId: String): LiveData<Movie>
+
+    @Delete
+    fun removeFromMYWatchlist(movie: Movie)
 }
