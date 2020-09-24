@@ -5,7 +5,8 @@ import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
-import androidx.compose.material.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -52,7 +53,10 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
 }
 
 @Composable
-fun MoviesPager(imageId: MutableState<Int>, moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
+fun MoviesPager(
+    imageId: MutableState<Int>,
+    moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit
+) {
     val moviesViewModel: MoviesHomeViewModel = viewModel()
     val movies by moviesViewModel.nowShowingLiveData.observeAsState(emptyList())
     val genres by moviesViewModel.genresLiveData.observeAsState(emptyList())
@@ -89,7 +93,6 @@ fun MoviesPager(imageId: MutableState<Int>, moviesHomeInteractionEvents: (Movies
         }
     }
 }
-
 
 
 val imageIds =

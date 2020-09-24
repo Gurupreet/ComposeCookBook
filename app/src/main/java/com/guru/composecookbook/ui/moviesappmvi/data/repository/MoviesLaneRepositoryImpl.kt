@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class MoviesLaneRepositoryImpl(private val movieApi: MovieApi): MoviesLanesRepository {
+class MoviesLaneRepositoryImpl(private val movieApi: MovieApi) : MoviesLanesRepository {
 
     override suspend fun getTrendingMovies(): Flow<List<Movie>> = flow {
         val response = movieApi.getTrendingMovies()

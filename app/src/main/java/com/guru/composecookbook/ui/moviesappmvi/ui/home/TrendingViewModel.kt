@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
-import com.guru.composecookbook.ui.moviesappmvi.data.repository.MovieRepository
 import com.guru.composecookbook.ui.moviesappmvi.data.repository.MoviesLanesRepository
 import com.guru.composecookbook.ui.moviesappmvi.di.MovieDIGraph
 import kotlinx.coroutines.flow.collect
@@ -12,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class TrendingViewModel(
     private val moviesLanesRepository: MoviesLanesRepository = MovieDIGraph.moviesLanesRepository
-): ViewModel() {
+) : ViewModel() {
     val trendingMoviesLiveData = MutableLiveData<List<Movie>>()
     val popularMoviesLiveData = MutableLiveData<List<Movie>>()
     val topRatedMovies = MutableLiveData<List<Movie>>()

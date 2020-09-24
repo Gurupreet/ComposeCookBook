@@ -34,7 +34,7 @@ class MoviesHomeViewModel(
                     }
                 }
 
-            movieRepository.fetchAndSaveGenresToDatabase().collect {  }
+            movieRepository.fetchAndSaveGenresToDatabase().collect { }
         }
     }
 }

@@ -28,18 +28,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.palette.graphics.Palette
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoui.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
@@ -103,7 +100,10 @@ class MovieDetailActivity : AppCompatActivity() {
                             Text(
                                 text = "PG13  •  ${movie.vote_average}/10",
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium)
+                                style = typography.h6.copy(
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Medium
+                                )
                             )
                             Text(
                                 text = movie.overview,

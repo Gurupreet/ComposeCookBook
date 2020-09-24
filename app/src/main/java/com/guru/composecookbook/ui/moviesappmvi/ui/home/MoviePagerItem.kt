@@ -7,7 +7,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.Card
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.runtime.Composable
@@ -27,14 +30,19 @@ import com.guru.composecookbook.ui.profile.InterestTag
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun MoviePagerItem(movie: Movie, genres: List<Genre>, isSelected: Boolean, openMovieDetail: () -> Unit) {
+fun MoviePagerItem(
+    movie: Movie,
+    genres: List<Genre>,
+    isSelected: Boolean,
+    openMovieDetail: () -> Unit
+) {
     val animateHeight = animate(if (isSelected) 645.dp else 360.dp)
     val animateWidth = animate(if (isSelected) 340.dp else 320.dp)
     val animateElevation = if (isSelected) 12.dp else 2.dp
     val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-    
+
     val movieGenres = genres.filter { movie.genre_ids.contains(it.id) }.take(3)
-    
+
     Card(
         elevation = animate(animateElevation),
         modifier = Modifier
@@ -68,7 +76,7 @@ fun MoviePagerItem(movie: Movie, genres: List<Genre>, isSelected: Boolean, openM
                 }
             }
             Row {
-                movieGenres.forEach { 
+                movieGenres.forEach {
                     InterestTag(text = it.name)
                 }
             }

@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.moviesappmvi.data.models
 
-import androidx.compose.ui.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -24,4 +23,4 @@ data class Movie(
     val status: String?,
     var addedTime: Long?,
     var dominantRgb: Int = 0
-): Serializable
+) : Serializable

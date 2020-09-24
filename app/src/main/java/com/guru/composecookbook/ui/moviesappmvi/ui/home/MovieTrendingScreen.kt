@@ -1,25 +1,20 @@
 package com.guru.composecookbook.ui.moviesappmvi.ui.home
 
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRowFor
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.horizontalGradientBackground
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.moviesappmvi.ui.MoviesLaneItem
-import dev.chrisbanes.accompanist.coil.CoilImage
+import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 
 @Composable
 fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
@@ -34,7 +29,9 @@ fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvent
         "Trending TV shows",
         "Top rated TV shows",
     )
-    ScrollableColumn(modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)) {
+    ScrollableColumn(
+        modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)
+    ) {
         Spacer(modifier = Modifier.height(statusBarHeight))
 
         if (showLoading.value) {
@@ -56,13 +53,13 @@ fun DynamicSection(
     showLoading: MutableState<Boolean>,
     moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit
 ) {
-   val movies by  when (type) {
-       "Trending this week" -> viewModel.trendingMoviesLiveData.observeAsState(emptyList())
-       "Popular this week" -> viewModel.popularMoviesLiveData.observeAsState(emptyList())
-       "Trending TV shows" -> viewModel.trendingTVShowsLiveData.observeAsState(emptyList())
-       "Top rated movies" -> viewModel.topRatedMovies.observeAsState(emptyList())
-       "Top rated TV shows" -> viewModel.topRatedTVShows.observeAsState(emptyList())
-       else ->  viewModel.trendingMoviesLiveData.observeAsState(emptyList())
+    val movies by when (type) {
+        "Trending this week" -> viewModel.trendingMoviesLiveData.observeAsState(emptyList())
+        "Popular this week" -> viewModel.popularMoviesLiveData.observeAsState(emptyList())
+        "Trending TV shows" -> viewModel.trendingTVShowsLiveData.observeAsState(emptyList())
+        "Top rated movies" -> viewModel.topRatedMovies.observeAsState(emptyList())
+        "Top rated TV shows" -> viewModel.topRatedTVShows.observeAsState(emptyList())
+        else -> viewModel.trendingMoviesLiveData.observeAsState(emptyList())
     }
     if (movies.isNotEmpty()) {
         showLoading.value = false

@@ -17,14 +17,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.material.icons.outlined.MovieCreation
 import androidx.compose.material.icons.outlined.Search
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.moviesappmvi.ui.details.MovieDetailActivity
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
-import com.guru.composecookbook.theme.graySurface
 
 sealed class MoviesHomeInteractionEvents {
     data class OpenMovieDetail(val movie: Movie) : MoviesHomeInteractionEvents()
@@ -44,7 +45,7 @@ class MoviesHomeActivity : AppCompatActivity() {
                 ) {
                     Crossfade(current = navType) {
                         when (navType.value) {
-                            MovieNavType.SHOWING ->   MovieHomeScreen(
+                            MovieNavType.SHOWING -> MovieHomeScreen(
                                 moviesHomeInteractionEvents = {
                                     handleInteractionEvents(it)
                                 }
@@ -71,7 +72,8 @@ class MoviesHomeActivity : AppCompatActivity() {
                 overridePendingTransition(0, 0)
             }
 
-            else -> {}
+            else -> {
+            }
         }
     }
 
