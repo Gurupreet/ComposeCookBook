@@ -28,7 +28,7 @@ import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.moviesappmvi.ui.details.MovieDetailActivity
 
 sealed class MoviesHomeInteractionEvents {
-    data class OpenMovieDetail(val movie: Movie) : MoviesHomeInteractionEvents()
+    data class OpenMovieDetail(val movie: Movie, val imageId: Int = 0) : MoviesHomeInteractionEvents()
     data class AddToMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
     data class RemoveFromMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
 }
@@ -68,7 +68,8 @@ class MoviesHomeActivity : AppCompatActivity() {
     fun handleInteractionEvents(interactionEvents: MoviesHomeInteractionEvents) {
         when (interactionEvents) {
             is MoviesHomeInteractionEvents.OpenMovieDetail -> {
-                startActivity(MovieDetailActivity.newIntent(this, interactionEvents.movie))
+                startActivity(MovieDetailActivity.newIntent(
+                    this, interactionEvents.movie, interactionEvents.imageId))
                 overridePendingTransition(0, 0)
             }
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.guru.composecookbook.R
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.moviesappmvi.data.repository.MovieRepository
 import com.guru.composecookbook.ui.moviesappmvi.di.MovieDIGraph
@@ -33,7 +34,6 @@ class MoviesHomeViewModel(
                         errorLiveData.value = "Failed to load movies"
                     }
                 }
-
             movieRepository.fetchAndSaveGenresToDatabase().collect { }
         }
     }

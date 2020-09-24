@@ -32,11 +32,10 @@ fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -
 
 @Composable
 fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
-    //TODO dynamic gradient from poster right now It's just getting from local images
+    //TODO dynamic gradient from poster via coil right now It's just getting from local images
     var imageId = remember { mutableStateOf(R.drawable.camelia) }
-    val defaultBitmap = imageResource(id = imageId.value).asAndroidBitmap()
-    var currentBitmap = mutableStateOf(defaultBitmap)
-    val swatch = generateDominantColorState(currentBitmap.value)
+    var currentBitmap = imageResource(id = imageId.value).asAndroidBitmap()
+    val swatch = generateDominantColorState(currentBitmap)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)
 
     ScrollableColumn(
@@ -72,11 +71,12 @@ fun MoviesPager(
         Pager(state = pagerState, modifier = Modifier.preferredHeight(645.dp)) {
             Log.d("pager offset", currentPageOffset.toString())
             val movie = movies[page]
-            imageId.value = imageIds[pagerState.currentPage]
             val isSelected = pagerState.currentPage == page
 
             MoviePagerItem(movie, genres, isSelected) {
-                moviesHomeInteractionEvents(MoviesHomeInteractionEvents.OpenMovieDetail(movie))
+                moviesHomeInteractionEvents(
+                    MoviesHomeInteractionEvents.OpenMovieDetail(movie, imageId.value)
+                )
             }
         }
     } else {
@@ -93,32 +93,3 @@ fun MoviesPager(
         }
     }
 }
-
-
-val imageIds =
-    listOf(
-        R.drawable.camelia,
-        R.drawable.khalid,
-        R.drawable.lana,
-        R.drawable.edsheeran,
-        R.drawable.dualipa,
-        R.drawable.sam,
-        R.drawable.marsh,
-        R.drawable.wolves,
-        R.drawable.camelia,
-        R.drawable.khalid,
-        R.drawable.lana,
-        R.drawable.edsheeran,
-        R.drawable.dualipa,
-        R.drawable.sam,
-        R.drawable.marsh,
-        R.drawable.wolves,
-        R.drawable.camelia,
-        R.drawable.khalid,
-        R.drawable.lana,
-        R.drawable.edsheeran,
-        R.drawable.dualipa,
-        R.drawable.sam,
-        R.drawable.marsh,
-        R.drawable.wolves,
-    )

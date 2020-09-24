@@ -28,15 +28,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.demoui.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
@@ -46,6 +50,9 @@ class MovieDetailActivity : AppCompatActivity() {
     val movie by lazy {
         intent.getSerializableExtra(MOVIE) as Movie?
     }
+    val imageId by lazy {
+        intent.getIntExtra(IMAGE_ID, 0)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +61,16 @@ class MovieDetailActivity : AppCompatActivity() {
             ComposeCookBookTheme {
                 val expand = remember { mutableStateOf(false) }
                 val viewModel: MovieDetailViewModel = viewModel()
+                var dominantColors = listOf(graySurface, Color.Black)
+
+                if (imageId != 0) {
+                    var currentBitmap = imageResource(id = imageId).asAndroidBitmap()
+                    val swatch = generateDominantColorState(currentBitmap)
+                    dominantColors = listOf(Color(swatch.rgb), Color.Black)
+                }
 
                 ScrollableColumn(
-                    modifier = Modifier.verticalGradientBackground(listOf(Color.Black, Color.Black))
+                    modifier = Modifier.verticalGradientBackground(dominantColors)
                         .padding(
                             animate(
                                 if (expand.value) 1.dp else 120.dp,
@@ -126,9 +140,15 @@ class MovieDetailActivity : AppCompatActivity() {
 
     companion object {
         const val MOVIE = "movie"
+        const val IMAGE_ID = "imageId"
         fun newIntent(context: Context, movie: Movie) =
             Intent(context, MovieDetailActivity::class.java).apply {
                 putExtra(MOVIE, movie)
+            }
+        fun newIntent(context: Context, movie: Movie, imageId: Int) =
+            Intent(context, MovieDetailActivity::class.java).apply {
+                putExtra(MOVIE, movie)
+                putExtra(IMAGE_ID, imageId)
             }
     }
 }
