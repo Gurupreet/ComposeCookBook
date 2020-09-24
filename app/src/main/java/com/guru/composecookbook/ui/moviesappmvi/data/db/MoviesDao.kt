@@ -2,15 +2,14 @@ package com.guru.composecookbook.ui.moviesappmvi.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.guru.composecookbook.ui.moviesappmvi.data.models.Genre
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 
 @Dao
+@TypeConverters()
 interface MoviesDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertMovieList(movies: List<Movie>)
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addMovieDetail(movie: Movie)
+    fun addToWatchList(movie: Movie)
 
     @Transaction
     @Query("select * from movies_table")

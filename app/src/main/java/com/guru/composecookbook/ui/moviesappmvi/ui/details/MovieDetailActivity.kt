@@ -27,16 +27,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
+import androidx.palette.graphics.Palette
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.demoui.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
+import com.guru.composecookbook.ui.profile.InterestTag
+import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -50,13 +56,16 @@ class MovieDetailActivity : AppCompatActivity() {
         setContent {
             ComposeCookBookTheme {
                 val expand = remember { mutableStateOf(false) }
+                val viewModel: MovieDetailViewModel = viewModel()
+
                 ScrollableColumn(
-                    modifier = Modifier.padding(
-                        animate(
-                            if (expand.value) 1.dp else 120.dp,
-                            tween(350)
+                    modifier = Modifier.verticalGradientBackground(listOf(Color.Black, Color.Black))
+                        .padding(
+                            animate(
+                                if (expand.value) 1.dp else 120.dp,
+                                tween(350)
+                            )
                         )
-                    ),
                 ) {
                     movie?.let { movie ->
                         CoilImage(
@@ -66,7 +75,9 @@ class MovieDetailActivity : AppCompatActivity() {
                                 .preferredHeight(
                                     600.dp
                                 ).fillMaxWidth(),
-                            onRequestCompleted = { expand.value = true }
+                            onRequestCompleted = {
+                                expand.value = true
+                            }
                         )
                         Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
                             Row(
@@ -83,18 +94,16 @@ class MovieDetailActivity : AppCompatActivity() {
                                     Icon(asset = Icons.Default.LibraryAdd)
                                 }
                             }
+                            GenreSection(viewModel, movie.genre_ids)
                             Text(
                                 text = "Release: ${movie.release_date}",
-                                modifier = Modifier.padding(horizontal = 8.dp),
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                                 style = typography.h6.copy(fontSize = 12.sp)
                             )
                             Text(
                                 text = "PG13  •  ${movie.vote_average}/10",
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                style = typography.h6.copy(
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Medium
-                                )
+                                style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium)
                             )
                             Text(
                                 text = movie.overview,
@@ -103,7 +112,7 @@ class MovieDetailActivity : AppCompatActivity() {
                                 style = typography.subtitle2
                             )
                             Spacer(modifier = Modifier.height(20.dp))
-                            SimilarMoviesSection(movie)
+                            SimilarMoviesSection(movie, viewModel)
                             Spacer(modifier = Modifier.height(50.dp))
                             Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
                                 Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
@@ -125,8 +134,7 @@ class MovieDetailActivity : AppCompatActivity() {
 }
 
 @Composable
-fun SimilarMoviesSection(currentMovie: Movie?) {
-    val viewModel: MovieDetailViewModel = viewModel()
+fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) {
     viewModel.getSimilarMovies(currentMovie?.id.toString())
     val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
     similarMovies?.let { movies ->
@@ -137,10 +145,21 @@ fun SimilarMoviesSection(currentMovie: Movie?) {
                 modifier = Modifier
                     .preferredWidth(200.dp)
                     .preferredHeight(300.dp)
-                    .padding(8.dp)
+                    .padding(12.dp)
                     .clip(RoundedCornerShape(12.dp)),
                 contentScale = ContentScale.Crop
             )
+        }
+    }
+}
+
+@Composable
+fun GenreSection(viewModel: MovieDetailViewModel, movieGenreIds: List<Int>) {
+    val genres by viewModel.genresLiveData.observeAsState(emptyList())
+    val movieGenres = genres.filter { movieGenreIds.contains(it.id) }.take(3)
+    Row {
+        movieGenres.forEach {
+            InterestTag(text = it.name)
         }
     }
 }

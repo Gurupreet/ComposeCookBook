@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.moviesappmvi.ui
+package com.guru.composecookbook.ui.moviesappmvi.ui.home
 
 import androidx.compose.animation.animate
 import androidx.compose.foundation.Icon
@@ -7,10 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.IconToggleButton
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.runtime.Composable
@@ -24,16 +21,20 @@ import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.moviesappmvi.data.DemoMovieDataProvider
+import com.guru.composecookbook.ui.moviesappmvi.data.models.Genre
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
+import com.guru.composecookbook.ui.profile.InterestTag
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun MoviePagerItem(movie: Movie, isSelected: Boolean, openMovieDetail: () -> Unit) {
-    val animateHeight = animate(if (isSelected) 620.dp else 360.dp)
+fun MoviePagerItem(movie: Movie, genres: List<Genre>, isSelected: Boolean, openMovieDetail: () -> Unit) {
+    val animateHeight = animate(if (isSelected) 645.dp else 360.dp)
     val animateWidth = animate(if (isSelected) 340.dp else 320.dp)
     val animateElevation = if (isSelected) 12.dp else 2.dp
     val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-
+    
+    val movieGenres = genres.filter { movie.genre_ids.contains(it.id) }.take(3)
+    
     Card(
         elevation = animate(animateElevation),
         modifier = Modifier
@@ -62,13 +63,18 @@ fun MoviePagerItem(movie: Movie, isSelected: Boolean, openMovieDetail: () -> Uni
                     modifier = Modifier.padding(8.dp),
                     style = typography.h6
                 )
-                IconToggleButton(checked = false, onCheckedChange = {}) {
+                IconButton(onClick = { /* TODO add to watchlist */ }) {
                     Icon(asset = Icons.Default.LibraryAdd)
+                }
+            }
+            Row {
+                movieGenres.forEach { 
+                    InterestTag(text = it.name)
                 }
             }
             Text(
                 text = "Release: ${movie.release_date}",
-                modifier = Modifier.padding(horizontal = 8.dp),
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                 style = typography.h6.copy(fontSize = 12.sp)
             )
             Text(

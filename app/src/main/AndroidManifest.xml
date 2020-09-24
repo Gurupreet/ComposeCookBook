@@ -17,7 +17,7 @@
             android:label="@string/title_activity_movie_detail"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
         <activity
-            android:name=".ui.moviesappmvi.ui.MoviesHomeActivity"
+            android:name=".ui.moviesappmvi.ui.home.MoviesHomeActivity"
             android:label="@string/title_activity_movies_home"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity

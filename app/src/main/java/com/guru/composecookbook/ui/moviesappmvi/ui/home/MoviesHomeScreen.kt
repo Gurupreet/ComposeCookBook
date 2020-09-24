@@ -1,17 +1,11 @@
-package com.guru.composecookbook.ui.moviesappmvi.ui
+package com.guru.composecookbook.ui.moviesappmvi.ui.home
 
 import android.util.Log
-import androidx.compose.foundation.Icon
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.LibraryAdd
-import androidx.compose.material.icons.outlined.MovieCreation
-import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -24,7 +18,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import com.guru.composecookbook.R
-import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.carousel.Pager
 import com.guru.composecookbook.ui.carousel.PagerState
@@ -33,11 +26,7 @@ import com.guru.composecookbook.ui.utils.verticalGradientBackground
 
 @Composable
 fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
-    Scaffold(
-        bottomBar = { MoviesBottomBar() }
-    ) {
-        MovieHomeScreenContent(moviesHomeInteractionEvents)
-    }
+    MovieHomeScreenContent(moviesHomeInteractionEvents)
 }
 
 @Composable
@@ -66,6 +55,7 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
 fun MoviesPager(imageId: MutableState<Int>, moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
     val moviesViewModel: MoviesHomeViewModel = viewModel()
     val movies by moviesViewModel.nowShowingLiveData.observeAsState(emptyList())
+    val genres by moviesViewModel.genresLiveData.observeAsState(emptyList())
     val error by moviesViewModel.errorLiveData.observeAsState()
 
     if (movies.isNotEmpty()) {
@@ -75,13 +65,13 @@ fun MoviesPager(imageId: MutableState<Int>, moviesHomeInteractionEvents: (Movies
                 PagerState(clock, 0, 0, movies.size - 1)
             }
         }
-        Pager(state = pagerState, modifier = Modifier.preferredHeight(620.dp)) {
+        Pager(state = pagerState, modifier = Modifier.preferredHeight(645.dp)) {
             Log.d("pager offset", currentPageOffset.toString())
             val movie = movies[page]
             imageId.value = imageIds[pagerState.currentPage]
             val isSelected = pagerState.currentPage == page
 
-            MoviePagerItem(movie, isSelected) {
+            MoviePagerItem(movie, genres, isSelected) {
                 moviesHomeInteractionEvents(MoviesHomeInteractionEvents.OpenMovieDetail(movie))
             }
         }
@@ -100,35 +90,7 @@ fun MoviesPager(imageId: MutableState<Int>, moviesHomeInteractionEvents: (Movies
     }
 }
 
-@Composable
-fun MoviesBottomBar() {
-    val bottomNavBackground =
-        if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
-    BottomNavigation(backgroundColor = bottomNavBackground) {
-        BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.MovieCreation) },
-            selected = true,
-            onClick = { },
-            label = { Text(text = "Showing") },
-        )
-        BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Search) },
-            selected = false,
-            onClick = { },
-            label = { Text(text = "Search") }
-        )
-        BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.LibraryAdd) },
-            selected = false,
-            onClick = { },
-            label = { Text(text = "Watchlist") }
-        )
-    }
-}
 
-enum class MovieNavType {
-    SHOWING, TRENDING, WATCHLIST
-}
 
 val imageIds =
     listOf(

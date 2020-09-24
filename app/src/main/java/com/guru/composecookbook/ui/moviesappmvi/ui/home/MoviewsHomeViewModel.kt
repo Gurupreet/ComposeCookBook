@@ -1,11 +1,13 @@
-package com.guru.composecookbook.ui.moviesappmvi.ui
+package com.guru.composecookbook.ui.moviesappmvi.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.moviesappmvi.data.repository.MovieRepository
 import com.guru.composecookbook.ui.moviesappmvi.di.MovieDIGraph
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -15,6 +17,11 @@ class MoviesHomeViewModel(
 
     val nowShowingLiveData = MutableLiveData<List<Movie>>()
     val errorLiveData = MutableLiveData<String>()
+
+    //live data to read room database
+    val genresLiveData = liveData(Dispatchers.IO) {
+        emitSource(movieRepository.getGenres())
+    }
 
     init {
         viewModelScope.launch {
@@ -26,6 +33,8 @@ class MoviesHomeViewModel(
                         errorLiveData.value = "Failed to load movies"
                     }
                 }
+
+            movieRepository.fetchAndSaveGenresToDatabase().collect {  }
         }
     }
 }

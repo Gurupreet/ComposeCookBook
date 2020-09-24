@@ -131,8 +131,7 @@ fun PreviewSpotifyHomeGridItem() {
 fun generateDominantColorState(bitmap: Bitmap): Palette.Swatch {
     return Palette.Builder(bitmap)
         .resizeBitmapArea(0)
-        .clearFilters()
-        .maximumColorCount(8)
+        .maximumColorCount(16)
         .generate().swatches.sortedByDescending { swatch -> swatch.population }.first()
 }
 
