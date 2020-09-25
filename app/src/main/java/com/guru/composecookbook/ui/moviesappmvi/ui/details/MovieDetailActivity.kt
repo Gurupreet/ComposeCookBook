@@ -61,84 +61,7 @@ class MovieDetailActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
             ComposeCookBookTheme {
-                val expand = remember { mutableStateOf(false) }
-                val viewModel: MovieDetailViewModel = viewModel()
-                var dominantColors = listOf(graySurface, Color.Black)
-
-                if (imageId != 0) {
-                    var currentBitmap = imageResource(id = imageId).asAndroidBitmap()
-                    val swatch = generateDominantColorState(currentBitmap)
-                    dominantColors = listOf(Color(swatch.rgb), Color.Black)
-                }
-
-                ScrollableColumn(
-                    modifier = Modifier.verticalGradientBackground(dominantColors)
-                        .padding(
-                            animate(
-                                if (expand.value) 1.dp else 120.dp,
-                                tween(350)
-                            )
-                        )
-                ) {
-                    movie?.let { movie ->
-                        CoilImage(
-                            data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .preferredHeight(
-                                    600.dp
-                                ).fillMaxWidth(),
-                            onRequestCompleted = {
-                                expand.value = true
-                            }
-                        )
-                        Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
-                            Row(
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Text(
-                                    text = movie.title,
-                                    modifier = Modifier.padding(8.dp),
-                                    style = typography.h6
-                                )
-                                IconButton(onClick = {}) {
-                                    Icon(
-                                        asset = Icons.Default.LibraryAdd,
-                                        tint = MaterialTheme.colors.primary
-                                    )
-                                }
-                            }
-                            GenreSection(viewModel, movie.genre_ids)
-                            Text(
-                                text = "Release: ${movie.release_date}",
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                style = typography.h6.copy(fontSize = 12.sp)
-                            )
-                            Text(
-                                text = "PG13  •  ${movie.vote_average}/10",
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                style = typography.h6.copy(
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Medium
-                                )
-                            )
-                            Text(
-                                text = movie.overview,
-                                modifier = Modifier
-                                    .padding(8.dp),
-                                style = typography.subtitle2
-                            )
-                            Spacer(modifier = Modifier.height(20.dp))
-                            SimilarMoviesSection(movie, viewModel)
-                            Spacer(modifier = Modifier.height(50.dp))
-                            Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
-                                Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
-                            }
-                        }
-                    }
-                }
+                MovieDetailContent(movie, imageId)
             }
         }
     }
@@ -157,6 +80,89 @@ class MovieDetailActivity : AppCompatActivity() {
             }
     }
 }
+
+@Composable
+fun MovieDetailContent(movie: Movie?, imageId: Int) {
+    val expand = remember { mutableStateOf(false) }
+    val viewModel: MovieDetailViewModel = viewModel()
+    var dominantColors = listOf(graySurface, Color.Black)
+
+    if (imageId != 0) {
+        var currentBitmap = imageResource(id = imageId).asAndroidBitmap()
+        val swatch = generateDominantColorState(currentBitmap)
+        dominantColors = listOf(Color(swatch.rgb), Color.Black)
+    }
+
+    ScrollableColumn(
+        modifier = Modifier.verticalGradientBackground(dominantColors)
+            .padding(
+                animate(
+                    if (expand.value) 1.dp else 120.dp,
+                    tween(350)
+                )
+            )
+    ) {
+        movie?.let { movie ->
+            CoilImage(
+                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .preferredHeight(
+                        600.dp
+                    ).fillMaxWidth(),
+                onRequestCompleted = {
+                    expand.value = true
+                }
+            )
+            Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = movie.title,
+                        modifier = Modifier.padding(8.dp),
+                        style = typography.h6
+                    )
+                    IconButton(onClick = {}) {
+                        Icon(
+                            asset = Icons.Default.LibraryAdd,
+                            tint = MaterialTheme.colors.primary
+                        )
+                    }
+                }
+                GenreSection(viewModel, movie.genre_ids)
+                Text(
+                    text = "Release: ${movie.release_date}",
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                    style = typography.h6.copy(fontSize = 12.sp)
+                )
+                Text(
+                    text = "PG13  •  ${movie.vote_average}/10",
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                    style = typography.h6.copy(
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                Text(
+                    text = movie.overview,
+                    modifier = Modifier
+                        .padding(8.dp),
+                    style = typography.subtitle2
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                SimilarMoviesSection(movie, viewModel)
+                Spacer(modifier = Modifier.height(50.dp))
+                Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
+                    Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
+                }
+            }
+        }
+    }
+}
+
 
 @Composable
 fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) {

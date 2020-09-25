@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.moviesappmvi.ui.home
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
@@ -14,8 +15,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.drawLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -69,13 +73,24 @@ fun MoviePagerItem(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
+                val clicked = remember { mutableStateOf(false) }
                 Text(
                     text = movie.title,
                     modifier = Modifier.padding(8.dp),
                     style = typography.h6
                 )
-                IconButton(onClick = { addToWatchList.invoke() }) {
-                    Icon(asset = Icons.Default.LibraryAdd, tint = MaterialTheme.colors.primary)
+                IconButton(onClick = {
+                    addToWatchList.invoke()
+                    clicked.value = !clicked.value
+                }) {
+                    Icon(
+                        asset = Icons.Default.LibraryAdd,
+                        tint = MaterialTheme.colors.primary,
+                        modifier = Modifier
+                            .drawLayer(rotationY = animate(
+                                if (clicked.value) 720f else 0f, tween(400))
+                            )
+                    )
                 }
             }
             Row {
@@ -95,7 +110,7 @@ fun MoviePagerItem(
             )
             Text(
                 text = movie.overview,
-                maxLines = 2,
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)

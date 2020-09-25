@@ -29,12 +29,13 @@ class TrendingViewModel(
             moviesLanesRepository.getTopRatedMovies().collect {
                 topRatedMovies.value = it
             }
-            moviesLanesRepository.getTopRatedTVShwos().collect {
-                topRatedTVShows.value = it
-            }
-            moviesLanesRepository.getTrendingTVShows().collect {
-                trendingTVShowsLiveData.value = it
-            }
+            // TODO create new model for TV showsq
+//            moviesLanesRepository.getTopRatedTVShwos().collect {
+//                topRatedTVShows.value = it
+//            }
+//            moviesLanesRepository.getTrendingTVShows().collect {
+//                trendingTVShowsLiveData.value = it
+//            }
         }
     }
 }

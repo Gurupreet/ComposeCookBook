@@ -104,6 +104,7 @@ fun MoviesPager(
 val imageIds =
     listOf(
         R.drawable.camelia,
+        R.drawable.camelia,
         R.drawable.khalid,
         R.drawable.lana,
         R.drawable.edsheeran,
