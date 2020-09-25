@@ -428,19 +428,7 @@ fun DpMultiStateAnimation() {
     val dpAnim = transition(
         definition = AnimationDefinations.dpAnimDefinition,
         initState = dpStartState,
-        toState = dpEndState,
-        onStateChangeFinished = {
-            when (it) {
-                0 -> {
-                    dpStartState = 0
-                    dpEndState = 2
-                }
-                2 -> {
-                    dpStartState = 2
-                    dpEndState = 0
-                }
-            }
-        }
+        toState = dpEndState
     )
 
     Card(modifier = Modifier.preferredSize(200.dp), backgroundColor = green200) {
@@ -466,19 +454,7 @@ fun FloatMutliStateAnimation() {
     val floatAnim = transition(
         definition = AnimationDefinations.floatAnimDefinition(0f, 100f, true),
         initState = floatStateStart,
-        toState = floatStateFinal,
-        onStateChangeFinished = {
-            when (it) {
-                0 -> {
-                    floatStateStart = 0
-                    floatStateFinal = 2
-                }
-                2 -> {
-                    floatStateStart = 2
-                    floatStateFinal = 0
-                }
-            }
-        }
+        toState = floatStateFinal
     )
 
     Card(backgroundColor = green500, modifier = Modifier.preferredSize(150.dp)) {
@@ -497,19 +473,7 @@ fun FloatMultiStateAnimationCircleStrokeCanvas() {
     val floatAnim = transition(
         definition = AnimationDefinations.floatAnimDefinition(0f, 360f, true),
         initState = floatStateStart,
-        toState = floadStateFinal,
-        onStateChangeFinished = {
-            when (it) {
-                0 -> {
-                    floatStateStart = 0
-                    floadStateFinal = 2
-                }
-                2 -> {
-                    floatStateStart = 2
-                    floadStateFinal = 0
-                }
-            }
-        }
+        toState = floadStateFinal
     )
     val stroke = Stroke(8f)
     Canvas(modifier = Modifier.padding(16.dp).preferredSize(100.dp)) {
@@ -542,19 +506,7 @@ fun FloatMultiStateAnimationCircleCanvas() {
     val floatAnim = transition(
         definition = AnimationDefinations.floatAnimDefinition(0f, 200f, true),
         initState = floatStateStart,
-        toState = floadStateFinal,
-        onStateChangeFinished = {
-            when (it) {
-                0 -> {
-                    floatStateStart = 0
-                    floadStateFinal = 2
-                }
-                2 -> {
-                    floatStateStart = 2
-                    floadStateFinal = 0
-                }
-            }
-        }
+        toState = floadStateFinal
     )
 
     Canvas(modifier = Modifier.padding(16.dp)) {
@@ -594,15 +546,7 @@ fun FloatMultiStateAnimationExplode(duration: Int = 500) {
             0f, 2000f, false, duration
         ),
         initState = floatStateStart,
-        toState = floadStateFinal,
-        onStateChangeFinished = {
-            when (it) {
-                0 -> {
-                    floatStateStart = 0
-                    floadStateFinal = 2
-                }
-            }
-        }
+        toState = floadStateFinal
     )
 
     Canvas(modifier = Modifier) {
