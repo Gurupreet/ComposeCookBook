@@ -42,7 +42,7 @@ class MovieRepositoryImpl(
     }
 
     override suspend fun addToMyWatchlist(movie: Movie) {
-         moviesDao.addToWatchList(movie)
+        moviesDao.addToWatchList(movie)
     }
 
     override suspend fun removeFromMyWatchlist(movie: Movie) {

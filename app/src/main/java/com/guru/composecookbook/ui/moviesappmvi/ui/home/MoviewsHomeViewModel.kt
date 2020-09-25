@@ -44,8 +44,8 @@ class MoviesHomeViewModel(
     }
 
     fun addToMyWatchlist(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
-            movieRepository.addToMyWatchlist(movie)
-        }
+        movieRepository.addToMyWatchlist(movie)
+    }
 
     fun removeFromMyWatchlist(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
         movieRepository.removeFromMyWatchlist(movie)

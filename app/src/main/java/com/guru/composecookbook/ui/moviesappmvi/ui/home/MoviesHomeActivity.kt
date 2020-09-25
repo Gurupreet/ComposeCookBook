@@ -16,7 +16,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.material.icons.outlined.MovieCreation
-import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Subscriptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -30,7 +29,9 @@ import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.moviesappmvi.ui.details.MovieDetailActivity
 
 sealed class MoviesHomeInteractionEvents {
-    data class OpenMovieDetail(val movie: Movie, val imageId: Int = 0) : MoviesHomeInteractionEvents()
+    data class OpenMovieDetail(val movie: Movie, val imageId: Int = 0) :
+        MoviesHomeInteractionEvents()
+
     data class AddToMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
     data class RemoveFromMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
 }
@@ -59,7 +60,7 @@ class MoviesHomeActivity : AppCompatActivity() {
                                 }
                             )
                             MovieNavType.WATCHLIST -> WatchlistScreen(
-                                moviesHomeInteractionEvents =  {
+                                moviesHomeInteractionEvents = {
                                     handleInteractionEvents(it, viewModel)
                                 }
                             )
@@ -78,8 +79,11 @@ class MoviesHomeActivity : AppCompatActivity() {
     ) {
         when (interactionEvents) {
             is MoviesHomeInteractionEvents.OpenMovieDetail -> {
-                startActivity(MovieDetailActivity.newIntent(
-                    this, interactionEvents.movie, interactionEvents.imageId))
+                startActivity(
+                    MovieDetailActivity.newIntent(
+                        this, interactionEvents.movie, interactionEvents.imageId
+                    )
+                )
                 overridePendingTransition(0, 0)
             }
             is MoviesHomeInteractionEvents.AddToMyWatchlist -> {

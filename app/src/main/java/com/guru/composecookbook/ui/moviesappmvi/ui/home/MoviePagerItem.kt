@@ -46,8 +46,8 @@ fun MoviePagerItem(
     val animateElevation = if (isSelected) 12.dp else 2.dp
     val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
 
-    val movieGenres = movie.genre_ids?.let {
-            movieGenreIds -> genres.filter { movieGenreIds.contains(it.id) }.take(3)
+    val movieGenres = movie.genre_ids?.let { movieGenreIds ->
+        genres.filter { movieGenreIds.contains(it.id) }.take(3)
     }
 
     Card(
@@ -87,8 +87,10 @@ fun MoviePagerItem(
                         asset = Icons.Default.LibraryAdd,
                         tint = MaterialTheme.colors.primary,
                         modifier = Modifier
-                            .drawLayer(rotationY = animate(
-                                if (clicked.value) 720f else 0f, tween(400))
+                            .drawLayer(
+                                rotationY = animate(
+                                    if (clicked.value) 720f else 0f, tween(400)
+                                )
                             )
                     )
                 }

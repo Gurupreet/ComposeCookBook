@@ -16,11 +16,9 @@ import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.IconButton
-import androidx.compose.material.IconToggleButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
-import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -73,6 +71,7 @@ class MovieDetailActivity : AppCompatActivity() {
             Intent(context, MovieDetailActivity::class.java).apply {
                 putExtra(MOVIE, movie)
             }
+
         fun newIntent(context: Context, movie: Movie, imageId: Int) =
             Intent(context, MovieDetailActivity::class.java).apply {
                 putExtra(MOVIE, movie)

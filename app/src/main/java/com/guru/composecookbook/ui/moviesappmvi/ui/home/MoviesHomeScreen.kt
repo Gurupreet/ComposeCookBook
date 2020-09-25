@@ -82,7 +82,8 @@ fun MoviesPager(
                 { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.AddToMyWatchlist(movie)) }
             ) {
                 moviesHomeInteractionEvents(
-                    MoviesHomeInteractionEvents.OpenMovieDetail(movie, imageId.value))
+                    MoviesHomeInteractionEvents.OpenMovieDetail(movie, imageId.value)
+                )
             }
         }
     } else {
@@ -99,7 +100,6 @@ fun MoviesPager(
         }
     }
 }
-
 
 val imageIds =
     listOf(
