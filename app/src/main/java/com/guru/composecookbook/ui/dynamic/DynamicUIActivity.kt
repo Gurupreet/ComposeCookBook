@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.carousel.CarouselLayout
 import com.guru.composecookbook.ui.constraintlayout.ConstraintLayoutDemos
@@ -93,7 +92,7 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 }
                 DynamicUiType.ANDROIDVIEWS.name -> {
                     AndroidViews()
-            }
+                }
             }
         }
     )

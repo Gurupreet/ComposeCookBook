@@ -4,13 +4,14 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.ZoomControls
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.*
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -108,7 +109,7 @@ fun AndroidMapView() {
     val map = rememberMapViewWithLifecycle()
     // Taken from compose samples checkout below for official demo.
     // https://github.com/android/compose-samples/tree/master/Crane/app/src/main/java/androidx/compose/samples/crane/details
-    MapViewContainer(map = map, latitude = "1.3521" , longitude = "103.8198")
+    MapViewContainer(map = map, latitude = "1.3521", longitude = "103.8198")
 }
 
 @Composable

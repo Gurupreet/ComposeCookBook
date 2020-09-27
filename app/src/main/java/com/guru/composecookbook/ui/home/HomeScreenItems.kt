@@ -11,7 +11,7 @@ sealed class HomeScreenItems {
     object BottomAppBar : HomeScreenItems()
     object BottomSheets : HomeScreenItems()
     object Modifiers : HomeScreenItems()
-    object AndroidViews: HomeScreenItems()
+    object AndroidViews : HomeScreenItems()
 
     val name: String
         get() = when (this) {
