@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
+import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.carousel.CarouselLayout
 import com.guru.composecookbook.ui.constraintlayout.ConstraintLayoutDemos
@@ -33,6 +34,7 @@ class DynamicUIActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MobileAds.initialize(this)
         setContent {
             ComposeCookBookTheme(isDarkTheme) {
                 DynamicUiWrapper(dynamicUiType) {

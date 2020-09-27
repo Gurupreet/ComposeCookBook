@@ -23,4 +23,7 @@
     <string name="title_activity_crypto_detail">CryptoDetail</string>
     <string name="title_activity_movies_home">MovieHome</string>
     <string name="title_activity_movie_detail">MovieDetail</string>
+
+    <string name="test_adbanner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="test_admob_id">ca-app-pub-5207778306358129~3940384518</string>
 </resources>

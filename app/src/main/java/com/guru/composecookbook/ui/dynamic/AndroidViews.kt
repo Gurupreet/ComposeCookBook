@@ -4,22 +4,24 @@ import android.content.Context
 import android.widget.Button
 import android.widget.TextView
 import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.ui.tooling.preview.Preview
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.guru.composecookbook.R
-import com.guru.composecookbook.ui.home.HomeScreenItems
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 
 @Composable
 fun AndroidViews() {
@@ -28,6 +30,7 @@ fun AndroidViews() {
         val context = ContextAmbient.current
         AndroidTextView(context)
         AndroidButton(context)
+        AndroidAdView(context)
     }
 }
 
@@ -61,6 +64,7 @@ fun AndroidButton(context: Context) {
             setOnClickListener { count++ }
         }
     }
+    // AndroidView is composable  which hosts android views.
     AndroidView({ androidButton }, modifier = Modifier.padding(8.dp)) {
         // Button inflated in compose
         // Re composition will call this section again
@@ -71,6 +75,35 @@ fun AndroidButton(context: Context) {
 @Composable
 fun AndroidAdView(context: Context) {
     SubtitleText(subtitle = "Android AdView")
+
+    val adView = remember {
+        val adRequest: AdRequest = AdRequest.Builder().build()
+        AdView(context).apply {
+            // init test ads
+            adSize = AdSize.SMART_BANNER
+            adUnitId = resources.getString(R.string.test_adbanner_id)
+            loadAd(adRequest)
+        }
+    }
+
+    AndroidView({ adView }, modifier = Modifier.fillMaxWidth().padding(8.dp).background(Color.Gray))
+}
+
+@Composable
+fun AndroidMapView(context: Context) {
+    SubtitleText(subtitle = "Android MapView")
+
+//    val adView = remember {
+//        val adRequest: AdRequest = AdRequest.Builder().build()
+//        Map(context).apply {
+//            // init test ads
+//            adSize = AdSize.LARGE_BANNER
+//            adUnitId = resources.getString(R.string.test_adbanner_id)
+//            loadAd(adRequest)
+//        }
+//    }
+//
+//    AndroidView({ adView }, modifier = Modifier.fillMaxWidth().padding(8.dp).background(Color.Gray))
 }
 
 @Preview
