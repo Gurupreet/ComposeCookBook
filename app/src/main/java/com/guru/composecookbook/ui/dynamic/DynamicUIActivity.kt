@@ -34,7 +34,6 @@ class DynamicUIActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MobileAds.initialize(this)
         setContent {
             ComposeCookBookTheme(isDarkTheme) {
                 DynamicUiWrapper(dynamicUiType) {

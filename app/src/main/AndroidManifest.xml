@@ -16,6 +16,10 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value= "@string/test_admob_id" />
+        <!-- insert your maps api key below to see maps -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value= "" />
         <activity
             android:name=".ui.moviesappmvi.ui.details.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"

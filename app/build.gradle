@@ -48,7 +48,11 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.palette:palette:1.0.0'
     implementation 'com.google.android.material:material:1.2.0'
+
+    //google play services
     implementation 'com.google.android.gms:play-services-ads:19.4.0'
+    implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     //compose libs
     implementation "androidx.compose.ui:ui:$compose_version"

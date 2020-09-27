@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.ui.tooling.preview.Preview
+import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.Animations.AnimationScreen
 import com.guru.composecookbook.ui.demoui.DemoUIList
@@ -40,6 +41,8 @@ import com.guru.composecookbook.ui.utils.RotateIcon
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //for adView demo
+        MobileAds.initialize(this)
         setContent {
             ComposeCookBookTheme {
                 // A surface container using the 'background' color from the theme
