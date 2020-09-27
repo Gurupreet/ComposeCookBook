@@ -333,12 +333,12 @@ object DemoDataProvider {
         HomeScreenItems.ListView("Horizontal"),
         HomeScreenItems.ListView("Grid"),
         HomeScreenItems.Layouts,
-        HomeScreenItems.ConstraintsLayout,
         HomeScreenItems.Modifiers,
+        HomeScreenItems.AndroidViews,
+        HomeScreenItems.ConstraintsLayout,
         HomeScreenItems.Dialogs,
         HomeScreenItems.TabLayout,
         HomeScreenItems.Carousel,
-        HomeScreenItems.BottomAppBar,
         HomeScreenItems.BottomSheets,
     )
 

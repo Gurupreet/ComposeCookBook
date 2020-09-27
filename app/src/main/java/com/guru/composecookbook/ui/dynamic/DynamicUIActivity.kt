@@ -90,6 +90,9 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 DynamicUiType.MODIFIERS.name -> {
                     HowToModifiers()
                 }
+                DynamicUiType.ANDROIDVIEWS.name -> {
+                    AndroidViews()
+            }
             }
         }
     )

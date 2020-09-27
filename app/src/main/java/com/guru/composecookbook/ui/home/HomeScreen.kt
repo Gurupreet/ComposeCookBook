@@ -99,11 +99,8 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
         HomeScreenItems.Modifiers -> {
             DynamicUIActivity.newIntent(context, DynamicUiType.MODIFIERS.name, isDarkTheme)
         }
-        HomeScreenItems.ViewModelLiveData -> {
-            DynamicUIActivity.newIntent(context, DynamicUiType.MODIFIERS.name, isDarkTheme)
-        }
-        HomeScreenItems.ActivityAnimations -> {
-            DynamicUIActivity.newIntent(context, DynamicUiType.MODIFIERS.name, isDarkTheme)
+        HomeScreenItems.AndroidViews -> {
+            DynamicUIActivity.newIntent(context, DynamicUiType.ANDROIDVIEWS.name, isDarkTheme)
         }
     }
     context.startActivity(intent)

@@ -39,8 +39,8 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center
     ) {
-        val scrollState = rememberScrollState(0f)
         Stack(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+            val scrollState = rememberScrollState(0f)
             CryptoTopSection(crypto, scrollState, onBack)
             ScrollableColumn(
                 modifier = Modifier

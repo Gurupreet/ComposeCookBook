@@ -11,8 +11,7 @@ sealed class HomeScreenItems {
     object BottomAppBar : HomeScreenItems()
     object BottomSheets : HomeScreenItems()
     object Modifiers : HomeScreenItems()
-    object ActivityAnimations : HomeScreenItems()
-    object ViewModelLiveData : HomeScreenItems()
+    object AndroidViews: HomeScreenItems()
 
     val name: String
         get() = when (this) {
@@ -26,7 +25,6 @@ sealed class HomeScreenItems {
             BottomSheets -> "BottomSheets"
             Layouts -> "Layouts"
             Modifiers -> "Modifiers"
-            ActivityAnimations -> "ActivityAnimations"
-            ViewModelLiveData -> "ViewModel + LiveData"
+            AndroidViews -> "Compose X Android views"
         }
 }
