@@ -26,4 +26,5 @@
 
     <string name="test_adbanner_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="test_admob_id">ca-app-pub-5207778306358129~3940384518</string>
+    <string name="title_activity_dating_home_activitu">DatingHome</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeActivity
+import com.guru.composecookbook.ui.datingapp.DatingHomeActivity
 import com.guru.composecookbook.ui.demoui.spotify.SpotifyActivity
 import com.guru.composecookbook.ui.moviesappmvi.ui.home.MoviesHomeActivity
 
@@ -39,6 +40,11 @@ fun DemoUIList() {
                         "MoviesApp+MVVM" -> {
                             context.startActivity(
                                 MoviesHomeActivity.newIntent(context, false)
+                            )
+                        }
+                        "DatingApp" -> {
+                            context.startActivity(
+                                DatingHomeActivity.newIntent(context, false)
                             )
                         }
                         else -> {

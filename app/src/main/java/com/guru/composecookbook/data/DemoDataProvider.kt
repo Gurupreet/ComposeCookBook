@@ -352,7 +352,8 @@ object DemoDataProvider {
         "Youtube",
         "Spotify",
         "CryptoApp+MVVM",
-        "MoviesApp+MVVM"
+        "MoviesApp+MVVM",
+        "DatingApp"
     )
 
 }

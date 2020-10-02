@@ -25,7 +25,7 @@ object SpotifyDataProvider {
         imageId = R.drawable.adele21
     )
 
-    val albums = listOf(
+    val albums = mutableListOf(
         Album(
             id = 1,
             artist = "Ed Sheeran",

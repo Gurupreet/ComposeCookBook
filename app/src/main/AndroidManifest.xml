@@ -13,10 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeCookBook">
+        <activity
+            android:name=".ui.datingapp.DatingHomeActivity"
+            android:label="@string/title_activity_dating_home_activitu"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/test_admob_id" />
-        <!-- insert your maps api key below to see maps -->
+            android:value="@string/test_admob_id" /> <!-- insert your maps api key below to see maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
@@ -24,7 +28,7 @@
         <activity
             android:name=".ui.moviesappmvi.ui.details.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
             android:name=".ui.moviesappmvi.ui.home.MoviesHomeActivity"
             android:label="@string/title_activity_movies_home"
