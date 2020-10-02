@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
@@ -89,12 +88,12 @@ fun MoviesPager(
     } else {
         if (error.isNullOrEmpty()) {
             CircularProgressIndicator(
-                modifier = Modifier.padding(24.dp).align(Alignment.CenterHorizontally)
+                modifier = Modifier.padding(24.dp)
             )
         } else {
             Text(
                 text = error ?: "Unknown error",
-                modifier = Modifier.align(Alignment.CenterHorizontally),
+                modifier = Modifier,
                 color = MaterialTheme.colors.error
             )
         }

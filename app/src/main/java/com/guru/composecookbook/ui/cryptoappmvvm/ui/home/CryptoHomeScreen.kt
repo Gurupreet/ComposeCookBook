@@ -4,7 +4,6 @@ import androidx.compose.animation.animate
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -135,7 +134,7 @@ fun CryptoList(
 ) {
     if (uiState.cryptos.isEmpty()) {
         CircularProgressIndicator(
-            modifier = Modifier.gravity(Alignment.CenterHorizontally).padding(24.dp)
+            modifier = Modifier.padding(24.dp)
         )
     } else {
         LazyColumnFor(items = uiState.cryptos) {

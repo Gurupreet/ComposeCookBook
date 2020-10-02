@@ -6,7 +6,6 @@ import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -205,12 +204,12 @@ fun VisibilityAnimationFAB() {
     var expanded by remember { mutableStateOf(true) }
     FloatingActionButton(
         onClick = { expanded = !expanded },
-        modifier = Modifier.gravity(Alignment.CenterHorizontally)
+        modifier = Modifier
     ) {
         Row(Modifier.padding(start = 16.dp, end = 16.dp)) {
             Icon(
                 vectorResource(id = R.drawable.ic_twitter),
-                Modifier.gravity(Alignment.CenterVertically)
+                Modifier.align(Alignment.CenterVertically)
             )
             AnimatedVisibility(
                 expanded,

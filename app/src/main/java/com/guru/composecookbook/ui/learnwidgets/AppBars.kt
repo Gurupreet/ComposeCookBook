@@ -4,7 +4,6 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -15,7 +14,6 @@ import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.imageResource
@@ -79,7 +77,7 @@ fun TopAppBarsDemo() {
             Icon(
                 asset = vectorResource(id = R.drawable.ic_twitter),
                 tint = twitterColor,
-                modifier = Modifier.fillMaxWidth().gravity(Alignment.CenterHorizontally)
+                modifier = Modifier.fillMaxWidth()
             )
         },
         backgroundColor = MaterialTheme.colors.surface,

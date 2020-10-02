@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.dynamic
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.RowScope.gravity
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -14,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.emptyContent
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -64,7 +62,7 @@ fun TabLayout() {
                 )
             }
         }
-        Box(modifier = Modifier.weight(0.5f)) {
+        Surface(modifier = Modifier.weight(0.5f)) {
             when (selectedIndex.value) {
                 DemoTabs.APPLE.ordinal -> {
                     ScrollableListOfTabs()
@@ -142,7 +140,7 @@ private fun CustomImageChip(
         ),
         modifier = modifier
     ) {
-        Row(modifier = Modifier.gravity(Alignment.CenterVertically)) {
+        Row(modifier = Modifier) {
             Image(
                 asset = imageResource(imageId),
                 modifier = Modifier.padding(8.dp).preferredSize(20.dp).clip(CircleShape)

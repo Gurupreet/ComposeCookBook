@@ -6,7 +6,6 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.align
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
@@ -56,8 +55,7 @@ fun MoviePagerItem(
             .preferredWidth(animateWidth)
             .preferredHeight(animateHeight)
             .padding(24.dp)
-            .clickable(onClick = { openMovieDetail.invoke() })
-            .align(Alignment.CenterHorizontally),
+            .clickable(onClick = { openMovieDetail.invoke() }),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = MaterialTheme.colors.onBackground,
         contentColor = MaterialTheme.colors.background

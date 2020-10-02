@@ -6,8 +6,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.align
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -51,7 +49,7 @@ fun CarouselLayout() {
             selectedPage.value = pagerState.currentPage
             CarouselItem(item)
         }
-        Row(modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+        Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             items.forEachIndexed { index, _ ->
                 CarouselDot(
                     selected = index == selectedPage.value,
@@ -67,7 +65,7 @@ fun CarouselLayout() {
             selectedPage.value = pagerState.currentPage
             CarouselItemCircle(item)
         }
-        Row(modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+        Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             items.forEachIndexed { index, _ ->
                 CarouselDot(
                     selected = index == selectedPage.value,
@@ -119,7 +117,7 @@ fun CarouselItem(item: Item) {
             text = item.title,
             style = typography.h6.copy(color = Color.White),
             modifier = Modifier.fillMaxWidth().padding(24.dp)
-                .gravity(Alignment.BottomStart),
+                .align(Alignment.BottomStart),
         )
     }
 }
@@ -131,8 +129,7 @@ fun CarouselItemCircle(item: Item) {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(16.dp)
-            .preferredSize(160.dp)
-            .gravity(Alignment.CenterHorizontally).clip(CircleShape)
+            .preferredSize(160.dp).clip(CircleShape)
     )
 }
 
@@ -143,8 +140,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
         elevation = animate(animateElevation),
-        modifier = Modifier.preferredSize(animate(animateSize)).padding(24.dp)
-            .align(Alignment.CenterHorizontally),
+        modifier = Modifier.preferredSize(animate(animateSize)).padding(24.dp),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
         contentColor = MaterialTheme.colors.onPrimary

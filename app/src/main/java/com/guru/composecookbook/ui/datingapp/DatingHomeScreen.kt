@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AttachFile
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -21,18 +20,11 @@ import androidx.compose.ui.drawLayer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.gesture.DragObserver
 import androidx.compose.ui.gesture.rawDragGestureFilter
-import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.DensityAmbient
+import androidx.compose.ui.platform.ConfigurationAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
-import com.guru.composecookbook.ui.utils.TitleText
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.ConfigurationAmbient
-import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import kotlin.math.abs

@@ -8,7 +8,6 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,7 +17,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -142,7 +140,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 buttons = {
                     TextButton(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                        modifier = Modifier.padding(8.dp)
                     ) {
                         Text(text = "Ok")
                     }
@@ -156,7 +154,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                     Text(item.subtitle)
                 },
                 buttons = {
-                    Row(modifier = Modifier.gravity(Alignment.End)) {
+                    Row(modifier = Modifier) {
                         TextButton(
                             onClick = onDismiss,
                             modifier = Modifier.padding(4.dp)
@@ -182,13 +180,13 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 buttons = {
                     OutlinedButton(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).gravity(Alignment.End).width(100.dp)
+                        modifier = Modifier.padding(8.dp).width(100.dp)
                     ) {
                         Text(text = "Cancel")
                     }
                     Button(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).gravity(Alignment.End).width(100.dp)
+                        modifier = Modifier.padding(8.dp).width(100.dp)
                     ) {
                         Text(text = "Ok")
                     }
@@ -205,7 +203,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 buttons = {
                     TextButton(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                        modifier = Modifier.padding(8.dp)
                     ) {
                         Text(text = "Ok")
                     }
@@ -226,7 +224,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 buttons = {
                     TextButton(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                        modifier = Modifier.padding(8.dp)
                     ) {
                         Text(text = "Ok")
                     }
@@ -246,7 +244,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 buttons = {
                     TextButton(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).gravity(Alignment.End)
+                        modifier = Modifier.padding(8.dp)
                     ) {
                         Text(text = "Ok")
                     }

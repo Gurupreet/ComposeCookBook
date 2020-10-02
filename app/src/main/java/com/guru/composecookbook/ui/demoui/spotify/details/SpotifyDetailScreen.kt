@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.demoui.spotify.details
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -142,7 +141,6 @@ fun ShuffleButton() {
         onClick = {},
         backgroundColor = green700,
         modifier = Modifier.padding(vertical = 12.dp, horizontal = 24.dp)
-            .gravity(Alignment.CenterHorizontally)
             .clip(CircleShape)
     ) {
         Text(

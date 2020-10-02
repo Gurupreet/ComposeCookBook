@@ -6,7 +6,6 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope.weight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -63,8 +62,8 @@ fun BaseView(darkTheme: Boolean, content: @Composable() () -> Unit) {
 }
 
 @Composable
-fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean>) {
-    Column(Modifier.weight(1f)) {
+fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean>, modifier: Modifier) {
+    Column(modifier = modifier) {
         Crossfade(homeScreen) { screen ->
             Surface(color = MaterialTheme.colors.background) {
                 when (screen) {
@@ -84,8 +83,12 @@ fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean
 fun MainAppContent(darkTheme: MutableState<Boolean>) {
     //Default home screen state is always HOME
     var homeScreenState = savedInstanceState { BottomNavType.HOME }
-    Column(modifier = Modifier.fillMaxSize()) {
-        HomeScreenContent(homeScreen = homeScreenState.value, darkTheme = darkTheme)
+    Column {
+        HomeScreenContent(
+            homeScreen = homeScreenState.value,
+            darkTheme = darkTheme,
+            modifier = Modifier.weight(1f)
+        )
         BottomNavigationContent(homeScreenState)
     }
 }

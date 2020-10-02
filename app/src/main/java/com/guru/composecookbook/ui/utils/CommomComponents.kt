@@ -5,12 +5,10 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.vector.VectorAsset
@@ -23,7 +21,7 @@ import com.guru.composecookbook.theme.typography
 @Composable
 fun ComingSoon() {
     Column(
-        modifier = Modifier.fillMaxWidth().gravity(Alignment.CenterHorizontally).padding(50.dp)
+        modifier = Modifier.fillMaxWidth().padding(50.dp)
     ) {
         Text(
             text = "Coming Soon",

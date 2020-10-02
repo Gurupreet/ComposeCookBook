@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.demoui.twitter
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.ColumnScope.gravity
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredSize
@@ -19,7 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.imageResource
@@ -40,7 +38,7 @@ fun TwitterHome() {
                     Icon(
                         asset = vectorResource(id = R.drawable.ic_twitter),
                         tint = twitterColor,
-                        modifier = Modifier.fillMaxWidth().gravity(Alignment.CenterHorizontally)
+                        modifier = Modifier.fillMaxWidth()
                     )
                 },
                 backgroundColor = MaterialTheme.colors.surface,
