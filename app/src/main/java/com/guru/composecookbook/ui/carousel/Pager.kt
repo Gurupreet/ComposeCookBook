@@ -3,9 +3,8 @@ package com.guru.composecookbook.ui.carousel
 import androidx.compose.animation.AnimatedFloatModel
 import androidx.compose.animation.core.AnimationClockObservable
 import androidx.compose.animation.core.fling
-import androidx.compose.foundation.Box
-import androidx.compose.foundation.ContentGravity
 import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
@@ -118,7 +117,7 @@ fun Pager(
                 val pageData = PageData(page)
                 val scope = PagerScope(state, page)
                 key(pageData) {
-                    Box(gravity = ContentGravity.Center, modifier = pageData) {
+                    Column(modifier = pageData) {
                         scope.pageContent()
                     }
                 }

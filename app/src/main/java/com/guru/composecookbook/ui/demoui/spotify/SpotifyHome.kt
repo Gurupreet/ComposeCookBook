@@ -38,11 +38,11 @@ fun SpotifyHome() {
             asset = Icons.Outlined.Settings,
             tint = MaterialTheme.colors.onSurface,
             modifier = Modifier
-                .gravity(Alignment.TopEnd)
+                .align(Alignment.TopEnd)
                 .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
                 .drawOpacity(animate(1f - scrollState.value / 200f))
         )
-        PlayerBottomBar(Modifier.gravity(Alignment.BottomCenter))
+        PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
     }
 }
 

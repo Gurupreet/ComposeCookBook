@@ -115,7 +115,7 @@ fun SpotifySearchGridItem(album: Album) {
             asset = imageResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(70.dp)
-                .gravity(Alignment.Bottom)
+                .align(Alignment.Bottom)
                 .drawLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
         )
     }

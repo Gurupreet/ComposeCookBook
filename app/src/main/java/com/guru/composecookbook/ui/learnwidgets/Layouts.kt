@@ -153,7 +153,7 @@ fun TypeOfStacks() {
         .fillMaxWidth()
         .height(250.dp)
     Text(
-        text = "Children with no gravity", style = typography.caption,
+        text = "Children with no align", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
     Stack(modifier = stackModifier) {
@@ -174,7 +174,7 @@ fun TypeOfStacks() {
         ) {}
     }
     Text(
-        text = "Children with Topstart, center & bottomEnd gravity", style = typography.caption,
+        text = "Children with Topstart, center & bottomEnd align", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
     Stack(modifier = stackModifier) {
@@ -182,19 +182,19 @@ fun TypeOfStacks() {
             backgroundColor = green700, elevation = 4.dp, modifier = Modifier.preferredSize(
                 200
                     .dp
-            ).gravity(Alignment.TopStart)
+            ).align(Alignment.TopStart)
         ) {}
         Card(
             backgroundColor = green500, elevation = 4.dp, modifier = Modifier.preferredSize(
                 150
                     .dp
-            ).gravity(Alignment.Center)
+            ).align(Alignment.Center)
         ) {}
         Card(
             backgroundColor = green200, elevation = 4.dp, modifier = Modifier.preferredSize(
                 100
                     .dp
-            ).gravity(Alignment.BottomEnd)
+            ).align(Alignment.BottomEnd)
         ) {}
     }
 }

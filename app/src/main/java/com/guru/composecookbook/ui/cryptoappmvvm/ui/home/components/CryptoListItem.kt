@@ -61,7 +61,7 @@ fun CryptoListItem(
                 text = "$${crypto.price}",
                 style = typography.h6,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().gravity(Alignment.End)
+                modifier = Modifier.fillMaxWidth().align(Alignment.End)
             )
             Text(
                 text = "${crypto.dailyChange.roundToThreeDecimals()}" +

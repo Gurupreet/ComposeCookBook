@@ -184,7 +184,7 @@ fun NewsSection(crypto: Crypto) {
             VerticalListItemSmall(item = demoItem)
             Text(
                 text = "See More",
-                modifier = Modifier.gravity(Alignment.End).clickable(onClick = {}).padding(16.dp)
+                modifier = Modifier.align(Alignment.End).clickable(onClick = {}).padding(16.dp)
             )
         }
 

@@ -213,7 +213,7 @@ fun VisibilityAnimationFAB() {
             )
             AnimatedVisibility(
                 expanded,
-                modifier = Modifier.gravity(Alignment.CenterVertically)
+                modifier = Modifier.align(Alignment.CenterVertically)
             ) {
                 Text(modifier = Modifier.padding(start = 8.dp), text = "Tweet")
             }

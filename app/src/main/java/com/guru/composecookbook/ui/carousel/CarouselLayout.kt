@@ -81,7 +81,7 @@ fun CarouselLayout() {
             selectedPage.value = pagerState.currentPage
             CarouselItemCard(item, pagerState, selectedPage)
         }
-        Row(modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+        Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             items.forEachIndexed { index, _ ->
                 CarouselDot(
                     selected = index == selectedPage.value,
@@ -148,14 +148,14 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
         Column {
             Text(
                 text = item.title,
-                modifier = Modifier.gravity(Alignment.CenterHorizontally).padding(8.dp),
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp),
                 style = typography.body2
             )
             Image(
                 asset = imageResource(id = item.imageId),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.padding(4.dp)
-                    .gravity(Alignment.CenterHorizontally)
+                    .align(Alignment.CenterHorizontally)
                     .preferredSize(100.dp).clip(CircleShape)
             )
         }

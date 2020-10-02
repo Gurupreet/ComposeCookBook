@@ -53,7 +53,7 @@ private fun NameAndHandle(tweet: Tweet) {
         Icon(
             asset = Icons.Default.CheckCircle,
             tint = twitterColor,
-            modifier = Modifier.preferredSize(18.dp).gravity(Alignment.CenterVertically)
+            modifier = Modifier.preferredSize(18.dp).align(Alignment.CenterVertically)
                 .padding(top = 2.dp)
         )
         //handle

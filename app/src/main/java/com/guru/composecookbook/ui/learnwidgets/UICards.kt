@@ -1,10 +1,7 @@
 package com.guru.composecookbook.ui.learnwidgets
 
 import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
@@ -32,13 +29,12 @@ fun UICards() {
     val item = remember { DemoDataProvider.item }
 
     Text(
-        text = "Inbuilt box as container for any Clipping/Gravity controls",
+        text = "Inbuilt box as container for any Clipping/Alignment controls",
         style = typography.subtitle1,
         modifier = Modifier.padding(8.dp)
     )
-    Box(
+    Card(
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
-        gravity = ContentGravity.Center,
         backgroundColor = MaterialTheme.colors.primary,
         shape = RoundedCornerShape(topLeft = 16.dp, bottomRight = 16.dp)
     ) {

@@ -58,10 +58,10 @@ fun HowToModifiers() {
         DemoText("Modifier.clip(CutCornerShape(12))")
         DemoElementButton(modifier = Modifier.clip(CutCornerShape(12.dp)))
 
-        DemoText("Modifier.gravity(Alignment.CenterHorizontally)")
-        DemoElementButton(modifier = Modifier.gravity(Alignment.CenterHorizontally))
-        DemoText("Modifier.gravity(Alignment.End)")
-        DemoElementButton(modifier = Modifier.gravity(Alignment.End))
+        DemoText("Modifier.align(Alignment.CenterHorizontally)")
+        DemoElementButton(modifier = Modifier.align(Alignment.CenterHorizontally))
+        DemoText("Modifier.align(Alignment.End)")
+        DemoElementButton(modifier = Modifier.align(Alignment.End))
 
         DemoText("Modifier.drawOpacity(0.5f)")
         DemoElementButton(modifier = Modifier.drawOpacity(0.5f))
