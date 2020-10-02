@@ -104,7 +104,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: VectorAsset) {
 
 @Composable
 fun CarouselItem(item: Item) {
-    Stack {
+    Box {
         Image(
             asset = imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,

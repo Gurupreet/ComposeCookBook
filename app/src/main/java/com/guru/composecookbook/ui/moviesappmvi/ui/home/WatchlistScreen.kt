@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.moviesappmvi.ui.home
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
@@ -63,7 +64,7 @@ fun MovieWatchlistItem(
     onMovieSelected: () -> Unit,
     onRemoveFromWatchlist: () -> Unit
 ) {
-    Stack(modifier = Modifier.clickable(onClick = onMovieSelected)) {
+    Box(modifier = Modifier.clickable(onClick = onMovieSelected)) {
         CoilImage(
             data = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}",
             modifier = Modifier

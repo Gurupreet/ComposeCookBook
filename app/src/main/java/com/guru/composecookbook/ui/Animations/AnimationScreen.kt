@@ -6,6 +6,7 @@ import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -485,7 +486,7 @@ private fun DrawLayerAnimations() {
     Spacer(modifier = Modifier.padding(30.dp))
     var draw2 by remember { mutableStateOf(false) }
 
-    Stack {
+    Box {
         Image(
             asset = imageResource(id = R.drawable.adele21),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
@@ -513,7 +514,7 @@ private fun DrawLayerAnimations() {
     Spacer(modifier = Modifier.padding(30.dp))
     var draw3 by remember { mutableStateOf(false) }
 
-    Stack {
+    Box {
         Image(
             asset = imageResource(id = R.drawable.wolves),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
@@ -544,7 +545,7 @@ private fun DrawLayerAnimations() {
     Spacer(modifier = Modifier.padding(30.dp))
     var draw4 by remember { mutableStateOf(false) }
 
-    Stack {
+    Box {
         Image(
             asset = imageResource(id = R.drawable.imagindragon),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
@@ -604,8 +605,8 @@ fun AnimatedValuesAnimations() {
         }
 
         override fun onDrag(dragDistance: Offset): Offset {
-            xFloat.animateTo(xFloat.targetValue+dragDistance.x)
-            yFloat.animateTo(yFloat.targetValue+dragDistance.y)
+            xFloat.animateTo(xFloat.targetValue + dragDistance.x)
+            yFloat.animateTo(yFloat.targetValue + dragDistance.y)
             return super.onDrag(dragDistance)
         }
     }

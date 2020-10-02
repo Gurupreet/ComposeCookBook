@@ -23,7 +23,7 @@ fun Layouts() {
     ScrollableColumn {
         TypesOfRows()
         TypeOfColumns()
-        TypeOfStacks()
+        TypeOfBoxs()
         ConstraintLayouts()
     }
 }
@@ -146,9 +146,9 @@ fun TypeOfColumns() {
 }
 
 @Composable
-fun TypeOfStacks() {
-    Text(text = "Stack", style = typography.h6, modifier = Modifier.padding(8.dp))
-    val stackModifier = Modifier.padding(8.dp)
+fun TypeOfBoxs() {
+    Text(text = "Box", style = typography.h6, modifier = Modifier.padding(8.dp))
+    val boxModifier = Modifier.padding(8.dp)
         .background(Color.LightGray)
         .fillMaxWidth()
         .height(250.dp)
@@ -156,7 +156,7 @@ fun TypeOfStacks() {
         text = "Children with no align", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Stack(modifier = stackModifier) {
+    Box(modifier = boxModifier) {
         Card(
             backgroundColor = green700,
             elevation = 4.dp,
@@ -177,7 +177,7 @@ fun TypeOfStacks() {
         text = "Children with Topstart, center & bottomEnd align", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Stack(modifier = stackModifier) {
+    Box(modifier = boxModifier) {
         Card(
             backgroundColor = green700, elevation = 4.dp, modifier = Modifier.preferredSize(
                 200

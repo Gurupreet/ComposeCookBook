@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.demoui.spotify.details
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -44,8 +45,8 @@ fun SpotifyDetailScreen(album: Album) {
     val surfaceGradient = SpotifyDataProvider
         .spotifySurfaceGradient(isSystemInDarkTheme()).asReversed()
 
-    Stack(modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantGradient)) {
-        StackTopSection(album = album, scrollState = scrollState)
+    Box(modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantGradient)) {
+        BoxTopSection(album = album, scrollState = scrollState)
         TopSectionOverlay(scrollState = scrollState)
         BottomScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
         AnimatedToolBar(album, scrollState, surfaceGradient)
@@ -153,7 +154,7 @@ fun ShuffleButton() {
 }
 
 @Composable
-fun StackTopSection(album: Album, scrollState: ScrollState) {
+fun BoxTopSection(album: Album, scrollState: ScrollState) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.height(100.dp).fillMaxWidth())
         //animate as scroll value increase but not fast so divide by random number 50

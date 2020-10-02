@@ -32,7 +32,7 @@ import kotlin.math.abs
 @Composable
 fun DatingHomeScreen() {
     Scaffold(
-       topBar = { DatingHomeAppbar() }
+        topBar = { DatingHomeAppbar() }
     ) {
         DatingCardsContent()
     }
@@ -68,7 +68,7 @@ fun DatingCardsContent() {
         var persons = mutableListOf<Album>()
         persons.addAll(SpotifyDataProvider.albums.take(12))
         reload.value = false
-        Stack(modifier = Modifier) {
+        Box(modifier = Modifier) {
             persons.forEach {
                 DraggableCard(
                     album = it,
@@ -100,8 +100,8 @@ fun DraggableCard(
 ) {
     val configuration = ConfigurationAmbient.current
     val screenWidth = configuration.screenWidthDp.dp
-    val swipeXLeft = -(screenWidth.value*3.2).toFloat()
-    val swipeXRight = (screenWidth.value*3.2).toFloat()
+    val swipeXLeft = -(screenWidth.value * 3.2).toFloat()
+    val swipeXRight = (screenWidth.value * 3.2).toFloat()
     val swipeYTop = -400f
     val swipeYBottom = 400f
     val swipeX = animatedFloat(initVal = 0f)
@@ -118,7 +118,7 @@ fun DraggableCard(
 
         override fun onStop(velocity: Offset) {
             // if it's swiped 1/3rd
-            if (abs(swipeX.targetValue) < abs(swipeXRight)/4) {
+            if (abs(swipeX.targetValue) < abs(swipeXRight) / 4) {
                 swipeX.animateTo(0f, tween(tweenTime))
             } else {
                 if (swipeX.targetValue > 0) {
@@ -140,13 +140,13 @@ fun DraggableCard(
         }
 
         override fun onDrag(dragDistance: Offset): Offset {
-            swipeX.animateTo(swipeX.targetValue+dragDistance.x)
-            swipeY.animateTo(swipeY.targetValue+dragDistance.y)
+            swipeX.animateTo(swipeX.targetValue + dragDistance.x)
+            swipeY.animateTo(swipeY.targetValue + dragDistance.y)
             return super.onDrag(dragDistance)
         }
     }
     Log.d("swipeX target ", "${swipeX.targetValue}  - ${swipeX.value} -- ${swipeX.isRunning}")
-    val rotationFraction = (swipeX.value/60).coerceIn(-40f, 40f)
+    val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
 
     if (abs(swipeX.value) < swipeXRight - 50f) {
         Card(
@@ -160,7 +160,10 @@ fun DraggableCard(
             content()
         }
     } else {
-        Log.d("on swiped called ", "${swipeX.targetValue}  - ${swipeX.value} -- ${swipeX.isRunning}")
+        Log.d(
+            "on swiped called ",
+            "${swipeX.targetValue}  - ${swipeX.value} -- ${swipeX.isRunning}"
+        )
         val swipeResult = if (swipeX.value > 0) SwipeResult.ACCEPTED else SwipeResult.REJECTED
         onSwiped(swipeResult, album)
     }

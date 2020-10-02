@@ -69,7 +69,7 @@ private fun InstagramLikesSection(post: Tweet) {
 
 @Composable
 private fun InstagramIconSection() {
-    Row() {
+    Row {
         var fav by remember { mutableStateOf(false) }
         IconToggleButton(checked = fav, onCheckedChange = { fav = it }) {
             val icon = if (fav) Icons.Default.Favorite else Icons.Default.FavoriteBorder

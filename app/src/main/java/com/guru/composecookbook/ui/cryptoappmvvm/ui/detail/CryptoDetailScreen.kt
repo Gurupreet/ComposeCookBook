@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.detail
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,7 +40,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center
     ) {
-        Stack(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+        Box(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             val scrollState = rememberScrollState(0f)
             CryptoTopSection(crypto, scrollState, onBack)
             ScrollableColumn(

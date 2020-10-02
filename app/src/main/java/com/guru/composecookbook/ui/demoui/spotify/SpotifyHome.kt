@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.demoui.spotify
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
@@ -32,7 +33,7 @@ import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 fun SpotifyHome() {
     val scrollState = rememberScrollState(0f)
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
-    Stack(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize()) {
         ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
         Icon(
             asset = Icons.Outlined.Settings,

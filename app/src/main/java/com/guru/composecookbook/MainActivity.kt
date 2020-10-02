@@ -6,7 +6,6 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.MaterialTheme
@@ -62,7 +61,11 @@ fun BaseView(darkTheme: Boolean, content: @Composable() () -> Unit) {
 }
 
 @Composable
-fun HomeScreenContent(homeScreen: BottomNavType, darkTheme: MutableState<Boolean>, modifier: Modifier) {
+fun HomeScreenContent(
+    homeScreen: BottomNavType,
+    darkTheme: MutableState<Boolean>,
+    modifier: Modifier
+) {
     Column(modifier = modifier) {
         Crossfade(homeScreen) { screen ->
             Surface(color = MaterialTheme.colors.background) {

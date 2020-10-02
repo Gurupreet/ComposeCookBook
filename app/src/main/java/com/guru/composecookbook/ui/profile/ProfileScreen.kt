@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -54,7 +55,7 @@ private fun launchSocialActivity(context: Context, socialType: String) {
 
 @Composable
 fun ProfileScreen() {
-    Stack(Modifier.fillMaxSize()) {
+    Box(Modifier.fillMaxSize()) {
         val scrollState = rememberScrollState(0f)
         TopAppBarView(scrollState.value)
         TopBackground()
