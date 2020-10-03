@@ -1,64 +1,36 @@
 package com.guru.composecookbook.ui.datingapp
 
-import android.util.Log
-import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.Place
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.gesture.DragObserver
-import androidx.compose.ui.gesture.rawDragGestureFilter
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ConfigurationAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
+import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationCircleCanvas
+import com.guru.composecookbook.ui.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import kotlin.math.abs
+import com.guru.composecookbook.ui.utils.verticalGradientBackground
+import kotlin.random.Random
 
 @Composable
 fun DatingHomeScreen() {
-    Scaffold(
-        topBar = { DatingHomeAppbar() }
-    ) {
-        DatingCardsContent()
-    }
-}
-
-@Composable
-fun DatingHomeAppbar() {
-    TopAppBar(
-        title = { Text("Dating Celebs") },
-        navigationIcon = {
-            Icon(
-                asset = Icons.Filled.Person,
-                tint = purple,
-                modifier = Modifier.padding(8.dp)
-            )
-        },
-        actions = {
-            IconButton(onClick = {}) {
-                Icons.Default.Person
-            }
-        }
-    )
-}
-
-@Composable
-fun DatingCardsContent() {
     val configuration = ConfigurationAmbient.current
     val screenWidth = configuration.screenWidthDp.dp
     val screenHeight = configuration.screenHeightDp.dp
@@ -66,25 +38,36 @@ fun DatingCardsContent() {
     var reload = remember { mutableStateOf(false) }
     Surface(modifier = Modifier.fillMaxSize()) {
         var persons = mutableListOf<Album>()
-        persons.addAll(SpotifyDataProvider.albums.take(12))
+        persons.addAll(SpotifyDataProvider.albums.take(15))
         reload.value = false
-        Box(modifier = Modifier) {
-            persons.forEach {
+        val boxModifier = Modifier
+        Box(
+            modifier = boxModifier.verticalGradientBackground(
+                listOf(
+                    Color.White,
+                    purple.copy(alpha = 0.2f)
+                )
+            )
+        ) {
+            DatingLoader(modifier = boxModifier)
+            persons.forEachIndexed { index, album ->
                 DraggableCard(
-                    album = it,
+                    item = album,
                     modifier = Modifier.fillMaxWidth()
                         .preferredHeight(cardHeight)
-                        .padding(top = 16.dp, bottom = 8.dp, start = 16.dp, end = 16.dp),
+                        .padding(
+                            top = 16.dp + (index + 2).dp,
+                            bottom = 16.dp,
+                            start = 16.dp,
+                            end = 16.dp
+                        ),
                     { swipeResult, album ->
                         if (persons.isNotEmpty()) {
                             persons.remove(album)
                         }
                     }
                 ) {
-                    Image(
-                        asset = imageResource(it.imageId),
-                        contentScale = ContentScale.Crop
-                    )
+                    CardContent(album)
                 }
             }
         }
@@ -92,82 +75,56 @@ fun DatingCardsContent() {
 }
 
 @Composable
-fun DraggableCard(
-    album: Album,
-    modifier: Modifier = Modifier,
-    onSwiped: (SwipeResult, Album) -> Unit,
-    content: @Composable () -> Unit
-) {
-    val configuration = ConfigurationAmbient.current
-    val screenWidth = configuration.screenWidthDp.dp
-    val swipeXLeft = -(screenWidth.value * 3.2).toFloat()
-    val swipeXRight = (screenWidth.value * 3.2).toFloat()
-    val swipeYTop = -400f
-    val swipeYBottom = 400f
-    val swipeX = animatedFloat(initVal = 0f)
-    val swipeY = animatedFloat(initVal = 0f)
-    val tweenTime = 400
-
-    val dragObserver = object : DragObserver {
-
-        override fun onStart(downPosition: Offset) {
-            swipeX.setBounds(swipeXLeft, swipeXRight)
-            swipeY.setBounds(swipeYTop, swipeYBottom)
-            super.onStart(downPosition)
-        }
-
-        override fun onStop(velocity: Offset) {
-            // if it's swiped 1/3rd
-            if (abs(swipeX.targetValue) < abs(swipeXRight) / 4) {
-                swipeX.animateTo(0f, tween(tweenTime))
-            } else {
-                if (swipeX.targetValue > 0) {
-                    swipeX.animateTo(swipeXRight, tween(tweenTime))
-                } else {
-                    swipeX.animateTo(swipeXLeft, tween(tweenTime))
-                }
-            }
-
-            swipeY.animateTo(0f, tween(tweenTime))
-            super.onStop(velocity)
-        }
-
-
-        override fun onCancel() {
-            swipeX.animateTo(0f, tween(tweenTime))
-            swipeX.animateTo(0f, tween(tweenTime))
-            super.onCancel()
-        }
-
-        override fun onDrag(dragDistance: Offset): Offset {
-            swipeX.animateTo(swipeX.targetValue + dragDistance.x)
-            swipeY.animateTo(swipeY.targetValue + dragDistance.y)
-            return super.onDrag(dragDistance)
-        }
-    }
-    Log.d("swipeX target ", "${swipeX.targetValue}  - ${swipeX.value} -- ${swipeX.isRunning}")
-    val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
-
-    if (abs(swipeX.value) < swipeXRight - 50f) {
-        Card(
-            elevation = 16.dp,
-            modifier = modifier.rawDragGestureFilter(dragObserver).drawLayer(
-                translationX = swipeX.value,
-                translationY = swipeY.value,
-                rotationZ = rotationFraction
-            ).clip(RoundedCornerShape(16.dp))
-        ) {
-            content()
-        }
-    } else {
-        Log.d(
-            "on swiped called ",
-            "${swipeX.targetValue}  - ${swipeX.value} -- ${swipeX.isRunning}"
+fun CardContent(album: Album) {
+    Column {
+        Image(
+            asset = imageResource(album.imageId),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.weight(1f)
         )
-        val swipeResult = if (swipeX.value > 0) SwipeResult.ACCEPTED else SwipeResult.REJECTED
-        onSwiped(swipeResult, album)
+        Row(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)) {
+            Text(
+                text = album.artist,
+                style = typography.h6,
+                modifier = Modifier.padding(end = 8.dp).weight(1f)
+            )
+            Icon(
+                asset = Icons.Outlined.Place,
+                modifier = Modifier
+                    .padding(horizontal = 8.dp),
+                tint = purple,
+            )
+            Text(
+                text = "${Random.nextInt(1, 15)} km",
+                style = typography.body2,
+                color = purple
+            )
+        }
+        Text(
+            text = "Age: ${Random.nextInt(21, 30)}, Casually browsing..",
+            style = typography.subtitle2,
+            modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp)
+        )
+        Text(
+            text = "Miami, Florida",
+            style = typography.subtitle2,
+            modifier = Modifier.padding(bottom = 16.dp, start = 16.dp, end = 16.dp)
+        )
     }
 }
+
+@Composable
+fun DatingLoader(modifier: Modifier) {
+    Box(alignment = Alignment.Center, modifier = modifier.fillMaxSize().clip(CircleShape)) {
+        FloatMultiStateAnimationCircleCanvas(purple, 400f)
+        Image(
+            asset = imageResource(id = R.drawable.adele21),
+            modifier = modifier.preferredSize(50.dp).clip(CircleShape),
+            contentScale = ContentScale.Crop,
+        )
+    }
+}
+
 
 enum class SwipeResult {
     ACCEPTED, REJECTED

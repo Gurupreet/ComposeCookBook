@@ -3,19 +3,45 @@ package com.guru.composecookbook.ui.datingapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MyLocation
+import androidx.compose.material.icons.filled.PersonPin
+import androidx.compose.material.icons.filled.Style
+import androidx.compose.material.icons.filled.Textsms
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import androidx.ui.tooling.preview.Preview
+import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.purple
+import com.guru.composecookbook.theme.typography
 
 class DatingHomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.purple)
+
         setContent {
-            ComposeCookBookTheme {
-                DatingHomeScreen()
+            ComposeCookBookTheme(false) {
+                val navType = savedInstanceState { DatingNavType.PEOPLES }
+                Scaffold(
+                    topBar = { DatingHomeAppbar(navType) },
+                    bottomBar = { DatingBottomBar(navType) }
+                ) {
+                    DatingHomeContent(navType)
+                }
             }
         }
     }
@@ -27,6 +53,65 @@ class DatingHomeActivity : AppCompatActivity() {
                 putExtra(DARK_THEME, isDarkTheme)
             }
     }
+}
+
+@Composable
+fun DatingHomeContent(navType: MutableState<DatingNavType>) {
+    Crossfade(current = navType) {
+        when (navType.value) {
+            DatingNavType.PEOPLES -> DatingHomeScreen()
+            DatingNavType.CHATS -> DatingChatScreen()
+            DatingNavType.PROFILE -> Text(text = "Profile")
+        }
+    }
+}
+
+@Composable
+fun DatingBottomBar(navType: MutableState<DatingNavType>) {
+    BottomNavigation(
+        backgroundColor = MaterialTheme.colors.background,
+        contentColor = purple,
+        elevation = 4.dp
+    ) {
+        BottomNavigationItem(
+            icon = { Icon(asset = Icons.Filled.Style) },
+            selected = navType.value == DatingNavType.PEOPLES,
+            onClick = { navType.value = DatingNavType.PEOPLES },
+        )
+        BottomNavigationItem(
+            icon = { Icon(asset = Icons.Filled.Textsms) },
+            selected = navType.value == DatingNavType.CHATS,
+            onClick = { navType.value = DatingNavType.CHATS },
+        )
+        BottomNavigationItem(
+            icon = { Icon(asset = Icons.Filled.PersonPin) },
+            selected = navType.value == DatingNavType.PROFILE,
+            onClick = { navType.value = DatingNavType.PROFILE },
+        )
+    }
+}
+
+@Composable
+fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
+    val title = when (navType.value) {
+        DatingNavType.PEOPLES -> "Discover"
+        DatingNavType.CHATS -> "Chats"
+        DatingNavType.PROFILE -> "My Profile"
+    }
+    TopAppBar(
+        title = { Text(title, style = typography.h6) },
+        actions = {
+            IconButton(onClick = {}) {
+                Icons.Default.MyLocation
+            }
+        },
+        elevation = 0.dp,
+        backgroundColor = MaterialTheme.colors.surface
+    )
+}
+
+enum class DatingNavType {
+    PEOPLES, CHATS, PROFILE
 }
 
 @Preview(showBackground = true)

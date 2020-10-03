@@ -33,7 +33,6 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
-import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
@@ -402,11 +401,11 @@ fun FloatMultiStateAnimationCircleStrokeCanvas() {
 }
 
 @Composable
-fun FloatMultiStateAnimationCircleCanvas() {
+fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Float = 200f) {
     var floatStateStart by remember { mutableStateOf(0) }
     var floadStateFinal by remember { mutableStateOf(2) }
     val floatAnim = transition(
-        definition = AnimationDefinations.floatAnimDefinition(0f, 200f, true),
+        definition = AnimationDefinations.floatAnimDefinition(0f, radiusEnd, true),
         initState = floatStateStart,
         toState = floadStateFinal
     )
@@ -422,17 +421,17 @@ fun FloatMultiStateAnimationCircleCanvas() {
         )
         var radius = floatAnim[AnimationDefinations.floatPropKey]
         drawCircle(
-            color = green200,
+            color = color.copy(alpha = 0.8f),
             radius = radius,
             center = centerOffset,
         )
         drawCircle(
-            color = green500,
+            color = color.copy(alpha = 0.4f),
             radius = radius / 2,
             center = centerOffset,
         )
         drawCircle(
-            color = teal200,
+            color = color.copy(alpha = 0.2f),
             radius = radius / 4,
             center = centerOffset,
         )
