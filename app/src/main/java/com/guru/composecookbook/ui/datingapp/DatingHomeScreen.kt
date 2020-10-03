@@ -27,15 +27,12 @@ import androidx.compose.ui.platform.ConfigurationAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
-import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationCircleCanvas
 import com.guru.composecookbook.ui.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.gradientBackground
-import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import kotlin.random.Random
 
@@ -75,7 +72,9 @@ fun DatingHomeScreen() {
                     { swipeResult, album ->
                         if (persons.isNotEmpty()) {
                             persons.remove(album)
-                            if (persons.isEmpty()) { listEmpty.value = true }
+                            if (persons.isEmpty()) {
+                                listEmpty.value = true
+                            }
                         }
                     }
                 ) {

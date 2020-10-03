@@ -1,12 +1,10 @@
 package com.guru.composecookbook.ui.datingapp.components
 
-import android.util.Log
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.drawLayer
