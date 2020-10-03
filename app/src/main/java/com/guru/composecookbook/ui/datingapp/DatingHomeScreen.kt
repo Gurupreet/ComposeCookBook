@@ -1,12 +1,18 @@
 package com.guru.composecookbook.ui.datingapp
 
+import androidx.compose.animation.animate
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -14,18 +20,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ConfigurationAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
+import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationCircleCanvas
 import com.guru.composecookbook.ui.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.ui.utils.gradientBackground
+import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import kotlin.random.Random
 
@@ -35,12 +45,12 @@ fun DatingHomeScreen() {
     val screenWidth = configuration.screenWidthDp.dp
     val screenHeight = configuration.screenHeightDp.dp
     val cardHeight = screenHeight - 200.dp
-    var reload = remember { mutableStateOf(false) }
+
     Surface(modifier = Modifier.fillMaxSize()) {
         var persons = mutableListOf<Album>()
         persons.addAll(SpotifyDataProvider.albums.take(15))
-        reload.value = false
         val boxModifier = Modifier
+
         Box(
             modifier = boxModifier.verticalGradientBackground(
                 listOf(
@@ -49,6 +59,7 @@ fun DatingHomeScreen() {
                 )
             )
         ) {
+            var listEmpty = remember { mutableStateOf(false) }
             DatingLoader(modifier = boxModifier)
             persons.forEachIndexed { index, album ->
                 DraggableCard(
@@ -64,10 +75,51 @@ fun DatingHomeScreen() {
                     { swipeResult, album ->
                         if (persons.isNotEmpty()) {
                             persons.remove(album)
+                            if (persons.isEmpty()) { listEmpty.value = true }
                         }
                     }
                 ) {
                     CardContent(album)
+                }
+            }
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = cardHeight)
+                    .drawOpacity(animate(if (listEmpty.value) 0f else 1f))
+            ) {
+                IconButton(
+                    onClick = {
+                        /* TODO Hook to swipe event */
+                    },
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .preferredSize(60.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colors.background)
+                ) {
+                    Icon(
+                        asset = Icons.Default.Cancel,
+                        tint = Color.Gray,
+                        modifier = Modifier.preferredSize(36.dp)
+                    )
+                }
+                IconButton(
+                    onClick = {
+                        /* TODO Hook to swipe event */
+                    },
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .preferredSize(60.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colors.background)
+                ) {
+                    Icon(
+                        asset = Icons.Default.Favorite,
+                        tint = Color.Red,
+                        modifier = Modifier.preferredSize(36.dp)
+                    )
                 }
             }
         }
@@ -123,6 +175,11 @@ fun DatingLoader(modifier: Modifier) {
             contentScale = ContentScale.Crop,
         )
     }
+}
+
+@Composable
+fun CancelLikeButtons() {
+
 }
 
 

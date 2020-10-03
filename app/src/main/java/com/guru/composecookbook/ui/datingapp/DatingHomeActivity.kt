@@ -61,7 +61,7 @@ fun DatingHomeContent(navType: MutableState<DatingNavType>) {
         when (navType.value) {
             DatingNavType.PEOPLES -> DatingHomeScreen()
             DatingNavType.CHATS -> DatingChatScreen()
-            DatingNavType.PROFILE -> Text(text = "Profile")
+            DatingNavType.PROFILE -> Text(text = "Coming soon...")
         }
     }
 }

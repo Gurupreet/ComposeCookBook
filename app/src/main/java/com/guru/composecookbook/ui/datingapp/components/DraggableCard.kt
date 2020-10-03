@@ -6,6 +6,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.drawLayer
@@ -71,7 +72,7 @@ fun DraggableCard(
             return super.onDrag(dragDistance)
         }
     }
-    Log.d("swipeX target ", "${swipeX.targetValue}  - ${swipeX.value} -- ${swipeX.isRunning}")
+
     val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
 
     if (abs(swipeX.value) < swipeXRight - 50f) {
@@ -86,10 +87,7 @@ fun DraggableCard(
             content()
         }
     } else {
-        Log.d(
-            "on swiped called ",
-            "${swipeX.targetValue}  - ${swipeX.value} -- ${swipeX.isRunning}"
-        )
+        // on swiped
         val swipeResult = if (swipeX.value > 0) SwipeResult.ACCEPTED else SwipeResult.REJECTED
         onSwiped(swipeResult, item)
     }
