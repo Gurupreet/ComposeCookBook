@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.ui.tooling.preview.Preview
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
@@ -41,6 +42,8 @@ fun AndroidViews() {
         val context = ContextAmbient.current
         AndroidTextView(context)
         AndroidButton(context)
+        AndroidLottieView(context)
+        AndroidLottieView2(context)
         AndroidAdView(context)
         AndroidMapView()
         Spacer(modifier = Modifier.height(100.dp))
@@ -86,6 +89,35 @@ fun AndroidButton(context: Context) {
 }
 
 @Composable
+fun AndroidLottieView(context: Context) {
+    SubtitleText(subtitle = "Android LottieView hosted in compose")
+    val lottieView = remember {
+        LottieAnimationView(context).apply {
+            loop(true)
+            setAnimation("loader.json")
+        }
+    }
+
+    AndroidView({ lottieView }, modifier = Modifier.fillMaxWidth().height(200.dp)) {
+        it.playAnimation()
+    }
+}
+
+@Composable
+fun AndroidLottieView2(context: Context) {
+    val lottieView = remember {
+        LottieAnimationView(context).apply {
+            loop(true)
+            setAnimation("food.json")
+        }
+    }
+
+    AndroidView({ lottieView }, modifier = Modifier.fillMaxWidth().height(200.dp)) {
+        it.playAnimation()
+    }
+}
+
+@Composable
 fun AndroidAdView(context: Context) {
     SubtitleText(subtitle = "Android AdView")
 
@@ -126,6 +158,7 @@ private fun MapViewContainer(
             .padding(8.dp)
             .clip(RoundedCornerShape(10.dp))
     ) { mapView ->
+        // I think this is slowing the performance of map view loading needs checking !!
         mapView.getMapAsync {
             val position = LatLng(latitude.toDouble(), longitude.toDouble())
             it.addMarker(

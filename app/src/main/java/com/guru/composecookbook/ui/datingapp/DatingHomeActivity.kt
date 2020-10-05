@@ -25,6 +25,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.datingapp.components.ProfileScreen
 
 class DatingHomeActivity : AppCompatActivity() {
 
@@ -61,7 +62,7 @@ fun DatingHomeContent(navType: MutableState<DatingNavType>) {
         when (navType.value) {
             DatingNavType.PEOPLES -> DatingHomeScreen()
             DatingNavType.CHATS -> DatingChatScreen()
-            DatingNavType.PROFILE -> Text(text = "Coming soon...")
+            DatingNavType.PROFILE -> ProfileScreen()
         }
     }
 }

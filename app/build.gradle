@@ -61,7 +61,9 @@ dependencies {
     implementation "androidx.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
 
-
+    //lottie
+    def lottie_version = '3.4.4'
+    implementation "com.airbnb.android:lottie:$lottie_version"
     //Network libs
     // Room
     def room_version = '2.2.5'
