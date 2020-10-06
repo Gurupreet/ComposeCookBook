@@ -3,10 +3,7 @@ package com.guru.composecookbook.ui.learnwidgets
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
@@ -43,16 +40,18 @@ fun UICards() {
         backgroundColor = MaterialTheme.colors.primary,
         shape = RoundedCornerShape(topLeft = 16.dp, bottomRight = 16.dp)
     ) {
-        Text(
-            text = item.title,
-            modifier = Modifier.padding(8.dp),
-            color = MaterialTheme.colors.onPrimary
-        )
-        Text(
-            text = item.subtitle,
-            modifier = Modifier.padding(8.dp),
-            color = MaterialTheme.colors.onPrimary
-        )
+        Column {
+            Text(
+                text = item.title,
+                modifier = Modifier.padding(8.dp),
+                color = MaterialTheme.colors.onPrimary
+            )
+            Text(
+                text = item.subtitle,
+                modifier = Modifier.padding(8.dp),
+                color = MaterialTheme.colors.onPrimary
+            )
+        }
     }
     Divider()
 
