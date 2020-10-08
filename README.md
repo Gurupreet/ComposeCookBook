@@ -45,9 +45,9 @@ Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                 
 
 
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
-CryptoApp MVVM             |  MovieApp MVI(In progress)
-:-------------------------:|:-------------------------:
-![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif)
+CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI
+:-------------------------:|:-------------------------: | :-------------------------:
+![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif) | ![](https://media.giphy.com/media/tVXmwM2ryGlhCcf3Kl/giphy.gif)
 
 
 ## How to get started
