@@ -27,7 +27,6 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 @Composable
 fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
     val typography = MaterialTheme.typography
-    val resource = ContextAmbient.current.resources
     Row(
         modifier = Modifier.clickable(onClick = { })
             .padding(16.dp)
@@ -63,7 +62,6 @@ fun FavIcon(modifier: Modifier = Modifier) {
         checked = isFavourite.value,
         onCheckedChange = { isFavourite.value = !isFavourite.value }
     ) {
-        modifier.fillMaxSize()
         if (isFavourite.value) {
             Icon(asset = Icons.Filled.Favorite, modifier = modifier)
         } else {

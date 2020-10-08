@@ -38,27 +38,22 @@ fun HorizontalListItem(
                     .fillMaxWidth()
             )
             Column(modifier = Modifier.padding(16.dp)) {
-                val emphasisLevels = EmphasisAmbient.current
-                ProvideEmphasis(emphasisLevels.high) {
-                    Text(
-                        text = item.title,
-                        style = MaterialTheme.typography.h6,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = item.subtitle,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        style = MaterialTheme.typography.body2
-                    )
-                }
-                ProvideEmphasis(emphasisLevels.high) {
-                    Text(
-                        text = item.source,
-                        style = MaterialTheme.typography.body2
-                    )
-                }
+                Text(
+                    text = item.title,
+                    style = MaterialTheme.typography.h6,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = item.subtitle,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.body2
+                )
+                Text(
+                    text = item.source,
+                    style = MaterialTheme.typography.subtitle2
+                )
             }
         }
     }

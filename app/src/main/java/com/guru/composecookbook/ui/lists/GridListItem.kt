@@ -14,6 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
@@ -38,27 +39,23 @@ fun GridListItem(
                     .fillMaxWidth()
             )
             Column(modifier = Modifier.padding(8.dp)) {
-                val emphasisLevels = EmphasisAmbient.current
-                ProvideEmphasis(emphasisLevels.high) {
-                    Text(
-                        text = item.title,
-                        style = MaterialTheme.typography.body2,
-                        maxLines = 4,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = item.subtitle,
-                        maxLines = 3,
-                        overflow = TextOverflow.Ellipsis,
-                        style = MaterialTheme.typography.caption
-                    )
-                }
-                ProvideEmphasis(emphasisLevels.high) {
-                    Text(
-                        text = item.source,
-                        style = MaterialTheme.typography.caption
-                    )
-                }
+                Text(
+                    text = item.title,
+                    style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = item.subtitle,
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.body2
+                )
+                Text(
+                    text = item.source,
+                    style = MaterialTheme.typography.subtitle2
+                )
+
             }
         }
     }

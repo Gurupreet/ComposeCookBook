@@ -42,8 +42,7 @@ fun CarouselLayout() {
             remember(clock) { PagerState(clock, 2, 0, items.size - 1) }
         }
         val selectedPage = remember { mutableStateOf(2) }
-        //Pager 1
-        //FIX: There is something wrong with selected page value so two dots are ahead always
+
         Pager(state = pagerState, modifier = Modifier.preferredHeight(200.dp)) {
             val item = items[page]
             selectedPage.value = pagerState.currentPage
@@ -76,7 +75,7 @@ fun CarouselLayout() {
         }
         Spacer(modifier = Modifier.height(24.dp))
         //Pager 3
-        Pager(state = pagerState, modifier = Modifier.preferredHeight(500.dp)) {
+        Pager(state = pagerState, modifier = Modifier.preferredHeight(350.dp)) {
             val item = items[page]
             selectedPage.value = pagerState.currentPage
             CarouselItemCard(item, pagerState, selectedPage)

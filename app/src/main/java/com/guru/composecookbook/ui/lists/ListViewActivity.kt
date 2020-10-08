@@ -24,6 +24,8 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoui.instagram.InstagramStories
+import com.guru.composecookbook.ui.demoui.instagram.StoryListItem
+import com.guru.composecookbook.ui.utils.VerticalGrid
 
 class ListViewActivity : AppCompatActivity() {
 
@@ -148,23 +150,26 @@ fun HorizontalListView() {
 @Composable
 fun GridListView() {
     //TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
-    val list = remember { DemoDataProvider.itemList }
-    LazyColumnFor(items = list) {
-        GridOfTwo(it)
-        ListItemDivider()
+    // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
+    val list = remember { DemoDataProvider.itemList.take(4) }
+    val posts = remember { DemoDataProvider.tweetList }
+    ScrollableColumn {
+        VerticalGrid(columns = 2) {
+            list.forEach {
+                GridListItem(item = it)
+            }
+        }
+        VerticalGrid(columns = 4) {
+            posts.forEach {
+                StoryListItem(post = it)
+            }
+        }
     }
 }
 
 @Composable
 fun GridOfTwo(item: Item) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        GridListItem(item = item)
-        GridListItem(item = item)
-    }
+
 }
 
 @Composable

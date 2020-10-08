@@ -20,11 +20,10 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 @Composable
 fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
     val typography = MaterialTheme.typography
-    val emphasisLevels = EmphasisAmbient.current
-
     Column(modifier = modifier.fillMaxWidth().padding(16.dp)) {
+
         val imageModifier = Modifier
-            .preferredHeightIn(150.dp)
+            .preferredHeight(150.dp)
             .fillMaxWidth()
             .clip(shape = MaterialTheme.shapes.medium)
 
@@ -33,26 +32,20 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
-
         Spacer(Modifier.preferredHeight(16.dp))
+        Text(
+            text = item.title,
+            style = typography.h6
+        )
+        Text(
+            text = item.subtitle,
+            style = typography.body2
+        )
 
-        ProvideEmphasis(emphasisLevels.high) {
-            Text(
-                text = item.title,
-                style = typography.h6
-            )
-            Text(
-                text = item.subtitle,
-                style = typography.body2
-            )
-        }
-
-        ProvideEmphasis(emphasisLevels.medium) {
-            Text(
-                text = item.source,
-                style = typography.body2
-            )
-        }
+        Text(
+            text = item.source,
+            style = typography.subtitle2
+        )
     }
 }
 
