@@ -17,7 +17,7 @@ sealed class CryptoHomeInteractionEvents {
     data class AddedToFav(val crypto: Crypto) : CryptoHomeInteractionEvents()
     data class OpenDetailScreen(val crypto: Crypto) : CryptoHomeInteractionEvents()
     data class RemoveFav(val crypto: Crypto) : CryptoHomeInteractionEvents()
-    object LoadMoreItems: CryptoHomeInteractionEvents()
+    object LoadMoreItems : CryptoHomeInteractionEvents()
 }
 
 class CryptoHomeActivity : AppCompatActivity() {

@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
@@ -23,6 +22,7 @@ class CryptoHomeViewModel(
     val viewStateFlow: StateFlow<CryptoHomeUIState> = _viewStateFlow
     var page = 1
     var isLoadingMoreItems = false
+
     //live data to read room database
     val favCryptoLiveData = liveData(Dispatchers.IO) {
         emitSource(cryptoRepository.getFavourite())
@@ -42,7 +42,7 @@ class CryptoHomeViewModel(
             _viewStateFlow.value.cryptos += newList
             _viewStateFlow.value = CryptoHomeUIState(
                 isLoading = false,
-                cryptos =  _viewStateFlow.value.cryptos
+                cryptos = _viewStateFlow.value.cryptos
             )
             isLoadingMoreItems = false
         }

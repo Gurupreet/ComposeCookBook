@@ -1,14 +1,15 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
 
 import android.content.Context
-import android.util.Log
 import androidx.compose.animation.animate
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.LazyColumnForIndexed
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -38,7 +39,6 @@ import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.CryptoListItem
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.MyWalletCard
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.dynamic.AndroidLottieView
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
 
@@ -150,14 +150,14 @@ fun CryptoList(
 
         LazyColumnForIndexed(items = uiState.cryptos, state = listScrollState) { index, crypto ->
             val isFav = favCryptos.contains(crypto)
-            if (index == uiState.cryptos.size -1) {
+            if (index == uiState.cryptos.size - 1) {
                 Column {
                     CryptoListItem(
                         crypto,
                         isFav,
                         onCryptoHomeInteractionEvents
                     )
-                  LottieLoadingView(context = context)
+                    LottieLoadingView(context = context)
                 }
             } else {
                 CryptoListItem(
@@ -192,7 +192,7 @@ fun PreviewCryptoHomeScreen() {
     val crypto = CryptoDemoDataProvider.bitcoin
     Column {
         FavoriteItem(crypto = crypto, {})
-       // CryptoList(uiState = uiState, emptyList(), {})
+        // CryptoList(uiState = uiState, emptyList(), {})
     }
 }
 
