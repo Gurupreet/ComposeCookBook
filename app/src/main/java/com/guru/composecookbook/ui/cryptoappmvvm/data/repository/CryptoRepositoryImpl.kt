@@ -17,8 +17,8 @@ class CryptoRepositoryImpl(
 ) : CryptoRepository {
 
     @WorkerThread
-    override suspend fun getAllCryptos() = flow {
-        val response = cryptoApi.getAllCrypto()
+    override suspend fun getAllCryptos(page: Int) = flow {
+        val response = cryptoApi.getAllCrypto(page)
 
         if (response.isSuccessful && !response.body().isNullOrEmpty()) {
             val cryptoApiResponseList = response.body()

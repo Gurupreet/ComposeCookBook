@@ -16,7 +16,7 @@ data class Crypto(
     val high: Double,
     val low: Double,
     val marketCap: Long,
-    val volume: Long,
+    val volume: Double,
     val supply: Double?
 ) : Serializable {
 

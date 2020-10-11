@@ -7,7 +7,7 @@ data class CryptoApiResponse(
     val image: String,
     val current_price: Double,
     val market_cap: Long,
-    val total_volume: Long,
+    val total_volume: Double,
     val high_24h: Double,
     val low_24h: Double,
     val price_change_24h: Double,
