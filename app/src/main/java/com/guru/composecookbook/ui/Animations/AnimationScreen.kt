@@ -287,36 +287,35 @@ fun SlideInOutSample() {
     }
 }
 
-
 @Composable
 fun ColorMultistateAnimation() {
-    var colorState by remember { mutableStateOf(0) }
-    var colorFinalState by remember { mutableStateOf(2) }
+    var colorState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    var colorFinalState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
 
     val colorAnim = transition(
-        definition = AnimationDefinations.colorAnimDefinition,
+        definition = AnimationDefinitions.colorAnimDefinition,
         initState = colorState,
         toState = colorFinalState,
         onStateChangeFinished = {
             when (it) {
-                0 -> {
-                    colorState = 0
-                    colorFinalState = 1
+                AnimationDefinitions.AnimationState.START -> {
+                    colorState = AnimationDefinitions.AnimationState.START
+                    colorFinalState = AnimationDefinitions.AnimationState.MID
                 }
-                1 -> {
-                    colorState = 1
-                    colorFinalState = 2
+                AnimationDefinitions.AnimationState.MID -> {
+                    colorState = AnimationDefinitions.AnimationState.MID
+                    colorFinalState = AnimationDefinitions.AnimationState.END
                 }
-                2 -> {
-                    colorState = 2
-                    colorFinalState = 0
+                AnimationDefinitions.AnimationState.END -> {
+                    colorState = AnimationDefinitions.AnimationState.END
+                    colorFinalState = AnimationDefinitions.AnimationState.START
                 }
             }
         }
     )
     Button(
         modifier = Modifier.fillMaxWidth().padding(16.dp),
-        backgroundColor = colorAnim[AnimationDefinations.colorPropKey],
+        backgroundColor = colorAnim[AnimationDefinitions.colorPropKey],
         onClick = {}) {
         Text("Color prop Animations", modifier = Modifier.padding(8.dp))
     }
@@ -324,10 +323,10 @@ fun ColorMultistateAnimation() {
 
 @Composable
 fun DpMultiStateAnimation() {
-    var dpStartState by remember { mutableStateOf(0) }
-    var dpEndState by remember { mutableStateOf(2) }
+    val dpStartState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    val dpEndState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
     val dpAnim = transition(
-        definition = AnimationDefinations.dpAnimDefinition,
+        definition = AnimationDefinitions.dpAnimDefinition,
         initState = dpStartState,
         toState = dpEndState
     )
@@ -335,7 +334,7 @@ fun DpMultiStateAnimation() {
     Card(modifier = Modifier.preferredSize(200.dp), backgroundColor = green200) {
         Button(
             onClick = {},
-            modifier = Modifier.height(dpAnim[AnimationDefinations.dpPropKey]).padding(8.dp)
+            modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey]).padding(8.dp)
         ) {
             Text(text = "DP Prop Animations")
         }
@@ -343,17 +342,17 @@ fun DpMultiStateAnimation() {
     Card(modifier = Modifier.preferredSize(100.dp).padding(12.dp)) {
         Image(
             asset = imageResource(id = R.drawable.p1),
-            modifier = Modifier.height(dpAnim[AnimationDefinations.dpPropKey])
+            modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey])
         )
     }
 }
 
 @Composable
 fun FloatMutliStateAnimation() {
-    var floatStateStart by remember { mutableStateOf(0) }
-    var floatStateFinal by remember { mutableStateOf(2) }
+    val floatStateStart by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    val floatStateFinal by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
     val floatAnim = transition(
-        definition = AnimationDefinations.floatAnimDefinition(0f, 100f, true),
+        definition = AnimationDefinitions.floatAnimDefinition(0f, 100f, true),
         initState = floatStateStart,
         toState = floatStateFinal
     )
@@ -361,7 +360,7 @@ fun FloatMutliStateAnimation() {
     Card(backgroundColor = green500, modifier = Modifier.preferredSize(150.dp)) {
         Image(
             asset = imageResource(id = R.drawable.p2),
-            alpha = floatAnim[AnimationDefinations.floatPropKey]
+            alpha = floatAnim[AnimationDefinitions.floatPropKey]
         )
     }
 
@@ -369,10 +368,10 @@ fun FloatMutliStateAnimation() {
 
 @Composable
 fun FloatMultiStateAnimationCircleStrokeCanvas() {
-    var floatStateStart by remember { mutableStateOf(0) }
-    var floadStateFinal by remember { mutableStateOf(2) }
+    val floatStateStart by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    val floadStateFinal by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
     val floatAnim = transition(
-        definition = AnimationDefinations.floatAnimDefinition(0f, 360f, true),
+        definition = AnimationDefinitions.floatAnimDefinition(0f, 360f, true),
         initState = floatStateStart,
         toState = floadStateFinal
     )
@@ -386,7 +385,7 @@ fun FloatMultiStateAnimationCircleStrokeCanvas() {
             10f
         )
         val size = Size(insideRadius * 2, insideRadius * 2)
-        var rotationAngle = floatAnim[AnimationDefinations.floatPropKey] - 90f
+        var rotationAngle = floatAnim[AnimationDefinitions.floatPropKey] - 90f
         drawArc(
             color = green500,
             startAngle = rotationAngle,
@@ -402,10 +401,10 @@ fun FloatMultiStateAnimationCircleStrokeCanvas() {
 
 @Composable
 fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Float = 200f) {
-    var floatStateStart by remember { mutableStateOf(0) }
-    var floadStateFinal by remember { mutableStateOf(2) }
+    val floatStateStart by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    val floadStateFinal by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
     val floatAnim = transition(
-        definition = AnimationDefinations.floatAnimDefinition(0f, radiusEnd, true),
+        definition = AnimationDefinitions.floatAnimDefinition(0f, radiusEnd, true),
         initState = floatStateStart,
         toState = floadStateFinal
     )
@@ -419,7 +418,7 @@ fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Flo
             220f,
             10f
         )
-        var radius = floatAnim[AnimationDefinations.floatPropKey]
+        val radius = floatAnim[AnimationDefinitions.floatPropKey]
         drawCircle(
             color = color.copy(alpha = 0.8f),
             radius = radius,
@@ -440,10 +439,10 @@ fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Flo
 
 @Composable
 fun FloatMultiStateAnimationExplode(duration: Int = 500) {
-    var floatStateStart by remember { mutableStateOf(0) }
-    var floadStateFinal by remember { mutableStateOf(2) }
+    val floatStateStart by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    val floadStateFinal by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
     val floatAnim = transition(
-        definition = AnimationDefinations.floatAnimDefinition(
+        definition = AnimationDefinitions.floatAnimDefinition(
             0f, 2000f, false, duration
         ),
         initState = floatStateStart,
@@ -455,7 +454,7 @@ fun FloatMultiStateAnimationExplode(duration: Int = 500) {
             10f,
             10f
         )
-        var radius = floatAnim[AnimationDefinations.floatPropKey]
+        var radius = floatAnim[AnimationDefinitions.floatPropKey]
         drawCircle(
             color = green200.copy(alpha = 0.8f),
             radius = radius,
