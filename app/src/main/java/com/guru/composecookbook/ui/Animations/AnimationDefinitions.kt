@@ -65,7 +65,7 @@ object AnimationDefinitions {
             dpPropKey using repeatable(
                 iterations = Infinite,
                 animation = tween(
-                    durationMillis = 1000,
+                    durationMillis = 1500,
                     easing = LinearEasing
                 )
             )

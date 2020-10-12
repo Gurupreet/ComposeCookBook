@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green200
@@ -321,6 +323,7 @@ fun ColorMultistateAnimation() {
     }
 }
 
+@Preview
 @Composable
 fun DpMultiStateAnimation() {
     val dpStartState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
@@ -331,22 +334,24 @@ fun DpMultiStateAnimation() {
         toState = dpEndState
     )
 
-    Card(modifier = Modifier.preferredSize(200.dp), backgroundColor = green200) {
-        Button(
-            onClick = {},
-            modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey]).padding(8.dp)
-        ) {
-            Text(text = "DP Prop Animations")
+    Row(horizontalArrangement = Arrangement.SpaceAround) {
+        Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
+            Image(
+                asset = imageResource(id = R.drawable.lana),
+                modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey])
+            )
         }
-    }
-    Card(modifier = Modifier.preferredSize(100.dp).padding(12.dp)) {
-        Image(
-            asset = imageResource(id = R.drawable.p1),
-            modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey])
-        )
+        Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
+            Image(
+                asset = imageResource(id = R.drawable.billie),
+                modifier = Modifier.height(100.dp - dpAnim[AnimationDefinitions.dpPropKey])
+            )
+        }
     }
 }
 
+
+@Preview
 @Composable
 fun FloatMutliStateAnimation() {
     val floatStateStart by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
@@ -357,10 +362,10 @@ fun FloatMutliStateAnimation() {
         toState = floatStateFinal
     )
 
-    Card(backgroundColor = green500, modifier = Modifier.preferredSize(150.dp)) {
+    Card(backgroundColor = Color.White, modifier = Modifier.preferredSize(150.dp)) {
         Image(
-            asset = imageResource(id = R.drawable.p2),
-            alpha = floatAnim[AnimationDefinitions.floatPropKey]
+            asset = imageResource(id = R.drawable.lana),
+            alpha = floatAnim[AnimationDefinitions.floatPropKey]/100,
         )
     }
 
@@ -399,6 +404,7 @@ fun FloatMultiStateAnimationCircleStrokeCanvas() {
     }
 }
 
+@Preview
 @Composable
 fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Float = 200f) {
     val floatStateStart by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
