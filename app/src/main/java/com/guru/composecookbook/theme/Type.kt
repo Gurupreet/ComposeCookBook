@@ -40,5 +40,4 @@ val typography = Typography(
         fontSize = 14.sp,
         color = Color.Gray
     ),
-
-    )
+)

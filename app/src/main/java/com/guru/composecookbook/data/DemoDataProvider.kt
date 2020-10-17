@@ -335,10 +335,11 @@ object DemoDataProvider {
         HomeScreenItems.Layouts,
         HomeScreenItems.Modifiers,
         HomeScreenItems.AndroidViews,
+        HomeScreenItems.Carousel,
+        HomeScreenItems.AdvanceLists,
         HomeScreenItems.ConstraintsLayout,
         HomeScreenItems.Dialogs,
         HomeScreenItems.TabLayout,
-        HomeScreenItems.Carousel,
         HomeScreenItems.BottomSheets,
     )
 

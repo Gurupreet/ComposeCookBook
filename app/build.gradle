@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.guru.composecookbook"
-        minSdkVersion 29
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"

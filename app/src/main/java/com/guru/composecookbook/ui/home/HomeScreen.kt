@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.ui.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.dynamic.DynamicUiType
@@ -101,6 +102,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
         }
         HomeScreenItems.AndroidViews -> {
             DynamicUIActivity.newIntent(context, DynamicUiType.ANDROIDVIEWS.name, isDarkTheme)
+        }
+        HomeScreenItems.AdvanceLists -> {
+            AdvanceListsActivity.newIntent(context, isDarkTheme)
         }
     }
     context.startActivity(intent)

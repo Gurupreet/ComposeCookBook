@@ -32,6 +32,39 @@ object AnimationDefinitions {
         }
     }
 
+    val shimmerColorPropKey = ColorPropKey(label = "shimmerColor")
+    val shimmerAnimDefinition = transitionDefinition<AnimationState> {
+        state(AnimationState.START) { this[shimmerColorPropKey] = Color.LightGray.copy(alpha = 0.6f) }
+        state(AnimationState.MID) { this[shimmerColorPropKey] = Color.LightGray.copy(alpha = 0.9f) }
+        state(AnimationState.END) { this[shimmerColorPropKey] = Color.LightGray.copy(alpha = 0.7f) }
+        transition(
+            AnimationState.START to AnimationState.MID,
+            AnimationState.MID to AnimationState.END,
+            AnimationState.END to AnimationState.START
+        ) {
+            shimmerColorPropKey using tween(
+                durationMillis = 800,
+                easing = FastOutSlowInEasing,
+            )
+        }
+    }
+
+    val shimmerDpPropKey = DpPropKey("shimmerdp")
+    val shimmerDpAnimDefinition = transitionDefinition<AnimationState> {
+        state(AnimationState.START) { this[shimmerDpPropKey] = 100.dp }
+        state(AnimationState.END) { this[shimmerDpPropKey] = 2000.dp }
+
+        transition(AnimationState.START, AnimationState.END) {
+            shimmerDpPropKey using repeatable(
+                iterations = Infinite,
+                animation = tween(
+                    durationMillis = 1500,
+                    easing = LinearEasing
+                )
+            )
+        }
+    }
+
 
     //float animation
     val floatPropKey = FloatPropKey("value")
@@ -65,7 +98,7 @@ object AnimationDefinitions {
             dpPropKey using repeatable(
                 iterations = Infinite,
                 animation = tween(
-                    durationMillis = 1500,
+                    durationMillis = 800,
                     easing = LinearEasing
                 )
             )
