@@ -60,6 +60,13 @@ Please get **android studio 4.2 canary 8** or above to build this project [from 
 - __Animations:__ Animations are very interesting in compose. Checkout single value animations to get started.
 - __Others:__ After the above steps feel free to deep dive into Tablayouts, carousel, Dialogs and BottomSheets 
 
+## Coming Soon
+- Some of the features that will be available in coming weeks
+  - UI Testing of composables
+  - Advance lists: Paginations, Shimmers, Pull Refresh etc
+  - Clean Architecture Sample with coroutines.
+  Much more in pipeline stay tuned!!
+
 ## Official Documentations
 - Official Google Documentation
   - [Jetpack compose](https://developer.android.com/jetpack/compose)
