@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -365,7 +364,7 @@ fun FloatMutliStateAnimation() {
     Card(backgroundColor = Color.White, modifier = Modifier.preferredSize(150.dp)) {
         Image(
             asset = imageResource(id = R.drawable.lana),
-            alpha = floatAnim[AnimationDefinitions.floatPropKey]/100,
+            alpha = floatAnim[AnimationDefinitions.floatPropKey] / 100,
         )
     }
 

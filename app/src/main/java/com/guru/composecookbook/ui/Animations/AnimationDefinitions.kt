@@ -28,13 +28,15 @@ object AnimationDefinitions {
             colorPropKey using tween(
                 durationMillis = 1000,
                 easing = FastOutSlowInEasing,
-                )
+            )
         }
     }
 
     val shimmerColorPropKey = ColorPropKey(label = "shimmerColor")
     val shimmerColorAnimation = transitionDefinition<AnimationState> {
-        state(AnimationState.START) { this[shimmerColorPropKey] = Color.LightGray.copy(alpha = 0.6f) }
+        state(AnimationState.START) {
+            this[shimmerColorPropKey] = Color.LightGray.copy(alpha = 0.6f)
+        }
         state(AnimationState.MID) { this[shimmerColorPropKey] = Color.LightGray.copy(alpha = 0.9f) }
         state(AnimationState.END) { this[shimmerColorPropKey] = Color.LightGray }
         transition(

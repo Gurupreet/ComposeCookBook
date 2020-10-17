@@ -6,7 +6,7 @@ sealed class HomeScreenItems {
     object Carousel : HomeScreenItems()
     object Layouts : HomeScreenItems()
     data class ListView(val type: String = "Vertical") : HomeScreenItems()
-    object AdvanceLists: HomeScreenItems()
+    object AdvanceLists : HomeScreenItems()
     object ConstraintsLayout : HomeScreenItems()
     object CollapsingAppBar : HomeScreenItems()
     object BottomAppBar : HomeScreenItems()
