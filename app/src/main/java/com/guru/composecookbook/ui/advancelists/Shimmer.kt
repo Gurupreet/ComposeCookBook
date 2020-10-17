@@ -3,10 +3,13 @@ package com.guru.composecookbook.ui.advancelists
 import android.util.Log
 import androidx.compose.animation.transition
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.ListItem
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,22 +28,21 @@ enum class ShimmerAnimationType {
 
 @Preview
 @Composable
-fun ShimmerList(
-    shimmerAnimationType: ShimmerAnimationType = ShimmerAnimationType.FADETRANSLATE,
-) {
+fun ShimmerList() {
+    var shimmerAnimationType by remember { mutableStateOf(ShimmerAnimationType.FADE) }
     var colorState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
     var colorFinalState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
     val dpStartState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
     val dpEndState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
 
-    val dpAnim = transition(
-        definition = AnimationDefinitions.shimmerDpAnimDefinition,
+    val shimmerTranslateAnim = transition(
+        definition = AnimationDefinitions.shimmerTranslateAnimation,
         initState = dpStartState,
         toState = dpEndState
     )
 
-    val colorAnim = transition(
-        definition = AnimationDefinitions.shimmerAnimDefinition,
+    val shimmerColorAnim = transition(
+        definition = AnimationDefinitions.shimmerColorAnimation,
         initState = colorState,
         toState = colorFinalState,
         onStateChangeFinished = {
@@ -63,20 +65,45 @@ fun ShimmerList(
 
     val list = if (shimmerAnimationType != ShimmerAnimationType.TRANSLATE) {
        listOf(
-            colorAnim[AnimationDefinitions.shimmerColorPropKey],
-            colorAnim[AnimationDefinitions.shimmerColorPropKey].copy(alpha = 0.5f)
+           shimmerColorAnim[AnimationDefinitions.shimmerColorPropKey],
+           shimmerColorAnim[AnimationDefinitions.shimmerColorPropKey].copy(alpha = 0.5f)
         )
     } else {
-        listOf(Color.LightGray, Color.LightGray.copy(alpha = 0.8f))
+        listOf(Color.LightGray.copy(alpha = 0.6f), Color.LightGray)
     }
 
     val dpValue = if (shimmerAnimationType != ShimmerAnimationType.FADE) {
-         dpAnim[AnimationDefinitions.shimmerDpPropKey]
+        shimmerTranslateAnim[AnimationDefinitions.shimmerDpPropKey]
     } else {
-        2000.dp
+       2000.dp
     }
 
-    Column {
+    ScrollableColumn(modifier = Modifier.fillMaxSize()) {
+        Spacer(modifier = Modifier.height(30.dp))
+        Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.fillMaxWidth()) {
+            Button(
+                onClick = {shimmerAnimationType = ShimmerAnimationType.FADE},
+                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADE)
+                    MaterialTheme.colors.primary else Color.LightGray,
+            ) {
+                Text(text = "Fading")
+            }
+            Button(
+                onClick = {shimmerAnimationType = ShimmerAnimationType.TRANSLATE},
+                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.TRANSLATE)
+                    MaterialTheme.colors.primary else Color.LightGray
+            ) {
+                Text(text = "Translating")
+            }
+            Button(
+                onClick = {shimmerAnimationType = ShimmerAnimationType.FADETRANSLATE},
+                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADETRANSLATE)
+                    MaterialTheme.colors.primary else Color.LightGray
+            ) {
+                Text(text = "Fade+Translate")
+            }
+        }
+
         ShimmerItem(list, dpValue.value)
         ShimmerItemBig(list, dpValue.value)
         ShimmerItem(list, dpValue.value)
@@ -89,9 +116,20 @@ fun ShimmerItem(lists: List<Color>, floatAnim: Float = 0f) {
    Row(modifier = Modifier.padding(16.dp)) {
        Spacer(modifier = Modifier.preferredSize(100.dp).background(brush = HorizontalGradient(lists, 0f, floatAnim)))
        Column(modifier = Modifier.padding(8.dp)) {
-           Spacer(modifier = Modifier.fillMaxWidth().preferredHeight(30.dp).padding(8.dp).horizontalGradientBackground(lists))
-           Spacer(modifier = Modifier.fillMaxWidth().preferredHeight(30.dp).padding(8.dp).horizontalGradientBackground(lists))
-           Spacer(modifier = Modifier.fillMaxWidth().preferredHeight(30.dp).padding(8.dp).horizontalGradientBackground(lists))
+           Spacer(modifier = Modifier
+               .fillMaxWidth()
+               .preferredHeight(30.dp)
+               .padding(8.dp).background(brush = HorizontalGradient(lists, 0f, floatAnim)))
+           Spacer(modifier = Modifier
+               .fillMaxWidth()
+               .preferredHeight(30.dp)
+               .padding(8.dp)
+               .background(brush = HorizontalGradient(lists, 0f, floatAnim)))
+           Spacer(modifier = Modifier
+               .fillMaxWidth()
+               .preferredHeight(30.dp)
+               .padding(8.dp)
+               .background(brush = HorizontalGradient(lists, 0f, floatAnim)))
        }
    }
 }

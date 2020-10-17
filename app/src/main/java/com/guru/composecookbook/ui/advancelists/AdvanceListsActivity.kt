@@ -4,8 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.Text
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import androidx.ui.tooling.preview.Preview
@@ -23,8 +26,15 @@ class AdvanceListsActivity : AppCompatActivity() {
         setContent {
             ComposeCookBookTheme(isDarkTheme) {
                 // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                  ShimmerList()
+                Scaffold(
+                    topBar = {
+                        TopAppBar(title = { Text(text = "Advance Lists") })
+                    }
+                ) {
+                 // ShimmerList()
+                    PullRefreshList {
+
+                    }
                 }
             }
         }
