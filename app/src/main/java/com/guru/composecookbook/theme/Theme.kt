@@ -32,12 +32,19 @@ private val LightColorPalette = lightColors(
     onSurface = Color.Black
 )
 
+enum class ColorPallet {
+    PURPLE, GREEN, ORANGE, BLUE
+}
 @Composable
 fun ComposeCookBookTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable() () -> Unit
+    colorPallet: ColorPallet = ColorPallet.GREEN,
+    content: @Composable() () -> Unit,
 ) {
     val colors = if (darkTheme) {
+        when (colorPallet) {
+
+        }
         DarkColorPalette
     } else {
         LightColorPalette

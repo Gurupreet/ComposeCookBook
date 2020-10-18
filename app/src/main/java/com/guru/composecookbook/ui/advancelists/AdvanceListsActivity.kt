@@ -26,13 +26,10 @@ class AdvanceListsActivity : AppCompatActivity() {
                 // A surface container using the 'background' color from the theme
                 Scaffold(
                     topBar = {
-                        TopAppBar(title = { Text(text = "Advance Lists") })
+                        TopAppBar(title = { Text(text = "Advance Lists(In Progress)") })
                     }
                 ) {
-                    // ShimmerList()
-                    PullRefreshList {
-
-                    }
+                    SwipeableLists()
                 }
             }
         }
