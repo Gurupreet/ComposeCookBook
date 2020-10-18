@@ -21,7 +21,6 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoui.instagram.InstagramStories
 import com.guru.composecookbook.ui.demoui.instagram.StoryListItem
@@ -122,13 +121,11 @@ fun VerticalListView() {
 fun HorizontalListView() {
     val list = remember { DemoDataProvider.itemList }
     ScrollableColumn {
-        ProvideEmphasis(EmphasisAmbient.current.high) {
-            Text(
-                modifier = Modifier.padding(16.dp),
-                text = "Good Food",
-                style = MaterialTheme.typography.subtitle1
-            )
-        }
+        Text(
+            modifier = Modifier.padding(16.dp),
+            text = "Good Food",
+            style = MaterialTheme.typography.subtitle1
+        )
         LazyRowFor(items = list, modifier = Modifier.padding(end = 16.dp)) {
             HorizontalListItem(
                 it,
@@ -136,13 +133,11 @@ fun HorizontalListView() {
             )
         }
         ListItemDivider()
-        ProvideEmphasis(EmphasisAmbient.current.high) {
-            Text(
-                modifier = Modifier.padding(16.dp),
-                text = "Stories",
-                style = MaterialTheme.typography.subtitle1
-            )
-        }
+        Text(
+            modifier = Modifier.padding(16.dp),
+            text = "Stories",
+            style = MaterialTheme.typography.subtitle1
+        )
         InstagramStories()
     }
 }
@@ -165,11 +160,6 @@ fun GridListView() {
             }
         }
     }
-}
-
-@Composable
-fun GridOfTwo(item: Item) {
-
 }
 
 @Composable

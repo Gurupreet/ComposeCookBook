@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
-import androidx.compose.material.EmphasisAmbient
 import androidx.compose.material.IconButton
-import androidx.compose.material.ProvideEmphasis
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -57,14 +55,12 @@ private fun NameAndHandle(tweet: Tweet) {
                 .padding(top = 2.dp)
         )
         //handle
-        ProvideEmphasis(emphasis = EmphasisAmbient.current.medium) {
-            Text(
-                text = tweet.handle + " . " + tweet.time,
-                modifier = Modifier.padding(start = 8.dp),
-                style = typography.body1,
-                textAlign = TextAlign.Center
-            )
-        }
+        Text(
+            text = tweet.handle + " . " + tweet.time,
+            modifier = Modifier.padding(start = 8.dp),
+            style = typography.body1,
+            textAlign = TextAlign.Center
+        )
     }
 }
 

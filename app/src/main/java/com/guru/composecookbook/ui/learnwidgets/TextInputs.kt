@@ -4,6 +4,8 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.text.CoreTextField
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
@@ -11,6 +13,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
@@ -24,6 +27,13 @@ fun TextInputs() {
 
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
+    // TODO Explore CoreTextField
+    CoreTextField(
+        value = text,
+        onValueChange = { newValue -> text = newValue },
+        modifier = Modifier.padding(8.dp).preferredSize(0.dp),
+        cursorColor = Color.Magenta
+    )
     TextField(
         value = text,
         onValueChange = { newValue -> text = newValue },

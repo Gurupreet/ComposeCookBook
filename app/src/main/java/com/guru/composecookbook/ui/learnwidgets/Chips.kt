@@ -3,14 +3,12 @@ package com.guru.composecookbook.ui.learnwidgets
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.contentColor
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.EmphasisAmbient
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -53,14 +51,14 @@ private fun CustomImageChip(
         },
         contentColor = when {
             selected -> MaterialTheme.colors.onPrimary
-            else -> EmphasisAmbient.current.high.applyEmphasis(contentColor())
+            else -> Color.LightGray
         },
         shape = RoundedCornerShape(16.dp),
         border = BorderStroke(
             width = 1.dp,
             color = when {
                 selected -> MaterialTheme.colors.primary
-                else -> EmphasisAmbient.current.disabled.applyEmphasis(contentColor())
+                else -> Color.LightGray
             }
         ),
         modifier = modifier
