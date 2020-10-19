@@ -580,45 +580,37 @@ private fun DrawLayerAnimations() {
 
 @Composable
 fun AnimatedValuesAnimations() {
-    val moveX = 0f
+    val moveX = -1000f
     val moveXMax = 1000f
-    val moveY = 0f
-    val moveYMax = 1000f
-    TitleText("Animated Values Animations")
+    TitleText("Animated Value to Animations + drag")
     val xFloat = animatedFloat(initVal = moveX)
-    val yFloat = animatedFloat(initVal = moveX)
 
     val dragObserver = object : DragObserver {
         override fun onStart(downPosition: Offset) {
             xFloat.setBounds(moveX, moveXMax)
-            yFloat.setBounds(moveY, moveYMax)
             super.onStart(downPosition)
         }
 
         override fun onStop(velocity: Offset) {
             xFloat.snapTo(moveX)
-            yFloat.snapTo(moveY)
             super.onStop(velocity)
         }
 
         override fun onCancel() {
             xFloat.snapTo(moveX)
-            yFloat.snapTo(moveY)
             super.onCancel()
         }
 
         override fun onDrag(dragDistance: Offset): Offset {
             xFloat.animateTo(xFloat.targetValue + dragDistance.x)
-            yFloat.animateTo(yFloat.targetValue + dragDistance.y)
             return super.onDrag(dragDistance)
         }
     }
-    val animatedRadius = Dp(xFloat.value)
+
     CardElement(
         modifier = Modifier.rawDragGestureFilter(dragObserver)
             .preferredSize(200.dp).drawLayer(
                 translationX = xFloat.value,
-                translationY = yFloat.value
             )
     )
 }
@@ -628,9 +620,7 @@ fun CardElement(modifier: Modifier = Modifier) {
     Card(
         backgroundColor = MaterialTheme.colors.primary,
         modifier = modifier
-    ) {
-
-    }
+    ) {}
 }
 
 

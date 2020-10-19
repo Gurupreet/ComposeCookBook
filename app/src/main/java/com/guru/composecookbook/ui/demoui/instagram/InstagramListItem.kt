@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
@@ -96,7 +97,6 @@ private fun ProfileInfoSection(post: Tweet) {
     Row(
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
             asset = imageResource(id = post.authorImageId),
@@ -107,7 +107,8 @@ private fun ProfileInfoSection(post: Tweet) {
         Text(
             text = post.author,
             style = typography.body1,
-            modifier = Modifier.padding(8.dp).weight(1f)
+            modifier = Modifier.padding(8.dp).weight(1f),
+            textAlign = TextAlign.Left
         )
         Icon(asset = Icons.Default.MoreVert)
     }

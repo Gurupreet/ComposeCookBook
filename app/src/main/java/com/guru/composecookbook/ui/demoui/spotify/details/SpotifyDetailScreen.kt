@@ -142,7 +142,7 @@ fun ShuffleButton() {
         onClick = {},
         backgroundColor = green700,
         modifier = Modifier.padding(vertical = 12.dp, horizontal = 24.dp)
-            .clip(CircleShape)
+            .clip(CircleShape),
     ) {
         Text(
             text = "SHUFFLE PLAY",

@@ -76,7 +76,7 @@ fun YoutubeListItem(item: Tweet) {
             text = "${item.author} . ${item.likesCount}k views . 6 hours ago",
             style = MaterialTheme.typography.subtitle2,
             modifier = Modifier.constrainAs(subtitle) {
-                linkTo(start = title.start, end = title.end)
+                start.linkTo(title.start)
                 width = Dimension.fillToConstraints
             }.padding(bottom = 16.dp)
         )

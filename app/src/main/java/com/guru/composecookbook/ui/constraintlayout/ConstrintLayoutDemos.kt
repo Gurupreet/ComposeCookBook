@@ -34,7 +34,7 @@ fun ConstraintLayoutDemos() {
         YoutubeListItem(tweet2)
         Spacer(modifier = Modifier.height(20.dp))
         MyWalletCard()
-        Spacer(modifier = Modifier.height(200.dp))
+        Spacer(modifier = Modifier.height(400.dp))
     }
 }
 
@@ -99,7 +99,7 @@ fun ConstraintLayoutListItem() {
             text = item.source,
             style = MaterialTheme.typography.caption,
             modifier = Modifier.constrainAs(source) {
-                linkTo(start = title.start, end = parent.end)
+                start.linkTo(title.start)
                 width = Dimension.fillToConstraints
             }
         )
@@ -176,7 +176,7 @@ fun ConstraintLayoutBigListItem() {
             text = item.source,
             style = MaterialTheme.typography.caption,
             modifier = Modifier.padding(bottom = 12.dp).constrainAs(source) {
-                linkTo(start = title.start, end = title.end)
+                start.linkTo(title.start)
                 linkTo(top = subtitle.bottom, bottom = parent.bottom)
                 width = Dimension.fillToConstraints
             }

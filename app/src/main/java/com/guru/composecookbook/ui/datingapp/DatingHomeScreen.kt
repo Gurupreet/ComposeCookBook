@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ConfigurationAmbient
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
@@ -137,7 +138,8 @@ fun CardContent(album: Album) {
             Text(
                 text = album.artist,
                 style = typography.h6,
-                modifier = Modifier.padding(end = 8.dp).weight(1f)
+                modifier = Modifier.padding(end = 8.dp).weight(1f),
+                textAlign = TextAlign.Start
             )
             Icon(
                 asset = Icons.Outlined.Place,

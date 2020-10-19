@@ -46,12 +46,7 @@ fun GmailListItem(item: Tweet) {
             text = item.author,
             style = MaterialTheme.typography.h6,
             modifier = Modifier.constrainAs(title) {
-                linkTo(
-                    start = image.end,
-                    startMargin = 16.dp,
-                    end = time.start,
-                    endMargin = 16.dp
-                )
+                start.linkTo(image.end, 16.dp)
                 width = Dimension.fillToConstraints
             }
         )
@@ -72,7 +67,7 @@ fun GmailListItem(item: Tweet) {
             text = item.source,
             style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
             modifier = Modifier.constrainAs(subtitle) {
-                linkTo(start = title.start, end = parent.end)
+                start.linkTo(image.end, 16.dp)
                 width = Dimension.fillToConstraints
             }
         )
