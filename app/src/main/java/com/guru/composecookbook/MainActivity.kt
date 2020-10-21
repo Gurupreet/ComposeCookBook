@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
+import com.guru.composecookbook.theme.ColorPallet
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.Animations.AnimationScreen
 import com.guru.composecookbook.ui.demoui.DemoUIList
@@ -42,20 +43,17 @@ class MainActivity : AppCompatActivity() {
         //for adView demo
         MobileAds.initialize(this)
         setContent {
-            ComposeCookBookTheme {
-                // A surface container using the 'background' color from the theme
-                val darkTheme = savedInstanceState { false }
-                BaseView(darkTheme.value) {
-                    MainAppContent(darkTheme)
-                }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value) {
+                MainAppContent(appTheme)
             }
         }
     }
 }
 
 @Composable
-fun BaseView(darkTheme: Boolean, content: @Composable() () -> Unit) {
-    ComposeCookBookTheme(darkTheme = darkTheme) {
+fun BaseView(appThemeState: AppThemeState, content: @Composable() () -> Unit) {
+    ComposeCookBookTheme(darkTheme = appThemeState.darkTheme, colorPallet = appThemeState.pallet) {
         content()
     }
 }
@@ -63,14 +61,14 @@ fun BaseView(darkTheme: Boolean, content: @Composable() () -> Unit) {
 @Composable
 fun HomeScreenContent(
     homeScreen: BottomNavType,
-    darkTheme: MutableState<Boolean>,
+    appThemeState: MutableState<AppThemeState>,
     modifier: Modifier
 ) {
     Column(modifier = modifier) {
         Crossfade(homeScreen) { screen ->
             Surface(color = MaterialTheme.colors.background) {
                 when (screen) {
-                    BottomNavType.HOME -> HomeScreen(darkTheme)
+                    BottomNavType.HOME -> HomeScreen(appThemeState)
                     BottomNavType.WIDGETS -> WidgetScreen()
                     BottomNavType.ANIMATION -> AnimationScreen()
                     BottomNavType.DEMOUI -> DemoUIList()
@@ -83,13 +81,13 @@ fun HomeScreenContent(
 }
 
 @Composable
-fun MainAppContent(darkTheme: MutableState<Boolean>) {
+fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
     //Default home screen state is always HOME
     var homeScreenState = savedInstanceState { BottomNavType.HOME }
     Column {
         HomeScreenContent(
             homeScreen = homeScreenState.value,
-            darkTheme = darkTheme,
+            appThemeState = appThemeState,
             modifier = Modifier.weight(1f)
         )
         BottomNavigationContent(homeScreenState)
@@ -158,8 +156,13 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    val darkThemeState = mutableStateOf(false)
-    BaseView(darkThemeState.value) {
-        MainAppContent(darkThemeState)
+    val appThemeState = mutableStateOf(AppThemeState(false, ColorPallet.GREEN))
+    BaseView(appThemeState.value) {
+        MainAppContent(appThemeState)
     }
 }
+
+data class AppThemeState(
+    var darkTheme: Boolean = false,
+    var pallet: ColorPallet = ColorPallet.GREEN
+)
