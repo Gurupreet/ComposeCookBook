@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.dynamic
+package com.guru.composecookbook.ui.tabslayout
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -41,7 +41,7 @@ fun TabLayout() {
 
     Column {
         // Right now Tabs by default don't have changing like viewpager but I think we can handle
-        // by overriding right/left swipe on content and updating state of selectedTab
+        // by overriding right/left swipe on content and updating state of selectedTab or using pager
 
         //Use ScrollableTabRow for list of tabs
         TabRow(selectedTabIndex = selectedIndex.value) {

@@ -1,8 +1,6 @@
-package com.guru.composecookbook.ui.dynamic
+package com.guru.composecookbook.ui.dialogs
 
 
-import androidx.compose.animation.core.AnimationClockObservable
-import androidx.compose.animation.core.AnimationClockObserver
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
@@ -22,20 +20,8 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
 
-val animationClockObservable = object : AnimationClockObservable {
-    override fun subscribe(observer: AnimationClockObserver) {
-
-    }
-
-    override fun unsubscribe(observer: AnimationClockObserver) {
-
-    }
-
-}
-
 @Composable
 fun BottomSheetLayouts() {
-    // It is not actual bottomSheet but bottomDrawerLayout which shoul be used with bottomAppBar
     BottomSheetDrawer()
 }
 

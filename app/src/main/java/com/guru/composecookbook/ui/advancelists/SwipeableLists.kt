@@ -64,7 +64,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
             .padding(8.dp).dragGestureFilter(
                 dragObserver = dragObserver,
                 canDrag = { direction ->
-                    direction == Direction.LEFT || direction == Direction.RIGHT
+                    direction == Direction.LEFT
                 }
             )
             .drawLayer(

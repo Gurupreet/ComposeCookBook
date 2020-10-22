@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.advancelists
+package com.guru.composecookbook.ui.pullrefreshdemos
 
 import androidx.compose.animation.animate
 import androidx.compose.animation.animatedFloat

@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.dynamic
+package com.guru.composecookbook.ui.androidviews
 
 import android.content.Context
 import android.os.Bundle
