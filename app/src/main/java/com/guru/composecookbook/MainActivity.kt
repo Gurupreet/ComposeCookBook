@@ -28,8 +28,7 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
-import com.guru.composecookbook.theme.ColorPallet
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.Animations.AnimationScreen
 import com.guru.composecookbook.ui.demoui.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
@@ -43,8 +42,9 @@ class MainActivity : AppCompatActivity() {
         //for adView demo
         MobileAds.initialize(this)
         setContent {
+            val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
-            BaseView(appTheme.value) {
+            BaseView(appTheme.value, systemUiController) {
                 MainAppContent(appTheme)
             }
         }
@@ -52,7 +52,18 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun BaseView(appThemeState: AppThemeState, content: @Composable() () -> Unit) {
+fun BaseView(
+    appThemeState: AppThemeState,
+    systemUiController: SystemUiController?,
+    content: @Composable () -> Unit
+) {
+    val color = when (appThemeState.pallet) {
+        ColorPallet.GREEN -> green700
+        ColorPallet.BLUE -> blue700
+        ColorPallet.ORANGE -> orange700
+        ColorPallet.PURPLE -> purple700
+    }
+    systemUiController?.setStatusBarColor(color = color, darkIcons = appThemeState.darkTheme)
     ComposeCookBookTheme(darkTheme = appThemeState.darkTheme, colorPallet = appThemeState.pallet) {
         content()
     }
@@ -157,7 +168,7 @@ fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
 @Composable
 fun DefaultPreview() {
     val appThemeState = mutableStateOf(AppThemeState(false, ColorPallet.GREEN))
-    BaseView(appThemeState.value) {
+    BaseView(appThemeState.value, null) {
         MainAppContent(appThemeState)
     }
 }

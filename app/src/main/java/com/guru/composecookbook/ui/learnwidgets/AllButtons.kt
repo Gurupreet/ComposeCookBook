@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
@@ -73,12 +74,12 @@ fun AllButtons() {
     }
     Row {
         val horizontalGradient = HorizontalGradient(
-            colors = listOf(green200, green500, green700),
+            colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
             0f,
             250f
         )
         val verticalGradient = VerticalGradient(
-            colors = listOf(green200, green500, green700),
+            colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
             startY = 0f,
             endY = 100f
         )
@@ -86,7 +87,7 @@ fun AllButtons() {
             text = "Horizontal gradient",
             style = typography.body2.copy(color = Color.White),
             modifier = Modifier.padding(12.dp).clickable(onClick = {})
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(4.dp))
                 .background(brush = horizontalGradient).padding(12.dp)
         )
         Text(

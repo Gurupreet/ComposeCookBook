@@ -154,6 +154,7 @@ fun HomeScreenListView(homeScreenItems: HomeScreenItems, context: Context, isDar
 }
 
 fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTheme: Boolean) {
+    //TODO pass theme to following screens
     val intent = when (homeScreenItems) {
         is HomeScreenItems.ListView -> {
             ListViewActivity.newIntent(context, homeScreenItems.type.toUpperCase(), isDarkTheme)
