@@ -3,28 +3,28 @@ package com.guru.composecookbook.ui.advancelists
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScrollableTabRow
+import androidx.compose.material.Tab
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.AnimationClockAmbient
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
-import com.guru.composecookbook.ui.lists.GridListView
-import com.guru.composecookbook.ui.lists.VerticalListView
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.AnimationClockAmbient
-import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.carousel.Pager
 import com.guru.composecookbook.ui.carousel.PagerState
+import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
 
 class AdvanceListsActivity : AppCompatActivity() {
 
@@ -42,7 +42,7 @@ class AdvanceListsActivity : AppCompatActivity() {
                         TopAppBar(title = { Text(text = "Advance Lists(In Progress)") })
                     }
                 ) {
-                   AdvanceListContent()
+                    AdvanceListContent()
                 }
             }
         }
@@ -64,7 +64,7 @@ fun AdvanceListContent() {
     val pagerState: PagerState = run {
         val clock = AnimationClockAmbient.current
         remember(clock) {
-            PagerState(clock, 0, 0, tabs.size -1)
+            PagerState(clock, 0, 0, tabs.size - 1)
         }
     }
     Column {
@@ -82,7 +82,7 @@ fun AdvanceListContent() {
         }
         Pager(state = pagerState, modifier = Modifier.weight(1f)) {
             selectedIndex = pagerState.currentPage
-            when(page) {
+            when (page) {
                 0 -> ShimmerList()
                 1 -> SwipeableLists()
             }

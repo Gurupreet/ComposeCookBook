@@ -22,9 +22,6 @@ import androidx.compose.ui.graphics.HorizontalGradient
 import androidx.compose.ui.graphics.VerticalGradient
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import com.guru.composecookbook.theme.green200
-import com.guru.composecookbook.theme.green500
-import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
 
 @Composable

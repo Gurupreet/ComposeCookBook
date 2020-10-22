@@ -1,15 +1,12 @@
 package com.guru.composecookbook.ui.home
 
 import android.content.Context
-import androidx.compose.animation.animate
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
@@ -20,11 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Paint
-import androidx.compose.ui.graphics.painter.ColorPainter
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
@@ -32,14 +25,12 @@ import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.AppThemeState
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.dynamic.DynamicUiType
 import com.guru.composecookbook.ui.lists.ListViewActivity
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import com.guru.composecookbook.theme.*
 
 
 @Composable
@@ -53,10 +44,11 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
                 actions = {
                     IconButton(onClick = {
                         appThemeState.value = appThemeState
-                            .value.copy(darkTheme = !appThemeState.value.darkTheme) }) {
+                            .value.copy(darkTheme = !appThemeState.value.darkTheme)
+                    }) {
                         Icon(asset = vectorResource(id = R.drawable.ic_sleep))
                     }
-                    IconButton(onClick = { showMenu.value = !showMenu.value}) {
+                    IconButton(onClick = { showMenu.value = !showMenu.value }) {
                         Icon(asset = Icons.Default.Palette)
                     }
                 },
@@ -101,7 +93,7 @@ fun PalletMenu(
 ) {
     Card(
         modifier = modifier.padding(8.dp)
-        .animateContentSize(),
+            .animateContentSize(),
         elevation = 8.dp
     ) {
         Column(
