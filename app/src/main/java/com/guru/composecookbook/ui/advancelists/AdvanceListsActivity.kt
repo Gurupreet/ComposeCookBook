@@ -4,12 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScrollableTabRow
-import androidx.compose.material.Tab
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,7 +39,14 @@ class AdvanceListsActivity : AppCompatActivity() {
                 // A surface container using the 'background' color from the theme
                 Scaffold(
                     topBar = {
-                        TopAppBar(title = { Text(text = "Advance Lists(In Progress)") })
+                        TopAppBar(
+                            title = { Text(text = "Advance Lists(In Progress)") },
+                            navigationIcon = {
+                                IconButton(onClick = { onBackPressed() }) {
+                                    Icon(Icons.Filled.ArrowBack)
+                                }
+                            }
+                        )
                     }
                 ) {
                     AdvanceListContent()
