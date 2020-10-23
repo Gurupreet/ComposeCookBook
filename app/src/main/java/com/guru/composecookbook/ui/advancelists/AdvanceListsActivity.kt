@@ -41,6 +41,7 @@ class AdvanceListsActivity : AppCompatActivity() {
                     topBar = {
                         TopAppBar(
                             title = { Text(text = "Advance Lists(In Progress)") },
+                            elevation = 0.dp,
                             navigationIcon = {
                                 IconButton(onClick = { onBackPressed() }) {
                                     Icon(Icons.Filled.ArrowBack)
@@ -56,7 +57,7 @@ class AdvanceListsActivity : AppCompatActivity() {
     }
 
     companion object {
-        val tabs = listOf("Shimmers", "Swipeable Lists")
+        val tabs = listOf("Shimmers", "Animated Lists", "Swipeable Lists")
         const val DARK_THEME = "darkTheme"
         fun newIntent(context: Context, isDarkTheme: Boolean) =
             Intent(context, AdvanceListsActivity::class.java).apply {
@@ -91,7 +92,8 @@ fun AdvanceListContent() {
             selectedIndex = pagerState.currentPage
             when (page) {
                 0 -> ShimmerList()
-                1 -> SwipeableLists()
+                1 -> AnimatedLists()
+                2 -> SwipeableLists()
             }
         }
     }

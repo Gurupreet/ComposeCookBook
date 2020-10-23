@@ -72,7 +72,7 @@ fun YoutubeContent() {
     // So using column for now.
     Column {
         LazyRowFor(items = tweets, modifier = Modifier.padding(vertical = 8.dp)) {
-            YoutubeChip(selected = it.id == 2, text = it.author)
+            YoutubeChip(selected = it.id == 2, text = it.author, modifier = Modifier.padding(8.dp))
         }
         LazyColumnFor(items = tweets) { item ->
             YoutubeListItem(item)

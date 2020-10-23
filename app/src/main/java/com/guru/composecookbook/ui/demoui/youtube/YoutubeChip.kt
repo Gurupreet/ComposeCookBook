@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.demoui.youtube
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -12,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun YoutubeChip(selected: Boolean, text: String) {
+fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) {
     Surface(
         color = when {
             selected -> MaterialTheme.colors.onSurface
@@ -30,7 +31,7 @@ fun YoutubeChip(selected: Boolean, text: String) {
                 else -> Color.LightGray
             }
         ),
-        modifier = Modifier.padding(8.dp)
+        modifier = modifier
     ) {
         Text(
             text = text,
