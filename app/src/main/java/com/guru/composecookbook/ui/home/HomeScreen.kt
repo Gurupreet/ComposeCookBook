@@ -97,7 +97,7 @@ fun PalletMenu(
         elevation = 8.dp
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Start
         ) {
             if (showMenu) {
                 MenuItem(green500, "Green") {
