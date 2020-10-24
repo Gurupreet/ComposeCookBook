@@ -73,7 +73,10 @@ fun ShimmerList() {
     }
 
     ScrollableColumn(modifier = Modifier.fillMaxSize()) {
-        Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxWidth().padding(8.dp)
+        ) {
             Button(
                 onClick = { shimmerAnimationType = ShimmerAnimationType.FADE },
                 backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADE)
@@ -91,23 +94,26 @@ fun ShimmerList() {
                 Text(text = "Translating")
             }
         }
-        Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
-                Button(
-                    onClick = { shimmerAnimationType = ShimmerAnimationType.FADETRANSLATE },
-                    backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADETRANSLATE)
-                        MaterialTheme.colors.primary else Color.LightGray,
-                    modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
-                ) {
-                    Text(text = "Fade+Translate")
-                }
-                Button(
-                    onClick = { shimmerAnimationType = ShimmerAnimationType.VERTICAL },
-                    backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.VERTICAL)
-                        MaterialTheme.colors.primary else Color.LightGray,
-                    modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
-                ) {
-                    Text(text = "Vertical")
-                }
+        Row(
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxWidth().padding(8.dp)
+        ) {
+            Button(
+                onClick = { shimmerAnimationType = ShimmerAnimationType.FADETRANSLATE },
+                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADETRANSLATE)
+                    MaterialTheme.colors.primary else Color.LightGray,
+                modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
+            ) {
+                Text(text = "Fade+Translate")
+            }
+            Button(
+                onClick = { shimmerAnimationType = ShimmerAnimationType.VERTICAL },
+                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.VERTICAL)
+                    MaterialTheme.colors.primary else Color.LightGray,
+                modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
+            ) {
+                Text(text = "Vertical")
+            }
         }
 
         ShimmerItem(list, dpValue.value, shimmerAnimationType == ShimmerAnimationType.VERTICAL)
@@ -119,7 +125,7 @@ fun ShimmerList() {
 
 @Composable
 fun ShimmerItem(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolean) {
-    val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim)  else
+    val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim) else
         HorizontalGradient(lists, 0f, floatAnim)
     Row(modifier = Modifier.padding(16.dp)) {
         Spacer(
@@ -153,7 +159,7 @@ fun ShimmerItem(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolean) 
 
 @Composable
 fun ShimmerItemBig(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolean) {
-    val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim)  else
+    val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim) else
         HorizontalGradient(lists, 0f, floatAnim)
     Column(modifier = Modifier.padding(16.dp)) {
         Spacer(

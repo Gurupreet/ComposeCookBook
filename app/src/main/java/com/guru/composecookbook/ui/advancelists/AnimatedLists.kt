@@ -1,9 +1,6 @@
 package com.guru.composecookbook.ui.advancelists
 
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.AnimatedFloat
-import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
@@ -16,12 +13,8 @@ import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.onActive
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawOpacity
@@ -37,8 +30,6 @@ import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.youtube.YoutubeChip
 import com.guru.composecookbook.ui.utils.VerticalGrid
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 
 @Composable
 fun AnimatedLists() {
@@ -80,7 +71,8 @@ fun AnimatedListItem(tweet: Tweet, selectedIndex: Int) {
         1 -> Modifier.padding(8.dp).drawLayer(scaleX = animatedProgress.value)
         2 -> Modifier.padding(8.dp).drawLayer(scaleY = animatedProgress.value)
         3 -> {
-            Modifier.padding(8.dp).drawLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
+            Modifier.padding(8.dp)
+                .drawLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
         }
         else -> Modifier.padding(8.dp).drawOpacity(animatedProgress.value)
     }

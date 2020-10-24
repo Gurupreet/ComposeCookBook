@@ -13,7 +13,7 @@ sealed class HomeScreenItems {
     object BottomSheets : HomeScreenItems()
     object Modifiers : HomeScreenItems()
     object AndroidViews : HomeScreenItems()
-    object PullRefresh: HomeScreenItems()
+    object PullRefresh : HomeScreenItems()
 
     val name: String
         get() = when (this) {
