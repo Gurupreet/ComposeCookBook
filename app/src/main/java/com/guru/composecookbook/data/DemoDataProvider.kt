@@ -337,6 +337,7 @@ object DemoDataProvider {
         HomeScreenItems.AndroidViews,
         HomeScreenItems.Carousel,
         HomeScreenItems.AdvanceLists,
+        HomeScreenItems.PullRefresh,
         HomeScreenItems.ConstraintsLayout,
         HomeScreenItems.Dialogs,
         HomeScreenItems.TabLayout,

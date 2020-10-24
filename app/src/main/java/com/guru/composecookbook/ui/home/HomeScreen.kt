@@ -184,6 +184,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
         HomeScreenItems.AdvanceLists -> {
             AdvanceListsActivity.newIntent(context, isDarkTheme)
         }
+        HomeScreenItems.PullRefresh -> {
+            DynamicUIActivity.newIntent(context, DynamicUiType.PULLRERESH.name, isDarkTheme)
+        }
     }
     context.startActivity(intent)
 }

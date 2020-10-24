@@ -21,6 +21,7 @@ import com.guru.composecookbook.ui.carousel.CarouselLayout
 import com.guru.composecookbook.ui.constraintlayout.ConstraintLayoutDemos
 import com.guru.composecookbook.ui.dialogs.BottomSheetLayouts
 import com.guru.composecookbook.ui.learnwidgets.Layouts
+import com.guru.composecookbook.ui.pullrefreshdemos.PullRefreshList
 import com.guru.composecookbook.ui.tabslayout.TabLayout
 
 
@@ -95,6 +96,9 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 }
                 DynamicUiType.ANDROIDVIEWS.name -> {
                     AndroidViews()
+                }
+                DynamicUiType.PULLRERESH.name -> {
+                    PullRefreshList(onPullRefresh = {})
                 }
             }
         }

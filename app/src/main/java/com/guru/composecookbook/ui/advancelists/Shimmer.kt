@@ -73,36 +73,38 @@ fun ShimmerList() {
     }
 
     ScrollableColumn(modifier = Modifier.fillMaxSize()) {
-        Spacer(modifier = Modifier.height(30.dp))
         Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
             Button(
                 onClick = { shimmerAnimationType = ShimmerAnimationType.FADE },
                 backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADE)
                     MaterialTheme.colors.primary else Color.LightGray,
+                modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
             ) {
                 Text(text = "Fading")
             }
             Button(
                 onClick = { shimmerAnimationType = ShimmerAnimationType.TRANSLATE },
                 backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.TRANSLATE)
-                    MaterialTheme.colors.primary else Color.LightGray
+                    MaterialTheme.colors.primary else Color.LightGray,
+                modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
             ) {
                 Text(text = "Translating")
             }
         }
-        Spacer(modifier = Modifier.height(20.dp))
         Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
                 Button(
                     onClick = { shimmerAnimationType = ShimmerAnimationType.FADETRANSLATE },
                     backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADETRANSLATE)
-                        MaterialTheme.colors.primary else Color.LightGray
+                        MaterialTheme.colors.primary else Color.LightGray,
+                    modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
                 ) {
                     Text(text = "Fade+Translate")
                 }
                 Button(
                     onClick = { shimmerAnimationType = ShimmerAnimationType.VERTICAL },
                     backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.VERTICAL)
-                        MaterialTheme.colors.primary else Color.LightGray
+                        MaterialTheme.colors.primary else Color.LightGray,
+                    modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
                 ) {
                     Text(text = "Vertical")
                 }
