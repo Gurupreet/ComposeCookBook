@@ -51,7 +51,7 @@ CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI
 
 
 ## How to get started
-Please get **android studio 4.2 canary 8** or above to build this project [from here](https://developer.android.com/studio/preview/).
+Please get **android studio 4.2 canary 14** or above to build this project [from here](https://developer.android.com/studio/preview/).
 
 ## Features & Where to start
 - __Widgets:__ Widgets Screen show case all the available components to build UI.
