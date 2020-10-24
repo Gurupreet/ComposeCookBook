@@ -334,14 +334,14 @@ object DemoDataProvider {
         HomeScreenItems.ListView("Grid"),
         HomeScreenItems.Layouts,
         HomeScreenItems.Modifiers,
+        HomeScreenItems.AdvanceLists,
         HomeScreenItems.AndroidViews,
         HomeScreenItems.Carousel,
-        HomeScreenItems.AdvanceLists,
-        HomeScreenItems.PullRefresh,
         HomeScreenItems.ConstraintsLayout,
         HomeScreenItems.Dialogs,
         HomeScreenItems.TabLayout,
         HomeScreenItems.BottomSheets,
+        HomeScreenItems.PullRefresh,
     )
 
     val longText =

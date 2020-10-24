@@ -37,7 +37,7 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
     val draggableModifier = Modifier.draggable(
         orientation = Orientation.Vertical,
         reverseDirection = false,
-        enabled = lazyListState.firstVisibleItemIndex <= 1,
+        enabled = lazyListState.firstVisibleItemIndex < 2,
         onDrag = {
             onPullRefresh.invoke()
             if (animatedProgress.value < maximumYTranslate) {
@@ -64,11 +64,10 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
         }
     )
 
-    Box {
+    Box(modifier = draggableModifier) {
         LazyColumnFor(
             items = albums,
             state = lazyListState,
-            modifier = draggableModifier
         ) {
             SpotifySongListItem(album = it)
         }
