@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
@@ -22,7 +24,9 @@ import com.guru.composecookbook.ui.moviesappmvi.ui.home.MoviesHomeActivity
 fun DemoUIList() {
     val demoUis = remember { DemoDataProvider.demoUiList }
     val context = ContextAmbient.current
-    Scaffold {
+    Scaffold(
+        modifier = Modifier.semantics { testTag = "Demo UI List Screen" }
+    ) {
         LazyColumnFor(items = demoUis) { title ->
             Button(
                 onClick = {

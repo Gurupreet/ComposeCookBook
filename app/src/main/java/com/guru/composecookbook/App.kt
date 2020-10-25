@@ -6,14 +6,14 @@ import android.content.Context
 class App : Application() {
 
     init {
-        instance = this
+        instance = requireNotNull(this)
     }
 
     companion object {
-        private var instance: App? = null
+        private lateinit var instance: App
 
         fun applicationContext(): Context {
-            return instance!!.applicationContext
+            return instance
         }
     }
 

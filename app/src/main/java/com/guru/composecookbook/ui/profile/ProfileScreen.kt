@@ -22,6 +22,8 @@ import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -55,7 +57,11 @@ private fun launchSocialActivity(context: Context, socialType: String) {
 
 @Composable
 fun ProfileScreen() {
-    Box(Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .semantics { testTag = "Profile Screen"}
+    ) {
         val scrollState = rememberScrollState(0f)
         TopAppBarView(scrollState.value)
         TopBackground()
