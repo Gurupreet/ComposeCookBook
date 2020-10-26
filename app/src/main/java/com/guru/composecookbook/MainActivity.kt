@@ -26,6 +26,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.accessibilityLabel
+import androidx.compose.ui.semantics.semantics
 import androidx.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.*
@@ -94,21 +96,28 @@ fun HomeScreenContent(
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
     //Default home screen state is always HOME
-    var homeScreenState = savedInstanceState { BottomNavType.HOME }
+    val homeScreenState = savedInstanceState { BottomNavType.HOME }
+    val bottomNavBarContentDescription = stringResource(id = R.string.a11y_bottom_navigation_bar)
+
     Column {
         HomeScreenContent(
             homeScreen = homeScreenState.value,
             appThemeState = appThemeState,
             modifier = Modifier.weight(1f)
         )
-        BottomNavigationContent(homeScreenState)
+        BottomNavigationContent(
+            modifier = Modifier.semantics {
+                accessibilityLabel = bottomNavBarContentDescription
+            },
+            homeScreenState = homeScreenState
+        )
     }
 }
 
 @Composable
-fun BottomNavigationContent(homeScreenState: MutableState<BottomNavType>) {
+fun BottomNavigationContent(modifier: Modifier = Modifier, homeScreenState: MutableState<BottomNavType>) {
     var animate by remember { mutableStateOf(false) }
-    BottomNavigation {
+    BottomNavigation(modifier = modifier) {
         BottomNavigationItem(
             icon = { Icon(asset = Icons.Outlined.Home) },
             selected = homeScreenState.value == BottomNavType.HOME,
@@ -172,8 +181,3 @@ fun DefaultPreview() {
         MainAppContent(appThemeState)
     }
 }
-
-data class AppThemeState(
-    var darkTheme: Boolean = false,
-    var pallet: ColorPallet = ColorPallet.GREEN
-)

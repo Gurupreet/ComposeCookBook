@@ -25,6 +25,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
@@ -41,6 +43,7 @@ import com.guru.composecookbook.ui.utils.TitleText
 fun AnimationScreen() {
     var animateIcon by remember { mutableStateOf(false) }
     Scaffold(
+        modifier = Modifier.semantics { testTag = "Animation Screen" },
         topBar = {
             TopAppBar(
                 title = { Text(text = "Animations") },

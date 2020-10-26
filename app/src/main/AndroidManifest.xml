@@ -16,7 +16,7 @@
         <activity
             android:name=".ui.advancelists.AdvanceListsActivity"
             android:label="@string/title_activity_advance_lists"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
             android:name=".ui.datingapp.DatingHomeActivity"
             android:label="@string/title_activity_dating_home_activitu"
