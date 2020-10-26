@@ -49,6 +49,11 @@ CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI
 :-------------------------:|:-------------------------: | :-------------------------:
 ![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif) | ![](https://media.giphy.com/media/tVXmwM2ryGlhCcf3Kl/giphy.gif)
 
+### Advance lists and animations
+Shimmer Lists             | List Scroll Animations      |  Pull Refresh/Swipe List
+:-------------------------:|:-------------------------: | :-------------------------:
+![](https://media.giphy.com/media/VQof1yEEbEgcqgY7WW/giphy.gif)  |  ![](https://media.giphy.com/media/hhpnI1beJr6gRi4btK/giphy.gif) | In progres
+
 
 ## How to get started
 Please get **android studio 4.2 canary 14** or above to build this project [from here](https://developer.android.com/studio/preview/).
@@ -58,13 +63,15 @@ Please get **android studio 4.2 canary 14** or above to build this project [from
 - __Home Screen:__ Start with Layouts, Modifiers and Simple Listviews
 - __Demo UI:__ Learn how demo UI have been made by using layouts, listviews and widgets.
 - __Animations:__ Animations are very interesting in compose. Checkout single value animations to get started.
+- __UI Tests:__ Checkout UI tests to understand how we can test compose UI.
 - __Others:__ After the above steps feel free to deep dive into Tablayouts, carousel, Dialogs and BottomSheets 
+
 
 ## Coming Soon
 - Some of the features that will be available in coming weeks
-  - UI Testing of composables
-  - Advance lists: Paginations, Shimmers, Pull Refresh etc
+  - Advance lists: Pull Refresh, Swipe lsits etc
   - Clean Architecture Sample with coroutines.
+  - Advance canvas drawing. 
   Much more in pipeline stay tuned!!
 
 ## Official Documentations
