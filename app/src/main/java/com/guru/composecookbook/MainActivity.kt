@@ -115,7 +115,10 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
 }
 
 @Composable
-fun BottomNavigationContent(modifier: Modifier = Modifier, homeScreenState: MutableState<BottomNavType>) {
+fun BottomNavigationContent(
+    modifier: Modifier = Modifier,
+    homeScreenState: MutableState<BottomNavType>
+) {
     var animate by remember { mutableStateOf(false) }
     BottomNavigation(modifier = modifier) {
         BottomNavigationItem(

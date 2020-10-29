@@ -209,8 +209,7 @@ class PagerScope(
                 scale(
                     scaleX = unselectedScale,
                     scaleY = unselectedScale,
-                    pivotX = center.x,
-                    pivotY = center.y
+                    pivot = center,
                 ) {
                     this@drawWithContent.drawContent()
                 }
@@ -237,7 +236,7 @@ class PagerScope(
                     fraction = offsetForPage.coerceIn(0f, 1f)
                 )
             }
-            scale(scale, scale, center.x, center.y) {
+            scale(scale, scale, center) {
                 this@drawWithContent.drawContent()
             }
         }

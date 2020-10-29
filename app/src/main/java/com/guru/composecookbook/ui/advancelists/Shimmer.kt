@@ -6,6 +6,7 @@ import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonConstants
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -71,7 +72,10 @@ fun ShimmerList() {
     } else {
         2000.dp
     }
-
+    val buttonColors = ButtonConstants.defaultButtonColors(
+        backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADE)
+            MaterialTheme.colors.primary else Color.LightGray
+    )
     ScrollableColumn(modifier = Modifier.fillMaxSize()) {
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
@@ -79,16 +83,14 @@ fun ShimmerList() {
         ) {
             Button(
                 onClick = { shimmerAnimationType = ShimmerAnimationType.FADE },
-                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADE)
-                    MaterialTheme.colors.primary else Color.LightGray,
+                colors = buttonColors,
                 modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
             ) {
                 Text(text = "Fading")
             }
             Button(
                 onClick = { shimmerAnimationType = ShimmerAnimationType.TRANSLATE },
-                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.TRANSLATE)
-                    MaterialTheme.colors.primary else Color.LightGray,
+                colors = buttonColors,
                 modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
             ) {
                 Text(text = "Translating")
@@ -100,16 +102,14 @@ fun ShimmerList() {
         ) {
             Button(
                 onClick = { shimmerAnimationType = ShimmerAnimationType.FADETRANSLATE },
-                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADETRANSLATE)
-                    MaterialTheme.colors.primary else Color.LightGray,
+                colors = buttonColors,
                 modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
             ) {
                 Text(text = "Fade+Translate")
             }
             Button(
                 onClick = { shimmerAnimationType = ShimmerAnimationType.VERTICAL },
-                backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.VERTICAL)
-                    MaterialTheme.colors.primary else Color.LightGray,
+                colors = buttonColors,
                 modifier = Modifier.preferredWidth(200.dp).padding(8.dp)
             ) {
                 Text(text = "Vertical")
