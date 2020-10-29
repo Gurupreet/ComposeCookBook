@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.rounded.Email
@@ -60,7 +61,7 @@ fun ProfileScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .semantics { testTag = "Profile Screen"}
+            .semantics { testTag = "Profile Screen" }
     ) {
         val scrollState = rememberScrollState(0f)
         TopAppBarView(scrollState.value)

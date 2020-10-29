@@ -26,7 +26,7 @@ fun Toggles() {
             onCheckedChange = { checked = !checked })
         Switch(
             checked = switched,
-            color = MaterialTheme.colors.primary,
+            colors = SwitchConstants.defaultColors(checkedThumbColor = MaterialTheme.colors.primary),
             modifier = Modifier.padding(8.dp),
             onCheckedChange = { switched = it }
         )

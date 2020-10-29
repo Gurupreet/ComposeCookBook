@@ -8,6 +8,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExtendedFloatingActionButton
+import androidx.compose.material.FloatingActionButtonConstants
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.QrCodeScanner
@@ -108,7 +109,7 @@ fun MyWalletCard() {
             },
             text = { Text(text = "Receive") },
             backgroundColor = Color.Transparent,
-            elevation = 0.dp
+            elevation = FloatingActionButtonConstants.defaultElevation()
         )
         ExtendedFloatingActionButton(
             onClick = { extended = !extended },
@@ -123,7 +124,7 @@ fun MyWalletCard() {
             icon = { Icon(asset = Icons.Default.Send) },
             text = { Text(text = "Send") },
             backgroundColor = Color.Transparent,
-            elevation = 0.dp
+            elevation = FloatingActionButtonConstants.defaultElevation()
         )
         Image(
             asset = Icons.Default.QrCodeScanner,

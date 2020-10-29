@@ -8,10 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
@@ -22,6 +19,8 @@ import androidx.compose.ui.graphics.HorizontalGradient
 import androidx.compose.ui.graphics.VerticalGradient
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
+import com.guru.composecookbook.theme.purple
+import com.guru.composecookbook.theme.purple200
 import com.guru.composecookbook.theme.typography
 
 @Composable
@@ -43,7 +42,11 @@ fun AllButtons() {
         Button(onClick = {}, modifier = Modifier.padding(8.dp), enabled = false) {
             Text(text = "Disabled")
         }
-        Button(onClick = {}, modifier = Modifier.padding(8.dp), elevation = 0.dp) {
+        Button(
+            onClick = {},
+            modifier = Modifier.padding(8.dp),
+            elevation = ButtonConstants.defaultElevation()
+        ) {
             Text(text = "Flat")
         }
         Button(
@@ -69,6 +72,26 @@ fun AllButtons() {
             Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(start = 4.dp))
         }
     }
+    //custom background buttons
+    val outlineButtonColor = ButtonConstants.defaultOutlinedButtonColors(
+        contentColor = purple200,
+    )
+    val mainButtonColor = ButtonConstants.defaultButtonColors(
+        backgroundColor = purple,
+        contentColor = MaterialTheme.colors.surface
+    )
+    Row {
+        OutlinedButton(
+            colors = outlineButtonColor,
+            onClick = {},
+            modifier = Modifier.padding(8.dp)
+        ) {
+            Text(text = "Outline colors")
+        }
+        Button(colors = mainButtonColor, onClick = {}, modifier = Modifier.padding(8.dp)) {
+            Text(text = "Custom colors")
+        }
+    }
     Row {
         val horizontalGradient = HorizontalGradient(
             colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
@@ -91,7 +114,7 @@ fun AllButtons() {
             text = "Vertical gradient",
             style = typography.body1.copy(color = Color.White),
             modifier = Modifier.padding(12.dp).clickable(onClick = {})
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(4.dp))
                 .background(brush = verticalGradient).padding(12.dp)
         )
     }

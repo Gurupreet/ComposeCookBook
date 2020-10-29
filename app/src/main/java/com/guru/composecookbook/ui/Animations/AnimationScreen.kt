@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
@@ -132,9 +133,12 @@ fun AnimationScreenContent() {
 fun SimpleColorAnimation() {
     val enabled = remember { mutableStateOf(true) }
     val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
+    val buttonColors = ButtonConstants.defaultButtonColors(
+        backgroundColor = animate(color)
+    )
     Button(
         onClick = { enabled.value = !enabled.value },
-        backgroundColor = animate(color),
+        colors = buttonColors,
         modifier = Modifier.padding(16.dp).fillMaxWidth()
     ) {
         Text("Color Animation")
@@ -147,9 +151,12 @@ fun SingleScaleAndColorAnimation() {
     val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
     val height = if (enabled.value) 40.dp else 60.dp
     val width = if (enabled.value) 150.dp else 300.dp
+    val buttonColors = ButtonConstants.defaultButtonColors(
+        backgroundColor = animate(color)
+    )
     Button(
         onClick = { enabled.value = !enabled.value },
-        backgroundColor = animate(color),
+        colors = buttonColors,
         modifier = Modifier
             .padding(16.dp)
             .preferredHeight(animate(height))
@@ -316,9 +323,12 @@ fun ColorMultistateAnimation() {
             }
         }
     )
+    val buttonColors = ButtonConstants.defaultButtonColors(
+        backgroundColor = colorAnim[AnimationDefinitions.colorPropKey]
+    )
     Button(
         modifier = Modifier.fillMaxWidth().padding(16.dp),
-        backgroundColor = colorAnim[AnimationDefinitions.colorPropKey],
+        colors = buttonColors,
         onClick = {}) {
         Text("Color prop Animations", modifier = Modifier.padding(8.dp))
     }

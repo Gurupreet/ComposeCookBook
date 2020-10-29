@@ -3,7 +3,7 @@ package com.guru.composecookbook.ui.demoui.youtube
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -22,7 +22,7 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
             selected -> MaterialTheme.colors.onPrimary
             else -> Color.LightGray
         },
-        shape = RoundedCornerShape(16.dp),
+        shape = CircleShape,
         border = BorderStroke(
             width = 1.dp,
             color = when {

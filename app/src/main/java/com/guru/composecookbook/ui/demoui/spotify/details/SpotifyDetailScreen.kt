@@ -2,13 +2,12 @@ package com.guru.composecookbook.ui.demoui.spotify.details
 
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
+import androidx.compose.foundation.Icon
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Switch
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
@@ -129,7 +128,9 @@ fun DownloadedRow() {
         var switched by remember { mutableStateOf(true) }
         Switch(
             checked = switched,
-            color = MaterialTheme.colors.primaryVariant,
+            colors = SwitchConstants.defaultColors(
+                checkedThumbColor = MaterialTheme.colors.primary
+            ),
             modifier = Modifier.padding(8.dp),
             onCheckedChange = { switched = it }
         )
@@ -140,8 +141,8 @@ fun DownloadedRow() {
 fun ShuffleButton() {
     Button(
         onClick = {},
-        backgroundColor = green700,
-        modifier = Modifier.padding(vertical = 12.dp, horizontal = 24.dp)
+        colors = ButtonConstants.defaultButtonColors(backgroundColor = green700),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp, horizontal = 100.dp)
             .clip(CircleShape),
     ) {
         Text(
