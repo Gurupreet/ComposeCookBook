@@ -90,7 +90,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testImplementation 'com.google.truth:truth:1.1'
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit5:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+
     androidTestImplementation "androidx.ui:ui-test:$compose_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 }

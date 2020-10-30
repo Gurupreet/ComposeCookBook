@@ -76,7 +76,10 @@ fun HomeScreenContent(
     val context = ContextAmbient.current
     val list = remember { DemoDataProvider.homeScreenListItems }
     Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumnFor(items = list) {
+        LazyColumnFor(
+            modifier = Modifier.semantics { testTag = "Home Screen List of entries" },
+            items = list
+        ) {
             HomeScreenListView(it, context, isDarkTheme)
         }
         PalletMenu(
