@@ -31,4 +31,5 @@
     <string name="test_admob_id">ca-app-pub-5207778306358129~3940384518</string>
     <string name="title_activity_dating_home_activitu">DatingHome</string>
     <string name="title_activity_advance_lists">My Compose App</string>
+    <string name="title_activity_tiktok">Tiktok</string>
 </resources>

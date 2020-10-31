@@ -18,6 +18,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.ui.datingapp.DatingHomeActivity
 import com.guru.composecookbook.ui.demoui.spotify.SpotifyActivity
+import com.guru.composecookbook.ui.demoui.tiktok.TiktokActivity
 import com.guru.composecookbook.ui.moviesappmvi.ui.home.MoviesHomeActivity
 
 @Composable
@@ -49,6 +50,11 @@ fun DemoUIList() {
                         "DatingApp" -> {
                             context.startActivity(
                                 DatingHomeActivity.newIntent(context, false)
+                            )
+                        }
+                        "TikTok" -> {
+                            context.startActivity(
+                                TiktokActivity.newIntent(context)
                             )
                         }
                         else -> {

@@ -355,7 +355,8 @@ object DemoDataProvider {
         "Spotify",
         "CryptoApp+MVVM",
         "MoviesApp+MVVM",
-        "DatingApp"
+        "DatingApp",
+        "TikTok"
     )
 
 }
