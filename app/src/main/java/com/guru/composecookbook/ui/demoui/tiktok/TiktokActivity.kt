@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.demoui.tiktok
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -26,13 +27,18 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.guru.composecookbook.theme.tiktokBlack
 
 
 class TiktokActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // We can also use  SystemUiController(window) to control status theme inside compose.
+        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
+
         setContent {
             ComposeCookBookTheme(darkTheme = true) {
                 TiktokAppContent()
@@ -58,7 +64,8 @@ fun TiktokAppContent() {
 fun TikTokBottomNavigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
-    BottomNavigation(backgroundColor = graySurface) {
+
+    BottomNavigation(backgroundColor = tiktokBlack) {
         TiktokDemoDataProvider.bottomBarList.forEach { tiktokScreen ->
             BottomNavigationItem(
                 icon = { BottomBarIcon(tiktokScreen) },
@@ -69,7 +76,11 @@ fun TikTokBottomNavigation(navController: NavHostController) {
                         navController.navigate(tiktokScreen.route)
                     }
                 },
-                label = { Text(text = tiktokScreen.route) },
+                label = {
+                    if (tiktokScreen != TikTokScreen.Create) {
+                        Text(text = tiktokScreen.route)
+                    }
+                },
             )
         }
     }
@@ -80,7 +91,7 @@ fun BottomBarIcon(screen: TikTokScreen) {
     when (screen) {
         TikTokScreen.Home -> Icon(asset = Icons.Filled.Home)
         TikTokScreen.Discover -> Icon(asset = Icons.Filled.Search)
-        TikTokScreen.Create -> Icon(asset = Icons.Filled.Add)
+        TikTokScreen.Create -> TiktokCreateIcon()
         TikTokScreen.Inbox -> Icon(asset = Icons.Filled.Inbox)
         TikTokScreen.Me -> Icon(asset = Icons.Filled.Person)
     }
@@ -89,7 +100,7 @@ fun BottomBarIcon(screen: TikTokScreen) {
 @Composable
 fun TikTokBodyContent(navController: NavHostController) {
     NavHost(navController, startDestination = TikTokScreen.Home.route) {
-        composable(TikTokScreen.Home.route) { Text(text = "Home")}
+        composable(TikTokScreen.Home.route) { HomeScreen() }
         composable(TikTokScreen.Discover.route) { Text(text = "Discover") }
         composable(TikTokScreen.Create.route) { Text(text = "Create") }
         composable(TikTokScreen.Inbox.route) { Text(text = "Create") }

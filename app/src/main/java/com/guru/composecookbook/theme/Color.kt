@@ -21,6 +21,9 @@ val orange700 = Color(0xFFba000d)
 
 val teal200 = Color(0xff80deea)
 val twitterColor = Color(0xFF1DA1F2)
+val tiktokBlue = Color(0xFF69C9D0)
+val tiktokRed = Color(0xFFEE1D52)
+val tiktokBlack = Color(0xFF010101)
 val blue = Color(0xFF5851DB)
 
 val orange = Color(0xFFF56040)
