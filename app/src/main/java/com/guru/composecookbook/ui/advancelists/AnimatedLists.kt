@@ -8,11 +8,9 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
@@ -32,6 +30,7 @@ import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.youtube.YoutubeChip
 import com.guru.composecookbook.ui.utils.VerticalGrid
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun AnimatedLists() {
@@ -39,28 +38,28 @@ fun AnimatedLists() {
     val animations = listOf("Fade", "Scale", "Slide", "Fade+Slide", "Slide up", "RotateX")
 
     Column {
-        var selectedIndex by remember { mutableStateOf(0) }
+        var animationIndex by remember { mutableStateOf(0) }
         VerticalGrid(columns = 3, modifier = Modifier.padding(vertical = 12.dp)) {
             animations.forEachIndexed { index, title ->
                 YoutubeChip(
-                    selected = index == selectedIndex,
+                    selected = index == animationIndex,
                     text = title,
                     modifier = Modifier.padding(8.dp).clickable(onClick = {
-                        selectedIndex = index
+                        animationIndex = index
                     })
                 )
             }
         }
-        LazyColumnFor(items = tweets) {
-            AnimatedListItem(tweet = it, selectedIndex)
+        LazyColumnForIndexed(items = tweets) { index, tweet ->
+            AnimatedListItem(tweet = tweet, index, animationIndex)
         }
     }
 }
 
 @Composable
-fun AnimatedListItem(tweet: Tweet, selectedIndex: Int) {
+fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
 
-    val animatedModifier = when (selectedIndex) {
+    val animatedModifier = when (animationIndex) {
         0 -> {
             val animatedProgress = animatedFloat(0f)
             onActive {
@@ -152,10 +151,10 @@ fun AnimatedListItem(tweet: Tweet, selectedIndex: Int) {
         modifier = animatedModifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Image(
-            asset = imageResource(id = tweet.authorImageId),
+        CoilImage(
+            data = "https://picsum.photos/id/${itemIndex+1}/200/200",
             contentScale = ContentScale.Crop,
-            modifier = Modifier.preferredSize(55.dp).padding(4.dp)
+            modifier = Modifier.size(55.dp).padding(4.dp)
         )
         Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
             Text(

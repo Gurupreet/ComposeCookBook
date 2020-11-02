@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -34,6 +35,7 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
     ) {
         Text(
             text = text,
+            textAlign = TextAlign.Center,
             style = MaterialTheme.typography.body2,
             modifier = Modifier.padding(8.dp)
         )
