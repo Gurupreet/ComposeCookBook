@@ -26,6 +26,9 @@ import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationExplode
 
 @Composable
 fun GmailHome() {
+
+    val scaffoldState = rememberScaffoldState()
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -34,7 +37,7 @@ fun GmailHome() {
                 contentColor = MaterialTheme.colors.onSurface,
                 elevation = 8.dp,
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { scaffoldState.drawerState.open() }) {
                         Icon(asset = Icons.Outlined.Menu)
                     }
                 },
@@ -54,6 +57,10 @@ fun GmailHome() {
                 FloatMultiStateAnimationExplode(duration = 300)
             }
         },
+        drawerContent = { GmailDrawer() },
+        drawerBackgroundColor = MaterialTheme.colors.background,
+        drawerContentColor = MaterialTheme.colors.onBackground,
+        scaffoldState = scaffoldState,
         bodyContent = {
             GmailContent()
         }
