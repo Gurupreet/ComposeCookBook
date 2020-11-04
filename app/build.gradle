@@ -67,6 +67,7 @@ dependencies {
     def lottie_version = '3.4.4'
     implementation "com.airbnb.android:lottie:$lottie_version"
 
+    implementation "com.google.android.exoplayer:exoplayer:2.11.8"
     //Network libs
     // Room
     def room_version = '2.2.5'

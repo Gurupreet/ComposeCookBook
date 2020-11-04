@@ -17,10 +17,7 @@ import kotlin.math.roundToInt
  * This is a modified version of:
  * https://gist.github.com/adamp/07d468f4bcfe632670f305ce3734f511
  */
-
-/**
- * Taken from Google samples jetcaster originally modified version of above link
- */
+// I Added support for vertical direction as well.
 
 class PagerState(
     clock: AnimationClockObservable,
@@ -103,6 +100,7 @@ private val Measurable.page: Int
 @Composable
 fun Pager(
     state: PagerState,
+    orientation: Orientation = Orientation.Horizontal,
     offscreenLimit: Int = 2,
     modifier: Modifier = Modifier,
     pageContent: @Composable PagerScope.() -> Unit
@@ -124,7 +122,7 @@ fun Pager(
             }
         },
         modifier = modifier.draggable(
-            orientation = Orientation.Horizontal,
+            orientation = orientation,
             onDragStarted = {
                 state.selectionState = PagerState.SelectionState.Undecided
             },
@@ -159,13 +157,23 @@ fun Pager(
                     val yCenterOffset = (constraints.maxHeight - placeable.height) / 2
 
                     if (currentPage == page) {
-                        pageSize = placeable.width
+                        pageSize = if (orientation == Orientation.Horizontal) {
+                            placeable.width
+                        } else {
+                            placeable.height
+                        }
                     }
-
-                    placeable.place(
-                        x = xCenterOffset + ((page - (currentPage - offset)) * placeable.width).roundToInt(),
-                        y = yCenterOffset
-                    )
+                    if (orientation == Orientation.Horizontal) {
+                        placeable.place(
+                            x = xCenterOffset + ((page - (currentPage - offset)) * placeable.width).roundToInt(),
+                            y = yCenterOffset
+                        )
+                    } else {
+                        placeable.place(
+                            x = xCenterOffset ,
+                            y = yCenterOffset + ((page - (currentPage - offset)) * placeable.height).roundToInt()
+                        )
+                    }
                 }
         }
     }
