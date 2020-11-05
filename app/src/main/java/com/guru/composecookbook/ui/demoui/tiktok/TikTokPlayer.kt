@@ -32,11 +32,12 @@ fun TikTokPlayer(context: Context, url: String, selected: Boolean) {
                 this.prepare(mediaSource)
             }
     }
-
+    tiktokPlayer.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
     AndroidView({
         PlayerView(it).apply {
             useController = false
             player = tiktokPlayer
+            resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
         }
     })
 

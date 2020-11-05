@@ -1,7 +1,5 @@
-package com.guru.composecookbook.ui.demoui.tiktok
+package com.guru.composecookbook.ui.demoui.tiktok.home
 
-import android.net.Uri
-import android.util.Log
 import androidx.compose.animation.animate
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.AnimationConstants
@@ -27,21 +25,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.drawLayer
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.VectorAsset
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AnimationClockAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
-import com.guru.composecookbook.theme.green200
-import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.tiktokRed
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.carousel.Pager
@@ -51,7 +42,9 @@ import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ContextAmbient
-import dev.chrisbanes.accompanist.coil.CoilImage
+import com.guru.composecookbook.ui.demoui.tiktok.TikTokPlayer
+
+val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")
 
 @Composable
 fun HomeScreen() {
@@ -68,9 +61,8 @@ fun HomeScreen() {
         val isSelected = pagerState.currentPage == page
         PagerItem(movie, isSelected)
     }
-}
 
-val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")
+}
 
 @Composable
 fun PagerItem(album: Album, selected: Boolean) {

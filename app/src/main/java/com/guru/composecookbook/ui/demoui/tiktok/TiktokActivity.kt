@@ -3,34 +3,26 @@ package com.guru.composecookbook.ui.demoui.tiktok
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.LibraryMusic
-import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavController
-import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.theme.graySurface
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.guru.composecookbook.theme.tiktokBlack
+import com.guru.composecookbook.ui.demoui.tiktok.home.HomeScreen
+import com.guru.composecookbook.ui.demoui.tiktok.home.TiktokCreateIcon
+import com.guru.composecookbook.ui.demoui.tiktok.home.TiktokDemoDataProvider
+import com.guru.composecookbook.ui.demoui.tiktok.profile.TikTokProfile
 
 
 class TiktokActivity : AppCompatActivity() {
@@ -104,6 +96,6 @@ fun TikTokBodyContent(navController: NavHostController) {
         composable(TikTokScreen.Discover.route) { Text(text = "Discover") }
         composable(TikTokScreen.Create.route) { Text(text = "Create") }
         composable(TikTokScreen.Inbox.route) { Text(text = "Create") }
-        composable(TikTokScreen.Me.route) { Text(text = "Create") }
+        composable(TikTokScreen.Me.route) { TikTokProfile() }
     }
 }

@@ -1,4 +1,6 @@
-package com.guru.composecookbook.ui.demoui.tiktok
+package com.guru.composecookbook.ui.demoui.tiktok.home
+
+import com.guru.composecookbook.ui.demoui.tiktok.TikTokScreen
 
 object TiktokDemoDataProvider {
     val bottomBarList = listOf(
