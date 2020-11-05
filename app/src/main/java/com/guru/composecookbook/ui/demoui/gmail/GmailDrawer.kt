@@ -89,7 +89,7 @@ fun DrawerItem(icon: VectorAsset, title: String, msgCount: String = "") {
             Text(
                 modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp),
                 text = msgCount,
-                fontSize = 12.sp,
+                style = MaterialTheme.typography.caption,
                 textAlign = TextAlign.Start
             )
         }

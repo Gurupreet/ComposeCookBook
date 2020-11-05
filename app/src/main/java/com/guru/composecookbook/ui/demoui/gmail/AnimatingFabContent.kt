@@ -41,54 +41,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import kotlin.math.roundToInt
 
-@ExperimentalMaterialApi
-@Composable
-fun HomeFloatingActionButton(
-    expandStatus: Boolean,
-    scaffoldState: ScaffoldState,
-    navController: NavController
-) {
-
-    val showSnack = remember{ mutableStateOf(false)}
-
-    if(showSnack.value) {
-        LaunchedTask {
-            scaffoldState.snackbarHostState.showSnackbar(
-                "Hello World..",
-                "",
-                SnackbarDuration.Short
-            )
-        }
-    }
-
-    FloatingActionButton(
-        onClick = {
-            navController.navigate("new")
-        },
-        modifier = Modifier
-            .padding(16.dp)
-            .preferredHeight(48.dp)
-            .widthIn(min = 48.dp),
-        backgroundColor = Color.White,
-        contentColor = Color.Red
-    ) {
-        AnimatingFabContent(
-            icon = {
-                Icon(
-                    asset = Icons.Outlined.Create
-                )
-            },
-            text = {
-                Text(
-                    text = "Compose",
-                )
-            },
-            extended = expandStatus
-
-        )
-    }
-}
-
 
 /**
  * A layout that shows an icon and a text element used as the content for a FAB that extends with
