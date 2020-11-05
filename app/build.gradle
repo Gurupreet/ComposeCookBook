@@ -44,13 +44,13 @@ android {
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.palette:palette:1.0.0'
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.palette:palette-ktx:1.0.0'
+    implementation 'com.google.android.material:material:1.2.1'
 
     //google play services
-    implementation 'com.google.android.gms:play-services-ads:19.4.0'
+    implementation 'com.google.android.gms:play-services-ads:19.5.0'
     implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
@@ -72,16 +72,16 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     // annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
-    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.3.1"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha06'
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.3.2"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
     //Retrofit
-    def retrofit_version = "2.6.1"
+    def retrofit_version = "2.6.4"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation("com.squareup.okhttp3:logging-interceptor:4.2.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.5.0")
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.4'
     //coroutines
-    def coroutine_version = "1.3.9"
+    def coroutine_version = "1.4.0"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
     //lifecycle + viewmodel
@@ -98,4 +98,7 @@ dependencies {
 
     androidTestImplementation "androidx.ui:ui-test:$compose_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+
+    implementation "androidx.navigation:navigation-compose:$nav_compose_version"
+
 }
