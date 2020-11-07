@@ -20,6 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.guru.composecookbook.theme.tiktokBlack
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
+import com.guru.composecookbook.ui.demoui.tiktok.discover.DiscoverScreen
 import com.guru.composecookbook.ui.demoui.tiktok.home.HomeScreen
 import com.guru.composecookbook.ui.demoui.tiktok.home.TiktokCreateIcon
 import com.guru.composecookbook.ui.demoui.tiktok.home.TiktokDemoDataProvider
@@ -100,16 +101,15 @@ fun BottomBarIcon(screen: TikTokScreen) {
 fun TikTokBodyContent(navController: NavHostController) {
     NavHost(navController, startDestination = TikTokScreen.Home.route) {
         composable(TikTokScreen.Home.route) {
-            HomeScreen(
-                tiktokInteractionEvents = { handleInteractionEvent(it, navController) }
-            )
+            HomeScreen(tiktokInteractionEvents = { handleInteractionEvent(it, navController) })
         }
-        composable(TikTokScreen.Discover.route) { Text(text = "Discover:TODO") }
+        composable(TikTokScreen.Discover.route) { DiscoverScreen() }
         composable(TikTokScreen.Create.route) { Text(text = "Create:TODO") }
         composable(TikTokScreen.Inbox.route) { Text(text = "Inbox:TODO") }
-        composable(TikTokScreen.Me.route) { TikTokProfile() }
+        composable(TikTokScreen.Me.route) { TikTokProfile("10", navController) }
+        // This navigation is for going to user profile but it should be moved to separate place
         composable("${TikTokScreen.Profile.route}/{userId}") { backStackEntry ->
-            TikTokProfile(backStackEntry.arguments?.getString("userId")!!)
+            TikTokProfile(backStackEntry.arguments?.getString("userId")!!, navController)
         }
     }
 }

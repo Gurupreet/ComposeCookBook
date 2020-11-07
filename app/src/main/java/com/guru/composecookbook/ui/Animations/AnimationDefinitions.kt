@@ -5,6 +5,7 @@ import androidx.compose.animation.DpPropKey
 import androidx.compose.animation.core.*
 import androidx.compose.animation.core.AnimationConstants.Infinite
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 object AnimationDefinitions {
@@ -102,6 +103,23 @@ object AnimationDefinitions {
                     durationMillis = 1200,
                     easing = LinearEasing
                 )
+            )
+        }
+    }
+
+    val bounceDpPropKey = DpPropKey("bounce")
+    fun bounceAnimationDefinition(start: Dp, mid: Dp, end: Dp) = transitionDefinition<AnimationState> {
+        state(AnimationState.START) { this[bounceDpPropKey] = start }
+        state(AnimationState.MID) { this[bounceDpPropKey] = mid }
+        state(AnimationState.END) { this[bounceDpPropKey] = end }
+
+        transition(
+            AnimationState.START to AnimationState.MID,
+            AnimationState.MID to AnimationState.END
+        ) {
+            bounceDpPropKey using SpringSpec(
+                dampingRatio = 300f,
+                stiffness = 0.4f,
             )
         }
     }

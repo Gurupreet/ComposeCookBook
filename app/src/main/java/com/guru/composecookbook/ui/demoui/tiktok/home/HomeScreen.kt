@@ -2,10 +2,8 @@ package com.guru.composecookbook.ui.demoui.tiktok.home
 
 import androidx.compose.animation.animate
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.AnimationConstants
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.repeatable
-import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.*
+import androidx.compose.animation.transition
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Box
@@ -15,10 +13,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.onActive
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,12 +34,12 @@ import com.guru.composecookbook.ui.carousel.Pager
 import com.guru.composecookbook.ui.carousel.PagerState
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ContextAmbient
+import com.guru.composecookbook.ui.Animations.AnimationDefinitions
 import com.guru.composecookbook.ui.demoui.tiktok.TikTokPlayer
 import com.guru.composecookbook.ui.demoui.tiktok.TiktokHomeInteractionEvents
 import com.guru.composecookbook.ui.moviesappmvi.ui.home.MoviesHomeInteractionEvents
+
 
 val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")
 
@@ -89,20 +84,14 @@ fun VideoOverLayUI(album: Album, tiktokInteractionEvents: (TiktokHomeInteraction
 
 @Composable
 fun VideoIconsSection(album: Album, tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
-    var fav by remember { mutableStateOf(false) }
-
-    Column(modifier = Modifier.padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         ProfileImageWithFollow(
             modifier = Modifier.preferredSize(64.dp).clickable(onClick = { tiktokInteractionEvents(TiktokHomeInteractionEvents.OpenProfile(album)) }),
             true,
             album.imageId
         )
         Spacer(modifier = Modifier.height(20.dp))
-        Icon(
-            asset = vectorResource(id = R.drawable.ic_heart_solid),
-            modifier = Modifier.clickable(onClick = { fav = !fav }),
-            tint = animate(if (fav) tiktokRed else Color.White)
-        )
+        LikeIcon(album.id)
         Text(
             text = "256.4k",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
@@ -136,6 +125,28 @@ fun VideoIconsSection(album: Album, tiktokInteractionEvents: (TiktokHomeInteract
             album.imageId
         )
     }
+}
+
+@Composable
+fun LikeIcon(id: Int) {
+    var fav by remember(id) { mutableStateOf(false) }
+    val animatedProgress = animatedFloat(1f)
+    if (!fav) {
+        animatedProgress.animateTo(
+            targetValue = 1.3f,
+            anim = tween(600),
+            onEnd = { _, _ ->
+                animatedProgress.animateTo(targetValue = 1f, tween(300))
+            }
+        )
+    }
+    Icon(
+        asset = vectorResource(id = R.drawable.ic_heart_solid),
+        modifier = Modifier
+            .clickable(onClick = { fav = !fav })
+            .drawLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
+        tint = animate(if (fav) tiktokRed else Color.White)
+    )
 }
 
 @Composable

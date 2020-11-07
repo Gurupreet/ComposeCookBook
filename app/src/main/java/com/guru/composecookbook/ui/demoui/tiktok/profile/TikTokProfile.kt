@@ -25,16 +25,17 @@ import com.guru.composecookbook.theme.tiktokRed
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.layout.ContentScale
+import androidx.navigation.NavHostController
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.VerticalGrid
 
 @Composable
-fun TikTokProfile(userId: String = "10") {
+fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {
     val album: Album = SpotifyDataProvider.albums.first { it.id.toString() == userId }
     ComposeCookBookTheme(darkTheme = false) {
         Scaffold(
-            topBar = { ProfileAppBar(album) }
+            topBar = { ProfileAppBar(album, navHostController) }
         ) {
             ScrollableColumn(horizontalAlignment = Alignment.CenterHorizontally) {
                 ProfileTopSection(album)
@@ -113,7 +114,7 @@ fun ProfileTabs() {
     Spacer(modifier = Modifier.height(1.dp).background(MaterialTheme.colors.onSurface).padding(top = 4.dp))
     TabRow(selectedTabIndex = selectedIndex, backgroundColor = MaterialTheme.colors.surface) {
         Tab(selected = selectedIndex == 0, onClick = { selectedIndex = 0}, modifier = Modifier.padding(12.dp)) {
-            Icon(asset = Icons.Default.PanoramaVertical)
+            Icon(asset = Icons.Default.VerticalDistribute)
         }
         Tab(selected = selectedIndex == 0, onClick = { selectedIndex = 1 }, modifier = Modifier.padding(12.dp)) {
             Icon(asset = Icons.Default.FavoriteBorder)
@@ -133,12 +134,12 @@ fun ProfileTabs() {
 }
 
 @Composable
-fun ProfileAppBar(album: Album) {
+fun ProfileAppBar(album: Album, navHostController: NavHostController) {
     TopAppBar(
         title = { Text(text = album.artist) },
         backgroundColor = MaterialTheme.colors.surface,
         navigationIcon = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = { navHostController.popBackStack() }) {
                 Icon(asset = Icons.Filled.ArrowBack)
             }
         },
