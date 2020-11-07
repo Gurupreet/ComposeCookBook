@@ -43,11 +43,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ContextAmbient
 import com.guru.composecookbook.ui.demoui.tiktok.TikTokPlayer
+import com.guru.composecookbook.ui.demoui.tiktok.TiktokHomeInteractionEvents
+import com.guru.composecookbook.ui.moviesappmvi.ui.home.MoviesHomeInteractionEvents
 
 val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val movies = SpotifyDataProvider.albums
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
@@ -59,38 +61,42 @@ fun HomeScreen() {
     Pager(state = pagerState, orientation = Orientation.Vertical, modifier = Modifier.fillMaxSize().padding(bottom = bottomBarHeight)) {
         val movie = movies[page]
         val isSelected = pagerState.currentPage == page
-        PagerItem(movie, isSelected)
+        PagerItem(movie, isSelected, tiktokInteractionEvents)
     }
 
 }
 
 @Composable
-fun PagerItem(album: Album, selected: Boolean) {
+fun PagerItem(album: Album, selected: Boolean, tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val context = ContextAmbient.current
 
     Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp))) {
         TikTokPlayer(context, videos[album.id % 3], selected)
-        VideoOverLayUI(album)
+        VideoOverLayUI(album, tiktokInteractionEvents)
     }
 }
 
 @Composable
-fun VideoOverLayUI(album: Album) {
+fun VideoOverLayUI(album: Album, tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     Row(
         modifier = Modifier.fillMaxSize().padding(8.dp),
         verticalAlignment = Alignment.Bottom
     ) {
         VideoInfoSection(Modifier.weight(1f), album)
-        VideoIconsSection(album)
+        VideoIconsSection(album, tiktokInteractionEvents)
     }
 }
 
 @Composable
-fun VideoIconsSection(album: Album) {
+fun VideoIconsSection(album: Album, tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     var fav by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        ProfileImageWithFollow(modifier = Modifier.preferredSize(64.dp), true, album.imageId)
+        ProfileImageWithFollow(
+            modifier = Modifier.preferredSize(64.dp).clickable(onClick = { tiktokInteractionEvents(TiktokHomeInteractionEvents.OpenProfile(album)) }),
+            true,
+            album.imageId
+        )
         Spacer(modifier = Modifier.height(20.dp))
         Icon(
             asset = vectorResource(id = R.drawable.ic_heart_solid),

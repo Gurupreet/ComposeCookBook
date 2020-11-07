@@ -18,6 +18,7 @@ import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.RepeatModeUtil
 import com.google.android.exoplayer2.util.Util
 
 @Composable
@@ -33,6 +34,7 @@ fun TikTokPlayer(context: Context, url: String, selected: Boolean) {
             }
     }
     tiktokPlayer.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
+    tiktokPlayer.repeatMode = RepeatModeUtil.REPEAT_TOGGLE_MODE_ONE
     AndroidView({
         PlayerView(it).apply {
             useController = false
