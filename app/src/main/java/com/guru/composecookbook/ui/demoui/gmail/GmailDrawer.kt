@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoui.gmail
 
-import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Row
@@ -17,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.VectorAsset
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -35,7 +33,7 @@ fun GmailDrawer(modifier: Modifier = Modifier) {
             text = "Gmail",
             color = Color.Red,
             fontSize = 24.sp,
-            modifier = Modifier.padding(horizontal =16.dp, vertical = 24.dp)
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
         )
 
         Divider(thickness = 0.3.dp)
@@ -77,7 +75,7 @@ fun DrawerItem(icon: VectorAsset, title: String, msgCount: String = "") {
         Text(
             modifier = Modifier.weight(1f)
                 .align(Alignment.CenterVertically)
-                .padding(start=8.dp),
+                .padding(start = 8.dp),
             text = title,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,

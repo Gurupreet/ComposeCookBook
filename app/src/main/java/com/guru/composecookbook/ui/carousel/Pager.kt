@@ -170,7 +170,7 @@ fun Pager(
                         )
                     } else {
                         placeable.place(
-                            x = xCenterOffset ,
+                            x = xCenterOffset,
                             y = yCenterOffset + ((page - (currentPage - offset)) * placeable.height).roundToInt()
                         )
                     }

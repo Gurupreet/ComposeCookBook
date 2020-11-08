@@ -5,7 +5,6 @@ import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.CircleShape
@@ -13,13 +12,9 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.QrCodeScanner
-import androidx.compose.material.icons.filled.Scanner
 import androidx.compose.material.icons.filled.Search
-
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,9 +26,9 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
 import dev.chrisbanes.accompanist.coil.CoilImage
-import kotlin.random.Random
 
-val lanes = listOf("OhHO ohNO", "FunFacts", "HappyDeepavli", "HalloweenIsHere", "BoomBoom", "No no no no")
+val lanes =
+    listOf("OhHO ohNO", "FunFacts", "HappyDeepavli", "HalloweenIsHere", "BoomBoom", "No no no no")
 val customGray = Color.LightGray.copy(alpha = 0.5f)
 
 @Composable
@@ -73,7 +68,9 @@ fun LanesSection() {
                 Text(
                     text = "${laneItem.length}.2M",
                     style = typography.h6.copy(fontSize = 12.sp),
-                    modifier = Modifier.background(customGray).padding(horizontal = 16.dp, vertical = 4.dp))
+                    modifier = Modifier.background(customGray)
+                        .padding(horizontal = 16.dp, vertical = 4.dp)
+                )
             }
             LazyRowFor(items = (1..8).toList()) {
                 CoilImage(
@@ -81,7 +78,7 @@ fun LanesSection() {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.height(150.dp).width(120.dp).padding(2.dp),
 
-                )
+                    )
             }
         }
     }

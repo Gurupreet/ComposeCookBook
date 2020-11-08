@@ -2,8 +2,10 @@ package com.guru.composecookbook.ui.demoui.tiktok.home
 
 import androidx.compose.animation.animate
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.*
-import androidx.compose.animation.transition
+import androidx.compose.animation.core.AnimationConstants
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.repeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Box
@@ -12,7 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +24,7 @@ import androidx.compose.ui.drawLayer
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.AnimationClockAmbient
+import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,11 +37,8 @@ import com.guru.composecookbook.ui.carousel.Pager
 import com.guru.composecookbook.ui.carousel.PagerState
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import androidx.compose.ui.platform.ContextAmbient
-import com.guru.composecookbook.ui.Animations.AnimationDefinitions
 import com.guru.composecookbook.ui.demoui.tiktok.TikTokPlayer
 import com.guru.composecookbook.ui.demoui.tiktok.TiktokHomeInteractionEvents
-import com.guru.composecookbook.ui.moviesappmvi.ui.home.MoviesHomeInteractionEvents
 
 
 val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")
@@ -53,7 +53,11 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
             PagerState(clock, 0, 0, movies.size - 1)
         }
     }
-    Pager(state = pagerState, orientation = Orientation.Vertical, modifier = Modifier.fillMaxSize().padding(bottom = bottomBarHeight)) {
+    Pager(
+        state = pagerState,
+        orientation = Orientation.Vertical,
+        modifier = Modifier.fillMaxSize().padding(bottom = bottomBarHeight)
+    ) {
         val movie = movies[page]
         val isSelected = pagerState.currentPage == page
         PagerItem(movie, isSelected, tiktokInteractionEvents)
@@ -62,7 +66,11 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
 }
 
 @Composable
-fun PagerItem(album: Album, selected: Boolean, tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
+fun PagerItem(
+    album: Album,
+    selected: Boolean,
+    tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
+) {
     val context = ContextAmbient.current
 
     Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp))) {
@@ -83,10 +91,17 @@ fun VideoOverLayUI(album: Album, tiktokInteractionEvents: (TiktokHomeInteraction
 }
 
 @Composable
-fun VideoIconsSection(album: Album, tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
+fun VideoIconsSection(
+    album: Album,
+    tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
+) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         ProfileImageWithFollow(
-            modifier = Modifier.preferredSize(64.dp).clickable(onClick = { tiktokInteractionEvents(TiktokHomeInteractionEvents.OpenProfile(album)) }),
+            modifier = Modifier.preferredSize(64.dp).clickable(onClick = {
+                tiktokInteractionEvents(
+                    TiktokHomeInteractionEvents.OpenProfile(album)
+                )
+            }),
             true,
             album.imageId
         )

@@ -123,6 +123,4 @@ internal class HomeScreenItemsTest {
     }
 
 
-
-
 }

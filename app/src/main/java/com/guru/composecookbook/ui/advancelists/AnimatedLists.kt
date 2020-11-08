@@ -5,11 +5,12 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
@@ -21,7 +22,6 @@ import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -152,7 +152,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         CoilImage(
-            data = "https://picsum.photos/id/${itemIndex+1}/200/200",
+            data = "https://picsum.photos/id/${itemIndex + 1}/200/200",
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(55.dp).padding(4.dp)
         )

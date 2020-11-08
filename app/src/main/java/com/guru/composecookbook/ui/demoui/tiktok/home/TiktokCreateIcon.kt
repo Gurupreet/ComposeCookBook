@@ -26,13 +26,15 @@ fun TiktokCreateIcon() {
                     .height(30.dp)
                     .width(24.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(tiktokBlue))
+                    .background(tiktokBlue)
+            )
             Spacer(
                 modifier = Modifier
                     .height(30.dp)
                     .width(24.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(tiktokRed))
+                    .background(tiktokRed)
+            )
         }
         Icon(
             asset = Icons.Filled.Add,

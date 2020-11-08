@@ -8,24 +8,20 @@ import androidx.compose.material.*
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.tiktokRed
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.layout.ContentScale
-import androidx.navigation.NavHostController
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.VerticalGrid
@@ -52,17 +48,33 @@ fun ProfileTopSection(album: Album) {
         modifier = Modifier.size(100.dp)
             .clip(CircleShape)
     )
-    Text(text = "@${album.artist.trim()}", style = MaterialTheme.typography.h6, modifier = Modifier.padding(8.dp))
-    Row(modifier = Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.Center) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(horizontal = 24.dp)) {
+    Text(
+        text = "@${album.artist.trim()}",
+        style = MaterialTheme.typography.h6,
+        modifier = Modifier.padding(8.dp)
+    )
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(12.dp),
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(horizontal = 24.dp)
+        ) {
             Text(text = "15", style = MaterialTheme.typography.h6)
             Text(text = "Following", style = MaterialTheme.typography.subtitle2)
         }
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(horizontal = 24.dp)) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(horizontal = 24.dp)
+        ) {
             Text(text = "157k", style = MaterialTheme.typography.h6)
             Text(text = "Followers", style = MaterialTheme.typography.subtitle2)
         }
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(horizontal = 32.dp)) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(horizontal = 32.dp)
+        ) {
             Text(text = "1.78M", style = MaterialTheme.typography.h6)
             Text(text = "Likes", style = MaterialTheme.typography.subtitle2)
         }
@@ -110,13 +122,24 @@ fun ProfileTopSection(album: Album) {
 
 @Composable
 fun ProfileTabs() {
-    var selectedIndex by remember{  mutableStateOf(0) }
-    Spacer(modifier = Modifier.height(1.dp).background(MaterialTheme.colors.onSurface).padding(top = 4.dp))
+    var selectedIndex by remember { mutableStateOf(0) }
+    Spacer(
+        modifier = Modifier.height(1.dp).background(MaterialTheme.colors.onSurface)
+            .padding(top = 4.dp)
+    )
     TabRow(selectedTabIndex = selectedIndex, backgroundColor = MaterialTheme.colors.surface) {
-        Tab(selected = selectedIndex == 0, onClick = { selectedIndex = 0}, modifier = Modifier.padding(12.dp)) {
+        Tab(
+            selected = selectedIndex == 0,
+            onClick = { selectedIndex = 0 },
+            modifier = Modifier.padding(12.dp)
+        ) {
             Icon(asset = Icons.Default.VerticalDistribute)
         }
-        Tab(selected = selectedIndex == 0, onClick = { selectedIndex = 1 }, modifier = Modifier.padding(12.dp)) {
+        Tab(
+            selected = selectedIndex == 0,
+            onClick = { selectedIndex = 1 },
+            modifier = Modifier.padding(12.dp)
+        ) {
             Icon(asset = Icons.Default.FavoriteBorder)
         }
     }

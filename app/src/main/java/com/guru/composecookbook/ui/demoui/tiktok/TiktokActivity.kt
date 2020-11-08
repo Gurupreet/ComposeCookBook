@@ -10,14 +10,17 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Inbox
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
-import com.guru.composecookbook.theme.ComposeCookBookTheme
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.platform.setContent
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.tiktokBlack
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.tiktok.discover.DiscoverScreen
@@ -25,7 +28,6 @@ import com.guru.composecookbook.ui.demoui.tiktok.home.HomeScreen
 import com.guru.composecookbook.ui.demoui.tiktok.home.TiktokCreateIcon
 import com.guru.composecookbook.ui.demoui.tiktok.home.TiktokDemoDataProvider
 import com.guru.composecookbook.ui.demoui.tiktok.profile.TikTokProfile
-import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 
 sealed class TiktokHomeInteractionEvents {
     data class OpenProfile(val album: Album) : TiktokHomeInteractionEvents()
