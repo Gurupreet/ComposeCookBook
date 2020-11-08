@@ -1,13 +1,17 @@
 package com.guru.composecookbook.ui.demoui.gmail
 
 import androidx.compose.foundation.*
+import androidx.compose.material.Icon
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
@@ -18,6 +22,10 @@ import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+
 
 @Composable
 fun GmailListItem(item: Tweet) {
@@ -54,12 +62,7 @@ fun GmailListItem(item: Tweet) {
             text = "5 sept",
             style = MaterialTheme.typography.h6.copy(fontSize = 12.sp),
             modifier = Modifier.constrainAs(time) {
-                linkTo(
-                    start = title.end,
-                    startMargin = 16.dp,
-                    end = parent.end,
-                    endMargin = 8.dp
-                )
+                end.linkTo(parent.end, margin = 8.dp)
                 top.linkTo(title.top)
             }
         )
@@ -79,9 +82,16 @@ fun GmailListItem(item: Tweet) {
                 width = Dimension.fillToConstraints
             }.drawOpacity(0.6f)
         )
+        var stared by remember(item.id) { mutableStateOf(false) }
         IconButton(
-            onClick = { },
-            icon = { Icon(Icons.Default.StarBorder, modifier = Modifier.padding(end = 12.dp)) },
+            onClick = { stared = !stared },
+            icon = {
+                Icon(
+                    asset = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
+                    modifier = Modifier.padding(end = 12.dp),
+                    tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
+                )
+            },
             modifier = Modifier
                 .constrainAs(button) {
                     linkTo(
