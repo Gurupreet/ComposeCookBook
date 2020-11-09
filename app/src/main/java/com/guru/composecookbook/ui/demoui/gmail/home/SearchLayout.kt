@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoui.gmail
+package com.guru.composecookbook.ui.demoui.gmail.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
