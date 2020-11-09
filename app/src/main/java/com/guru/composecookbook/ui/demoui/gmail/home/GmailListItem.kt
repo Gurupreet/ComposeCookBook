@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoui.gmail
+package com.guru.composecookbook.ui.demoui.gmail.home
 
 import androidx.compose.foundation.*
 import androidx.compose.material.Icon
@@ -28,12 +28,12 @@ import androidx.compose.ui.graphics.Color
 
 
 @Composable
-fun GmailListItem(item: Tweet) {
+fun GmailListItem(item: Tweet, clickListener:(Tweet)->Unit) {
     ConstraintLayout(
         modifier = Modifier
             .background(MaterialTheme.colors.background.copy(alpha = 0.6f))
             .fillMaxWidth()
-            .clickable { }
+            .clickable { clickListener(item) }
             .padding(horizontal = 12.dp, vertical = 4.dp)
     ) {
         val (image, title, subtitle, source, button, time) = createRefs()
@@ -112,5 +112,7 @@ fun GmailListItem(item: Tweet) {
 @Preview
 fun PreviewGmailItem() {
     val item = DemoDataProvider.tweet
-    GmailListItem(item = item)
+    GmailListItem(item = item) {
+
+    }
 }

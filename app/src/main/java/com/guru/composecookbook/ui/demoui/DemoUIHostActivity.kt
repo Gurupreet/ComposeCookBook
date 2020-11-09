@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoui.gmail.GmailHome
+import com.guru.composecookbook.ui.demoui.gmail.home.GmailScreen
 import com.guru.composecookbook.ui.demoui.instagram.InstagramHome
 import com.guru.composecookbook.ui.demoui.twitter.TwitterHome
 import com.guru.composecookbook.ui.demoui.youtube.YoutubeHome
@@ -54,7 +54,7 @@ fun DemoUIContent(demoUiType: String) {
     when (demoUiType) {
         "Instagram" -> InstagramHome()
         "Twitter" -> TwitterHome()
-        "Gmail" -> GmailHome()
+        "Gmail" -> GmailScreen()
         "Youtube" -> YoutubeHome()
         else -> Text(text = "Comming soon", style = typography.h6)
     }

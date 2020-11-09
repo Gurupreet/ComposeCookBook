@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.MyWalletCard
-import com.guru.composecookbook.ui.demoui.gmail.GmailListItem
+import com.guru.composecookbook.ui.demoui.gmail.home.GmailListItem
 import com.guru.composecookbook.ui.demoui.youtube.YoutubeListItem
 
 @Composable
@@ -28,7 +28,7 @@ fun ConstraintLayoutDemos() {
         ConstraintLayoutBigListItem()
         Spacer(modifier = Modifier.height(20.dp))
         val tweet = DemoDataProvider.tweet
-        GmailListItem(tweet)
+        GmailListItem(tweet) {}
         Spacer(modifier = Modifier.height(20.dp))
         val tweet2 = DemoDataProvider.tweetList.filter { it.tweetImageId > 0 }.first()
         YoutubeListItem(tweet2)
