@@ -1,8 +1,6 @@
 package com.guru.composecookbook.ui.demoui.gmail.home
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.ExperimentalLazyDsl
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
@@ -66,7 +64,7 @@ fun GmailHome(navController: NavHostController) {
         drawerContentColor = MaterialTheme.colors.onBackground,
         scaffoldState = scaffoldState,
         bodyContent = {
-            GmailContent(fabExpandState, scaffoldState,navController)
+            GmailContent(fabExpandState, scaffoldState, navController)
         }
     )
 }
@@ -106,7 +104,7 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
 
 }
 
-@OptIn(ExperimentalLazyDsl::class)
+//@OptIn(ExperimentalLazyDsl::class)
 @Composable
 fun GmailContent(
     fabExpandState: MutableState<Boolean>,

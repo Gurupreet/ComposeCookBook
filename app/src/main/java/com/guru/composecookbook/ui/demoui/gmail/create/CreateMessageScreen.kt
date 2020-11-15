@@ -1,7 +1,5 @@
 package com.guru.composecookbook.ui.demoui.gmail.create
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons

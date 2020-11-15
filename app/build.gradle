@@ -76,7 +76,7 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     // annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
-    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.3.2"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.3.3.1"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
     //Retrofit
     def retrofit_version = "2.6.4"

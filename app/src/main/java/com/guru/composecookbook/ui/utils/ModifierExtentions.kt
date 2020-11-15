@@ -4,11 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
+import androidx.compose.ui.drawWithContent
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.unit.Constraints
-import kotlin.math.roundToInt
 
 // NOTE: Gradients extentions are Taken from offical Jetsnack smaple:
 
@@ -73,25 +73,5 @@ fun Modifier.gradientTint(
             brush = gradient,
             blendMode = blendMode
         )
-    }
-}
-
-fun Modifier.offset(
-    getX: () -> Float,
-    getY: () -> Float,
-    rtlAware: Boolean = true
-) = this then object : LayoutModifier {
-    override fun MeasureScope.measure(
-        measurable: Measurable,
-        constraints: Constraints
-    ): MeasureScope.MeasureResult {
-        val placeable = measurable.measure(constraints)
-        return layout(placeable.width, placeable.height) {
-            if (rtlAware) {
-                placeable.placeRelative(getX().roundToInt(), getY().roundToInt())
-            } else {
-                placeable.place(getX().roundToInt(), getY().roundToInt())
-            }
-        }
     }
 }

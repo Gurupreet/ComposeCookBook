@@ -1,19 +1,18 @@
 package com.guru.composecookbook.ui.learnwidgets
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
-import androidx.compose.foundation.text.CoreTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
@@ -28,12 +27,12 @@ fun TextInputs() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
     // TODO Explore CoreTextField
-    CoreTextField(
-        value = text,
-        onValueChange = { newValue -> text = newValue },
-        modifier = Modifier.padding(8.dp).preferredSize(0.dp),
-        cursorColor = Color.Magenta
-    )
+//    CoreTextField(
+//        value = text,
+//        onValueChange = { newValue -> text = newValue },
+//        modifier = Modifier.padding(8.dp).preferredSize(0.dp),
+//        cursorColor = Color.Magenta
+//    )
     TextField(
         value = text,
         onValueChange = { newValue -> text = newValue },
@@ -45,20 +44,20 @@ fun TextInputs() {
     OutlinedTextField(
         value = text,
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
-        keyboardType = KeyboardType.Password,
         label = { Text(text = "Password") },
         placeholder = { Text(text = "12334444") },
         visualTransformation = PasswordVisualTransformation(),
         onValueChange = {
             text = it
-        }
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
     )
 
     OutlinedTextField(
         value = text,
         leadingIcon = { Icon(asset = Icons.Default.Email) },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
-        keyboardType = KeyboardType.Text,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },
         placeholder = { Text(text = "Your email") },
         onValueChange = {
@@ -70,7 +69,7 @@ fun TextInputs() {
         leadingIcon = { Icon(asset = Icons.Default.Email) },
         trailingIcon = { Icon(asset = Icons.Default.Edit) },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
-        keyboardType = KeyboardType.Text,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },
         placeholder = { Text(text = "Your email") },
         onValueChange = {
@@ -81,7 +80,7 @@ fun TextInputs() {
     var numberText by remember { mutableStateOf(TextFieldValue("")) }
     OutlinedTextField(value = numberText,
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
-        keyboardType = KeyboardType.Number,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         label = { Text(text = "Phone number") },
         placeholder = { Text(text = "88888888") },
         onValueChange = {
@@ -90,6 +89,7 @@ fun TextInputs() {
     )
 }
 
+@InternalTextApi
 @Preview
 @Composable
 fun PreviewInputs() {

@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoui.gmail.details
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -23,7 +22,7 @@ fun MessageDetailScreen(navController: NavHostController) {
                 backgroundColor = Color.White,
                 contentColor = Color.Black,
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack()}) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(asset = Icons.Outlined.ArrowBack)
                     }
 
