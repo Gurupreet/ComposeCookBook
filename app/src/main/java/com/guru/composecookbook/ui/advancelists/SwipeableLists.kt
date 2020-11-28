@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.drawLayer
@@ -26,9 +25,12 @@ import androidx.compose.ui.gesture.Direction
 import androidx.compose.ui.gesture.DragObserver
 import androidx.compose.ui.gesture.dragGestureFilter
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.*
+import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.typography
@@ -56,20 +58,16 @@ fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
 
 @Composable
 fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
-    val swipeUpperBound = 1200f
     val itemSwipe = animatedFloat(0f)
-    val dragObserver = dragObserver(itemSwipe, swipeUpperBound, index, onItemSwiped)
+
     Row(
         modifier = Modifier
             .background(MaterialTheme.colors.background)
-            .padding(8.dp).dragGestureFilter(
-                dragObserver = dragObserver,
-                canDrag = { direction ->
-                    direction == Direction.LEFT
-                }
-            )
-            .drawLayer(
-                translationX = itemSwipe.value
+            .padding(8.dp).swipeGesture(
+                swipeValue = itemSwipe,
+                swipeDirection = Direction.LEFT,
+                maxSwipe = 1200f,
+                onItemSwiped = { onItemSwiped }
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -124,20 +122,43 @@ fun BackgroundListItem() {
 }
 
 @Composable
+fun Modifier.swipeGesture(
+    swipeValue: AnimatedFloat,
+    swipeDirection: Direction = Direction.LEFT,
+    maxSwipe: Float,
+    onItemSwiped: () -> Unit
+): Modifier {
+    return this + dragGestureFilter(
+        canDrag = { it == swipeDirection },
+        dragObserver = dragObserver(swipeValue = swipeValue, maxSwipe = maxSwipe, onItemSwiped = onItemSwiped)
+    ) + object : LayoutModifier {
+        override fun MeasureScope.measure(
+            measurable: Measurable,
+            constraints: Constraints
+        ): MeasureResult {
+            val children = measurable.measure(constraints)
+
+            return  layout(children.width, children.height) {
+                children.place(swipeValue.value.toInt(), 0)
+            }
+        }
+    }
+}
+
+@Composable
 fun dragObserver(
-    itemSwipe: AnimatedFloat,
-    swipeUpperBound: Float,
-    index: Int,
-    onItemSwiped: (Int) -> Unit
+    swipeValue: AnimatedFloat,
+    maxSwipe: Float,
+    onItemSwiped: () -> Unit
 ): DragObserver {
 
     return object : DragObserver {
         override fun onStart(downPosition: Offset) {
-            itemSwipe.setBounds(-swipeUpperBound, swipeUpperBound)
+            swipeValue.setBounds(-maxSwipe, maxSwipe)
         }
 
         private fun reset() {
-            itemSwipe.animateTo(
+            swipeValue.animateTo(
                 0f,
                 anim = SpringSpec<Float>(
                     dampingRatio = 0.8f, stiffness = 300f
@@ -146,23 +167,23 @@ fun dragObserver(
         }
 
         override fun onDrag(dragDistance: Offset): Offset {
-            itemSwipe.snapTo(itemSwipe.targetValue + dragDistance.x)
+            swipeValue.snapTo(swipeValue.targetValue + dragDistance.x)
             return dragDistance
         }
 
         override fun onStop(velocity: Offset) {
-            if (abs(itemSwipe.targetValue) < 400f) {
+            if (abs(swipeValue.targetValue) < 400f) {
                 reset()
             } else {
-                val animateTo = if (itemSwipe.value > 0) swipeUpperBound else -swipeUpperBound
-                itemSwipe.animateTo(
+                val animateTo = if (swipeValue.value > 0) maxSwipe else -maxSwipe
+                swipeValue.animateTo(
                     animateTo,
                     anim = SpringSpec<Float>(
                         dampingRatio = 0.8f, stiffness = 300f
                     ),
                     onEnd = { _, _ ->
                         // On swiped do something
-                        onItemSwiped.invoke(index)
+                        onItemSwiped
                     }
                 )
             }
