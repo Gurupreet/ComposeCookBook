@@ -71,11 +71,8 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                     .padding(start = 8.dp)
             ) {
 
-                Row() {
-                    Text(
-                        text = "Linkedin",
-                        color = Color.Black
-                    )
+                Row {
+                    Text(text = "Linkedin")
                     Text(
                         text = "26 Oct",
                         fontSize = 12.sp,
@@ -115,19 +112,19 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                     .border(1.dp, Color.LightGray, shape = RoundedCornerShape(8.dp))
                     .padding(8.dp)
             ) {
-                Row() {
+                Row {
                     Text(text = "From")
                     Text(text = "Linkedin", modifier = Modifier.padding(start = 8.dp))
                     Text(text = "updates-noreply@linkedin.com")
                 }
-                Row() {
+                Row {
                     Text(text = "To")
                     Text(text = "Subash Aryal", modifier = Modifier.padding(start = 8.dp))
                     Text(text = "aryal.subash@yahoo.com")
                 }
 
 
-                Row() {
+                Row {
                     Text(text = "Date")
                     Text(text = "26 Oct 2020,12:17", modifier = Modifier.padding(start = 8.dp))
                 }

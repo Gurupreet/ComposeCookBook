@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.demoui.gmail.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
@@ -22,13 +23,14 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
+import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SearchLayout(offset: Int, drawerState: DrawerState) {
 
     val searchLayoutHeightDp = 70.dp
-
+    val background = if (isSystemInDarkTheme()) graySurface else Color.White.copy(alpha = 0.8f)
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -36,14 +38,14 @@ fun SearchLayout(offset: Int, drawerState: DrawerState) {
             .preferredHeight(searchLayoutHeightDp)
             .padding(8.dp)
             .drawShadow(8.dp, shape = RoundedCornerShape(8.dp), clip = false)
-            .background(Color.White, shape = RoundedCornerShape(8.dp))
+            .background(background, shape = RoundedCornerShape(8.dp))
 
     ) {
 
 
         IconButton(
             onClick = { drawerState.open() },
-            icon = { Icon(asset = Icons.Outlined.Menu) }
+            icon = { Icon(asset = Icons.Outlined.Menu) },
         )
 
         TextField(
@@ -51,7 +53,7 @@ fun SearchLayout(offset: Int, drawerState: DrawerState) {
             placeholder = { Text("Search in emails") },
             onValueChange = {},
             modifier = Modifier.weight(1f),
-            backgroundColor = MaterialTheme.colors.surface,
+            backgroundColor = background,
             activeColor = MaterialTheme.colors.surface,
             inactiveColor = MaterialTheme.colors.surface,
             textStyle = typography.body2

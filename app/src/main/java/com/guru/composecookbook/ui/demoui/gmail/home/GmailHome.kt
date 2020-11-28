@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoui.gmail.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -30,6 +31,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.demoui.gmail.create.CreateMessageScreen
 import com.guru.composecookbook.ui.demoui.gmail.details.MessageDetailScreen
 import kotlin.math.absoluteValue
@@ -78,8 +80,9 @@ fun GmailHome(navController: NavHostController) {
             GmailContent(fabExpandState, scaffoldState, navController)
         },
         bottomBar = {
+            val background = if (isSystemInDarkTheme()) graySurface else Color.White
             BottomNavigation(
-                backgroundColor = Color.White
+                backgroundColor = background
             ) {
 
                 BottomNavigationItem(

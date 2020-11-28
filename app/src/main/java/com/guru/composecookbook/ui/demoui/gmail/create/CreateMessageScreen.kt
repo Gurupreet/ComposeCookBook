@@ -22,8 +22,8 @@ fun CreateMessageScreen(navController: NavHostController) {
         topBar = {
             TopAppBar(
                 title = { Text(text = "Compose") },
-                backgroundColor = Color.White,
-                contentColor = Color.Black,
+                backgroundColor = MaterialTheme.colors.surface,
+                contentColor = MaterialTheme.colors.onSurface,
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(asset = Icons.Outlined.ArrowBack)
@@ -65,7 +65,7 @@ fun CreateMessageMoreActionPopupMenu() {
         onDismissRequest = { expanded.value = false },
         toggle = iconButton,
         dropdownOffset = Position((-32).dp, (-32).dp),
-        dropdownModifier = Modifier.background(Color.White)
+        dropdownModifier = Modifier.background(MaterialTheme.colors.surface)
     ) {
         DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
             Text("Schedule send")

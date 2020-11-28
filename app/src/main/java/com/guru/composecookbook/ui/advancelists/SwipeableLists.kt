@@ -16,7 +16,8 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.drawLayer
@@ -37,7 +38,7 @@ import kotlin.math.abs
 
 @Composable
 fun SwipeableLists() {
-    val albums = SpotifyDataProvider.albums
+    var albums by mutableStateOf(SpotifyDataProvider.albums)
     LazyColumnForIndexed(items = albums) { index, album ->
         SwipeableListItem(index, album) { index ->
             //TODO On Swiped
