@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.ui.utils.swipeGesture
 import kotlin.math.abs
 
 @Composable
@@ -117,76 +118,6 @@ fun BackgroundListItem() {
         }
         IconButton(onClick = {}) {
             Icon(asset = Icons.Default.Settings)
-        }
-    }
-}
-
-@Composable
-fun Modifier.swipeGesture(
-    swipeValue: AnimatedFloat,
-    swipeDirection: Direction = Direction.LEFT,
-    maxSwipe: Float,
-    onItemSwiped: () -> Unit
-): Modifier {
-    return this + dragGestureFilter(
-        canDrag = { it == swipeDirection },
-        dragObserver = dragObserver(swipeValue = swipeValue, maxSwipe = maxSwipe, onItemSwiped = onItemSwiped)
-    ) + object : LayoutModifier {
-        override fun MeasureScope.measure(
-            measurable: Measurable,
-            constraints: Constraints
-        ): MeasureResult {
-            val children = measurable.measure(constraints)
-
-            return  layout(children.width, children.height) {
-                children.place(swipeValue.value.toInt(), 0)
-            }
-        }
-    }
-}
-
-@Composable
-fun dragObserver(
-    swipeValue: AnimatedFloat,
-    maxSwipe: Float,
-    onItemSwiped: () -> Unit
-): DragObserver {
-
-    return object : DragObserver {
-        override fun onStart(downPosition: Offset) {
-            swipeValue.setBounds(-maxSwipe, maxSwipe)
-        }
-
-        private fun reset() {
-            swipeValue.animateTo(
-                0f,
-                anim = SpringSpec<Float>(
-                    dampingRatio = 0.8f, stiffness = 300f
-                )
-            )
-        }
-
-        override fun onDrag(dragDistance: Offset): Offset {
-            swipeValue.snapTo(swipeValue.targetValue + dragDistance.x)
-            return dragDistance
-        }
-
-        override fun onStop(velocity: Offset) {
-            if (abs(swipeValue.targetValue) < 400f) {
-                reset()
-            } else {
-                val animateTo = if (swipeValue.value > 0) maxSwipe else -maxSwipe
-                swipeValue.animateTo(
-                    animateTo,
-                    anim = SpringSpec<Float>(
-                        dampingRatio = 0.8f, stiffness = 300f
-                    ),
-                    onEnd = { _, _ ->
-                        // On swiped do something
-                        onItemSwiped
-                    }
-                )
-            }
         }
     }
 }

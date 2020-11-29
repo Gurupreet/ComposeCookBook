@@ -1,5 +1,8 @@
 package com.guru.composecookbook.ui.demoui.gmail.home
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.animatedFloat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -10,6 +13,8 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.*
@@ -24,17 +29,22 @@ import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
-
+import com.guru.composecookbook.theme.green500
+import com.guru.composecookbook.ui.utils.swipeGesture
 
 @Composable
-fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
+fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) -> Unit) {
+    val swipeValue = animatedFloat(0f)
+
     ConstraintLayout(
         modifier = Modifier
-            .background(MaterialTheme.colors.background.copy(alpha = 0.6f))
+            .swipeGesture(swipeValue = swipeValue, maxSwipe = 1300f, onItemSwiped = onItemSwiped)
+            .background(MaterialTheme.colors.background)
             .fillMaxWidth()
             .clickable { clickListener(item) }
             .padding(horizontal = 12.dp, vertical = 4.dp)
     ) {
+        var stared by remember(item.id) { mutableStateOf(false) }
         val (image, title, subtitle, source, button, time) = createRefs()
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
@@ -81,7 +91,6 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
                 width = Dimension.fillToConstraints
             }.drawOpacity(0.6f)
         )
-        var stared by remember(item.id) { mutableStateOf(false) }
         IconButton(
             onClick = { stared = !stared },
             icon = {
@@ -108,10 +117,22 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
 }
 
 @Composable
+fun GmailListActionItems(modifier: Modifier) {
+    Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
+        IconButton(onClick = {}) {
+            Icon(asset = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary)
+        }
+        IconButton(onClick = {}) {
+            Icon(asset = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary)
+        }
+    }
+}
+
+@Composable
 @Preview
 fun PreviewGmailItem() {
     val item = DemoDataProvider.tweet
-    GmailListItem(item = item) {
+    GmailListItem(item = item, onItemSwiped = {}) {
 
     }
 }

@@ -1,5 +1,7 @@
 package com.guru.composecookbook.ui.demoui.gmail.home
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Box
@@ -12,9 +14,11 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.AddPhotoAlternate
 import androidx.compose.material.icons.filled.PersonAdd
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.Call
+import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.outlined.Mail
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -23,7 +27,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageAsset
 import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.res.imageResource
@@ -39,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.graySurface
+import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.ui.demoui.gmail.create.CreateMessageScreen
 import com.guru.composecookbook.ui.demoui.gmail.details.MessageDetailScreen
 import kotlin.math.absoluteValue
@@ -192,6 +196,8 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
 }
 
 //@OptIn(ExperimentalLazyDsl::class)
+
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun GmailContent(
     fabExpandState: MutableState<Boolean>,
@@ -258,8 +264,15 @@ fun GmailContent(
             }
 
             items(tweets) {
-                GmailListItem(it) {
-                    navController.navigate("detail")
+                val visible = remember(it.id) { mutableStateOf(true) }
+
+                AnimatedVisibility(visible = visible.value) {
+                    Box(modifier = Modifier.background(green500)) {
+                        GmailListActionItems(modifier = Modifier.align(Alignment.CenterEnd))
+                        GmailListItem(it, onItemSwiped = { visible.value = false }) {
+                            navController.navigate("detail")
+                        }
+                    }
                 }
             }
 
