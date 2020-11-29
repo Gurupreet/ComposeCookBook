@@ -1,5 +1,7 @@
 package com.guru.composecookbook.ui.demoui.gmail.home
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -8,6 +10,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Mail
@@ -32,6 +35,7 @@ import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.graySurface
+import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.ui.demoui.gmail.create.CreateMessageScreen
 import com.guru.composecookbook.ui.demoui.gmail.details.MessageDetailScreen
 import kotlin.math.absoluteValue
@@ -182,6 +186,8 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
 }
 
 //@OptIn(ExperimentalLazyDsl::class)
+
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun GmailContent(
     fabExpandState: MutableState<Boolean>,
@@ -247,8 +253,15 @@ fun GmailContent(
             }
 
             items(tweets) {
-                GmailListItem(it) {
-                    navController.navigate("detail")
+                val visible = remember(it.id) { mutableStateOf(true) }
+
+                AnimatedVisibility(visible = visible.value) {
+                    Box(modifier = Modifier.background(green500)) {
+                        GmailListActionItems(modifier = Modifier.align(Alignment.CenterEnd))
+                        GmailListItem(it, onItemSwiped = { visible.value = false }) {
+                            navController.navigate("detail")
+                        }
+                    }
                 }
             }
 
