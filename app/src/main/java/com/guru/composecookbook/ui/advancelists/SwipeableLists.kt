@@ -1,5 +1,7 @@
 package com.guru.composecookbook.ui.advancelists
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.AnimatedFloat
 import androidx.compose.animation.core.SpringSpec
@@ -12,10 +14,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,6 +32,7 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
@@ -49,11 +49,20 @@ fun SwipeableLists() {
     }
 }
 
+
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
-    Box {
-        BackgroundListItem()
-        ForegroundListItem(album, index, onItemSwiped)
+    val visible = remember(album.id) { mutableStateOf(true) }
+
+    AnimatedVisibility(visible = visible.value) {
+        Box(modifier = Modifier.background(green500)) {
+            BackgroundListItem(modifier = Modifier.align(Alignment.CenterEnd))
+            ForegroundListItem(album, index) {
+                visible.value = false
+                onItemSwiped.invoke(index)
+            }
+        }
     }
 }
 
@@ -63,13 +72,13 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
 
     Row(
         modifier = Modifier
-            .background(MaterialTheme.colors.background)
-            .padding(8.dp).swipeGesture(
+            .swipeGesture(
                 swipeValue = itemSwipe,
                 swipeDirection = Direction.LEFT,
                 maxSwipe = 1200f,
-                onItemSwiped = { onItemSwiped }
-            ),
+                onItemSwiped = { onItemSwiped.invoke(index) }
+            )
+            .background(MaterialTheme.colors.background),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
@@ -106,18 +115,13 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
 }
 
 @Composable
-fun BackgroundListItem() {
-    Row(
-        modifier = Modifier
-            .background(Color.Red).padding(8.dp).fillMaxWidth().preferredHeight(50.dp),
-        horizontalArrangement = Arrangement.End,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+fun BackgroundListItem(modifier: Modifier) {
+    Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.Delete)
+            Icon(asset = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary)
         }
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.Settings)
+            Icon(asset = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary)
         }
     }
 }
