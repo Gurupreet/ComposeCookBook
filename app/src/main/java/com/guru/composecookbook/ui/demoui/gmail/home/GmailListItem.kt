@@ -1,7 +1,5 @@
 package com.guru.composecookbook.ui.demoui.gmail.home
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animatedFloat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
-import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.ui.utils.swipeGesture
 
 @Composable

@@ -27,7 +27,7 @@ fun CreateMessageBody(navController: NavController) {
 
     Column {
 
-        Row() {
+        Row {
 
             Text(
                 text = "From",
@@ -47,7 +47,7 @@ fun CreateMessageBody(navController: NavController) {
 
         Divider(color = Color.LightGray, thickness = 0.5.dp)
 
-        Row() {
+        Row {
 
             Text(
                 text = "To",

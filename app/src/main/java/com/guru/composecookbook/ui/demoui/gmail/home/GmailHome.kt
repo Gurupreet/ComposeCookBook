@@ -328,7 +328,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                         modifier = Modifier
                             .wrapContentWidth()
                             .padding(8.dp)
-                            .border(1.dp, Color.Gray.copy(alpha=0.6f), RoundedCornerShape(16.dp))
+                            .border(1.dp, Color.Gray.copy(alpha = 0.6f), RoundedCornerShape(16.dp))
                             .clip(RoundedCornerShape(16.dp))
                             .clickable(onClick = {})
                             .padding(horizontal = 12.dp, vertical = 8.dp)
@@ -369,7 +369,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                             text = "Add another account",
                             fontSize = 14.sp,
                             color = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(start=8.dp)
+                            modifier = Modifier.padding(start = 8.dp)
                         )
                     }
 
@@ -388,7 +388,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                             text = "Manage accounts on this device",
                             fontSize = 14.sp,
                             color = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(start=8.dp)
+                            modifier = Modifier.padding(start = 8.dp)
                         )
                     }
 

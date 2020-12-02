@@ -39,7 +39,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
         val showExpandedEmailInfo = remember { mutableStateOf(false) }
         val isFavourite = remember { mutableStateOf(false) }
 
-        Row() {
+        Row {
             Text(
                 text = "Sudip Kafle and others share theier thougs on Linkedin",
                 fontSize = 20.sp,

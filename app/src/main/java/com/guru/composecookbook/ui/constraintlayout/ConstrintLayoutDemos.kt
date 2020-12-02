@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.constraintlayout
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -29,7 +28,7 @@ fun ConstraintLayoutDemos() {
         ConstraintLayoutBigListItem()
         Spacer(modifier = Modifier.height(20.dp))
         val tweet = DemoDataProvider.tweet
-        GmailListItem(tweet,onItemSwiped = {}) {}
+        GmailListItem(tweet, onItemSwiped = {}) {}
         Spacer(modifier = Modifier.height(20.dp))
         val tweet2 = DemoDataProvider.tweetList.filter { it.tweetImageId > 0 }.first()
         YoutubeListItem(tweet2)

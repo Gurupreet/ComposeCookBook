@@ -3,8 +3,6 @@ package com.guru.composecookbook.ui.advancelists
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.AnimatedFloat
-import androidx.compose.animation.core.SpringSpec
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,22 +12,18 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.drawLayer
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.gesture.Direction
-import androidx.compose.ui.gesture.DragObserver
-import androidx.compose.ui.gesture.dragGestureFilter
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.*
-import androidx.compose.ui.platform.DensityAmbient
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Constraints
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.green500
@@ -37,7 +31,6 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.swipeGesture
-import kotlin.math.abs
 
 @Composable
 fun SwipeableLists() {

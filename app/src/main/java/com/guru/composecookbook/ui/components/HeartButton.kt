@@ -13,8 +13,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
@@ -34,7 +32,7 @@ fun AnimatedHeartButton(
     onToggle: () -> Unit,
     iconSize: Dp,
     expandIconSize: Dp,
-){
+) {
 
     val transitionDefinition = transitionDefinition<HeartButtonState> {
         state(HeartButtonState.IDLE) {
@@ -47,7 +45,7 @@ fun AnimatedHeartButton(
             this[size] = iconSize
         }
 
-        transition(HeartButtonState.IDLE to HeartButtonState.ACTIVE){
+        transition(HeartButtonState.IDLE to HeartButtonState.ACTIVE) {
             color using tween(durationMillis = 500)
 
             size using keyframes {
@@ -94,7 +92,7 @@ fun HeartButton(
     buttonState: MutableState<HeartButtonState>,
     state: TransitionState,
     onToggle: () -> Unit,
-){
+) {
     if (buttonState.value == HeartButtonState.ACTIVE) {
         Icon(
             asset = Icons.Default.Favorite.copy(
@@ -107,8 +105,7 @@ fun HeartButton(
                 ),
             tint = state[color]
         )
-    }
-    else {
+    } else {
         Icon(
             asset = Icons.Default.Favorite.copy(
                 defaultHeight = state[size],

@@ -6,7 +6,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.HorizontalGradient
@@ -21,7 +24,7 @@ import com.guru.composecookbook.ui.Animations.AnimationDefinitions
  */
 
 @Composable
-fun LoadingListShimmer(){
+fun LoadingListShimmer() {
 
     val dpStartState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
     val dpEndState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
@@ -44,7 +47,7 @@ fun LoadingListShimmer(){
     )
     val dpValue = shimmerTranslateAnim[AnimationDefinitions.shimmerDpPropKey]
 
-    ScrollableColumn() {
+    ScrollableColumn {
         ShimmerCardItem(list, dpValue.value, true)
         ShimmerCardItem(list, dpValue.value, true)
         ShimmerCardItem(list, dpValue.value, true)
@@ -54,7 +57,6 @@ fun LoadingListShimmer(){
     }
 
 }
-
 
 
 @Composable

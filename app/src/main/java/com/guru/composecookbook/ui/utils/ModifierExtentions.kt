@@ -89,21 +89,25 @@ fun Modifier.swipeGesture(
     maxSwipe: Float,
     onItemSwiped: () -> Unit
 ): Modifier {
-    return this + dragGestureFilter(
+    return (this + dragGestureFilter(
         canDrag = { it == swipeDirection },
-        dragObserver = dragObserver(swipeValue = swipeValue, maxSwipe = maxSwipe, onItemSwiped = onItemSwiped)
-    ) + object : LayoutModifier {
+        dragObserver = dragObserver(
+            swipeValue = swipeValue,
+            maxSwipe = maxSwipe,
+            onItemSwiped = onItemSwiped
+        )
+    )).then(object : LayoutModifier {
         override fun MeasureScope.measure(
             measurable: Measurable,
             constraints: Constraints
         ): MeasureResult {
             val children = measurable.measure(constraints)
-          //  swipeValue.setBounds(-children.width.toFloat()-100f, children.width.toFloat()+100f)
-            return  layout(children.width, children.height) {
+            //  swipeValue.setBounds(-children.width.toFloat()-100f, children.width.toFloat()+100f)
+            return layout(children.width, children.height) {
                 children.place(swipeValue.value.toInt(), 0)
             }
         }
-    }
+    })
 }
 
 @Composable
@@ -115,7 +119,7 @@ fun dragObserver(
 
     return object : DragObserver {
         override fun onStart(downPosition: Offset) {
-          //  swipeValue.setBounds(-maxSwipe, maxSwipe)
+            //  swipeValue.setBounds(-maxSwipe, maxSwipe)
         }
 
         private fun reset() {
