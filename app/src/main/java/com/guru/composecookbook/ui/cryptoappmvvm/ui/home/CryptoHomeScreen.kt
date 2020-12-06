@@ -28,11 +28,11 @@ import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.compose.ui.tooling.preview.Preview
 import com.airbnb.lottie.LottieAnimationView
 import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface

@@ -15,15 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.draw.drawShadow
 import androidx.compose.ui.gesture.doubleTapGestureFilter
 import androidx.compose.ui.gesture.longPressGestureFilter
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.HorizontalGradient
 import androidx.compose.ui.graphics.VerticalGradient
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography

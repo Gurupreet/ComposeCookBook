@@ -15,8 +15,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.HorizontalGradient
 import androidx.compose.ui.graphics.VerticalGradient
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.purple200
 import com.guru.composecookbook.theme.typography
@@ -61,13 +61,19 @@ fun AllButtons() {
         }
         Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Row {
-                Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(end = 4.dp))
+                Icon(
+                    imageVector = Icons.Default.FavoriteBorder,
+                    modifier = Modifier.padding(end = 4.dp)
+                )
                 Text(text = "Icon Button")
             }
         }
         Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Text(text = "Icon Button")
-            Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(start = 4.dp))
+            Icon(
+                imageVector = Icons.Default.FavoriteBorder,
+                modifier = Modifier.padding(start = 4.dp)
+            )
         }
     }
     //custom background buttons

@@ -13,7 +13,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.SwellState.*
+import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.SwellState.FIRST
+import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.SwellState.SECOND
 import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.swellDefinition
 import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.swellPropKey
 
@@ -34,7 +35,7 @@ object SwellAnimationDefinitions {
             FIRST to SECOND,
         ) {
             swellPropKey using repeatable(
-                iterations =  Infinite,
+                iterations = Infinite,
                 animation = tween(
                     durationMillis = 700,
                     easing = LinearEasing
@@ -65,27 +66,32 @@ fun HorizontalDottedProgressBar() {
 fun DrawCanvas(
     state: Float,
     color: Color,
-){
+) {
     Canvas(
         modifier = Modifier.fillMaxWidth().height(55.dp),
-    ){
+    ) {
 
         val radius = (4.dp).toIntPx().toFloat()
         val padding = (6.dp).toIntPx().toFloat()
 
-        for(i in 1..5) {
-            if(i-1 == state.toInt()){
+        for (i in 1..5) {
+            if (i - 1 == state.toInt()) {
                 drawCircle(
-                    radius = radius*2,
+                    radius = radius * 2,
                     brush = SolidColor(color),
-                    center = Offset(x = this.center.x + radius * 2 * (i-3)  + padding * (i-3), y = this.center.y)
+                    center = Offset(
+                        x = this.center.x + radius * 2 * (i - 3) + padding * (i - 3),
+                        y = this.center.y
+                    )
                 )
-            }
-            else{
+            } else {
                 drawCircle(
                     radius = radius,
                     brush = SolidColor(color),
-                    center = Offset(x = this.center.x + radius * 2 * (i-3) + padding * (i-3), y = this.center.y)
+                    center = Offset(
+                        x = this.center.x + radius * 2 * (i - 3) + padding * (i - 3),
+                        y = this.center.y
+                    )
                 )
             }
         }

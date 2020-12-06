@@ -19,8 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.demoui.instagram.InstagramListItem
 import com.guru.composecookbook.ui.lists.GridListView

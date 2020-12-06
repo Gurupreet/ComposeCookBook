@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.home
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.semantics.SemanticsProperties
-import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.util.fastAny
 import androidx.ui.test.*
 import com.guru.composecookbook.MainActivity

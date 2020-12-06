@@ -17,12 +17,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.platform.LifecycleOwnerAmbient
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.compose.ui.tooling.preview.Preview
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize

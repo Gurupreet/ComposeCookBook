@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.datingapp
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.CircleShape
@@ -17,9 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.LinearGradient
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.instagramGradient
 import com.guru.composecookbook.theme.purple

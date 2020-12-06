@@ -29,10 +29,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography

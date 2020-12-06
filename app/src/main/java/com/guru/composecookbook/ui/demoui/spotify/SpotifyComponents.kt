@@ -21,10 +21,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.palette.graphics.Palette
-import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
