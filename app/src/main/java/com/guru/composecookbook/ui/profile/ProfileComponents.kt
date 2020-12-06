@@ -37,17 +37,17 @@ fun MyPhotosSection() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
-            asset = imageResource(id = R.drawable.food2),
+            bitmap = imageResource(id = R.drawable.food2),
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
         Image(
-            asset = imageResource(id = R.drawable.food3),
+            bitmap = imageResource(id = R.drawable.food3),
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
         Image(
-            asset = imageResource(id = R.drawable.food6),
+            bitmap = imageResource(id = R.drawable.food6),
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
@@ -57,17 +57,17 @@ fun MyPhotosSection() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
-            asset = imageResource(id = R.drawable.food12),
+            bitmap = imageResource(id = R.drawable.food12),
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
         Image(
-            asset = imageResource(id = R.drawable.food13),
+            bitmap = imageResource(id = R.drawable.food13),
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
         Image(
-            asset = imageResource(id = R.drawable.food15),
+            bitmap = imageResource(id = R.drawable.food15),
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )

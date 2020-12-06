@@ -43,7 +43,7 @@ fun BottomSheetDrawer(
             )
             if (sheetState.image) {
                 Image(
-                    asset = imageResource(id = R.drawable.food2),
+                    bitmap = imageResource(id = R.drawable.food2),
                     modifier = Modifier.fillMaxWidth(),
                     contentScale = ContentScale.Crop
                 )

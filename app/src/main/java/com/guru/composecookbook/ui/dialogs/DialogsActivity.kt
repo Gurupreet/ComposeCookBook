@@ -61,7 +61,7 @@ fun DialogScreen(onBack: () -> Unit) {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(asset = Icons.Default.ArrowBack)
+                        Icon(imageVector = Icons.Default.ArrowBack)
                     }
                 }
 
@@ -196,7 +196,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(asset = imageResource(DemoDataProvider.item.imageId))
+                    Image(bitmap = imageResource(DemoDataProvider.item.imageId))
                 },
                 buttons = {
                     TextButton(
@@ -213,7 +213,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(asset = imageResource(DemoDataProvider.item.imageId))
+                    Image(bitmap = imageResource(DemoDataProvider.item.imageId))
                     Text(
                         item.subtitle + item.title + item.subtitle + item.title,
                         style = typography.subtitle2
@@ -235,7 +235,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
                     Image(
-                        asset = imageResource(DemoDataProvider.item.imageId),
+                        bitmap = imageResource(DemoDataProvider.item.imageId),
                         modifier = Modifier.clip(RoundedCornerShape(16.dp))
                     )
                 },

@@ -83,7 +83,7 @@ fun CryptoListItem(
             }
         ) {
             Icon(
-                asset = if (isFav) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                imageVector = if (isFav) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                 tint = if (isFav) Color.Red else MaterialTheme.colors.onSurface
             )
         }

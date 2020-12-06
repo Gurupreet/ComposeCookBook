@@ -46,10 +46,10 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
                         appThemeState.value = appThemeState
                             .value.copy(darkTheme = !appThemeState.value.darkTheme)
                     }) {
-                        Icon(asset = vectorResource(id = R.drawable.ic_sleep))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_sleep))
                     }
                     IconButton(onClick = { showMenu.value = !showMenu.value }) {
-                        Icon(asset = Icons.Default.Palette)
+                        Icon(imageVector = Icons.Default.Palette)
                     }
                 },
             )
@@ -128,7 +128,7 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
         modifier = Modifier.padding(8.dp).clickable(onClick = onPalletChange),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(asset = Icons.Filled.FiberManualRecord, tint = color)
+        Icon(imageVector = Icons.Filled.FiberManualRecord, tint = color)
         Text(text = name, modifier = Modifier.padding(8.dp))
     }
 }

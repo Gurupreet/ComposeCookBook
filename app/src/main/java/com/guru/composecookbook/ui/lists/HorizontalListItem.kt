@@ -29,7 +29,7 @@ fun HorizontalListItem(
         Column(modifier = Modifier.clickable(onClick = { })) {
             val image = imageResource(item.imageId)
             Image(
-                asset = image,
+                bitmap = image,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .preferredHeight(100.dp)

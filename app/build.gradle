@@ -34,12 +34,15 @@ android {
         freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
 
     }
+    kapt {
+        correctErrorTypes true
+    }
     buildFeatures {
         compose true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.0'
+        kotlinCompilerVersion '1.4.20'
     }
 }
 
@@ -60,8 +63,8 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     //lottie
     def lottie_version = '3.4.4'
@@ -100,7 +103,7 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit5:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 
-    androidTestImplementation "androidx.ui:ui-test:$compose_version"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"

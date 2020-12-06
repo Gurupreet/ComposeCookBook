@@ -58,7 +58,7 @@ fun UICards() {
     ) {
         Row {
             Image(
-                asset = imageResource(id = R.drawable.p3),
+                bitmap = imageResource(id = R.drawable.p3),
                 modifier = Modifier.preferredSize(60.dp)
             )
             Text(text = item.title, modifier = Modifier.padding(16.dp))

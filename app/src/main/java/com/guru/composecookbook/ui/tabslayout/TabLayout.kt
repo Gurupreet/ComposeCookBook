@@ -144,7 +144,7 @@ private fun CustomImageChip(
     ) {
         Row(modifier = Modifier) {
             Image(
-                asset = imageResource(imageId),
+                bitmap = imageResource(imageId),
                 modifier = Modifier.padding(8.dp).preferredSize(20.dp).clip(CircleShape)
             )
             Text(

@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
@@ -46,7 +47,7 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            asset = imageResource(id = item.authorImageId),
+            bitmap = imageResource(id = item.authorImageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(50.dp)
@@ -86,17 +87,10 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
             modifier = Modifier.constrainAs(source) {
                 linkTo(start = title.start, end = parent.end)
                 width = Dimension.fillToConstraints
-            }.drawOpacity(0.6f)
+            }.alpha(0.6f)
         )
         IconButton(
             onClick = { stared = !stared },
-            icon = {
-                Icon(
-                    asset = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
-                    modifier = Modifier.padding(end = 12.dp),
-                    tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
-                )
-            },
             modifier = Modifier
                 .constrainAs(button) {
                     linkTo(
@@ -109,7 +103,13 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
                         endMargin = 16.dp
                     )
                 }
-        )
+        ) {
+            Icon(
+                imageVector = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
+                modifier = Modifier.padding(end = 12.dp),
+                tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
+            )
+        }
     }
 }
 
@@ -117,10 +117,10 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
 fun GmailListActionItems(modifier: Modifier) {
     Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary)
+            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary)
         }
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary)
+            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary)
         }
     }
 }

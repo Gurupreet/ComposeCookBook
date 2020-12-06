@@ -31,7 +31,7 @@ fun TwitterHome() {
             TopAppBar(
                 title = {
                     Icon(
-                        asset = vectorResource(id = R.drawable.ic_twitter),
+                        imageVector = vectorResource(id = R.drawable.ic_twitter),
                         tint = twitterColor,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -41,14 +41,14 @@ fun TwitterHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     Image(
-                        asset = imageResource(id = R.drawable.p6),
+                        bitmap = imageResource(id = R.drawable.p6),
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                             .preferredSize(32.dp).clip(CircleShape)
                     )
                 },
                 actions = {
                     Icon(
-                        asset = Icons.Default.StarBorder,
+                        imageVector = Icons.Default.StarBorder,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                 }
@@ -79,7 +79,7 @@ fun TwitterHomeContent() {
 fun FloatingActionButton(rippleExplode: MutableState<Boolean>) {
     ExtendedFloatingActionButton(
         text = { Text(text = "Tweet") },
-        icon = { Icon(asset = vectorResource(id = R.drawable.ic_twitter)) },
+        icon = { Icon(imageVector = vectorResource(id = R.drawable.ic_twitter)) },
         onClick = { rippleExplode.value = !rippleExplode.value },
         backgroundColor = twitterColor
     )

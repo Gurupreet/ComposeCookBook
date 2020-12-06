@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
@@ -83,7 +84,7 @@ fun DatingHomeScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = cardHeight)
-                    .drawOpacity(animate(if (listEmpty.value) 0f else 1f))
+                    .alpha(animate(if (listEmpty.value) 0f else 1f))
             ) {
                 IconButton(
                     onClick = {
@@ -96,7 +97,7 @@ fun DatingHomeScreen() {
                         .background(MaterialTheme.colors.background)
                 ) {
                     Icon(
-                        asset = Icons.Default.Cancel,
+                        imageVector = Icons.Default.Cancel,
                         tint = Color.Gray,
                         modifier = Modifier.preferredSize(36.dp)
                     )
@@ -112,7 +113,7 @@ fun DatingHomeScreen() {
                         .background(MaterialTheme.colors.background)
                 ) {
                     Icon(
-                        asset = Icons.Default.Favorite,
+                        imageVector = Icons.Default.Favorite,
                         tint = Color.Red,
                         modifier = Modifier.preferredSize(36.dp)
                     )
@@ -126,7 +127,7 @@ fun DatingHomeScreen() {
 fun CardContent(album: Album) {
     Column {
         Image(
-            asset = imageResource(album.imageId),
+            bitmap = imageResource(album.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier.weight(1f)
         )
@@ -138,7 +139,7 @@ fun CardContent(album: Album) {
                 textAlign = TextAlign.Start
             )
             Icon(
-                asset = Icons.Outlined.Place,
+                imageVector = Icons.Outlined.Place,
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
                 tint = purple,
@@ -164,10 +165,10 @@ fun CardContent(album: Album) {
 
 @Composable
 fun DatingLoader(modifier: Modifier) {
-    Box(alignment = Alignment.Center, modifier = modifier.fillMaxSize().clip(CircleShape)) {
+    Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().clip(CircleShape)) {
         FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
-            asset = imageResource(id = R.drawable.adele21),
+            bitmap = imageResource(id = R.drawable.adele21),
             modifier = modifier.preferredSize(50.dp).clip(CircleShape),
             contentScale = ContentScale.Crop,
         )

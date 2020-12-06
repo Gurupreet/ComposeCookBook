@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
@@ -40,7 +41,7 @@ fun SpotifySearchScreen() {
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(top = 80.dp, bottom = 40.dp)
-                .fillMaxSize().drawOpacity(1f - scrollState.value / 200)
+                .fillMaxSize().alpha(1f - scrollState.value / 200)
             // Just reducing the opacity by small fraction when scroll happens
         )
         ScrollableColumn(
@@ -72,7 +73,7 @@ fun SpotifySearchBar() {
             modifier = Modifier.padding(4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(asset = Icons.Default.Search, tint = Color.LightGray)
+            Icon(imageVector = Icons.Default.Search, tint = Color.LightGray)
             Text(
                 text = "Artists, songs, or podcasts",
                 color = MaterialTheme.colors.surface,

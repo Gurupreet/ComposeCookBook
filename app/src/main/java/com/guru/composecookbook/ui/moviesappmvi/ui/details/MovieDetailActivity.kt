@@ -122,7 +122,7 @@ fun MovieDetailContent(movie: Movie?, imageId: Int) {
                     )
                     IconButton(onClick = {}) {
                         Icon(
-                            asset = Icons.Default.LibraryAdd,
+                            imageVector = Icons.Default.LibraryAdd,
                             tint = MaterialTheme.colors.primary
                         )
                     }

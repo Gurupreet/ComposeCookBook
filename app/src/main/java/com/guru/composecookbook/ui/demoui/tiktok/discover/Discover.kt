@@ -50,7 +50,7 @@ fun LanesSection() {
         Column(modifier = Modifier.padding(vertical = 8.dp)) {
             Row(modifier = Modifier.padding(8.dp)) {
                 Icon(
-                    asset = vectorResource(id = R.drawable.ic_hashtag_solid),
+                    imageVector = vectorResource(id = R.drawable.ic_hashtag_solid),
                     modifier = Modifier.size(32.dp)
                         .border(
                             border = BorderStroke(0.5.dp, Color.LightGray),
@@ -88,7 +88,7 @@ fun LanesSection() {
 fun SearchSection() {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Row(modifier = Modifier.weight(1f).background(customGray).padding(4.dp)) {
-            Icon(asset = Icons.Default.Search, modifier = Modifier.padding(4.dp))
+            Icon(imageVector = Icons.Default.Search, modifier = Modifier.padding(4.dp))
             Text(
                 text = "Search",
                 color = Color.DarkGray,
@@ -96,7 +96,7 @@ fun SearchSection() {
             )
         }
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.QrCodeScanner)
+            Icon(imageVector = Icons.Default.QrCodeScanner)
         }
     }
 }

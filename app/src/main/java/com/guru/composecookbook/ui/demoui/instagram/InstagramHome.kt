@@ -22,12 +22,12 @@ fun InstagramHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = {}) {
-                        Icon(asset = vectorResource(id = R.drawable.ic_instagram))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_instagram))
                     }
                 },
                 actions = {
                     IconButton(onClick = {}) {
-                        Icon(asset = vectorResource(id = R.drawable.ic_send))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_send))
                     }
                 }
             )

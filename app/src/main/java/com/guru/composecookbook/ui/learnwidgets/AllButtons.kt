@@ -61,13 +61,13 @@ fun AllButtons() {
         }
         Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Row {
-                Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(end = 4.dp))
+                Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(end = 4.dp))
                 Text(text = "Icon Button")
             }
         }
         Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Text(text = "Icon Button")
-            Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(start = 4.dp))
+            Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(start = 4.dp))
         }
     }
     //custom background buttons

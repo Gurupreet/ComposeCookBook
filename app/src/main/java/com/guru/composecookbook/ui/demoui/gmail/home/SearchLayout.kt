@@ -47,8 +47,9 @@ fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableS
 
         IconButton(
             onClick = { drawerState.open() },
-            icon = { Icon(asset = Icons.Outlined.Menu) },
-        )
+        ) {
+            Icon(imageVector = Icons.Outlined.Menu)
+        }
 
         TextField(
             value = TextFieldValue(""),
@@ -62,7 +63,7 @@ fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableS
         )
 
         Image(
-            asset = imageResource(id = R.drawable.p3),
+            bitmap = imageResource(id = R.drawable.p3),
             modifier = Modifier
                 .padding(horizontal = 8.dp)
                 .preferredSize(32.dp)

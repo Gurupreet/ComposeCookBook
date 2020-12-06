@@ -13,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.draw.drawShadow
@@ -63,8 +64,8 @@ fun HowToModifiers() {
         DemoText("Modifier.align(Alignment.End)")
         DemoElementButton(modifier = Modifier.align(Alignment.End))
 
-        DemoText("Modifier.drawOpacity(0.5f)")
-        DemoElementButton(modifier = Modifier.drawOpacity(0.5f))
+        DemoText("Modifier.alpha0.5f)")
+        DemoElementButton(modifier = Modifier.alpha(0.5f))
         DemoText("Modifier.drawShadow(12.dp)")
         DemoElementButton(modifier = Modifier.drawShadow(12.dp))
         DemoText("Modifier.background(MaterialTheme.colors.secondary))")

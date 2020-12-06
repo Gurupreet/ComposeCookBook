@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
@@ -66,15 +67,15 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
             )
             .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {
-        Icon(asset = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
+        Icon(imageVector = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
         Text(
             text = album.song,
             color = MaterialTheme.colors.onSurface,
             modifier = Modifier
                 .padding(16.dp)
-                .drawOpacity(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
+                .alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
         )
-        Icon(asset = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
+        Icon(imageVector = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
     }
 }
 
@@ -165,7 +166,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
             else 250.dp - Dp(scrollState.value / 20)
         val animateImageSize = animate(dynamicValue)
         Image(
-            asset = imageResource(id = album.imageId),
+            bitmap = imageResource(id = album.imageId),
             modifier = Modifier
                 .preferredSize(animateImageSize)
                 .padding(8.dp)

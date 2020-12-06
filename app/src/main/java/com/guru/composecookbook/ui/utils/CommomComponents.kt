@@ -11,7 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.drawLayer
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -69,13 +69,13 @@ fun SubtitleText(subtitle: String, modifier: Modifier = Modifier) {
 @Composable
 fun RotateIcon(
     state: Boolean,
-    asset: VectorAsset,
+    asset: ImageVector,
     angle: Float,
     duration: Int,
     modifier: Modifier = Modifier
 ) {
     Icon(
-        asset = asset,
+        imageVector = asset,
         modifier = modifier
             .drawLayer(rotationZ = animate(if (state) 0f else angle, tween(duration)))
     )

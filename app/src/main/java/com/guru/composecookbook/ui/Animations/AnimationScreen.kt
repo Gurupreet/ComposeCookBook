@@ -171,10 +171,8 @@ fun SingleScaleAndColorAnimation() {
 fun SingleAnimationContent() {
     val enabled = remember { mutableStateOf(true) }
     Box(
-        modifier = Modifier.padding(12.dp).animateContentSize()
+        modifier = Modifier.padding(12.dp).animateContentSize().background(green500)
             .clickable { enabled.value = !enabled.value },
-        backgroundColor = Color.Green,
-        shape = RoundedCornerShape(8.dp)
     ) {
         Text(
             if (enabled.value) "Auto animate for child content size changes using animateContentSize() for Read More" else DemoDataProvider.longText,
@@ -188,7 +186,7 @@ fun SingleImageScaleAnimation() {
     val enabled = remember { mutableStateOf(true) }
     Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.padding(8.dp)) {
         Image(
-            asset = imageResource(R.drawable.food10),
+            bitmap = imageResource(R.drawable.food10),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(animate(if (enabled.value) 100.dp else 250.dp))
@@ -197,7 +195,7 @@ fun SingleImageScaleAnimation() {
                 .clip(RoundedCornerShape(animate(if (enabled.value) 0.dp else 8.dp)))
         )
         Image(
-            asset = imageResource(R.drawable.food12),
+            bitmap = imageResource(R.drawable.food12),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(animate(if (!enabled.value) 100.dp else 250.dp))
@@ -349,13 +347,13 @@ fun DpMultiStateAnimation() {
     Row(horizontalArrangement = Arrangement.SpaceAround) {
         Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
             Image(
-                asset = imageResource(id = R.drawable.lana),
+                bitmap = imageResource(id = R.drawable.lana),
                 modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey])
             )
         }
         Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
             Image(
-                asset = imageResource(id = R.drawable.billie),
+                bitmap = imageResource(id = R.drawable.billie),
                 modifier = Modifier.height(100.dp - dpAnim[AnimationDefinitions.dpPropKey])
             )
         }
@@ -376,7 +374,7 @@ fun FloatMutliStateAnimation() {
 
     Card(backgroundColor = Color.White, modifier = Modifier.preferredSize(150.dp)) {
         Image(
-            asset = imageResource(id = R.drawable.lana),
+            bitmap = imageResource(id = R.drawable.lana),
             alpha = floatAnim[AnimationDefinitions.floatPropKey] / 100,
         )
     }
@@ -495,7 +493,7 @@ private fun DrawLayerAnimations() {
     ).clickable(onClick = { draw = !draw })
 
     Image(
-        asset = imageResource(id = R.drawable.bp),
+        bitmap = imageResource(id = R.drawable.bp),
         modifier = modifier
     )
 
@@ -504,7 +502,7 @@ private fun DrawLayerAnimations() {
 
     Box {
         Image(
-            asset = imageResource(id = R.drawable.adele21),
+            bitmap = imageResource(id = R.drawable.adele21),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw2) 30f else 5f),
                 translationX = animate(target = if (draw2) 320f else 0f),
@@ -512,7 +510,7 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw2 = !draw2 })
         )
         Image(
-            asset = imageResource(id = R.drawable.dualipa),
+            bitmap = imageResource(id = R.drawable.dualipa),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw2) 30f else 10f),
                 translationX = animate(target = if (draw2) -320f else 0f),
@@ -520,7 +518,7 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw2 = !draw2 })
         )
         Image(
-            asset = imageResource(id = R.drawable.edsheeran),
+            bitmap = imageResource(id = R.drawable.edsheeran),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw2) 30f else 5f),
                 translationY = animate(target = if (draw2) 0f else 50f)
@@ -532,7 +530,7 @@ private fun DrawLayerAnimations() {
 
     Box {
         Image(
-            asset = imageResource(id = R.drawable.wolves),
+            bitmap = imageResource(id = R.drawable.wolves),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw3) 30f else 5f),
                 translationX = animate(target = if (draw3) 320f else 0f),
@@ -541,7 +539,7 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw3 = !draw3 })
         )
         Image(
-            asset = imageResource(id = R.drawable.sam),
+            bitmap = imageResource(id = R.drawable.sam),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw3) 30f else 10f),
                 translationX = animate(target = if (draw3) -320f else 0f),
@@ -550,7 +548,7 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw3 = !draw3 })
         )
         Image(
-            asset = imageResource(id = R.drawable.billie),
+            bitmap = imageResource(id = R.drawable.billie),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw3) 30f else 5f),
                 translationY = animate(target = if (draw3) 0f else 50f),
@@ -563,7 +561,7 @@ private fun DrawLayerAnimations() {
 
     Box {
         Image(
-            asset = imageResource(id = R.drawable.imagindragon),
+            bitmap = imageResource(id = R.drawable.imagindragon),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw4) 30f else 5f),
                 translationX = animate(target = if (draw4) 320f else 0f),
@@ -572,7 +570,7 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw4 = !draw4 })
         )
         Image(
-            asset = imageResource(id = R.drawable.khalid),
+            bitmap = imageResource(id = R.drawable.khalid),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw4) 30f else 10f),
                 translationX = animate(target = if (draw4) -320f else 0f),
@@ -581,7 +579,7 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw4 = !draw4 })
         )
         Image(
-            asset = imageResource(id = R.drawable.camelia),
+            bitmap = imageResource(id = R.drawable.camelia),
             modifier = Modifier.preferredSize(150.dp).drawLayer(
                 shadowElevation = animate(if (draw4) 30f else 5f),
                 translationY = animate(target = if (draw4) 0f else 50f),

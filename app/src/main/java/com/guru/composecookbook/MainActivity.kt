@@ -112,7 +112,7 @@ fun BottomNavigationContent(
     var animate by remember { mutableStateOf(false) }
     BottomNavigation(modifier = modifier) {
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Home) },
+            icon = { Icon(imageVector = Icons.Outlined.Home) },
             selected = homeScreenState.value == BottomNavType.HOME,
             onClick = {
                 homeScreenState.value = BottomNavType.HOME
@@ -121,7 +121,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.List) },
+            icon = { Icon(imageVector = Icons.Outlined.List) },
             selected = homeScreenState.value == BottomNavType.WIDGETS,
             onClick = {
                 homeScreenState.value = BottomNavType.WIDGETS
@@ -146,7 +146,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_animation)) }
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Dashboard) },
+            icon = { Icon(imageVector = Icons.Outlined.Dashboard) },
             selected = homeScreenState.value == BottomNavType.DEMOUI,
             onClick = {
                 homeScreenState.value = BottomNavType.DEMOUI
@@ -155,7 +155,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) }
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Person) },
+            icon = { Icon(imageVector = Icons.Outlined.Person) },
             selected = homeScreenState.value == BottomNavType.PROFILE,
             onClick = {
                 homeScreenState.value = BottomNavType.PROFILE

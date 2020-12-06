@@ -99,19 +99,19 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
     if (showDot) {
         Box {
             Image(
-                asset = imageResource(id = imageId),
+                bitmap = imageResource(id = imageId),
                 contentScale = ContentScale.Crop,
                 modifier = modifier.clip(CircleShape)
             )
             Icon(
-                asset = Icons.Default.Lens,
+                imageVector = Icons.Default.Lens,
                 tint = green500,
                 modifier = Modifier.preferredSize(14.dp).align(Alignment.BottomEnd)
             )
         }
     } else {
         Image(
-            asset = imageResource(id = imageId),
+            bitmap = imageResource(id = imageId),
             contentScale = ContentScale.Crop,
             modifier = modifier.clip(CircleShape)
         )
@@ -138,7 +138,7 @@ fun MatchesImage(imageId: Int) {
                 )
             )
         )
-    Image(asset = imageResource(id = imageId), modifier = modifier)
+    Image(bitmap = imageResource(id = imageId), modifier = modifier)
 }
 
 val randomMessages = listOf(

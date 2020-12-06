@@ -73,7 +73,7 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
         }
         //Animated Icon
         Icon(
-            asset = Icons.Default.RotateRight,
+            imageVector = Icons.Default.RotateRight,
             tint = Color.Black,
             modifier = Modifier.align(Alignment.TopCenter)
                 .drawLayer(

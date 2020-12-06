@@ -56,7 +56,7 @@ private fun InstagramLikesSection(post: Tweet) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            asset = imageResource(id = post.authorImageId),
+            bitmap = imageResource(id = post.authorImageId),
             modifier = Modifier.preferredSize(20.dp).clip(CircleShape),
             contentScale = ContentScale.Crop
         )
@@ -75,17 +75,17 @@ private fun InstagramIconSection() {
         IconToggleButton(checked = fav, onCheckedChange = { fav = it }) {
             val icon = if (fav) Icons.Default.Favorite else Icons.Default.FavoriteBorder
             val tint = if (fav) Color.Red else MaterialTheme.colors.onBackground
-            Icon(asset = icon, modifier = Modifier.preferredSize(44.dp), tint = tint)
+            Icon(imageVector = icon, modifier = Modifier.preferredSize(44.dp), tint = tint)
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(
-                asset = vectorResource(id = R.drawable.ic_speech_bubble),
+                imageVector = vectorResource(id = R.drawable.ic_speech_bubble),
                 modifier = Modifier.preferredSize(44.dp)
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(
-                asset = vectorResource(id = R.drawable.ic_send),
+                imageVector = vectorResource(id = R.drawable.ic_send),
                 modifier = Modifier.preferredSize(44.dp)
             )
         }
@@ -99,7 +99,7 @@ private fun ProfileInfoSection(post: Tweet) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            asset = imageResource(id = post.authorImageId),
+            bitmap = imageResource(id = post.authorImageId),
             modifier = Modifier.preferredSize(32.dp).clip(CircleShape),
             contentScale = ContentScale.Crop
         )
@@ -110,7 +110,7 @@ private fun ProfileInfoSection(post: Tweet) {
             modifier = Modifier.padding(8.dp).weight(1f),
             textAlign = TextAlign.Left
         )
-        Icon(asset = Icons.Default.MoreVert)
+        Icon(imageVector = Icons.Default.MoreVert)
     }
 }
 
@@ -118,7 +118,7 @@ private fun ProfileInfoSection(post: Tweet) {
 private fun InstagramImage(imageId: Int) {
     if (imageId != 0) {
         Image(
-            asset = imageResource(id = imageId),
+            bitmap = imageResource(id = imageId),
             modifier = Modifier.fillMaxWidth().preferredHeight(450.dp),
             contentScale = ContentScale.Crop
         )
