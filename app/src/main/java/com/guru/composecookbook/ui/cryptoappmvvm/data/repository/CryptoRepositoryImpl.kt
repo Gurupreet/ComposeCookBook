@@ -28,11 +28,11 @@ class CryptoRepositoryImpl(
             }
             emit(cryptoList ?: emptyList<Crypto>())
         } else {
-            emit(error(response.message() ?: "Failed to load data"))
+            emit(emptyList<Crypto>())
         }
 
     }.catch {
-        emit(error("Failed to load data"))
+        emit(emptyList<Crypto>())
     }.flowOn(Dispatchers.IO)
 
     override suspend fun getFavourite(): LiveData<List<Crypto>> = cryptoDao.getFavCryptos()
