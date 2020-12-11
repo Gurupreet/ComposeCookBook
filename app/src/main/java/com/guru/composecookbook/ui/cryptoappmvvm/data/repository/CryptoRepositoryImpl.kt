@@ -7,6 +7,7 @@ import com.guru.composecookbook.ui.cryptoappmvvm.data.api.CryptoApi
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.daos.CryptoDao
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
@@ -27,9 +28,11 @@ class CryptoRepositoryImpl(
             }
             emit(cryptoList ?: emptyList<Crypto>())
         } else {
-            emit(error(response.message() ?: "Failed to load data"))
+            emit(emptyList<Crypto>())
         }
 
+    }.catch {
+        emit(emptyList<Crypto>())
     }.flowOn(Dispatchers.IO)
 
     override suspend fun getFavourite(): LiveData<List<Crypto>> = cryptoDao.getFavCryptos()
