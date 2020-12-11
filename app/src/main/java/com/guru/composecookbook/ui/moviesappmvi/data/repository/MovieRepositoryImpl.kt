@@ -8,6 +8,7 @@ import com.guru.composecookbook.ui.moviesappmvi.data.models.Genre
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
@@ -25,6 +26,8 @@ class MovieRepositoryImpl(
             emit(emptyList<Movie>())
         }
 
+    }.catch {
+        emit(emptyList<Movie>())
     }.flowOn(Dispatchers.IO)
 
     override suspend fun getSimilarMovies(movieId: String): Flow<List<Movie>> = flow {
@@ -35,6 +38,8 @@ class MovieRepositoryImpl(
             emit(emptyList<Movie>())
         }
 
+    }.catch {
+        emit(emptyList<Movie>())
     }.flowOn(Dispatchers.IO)
 
     override suspend fun getMyWatchlist(): LiveData<List<Movie>> {
@@ -62,7 +67,8 @@ class MovieRepositoryImpl(
         } else {
             emit(emptyList<Genre>())
         }
-
+    }.catch {
+        emit(emptyList<Genre>())
     }.flowOn(Dispatchers.IO)
 
 }
