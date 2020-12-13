@@ -1,8 +1,9 @@
 package com.guru.composecookbook
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.ui.test.*
 import com.guru.composecookbook.theme.AppThemeState
 import org.junit.Before
 import org.junit.Rule
@@ -111,6 +112,7 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTesting
     @Test
     fun whenBottomNavEntryWidgetsClickedTheWidgetScreenIsDisplayed() {
         composeAndroidTestRule.apply {
@@ -129,6 +131,7 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTesting
     @Test
     fun whenBottomNavBarAnimEntryClickedAnimationScreenIsDisplayed() {
         composeAndroidTestRule.apply {
@@ -144,6 +147,7 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTesting
     @Test
     fun whenBottomNavBarDemoUiEntryClickedDemoUiScreenIsDisplayed() {
         composeAndroidTestRule.apply {
@@ -159,6 +163,7 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTesting
     @Test
     fun whenBottomNavigationBarProfileEntryClickedProfileScreenIsDisplayed() {
         composeAndroidTestRule.apply {
