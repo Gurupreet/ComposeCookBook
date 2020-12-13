@@ -19,7 +19,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
@@ -80,7 +79,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                 )
             }
             Modifier.padding(8.dp)
-                .drawLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
+                .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
         }
         2 -> {
             val animatedProgress = animatedFloat(300f)
@@ -90,7 +89,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     anim = tween(300, easing = FastOutSlowInEasing)
                 )
             }
-            Modifier.padding(8.dp).drawLayer(translationX = animatedProgress.value)
+            Modifier.padding(8.dp).graphicsLayer(translationX = animatedProgress.value)
         }
         3 -> {
             val animatedProgress = animatedFloat(-300f)

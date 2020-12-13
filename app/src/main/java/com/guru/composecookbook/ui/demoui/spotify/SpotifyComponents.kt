@@ -14,11 +14,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -60,7 +60,7 @@ fun SpotifyHomeGridItem(album: Album) {
 
 @Composable
 fun SpotifyLaneItem(album: Album) {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     val album = remember { album }
     Column(
         modifier =
@@ -93,7 +93,7 @@ fun SpotifySearchGridItem(album: Album) {
     val swatch = remember(album.id) { generateDominantColorState(imageBitmap) }
     val dominantGradient =
         remember { listOf(Color(swatch.rgb), Color(swatch.rgb).copy(alpha = 0.6f)) }
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     Row(
         modifier = Modifier
             .padding(8.dp)
@@ -116,7 +116,7 @@ fun SpotifySearchGridItem(album: Album) {
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(70.dp)
                 .align(Alignment.Bottom)
-                .drawLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
+                .graphicsLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
         )
     }
 }
@@ -132,7 +132,10 @@ fun generateDominantColorState(bitmap: Bitmap): Palette.Swatch {
     return Palette.Builder(bitmap)
         .resizeBitmapArea(0)
         .maximumColorCount(16)
-        .generate().swatches.sortedByDescending { swatch -> swatch.population }.first()
+        .generate()
+        .swatches
+        .maxBy { swatch -> swatch.population }!!
+
 }
 
 @Preview

@@ -13,7 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.drawLayer
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -80,7 +80,7 @@ fun MoviePagerItem(
                         imageVector = Icons.Default.LibraryAdd,
                         tint = MaterialTheme.colors.primary,
                         modifier = Modifier
-                            .drawLayer(
+                            .graphicsLayer(
                                 rotationY = animate(
                                     if (clicked.value) 720f else 0f, tween(400)
                                 )

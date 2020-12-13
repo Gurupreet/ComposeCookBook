@@ -24,7 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.AnimationClockAmbient
+import androidx.compose.ui.platform.AmbientAnimationClock
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +38,7 @@ fun CarouselLayout() {
     ScrollableColumn {
         val items = remember { DemoDataProvider.itemList.take(10) }
         val pagerState: PagerState = run {
-            val clock = AnimationClockAmbient.current
+            val clock = AmbientAnimationClock.current
             remember(clock) { PagerState(clock, 2, 0, items.size - 1) }
         }
         val selectedPage = remember { mutableStateOf(2) }
@@ -165,28 +165,20 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
 
 @Preview
 @Composable
-fun previewCarouselLayout() {
+fun PreviewCarouselLayout() {
     CarouselLayout()
 }
 
 @Preview
 @Composable
-fun previewCarouselItem() {
+fun PreviewCarouselItem() {
     val item = DemoDataProvider.item
     CarouselItem(item = item)
 }
 
 @Preview
 @Composable
-fun previewCarouselItemCircle() {
+fun PreviewCarouselItemCircle() {
     val item = DemoDataProvider.item
     CarouselItemCircle(item = item)
-}
-
-
-@Preview
-@Composable
-fun previewCarouselItemCard() {
-    val item = DemoDataProvider.item
-    //CarouselItemCard(item = item, PagerState())
 }

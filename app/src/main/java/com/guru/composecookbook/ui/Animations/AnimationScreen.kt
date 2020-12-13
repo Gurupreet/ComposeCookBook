@@ -16,13 +16,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.gesture.DragObserver
 import androidx.compose.ui.gesture.rawDragGestureFilter
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
@@ -84,7 +84,7 @@ fun AnimationScreenContent() {
         SubtitleText(subtitle = "animateContentSize()")
         SingleAnimationContent()
         Spacer(modifier = Modifier.padding(8.dp))
-        TitleText("Visibility Animations: Experimental`")
+        TitleText(title = "Visibility Animations: Experimental")
         Spacer(modifier = Modifier.padding(8.dp))
         VisibilityAnimationFAB()
         Spacer(modifier = Modifier.padding(8.dp))
@@ -94,7 +94,7 @@ fun AnimationScreenContent() {
         Spacer(modifier = Modifier.padding(8.dp))
         SlideInOutSample()
         Spacer(modifier = Modifier.padding(8.dp))
-        TitleText("Multi State Animations")
+        TitleText(title = "Multi State Animations")
         Spacer(modifier = Modifier.padding(8.dp))
         SubtitleText(subtitle = "Three different colorPropKey state with repeat")
         ColorMultistateAnimation()
@@ -105,7 +105,7 @@ fun AnimationScreenContent() {
         SubtitleText(subtitle = "Different FloatPropKey value states animation")
         FloatMutliStateAnimation()
         Spacer(modifier = Modifier.padding(8.dp))
-        TitleText("Multi State Animations on Canvas")
+        TitleText(title = "Multi State Animations on Canvas")
         val ripple = remember { mutableStateOf(false) }
         if (ripple.value) {
             FloatMultiStateAnimationExplode(500)
@@ -280,7 +280,7 @@ fun SlideInOutSample() {
         AnimatedVisibility(
             visibility,
             enter = slideIn(
-                { fullSize -> IntOffset(0, 100) },
+                { IntOffset(0, 100) },
                 tween(500, easing = LinearOutSlowInEasing)
             ),
             exit = slideOut(
@@ -429,10 +429,6 @@ fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Flo
             10f,
             10f
         )
-        val centerOffset2 = Offset(
-            220f,
-            10f
-        )
         val radius = floatAnim[AnimationDefinitions.floatPropKey]
         drawCircle(
             color = color.copy(alpha = 0.8f),
@@ -481,9 +477,9 @@ fun FloatMultiStateAnimationExplode(duration: Int = 500) {
 
 @Composable
 private fun DrawLayerAnimations() {
-    TitleText("DrawLayer changes + Single value animations")
+    TitleText(title = "DrawLayer changes + Single value animations")
     var draw by remember { mutableStateOf(false) }
-    val modifier = Modifier.preferredSize(150.dp).drawLayer(
+    val modifier = Modifier.preferredSize(150.dp).graphicsLayer(
         scaleX = animate(if (draw) 2f else 1f),
         scaleY = animate(if (draw) 2f else 1f),
         shadowElevation = animate(if (draw) 50f else 5f),
@@ -502,7 +498,7 @@ private fun DrawLayerAnimations() {
     Box {
         Image(
             bitmap = imageResource(id = R.drawable.adele21),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw2) 30f else 5f),
                 translationX = animate(target = if (draw2) 320f else 0f),
                 translationY = 0f,
@@ -510,7 +506,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.dualipa),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw2) 30f else 10f),
                 translationX = animate(target = if (draw2) -320f else 0f),
                 translationY = animate(target = if (draw2) 0f else 30f)
@@ -518,7 +514,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.edsheeran),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw2) 30f else 5f),
                 translationY = animate(target = if (draw2) 0f else 50f)
             ).clickable(onClick = { draw2 = !draw2 })
@@ -530,7 +526,7 @@ private fun DrawLayerAnimations() {
     Box {
         Image(
             bitmap = imageResource(id = R.drawable.wolves),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw3) 30f else 5f),
                 translationX = animate(target = if (draw3) 320f else 0f),
                 rotationY = animate(target = if (draw3) 45f else 0f),
@@ -539,7 +535,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.sam),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw3) 30f else 10f),
                 translationX = animate(target = if (draw3) -320f else 0f),
                 rotationY = animate(target = if (draw3) 45f else 0f),
@@ -548,7 +544,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.billie),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw3) 30f else 5f),
                 translationY = animate(target = if (draw3) 0f else 50f),
                 rotationY = animate(target = if (draw3) 45f else 0f)
@@ -561,7 +557,7 @@ private fun DrawLayerAnimations() {
     Box {
         Image(
             bitmap = imageResource(id = R.drawable.imagindragon),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw4) 30f else 5f),
                 translationX = animate(target = if (draw4) 320f else 0f),
                 rotationZ = animate(target = if (draw4) 45f else 0f),
@@ -570,7 +566,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.khalid),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw4) 30f else 10f),
                 translationX = animate(target = if (draw4) -320f else 0f),
                 rotationZ = animate(target = if (draw4) 45f else 0f),
@@ -579,7 +575,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.camelia),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw4) 30f else 5f),
                 translationY = animate(target = if (draw4) 0f else 50f),
                 rotationZ = animate(target = if (draw4) 45f else 0f)
@@ -592,7 +588,7 @@ private fun DrawLayerAnimations() {
 fun AnimatedValuesAnimations() {
     val moveX = -1000f
     val moveXMax = 1000f
-    TitleText("Animated Value to Animations + drag")
+    TitleText(title = "Animated Value to Animations + drag")
     val xFloat = animatedFloat(initVal = moveX)
 
     val dragObserver = object : DragObserver {
@@ -619,7 +615,7 @@ fun AnimatedValuesAnimations() {
 
     CardElement(
         modifier = Modifier.rawDragGestureFilter(dragObserver)
-            .preferredSize(200.dp).drawLayer(
+            .preferredSize(200.dp).graphicsLayer(
                 translationX = xFloat.value,
             )
     )

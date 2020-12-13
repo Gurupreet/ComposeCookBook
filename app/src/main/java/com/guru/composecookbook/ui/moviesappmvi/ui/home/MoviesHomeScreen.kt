@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.platform.AnimationClockAmbient
+import androidx.compose.ui.platform.AmbientAnimationClock
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -63,7 +63,7 @@ fun MoviesPager(
 
     if (movies.isNotEmpty()) {
         val pagerState: PagerState = run {
-            val clock = AnimationClockAmbient.current
+            val clock = AmbientAnimationClock.current
             remember(clock) {
                 PagerState(clock, 0, 0, movies.size - 1)
             }

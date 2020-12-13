@@ -5,7 +5,7 @@ import androidx.compose.animation.core.SpringSpec
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import androidx.compose.ui.drawWithContent
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.gesture.Direction
@@ -82,14 +82,13 @@ fun Modifier.gradientTint(
     }
 }
 
-@Composable
 fun Modifier.swipeGesture(
     swipeValue: AnimatedFloat,
     swipeDirection: Direction = Direction.LEFT,
     maxSwipe: Float,
     onItemSwiped: () -> Unit
-): Modifier {
-    return (this then dragGestureFilter(
+): Modifier = composed {
+    (this then dragGestureFilter(
         canDrag = { it == swipeDirection },
         dragObserver = dragObserver(
             swipeValue = swipeValue,

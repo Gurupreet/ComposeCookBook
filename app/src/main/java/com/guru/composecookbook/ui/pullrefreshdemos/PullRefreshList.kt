@@ -18,9 +18,9 @@ import androidx.compose.material.icons.filled.RotateRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoui.spotify.details.SpotifySongListItem
@@ -76,7 +76,7 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
             imageVector = Icons.Default.RotateRight,
             tint = Color.Black,
             modifier = Modifier.align(Alignment.TopCenter)
-                .drawLayer(
+                .graphicsLayer(
                     translationY = animate(
                         animatedProgress.value.coerceIn(
                             initialYTranslate,
