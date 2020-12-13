@@ -20,11 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.AnimationClockAmbient
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.AmbientAnimationClock
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -48,7 +48,7 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val movies = SpotifyDataProvider.albums
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
-        val clock = AnimationClockAmbient.current
+        val clock = AmbientAnimationClock.current
         remember(clock) {
             PagerState(clock, 0, 0, movies.size - 1)
         }
@@ -71,7 +71,7 @@ fun PagerItem(
     selected: Boolean,
     tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
 ) {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
 
     Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp))) {
         TikTokPlayer(context, videos[album.id % 3], selected)
@@ -135,7 +135,7 @@ fun VideoIconsSection(
             )
         }
         ProfileImageWithFollow(
-            modifier = Modifier.preferredSize(64.dp).drawLayer(rotationZ = rotation.value),
+            modifier = Modifier.preferredSize(64.dp).graphicsLayer(rotationZ = rotation.value),
             false,
             album.imageId
         )
@@ -159,7 +159,7 @@ fun LikeIcon(id: Int) {
         imageVector = vectorResource(id = R.drawable.ic_heart_solid),
         modifier = Modifier
             .clickable(onClick = { fav = !fav })
-            .drawLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
+            .graphicsLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
         tint = animate(if (fav) tiktokRed else Color.White)
     )
 }

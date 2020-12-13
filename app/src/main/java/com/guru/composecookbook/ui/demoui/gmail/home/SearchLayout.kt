@@ -18,9 +18,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawShadow
-import androidx.compose.ui.drawLayer
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -36,10 +36,10 @@ fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableS
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .drawLayer(translationY = offset.toFloat())
+            .graphicsLayer(translationY = offset.toFloat())
             .preferredHeight(searchLayoutHeightDp)
             .padding(8.dp)
-            .drawShadow(8.dp, shape = RoundedCornerShape(8.dp), clip = false)
+            .shadow(8.dp, shape = RoundedCornerShape(8.dp), clip = false)
             .background(background, shape = RoundedCornerShape(8.dp))
 
     ) {

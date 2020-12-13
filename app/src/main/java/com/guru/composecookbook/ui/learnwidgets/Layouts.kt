@@ -250,6 +250,6 @@ fun MultipleTexts() {
 
 @Preview
 @Composable
-fun previewLayouts() {
+fun PreviewLayouts() {
     Layouts()
 }

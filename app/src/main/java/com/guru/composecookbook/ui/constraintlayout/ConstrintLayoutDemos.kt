@@ -202,13 +202,13 @@ fun ConstraintLayoutBigListItem() {
 
 @Preview
 @Composable
-fun showConstraintLayoutListItem() {
+ fun ShowConstraintLayoutListItem() {
     ConstraintLayoutListItem()
 }
 
 @Preview
 @Composable
-fun showConstraintLayoutBigListItem() {
+ fun ShowConstraintLayoutBigListItem() {
     ConstraintLayoutBigListItem()
 }
 

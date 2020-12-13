@@ -7,10 +7,10 @@ import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.gesture.DragObserver
 import androidx.compose.ui.gesture.rawDragGestureFilter
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.ConfigurationAmbient
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.datingapp.SwipeResult
@@ -76,7 +76,7 @@ fun DraggableCard(
     if (abs(swipeX.value) < swipeXRight - 50f) {
         Card(
             elevation = 16.dp,
-            modifier = modifier.rawDragGestureFilter(dragObserver).drawLayer(
+            modifier = modifier.rawDragGestureFilter(dragObserver).graphicsLayer(
                 translationX = swipeX.value,
                 translationY = swipeY.value,
                 rotationZ = rotationFraction,

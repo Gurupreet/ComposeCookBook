@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -130,7 +130,7 @@ fun BottomScrollingContent() {
 @Composable
 fun SocialRow() {
     Card(elevation = 8.dp, modifier = Modifier.padding(8.dp)) {
-        val context = ContextAmbient.current
+        val context = AmbientContext.current
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 16.dp)
@@ -150,7 +150,7 @@ fun SocialRow() {
 
 @Composable
 fun MoreInfoSection() {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     Text(
         text = "More Info",
         style = typography.h6,

@@ -103,7 +103,7 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
 
 @Preview
 @Composable
-fun previewDynamicUI() {
+fun PreviewDynamicUI() {
     DynamicUiWrapper(uiType = DynamicUiType.TABS.name, onback = {})
 }
 

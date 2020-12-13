@@ -121,7 +121,7 @@ class SystemUiController(private val window: Window) {
  * An [androidx.compose.Ambient] holding the current [SystemUiController] or throws an error if none
  * is [provided][androidx.compose.Providers].
  */
-val SystemUiControllerAmbient = staticAmbientOf<SystemUiController> {
+val AmbientSystemUiController = staticAmbientOf<SystemUiController> {
     error("No SystemUiController provided")
 }
 

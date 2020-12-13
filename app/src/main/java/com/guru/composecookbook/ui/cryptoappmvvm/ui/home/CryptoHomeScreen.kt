@@ -24,9 +24,9 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -77,7 +77,7 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
 
 @Composable
 fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
-    val animateRotationModifier = Modifier.drawLayer(
+    val animateRotationModifier = Modifier.graphicsLayer(
         //So on every count change this basically runs as we only add 1 at a time
         rotationX = animate(if (count % 2 == 0) 360f else 0f, tween(800))
     )
@@ -143,7 +143,7 @@ fun CryptoList(
     listScrollState: LazyListState,
     onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
 
     if (uiState.cryptos.isEmpty()) {
         LottieLoadingView(context = context)

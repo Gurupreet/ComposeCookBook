@@ -104,7 +104,7 @@ fun Pager(
     state: PagerState,
     orientation: Orientation = Orientation.Horizontal,
     offscreenLimit: Int = 2,
-    pageContent: @Composable PagerScope.() -> Unit
+    content: @Composable PagerScope.() -> Unit
 ) {
     var pageSize by remember { mutableStateOf(0) }
     Layout(
@@ -117,7 +117,7 @@ fun Pager(
                 val scope = PagerScope(state, page)
                 key(pageData) {
                     Column(modifier = pageData) {
-                        scope.pageContent()
+                        scope.content()
                     }
                 }
             }

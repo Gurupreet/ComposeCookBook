@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawShadow
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.gesture.doubleTapGestureFilter
 import androidx.compose.ui.gesture.longPressGestureFilter
 import androidx.compose.ui.graphics.Color
@@ -66,7 +66,7 @@ fun HowToModifiers() {
         DemoText("Modifier.alpha0.5f)")
         DemoElementButton(modifier = Modifier.alpha(0.5f))
         DemoText("Modifier.drawShadow(12.dp)")
-        DemoElementButton(modifier = Modifier.drawShadow(12.dp))
+        DemoElementButton(modifier = Modifier.shadow(12.dp))
         DemoText("Modifier.background(MaterialTheme.colors.secondary))")
         DemoElementButton(modifier = Modifier.background(MaterialTheme.colors.secondary))
         DemoText("Modifier.padding(8.dp).background(brush = HorizontalGradient)")
@@ -146,6 +146,6 @@ fun DemoText(text: String) {
 
 @Preview
 @Composable
-fun previewHowToModifiers() {
+fun PreviewHowToModifiers() {
     HowToModifiers()
 }
