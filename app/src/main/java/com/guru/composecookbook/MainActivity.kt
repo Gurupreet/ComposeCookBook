@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.accessibilityLabel
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
@@ -97,7 +98,7 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
         )
         BottomNavigationContent(
             modifier = Modifier.semantics {
-                accessibilityLabel = bottomNavBarContentDescription
+                contentDescription = bottomNavBarContentDescription
             },
             homeScreenState = homeScreenState
         )

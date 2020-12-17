@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.HorizontalGradient
 import androidx.compose.ui.graphics.VerticalGradient
@@ -43,7 +44,7 @@ fun AllButtons() {
         Button(
             onClick = {},
             modifier = Modifier.padding(8.dp),
-            elevation = ButtonConstants.defaultElevation()
+            elevation = ButtonDefaults.elevation()
         ) {
             Text(text = "Flat")
         }
@@ -77,10 +78,10 @@ fun AllButtons() {
         }
     }
     //custom background buttons
-    val outlineButtonColor = ButtonConstants.defaultOutlinedButtonColors(
+    val outlineButtonColor = ButtonDefaults.outlinedButtonColors(
         contentColor = purple200,
     )
-    val mainButtonColor = ButtonConstants.defaultButtonColors(
+    val mainButtonColor = ButtonDefaults.buttonColors(
         backgroundColor = purple,
         contentColor = MaterialTheme.colors.surface
     )
@@ -97,12 +98,12 @@ fun AllButtons() {
         }
     }
     Row {
-        val horizontalGradient = HorizontalGradient(
+        val horizontalGradient = Brush.horizontalGradient(
             colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
             0f,
             250f
         )
-        val verticalGradient = VerticalGradient(
+        val verticalGradient = Brush.verticalGradient(
             colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
             startY = 0f,
             endY = 100f

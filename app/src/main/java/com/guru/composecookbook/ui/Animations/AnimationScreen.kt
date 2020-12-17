@@ -133,7 +133,7 @@ fun AnimationScreenContent() {
 fun SimpleColorAnimation() {
     val enabled = remember { mutableStateOf(true) }
     val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
-    val buttonColors = ButtonConstants.defaultButtonColors(
+    val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = animate(color)
     )
     Button(
@@ -151,7 +151,7 @@ fun SingleScaleAndColorAnimation() {
     val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
     val height = if (enabled.value) 40.dp else 60.dp
     val width = if (enabled.value) 150.dp else 300.dp
-    val buttonColors = ButtonConstants.defaultButtonColors(
+    val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = animate(color)
     )
     Button(
@@ -321,7 +321,7 @@ fun ColorMultistateAnimation() {
             }
         }
     )
-    val buttonColors = ButtonConstants.defaultButtonColors(
+    val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = colorAnim[AnimationDefinitions.colorPropKey]
     )
     Button(

@@ -35,7 +35,6 @@ import com.guru.composecookbook.ui.utils.verticalGradientBackground
 
 @Composable
 fun SpotifyDetailScreen(album: Album) {
-    val album = remember { album }
     val scrollState = rememberScrollState(0f)
     val image = imageResource(id = album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(image) }
@@ -128,7 +127,7 @@ fun DownloadedRow() {
         var switched by remember { mutableStateOf(true) }
         Switch(
             checked = switched,
-            colors = SwitchConstants.defaultColors(
+            colors = SwitchDefaults.colors(
                 checkedThumbColor = MaterialTheme.colors.primary
             ),
             modifier = Modifier.padding(8.dp),
@@ -141,7 +140,7 @@ fun DownloadedRow() {
 fun ShuffleButton() {
     Button(
         onClick = {},
-        colors = ButtonConstants.defaultButtonColors(backgroundColor = green700),
+        colors = ButtonDefaults.buttonColors(backgroundColor = green700),
         modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp, horizontal = 100.dp)
             .clip(CircleShape),
     ) {

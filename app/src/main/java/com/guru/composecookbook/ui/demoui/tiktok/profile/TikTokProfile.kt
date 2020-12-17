@@ -83,7 +83,7 @@ fun ProfileTopSection(album: Album) {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
         Button(
             onClick = {},
-            colors = ButtonConstants.defaultButtonColors(
+            colors = ButtonDefaults.buttonColors(
                 backgroundColor = tiktokRed,
                 contentColor = Color.White
             ),
