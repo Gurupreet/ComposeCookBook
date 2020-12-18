@@ -90,7 +90,7 @@ fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
         when (spotifyNavType) {
             SpotifyNavType.HOME -> SpotifyHome()
             SpotifyNavType.SEARCH -> SpotifySearchScreen()
-            SpotifyNavType.LIBRARY -> ComingSoon()
+            SpotifyNavType.LIBRARY -> SpotifyPlayList()
         }
     }
 }
