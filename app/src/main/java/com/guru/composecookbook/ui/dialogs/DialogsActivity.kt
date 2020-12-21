@@ -80,7 +80,7 @@ fun DialogsOptionList() {
 
     if (dialogState.showDialog) {
         //if state of show dialog changes to true it shows dialog passing state as false for dismiss
-        showDialog(dialogState.dialogType) { dialogState = dialogState.copy(showDialog = false) }
+        ShowDialog(dialogState.dialogType) { dialogState = dialogState.copy(showDialog = false) }
     }
 
     // I am not sure why updating the `dialogState.showDialog = true` is not working. May be I am
@@ -126,7 +126,7 @@ fun DialogsOptionList() {
 }
 
 @Composable
-fun showDialog(type: DialogType, onDismiss: () -> Unit) {
+fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
     val item = remember { DemoDataProvider.item }
 
     when (type) {

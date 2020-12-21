@@ -3,7 +3,6 @@ package com.guru.composecookbook
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.test.platform.app.InstrumentationRegistry
 import com.guru.composecookbook.theme.AppThemeState
 import org.junit.Before
 import org.junit.Rule
@@ -14,14 +13,11 @@ class BottomNavigationBarTests {
     @get: Rule
     val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
-    private lateinit var bottomNavigationBarAccessibilityText: String
+    private val bottomNavigationBarTestTag: String = "bottom_navigation_bar"
 
 
     @Before
     fun setUp() {
-        bottomNavigationBarAccessibilityText = InstrumentationRegistry.getInstrumentation()
-            .targetContext
-            .getString(R.string.a11y_bottom_navigation_bar)
 
         composeAndroidTestRule.setContent {
             MainAppContent(appThemeState = mutableStateOf(AppThemeState()))
@@ -31,7 +27,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveFiveEntries() {
         composeAndroidTestRule.apply {
-            onNodeWithLabel(bottomNavigationBarAccessibilityText)
+            onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
                 .assertCountEquals(5)
                 .assertAll(hasClickAction())
@@ -41,7 +37,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveHomeEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithLabel(bottomNavigationBarAccessibilityText)
+            onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
                 .filterToOne(matcher = hasText("Home").and(hasClickAction()))
                 .assertExists()
@@ -51,7 +47,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveWidgetsEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithLabel(bottomNavigationBarAccessibilityText)
+            onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
                 .filterToOne(matcher = hasText("Widgets").and(hasClickAction()))
                 .assertExists()
@@ -61,7 +57,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveAnimEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithLabel(bottomNavigationBarAccessibilityText)
+            onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
                 .filterToOne(matcher = hasText("Anim").and(hasClickAction()))
                 .assertExists()
@@ -71,7 +67,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveDemoUiEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithLabel(bottomNavigationBarAccessibilityText)
+            onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
                 .filterToOne(matcher = hasText("DemoUI").and(hasClickAction()))
                 .assertExists()
@@ -81,7 +77,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveProfileEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithLabel(bottomNavigationBarAccessibilityText)
+            onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
                 .filterToOne(matcher = hasText("Profile").and(hasClickAction()))
                 .assertExists()

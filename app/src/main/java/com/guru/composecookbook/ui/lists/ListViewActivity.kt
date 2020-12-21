@@ -8,7 +8,7 @@ import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumnFor
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -124,11 +124,17 @@ fun HorizontalListView() {
             text = "Good Food",
             style = MaterialTheme.typography.subtitle1
         )
-        LazyRowFor(items = list, modifier = Modifier.padding(end = 16.dp)) {
-            HorizontalListItem(
-                it,
-                Modifier.padding(start = 16.dp, bottom = 16.dp)
-            )
+        LazyRow(
+            modifier = Modifier.padding(end = 16.dp)
+        ) {
+            items(
+                items = list,
+                itemContent = {
+                    HorizontalListItem(
+                        it,
+                        Modifier.padding(start = 16.dp, bottom = 16.dp)
+                    )
+                })
         }
         ListItemDivider()
         Text(

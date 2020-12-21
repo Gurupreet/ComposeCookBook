@@ -43,7 +43,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.21'
+        kotlinCompilerVersion kotlin_version
     }
     lintOptions {
         abortOnError false
@@ -69,7 +69,7 @@ dependencies {
     implementation "androidx.multidex:multidex:2.0.1"
 
     //google play services
-    implementation 'com.google.android.gms:play-services-ads:19.5.0'
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
     implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
@@ -87,14 +87,14 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer:2.11.8"
     //Network libs
     // Room
-    def room_version = '2.2.5'
+    def room_version = '2.2.6'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     // annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.4.0"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-rc01'
     //Retrofit
     def retrofit_version = "2.6.4"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

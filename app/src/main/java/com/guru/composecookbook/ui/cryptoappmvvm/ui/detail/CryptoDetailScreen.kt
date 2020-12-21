@@ -3,7 +3,7 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.detail
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -159,8 +159,10 @@ fun FavSection() {
             modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
             style = typography.h5
         )
-        LazyRowFor(items = favCryptos) {
-            FavoriteCryptoCard(crypto = it)
+        LazyRow {
+            items(
+                items = favCryptos,
+                itemContent = { FavoriteCryptoCard(crypto = it) })
         }
     }
 }

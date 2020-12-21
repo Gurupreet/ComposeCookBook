@@ -15,8 +15,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.accessibilityLabel
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -97,9 +97,9 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
             modifier = Modifier.weight(1f)
         )
         BottomNavigationContent(
-            modifier = Modifier.semantics {
-                contentDescription = bottomNavBarContentDescription
-            },
+            modifier = Modifier
+                .semantics { contentDescription = bottomNavBarContentDescription }
+                .testTag("bottom_navigation_bar"),
             homeScreenState = homeScreenState
         )
     }

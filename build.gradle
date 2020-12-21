@@ -3,15 +3,16 @@ buildscript {
     ext {
         compose_version = '1.0.0-alpha09'
         nav_compose_version='1.0.0-alpha04'
+        kotlin_version = "1.4.21"
     }
-    ext.kotlin_version = "1.4.21"
+
     repositories {
         google()
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha02'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong

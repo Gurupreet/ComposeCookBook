@@ -10,7 +10,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -165,16 +165,20 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
     val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
     similarMovies?.let { movies ->
         Text(text = "Similar Movies", style = typography.h5, modifier = Modifier.padding(8.dp))
-        LazyRowFor(items = movies) { movie ->
-            CoilImage(
-                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
-                modifier = Modifier
-                    .preferredWidth(200.dp)
-                    .preferredHeight(300.dp)
-                    .padding(12.dp)
-                    .clip(RoundedCornerShape(12.dp)),
-                contentScale = ContentScale.Crop
-            )
+        LazyRow {
+            items(
+                items = movies,
+                itemContent = { movie: Movie ->
+                    CoilImage(
+                        data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                        modifier = Modifier
+                            .preferredWidth(200.dp)
+                            .preferredHeight(300.dp)
+                            .padding(12.dp)
+                            .clip(RoundedCornerShape(12.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+                })
         }
     }
 }

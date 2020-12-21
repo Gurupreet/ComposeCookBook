@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.DensityAmbient
+import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -213,7 +213,7 @@ fun GmailContent(
     val oldIndex = remember { mutableStateOf(0) }
     val searchOffsetY = remember { mutableStateOf(0) }
 
-    val searchLayoutHeightPx = with(DensityAmbient.current) { 70.dp.toPx() }
+    val searchLayoutHeightPx = with(AmbientDensity.current) { 70.dp.toPx() }
 
     // ensures that the user intents to have scroll gesture..
     val isVisibleScrolled =
