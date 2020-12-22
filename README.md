@@ -13,6 +13,9 @@
 <br />
 
 <div align="center">
+    <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#december_16_2020">
+      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20alpha09-brightgreen" />
+    </a>
   <a href = "https://github.com/Gurupreet/ComposeCookBook/network/">
     <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
   </a>
@@ -59,7 +62,7 @@ Shimmer Lists             | List Scroll Animations      |  Pull Refresh/Swipe Li
 
 
 ## How to get started
-Please get **android studio 4.2 canary 15** or above to build this project [from here](https://developer.android.com/studio/preview/).
+Please get **Android Studio Arctic Fox 2020.3.1 Canary 4** or above to build this project [from here](https://developer.android.com/studio/preview/).
 
 ## Features & Where to start
 - __Widgets:__ Widgets Screen show case all the available components to build UI.

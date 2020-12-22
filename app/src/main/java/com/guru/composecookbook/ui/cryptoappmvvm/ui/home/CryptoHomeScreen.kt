@@ -1,22 +1,16 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
 
+import android.animation.ValueAnimator
 import android.content.Context
 import androidx.compose.animation.animate
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnForIndexed
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.LazyRowFor
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExtendedFloatingActionButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
@@ -107,10 +101,16 @@ fun ShowFavorites(
             .height(animate(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp))
     ) {
         Text(text = "My Favorites", modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
-        LazyRowFor(items = favCryptos) { crypto ->
-            FavoriteItem(crypto = crypto) {
-                onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.OpenDetailScreen(crypto))
-            }
+        LazyRow {
+            items(
+                items = favCryptos,
+                itemContent = { crypto: Crypto ->
+                    FavoriteItem(crypto = crypto) {
+                        onCryptoHomeInteractionEvents(
+                            CryptoHomeInteractionEvents.OpenDetailScreen(crypto = crypto)
+                        )
+                    }
+                })
         }
     }
 }
@@ -180,8 +180,8 @@ fun CryptoList(
 fun LottieLoadingView(context: Context) {
     val lottieView = remember {
         LottieAnimationView(context).apply {
-            loop(true)
             setAnimation("cryptoload.json")
+            repeatCount = ValueAnimator.INFINITE
         }
     }
     AndroidView({ lottieView }, modifier = Modifier.fillMaxWidth().height(150.dp)) {

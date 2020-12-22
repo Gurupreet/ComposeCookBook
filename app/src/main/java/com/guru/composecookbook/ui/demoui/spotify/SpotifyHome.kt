@@ -3,7 +3,7 @@ package com.guru.composecookbook.ui.demoui.spotify
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -120,8 +120,10 @@ fun HomeLanesSection() {
 fun SpotifyLane(index: Int) {
     val itemsEven = remember { SpotifyDataProvider.albums }
     val itemsOdd = remember { SpotifyDataProvider.albums.asReversed() }
-    LazyRowFor(if (index % 2 == 0) itemsEven else itemsOdd) {
-        SpotifyLaneItem(album = it)
+    LazyRow {
+        items(if (index % 2 == 0) itemsEven else itemsOdd) {
+            SpotifyLaneItem(album = it)
+        }
     }
 }
 
