@@ -5,5 +5,5 @@ enum class BottomNavType {
     WIDGETS,
     ANIMATION,
     DEMOUI,
-    PROFILE
+    TEMPLATE
 }
