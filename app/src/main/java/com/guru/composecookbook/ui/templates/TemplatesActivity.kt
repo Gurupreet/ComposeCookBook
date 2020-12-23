@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoui.DemoUIHostActivity
 import com.guru.composecookbook.ui.profile.ProfileScreen
+import com.guru.composecookbook.ui.utils.ComingSoon
 
 class TemplatesActivity : AppCompatActivity() {
 
@@ -44,6 +45,6 @@ class TemplatesActivity : AppCompatActivity() {
 fun TemplateApp(templateType: String) {
     when(templateType) {
         "Profiles" -> ProfileScreen()
-        "Settings" -> Text(text = "Settings")
+        else -> ComingSoon()
     }
 }

@@ -1,7 +1,7 @@
 package com.guru.composecookbook.ui.demoui.instagram
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -50,8 +50,12 @@ fun InstagramHomeContent() {
 @Composable
 fun InstagramPostsList() {
     val posts = remember { DemoDataProvider.tweetList.filter { it.tweetImageId != 0 } }
-    LazyColumnFor(items = posts) {
-        InstagramListItem(post = it)
+    LazyColumn {
+        items(
+            items = posts,
+            itemContent = {
+                InstagramListItem(post = it)
+            })
     }
 }
 

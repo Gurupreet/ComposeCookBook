@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumnForIndexed
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -50,8 +50,12 @@ fun AnimatedLists() {
                 )
             }
         }
-        LazyColumnForIndexed(items = tweets) { index, tweet ->
-            AnimatedListItem(tweet = tweet, index, animationIndex)
+        LazyColumn {
+            itemsIndexed(
+                items = tweets,
+                itemContent = { index, tweet ->
+                    AnimatedListItem(tweet = tweet, index, animationIndex)
+                })
         }
     }
 }

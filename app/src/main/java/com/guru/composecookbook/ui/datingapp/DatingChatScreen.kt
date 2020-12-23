@@ -1,19 +1,25 @@
 package com.guru.composecookbook.ui.datingapp
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lens
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.LinearGradient
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,11 +43,13 @@ fun DatingChatScreen() {
             .verticalGradientBackground(listOf(Color.White, purple.copy(alpha = 0.2f)))
     ) {
         MatchSection()
-        LazyColumnFor(
-            items = items,
+        LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
-            DatingChatItem(it)
+            items(items = items,
+                itemContent = {
+                    DatingChatItem(it)
+                })
         }
 
     }
@@ -56,8 +64,10 @@ fun MatchSection() {
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         color = purple
     )
-    LazyRowFor(items = matches) {
-        MatchesImage(imageId = it.imageId)
+    LazyRow {
+        items(
+            items = matches,
+            itemContent = { MatchesImage(imageId = it.imageId) })
     }
     Spacer(modifier = Modifier.height(24.dp))
 }
@@ -127,13 +137,17 @@ fun MatchesImage(imageId: Int) {
         .border(
             shape = CircleShape,
             border = BorderStroke(
-                3.dp,
-                brush = LinearGradient(
-                    instagramGradient,
-                    startX = 0f,
-                    endX = 100f,
-                    startY = 0f,
-                    endY = 100f
+                width = 3.dp,
+                brush = Brush.linearGradient(
+                    colors = instagramGradient,
+                    start = Offset(
+                        0f,
+                        0f
+                    ),
+                    end = Offset(
+                        100f,
+                        100f
+                    )
                 )
             )
         )

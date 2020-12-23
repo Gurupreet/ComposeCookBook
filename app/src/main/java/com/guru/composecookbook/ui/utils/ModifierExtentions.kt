@@ -22,7 +22,7 @@ import kotlin.math.abs
 fun Modifier.horizontalGradientBackground(
     colors: List<Color>
 ) = gradientBackground(colors) { gradientColors, size ->
-    HorizontalGradient(
+    Brush.horizontalGradient(
         colors = gradientColors,
         startX = 0f,
         endX = size.width
@@ -32,7 +32,7 @@ fun Modifier.horizontalGradientBackground(
 fun Modifier.verticalGradientBackground(
     colors: List<Color>
 ) = gradientBackground(colors) { gradientColors, size ->
-    VerticalGradient(
+    Brush.verticalGradient(
         colors = gradientColors,
         startY = 0f,
         endY = size.width
@@ -43,18 +43,23 @@ fun Modifier.diagonalGradientTint(
     colors: List<Color>,
     blendMode: BlendMode
 ) = gradientTint(colors, blendMode) { gradientColors, size ->
-    LinearGradient(
+    Brush.linearGradient(
         colors = gradientColors,
-        startX = 0f,
-        startY = 0f,
-        endX = size.width,
-        endY = size.height
+        start = Offset(
+            x = 0f,
+            y = 0f
+        ),
+        end = Offset(
+            x = size.width,
+            y = size.height
+        ),
+        tileMode = TileMode.Clamp
     )
 }
 
 fun Modifier.gradientBackground(
     colors: List<Color>,
-    brushProvider: (List<Color>, Size) -> LinearGradient
+    brushProvider: (List<Color>, Size) -> Brush
 ): Modifier = composed {
     var size by remember { mutableStateOf(Size.Zero) }
     val gradient = remember(colors, size) { brushProvider(colors, size) }
@@ -68,7 +73,7 @@ fun Modifier.gradientBackground(
 fun Modifier.gradientTint(
     colors: List<Color>,
     blendMode: BlendMode,
-    brushProvider: (List<Color>, Size) -> LinearGradient
+    brushProvider: (List<Color>, Size) -> Brush
 ) = composed {
     var size by remember { mutableStateOf(Size.Zero) }
     val gradient = remember(colors, size) { brushProvider(colors, size) }
@@ -124,7 +129,7 @@ fun dragObserver(
         private fun reset() {
             swipeValue.animateTo(
                 0f,
-                anim = SpringSpec<Float>(
+                anim = SpringSpec(
                     dampingRatio = 0.8f, stiffness = 300f
                 )
             )

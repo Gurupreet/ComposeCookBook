@@ -18,9 +18,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.gesture.doubleTapGestureFilter
 import androidx.compose.ui.gesture.longPressGestureFilter
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.HorizontalGradient
-import androidx.compose.ui.graphics.VerticalGradient
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.green500
@@ -73,10 +72,10 @@ fun HowToModifiers() {
         DemoElementText(
             modifier = Modifier.padding(8.dp)
                 .background(
-                    brush = HorizontalGradient(
+                    brush = Brush.horizontalGradient(
                         colors = listOf(teal200, green500),
-                        0f,
-                        100f
+                        startX = 0f,
+                        endX = 100f
                     )
                 )
         )
@@ -84,10 +83,10 @@ fun HowToModifiers() {
         DemoElementText(
             modifier = Modifier
                 .background(
-                    brush = HorizontalGradient(
+                    brush = Brush.horizontalGradient(
                         colors = listOf(teal200, green500),
-                        0f,
-                        200f
+                        startX = 0f,
+                        endX = 200f
                     )
                 ).padding(8.dp)
         )
@@ -95,10 +94,10 @@ fun HowToModifiers() {
         DemoElementText(
             modifier = Modifier
                 .background(
-                    brush = VerticalGradient(
+                    brush = Brush.verticalGradient(
                         colors = listOf(teal200, green500),
-                        0f,
-                        500f
+                        startY = 0f,
+                        endY = 500f
                     )
                 ).padding(8.dp)
         )

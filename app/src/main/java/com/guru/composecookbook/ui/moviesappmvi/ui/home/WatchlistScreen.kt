@@ -1,10 +1,14 @@
 package com.guru.composecookbook.ui.moviesappmvi.ui.home
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnForIndexed
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RemoveCircleOutline
 import androidx.compose.runtime.Composable
@@ -31,25 +35,27 @@ fun WatchlistScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -
     val myWatchlist by viewModel.myWatchlist.observeAsState(emptyList())
     if (myWatchlist.isNotEmpty()) {
         Surface(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-            LazyColumnForIndexed(
-                items = myWatchlist
-            ) { index, movie ->
-                MovieWatchlistItem(
-                    movie,
-                    {
-                        moviesHomeInteractionEvents(
-                            MoviesHomeInteractionEvents.OpenMovieDetail(movie)
+            LazyColumn {
+                itemsIndexed(
+                    items = myWatchlist,
+                    itemContent = { index: Int, movie: Movie ->
+                        MovieWatchlistItem(
+                            movie,
+                            {
+                                moviesHomeInteractionEvents(
+                                    MoviesHomeInteractionEvents.OpenMovieDetail(movie)
+                                )
+                            },
+                            {
+                                moviesHomeInteractionEvents(
+                                    MoviesHomeInteractionEvents.RemoveFromMyWatchlist(movie)
+                                )
+                            }
                         )
-                    },
-                    {
-                        moviesHomeInteractionEvents(
-                            MoviesHomeInteractionEvents.RemoveFromMyWatchlist(movie)
-                        )
-                    }
-                )
-                if (index == myWatchlist.size - 1) {
-                    Spacer(modifier = Modifier.padding(30.dp))
-                }
+                        if (index == myWatchlist.size - 1) {
+                            Spacer(modifier = Modifier.padding(30.dp))
+                        }
+                    })
             }
         }
     } else {

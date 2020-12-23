@@ -19,7 +19,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ConfigurationAmbient
+import androidx.compose.ui.platform.AmbientConfiguration
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -35,7 +35,7 @@ import kotlin.random.Random
 
 @Composable
 fun DatingHomeScreen() {
-    val configuration = ConfigurationAmbient.current
+    val configuration = AmbientConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     val screenHeight = configuration.screenHeightDp.dp
     val cardHeight = screenHeight - 200.dp
