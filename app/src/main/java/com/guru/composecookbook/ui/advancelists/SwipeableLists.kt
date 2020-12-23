@@ -6,7 +6,7 @@ import androidx.compose.animation.animatedFloat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnForIndexed
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -16,7 +16,10 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.gesture.Direction
@@ -34,11 +37,15 @@ import com.guru.composecookbook.ui.utils.swipeGesture
 
 @Composable
 fun SwipeableLists() {
-    var albums by mutableStateOf(SpotifyDataProvider.albums)
-    LazyColumnForIndexed(items = albums) { index, album ->
-        SwipeableListItem(index, album) { index ->
-            //TODO On Swiped
-        }
+    val albums by mutableStateOf(SpotifyDataProvider.albums)
+    LazyColumn {
+        itemsIndexed(
+            items = albums,
+            itemContent = { index, album ->
+                SwipeableListItem(index, album) { index ->
+                    //TODO On Swiped
+                }
+            })
     }
 }
 

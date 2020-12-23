@@ -134,7 +134,7 @@ fun generateDominantColorState(bitmap: Bitmap): Palette.Swatch {
         .maximumColorCount(16)
         .generate()
         .swatches
-        .maxBy { swatch -> swatch.population }!!
+        .maxByOrNull { swatch -> swatch.population }!!
 
 }
 

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
@@ -74,11 +74,13 @@ fun HomeScreenContent(
     val context = AmbientContext.current
     val list = remember { DemoDataProvider.homeScreenListItems }
     Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumnFor(
-            modifier = Modifier.semantics { testTag = "Home Screen List of entries" },
-            items = list
-        ) {
-            HomeScreenListView(it, context, isDarkTheme)
+        LazyColumn(
+            modifier = Modifier.semantics { testTag = "Home Screen List of entries" }) {
+            items(
+                items = list,
+                itemContent = {
+                    HomeScreenListView(it, context, isDarkTheme)
+                })
         }
         PalletMenu(
             modifier = Modifier.align(Alignment.TopEnd),
