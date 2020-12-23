@@ -13,8 +13,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.HorizontalGradient
-import androidx.compose.ui.graphics.VerticalGradient
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.Animations.AnimationDefinitions
 
@@ -66,8 +64,12 @@ fun ShimmerCardItem(
     floatAnim: Float = 0f,
     isVertical: Boolean
 ) {
-    val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim) else
-        Brush.horizontalGradient(lists, 0f, floatAnim)
+    val brush =
+        if (isVertical)
+            Brush.verticalGradient(lists, 0f, floatAnim)
+        else
+            Brush.horizontalGradient(lists, 0f, floatAnim)
+
     Column(modifier = Modifier.padding(16.dp)) {
         Surface(
             shape = MaterialTheme.shapes.small

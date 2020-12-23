@@ -9,7 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
@@ -65,11 +65,12 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
     )
 
     Box(modifier = draggableModifier) {
-        LazyColumnFor(
-            items = albums,
-            state = lazyListState,
-        ) {
-            SpotifySongListItem(album = it)
+        LazyColumn(state = lazyListState) {
+            items(
+                items = albums,
+                itemContent = {
+                    SpotifySongListItem(album = it)
+                })
         }
         //Animated Icon
         Icon(

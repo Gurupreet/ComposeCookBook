@@ -152,24 +152,28 @@ fun CryptoList(
             onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.LoadMoreItems)
         }
 
-        LazyColumnForIndexed(items = uiState.cryptos, state = listScrollState) { index, crypto ->
-            val isFav = favCryptos.contains(crypto)
-            if (index == uiState.cryptos.size - 1) {
-                Column {
-                    CryptoListItem(
-                        crypto,
-                        isFav,
-                        onCryptoHomeInteractionEvents
-                    )
-                    LottieLoadingView(context = context)
-                }
-            } else {
-                CryptoListItem(
-                    crypto,
-                    isFav,
-                    onCryptoHomeInteractionEvents
-                )
-            }
+        LazyColumn(state = listScrollState) {
+            itemsIndexed(
+                items = uiState.cryptos,
+                itemContent = { index: Int, crypto: Crypto ->
+                    val isFav = favCryptos.contains(crypto)
+                    if (index == uiState.cryptos.size - 1) {
+                        Column {
+                            CryptoListItem(
+                                crypto,
+                                isFav,
+                                onCryptoHomeInteractionEvents
+                            )
+                            LottieLoadingView(context = context)
+                        }
+                    } else {
+                        CryptoListItem(
+                            crypto,
+                            isFav,
+                            onCryptoHomeInteractionEvents
+                        )
+                    }
+                })
         }
     }
 

@@ -105,7 +105,7 @@ fun MyWalletCard() {
             },
             text = { Text(text = "Receive") },
             backgroundColor = Color.Transparent,
-            elevation = FloatingActionButtonConstants.defaultElevation()
+            elevation = FloatingActionButtonDefaults.elevation()
         )
         ExtendedFloatingActionButton(
             onClick = { extended = !extended },
@@ -120,7 +120,7 @@ fun MyWalletCard() {
             icon = { Icon(imageVector = Icons.Default.Send) },
             text = { Text(text = "Send") },
             backgroundColor = Color.Transparent,
-            elevation = FloatingActionButtonConstants.defaultElevation()
+            elevation = FloatingActionButtonDefaults.elevation()
         )
         Image(
             imageVector = Icons.Default.QrCodeScanner,

@@ -26,6 +26,9 @@ allprojects {
         jcenter()
         mavenCentral()
     }
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:deprecation"
+    }
 }
 
 task clean(type: Delete) {

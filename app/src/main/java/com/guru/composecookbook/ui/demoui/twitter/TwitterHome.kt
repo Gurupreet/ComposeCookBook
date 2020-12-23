@@ -4,7 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredSize
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -70,8 +70,12 @@ fun TwitterHome() {
 @Composable
 fun TwitterHomeContent() {
     val tweets = remember { DemoDataProvider.tweetList }
-    LazyColumnFor(items = tweets) {
-        TwitterListItem(tweet = it)
+    LazyColumn {
+        items(
+            items = tweets,
+            itemContent = {
+                TwitterListItem(tweet = it)
+            })
     }
 }
 
