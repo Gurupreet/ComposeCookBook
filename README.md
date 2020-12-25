@@ -40,9 +40,9 @@ Jetpack Compose is Android’s modern toolkit for building native UI. It simplif
 [Compose Spotify Desktop](https://github.com/Gurupreet/ComposeSpotifyDesktop)
 
 ## Screens
-List & Layouts             |  Widgets and building blocks| Animations
-:-------------------------:|:-------------------------: | :-------------------------:
-![](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)  |  ![](https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif) | ![](https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif)
+List & Layouts             |  Widgets and building blocks| Animations | Theme
+:-------------------------:|:-------------------------: | :-------------------------: | :-------------------------:
+![](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)  |  ![](https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif) | ![](https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif) | ![](https://media.giphy.com/media/kPt0nCCWAcahhJsJh6/giphy.gif)
 
 ### Demo UI
 Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                       | Profile
@@ -50,8 +50,8 @@ Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                 
 ![](https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif)  |  ![](https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif) | ![](https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif) | ![](https://media.giphy.com/media/n3UTF9SzLpBGneFyj3/giphy.gif)
 
 Gmail full             |  Tiktok                   
-|:-------------------------:|:-------------------------:
-![](https://media.giphy.com/media/hrOVD7rbST5shclGkQ/giphy.gif)  |  ![](https://media.giphy.com/media/cimocpJnmSBeJIPxu2/giphy.gif) |
+:-------------------------:|:-------------------------:
+![](https://media.giphy.com/media/hrOVD7rbST5shclGkQ/giphy.gif)  |  ![](https://media.giphy.com/media/cimocpJnmSBeJIPxu2/giphy.gif)
 
 
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
