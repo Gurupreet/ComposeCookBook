@@ -49,6 +49,10 @@ Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                 
 :-------------------------:|:-------------------------: | :-------------------------: | :-------------------------:
 ![](https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif)  |  ![](https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif) | ![](https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif) | ![](https://media.giphy.com/media/n3UTF9SzLpBGneFyj3/giphy.gif)
 
+Gmail full             |  Tiktok                   
+|:-------------------------:|:-------------------------:
+![](https://media.giphy.com/media/hrOVD7rbST5shclGkQ/giphy.gif)  |  ![](https://media.giphy.com/media/cimocpJnmSBeJIPxu2/giphy.gif) |
+
 
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
 CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI
