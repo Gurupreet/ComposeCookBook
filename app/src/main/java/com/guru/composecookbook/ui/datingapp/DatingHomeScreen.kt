@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.animations.FloatMultiStateAnimationCircleCanvas
+import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationCircleCanvas
 import com.guru.composecookbook.ui.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider

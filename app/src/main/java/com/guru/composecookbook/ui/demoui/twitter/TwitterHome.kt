@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.twitterColor
-import com.guru.composecookbook.ui.animations.FloatMultiStateAnimationExplode
+import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationExplode
 
 @Composable
 fun TwitterHome() {

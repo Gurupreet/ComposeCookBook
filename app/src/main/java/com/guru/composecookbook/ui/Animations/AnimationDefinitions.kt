@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.animations
+package com.guru.composecookbook.ui.Animations
 
 import androidx.compose.animation.ColorPropKey
 import androidx.compose.animation.DpPropKey
@@ -7,6 +7,7 @@ import androidx.compose.animation.core.AnimationConstants.Infinite
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import java.lang.Math.abs
 
 object AnimationDefinitions {
     // Each animation should be explained as a definition and using states.
@@ -124,5 +125,18 @@ object AnimationDefinitions {
                 )
             }
         }
+
+    val tickerPropKey = DpPropKey("ticker")
+    val tickerDefinition = transitionDefinition<AnimationState> {
+        state(AnimationState.START) { this[tickerPropKey] = 0.dp }
+        state(AnimationState.END) { this[tickerPropKey] = 100.dp }
+
+        transition(AnimationState.START, AnimationState.END) {
+            tickerPropKey using tween(
+                    durationMillis = 800,
+                    easing = LinearEasing
+                )
+        }
+    }
 
 }
