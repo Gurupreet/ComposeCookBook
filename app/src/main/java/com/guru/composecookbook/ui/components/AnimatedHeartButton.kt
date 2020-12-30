@@ -8,12 +8,12 @@ import androidx.compose.animation.core.transitionDefinition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.transition
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
@@ -136,16 +136,24 @@ private fun HeartButton(
 @Preview
 @Composable
 fun AnimatedHeartBtn(){
-    val state = remember{ mutableStateOf(IDLE)}
-    AnimatedHeartButton(
-        modifier = Modifier,
-        buttonState = state,
-        onToggle = {
-            state.value = if(state.value == IDLE) ACTIVE else IDLE
-        },
-        iconSize = 50.dp,
-        expandIconSize = 80.dp
-    )
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp),
+        horizontalArrangement = Arrangement.Center
+    ){
+        val state = remember{ mutableStateOf(IDLE)}
+        AnimatedHeartButton(
+            modifier = Modifier.align(Alignment.CenterVertically),
+            buttonState = state,
+            onToggle = {
+                state.value = if(state.value == IDLE) ACTIVE else IDLE
+            },
+            iconSize = 50.dp,
+            expandIconSize = 80.dp
+        )
+    }
+
 }
 
 
