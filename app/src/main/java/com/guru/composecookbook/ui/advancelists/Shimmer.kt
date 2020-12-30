@@ -9,11 +9,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.HorizontalGradient
-import androidx.compose.ui.graphics.VerticalGradient
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.Animations.AnimationDefinitions
+import com.guru.composecookbook.ui.animations.AnimationDefinitions
 
 enum class ShimmerAnimationType {
     FADE, TRANSLATE, FADETRANSLATE, VERTICAL

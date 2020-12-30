@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.Animations
+package com.guru.composecookbook.ui.animations
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
