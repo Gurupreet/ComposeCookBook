@@ -18,10 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
-import com.guru.composecookbook.ui.components.HeartButtonState.ACTIVE
-import com.guru.composecookbook.ui.components.HeartButtonState.IDLE
 import dev.chrisbanes.accompanist.coil.CoilImage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -44,17 +41,17 @@ fun AnimatedHeartButton(
 ) {
 
     val transitionDefinition = transitionDefinition<HeartButtonState> {
-        state(IDLE) {
+        state(HeartButtonState.IDLE) {
             this[color] = Color.LightGray
             this[size] = iconSize
         }
 
-        state(ACTIVE) {
+        state(HeartButtonState.ACTIVE) {
             this[color] = Color.Red
             this[size] = iconSize
         }
 
-        transition(IDLE to ACTIVE) {
+        transition(HeartButtonState.IDLE to HeartButtonState.ACTIVE) {
             color using tween(durationMillis = 500)
 
             size using keyframes {
@@ -64,7 +61,7 @@ fun AnimatedHeartButton(
             }
         }
 
-        transition(ACTIVE to IDLE) {
+        transition(HeartButtonState.ACTIVE to HeartButtonState.IDLE) {
             color using tween(durationMillis = 500)
 
             size using keyframes {
@@ -75,10 +72,10 @@ fun AnimatedHeartButton(
         }
     }
 
-    val toState = if (buttonState.value == IDLE) {
-        ACTIVE
+    val toState = if (buttonState.value == HeartButtonState.IDLE) {
+        HeartButtonState.ACTIVE
     } else {
-        IDLE
+        HeartButtonState.IDLE
     }
 
     val state = transition(
@@ -103,7 +100,7 @@ private fun HeartButton(
     state: TransitionState,
     onToggle: () -> Unit,
 ) {
-    if (buttonState.value == ACTIVE) {
+    if (buttonState.value == HeartButtonState.ACTIVE) {
         CoilImage(
             R.drawable.heart_red,
             modifier = modifier
@@ -133,7 +130,6 @@ private fun HeartButton(
 
 
 @ExperimentalCoroutinesApi
-@Preview
 @Composable
 fun AnimatedHeartBtn(){
     Row(
@@ -142,12 +138,12 @@ fun AnimatedHeartBtn(){
             .height(200.dp),
         horizontalArrangement = Arrangement.Center
     ){
-        val state = remember{ mutableStateOf(IDLE)}
+        val state = remember { mutableStateOf(HeartButtonState.IDLE)}
         AnimatedHeartButton(
             modifier = Modifier.align(Alignment.CenterVertically),
             buttonState = state,
             onToggle = {
-                state.value = if(state.value == IDLE) ACTIVE else IDLE
+                state.value = if(state.value == HeartButtonState.IDLE) HeartButtonState.ACTIVE else HeartButtonState.IDLE
             },
             iconSize = 50.dp,
             expandIconSize = 80.dp
