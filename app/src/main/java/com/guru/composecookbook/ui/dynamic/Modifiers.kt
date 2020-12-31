@@ -13,16 +13,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawOpacity
-import androidx.compose.ui.draw.drawShadow
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.gesture.doubleTapGestureFilter
 import androidx.compose.ui.gesture.longPressGestureFilter
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.HorizontalGradient
-import androidx.compose.ui.graphics.VerticalGradient
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography
@@ -63,20 +62,20 @@ fun HowToModifiers() {
         DemoText("Modifier.align(Alignment.End)")
         DemoElementButton(modifier = Modifier.align(Alignment.End))
 
-        DemoText("Modifier.drawOpacity(0.5f)")
-        DemoElementButton(modifier = Modifier.drawOpacity(0.5f))
+        DemoText("Modifier.alpha0.5f)")
+        DemoElementButton(modifier = Modifier.alpha(0.5f))
         DemoText("Modifier.drawShadow(12.dp)")
-        DemoElementButton(modifier = Modifier.drawShadow(12.dp))
+        DemoElementButton(modifier = Modifier.shadow(12.dp))
         DemoText("Modifier.background(MaterialTheme.colors.secondary))")
         DemoElementButton(modifier = Modifier.background(MaterialTheme.colors.secondary))
         DemoText("Modifier.padding(8.dp).background(brush = HorizontalGradient)")
         DemoElementText(
             modifier = Modifier.padding(8.dp)
                 .background(
-                    brush = HorizontalGradient(
+                    brush = Brush.horizontalGradient(
                         colors = listOf(teal200, green500),
-                        0f,
-                        100f
+                        startX = 0f,
+                        endX = 100f
                     )
                 )
         )
@@ -84,10 +83,10 @@ fun HowToModifiers() {
         DemoElementText(
             modifier = Modifier
                 .background(
-                    brush = HorizontalGradient(
+                    brush = Brush.horizontalGradient(
                         colors = listOf(teal200, green500),
-                        0f,
-                        200f
+                        startX = 0f,
+                        endX = 200f
                     )
                 ).padding(8.dp)
         )
@@ -95,10 +94,10 @@ fun HowToModifiers() {
         DemoElementText(
             modifier = Modifier
                 .background(
-                    brush = VerticalGradient(
+                    brush = Brush.verticalGradient(
                         colors = listOf(teal200, green500),
-                        0f,
-                        500f
+                        startY = 0f,
+                        endY = 500f
                     )
                 ).padding(8.dp)
         )
@@ -146,6 +145,6 @@ fun DemoText(text: String) {
 
 @Preview
 @Composable
-fun previewHowToModifiers() {
+fun PreviewHowToModifiers() {
     HowToModifiers()
 }

@@ -13,6 +13,9 @@
 <br />
 
 <div align="center">
+    <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#december_16_2020">
+      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20alpha09-brightgreen" />
+    </a>
   <a href = "https://github.com/Gurupreet/ComposeCookBook/network/">
     <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
   </a>
@@ -37,14 +40,18 @@ Jetpack Compose is Android’s modern toolkit for building native UI. It simplif
 [Compose Spotify Desktop](https://github.com/Gurupreet/ComposeSpotifyDesktop)
 
 ## Screens
-List & Layouts             |  Widgets and building blocks| Animations
-:-------------------------:|:-------------------------: | :-------------------------:
-![](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)  |  ![](https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif) | ![](https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif)
+List & Layouts             |  Widgets and building blocks| Animations | Theme
+:-------------------------:|:-------------------------: | :-------------------------: | :-------------------------:
+![](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)  |  ![](https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif) | ![](https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif) | ![](https://media.giphy.com/media/kPt0nCCWAcahhJsJh6/giphy.gif)
 
 ### Demo UI
 Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                       | Profile
 :-------------------------:|:-------------------------: | :-------------------------: | :-------------------------:
 ![](https://media.giphy.com/media/IddlpOpdboqJwdhxMS/giphy.gif)  |  ![](https://media.giphy.com/media/XSh4SKvAgr6Moj3SDH/giphy.gif) | ![](https://media.giphy.com/media/sEe1vREivaK7ieMPYj/giphy.gif) | ![](https://media.giphy.com/media/n3UTF9SzLpBGneFyj3/giphy.gif)
+
+Gmail full             |  Tiktok                   
+:-------------------------:|:-------------------------:
+![](https://media.giphy.com/media/hrOVD7rbST5shclGkQ/giphy.gif)  |  ![](https://media.giphy.com/media/cimocpJnmSBeJIPxu2/giphy.gif)
 
 
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
@@ -59,7 +66,7 @@ Shimmer Lists             | List Scroll Animations      |  Pull Refresh/Swipe Li
 
 
 ## How to get started
-Please get **android studio 4.2 canary 15** or above to build this project [from here](https://developer.android.com/studio/preview/).
+Please get **Android Studio Arctic Fox 2020.3.1 Canary 4** or above to build this project [from here](https://developer.android.com/studio/preview/).
 
 ## Features & Where to start
 - __Widgets:__ Widgets Screen show case all the available components to build UI.

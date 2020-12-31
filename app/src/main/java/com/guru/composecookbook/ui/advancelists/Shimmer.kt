@@ -4,17 +4,13 @@ import androidx.compose.animation.transition
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonConstants
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.HorizontalGradient
-import androidx.compose.ui.graphics.VerticalGradient
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.ui.Animations.AnimationDefinitions
 
 enum class ShimmerAnimationType {
@@ -72,7 +68,7 @@ fun ShimmerList() {
     } else {
         2000.dp
     }
-    val buttonColors = ButtonConstants.defaultButtonColors(
+    val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = if (shimmerAnimationType == ShimmerAnimationType.FADE)
             MaterialTheme.colors.primary else Color.LightGray
     )
@@ -125,8 +121,8 @@ fun ShimmerList() {
 
 @Composable
 fun ShimmerItem(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolean) {
-    val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim) else
-        HorizontalGradient(lists, 0f, floatAnim)
+    val brush = if (isVertical) Brush.verticalGradient(lists, 0f, floatAnim) else
+        Brush.horizontalGradient(lists, 0f, floatAnim)
     Row(modifier = Modifier.padding(16.dp)) {
         Spacer(
             modifier = Modifier.preferredSize(100.dp)
@@ -159,8 +155,8 @@ fun ShimmerItem(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolean) 
 
 @Composable
 fun ShimmerItemBig(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolean) {
-    val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim) else
-        HorizontalGradient(lists, 0f, floatAnim)
+    val brush = if (isVertical) Brush.verticalGradient(lists, 0f, floatAnim) else
+        Brush.horizontalGradient(lists, 0f, floatAnim)
     Column(modifier = Modifier.padding(16.dp)) {
         Spacer(
             modifier = Modifier.fillMaxWidth().preferredSize(200.dp).background(

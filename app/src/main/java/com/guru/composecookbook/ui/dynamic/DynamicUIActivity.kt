@@ -9,8 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.androidviews.AndroidViews
 import com.guru.composecookbook.ui.carousel.CarouselLayout
@@ -103,7 +103,7 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
 
 @Preview
 @Composable
-fun previewDynamicUI() {
+fun PreviewDynamicUI() {
     DynamicUiWrapper(uiType = DynamicUiType.TABS.name, onback = {})
 }
 

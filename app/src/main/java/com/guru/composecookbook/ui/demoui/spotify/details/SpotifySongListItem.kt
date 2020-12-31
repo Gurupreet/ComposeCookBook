@@ -19,9 +19,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
@@ -34,7 +34,7 @@ fun SpotifySongListItem(album: Album) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            asset = imageResource(id = album.imageId),
+            bitmap = imageResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(55.dp).padding(4.dp)
         )
@@ -53,13 +53,13 @@ fun SpotifySongListItem(album: Album) {
         }
         if (album.id % 3 == 0) {
             Icon(
-                asset = Icons.Default.Favorite,
+                imageVector = Icons.Default.Favorite,
                 tint = MaterialTheme.colors.primaryVariant,
                 modifier = Modifier.padding(4.dp).preferredSize(20.dp)
             )
         }
         Icon(
-            asset = Icons.Default.MoreVert,
+            imageVector = Icons.Default.MoreVert,
             tint = Color.LightGray,
             modifier = Modifier.padding(4.dp)
         )

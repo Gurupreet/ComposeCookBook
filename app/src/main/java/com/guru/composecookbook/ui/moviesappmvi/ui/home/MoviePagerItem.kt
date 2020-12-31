@@ -13,13 +13,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.drawLayer
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.moviesappmvi.data.DemoMovieDataProvider
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Genre
@@ -77,10 +77,10 @@ fun MoviePagerItem(
                     clicked.value = !clicked.value
                 }) {
                     Icon(
-                        asset = Icons.Default.LibraryAdd,
+                        imageVector = Icons.Default.LibraryAdd,
                         tint = MaterialTheme.colors.primary,
                         modifier = Modifier
-                            .drawLayer(
+                            .graphicsLayer(
                                 rotationY = animate(
                                     if (clicked.value) 720f else 0f, tween(400)
                                 )

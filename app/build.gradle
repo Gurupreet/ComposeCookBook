@@ -14,6 +14,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,12 +35,27 @@ android {
         freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
 
     }
+    kapt {
+        correctErrorTypes true
+    }
     buildFeatures {
         compose true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.0'
+        kotlinCompilerVersion kotlin_version
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude "META-INF/AL2.0"
+        exclude 'META-INF/LGPL2.1'
+    }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
     }
 }
 
@@ -50,9 +66,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.palette:palette-ktx:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
+    implementation "androidx.multidex:multidex:2.0.1"
 
     //google play services
-    implementation 'com.google.android.gms:play-services-ads:19.5.0'
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
     implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
@@ -60,8 +77,8 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     //lottie
     def lottie_version = '3.4.4'
@@ -70,14 +87,14 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer:2.11.8"
     //Network libs
     // Room
-    def room_version = '2.2.5'
+    def room_version = '2.2.6'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     // annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
-    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.3.3.1"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.4.0"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-rc01'
     //Retrofit
     def retrofit_version = "2.6.4"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -94,13 +111,14 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testImplementation 'com.google.truth:truth:1.1'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+    testImplementation "com.google.truth:truth:1.1"
 
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit5:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 
-    androidTestImplementation "androidx.ui:ui-test:$compose_version"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"

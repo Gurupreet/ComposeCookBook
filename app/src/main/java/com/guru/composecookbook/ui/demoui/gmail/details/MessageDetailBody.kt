@@ -19,14 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Position
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.ui.demoui.gmail.data.sampleMessage
 
@@ -39,7 +39,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
         val showExpandedEmailInfo = remember { mutableStateOf(false) }
         val isFavourite = remember { mutableStateOf(false) }
 
-        Row() {
+        Row {
             Text(
                 text = "Sudip Kafle and others share theier thougs on Linkedin",
                 fontSize = 20.sp,
@@ -49,7 +49,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
             )
             IconButton(onClick = { isFavourite.value = !isFavourite.value }) {
-                Icon(asset = if (isFavourite.value) Icons.Outlined.Star else Icons.Outlined.StarBorder)
+                Icon(imageVector = if (isFavourite.value) Icons.Outlined.Star else Icons.Outlined.StarBorder)
             }
         }
 
@@ -57,7 +57,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
 
             Image(
-                asset = imageResource(id = R.drawable.p3),
+                bitmap = imageResource(id = R.drawable.p3),
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .preferredSize(32.dp)
@@ -71,11 +71,8 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                     .padding(start = 8.dp)
             ) {
 
-                Row() {
-                    Text(
-                        text = "Linkedin",
-                        color = Color.Black
-                    )
+                Row {
+                    Text(text = "Linkedin")
                     Text(
                         text = "26 Oct",
                         fontSize = 12.sp,
@@ -92,12 +89,12 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                 )
                 {
                     Text(text = "to me")
-                    Icon(asset = Icons.Outlined.ExpandMore)
+                    Icon(imageVector = Icons.Outlined.ExpandMore)
                 }
             }
 
             IconButton(onClick = {}) {
-                Icon(asset = Icons.Outlined.SubdirectoryArrowLeft)
+                Icon(imageVector = Icons.Outlined.SubdirectoryArrowLeft)
             }
 
             MessageActionPopupMenu()
@@ -115,19 +112,19 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                     .border(1.dp, Color.LightGray, shape = RoundedCornerShape(8.dp))
                     .padding(8.dp)
             ) {
-                Row() {
+                Row {
                     Text(text = "From")
                     Text(text = "Linkedin", modifier = Modifier.padding(start = 8.dp))
                     Text(text = "updates-noreply@linkedin.com")
                 }
-                Row() {
+                Row {
                     Text(text = "To")
                     Text(text = "Subash Aryal", modifier = Modifier.padding(start = 8.dp))
                     Text(text = "aryal.subash@yahoo.com")
                 }
 
 
-                Row() {
+                Row {
                     Text(text = "Date")
                     Text(text = "26 Oct 2020,12:17", modifier = Modifier.padding(start = 8.dp))
                 }
@@ -174,7 +171,7 @@ fun MessageActionPopupMenu() {
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(asset = Icons.Outlined.MoreVert)
+            Icon(imageVector = Icons.Outlined.MoreVert)
         }
     }
 
@@ -204,14 +201,14 @@ fun MessageActionPopupMenu() {
 
 
 @Composable
-fun ReplyTypeAction(asset: VectorAsset, text: String, modifier: Modifier) {
+fun ReplyTypeAction(asset: ImageVector, text: String, modifier: Modifier) {
     Row(
         modifier = modifier
             .padding(8.dp)
             .border(1.dp, Color.LightGray, shape = RoundedCornerShape(8.dp))
             .padding(horizontal = 8.dp, vertical = 16.dp)
     ) {
-        Icon(asset = asset)
+        Icon(imageVector = asset)
         Text(
             text = text,
             modifier = Modifier

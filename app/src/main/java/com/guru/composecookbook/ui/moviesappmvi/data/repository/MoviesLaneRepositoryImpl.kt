@@ -4,6 +4,7 @@ import com.guru.composecookbook.ui.moviesappmvi.data.api.MovieApi
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
@@ -17,6 +18,8 @@ class MoviesLaneRepositoryImpl(private val movieApi: MovieApi) : MoviesLanesRepo
             emit(emptyList<Movie>())
         }
 
+    }.catch {
+        emit(emptyList<Movie>())
     }.flowOn(Dispatchers.Default)
 
     override suspend fun getTrendingTVShows(): Flow<List<Movie>> = flow {
@@ -27,6 +30,8 @@ class MoviesLaneRepositoryImpl(private val movieApi: MovieApi) : MoviesLanesRepo
             emit(emptyList<Movie>())
         }
 
+    }.catch {
+        emit(emptyList<Movie>())
     }.flowOn(Dispatchers.Default)
 
     override suspend fun getPopularMovies(): Flow<List<Movie>> = flow {
@@ -37,6 +42,8 @@ class MoviesLaneRepositoryImpl(private val movieApi: MovieApi) : MoviesLanesRepo
             emit(emptyList<Movie>())
         }
 
+    }.catch {
+        emit(emptyList<Movie>())
     }.flowOn(Dispatchers.Default)
 
     override suspend fun getTopRatedMovies(): Flow<List<Movie>> = flow {
@@ -47,6 +54,8 @@ class MoviesLaneRepositoryImpl(private val movieApi: MovieApi) : MoviesLanesRepo
             emit(emptyList<Movie>())
         }
 
+    }.catch {
+        emit(emptyList<Movie>())
     }.flowOn(Dispatchers.Default)
 
     override suspend fun getTopRatedTVShwos(): Flow<List<Movie>> = flow {
@@ -57,5 +66,7 @@ class MoviesLaneRepositoryImpl(private val movieApi: MovieApi) : MoviesLanesRepo
             emit(emptyList<Movie>())
         }
 
+    }.catch {
+        emit(emptyList<Movie>())
     }.flowOn(Dispatchers.Default)
 }

@@ -16,8 +16,8 @@ import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
 
 @Composable
@@ -55,7 +55,7 @@ fun TextInputs() {
 
     OutlinedTextField(
         value = text,
-        leadingIcon = { Icon(asset = Icons.Default.Email) },
+        leadingIcon = { Icon(imageVector = Icons.Default.Email) },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },
@@ -66,8 +66,8 @@ fun TextInputs() {
     )
     OutlinedTextField(
         value = text,
-        leadingIcon = { Icon(asset = Icons.Default.Email) },
-        trailingIcon = { Icon(asset = Icons.Default.Edit) },
+        leadingIcon = { Icon(imageVector = Icons.Default.Email) },
+        trailingIcon = { Icon(imageVector = Icons.Default.Edit) },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },

@@ -20,8 +20,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
@@ -61,7 +61,7 @@ fun DialogScreen(onBack: () -> Unit) {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(asset = Icons.Default.ArrowBack)
+                        Icon(imageVector = Icons.Default.ArrowBack)
                     }
                 }
 
@@ -80,7 +80,7 @@ fun DialogsOptionList() {
 
     if (dialogState.showDialog) {
         //if state of show dialog changes to true it shows dialog passing state as false for dismiss
-        showDialog(dialogState.dialogType) { dialogState = dialogState.copy(showDialog = false) }
+        ShowDialog(dialogState.dialogType) { dialogState = dialogState.copy(showDialog = false) }
     }
 
     // I am not sure why updating the `dialogState.showDialog = true` is not working. May be I am
@@ -126,7 +126,7 @@ fun DialogsOptionList() {
 }
 
 @Composable
-fun showDialog(type: DialogType, onDismiss: () -> Unit) {
+fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
     val item = remember { DemoDataProvider.item }
 
     when (type) {
@@ -196,7 +196,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(asset = imageResource(DemoDataProvider.item.imageId))
+                    Image(bitmap = imageResource(DemoDataProvider.item.imageId))
                 },
                 buttons = {
                     TextButton(
@@ -213,7 +213,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(asset = imageResource(DemoDataProvider.item.imageId))
+                    Image(bitmap = imageResource(DemoDataProvider.item.imageId))
                     Text(
                         item.subtitle + item.title + item.subtitle + item.title,
                         style = typography.subtitle2
@@ -235,7 +235,7 @@ fun showDialog(type: DialogType, onDismiss: () -> Unit) {
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
                     Image(
-                        asset = imageResource(DemoDataProvider.item.imageId),
+                        bitmap = imageResource(DemoDataProvider.item.imageId),
                         modifier = Modifier.clip(RoundedCornerShape(16.dp))
                     )
                 },

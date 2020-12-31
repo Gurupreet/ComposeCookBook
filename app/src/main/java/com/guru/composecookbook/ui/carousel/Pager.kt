@@ -7,14 +7,11 @@ import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.drawWithContent
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
-import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Measurable
 import androidx.compose.ui.layout.ParentDataModifier
 import androidx.compose.ui.unit.Density
-import androidx.compose.ui.util.lerp
 import kotlin.math.roundToInt
 
 /**
@@ -103,15 +100,15 @@ private val Measurable.page: Int
 
 @Composable
 fun Pager(
+    modifier: Modifier = Modifier,
     state: PagerState,
     orientation: Orientation = Orientation.Horizontal,
     offscreenLimit: Int = 2,
-    modifier: Modifier = Modifier,
-    pageContent: @Composable PagerScope.() -> Unit
+    content: @Composable PagerScope.() -> Unit
 ) {
     var pageSize by remember { mutableStateOf(0) }
     Layout(
-        children = {
+        content = {
             val minPage = (state.currentPage - offscreenLimit).coerceAtLeast(state.minPage)
             val maxPage = (state.currentPage + offscreenLimit).coerceAtMost(state.maxPage)
 
@@ -120,7 +117,7 @@ fun Pager(
                 val scope = PagerScope(state, page)
                 key(pageData) {
                     Column(modifier = pageData) {
-                        scope.pageContent()
+                        scope.content()
                     }
                 }
             }
@@ -212,45 +209,45 @@ class PagerScope(
      * Modifier which scales pager items according to their offset position. Similar in effect
      * to a carousel.
      */
-    fun Modifier.scalePagerItems(
-        unselectedScale: Float
-    ): Modifier = Modifier.drawWithContent {
-        if (selectionState == PagerState.SelectionState.Selected) {
-            // If the pager is 'selected', it's stationary so we use a simple if check
-            if (page != currentPage) {
-                scale(
-                    scaleX = unselectedScale,
-                    scaleY = unselectedScale,
-                    pivot = center,
-                ) {
-                    this@drawWithContent.drawContent()
-                }
-            } else {
-                drawContent()
-            }
-        } else {
-            // Otherwise the pager is being scrolled, so we need to look at the swipe progress
-            // and interpolate between the sizes
-            val offsetForPage = page - currentPage + currentPageOffset
-
-            val scale = if (offsetForPage < 0) {
-                // If the page is to the left of the current page, we scale from min -> 1f
-                lerp(
-                    start = unselectedScale,
-                    stop = 1f,
-                    fraction = (1f + offsetForPage).coerceIn(0f, 1f)
-                )
-            } else {
-                // If the page is to the right of the current page, we scale from 1f -> min
-                lerp(
-                    start = 1f,
-                    stop = unselectedScale,
-                    fraction = offsetForPage.coerceIn(0f, 1f)
-                )
-            }
-            scale(scale, scale, center) {
-                this@drawWithContent.drawContent()
-            }
-        }
-    }
+//    fun Modifier.scalePagerItems(
+//        unselectedScale: Float
+//    ): Modifier = Modifier.drawWithContent {
+//        if (selectionState == PagerState.SelectionState.Selected) {
+//            // If the pager is 'selected', it's stationary so we use a simple if check
+//            if (page != currentPage) {
+//                scale(
+//                    scaleX = unselectedScale,
+//                    scaleY = unselectedScale,
+//                    pivot = center,
+//                ) {
+//                    this@drawWithContent.drawContent()
+//                }
+//            } else {
+//                drawContent()
+//            }
+//        } else {
+//            // Otherwise the pager is being scrolled, so we need to look at the swipe progress
+//            // and interpolate between the sizes
+//            val offsetForPage = page - currentPage + currentPageOffset
+//
+//            val scale = if (offsetForPage < 0) {
+//                // If the page is to the left of the current page, we scale from min -> 1f
+//                lerp(
+//                    start = unselectedScale,
+//                    stop = 1f,
+//                    fraction = (1f + offsetForPage).coerceIn(0f, 1f)
+//                )
+//            } else {
+//                // If the page is to the right of the current page, we scale from 1f -> min
+//                lerp(
+//                    start = 1f,
+//                    stop = unselectedScale,
+//                    fraction = offsetForPage.coerceIn(0f, 1f)
+//                )
+//            }
+//            scale(scale, scale, center) {
+//                this@drawWithContent.drawContent()
+//            }
+//        }
+//    }
 }

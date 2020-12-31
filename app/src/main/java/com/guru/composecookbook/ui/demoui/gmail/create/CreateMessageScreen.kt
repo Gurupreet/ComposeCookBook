@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Position
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -22,21 +21,21 @@ fun CreateMessageScreen(navController: NavHostController) {
         topBar = {
             TopAppBar(
                 title = { Text(text = "Compose") },
-                backgroundColor = Color.White,
-                contentColor = Color.Black,
+                backgroundColor = MaterialTheme.colors.surface,
+                contentColor = MaterialTheme.colors.onSurface,
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(asset = Icons.Outlined.ArrowBack)
+                        Icon(imageVector = Icons.Outlined.ArrowBack)
                     }
 
                 },
                 actions = {
 
                     IconButton(onClick = {}) {
-                        Icon(asset = Icons.Outlined.Attachment)
+                        Icon(imageVector = Icons.Outlined.Attachment)
                     }
                     IconButton(onClick = {}) {
-                        Icon(asset = Icons.Outlined.Send)
+                        Icon(imageVector = Icons.Outlined.Send)
                     }
 
                     CreateMessageMoreActionPopupMenu()
@@ -56,7 +55,7 @@ fun CreateMessageMoreActionPopupMenu() {
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(asset = Icons.Outlined.MoreVert)
+            Icon(imageVector = Icons.Outlined.MoreVert)
         }
     }
 
@@ -65,7 +64,7 @@ fun CreateMessageMoreActionPopupMenu() {
         onDismissRequest = { expanded.value = false },
         toggle = iconButton,
         dropdownOffset = Position((-32).dp, (-32).dp),
-        dropdownModifier = Modifier.background(Color.White)
+        dropdownModifier = Modifier.background(MaterialTheme.colors.surface)
     ) {
         DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
             Text("Schedule send")

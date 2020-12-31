@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.androidviews
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
 import android.widget.Button
@@ -15,14 +16,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ContextAmbient
-import androidx.compose.ui.platform.LifecycleOwnerAmbient
+import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.AmbientLifecycleOwner
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.ui.tooling.preview.Preview
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -39,7 +40,7 @@ import com.guru.composecookbook.ui.utils.TitleText
 fun AndroidViews() {
     ScrollableColumn {
         TitleText(title = "Android Views Inside Compose(ScrollableColumn)")
-        val context = ContextAmbient.current
+        val context = AmbientContext.current
         AndroidTextView(context)
         AndroidButton(context)
         AndroidLottieView(context)
@@ -93,7 +94,7 @@ fun AndroidLottieView(context: Context) {
     SubtitleText(subtitle = "Android LottieView hosted in compose")
     val lottieView = remember {
         LottieAnimationView(context).apply {
-            loop(true)
+            repeatCount = ValueAnimator.INFINITE
             setAnimation("loader.json")
         }
     }
@@ -107,7 +108,7 @@ fun AndroidLottieView(context: Context) {
 fun AndroidLottieView2(context: Context) {
     val lottieView = remember {
         LottieAnimationView(context).apply {
-            loop(true)
+            repeatCount = ValueAnimator.INFINITE
             setAnimation("food.json")
         }
     }
@@ -172,14 +173,14 @@ private fun MapViewContainer(
 
 @Composable
 fun rememberMapViewWithLifecycle(): MapView {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     val mapView = remember {
         MapView(context)
     }
 
     // Makes MapView follow the lifecycle of this composable
     val lifecycleObserver = rememberMapLifecycleObserver(mapView)
-    val lifecycle = LifecycleOwnerAmbient.current.lifecycle
+    val lifecycle = AmbientLifecycleOwner.current.lifecycle
     onCommit(lifecycle) {
         lifecycle.addObserver(lifecycleObserver)
         onDispose {

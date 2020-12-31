@@ -12,11 +12,12 @@ import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.HorizontalGradient
 import androidx.compose.ui.graphics.VerticalGradient
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.purple200
 import com.guru.composecookbook.theme.typography
@@ -43,7 +44,7 @@ fun AllButtons() {
         Button(
             onClick = {},
             modifier = Modifier.padding(8.dp),
-            elevation = ButtonConstants.defaultElevation()
+            elevation = ButtonDefaults.elevation()
         ) {
             Text(text = "Flat")
         }
@@ -61,20 +62,26 @@ fun AllButtons() {
         }
         Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Row {
-                Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(end = 4.dp))
+                Icon(
+                    imageVector = Icons.Default.FavoriteBorder,
+                    modifier = Modifier.padding(end = 4.dp)
+                )
                 Text(text = "Icon Button")
             }
         }
         Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Text(text = "Icon Button")
-            Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(start = 4.dp))
+            Icon(
+                imageVector = Icons.Default.FavoriteBorder,
+                modifier = Modifier.padding(start = 4.dp)
+            )
         }
     }
     //custom background buttons
-    val outlineButtonColor = ButtonConstants.defaultOutlinedButtonColors(
+    val outlineButtonColor = ButtonDefaults.outlinedButtonColors(
         contentColor = purple200,
     )
-    val mainButtonColor = ButtonConstants.defaultButtonColors(
+    val mainButtonColor = ButtonDefaults.buttonColors(
         backgroundColor = purple,
         contentColor = MaterialTheme.colors.surface
     )
@@ -91,12 +98,12 @@ fun AllButtons() {
         }
     }
     Row {
-        val horizontalGradient = HorizontalGradient(
+        val horizontalGradient = Brush.horizontalGradient(
             colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
             0f,
             250f
         )
-        val verticalGradient = VerticalGradient(
+        val verticalGradient = Brush.verticalGradient(
             colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
             startY = 0f,
             endY = 100f

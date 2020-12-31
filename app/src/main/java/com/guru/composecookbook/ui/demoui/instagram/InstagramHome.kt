@@ -1,13 +1,13 @@
 package com.guru.composecookbook.ui.demoui.instagram
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 
@@ -22,12 +22,12 @@ fun InstagramHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = {}) {
-                        Icon(asset = vectorResource(id = R.drawable.ic_instagram))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_instagram))
                     }
                 },
                 actions = {
                     IconButton(onClick = {}) {
-                        Icon(asset = vectorResource(id = R.drawable.ic_send))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_send))
                     }
                 }
             )
@@ -50,8 +50,12 @@ fun InstagramHomeContent() {
 @Composable
 fun InstagramPostsList() {
     val posts = remember { DemoDataProvider.tweetList.filter { it.tweetImageId != 0 } }
-    LazyColumnFor(items = posts) {
-        InstagramListItem(post = it)
+    LazyColumn {
+        items(
+            items = posts,
+            itemContent = {
+                InstagramListItem(post = it)
+            })
     }
 }
 

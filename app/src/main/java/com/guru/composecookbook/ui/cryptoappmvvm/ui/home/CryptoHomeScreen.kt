@@ -1,22 +1,16 @@
 package com.guru.composecookbook.ui.cryptoappmvvm.ui.home
 
+import android.animation.ValueAnimator
 import android.content.Context
 import androidx.compose.animation.animate
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnForIndexed
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.LazyRowFor
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExtendedFloatingActionButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
@@ -24,15 +18,15 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.ui.tooling.preview.Preview
 import com.airbnb.lottie.LottieAnimationView
 import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface
@@ -77,7 +71,7 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
 
 @Composable
 fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
-    val animateRotationModifier = Modifier.drawLayer(
+    val animateRotationModifier = Modifier.graphicsLayer(
         //So on every count change this basically runs as we only add 1 at a time
         rotationX = animate(if (count % 2 == 0) 360f else 0f, tween(800))
     )
@@ -87,7 +81,7 @@ fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
         backgroundColor = blue,
         icon = {
             Icon(
-                asset = Icons.Filled.Favorite,
+                imageVector = Icons.Filled.Favorite,
                 tint = Color.Red,
                 modifier = animateRotationModifier
             )
@@ -107,10 +101,16 @@ fun ShowFavorites(
             .height(animate(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp))
     ) {
         Text(text = "My Favorites", modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
-        LazyRowFor(items = favCryptos) { crypto ->
-            FavoriteItem(crypto = crypto) {
-                onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.OpenDetailScreen(crypto))
-            }
+        LazyRow {
+            items(
+                items = favCryptos,
+                itemContent = { crypto: Crypto ->
+                    FavoriteItem(crypto = crypto) {
+                        onCryptoHomeInteractionEvents(
+                            CryptoHomeInteractionEvents.OpenDetailScreen(crypto = crypto)
+                        )
+                    }
+                })
         }
     }
 }
@@ -143,7 +143,7 @@ fun CryptoList(
     listScrollState: LazyListState,
     onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
 
     if (uiState.cryptos.isEmpty()) {
         LottieLoadingView(context = context)
@@ -152,24 +152,28 @@ fun CryptoList(
             onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.LoadMoreItems)
         }
 
-        LazyColumnForIndexed(items = uiState.cryptos, state = listScrollState) { index, crypto ->
-            val isFav = favCryptos.contains(crypto)
-            if (index == uiState.cryptos.size - 1) {
-                Column {
-                    CryptoListItem(
-                        crypto,
-                        isFav,
-                        onCryptoHomeInteractionEvents
-                    )
-                    LottieLoadingView(context = context)
-                }
-            } else {
-                CryptoListItem(
-                    crypto,
-                    isFav,
-                    onCryptoHomeInteractionEvents
-                )
-            }
+        LazyColumn(state = listScrollState) {
+            itemsIndexed(
+                items = uiState.cryptos,
+                itemContent = { index: Int, crypto: Crypto ->
+                    val isFav = favCryptos.contains(crypto)
+                    if (index == uiState.cryptos.size - 1) {
+                        Column {
+                            CryptoListItem(
+                                crypto,
+                                isFav,
+                                onCryptoHomeInteractionEvents
+                            )
+                            LottieLoadingView(context = context)
+                        }
+                    } else {
+                        CryptoListItem(
+                            crypto,
+                            isFav,
+                            onCryptoHomeInteractionEvents
+                        )
+                    }
+                })
         }
     }
 
@@ -180,8 +184,8 @@ fun CryptoList(
 fun LottieLoadingView(context: Context) {
     val lottieView = remember {
         LottieAnimationView(context).apply {
-            loop(true)
             setAnimation("cryptoload.json")
+            repeatCount = ValueAnimator.INFINITE
         }
     }
     AndroidView({ lottieView }, modifier = Modifier.fillMaxWidth().height(150.dp)) {

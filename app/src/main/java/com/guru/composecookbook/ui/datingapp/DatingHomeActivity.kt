@@ -16,9 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.purple
@@ -73,17 +73,17 @@ fun DatingBottomBar(navType: MutableState<DatingNavType>) {
         elevation = 4.dp
     ) {
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Filled.Style) },
+            icon = { Icon(imageVector = Icons.Filled.Style) },
             selected = navType.value == DatingNavType.PEOPLES,
             onClick = { navType.value = DatingNavType.PEOPLES },
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Filled.Textsms) },
+            icon = { Icon(imageVector = Icons.Filled.Textsms) },
             selected = navType.value == DatingNavType.CHATS,
             onClick = { navType.value = DatingNavType.CHATS },
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Filled.PersonPin) },
+            icon = { Icon(imageVector = Icons.Filled.PersonPin) },
             selected = navType.value == DatingNavType.PROFILE,
             onClick = { navType.value = DatingNavType.PROFILE },
         )

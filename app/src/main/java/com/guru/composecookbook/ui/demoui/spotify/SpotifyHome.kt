@@ -3,8 +3,8 @@ package com.guru.composecookbook.ui.demoui.spotify
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -15,14 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawOpacity
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
@@ -37,12 +37,12 @@ fun SpotifyHome() {
     Box(modifier = Modifier.fillMaxSize()) {
         ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
         Icon(
-            asset = Icons.Outlined.Settings,
+            imageVector = Icons.Outlined.Settings,
             tint = MaterialTheme.colors.onSurface,
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
-                .drawOpacity(animate(1f - scrollState.value / 200f))
+                .alpha(animate(1f - scrollState.value / 200f))
         )
         PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
     }
@@ -74,7 +74,7 @@ fun PlayerBottomBar(modifier: Modifier) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            asset = imageResource(id = R.drawable.adele21),
+            bitmap = imageResource(id = R.drawable.adele21),
             modifier = Modifier.preferredSize(65.dp),
             contentScale = ContentScale.Crop
         )
@@ -83,8 +83,8 @@ fun PlayerBottomBar(modifier: Modifier) {
             style = typography.h6.copy(fontSize = 14.sp),
             modifier = Modifier.padding(8.dp).weight(1f),
         )
-        Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp))
-        Icon(asset = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp))
+        Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp))
+        Icon(imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp))
     }
 }
 
@@ -120,8 +120,10 @@ fun HomeLanesSection() {
 fun SpotifyLane(index: Int) {
     val itemsEven = remember { SpotifyDataProvider.albums }
     val itemsOdd = remember { SpotifyDataProvider.albums.asReversed() }
-    LazyRowFor(if (index % 2 == 0) itemsEven else itemsOdd) {
-        SpotifyLaneItem(album = it)
+    LazyRow {
+        items(if (index % 2 == 0) itemsEven else itemsOdd) {
+            SpotifyLaneItem(album = it)
+        }
     }
 }
 

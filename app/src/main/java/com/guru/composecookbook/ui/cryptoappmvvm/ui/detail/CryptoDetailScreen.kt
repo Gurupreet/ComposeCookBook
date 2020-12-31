@@ -3,8 +3,7 @@ package com.guru.composecookbook.ui.cryptoappmvvm.ui.detail
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -18,7 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawOpacity
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -64,7 +63,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Unit) {
     Column(
         modifier = Modifier.padding(16.dp)
-            .drawOpacity(animate((1 - scrollState.value / 150).coerceIn(0f, 1f)))
+            .alpha(animate((1 - scrollState.value / 150).coerceIn(0f, 1f)))
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.padding(top = 20.dp)) {
@@ -94,10 +93,10 @@ fun CryptoBottomBar(onBack: () -> Unit) {
         cutoutShape = CircleShape
     ) {
         IconButton(onClick = { onBack }) {
-            Icon(asset = Icons.Default.ArrowBack)
+            Icon(imageVector = Icons.Default.ArrowBack)
         }
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.MoreVert)
+            Icon(imageVector = Icons.Default.MoreVert)
         }
     }
 }
@@ -106,7 +105,7 @@ fun CryptoBottomBar(onBack: () -> Unit) {
 fun CryptoFloatingActionButton() {
     var pressed by remember { mutableStateOf(false) }
     ExtendedFloatingActionButton(
-        icon = { Icon(asset = Icons.Default.Add) },
+        icon = { Icon(imageVector = Icons.Default.Add) },
         text = { Text(text = "Trade") },
         onClick = { pressed = !pressed },
         backgroundColor = MaterialTheme.colors.primary,
@@ -160,8 +159,10 @@ fun FavSection() {
             modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
             style = typography.h5
         )
-        LazyRowFor(items = favCryptos) {
-            FavoriteCryptoCard(crypto = it)
+        LazyRow {
+            items(
+                items = favCryptos,
+                itemContent = { FavoriteCryptoCard(crypto = it) })
         }
     }
 }

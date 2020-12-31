@@ -6,7 +6,6 @@ import android.net.Uri
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.Icon
@@ -17,20 +16,20 @@ import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.typography
@@ -81,7 +80,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
         AnimatedImage(scroll = scrollState.value)
         Column(
             modifier = Modifier.padding(start = 8.dp, top = 48.dp)
-                .drawOpacity(animate(if (visibilityChangeFloat) 0f else 1f))
+                .alpha(animate(if (visibilityChangeFloat) 0f else 1f))
         ) {
             Text(
                 text = name,
@@ -131,19 +130,19 @@ fun BottomScrollingContent() {
 @Composable
 fun SocialRow() {
     Card(elevation = 8.dp, modifier = Modifier.padding(8.dp)) {
-        val context = ContextAmbient.current
+        val context = AmbientContext.current
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 16.dp)
         ) {
             IconButton(onClick = { launchSocialActivity(context, "github") }) {
-                Icon(asset = vectorResource(id = R.drawable.ic_github_square_brands))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_github_square_brands))
             }
             IconButton(onClick = { launchSocialActivity(context, "twitter") }) {
-                Icon(asset = vectorResource(id = R.drawable.ic_twitter_square_brands))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_twitter_square_brands))
             }
             IconButton(onClick = { launchSocialActivity(context, "linkedin") }) {
-                Icon(asset = vectorResource(id = R.drawable.ic_linkedin_brands))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_linkedin_brands))
             }
         }
     }
@@ -151,7 +150,7 @@ fun SocialRow() {
 
 @Composable
 fun MoreInfoSection() {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     Text(
         text = "More Info",
         style = typography.h6,
@@ -161,7 +160,7 @@ fun MoreInfoSection() {
     ListItem(
         icon = {
             Icon(
-                asset = vectorResource(id = R.drawable.ic_github_square_brands),
+                imageVector = vectorResource(id = R.drawable.ic_github_square_brands),
                 modifier = Modifier.preferredSize(24.dp)
             )
         },
@@ -176,7 +175,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(asset = Icons.Rounded.Email) },
+        icon = { Icon(imageVector = Icons.Rounded.Email) },
         text = {
             Text(
                 text = "Contact Me",
@@ -188,7 +187,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(asset = Icons.Rounded.Settings) },
+        icon = { Icon(imageVector = Icons.Rounded.Settings) },
         text = {
             Text(
                 text = "Demo Settings",
@@ -230,14 +229,14 @@ fun TopAppBarView(scroll: Float) {
             },
             navigationIcon = {
                 Image(
-                    asset = imageResource(id = R.drawable.p1),
+                    bitmap = imageResource(id = R.drawable.p1),
                     modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                         .preferredSize(32.dp).clip(CircleShape)
                 )
             },
             actions = {
                 Icon(
-                    asset = Icons.Default.Settings,
+                    imageVector = Icons.Default.Settings,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
@@ -250,7 +249,7 @@ fun TopAppBarView(scroll: Float) {
 fun AnimatedImage(scroll: Float) {
     val dynamicAnimationSizeValue = (initialimageFloat - scroll).coerceIn(36f, initialimageFloat)
     Image(
-        asset = imageResource(id = R.drawable.p1),
+        bitmap = imageResource(id = R.drawable.p1),
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(start = 16.dp)

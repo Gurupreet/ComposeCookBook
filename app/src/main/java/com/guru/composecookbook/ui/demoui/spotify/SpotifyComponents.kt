@@ -14,17 +14,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.palette.graphics.Palette
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
@@ -45,7 +45,7 @@ fun SpotifyHomeGridItem(album: Album) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Image(
-                asset = imageResource(id = album.imageId),
+                bitmap = imageResource(id = album.imageId),
                 modifier = Modifier.preferredSize(55.dp),
                 contentScale = ContentScale.Crop
             )
@@ -60,7 +60,7 @@ fun SpotifyHomeGridItem(album: Album) {
 
 @Composable
 fun SpotifyLaneItem(album: Album) {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     val album = remember { album }
     Column(
         modifier =
@@ -72,7 +72,7 @@ fun SpotifyLaneItem(album: Album) {
                 })
     ) {
         Image(
-            asset = imageResource(id = album.imageId),
+            bitmap = imageResource(id = album.imageId),
             modifier = Modifier.preferredWidth(180.dp)
                 .preferredHeight(160.dp),
             contentScale = ContentScale.Crop
@@ -93,7 +93,7 @@ fun SpotifySearchGridItem(album: Album) {
     val swatch = remember(album.id) { generateDominantColorState(imageBitmap) }
     val dominantGradient =
         remember { listOf(Color(swatch.rgb), Color(swatch.rgb).copy(alpha = 0.6f)) }
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     Row(
         modifier = Modifier
             .padding(8.dp)
@@ -112,11 +112,11 @@ fun SpotifySearchGridItem(album: Album) {
             modifier = Modifier.padding(8.dp)
         )
         Image(
-            asset = imageResource(id = album.imageId),
+            bitmap = imageResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(70.dp)
                 .align(Alignment.Bottom)
-                .drawLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
+                .graphicsLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
         )
     }
 }
@@ -132,7 +132,10 @@ fun generateDominantColorState(bitmap: Bitmap): Palette.Swatch {
     return Palette.Builder(bitmap)
         .resizeBitmapArea(0)
         .maximumColorCount(16)
-        .generate().swatches.sortedByDescending { swatch -> swatch.population }.first()
+        .generate()
+        .swatches
+        .maxByOrNull { swatch -> swatch.population }!!
+
 }
 
 @Preview

@@ -8,7 +8,6 @@ import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -19,13 +18,13 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawOpacity
-import androidx.compose.ui.drawLayer
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.AnimationClockAmbient
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.AmbientAnimationClock
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -49,7 +48,7 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val movies = SpotifyDataProvider.albums
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
-        val clock = AnimationClockAmbient.current
+        val clock = AmbientAnimationClock.current
         remember(clock) {
             PagerState(clock, 0, 0, movies.size - 1)
         }
@@ -72,7 +71,7 @@ fun PagerItem(
     selected: Boolean,
     tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
 ) {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
 
     Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp))) {
         TikTokPlayer(context, videos[album.id % 3], selected)
@@ -113,13 +112,13 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(asset = vectorResource(id = R.drawable.ic_comment_dots_solid))
+        Icon(imageVector = vectorResource(id = R.drawable.ic_comment_dots_solid))
         Text(
             text = "1223",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(asset = vectorResource(id = R.drawable.ic_share_solid))
+        Icon(imageVector = vectorResource(id = R.drawable.ic_share_solid))
         Text(
             text = "238",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
@@ -136,7 +135,7 @@ fun VideoIconsSection(
             )
         }
         ProfileImageWithFollow(
-            modifier = Modifier.preferredSize(64.dp).drawLayer(rotationZ = rotation.value),
+            modifier = Modifier.preferredSize(64.dp).graphicsLayer(rotationZ = rotation.value),
             false,
             album.imageId
         )
@@ -157,10 +156,10 @@ fun LikeIcon(id: Int) {
         )
     }
     Icon(
-        asset = vectorResource(id = R.drawable.ic_heart_solid),
+        imageVector = vectorResource(id = R.drawable.ic_heart_solid),
         modifier = Modifier
             .clickable(onClick = { fav = !fav })
-            .drawLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
+            .graphicsLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
         tint = animate(if (fav) tiktokRed else Color.White)
     )
 }
@@ -187,7 +186,7 @@ fun FilterTag(text: String, modifier: Modifier) {
     val tagModifier = modifier
         .clickable(onClick = {})
         .clip(RoundedCornerShape(4.dp))
-        .drawOpacity(0.4f)
+        .alpha(0.4f)
         .background(Color.Black)
         .padding(horizontal = 8.dp, vertical = 4.dp)
 
@@ -205,7 +204,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
         Box(modifier = modifier) {
             ImageWithBorder(imageId = imageId, modifier = modifier)
             Icon(
-                asset = Icons.Filled.Add,
+                imageVector = Icons.Filled.Add,
                 modifier = Modifier
                     .preferredSize(20.dp)
                     .clip(CircleShape)
@@ -220,7 +219,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
 @Composable
 fun ImageWithBorder(imageId: Int, modifier: Modifier) {
     Image(
-        asset = imageResource(id = imageId),
+        bitmap = imageResource(id = imageId),
         modifier = modifier.padding(8.dp).clip(CircleShape)
             .border(
                 shape = CircleShape,

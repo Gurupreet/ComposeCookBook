@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumnForIndexed
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -18,9 +18,9 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawOpacity
-import androidx.compose.ui.drawLayer
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -50,8 +50,12 @@ fun AnimatedLists() {
                 )
             }
         }
-        LazyColumnForIndexed(items = tweets) { index, tweet ->
-            AnimatedListItem(tweet = tweet, index, animationIndex)
+        LazyColumn {
+            itemsIndexed(
+                items = tweets,
+                itemContent = { index, tweet ->
+                    AnimatedListItem(tweet = tweet, index, animationIndex)
+                })
         }
     }
 }
@@ -68,7 +72,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     anim = tween(600)
                 )
             }
-            Modifier.padding(8.dp).drawOpacity(animatedProgress.value)
+            Modifier.padding(8.dp).alpha(animatedProgress.value)
         }
         1 -> {
             val animatedProgress = animatedFloat(0.8f)
@@ -79,7 +83,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                 )
             }
             Modifier.padding(8.dp)
-                .drawLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
+                .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
         }
         2 -> {
             val animatedProgress = animatedFloat(300f)
@@ -89,7 +93,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     anim = tween(300, easing = FastOutSlowInEasing)
                 )
             }
-            Modifier.padding(8.dp).drawLayer(translationX = animatedProgress.value)
+            Modifier.padding(8.dp).graphicsLayer(translationX = animatedProgress.value)
         }
         3 -> {
             val animatedProgress = animatedFloat(-300f)
@@ -105,8 +109,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                 )
             }
             Modifier.padding(8.dp)
-                .drawLayer(translationX = animatedProgress.value)
-                .drawOpacity(opacityProgress.value)
+                .graphicsLayer(translationX = animatedProgress.value)
+                .alpha(opacityProgress.value)
         }
         4 -> {
             val animatedProgress = animatedFloat(300f)
@@ -122,8 +126,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                 )
             }
             Modifier.padding(8.dp)
-                .drawLayer(translationY = animatedProgress.value)
-                .drawOpacity(opacityProgress.value)
+                .graphicsLayer(translationY = animatedProgress.value)
+                .alpha(opacityProgress.value)
         }
         5 -> {
             val animatedProgress = animatedFloat(0f)
@@ -134,7 +138,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                 )
             }
             Modifier.padding(8.dp)
-                .drawLayer(rotationX = animatedProgress.value)
+                .graphicsLayer(rotationX = animatedProgress.value)
         }
         else -> {
             val animatedProgress = animatedFloat(0.8f)
@@ -144,7 +148,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     anim = tween(300)
                 )
             }
-            Modifier.padding(8.dp).drawOpacity(animatedProgress.value)
+            Modifier.padding(8.dp).alpha(animatedProgress.value)
         }
     }
     Row(
@@ -170,7 +174,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
             )
         }
         Icon(
-            asset = Icons.Default.MoreVert,
+            imageVector = Icons.Default.MoreVert,
             tint = Color.LightGray,
             modifier = Modifier.padding(4.dp)
         )

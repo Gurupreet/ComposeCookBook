@@ -7,25 +7,23 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.outlined.Dashboard
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.List
-import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.accessibilityLabel
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.Animations.AnimationScreen
 import com.guru.composecookbook.ui.demoui.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
 import com.guru.composecookbook.ui.learnwidgets.WidgetScreen
-import com.guru.composecookbook.ui.profile.ProfileScreen
+import com.guru.composecookbook.ui.templates.TemplateScreen
 import com.guru.composecookbook.ui.utils.RotateIcon
 
 class MainActivity : AppCompatActivity() {
@@ -75,7 +73,7 @@ fun HomeScreenContent(
                     BottomNavType.WIDGETS -> WidgetScreen()
                     BottomNavType.ANIMATION -> AnimationScreen()
                     BottomNavType.DEMOUI -> DemoUIList()
-                    BottomNavType.PROFILE -> ProfileScreen()
+                    BottomNavType.TEMPLATE -> TemplateScreen()
 
                 }
             }
@@ -96,9 +94,9 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
             modifier = Modifier.weight(1f)
         )
         BottomNavigationContent(
-            modifier = Modifier.semantics {
-                accessibilityLabel = bottomNavBarContentDescription
-            },
+            modifier = Modifier
+                .semantics { contentDescription = bottomNavBarContentDescription }
+                .testTag("bottom_navigation_bar"),
             homeScreenState = homeScreenState
         )
     }
@@ -112,7 +110,7 @@ fun BottomNavigationContent(
     var animate by remember { mutableStateOf(false) }
     BottomNavigation(modifier = modifier) {
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Home) },
+            icon = { Icon(imageVector = Icons.Outlined.Home) },
             selected = homeScreenState.value == BottomNavType.HOME,
             onClick = {
                 homeScreenState.value = BottomNavType.HOME
@@ -121,7 +119,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.List) },
+            icon = { Icon(imageVector = Icons.Outlined.List) },
             selected = homeScreenState.value == BottomNavType.WIDGETS,
             onClick = {
                 homeScreenState.value = BottomNavType.WIDGETS
@@ -146,7 +144,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_animation)) }
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Dashboard) },
+            icon = { Icon(imageVector = Icons.Outlined.Dashboard) },
             selected = homeScreenState.value == BottomNavType.DEMOUI,
             onClick = {
                 homeScreenState.value = BottomNavType.DEMOUI
@@ -155,10 +153,10 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) }
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Person) },
-            selected = homeScreenState.value == BottomNavType.PROFILE,
+            icon = { Icon(imageVector = Icons.Outlined.AccountBox) },
+            selected = homeScreenState.value == BottomNavType.TEMPLATE,
             onClick = {
-                homeScreenState.value = BottomNavType.PROFILE
+                homeScreenState.value = BottomNavType.TEMPLATE
                 animate = false
             },
             label = { Text(text = stringResource(id = R.string.navigation_item_profile)) }

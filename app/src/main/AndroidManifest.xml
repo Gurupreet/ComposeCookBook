@@ -8,15 +8,20 @@
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeCookBook">
         <activity
+            android:name=".ui.templates.TemplatesActivity"
+            android:label="@string/title_activity_templates"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+        <activity
             android:name=".ui.demoui.tiktok.TiktokActivity"
             android:label="@string/title_activity_tiktok"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
             android:name=".ui.advancelists.AdvanceListsActivity"
             android:label="@string/title_activity_advance_lists"

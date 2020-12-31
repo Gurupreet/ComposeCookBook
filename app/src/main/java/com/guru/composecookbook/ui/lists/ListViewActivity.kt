@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumnFor
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -16,8 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoui.instagram.InstagramStories
@@ -104,13 +104,17 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
 @Composable
 fun VerticalListView() {
     val list = remember { DemoDataProvider.itemList }
-    LazyColumnFor(items = list) { item ->
-        if ((item.id % 3) == 0) {
-            VerticalListItemSmall(item = item)
-        } else {
-            VerticalListItem(item = item)
-        }
-        ListItemDivider()
+    LazyColumn {
+        items(
+            items = list,
+            itemContent = { item ->
+                if ((item.id % 3) == 0) {
+                    VerticalListItemSmall(item = item)
+                } else {
+                    VerticalListItem(item = item)
+                }
+                ListItemDivider()
+            })
     }
 }
 
@@ -124,11 +128,17 @@ fun HorizontalListView() {
             text = "Good Food",
             style = MaterialTheme.typography.subtitle1
         )
-        LazyRowFor(items = list, modifier = Modifier.padding(end = 16.dp)) {
-            HorizontalListItem(
-                it,
-                Modifier.padding(start = 16.dp, bottom = 16.dp)
-            )
+        LazyRow(
+            modifier = Modifier.padding(end = 16.dp)
+        ) {
+            items(
+                items = list,
+                itemContent = {
+                    HorizontalListItem(
+                        it,
+                        Modifier.padding(start = 16.dp, bottom = 16.dp)
+                    )
+                })
         }
         ListItemDivider()
         Text(

@@ -7,8 +7,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.typography
 
 @Composable
@@ -42,7 +42,7 @@ fun SnackBars() {
 
 @Preview
 @Composable
-fun showSnackbars() {
+ fun ShowSnackbars() {
     Column {
         SnackBars()
     }

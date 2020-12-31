@@ -22,12 +22,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.AnimationClockAmbient
+import androidx.compose.ui.platform.AmbientAnimationClock
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.green200
@@ -38,7 +38,7 @@ fun CarouselLayout() {
     ScrollableColumn {
         val items = remember { DemoDataProvider.itemList.take(10) }
         val pagerState: PagerState = run {
-            val clock = AnimationClockAmbient.current
+            val clock = AmbientAnimationClock.current
             remember(clock) { PagerState(clock, 2, 0, items.size - 1) }
         }
         val selectedPage = remember { mutableStateOf(2) }
@@ -93,9 +93,9 @@ fun CarouselLayout() {
 }
 
 @Composable
-fun CarouselDot(selected: Boolean, color: Color, icon: VectorAsset) {
+fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
     Icon(
-        asset = icon,
+        imageVector = icon,
         modifier = Modifier.padding(4.dp).preferredSize(12.dp),
         tint = if (selected) color else Color.Gray
     )
@@ -105,7 +105,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: VectorAsset) {
 fun CarouselItem(item: Item) {
     Box {
         Image(
-            asset = imageResource(id = item.imageId),
+            bitmap = imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .padding(18.dp)
@@ -124,7 +124,7 @@ fun CarouselItem(item: Item) {
 @Composable
 fun CarouselItemCircle(item: Item) {
     Image(
-        asset = imageResource(id = item.imageId),
+        bitmap = imageResource(id = item.imageId),
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(16.dp)
@@ -151,7 +151,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
                 style = typography.body2
             )
             Image(
-                asset = imageResource(id = item.imageId),
+                bitmap = imageResource(id = item.imageId),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.padding(4.dp)
                     .align(Alignment.CenterHorizontally)
@@ -165,28 +165,20 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
 
 @Preview
 @Composable
-fun previewCarouselLayout() {
+fun PreviewCarouselLayout() {
     CarouselLayout()
 }
 
 @Preview
 @Composable
-fun previewCarouselItem() {
+fun PreviewCarouselItem() {
     val item = DemoDataProvider.item
     CarouselItem(item = item)
 }
 
 @Preview
 @Composable
-fun previewCarouselItemCircle() {
+fun PreviewCarouselItemCircle() {
     val item = DemoDataProvider.item
     CarouselItemCircle(item = item)
-}
-
-
-@Preview
-@Composable
-fun previewCarouselItemCard() {
-    val item = DemoDataProvider.item
-    //CarouselItemCard(item = item, PagerState())
 }

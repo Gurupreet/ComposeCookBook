@@ -11,15 +11,15 @@ import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.green500
@@ -37,7 +37,7 @@ fun MyWalletCard() {
         modifier = Modifier
             .fillMaxWidth()
             .preferredHeight(animate(animateHeight))
-            .drawOpacity(animate(opacity))
+            .alpha(animate(opacity))
             .clip(RoundedCornerShape(bottomLeft = 24.dp, bottomRight = 24.dp))
             .horizontalGradientBackground(gradientBluePurple)
             .padding(top = paddingWithStatusBarHeight, bottom = 8.dp, start = 8.dp, end = 8.dp)
@@ -45,8 +45,8 @@ fun MyWalletCard() {
         val (title, image, price, asset, dailyChange, send, receive, scan) = createRefs()
         val horizontalCenterGuideline = createGuidelineFromStart(0.5f)
         Icon(
-            asset = vectorResource(id = R.drawable.ic_ethereum_brands),
-            modifier = Modifier.preferredSize(28.dp).drawOpacity(0.7f).constrainAs(image) {
+            imageVector = vectorResource(id = R.drawable.ic_ethereum_brands),
+            modifier = Modifier.preferredSize(28.dp).alpha(0.7f).constrainAs(image) {
                 start.linkTo(parent.start)
                 top.linkTo(title.bottom, margin = 8.dp)
             }
@@ -99,13 +99,13 @@ fun MyWalletCard() {
                 },
             icon = {
                 Icon(
-                    asset = Icons.Default.QrCodeScanner,
+                    imageVector = Icons.Default.QrCodeScanner,
                     tint = MaterialTheme.colors.onSurface
                 )
             },
             text = { Text(text = "Receive") },
             backgroundColor = Color.Transparent,
-            elevation = FloatingActionButtonConstants.defaultElevation()
+            elevation = FloatingActionButtonDefaults.elevation()
         )
         ExtendedFloatingActionButton(
             onClick = { extended = !extended },
@@ -117,15 +117,15 @@ fun MyWalletCard() {
                     end.linkTo(parent.end)
                     top.linkTo(asset.bottom, margin = 16.dp)
                 },
-            icon = { Icon(asset = Icons.Default.Send) },
+            icon = { Icon(imageVector = Icons.Default.Send) },
             text = { Text(text = "Send") },
             backgroundColor = Color.Transparent,
-            elevation = FloatingActionButtonConstants.defaultElevation()
+            elevation = FloatingActionButtonDefaults.elevation()
         )
         Image(
-            asset = Icons.Default.QrCodeScanner,
+            imageVector = Icons.Default.QrCodeScanner,
             modifier = Modifier.preferredSize(250.dp)
-                .drawOpacity(animate(if (extended) 1f else 0f))
+                .alpha(animate(if (extended) 1f else 0f))
                 .constrainAs(scan) {
                     top.linkTo(receive.bottom, margin = 50.dp)
                     start.linkTo(parent.start)

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
@@ -16,12 +16,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.*
@@ -46,10 +46,10 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
                         appThemeState.value = appThemeState
                             .value.copy(darkTheme = !appThemeState.value.darkTheme)
                     }) {
-                        Icon(asset = vectorResource(id = R.drawable.ic_sleep))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_sleep))
                     }
                     IconButton(onClick = { showMenu.value = !showMenu.value }) {
-                        Icon(asset = Icons.Default.Palette)
+                        Icon(imageVector = Icons.Default.Palette)
                     }
                 },
             )
@@ -71,14 +71,16 @@ fun HomeScreenContent(
     showMenu: MutableState<Boolean>,
     onPalletChange: (ColorPallet) -> Unit
 ) {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     val list = remember { DemoDataProvider.homeScreenListItems }
     Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumnFor(
-            modifier = Modifier.semantics { testTag = "Home Screen List of entries" },
-            items = list
-        ) {
-            HomeScreenListView(it, context, isDarkTheme)
+        LazyColumn(
+            modifier = Modifier.semantics { testTag = "Home Screen List of entries" }) {
+            items(
+                items = list,
+                itemContent = {
+                    HomeScreenListView(it, context, isDarkTheme)
+                })
         }
         PalletMenu(
             modifier = Modifier.align(Alignment.TopEnd),
@@ -128,7 +130,7 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
         modifier = Modifier.padding(8.dp).clickable(onClick = onPalletChange),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(asset = Icons.Filled.FiberManualRecord, tint = color)
+        Icon(imageVector = Icons.Filled.FiberManualRecord, tint = color)
         Text(text = name, modifier = Modifier.padding(8.dp))
     }
 }

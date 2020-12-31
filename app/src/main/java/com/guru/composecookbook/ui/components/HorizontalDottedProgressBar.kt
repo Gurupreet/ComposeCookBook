@@ -34,7 +34,7 @@ object SwellAnimationDefinitions {
             FIRST to SECOND,
         ) {
             swellPropKey using repeatable(
-                iterations =  Infinite,
+                iterations = Infinite,
                 animation = tween(
                     durationMillis = 700,
                     easing = LinearEasing
@@ -68,7 +68,7 @@ fun DrawCanvas(
 ){
     Canvas(
         modifier = Modifier.fillMaxWidth().height(55.dp),
-    ){
+    ) {
 
         val radius = (4.dp).toIntPx().toFloat()
         val padding = (6.dp).toIntPx().toFloat()

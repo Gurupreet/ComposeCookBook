@@ -1,12 +1,12 @@
 package com.guru.composecookbook.ui.Animations
 
+import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.Icon
@@ -16,30 +16,35 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.drawLayer
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.gesture.DragObserver
 import androidx.compose.ui.gesture.rawDragGestureFilter
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
+import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
+import kotlin.random.Random
 
 @Composable
 fun AnimationScreen() {
@@ -85,7 +90,7 @@ fun AnimationScreenContent() {
         SubtitleText(subtitle = "animateContentSize()")
         SingleAnimationContent()
         Spacer(modifier = Modifier.padding(8.dp))
-        TitleText("Visibility Animations: Experimental`")
+        TitleText(title = "Visibility Animations: Experimental")
         Spacer(modifier = Modifier.padding(8.dp))
         VisibilityAnimationFAB()
         Spacer(modifier = Modifier.padding(8.dp))
@@ -95,7 +100,7 @@ fun AnimationScreenContent() {
         Spacer(modifier = Modifier.padding(8.dp))
         SlideInOutSample()
         Spacer(modifier = Modifier.padding(8.dp))
-        TitleText("Multi State Animations")
+        TitleText(title = "Multi State Animations")
         Spacer(modifier = Modifier.padding(8.dp))
         SubtitleText(subtitle = "Three different colorPropKey state with repeat")
         ColorMultistateAnimation()
@@ -106,7 +111,7 @@ fun AnimationScreenContent() {
         SubtitleText(subtitle = "Different FloatPropKey value states animation")
         FloatMutliStateAnimation()
         Spacer(modifier = Modifier.padding(8.dp))
-        TitleText("Multi State Animations on Canvas")
+        TitleText(title = "Multi State Animations on Canvas")
         val ripple = remember { mutableStateOf(false) }
         if (ripple.value) {
             FloatMultiStateAnimationExplode(500)
@@ -127,6 +132,8 @@ fun AnimationScreenContent() {
         //Animated Values animation
         AnimatedValuesAnimations()
         Spacer(modifier = Modifier.padding(50.dp))
+        TickerAnimation()
+        Spacer(modifier = Modifier.padding(100.dp))
     }
 }
 
@@ -134,7 +141,7 @@ fun AnimationScreenContent() {
 fun SimpleColorAnimation() {
     val enabled = remember { mutableStateOf(true) }
     val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
-    val buttonColors = ButtonConstants.defaultButtonColors(
+    val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = animate(color)
     )
     Button(
@@ -152,7 +159,7 @@ fun SingleScaleAndColorAnimation() {
     val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
     val height = if (enabled.value) 40.dp else 60.dp
     val width = if (enabled.value) 150.dp else 300.dp
-    val buttonColors = ButtonConstants.defaultButtonColors(
+    val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = animate(color)
     )
     Button(
@@ -171,10 +178,8 @@ fun SingleScaleAndColorAnimation() {
 fun SingleAnimationContent() {
     val enabled = remember { mutableStateOf(true) }
     Box(
-        modifier = Modifier.padding(12.dp).animateContentSize()
+        modifier = Modifier.padding(12.dp).animateContentSize().background(green500)
             .clickable { enabled.value = !enabled.value },
-        backgroundColor = Color.Green,
-        shape = RoundedCornerShape(8.dp)
     ) {
         Text(
             if (enabled.value) "Auto animate for child content size changes using animateContentSize() for Read More" else DemoDataProvider.longText,
@@ -188,7 +193,7 @@ fun SingleImageScaleAnimation() {
     val enabled = remember { mutableStateOf(true) }
     Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.padding(8.dp)) {
         Image(
-            asset = imageResource(R.drawable.food10),
+            bitmap = imageResource(R.drawable.food10),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(animate(if (enabled.value) 100.dp else 250.dp))
@@ -197,7 +202,7 @@ fun SingleImageScaleAnimation() {
                 .clip(RoundedCornerShape(animate(if (enabled.value) 0.dp else 8.dp)))
         )
         Image(
-            asset = imageResource(R.drawable.food12),
+            bitmap = imageResource(R.drawable.food12),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(animate(if (!enabled.value) 100.dp else 250.dp))
@@ -283,7 +288,7 @@ fun SlideInOutSample() {
         AnimatedVisibility(
             visibility,
             enter = slideIn(
-                { fullSize -> IntOffset(0, 100) },
+                { IntOffset(0, 100) },
                 tween(500, easing = LinearOutSlowInEasing)
             ),
             exit = slideOut(
@@ -324,7 +329,7 @@ fun ColorMultistateAnimation() {
             }
         }
     )
-    val buttonColors = ButtonConstants.defaultButtonColors(
+    val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = colorAnim[AnimationDefinitions.colorPropKey]
     )
     Button(
@@ -349,13 +354,13 @@ fun DpMultiStateAnimation() {
     Row(horizontalArrangement = Arrangement.SpaceAround) {
         Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
             Image(
-                asset = imageResource(id = R.drawable.lana),
+                bitmap = imageResource(id = R.drawable.lana),
                 modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey])
             )
         }
         Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
             Image(
-                asset = imageResource(id = R.drawable.billie),
+                bitmap = imageResource(id = R.drawable.billie),
                 modifier = Modifier.height(100.dp - dpAnim[AnimationDefinitions.dpPropKey])
             )
         }
@@ -376,7 +381,7 @@ fun FloatMutliStateAnimation() {
 
     Card(backgroundColor = Color.White, modifier = Modifier.preferredSize(150.dp)) {
         Image(
-            asset = imageResource(id = R.drawable.lana),
+            bitmap = imageResource(id = R.drawable.lana),
             alpha = floatAnim[AnimationDefinitions.floatPropKey] / 100,
         )
     }
@@ -432,10 +437,6 @@ fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Flo
             10f,
             10f
         )
-        val centerOffset2 = Offset(
-            220f,
-            10f
-        )
         val radius = floatAnim[AnimationDefinitions.floatPropKey]
         drawCircle(
             color = color.copy(alpha = 0.8f),
@@ -484,9 +485,9 @@ fun FloatMultiStateAnimationExplode(duration: Int = 500) {
 
 @Composable
 private fun DrawLayerAnimations() {
-    TitleText("DrawLayer changes + Single value animations")
+    TitleText(title = "DrawLayer changes + Single value animations")
     var draw by remember { mutableStateOf(false) }
-    val modifier = Modifier.preferredSize(150.dp).drawLayer(
+    val modifier = Modifier.preferredSize(150.dp).graphicsLayer(
         scaleX = animate(if (draw) 2f else 1f),
         scaleY = animate(if (draw) 2f else 1f),
         shadowElevation = animate(if (draw) 50f else 5f),
@@ -495,7 +496,7 @@ private fun DrawLayerAnimations() {
     ).clickable(onClick = { draw = !draw })
 
     Image(
-        asset = imageResource(id = R.drawable.bp),
+        bitmap = imageResource(id = R.drawable.bp),
         modifier = modifier
     )
 
@@ -504,24 +505,24 @@ private fun DrawLayerAnimations() {
 
     Box {
         Image(
-            asset = imageResource(id = R.drawable.adele21),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.adele21),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw2) 30f else 5f),
                 translationX = animate(target = if (draw2) 320f else 0f),
                 translationY = 0f,
             ).clickable(onClick = { draw2 = !draw2 })
         )
         Image(
-            asset = imageResource(id = R.drawable.dualipa),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.dualipa),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw2) 30f else 10f),
                 translationX = animate(target = if (draw2) -320f else 0f),
                 translationY = animate(target = if (draw2) 0f else 30f)
             ).clickable(onClick = { draw2 = !draw2 })
         )
         Image(
-            asset = imageResource(id = R.drawable.edsheeran),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.edsheeran),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw2) 30f else 5f),
                 translationY = animate(target = if (draw2) 0f else 50f)
             ).clickable(onClick = { draw2 = !draw2 })
@@ -532,8 +533,8 @@ private fun DrawLayerAnimations() {
 
     Box {
         Image(
-            asset = imageResource(id = R.drawable.wolves),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.wolves),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw3) 30f else 5f),
                 translationX = animate(target = if (draw3) 320f else 0f),
                 rotationY = animate(target = if (draw3) 45f else 0f),
@@ -541,8 +542,8 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw3 = !draw3 })
         )
         Image(
-            asset = imageResource(id = R.drawable.sam),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.sam),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw3) 30f else 10f),
                 translationX = animate(target = if (draw3) -320f else 0f),
                 rotationY = animate(target = if (draw3) 45f else 0f),
@@ -550,8 +551,8 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw3 = !draw3 })
         )
         Image(
-            asset = imageResource(id = R.drawable.billie),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.billie),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw3) 30f else 5f),
                 translationY = animate(target = if (draw3) 0f else 50f),
                 rotationY = animate(target = if (draw3) 45f else 0f)
@@ -563,8 +564,8 @@ private fun DrawLayerAnimations() {
 
     Box {
         Image(
-            asset = imageResource(id = R.drawable.imagindragon),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.imagindragon),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw4) 30f else 5f),
                 translationX = animate(target = if (draw4) 320f else 0f),
                 rotationZ = animate(target = if (draw4) 45f else 0f),
@@ -572,8 +573,8 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw4 = !draw4 })
         )
         Image(
-            asset = imageResource(id = R.drawable.khalid),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.khalid),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw4) 30f else 10f),
                 translationX = animate(target = if (draw4) -320f else 0f),
                 rotationZ = animate(target = if (draw4) 45f else 0f),
@@ -581,8 +582,8 @@ private fun DrawLayerAnimations() {
             ).clickable(onClick = { draw4 = !draw4 })
         )
         Image(
-            asset = imageResource(id = R.drawable.camelia),
-            modifier = Modifier.preferredSize(150.dp).drawLayer(
+            bitmap = imageResource(id = R.drawable.camelia),
+            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animate(if (draw4) 30f else 5f),
                 translationY = animate(target = if (draw4) 0f else 50f),
                 rotationZ = animate(target = if (draw4) 45f else 0f)
@@ -595,8 +596,8 @@ private fun DrawLayerAnimations() {
 fun AnimatedValuesAnimations() {
     val moveX = -1000f
     val moveXMax = 1000f
-    TitleText("Animated Value to Animations + drag")
-    val xFloat = animatedFloat(initVal = moveX)
+    TitleText(title = "Animated Value to Animations + drag")
+    val xFloat = animatedFloat(initVal = 0f)
 
     val dragObserver = object : DragObserver {
         override fun onStart(downPosition: Offset) {
@@ -621,9 +622,9 @@ fun AnimatedValuesAnimations() {
     }
 
     CardElement(
-        modifier = Modifier.rawDragGestureFilter(dragObserver)
-            .preferredSize(200.dp).drawLayer(
-                translationX = xFloat.value,
+        modifier = Modifier.background(green500).preferredSize(200.dp).rawDragGestureFilter(dragObserver)
+         .offset(
+                x = Dp(xFloat.value),
             )
     )
 }
@@ -637,6 +638,48 @@ fun CardElement(modifier: Modifier = Modifier) {
 }
 
 
+@Composable
+fun TickerAnimation() {
+    var dpStartState by  remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    var dpEndState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
+
+    val dpAnim = transition(
+        definition = AnimationDefinitions.tickerDefinition,
+        initState = dpStartState,
+        toState = dpEndState,
+        onStateChangeFinished = {
+            when (it) {
+                AnimationDefinitions.AnimationState.START -> {
+                    dpStartState = AnimationDefinitions.AnimationState.START
+                    dpEndState = AnimationDefinitions.AnimationState.END
+                }
+                AnimationDefinitions.AnimationState.END -> {
+                    dpStartState = AnimationDefinitions.AnimationState.END
+                    dpEndState = AnimationDefinitions.AnimationState.START
+                }
+            }
+        }
+    )
+    Box(modifier = Modifier.height(50.dp).background(green700).padding(16.dp)) {
+        Text(
+            text = "15",
+            color = Color.White,
+            modifier = Modifier.offset(y = 100.dp - dpAnim[AnimationDefinitions.tickerPropKey])
+        )
+        Text(
+            text = "14",
+            color = Color.White,
+            modifier = Modifier.offset(y = 50.dp - dpAnim[AnimationDefinitions.tickerPropKey])
+        )
+        Text(
+            text = "13",
+            color = Color.White,
+            modifier = Modifier.offset(y = -dpAnim[AnimationDefinitions.tickerPropKey])
+        )
+    }
+
+
+}
 
 
 

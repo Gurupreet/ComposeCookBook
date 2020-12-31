@@ -16,9 +16,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
@@ -34,7 +34,7 @@ fun YoutubeListItem(item: Tweet) {
         createVerticalChain(title, subtitle, chainStyle = ChainStyle.Packed)
 
         Image(
-            asset = imageResource(id = item.tweetImageId),
+            bitmap = imageResource(id = item.tweetImageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredHeight(200.dp)
@@ -47,7 +47,7 @@ fun YoutubeListItem(item: Tweet) {
                 }
         )
         Image(
-            asset = imageResource(id = R.drawable.p3),
+            bitmap = imageResource(id = R.drawable.p3),
             modifier = Modifier.preferredSize(32.dp).clip(CircleShape).constrainAs(authorImage) {
                 start.linkTo(parent.start, margin = 12.dp)
                 top.linkTo(image.bottom, margin = 16.dp)
@@ -82,13 +82,14 @@ fun YoutubeListItem(item: Tweet) {
         )
         IconButton(
             onClick = { },
-            icon = { Icon(Icons.Default.MoreVert, tint = Color.Gray) },
             modifier = Modifier
                 .constrainAs(button) {
                     top.linkTo(image.bottom)
                     end.linkTo(parent.end)
                 }
-        )
+        ) {
+            Icon(Icons.Default.MoreVert, tint = Color.Gray)
+        }
     }
 }
 

@@ -4,8 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredSize
-import androidx.compose.foundation.lazy.LazyColumnFor
-import androidx.compose.foundation.lazy.LazyRowFor
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -33,22 +33,22 @@ fun YoutubeHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     Icon(
-                        asset = vectorResource(id = R.drawable.ic_youtube),
+                        imageVector = vectorResource(id = R.drawable.ic_youtube),
                         tint = Color.Red,
                         modifier = Modifier.padding(start = 16.dp)
                     )
                 },
                 actions = {
                     Icon(
-                        asset = Icons.Default.Videocam,
+                        imageVector = Icons.Default.Videocam,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                     Icon(
-                        asset = Icons.Default.Search,
+                        imageVector = Icons.Default.Search,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                     Image(
-                        asset = imageResource(id = R.drawable.p3),
+                        bitmap = imageResource(id = R.drawable.p3),
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                             .preferredSize(24.dp).clip(CircleShape)
                     )
@@ -67,11 +67,23 @@ fun YoutubeContent() {
     // There is performance issue when using LazyRowFor and LazyColumnFor inside scrollableColumn
     // So using column for now.
     Column {
-        LazyRowFor(items = tweets, modifier = Modifier.padding(vertical = 8.dp)) {
-            YoutubeChip(selected = it.id == 2, text = it.author, modifier = Modifier.padding(8.dp))
+        LazyRow(
+            modifier = Modifier.padding(vertical = 8.dp)
+        ) {
+            items(
+                items = tweets,
+                itemContent = {
+                    YoutubeChip(
+                        selected = it.id == 2,
+                        text = it.author,
+                        modifier = Modifier.padding(8.dp)
+                    )
+                })
         }
-        LazyColumnFor(items = tweets) { item ->
-            YoutubeListItem(item)
+        LazyColumn {
+            items(
+                items = tweets,
+                itemContent = { item -> YoutubeListItem(item) })
         }
     }
 }

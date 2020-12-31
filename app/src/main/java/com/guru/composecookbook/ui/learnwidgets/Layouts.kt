@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.green700
@@ -250,6 +250,6 @@ fun MultipleTexts() {
 
 @Preview
 @Composable
-fun previewLayouts() {
+fun PreviewLayouts() {
     Layouts()
 }

@@ -8,7 +8,7 @@
     <string name="navigation_item_widgets">Widgets</string>
     <string name="navigation_item_animation">Anim</string>
     <string name="navigation_item_demoui">DemoUI</string>
-    <string name="navigation_item_profile">Profile</string>
+    <string name="navigation_item_profile">Ready UI</string>
     <string name="title_activity_list_view">My Compose App</string>
     <string name="title_activity_dialogs">Dialogs Activity</string>
     <string name="title_activity_dynamic_u_i">My Compose App</string>
@@ -32,4 +32,5 @@
     <string name="title_activity_dating_home_activitu">DatingHome</string>
     <string name="title_activity_advance_lists">My Compose App</string>
     <string name="title_activity_tiktok">Tiktok</string>
+    <string name="title_activity_templates">Templates</string>
 </resources>

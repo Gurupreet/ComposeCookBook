@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.demoui.spotify.details
 import androidx.compose.animation.animate
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -15,16 +14,16 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
@@ -36,7 +35,6 @@ import com.guru.composecookbook.ui.utils.verticalGradientBackground
 
 @Composable
 fun SpotifyDetailScreen(album: Album) {
-    val album = remember { album }
     val scrollState = rememberScrollState(0f)
     val image = imageResource(id = album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(image) }
@@ -66,15 +64,15 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
             )
             .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {
-        Icon(asset = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
+        Icon(imageVector = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
         Text(
             text = album.song,
             color = MaterialTheme.colors.onSurface,
             modifier = Modifier
                 .padding(16.dp)
-                .drawOpacity(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
+                .alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
         )
-        Icon(asset = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
+        Icon(imageVector = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
     }
 }
 
@@ -129,7 +127,7 @@ fun DownloadedRow() {
         var switched by remember { mutableStateOf(true) }
         Switch(
             checked = switched,
-            colors = SwitchConstants.defaultColors(
+            colors = SwitchDefaults.colors(
                 checkedThumbColor = MaterialTheme.colors.primary
             ),
             modifier = Modifier.padding(8.dp),
@@ -142,7 +140,7 @@ fun DownloadedRow() {
 fun ShuffleButton() {
     Button(
         onClick = {},
-        colors = ButtonConstants.defaultButtonColors(backgroundColor = green700),
+        colors = ButtonDefaults.buttonColors(backgroundColor = green700),
         modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp, horizontal = 100.dp)
             .clip(CircleShape),
     ) {
@@ -165,7 +163,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
             else 250.dp - Dp(scrollState.value / 20)
         val animateImageSize = animate(dynamicValue)
         Image(
-            asset = imageResource(id = album.imageId),
+            bitmap = imageResource(id = album.imageId),
             modifier = Modifier
                 .preferredSize(animateImageSize)
                 .padding(8.dp)

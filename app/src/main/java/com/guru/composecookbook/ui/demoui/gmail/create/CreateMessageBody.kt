@@ -1,11 +1,12 @@
 package com.guru.composecookbook.ui.demoui.gmail.create
 
-import androidx.compose.foundation.BaseTextField
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -27,7 +28,7 @@ fun CreateMessageBody(navController: NavController) {
 
     Column {
 
-        Row() {
+        Row {
 
             Text(
                 text = "From",
@@ -40,42 +41,42 @@ fun CreateMessageBody(navController: NavController) {
                     .align(Alignment.CenterVertically)
             )
             Icon(
-                asset = Icons.Outlined.KeyboardArrowDown,
+                imageVector = Icons.Outlined.KeyboardArrowDown,
                 modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
             )
         }
 
         Divider(color = Color.LightGray, thickness = 0.5.dp)
 
-        Row() {
+        Row {
 
             Text(
                 text = "To",
                 modifier = Modifier.padding(16.dp).align(Alignment.CenterVertically)
             )
 
-            BaseTextField(
+            BasicTextField(
                 value = TextFieldValue("Subash"),
                 onValueChange = { },
-                keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Done,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                onImeActionPerformed = { ImeAction.Done },
                 modifier = Modifier.weight(1f)
                     .padding(vertical = 16.dp)
                     .align(Alignment.CenterVertically)
             )
             Icon(
-                asset = Icons.Outlined.KeyboardArrowDown,
+                imageVector = Icons.Outlined.KeyboardArrowDown,
                 modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
             )
         }
 
         Divider(color = Color.LightGray, thickness = 0.5.dp)
 
-        BaseTextField(
+        BasicTextField(
             value = TextFieldValue("Subject"),
             onValueChange = { },
-            keyboardType = KeyboardType.Email,
-            imeAction = ImeAction.Done,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            onImeActionPerformed = { ImeAction.Done },
             modifier = Modifier.fillMaxWidth()
                 .padding(vertical = 16.dp, horizontal = 16.dp)
         )
@@ -83,11 +84,11 @@ fun CreateMessageBody(navController: NavController) {
         Divider(color = Color.LightGray, thickness = 0.5.dp)
 
 
-        BaseTextField(
+        BasicTextField(
             value = TextFieldValue("Compose email"),
             onValueChange = { },
-            keyboardType = KeyboardType.Email,
-            imeAction = ImeAction.Done,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            onImeActionPerformed = { ImeAction.Done },
             modifier = Modifier.fillMaxWidth().weight(1f)
                 .padding(vertical = 16.dp, horizontal = 16.dp)
         )

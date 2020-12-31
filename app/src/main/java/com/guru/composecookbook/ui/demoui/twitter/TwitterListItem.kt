@@ -21,8 +21,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
@@ -49,7 +49,7 @@ private fun NameAndHandle(tweet: Tweet) {
         //username
         Text(text = tweet.author, style = typography.h6, modifier = Modifier.padding(end = 4.dp))
         Icon(
-            asset = Icons.Default.CheckCircle,
+            imageVector = Icons.Default.CheckCircle,
             tint = twitterColor,
             modifier = Modifier.preferredSize(18.dp).align(Alignment.CenterVertically)
                 .padding(top = 2.dp)
@@ -67,7 +67,7 @@ private fun NameAndHandle(tweet: Tweet) {
 @Composable
 private fun AuthorImage(tweet: Tweet) {
     Image(
-        asset = imageResource(id = tweet.authorImageId),
+        bitmap = imageResource(id = tweet.authorImageId),
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(8.dp)
@@ -80,7 +80,7 @@ private fun AuthorImage(tweet: Tweet) {
 private fun TweetImage(imageId: Int) {
     if (imageId != 0) {
         Image(
-            asset = imageResource(id = imageId),
+            bitmap = imageResource(id = imageId),
             modifier = Modifier.padding(top = 8.dp)
                 .fillMaxWidth()
                 .preferredHeight(150.dp)
@@ -99,7 +99,7 @@ fun TweetIconSection(tweet: Tweet) {
         IconButton(onClick = {}) {
             Row {
                 Icon(
-                    asset = vectorResource(id = R.drawable.ic_speech_bubble),
+                    imageVector = vectorResource(id = R.drawable.ic_speech_bubble),
                     modifier = Modifier.preferredSize(16.dp),
                     tint = Color.LightGray
                 )
@@ -114,7 +114,7 @@ fun TweetIconSection(tweet: Tweet) {
         IconButton(onClick = {}) {
             Row {
                 Icon(
-                    asset = vectorResource(id = R.drawable.ic_retweet_solid),
+                    imageVector = vectorResource(id = R.drawable.ic_retweet_solid),
                     modifier = Modifier.preferredSize(16.dp),
                     tint = Color.LightGray
                 )
@@ -129,7 +129,7 @@ fun TweetIconSection(tweet: Tweet) {
         IconButton(onClick = {}) {
             Row {
                 Icon(
-                    asset = Icons.Default.FavoriteBorder,
+                    imageVector = Icons.Default.FavoriteBorder,
                     modifier = Modifier.preferredSize(16.dp),
                     tint = Color.LightGray
                 )
@@ -143,7 +143,7 @@ fun TweetIconSection(tweet: Tweet) {
         }
         IconButton(onClick = {}) {
             Icon(
-                asset = Icons.Default.Share,
+                imageVector = Icons.Default.Share,
                 modifier = Modifier.preferredSize(16.dp),
                 tint = Color.LightGray
             )

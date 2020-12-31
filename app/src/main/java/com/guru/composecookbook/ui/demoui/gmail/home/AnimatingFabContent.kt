@@ -22,9 +22,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawOpacity
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.util.lerp
 import kotlin.math.roundToInt
 
 
@@ -55,6 +54,9 @@ fun AnimatingFabContent(
     )
 }
 
+private fun lerp(start: Float, stop: Float, fraction: Float): Float =
+    (1 - fraction) * start + fraction * stop
+
 @Composable
 private fun IconAndTextRow(
     icon: @Composable () -> Unit,
@@ -65,9 +67,9 @@ private fun IconAndTextRow(
 ) {
     Layout(
         modifier = modifier,
-        children = {
+        content = {
             icon()
-            Box(modifier = Modifier.drawOpacity(opacityProgress())) {
+            Box(modifier = Modifier.alpha(opacityProgress())) {
                 text()
             }
         }
@@ -75,7 +77,6 @@ private fun IconAndTextRow(
 
         val iconPlaceable = measurables[0].measure(constraints)
         val textPlaceable = measurables[1].measure(constraints)
-
         val height = constraints.maxHeight
 
         // FAB has an aspect ratio of 1 so the initial width is the height

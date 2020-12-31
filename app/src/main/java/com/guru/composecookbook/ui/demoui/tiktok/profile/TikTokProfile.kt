@@ -45,7 +45,7 @@ fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {
 fun ProfileTopSection(album: Album) {
     Spacer(modifier = Modifier.height(16.dp))
     Image(
-        asset = imageResource(id = album.imageId),
+        bitmap = imageResource(id = album.imageId),
         modifier = Modifier.size(100.dp)
             .clip(CircleShape)
     )
@@ -83,7 +83,7 @@ fun ProfileTopSection(album: Album) {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
         Button(
             onClick = {},
-            colors = ButtonConstants.defaultButtonColors(
+            colors = ButtonDefaults.buttonColors(
                 backgroundColor = tiktokRed,
                 contentColor = Color.White
             ),
@@ -92,7 +92,7 @@ fun ProfileTopSection(album: Album) {
             Text(text = "Follow", modifier = Modifier.padding(horizontal = 32.dp))
         }
         Icon(
-            asset = vectorResource(id = R.drawable.ic_instagram),
+            imageVector = vectorResource(id = R.drawable.ic_instagram),
             modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
                 .border(
                     border = BorderStroke(
@@ -102,7 +102,7 @@ fun ProfileTopSection(album: Album) {
                 )
         )
         Icon(
-            asset = Icons.Default.ArrowDropDown,
+            imageVector = Icons.Default.ArrowDropDown,
             modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
                 .border(
                     border = BorderStroke(
@@ -134,14 +134,14 @@ fun ProfileTabs() {
             onClick = { selectedIndex = 0 },
             modifier = Modifier.padding(12.dp)
         ) {
-            Icon(asset = Icons.Default.VerticalDistribute)
+            Icon(imageVector = Icons.Default.VerticalDistribute)
         }
         Tab(
             selected = selectedIndex == 0,
             onClick = { selectedIndex = 1 },
             modifier = Modifier.padding(12.dp)
         ) {
-            Icon(asset = Icons.Default.FavoriteBorder)
+            Icon(imageVector = Icons.Default.FavoriteBorder)
         }
     }
 
@@ -149,7 +149,7 @@ fun ProfileTabs() {
     VerticalGrid(columns = 3) {
         list.forEach {
             Image(
-                asset = imageResource(id = it.imageId),
+                bitmap = imageResource(id = it.imageId),
                 modifier = Modifier.fillMaxWidth().height(150.dp),
                 contentScale = ContentScale.Crop
             )
@@ -164,12 +164,12 @@ fun ProfileAppBar(album: Album, navHostController: NavHostController) {
         backgroundColor = MaterialTheme.colors.surface,
         navigationIcon = {
             IconButton(onClick = { navHostController.popBackStack() }) {
-                Icon(asset = Icons.Filled.ArrowBack)
+                Icon(imageVector = Icons.Filled.ArrowBack)
             }
         },
         actions = {
             IconButton(onClick = {}) {
-                Icon(asset = Icons.Filled.MoreVert)
+                Icon(imageVector = Icons.Filled.MoreVert)
             }
         }
     )

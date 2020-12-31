@@ -44,6 +44,7 @@ fun LoadingListShimmer(){
     )
     val dpValue = shimmerTranslateAnim[AnimationDefinitions.shimmerDpPropKey]
 
+
     ScrollableColumn() {
         ShimmerCardItem(list, dpValue.value, true)
         ShimmerCardItem(list, dpValue.value, true)
@@ -55,16 +56,16 @@ fun LoadingListShimmer(){
 
 }
 
-
-
 @Composable
 fun ShimmerCardItem(
     lists: List<Color>,
     floatAnim: Float = 0f,
     isVertical: Boolean
 ) {
+
     val brush = if (isVertical) VerticalGradient(lists, 0f, floatAnim) else
         HorizontalGradient(lists, 0f, floatAnim)
+
     Column(modifier = Modifier.padding(16.dp)) {
         Surface(
             shape = MaterialTheme.shapes.small

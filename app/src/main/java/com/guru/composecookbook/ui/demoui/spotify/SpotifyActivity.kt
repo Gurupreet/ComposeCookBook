@@ -17,7 +17,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
@@ -64,19 +64,19 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
         if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
     BottomNavigation(backgroundColor = bottomNavBackground) {
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Home) },
+            icon = { Icon(imageVector = Icons.Outlined.Home) },
             selected = spotifyNavItemState.value == SpotifyNavType.HOME,
             onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
             label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Search) },
+            icon = { Icon(imageVector = Icons.Outlined.Search) },
             selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
             onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
             label = { Text(text = stringResource(id = R.string.spotify_nav_search)) }
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.LibraryMusic) },
+            icon = { Icon(imageVector = Icons.Outlined.LibraryMusic) },
             selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
             onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
             label = { Text(text = stringResource(id = R.string.spotify_nav_library)) }
@@ -90,7 +90,7 @@ fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
         when (spotifyNavType) {
             SpotifyNavType.HOME -> SpotifyHome()
             SpotifyNavType.SEARCH -> SpotifySearchScreen()
-            SpotifyNavType.LIBRARY -> ComingSoon()
+            SpotifyNavType.LIBRARY -> SpotifyPlayList()
         }
     }
 }

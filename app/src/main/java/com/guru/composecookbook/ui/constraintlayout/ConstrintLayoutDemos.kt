@@ -1,10 +1,14 @@
 package com.guru.composecookbook.ui.constraintlayout
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
@@ -13,8 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.MyWalletCard
 import com.guru.composecookbook.ui.demoui.gmail.home.GmailListItem
@@ -28,7 +32,7 @@ fun ConstraintLayoutDemos() {
         ConstraintLayoutBigListItem()
         Spacer(modifier = Modifier.height(20.dp))
         val tweet = DemoDataProvider.tweet
-        GmailListItem(tweet) {}
+        GmailListItem(tweet, onItemSwiped = {}) {}
         Spacer(modifier = Modifier.height(20.dp))
         val tweet2 = DemoDataProvider.tweetList.filter { it.tweetImageId > 0 }.first()
         YoutubeListItem(tweet2)
@@ -52,7 +56,7 @@ fun ConstraintLayoutListItem() {
         createVerticalChain(title, subtitle, space, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            asset = imageResource(id = item.imageId),
+            bitmap = imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(120.dp)
@@ -105,7 +109,6 @@ fun ConstraintLayoutListItem() {
         )
         IconButton(
             onClick = { },
-            icon = { Icon(Icons.Default.FavoriteBorder) },
             modifier = Modifier
                 .constrainAs(button) {
                     linkTo(
@@ -118,7 +121,9 @@ fun ConstraintLayoutListItem() {
                         endMargin = 8.dp
                     )
                 }
-        )
+        ) {
+            Icon(Icons.Default.FavoriteBorder)
+        }
     }
 }
 
@@ -134,7 +139,7 @@ fun ConstraintLayoutBigListItem() {
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            asset = imageResource(id = item.imageId),
+            bitmap = imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredHeight(200.dp)
@@ -183,26 +188,27 @@ fun ConstraintLayoutBigListItem() {
         )
         IconButton(
             onClick = { },
-            icon = { Icon(Icons.Default.FavoriteBorder) },
             modifier = Modifier
                 .constrainAs(button) {
                     top.linkTo(parent.top, margin = 8.dp)
                     end.linkTo(parent.end, margin = 8.dp)
                 }
-        )
+        ) {
+            Icon(Icons.Default.FavoriteBorder)
+        }
     }
 }
 
 
 @Preview
 @Composable
-fun showConstraintLayoutListItem() {
+ fun ShowConstraintLayoutListItem() {
     ConstraintLayoutListItem()
 }
 
 @Preview
 @Composable
-fun showConstraintLayoutBigListItem() {
+ fun ShowConstraintLayoutBigListItem() {
     ConstraintLayoutBigListItem()
 }
 

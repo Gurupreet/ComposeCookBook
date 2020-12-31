@@ -18,7 +18,7 @@ fun VerticalGrid(
     content: @Composable () -> Unit
 ) {
     Layout(
-        children = content,
+        content = content,
         modifier = modifier
     ) { measurables, constraints ->
         val itemWidth = constraints.maxWidth / columns

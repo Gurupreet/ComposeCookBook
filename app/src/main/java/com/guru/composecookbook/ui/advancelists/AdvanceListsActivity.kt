@@ -10,10 +10,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.AnimationClockAmbient
+import androidx.compose.ui.platform.AmbientAnimationClock
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.carousel.Pager
@@ -64,7 +64,7 @@ class AdvanceListsActivity : AppCompatActivity() {
 fun AdvanceListContent() {
     var selectedIndex by remember { mutableStateOf(0) }
     val pagerState: PagerState = run {
-        val clock = AnimationClockAmbient.current
+        val clock = AmbientAnimationClock.current
         remember(clock) {
             PagerState(clock, 0, 0, tabs.size - 1)
         }
