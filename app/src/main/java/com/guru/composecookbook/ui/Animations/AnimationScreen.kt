@@ -41,6 +41,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.green700
+import com.guru.composecookbook.ui.components.ColorPicker
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
@@ -133,6 +134,8 @@ fun AnimationScreenContent() {
         AnimatedValuesAnimations()
         Spacer(modifier = Modifier.padding(50.dp))
         TickerAnimation()
+        Spacer(modifier = Modifier.padding(100.dp))
+        ColorPicker(onColorSelected = { /*TODO*/ })
         Spacer(modifier = Modifier.padding(100.dp))
     }
 }
