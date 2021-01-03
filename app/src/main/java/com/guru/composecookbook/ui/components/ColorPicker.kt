@@ -7,6 +7,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
@@ -17,6 +18,7 @@ import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.platform.AmbientConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.graphics.Brush
@@ -42,6 +44,7 @@ fun ColorPicker(
             modifier = Modifier
                 .height(10.dp)
                 .fillMaxWidth()
+                .clip(RoundedCornerShape(4.dp))
                 .background(brush = colorMapGradient(screenWidthInPx))
                 .align(Alignment.Center)
                 .tapGestureFilter { offset ->
