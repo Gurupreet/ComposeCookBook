@@ -95,8 +95,11 @@ fun createColorMap(): List<Color> {
     for (i in 0..360 step (2)) {
         val randomSaturation = 90 + Random.nextFloat() * 10
         val randomLightness = 50 + Random.nextFloat() * 10;
-        val hsv =
-            AndroidColor.HSVToColor(floatArrayOf(i.toFloat(), randomSaturation, randomLightness))
+        val hsv = AndroidColor.HSVToColor(
+            floatArrayOf(i.toFloat(),
+                randomSaturation,
+                randomLightness)
+        )
         colorList.add(Color(hsv))
     }
 
@@ -114,7 +117,7 @@ fun getActiveColor(dragPosition: Float, screenWidth: Float): Color {
     val randomSaturation = 90 + Random.nextFloat() * 10
     val randomLightness = 50 + Random.nextFloat() * 10;
     return Color(
-        android.graphics.Color.HSVToColor(
+        AndroidColor.HSVToColor(
             floatArrayOf(
                 hue,
                 randomSaturation,
