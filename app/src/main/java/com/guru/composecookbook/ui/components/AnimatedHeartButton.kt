@@ -109,8 +109,7 @@ private fun HeartButton(
                     indication = null,
                 )
                 .width(state[size])
-                .height(state[size])
-            ,
+                .height(state[size]),
         )
     } else {
         CoilImage(
@@ -128,22 +127,22 @@ private fun HeartButton(
 }
 
 
-
 @ExperimentalCoroutinesApi
 @Composable
-fun AnimatedHeartBtn(){
+fun AnimatedHeartBtn() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp),
         horizontalArrangement = Arrangement.Center
-    ){
-        val state = remember { mutableStateOf(HeartButtonState.IDLE)}
+    ) {
+        val state = remember { mutableStateOf(HeartButtonState.IDLE) }
         AnimatedHeartButton(
             modifier = Modifier.align(Alignment.CenterVertically),
             buttonState = state,
             onToggle = {
-                state.value = if(state.value == HeartButtonState.IDLE) HeartButtonState.ACTIVE else HeartButtonState.IDLE
+                state.value =
+                    if (state.value == HeartButtonState.IDLE) HeartButtonState.ACTIVE else HeartButtonState.IDLE
             },
             iconSize = 50.dp,
             expandIconSize = 80.dp

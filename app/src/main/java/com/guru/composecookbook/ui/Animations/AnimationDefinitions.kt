@@ -7,7 +7,6 @@ import androidx.compose.animation.core.AnimationConstants.Infinite
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import java.lang.Math.abs
 
 object AnimationDefinitions {
     // Each animation should be explained as a definition and using states.
@@ -133,9 +132,9 @@ object AnimationDefinitions {
 
         transition(AnimationState.START, AnimationState.END) {
             tickerPropKey using tween(
-                    durationMillis = 800,
-                    easing = LinearEasing
-                )
+                durationMillis = 800,
+                easing = LinearEasing
+            )
         }
     }
 

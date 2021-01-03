@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.Animations
 
-import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
@@ -16,9 +15,7 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.gesture.DragObserver
@@ -45,7 +42,6 @@ import com.guru.composecookbook.ui.components.ColorPicker
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
-import kotlin.random.Random
 
 @Composable
 fun AnimationScreen() {
@@ -625,8 +621,9 @@ fun AnimatedValuesAnimations() {
     }
 
     CardElement(
-        modifier = Modifier.background(green500).preferredSize(200.dp).rawDragGestureFilter(dragObserver)
-         .offset(
+        modifier = Modifier.background(green500).preferredSize(200.dp)
+            .rawDragGestureFilter(dragObserver)
+            .offset(
                 x = Dp(xFloat.value),
             )
     )
@@ -643,7 +640,7 @@ fun CardElement(modifier: Modifier = Modifier) {
 
 @Composable
 fun TickerAnimation() {
-    var dpStartState by  remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
+    var dpStartState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
     var dpEndState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
 
     val dpAnim = transition(

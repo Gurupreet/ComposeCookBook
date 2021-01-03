@@ -4,14 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.demoui.DemoUIHostActivity
 import com.guru.composecookbook.ui.profile.ProfileScreen
 import com.guru.composecookbook.ui.utils.ComingSoon
 
@@ -43,7 +38,7 @@ class TemplatesActivity : AppCompatActivity() {
 
 @Composable
 fun TemplateApp(templateType: String) {
-    when(templateType) {
+    when (templateType) {
         "Profiles" -> ProfileScreen()
         else -> ComingSoon()
     }

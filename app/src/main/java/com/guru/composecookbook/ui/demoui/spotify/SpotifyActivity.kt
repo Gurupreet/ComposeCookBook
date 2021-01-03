@@ -22,7 +22,6 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
-import com.guru.composecookbook.ui.utils.ComingSoon
 
 class SpotifyActivity : AppCompatActivity() {
 

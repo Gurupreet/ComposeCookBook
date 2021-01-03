@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.components
 
+/// Inspired from https://github.com/msasikanth/compose_colorpicker to understand hue creations .
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -8,22 +9,24 @@ import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Red
-import androidx.compose.ui.platform.AmbientConfiguration
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.platform.AmbientConfiguration
 import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import kotlin.random.Random
 import android.graphics.Color as AndroidColor
 
@@ -59,7 +62,10 @@ fun ColorPicker(
             tint = activeColor,
             modifier = Modifier
                 .offset(x = dragDp)
-                .border(border = BorderStroke(4.dp, MaterialTheme.colors.onSurface), shape = CircleShape)
+                .border(
+                    border = BorderStroke(4.dp, MaterialTheme.colors.onSurface),
+                    shape = CircleShape
+                )
                 .draggable(
                     orientation = Orientation.Horizontal,
                     onDragStarted = { dragStart ->
@@ -86,10 +92,11 @@ fun ColorPicker(
 
 fun createColorMap(): List<Color> {
     val colorList = mutableListOf<Color>()
-    for (i in 0..360 step(2)) {
+    for (i in 0..360 step (2)) {
         val randomSaturation = 90 + Random.nextFloat() * 10
         val randomLightness = 50 + Random.nextFloat() * 10;
-        val hsv = AndroidColor.HSVToColor(floatArrayOf(i.toFloat(), randomSaturation, randomLightness))
+        val hsv =
+            AndroidColor.HSVToColor(floatArrayOf(i.toFloat(), randomSaturation, randomLightness))
         colorList.add(Color(hsv))
     }
 
@@ -106,5 +113,13 @@ fun getActiveColor(dragPosition: Float, screenWidth: Float): Color {
     val hue = (dragPosition / screenWidth) * 360f
     val randomSaturation = 90 + Random.nextFloat() * 10
     val randomLightness = 50 + Random.nextFloat() * 10;
-    return Color(android.graphics.Color.HSVToColor(floatArrayOf(hue, randomSaturation, randomLightness)))
+    return Color(
+        android.graphics.Color.HSVToColor(
+            floatArrayOf(
+                hue,
+                randomSaturation,
+                randomLightness
+            )
+        )
+    )
 }

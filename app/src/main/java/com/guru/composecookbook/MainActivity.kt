@@ -7,7 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.Dashboard
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.List
 import androidx.compose.runtime.*
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Modifier

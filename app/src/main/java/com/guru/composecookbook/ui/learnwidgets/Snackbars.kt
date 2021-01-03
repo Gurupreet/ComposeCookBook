@@ -42,7 +42,7 @@ fun SnackBars() {
 
 @Preview
 @Composable
- fun ShowSnackbars() {
+fun ShowSnackbars() {
     Column {
         SnackBars()
     }

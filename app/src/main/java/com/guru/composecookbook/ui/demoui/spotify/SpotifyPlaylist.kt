@@ -5,16 +5,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
@@ -61,7 +61,10 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
                 modifier = Modifier.height(randomHeight)
             )
             Text(
-                text = album.artist, modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.h6.copy(fontSize = 14.sp))
+                text = album.artist,
+                modifier = Modifier.padding(8.dp),
+                style = MaterialTheme.typography.h6.copy(fontSize = 14.sp)
+            )
         }
     }
 }
