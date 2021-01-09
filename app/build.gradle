@@ -83,6 +83,8 @@ dependencies {
     //lottie
     def lottie_version = '3.4.4'
     implementation "com.airbnb.android:lottie:$lottie_version"
+    //lottie for comoise
+    implementation 'com.airbnb.android:lottie-compose:1.0.0-alpha03'
 
     implementation "com.google.android.exoplayer:exoplayer:2.11.8"
     //Network libs

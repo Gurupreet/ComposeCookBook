@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.templates
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,11 +14,11 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TemplateScreen() {
     val context = AmbientContext.current
-    LazyColumn {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(templates) { template ->
             Button(
                 onClick = {
-                    context.startActivity(TemplatesActivity.newIntent(context, template, true))
+                    context.startActivity(TemplatesActivity.newIntent(context, template, false))
                 },
                 modifier = Modifier.fillMaxWidth().padding(12.dp)
             ) {
@@ -30,7 +31,7 @@ fun TemplateScreen() {
 
 
 val templates = listOf(
-    "Logins",
+    "Login",
     "Profiles",
     "Settings",
     "On-boarding",

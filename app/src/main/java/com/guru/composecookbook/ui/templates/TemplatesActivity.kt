@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.profile.ProfileScreen
+import com.guru.composecookbook.ui.templates.logins.LoginScreen1
 import com.guru.composecookbook.ui.utils.ComingSoon
 
 class TemplatesActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class TemplatesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookTheme(darkTheme = darkTheme) {
                 TemplateApp(templateType)
             }
         }
@@ -40,6 +41,8 @@ class TemplatesActivity : AppCompatActivity() {
 fun TemplateApp(templateType: String) {
     when (templateType) {
         "Profiles" -> ProfileScreen()
+        "Login" -> LoginScreen1()
+      //  "Onboarding" -> OnboardingScreen()
         else -> ComingSoon()
     }
 }
