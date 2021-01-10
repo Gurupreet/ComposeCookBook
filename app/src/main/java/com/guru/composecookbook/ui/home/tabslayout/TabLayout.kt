@@ -22,7 +22,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.ui.demoui.instagram.InstagramListItem
+import com.guru.composecookbook.ui.demoapps.instagram.InstagramListItem
 import com.guru.composecookbook.ui.home.lists.GridListView
 import com.guru.composecookbook.ui.home.lists.VerticalListView
 

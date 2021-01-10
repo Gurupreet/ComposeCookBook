@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.HorizontalGradient
 import androidx.compose.ui.graphics.VerticalGradient
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.Animations.AnimationDefinitions
+import com.guru.composecookbook.ui.animation.AnimationDefinitions
 
 
 /**

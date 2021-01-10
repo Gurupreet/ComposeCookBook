@@ -22,8 +22,8 @@ import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.demoui.spotify.details.SpotifySongListItem
+import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.ui.demoapps.spotify.details.SpotifySongListItem
 
 @Composable
 fun PullRefreshList(onPullRefresh: () -> Unit) {

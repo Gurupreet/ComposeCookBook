@@ -20,9 +20,9 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.ui.demoui.cryptoappmvvm.ui.home.components.MyWalletCard
-import com.guru.composecookbook.ui.demoui.gmail.home.GmailListItem
-import com.guru.composecookbook.ui.demoui.youtube.YoutubeListItem
+import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.MyWalletCard
+import com.guru.composecookbook.ui.demoapps.gmail.home.GmailListItem
+import com.guru.composecookbook.ui.demoapps.youtube.YoutubeListItem
 
 @Composable
 fun ConstraintLayoutDemos() {

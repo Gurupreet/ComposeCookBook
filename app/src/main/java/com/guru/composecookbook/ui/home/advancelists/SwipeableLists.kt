@@ -31,8 +31,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoui.spotify.data.Album
-import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.ui.demoapps.spotify.data.Album
+import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.swipeGesture
 
 @Composable

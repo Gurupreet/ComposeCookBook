@@ -20,7 +20,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoui.youtube.YoutubeChip
+import com.guru.composecookbook.ui.demoapps.youtube.YoutubeChip
 import com.guru.composecookbook.ui.utils.SubtitleText
 
 @Composable
