@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.dialogs
+package com.guru.composecookbook.ui.home.dialogs
 
 
 import androidx.compose.foundation.Image

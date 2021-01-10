@@ -33,8 +33,8 @@ import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.tiktokRed
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.carousel.Pager
-import com.guru.composecookbook.ui.carousel.PagerState
+import com.guru.composecookbook.ui.home.carousel.Pager
+import com.guru.composecookbook.ui.home.carousel.PagerState
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoui.tiktok.TikTokPlayer

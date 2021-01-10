@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.constraintlayout
+package com.guru.composecookbook.ui.home.constraintlayout
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn

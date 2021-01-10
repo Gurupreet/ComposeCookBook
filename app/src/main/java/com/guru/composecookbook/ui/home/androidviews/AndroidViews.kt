@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.androidviews
+package com.guru.composecookbook.ui.home.androidviews
 
 import android.animation.ValueAnimator
 import android.content.Context

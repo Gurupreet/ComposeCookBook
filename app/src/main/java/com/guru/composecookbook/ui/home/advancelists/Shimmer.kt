@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.advancelists
+package com.guru.composecookbook.ui.home.advancelists
 
 import androidx.compose.animation.transition
 import androidx.compose.foundation.ScrollableColumn

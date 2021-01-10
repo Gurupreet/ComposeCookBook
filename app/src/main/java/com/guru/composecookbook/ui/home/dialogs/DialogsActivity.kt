@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.dialogs
+package com.guru.composecookbook.ui.home.dialogs
 
 import android.content.Context
 import android.content.Intent

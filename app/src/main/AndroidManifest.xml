@@ -23,7 +23,7 @@
             android:label="@string/title_activity_tiktok"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
-            android:name=".ui.advancelists.AdvanceListsActivity"
+            android:name=".ui.home.advancelists.AdvanceListsActivity"
             android:label="@string/title_activity_advance_lists"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
@@ -77,7 +77,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.dialogs.DialogsActivity"
+            android:name=".ui.home.dialogs.DialogsActivity"
             android:label="@string/title_activity_dialogs"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity

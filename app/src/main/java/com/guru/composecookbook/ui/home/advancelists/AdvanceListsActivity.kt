@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.advancelists
+package com.guru.composecookbook.ui.home.advancelists
 
 import android.content.Context
 import android.content.Intent
@@ -15,9 +15,9 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.advancelists.AdvanceListsActivity.Companion.tabs
-import com.guru.composecookbook.ui.carousel.Pager
-import com.guru.composecookbook.ui.carousel.PagerState
+import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
+import com.guru.composecookbook.ui.home.carousel.Pager
+import com.guru.composecookbook.ui.home.carousel.PagerState
 import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
 
 class AdvanceListsActivity : AppCompatActivity() {

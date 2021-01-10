@@ -25,8 +25,8 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.*
-import com.guru.composecookbook.ui.advancelists.AdvanceListsActivity
-import com.guru.composecookbook.ui.dialogs.DialogsActivity
+import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
+import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.dynamic.DynamicUiType
 import com.guru.composecookbook.ui.lists.ListViewActivity

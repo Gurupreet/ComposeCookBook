@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.advancelists
+package com.guru.composecookbook.ui.home.advancelists
 
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.FastOutSlowInEasing

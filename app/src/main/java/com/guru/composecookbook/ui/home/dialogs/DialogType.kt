@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.dialogs
+package com.guru.composecookbook.ui.home.dialogs
 
 enum class DialogType {
     SIMPLE, TITLE, VERTICALBUTTON, IMAGE, LONGDIALOG, ROUNDED

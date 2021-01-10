@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.carousel
+package com.guru.composecookbook.ui.home.carousel
 
 import androidx.compose.animation.AnimatedFloatModel
 import androidx.compose.animation.core.AnimationClockObservable
