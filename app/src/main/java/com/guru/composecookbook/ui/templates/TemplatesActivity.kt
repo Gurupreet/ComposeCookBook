@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.profile.ProfileScreen
+import com.guru.composecookbook.ui.templates.profile.ProfileScreen
 import com.guru.composecookbook.ui.templates.logins.LoginScreen1
 import com.guru.composecookbook.ui.utils.ComingSoon
 

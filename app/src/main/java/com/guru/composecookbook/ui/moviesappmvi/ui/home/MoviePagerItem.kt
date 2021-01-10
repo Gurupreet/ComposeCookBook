@@ -24,7 +24,7 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.moviesappmvi.data.DemoMovieDataProvider
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Genre
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
-import com.guru.composecookbook.ui.profile.InterestTag
+import com.guru.composecookbook.ui.templates.profile.InterestTag
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable

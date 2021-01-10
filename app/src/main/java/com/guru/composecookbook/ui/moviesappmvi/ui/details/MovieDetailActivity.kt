@@ -38,7 +38,7 @@ import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoui.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.moviesappmvi.data.models.Movie
-import com.guru.composecookbook.ui.profile.InterestTag
+import com.guru.composecookbook.ui.templates.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
 

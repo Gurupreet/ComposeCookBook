@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
-import com.guru.composecookbook.ui.components.HorizontalDottedProgressBar
+import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
 
 
 @Preview

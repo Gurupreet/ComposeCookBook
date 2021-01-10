@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.components
+package com.guru.composecookbook.ui.templates.components
 
 import androidx.compose.animation.ColorPropKey
 import androidx.compose.animation.DpPropKey

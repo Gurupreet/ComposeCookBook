@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.components
+package com.guru.composecookbook.ui.templates.components
 
 import androidx.compose.animation.core.*
 import androidx.compose.animation.core.AnimationConstants.Infinite
@@ -13,10 +13,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.SwellState.FIRST
-import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.SwellState.SECOND
-import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.swellDefinition
-import com.guru.composecookbook.ui.components.SwellAnimationDefinitions.swellPropKey
+import com.guru.composecookbook.ui.templates.components.SwellAnimationDefinitions.SwellState.FIRST
+import com.guru.composecookbook.ui.templates.components.SwellAnimationDefinitions.SwellState.SECOND
+import com.guru.composecookbook.ui.templates.components.SwellAnimationDefinitions.swellDefinition
+import com.guru.composecookbook.ui.templates.components.SwellAnimationDefinitions.swellPropKey
 
 
 object SwellAnimationDefinitions {

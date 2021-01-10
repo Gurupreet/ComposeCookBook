@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.profile
+package com.guru.composecookbook.ui.templates.profile
 
 import android.content.Context
 import android.content.Intent

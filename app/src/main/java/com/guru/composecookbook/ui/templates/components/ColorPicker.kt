@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.components
+package com.guru.composecookbook.ui.templates.components
 
 /// Inspired from https://github.com/msasikanth/compose_colorpicker to understand hue creations .
 

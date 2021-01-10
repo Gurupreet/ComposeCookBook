@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.profile
+package com.guru.composecookbook.ui.templates.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
