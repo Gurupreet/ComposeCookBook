@@ -2,16 +2,17 @@ package com.guru.composecookbook.ui.templates.logins
 
 import android.animation.ValueAnimator
 import android.content.Context
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Facebook
+import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.material.icons.filled.VpnKey
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,10 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,38 +47,64 @@ fun LoginScreen1() {
             Text(
                 text = "We have missed you, Let's start by Sign In!",
                 style = MaterialTheme.typography.caption,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 12.dp)
             )
-            //TextField
+            //TextFields
             var email by remember { mutableStateOf(TextFieldValue("")) }
             var password by remember { mutableStateOf(TextFieldValue("")) }
             var hasError by remember { mutableStateOf(false) }
+            var passwordVisualTransformation by remember { mutableStateOf<VisualTransformation>(PasswordVisualTransformation()) }
+            var passwordInteractionState by remember { mutableStateOf(InteractionState()) }
+            var emailInteractionState by remember { mutableStateOf(InteractionState()) }
             OutlinedTextField(
                 value = email,
                 leadingIcon = { Icon(imageVector = Icons.Default.Email) },
                 maxLines = 1,
                 isErrorValue = hasError,
                 modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 label = { Text(text = "Email address") },
                 placeholder = { Text(text = "abc@gmail.com") },
                 onValueChange = {
                     email = it
                 },
+                interactionState = emailInteractionState,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next),
+                onImeActionPerformed = { _, keyboardController ->
+                    passwordInteractionState.addInteraction(interaction = Interaction.Focused)
+                    passwordInteractionState.addInteraction(interaction = Interaction.Pressed)
+                    emailInteractionState.removeInteraction(Interaction.Focused)
+                }
             )
             OutlinedTextField(
                 value = password,
                 leadingIcon = { Icon(imageVector = Icons.Default.VpnKey) },
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.RemoveRedEye,
+                        modifier = Modifier.clickable(onClick = {
+                            passwordVisualTransformation = if (passwordVisualTransformation != VisualTransformation.None) {
+                                VisualTransformation.None
+                            } else {
+                                PasswordVisualTransformation()
+                            }
+                        })
+                    )
+                },
                 maxLines = 1,
                 isErrorValue = hasError,
                 modifier = Modifier.fillMaxWidth(),
                 label = { Text(text = "Password") },
                 placeholder = { Text(text = "12334444") },
-                visualTransformation = PasswordVisualTransformation(),
+                interactionState = passwordInteractionState,
+                visualTransformation = passwordVisualTransformation,
                 onValueChange = {
                     password = it
                 },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+                onImeActionPerformed = { _, keyboardController ->
+                    keyboardController?.hideSoftwareKeyboard()
+                    passwordInteractionState.removeInteraction(interaction = Interaction.Focused)
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password,  imeAction = ImeAction.Done)
             )
             var loading by remember { mutableStateOf(false) }
             Button(
@@ -147,6 +172,7 @@ fun LoginScreen1() {
                     .clickable(onClick = {}),
                 textAlign = TextAlign.Center
             )
+            Spacer(modifier = Modifier.height(100.dp))
         }
     }
 }
