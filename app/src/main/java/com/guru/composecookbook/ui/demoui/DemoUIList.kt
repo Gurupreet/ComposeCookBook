@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.CryptoHomeActivity
-import com.guru.composecookbook.ui.datingapp.DatingHomeActivity
+import com.guru.composecookbook.ui.demoui.datingapp.DatingHomeActivity
 import com.guru.composecookbook.ui.demoui.spotify.SpotifyActivity
 import com.guru.composecookbook.ui.demoui.tiktok.TiktokActivity
 import com.guru.composecookbook.ui.moviesappmvi.ui.home.MoviesHomeActivity

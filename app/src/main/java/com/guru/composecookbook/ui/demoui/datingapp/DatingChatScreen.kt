@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.datingapp
+package com.guru.composecookbook.ui.demoui.datingapp
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

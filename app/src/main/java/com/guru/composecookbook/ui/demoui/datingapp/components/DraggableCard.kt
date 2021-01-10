@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.datingapp.components
+package com.guru.composecookbook.ui.demoui.datingapp.components
 
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.tween
@@ -13,7 +13,7 @@ import androidx.compose.ui.gesture.rawDragGestureFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.AmbientConfiguration
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.datingapp.SwipeResult
+import com.guru.composecookbook.ui.demoui.datingapp.SwipeResult
 import kotlin.math.abs
 
 @Composable

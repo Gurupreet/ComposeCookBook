@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.datingapp
+package com.guru.composecookbook.ui.demoui.datingapp
 
 import android.content.Context
 import android.content.Intent
@@ -23,7 +23,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.datingapp.components.ProfileScreen
+import com.guru.composecookbook.ui.demoui.datingapp.components.ProfileScreen
 
 class DatingHomeActivity : AppCompatActivity() {
 

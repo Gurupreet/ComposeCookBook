@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.datingapp
+package com.guru.composecookbook.ui.demoui.datingapp
 
 import androidx.compose.animation.animate
 import androidx.compose.foundation.Image
@@ -27,7 +27,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.Animations.FloatMultiStateAnimationCircleCanvas
-import com.guru.composecookbook.ui.datingapp.components.DraggableCard
+import com.guru.composecookbook.ui.demoui.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoui.spotify.data.Album
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.verticalGradientBackground

@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.datingapp.components
+package com.guru.composecookbook.ui.demoui.datingapp.components
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.fillMaxWidth
