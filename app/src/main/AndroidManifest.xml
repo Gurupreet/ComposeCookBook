@@ -39,19 +39,19 @@
             android:value="" />
 
         <activity
-            android:name=".ui.moviesappmvi.ui.details.MovieDetailActivity"
+            android:name="com.guru.composecookbook.ui.demoui.moviesappmvi.ui.details.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
-            android:name=".ui.moviesappmvi.ui.home.MoviesHomeActivity"
+            android:name="com.guru.composecookbook.ui.demoui.moviesappmvi.ui.home.MoviesHomeActivity"
             android:label="@string/title_activity_movies_home"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
-            android:name=".ui.cryptoappmvvm.ui.detail.CryptoDetailActivity"
+            android:name="com.guru.composecookbook.ui.demoui.cryptoappmvvm.ui.detail.CryptoDetailActivity"
             android:label="@string/title_activity_crypto_detail"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
-            android:name=".ui.cryptoappmvvm.ui.home.CryptoHomeActivity"
+            android:name="com.guru.composecookbook.ui.demoui.cryptoappmvvm.ui.home.CryptoHomeActivity"
             android:label="@string/title_activity_crypto_home"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity

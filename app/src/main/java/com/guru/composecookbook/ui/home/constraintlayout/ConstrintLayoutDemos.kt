@@ -20,7 +20,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.ui.cryptoappmvvm.ui.home.components.MyWalletCard
+import com.guru.composecookbook.ui.demoui.cryptoappmvvm.ui.home.components.MyWalletCard
 import com.guru.composecookbook.ui.demoui.gmail.home.GmailListItem
 import com.guru.composecookbook.ui.demoui.youtube.YoutubeListItem
 
