@@ -15,8 +15,8 @@ import com.guru.composecookbook.ui.demoui.gmail.home.GmailScreen
 import com.guru.composecookbook.ui.demoui.instagram.InstagramHome
 import com.guru.composecookbook.ui.demoui.twitter.TwitterHome
 import com.guru.composecookbook.ui.demoui.youtube.YoutubeHome
-import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
-import com.guru.composecookbook.ui.dynamic.DynamicUiType
+import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
+import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
 
 class DemoUIHostActivity : AppCompatActivity() {
 

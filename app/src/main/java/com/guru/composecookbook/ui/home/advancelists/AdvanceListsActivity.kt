@@ -18,7 +18,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.home.carousel.Pager
 import com.guru.composecookbook.ui.home.carousel.PagerState
-import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
+import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 class AdvanceListsActivity : AppCompatActivity() {
 

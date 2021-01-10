@@ -28,7 +28,7 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.cryptoappmvvm.utils.roundToTwoDecimals
 import com.guru.composecookbook.ui.demoui.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.lists.VerticalListItemSmall
+import com.guru.composecookbook.ui.home.lists.VerticalListItemSmall
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
 

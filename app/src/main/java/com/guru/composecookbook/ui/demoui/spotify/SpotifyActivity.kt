@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
-import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
+import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 class SpotifyActivity : AppCompatActivity() {
 

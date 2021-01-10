@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.dynamic
+package com.guru.composecookbook.ui.home.dynamic
 
 enum class DynamicUiType {
     TABS,

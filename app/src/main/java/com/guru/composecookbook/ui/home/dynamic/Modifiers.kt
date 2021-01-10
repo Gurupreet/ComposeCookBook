@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.dynamic
+package com.guru.composecookbook.ui.home.dynamic
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background

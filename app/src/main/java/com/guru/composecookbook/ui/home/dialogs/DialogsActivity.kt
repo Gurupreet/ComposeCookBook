@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
+import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 
 class DialogsActivity : AppCompatActivity() {

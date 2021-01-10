@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.tabslayout
+package com.guru.composecookbook.ui.home.tabslayout
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -23,8 +23,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.demoui.instagram.InstagramListItem
-import com.guru.composecookbook.ui.lists.GridListView
-import com.guru.composecookbook.ui.lists.VerticalListView
+import com.guru.composecookbook.ui.home.lists.GridListView
+import com.guru.composecookbook.ui.home.lists.VerticalListView
 
 private enum class DemoTabs(val value: String) {
     APPLE("Apple"),

@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.pullrefreshdemos
+package com.guru.composecookbook.ui.home.pullrefreshdemos
 
 import androidx.compose.animation.animate
 import androidx.compose.animation.animatedFloat

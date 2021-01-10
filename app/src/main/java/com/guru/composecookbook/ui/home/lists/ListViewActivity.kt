@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.lists
+package com.guru.composecookbook.ui.home.lists
 
 import android.content.Context
 import android.content.Intent

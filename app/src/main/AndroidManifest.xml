@@ -81,11 +81,11 @@
             android:label="@string/title_activity_dialogs"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
-            android:name=".ui.lists.ListViewActivity"
+            android:name=".ui.home.lists.ListViewActivity"
             android:label="@string/title_activity_list_view"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
-            android:name=".ui.dynamic.DynamicUIActivity"
+            android:name=".ui.home.dynamic.DynamicUIActivity"
             android:label="@string/title_activity_dynamic_u_i"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
     </application>

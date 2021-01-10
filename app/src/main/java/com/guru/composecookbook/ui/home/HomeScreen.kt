@@ -27,9 +27,9 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
-import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
-import com.guru.composecookbook.ui.dynamic.DynamicUiType
-import com.guru.composecookbook.ui.lists.ListViewActivity
+import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
+import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
+import com.guru.composecookbook.ui.home.lists.ListViewActivity
 
 
 @Composable
