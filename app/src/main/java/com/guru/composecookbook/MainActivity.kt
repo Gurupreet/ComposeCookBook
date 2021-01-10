@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.outlined.AccountBox
-import androidx.compose.material.icons.outlined.Dashboard
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.List
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Modifier
@@ -122,7 +119,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.List) },
+            icon = { Icon(imageVector = Icons.Outlined.Extension) },
             selected = homeScreenState.value == BottomNavType.WIDGETS,
             onClick = {
                 homeScreenState.value = BottomNavType.WIDGETS
@@ -156,7 +153,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) }
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.AccountBox) },
+            icon = { Icon(imageVector = Icons.Outlined.ShopTwo) },
             selected = homeScreenState.value == BottomNavType.TEMPLATE,
             onClick = {
                 homeScreenState.value = BottomNavType.TEMPLATE

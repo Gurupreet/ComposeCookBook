@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.templates.logins
 
 import android.animation.ValueAnimator
 import android.content.Context
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -30,11 +31,33 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
 import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
+import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
-@Preview
 @Composable
-fun LoginScreen1() {
+fun LoginOnboarding() {
+    var loggedIn by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+    Crossfade(current = loggedIn) {
+        if (loggedIn) {
+            OnBoardingScreen1 {
+                loggedIn = false
+            }
+        } else {
+            LoginScreen1 {
+                coroutineScope.launch {
+                    delay(2000)
+                    loggedIn = true
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun LoginScreen1(onLoginSuccess: () -> Unit) {
     Scaffold {
         ScrollableColumn(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
             Spacer(modifier = Modifier.height(20.dp))
@@ -56,6 +79,7 @@ fun LoginScreen1() {
             var passwordVisualTransformation by remember { mutableStateOf<VisualTransformation>(PasswordVisualTransformation()) }
             var passwordInteractionState by remember { mutableStateOf(InteractionState()) }
             var emailInteractionState by remember { mutableStateOf(InteractionState()) }
+
             OutlinedTextField(
                 value = email,
                 leadingIcon = { Icon(imageVector = Icons.Default.Email) },
@@ -109,14 +133,15 @@ fun LoginScreen1() {
             var loading by remember { mutableStateOf(false) }
             Button(
                 onClick = {
-                    if (validateSignIn(email.text, password.text)) {
+                    if (invalidInput(email.text, password.text)) {
                         hasError = true
                         loading = false
                     } else {
                         loading = true
                         hasError = false
-                     }
-                  },
+                        onLoginSuccess.invoke()
+                    }
+                },
                 modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp).height(50.dp)
                     .clip(CircleShape)
             ) {
@@ -177,7 +202,7 @@ fun LoginScreen1() {
     }
 }
 
-fun validateSignIn(email: String, password: String) = email.isNullOrBlank() || password.isNullOrBlank()
+fun invalidInput(email: String, password: String) = email.isNullOrBlank() || password.isNullOrBlank()
 
 
 @Composable

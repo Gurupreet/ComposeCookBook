@@ -8,7 +8,7 @@
     <string name="navigation_item_widgets">Widgets</string>
     <string name="navigation_item_animation">Anim</string>
     <string name="navigation_item_demoui">DemoUI</string>
-    <string name="navigation_item_profile">Ready UI</string>
+    <string name="navigation_item_profile">Template</string>
     <string name="title_activity_list_view">My Compose App</string>
     <string name="title_activity_dialogs">Dialogs Activity</string>
     <string name="title_activity_dynamic_u_i">My Compose App</string>

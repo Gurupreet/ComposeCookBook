@@ -57,18 +57,20 @@ private fun launchSocialActivity(context: Context, socialType: String) {
 
 @Composable
 fun ProfileScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .semantics { testTag = "Profile Screen" }
-    ) {
-        val scrollState = rememberScrollState(0f)
-        TopAppBarView(scrollState.value)
-        TopBackground()
-        ScrollableColumn(scrollState = scrollState, modifier = Modifier.fillMaxSize()) {
-            Spacer(modifier = Modifier.height(100.dp))
-            TopScrollingContent(scrollState)
-            BottomScrollingContent()
+    Scaffold {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .semantics { testTag = "Profile Screen" }
+        ) {
+            val scrollState = rememberScrollState(0f)
+            TopAppBarView(scrollState.value)
+            TopBackground()
+            ScrollableColumn(scrollState = scrollState, modifier = Modifier.fillMaxSize()) {
+                Spacer(modifier = Modifier.height(100.dp))
+                TopScrollingContent(scrollState)
+                BottomScrollingContent()
+            }
         }
     }
 }
