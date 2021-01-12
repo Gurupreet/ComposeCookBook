@@ -42,7 +42,7 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
             .padding(horizontal = 12.dp, vertical = 4.dp)
     ) {
         var stared by remember(item.id) { mutableStateOf(false) }
-        val (image, title, subtitle, source, button, time) = createRefs()
+        val (image, title, subtitle, source, starButton, time) = createRefs()
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
         Image(
@@ -83,29 +83,28 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
         Text(
             text = item.text,
             style = MaterialTheme.typography.caption,
+            maxLines = 2,
             modifier = Modifier.constrainAs(source) {
-                linkTo(start = title.start, end = parent.end)
+                linkTo(start = title.start, end = starButton.start)
                 width = Dimension.fillToConstraints
             }.alpha(0.6f)
         )
         IconButton(
             onClick = { stared = !stared },
             modifier = Modifier
-                .constrainAs(button) {
+                .constrainAs(starButton) {
                     linkTo(
                         top = source.top,
                         bottom = source.bottom,
                     )
                     linkTo(
                         start = source.end,
-                        end = parent.end,
-                        endMargin = 16.dp
+                        end = parent.end
                     )
                 }
         ) {
             Icon(
                 imageVector = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
-                modifier = Modifier.padding(end = 12.dp),
                 tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
             )
         }
