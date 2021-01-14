@@ -54,7 +54,7 @@ fun BottomSheetDrawer(
                 modifier = Modifier.padding(16.dp)
             )
             Button(
-                onClick = { },
+                onClick = { drawerState.close() },
                 modifier = Modifier.fillMaxWidth().padding(8.dp)
             ) {
                 Text(text = "Close Sheet")
