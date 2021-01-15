@@ -677,9 +677,8 @@ fun TickerAnimation() {
             modifier = Modifier.offset(y = -dpAnim[AnimationDefinitions.tickerPropKey])
         )
     }
-
-
 }
+
 
 
 

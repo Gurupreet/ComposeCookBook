@@ -47,6 +47,7 @@ fun TemplateApp(templateType: String) {
         "Profiles" -> ProfileScreen()
         "Login" -> LoginOnboarding()
         "On-boarding" -> OnBoardingScreen1 { }
+        "Charts" -> Charts()
         else -> ComingSoon()
     }
 }
