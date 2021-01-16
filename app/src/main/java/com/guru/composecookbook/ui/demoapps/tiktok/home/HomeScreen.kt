@@ -1,11 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.tiktok.home
 
-import androidx.compose.animation.animate
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.AnimationConstants
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.repeatable
-import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -39,6 +35,7 @@ import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoapps.tiktok.TikTokPlayer
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokHomeInteractionEvents
+import androidx.compose.animation.core.animateAsState
 
 
 val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")
@@ -160,7 +157,7 @@ fun LikeIcon(id: Int) {
         modifier = Modifier
             .clickable(onClick = { fav = !fav })
             .graphicsLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
-        tint = animate(if (fav) tiktokRed else Color.White)
+        tint = androidx.compose.animation.animateAsState(if (fav) tiktokRed else Color.White).value
     )
 }
 

@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.spotify.details
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -85,7 +86,7 @@ fun TopSectionOverlay(scrollState: ScrollState) {
             .height(400.dp)
             .background(
                 MaterialTheme.colors.surface.copy(
-                    alpha = animate(dynamicAlpha)
+                    alpha = animateAsState(dynamicAlpha).value
                 )
             )
     )
@@ -161,7 +162,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
         val dynamicValue =
             if (250.dp - Dp(scrollState.value / 50) < 10.dp) 10.dp //prevent going 0 cause crash
             else 250.dp - Dp(scrollState.value / 20)
-        val animateImageSize = animate(dynamicValue)
+        val animateImageSize = animateAsState(dynamicValue).value
         Image(
             bitmap = imageResource(id = album.imageId),
             modifier = Modifier

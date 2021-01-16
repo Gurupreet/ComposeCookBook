@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.spotify
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -42,7 +43,7 @@ fun SpotifyHome() {
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
-                .alpha(animate(1f - scrollState.value / 200f))
+                .alpha(animateAsState(1f - scrollState.value / 200f).value)
         )
         PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
     }

@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -36,8 +37,8 @@ fun MyWalletCard() {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
-            .preferredHeight(animate(animateHeight))
-            .alpha(animate(opacity))
+            .preferredHeight(animateAsState(animateHeight).value)
+            .alpha(animateAsState(opacity).value)
             .clip(RoundedCornerShape(bottomLeft = 24.dp, bottomRight = 24.dp))
             .horizontalGradientBackground(gradientBluePurple)
             .padding(top = paddingWithStatusBarHeight, bottom = 8.dp, start = 8.dp, end = 8.dp)
@@ -125,7 +126,7 @@ fun MyWalletCard() {
         Image(
             imageVector = Icons.Default.QrCodeScanner,
             modifier = Modifier.preferredSize(250.dp)
-                .alpha(animate(if (extended) 1f else 0f))
+                .alpha(animateAsState(if (extended) 1f else 0f).value)
                 .constrainAs(scan) {
                     top.linkTo(receive.bottom, margin = 50.dp)
                     start.linkTo(parent.start)

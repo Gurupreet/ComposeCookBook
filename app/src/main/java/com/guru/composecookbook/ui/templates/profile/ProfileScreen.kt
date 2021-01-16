@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -34,6 +35,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
+import androidx.compose.animation.core.animateAsState
 
 private val initialimageFloat = 170f
 private val name = "Gurupreet Singh"
@@ -82,7 +84,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
         AnimatedImage(scroll = scrollState.value)
         Column(
             modifier = Modifier.padding(start = 8.dp, top = 48.dp)
-                .alpha(animate(if (visibilityChangeFloat) 0f else 1f))
+                .alpha(animateAsState(if (visibilityChangeFloat) 0f else 1f).value)
         ) {
             Text(
                 text = name,
@@ -255,7 +257,7 @@ fun AnimatedImage(scroll: Float) {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(start = 16.dp)
-            .preferredSize(animate(Dp(dynamicAnimationSizeValue)))
+            .preferredSize(animateAsState(Dp(dynamicAnimationSizeValue)).value)
             .clip(CircleShape)
     )
 }

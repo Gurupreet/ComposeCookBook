@@ -42,6 +42,7 @@ import com.guru.composecookbook.ui.templates.components.ColorPicker
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
+import androidx.compose.animation.core.animateAsState
 
 @Composable
 fun AnimationScreen() {
@@ -141,7 +142,7 @@ fun SimpleColorAnimation() {
     val enabled = remember { mutableStateOf(true) }
     val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
     val buttonColors = ButtonDefaults.buttonColors(
-        backgroundColor = animate(color)
+        backgroundColor = animateAsState(color).value
     )
     Button(
         onClick = { enabled.value = !enabled.value },
@@ -159,15 +160,15 @@ fun SingleScaleAndColorAnimation() {
     val height = if (enabled.value) 40.dp else 60.dp
     val width = if (enabled.value) 150.dp else 300.dp
     val buttonColors = ButtonDefaults.buttonColors(
-        backgroundColor = animate(color)
+        backgroundColor = animateAsState(color).value
     )
     Button(
         onClick = { enabled.value = !enabled.value },
         colors = buttonColors,
         modifier = Modifier
             .padding(16.dp)
-            .preferredHeight(animate(height))
-            .preferredWidth(animate(width)),
+            .preferredHeight(animateAsState(height).value)
+            .preferredWidth(animateAsState(width).value),
     ) {
         Text("Scale & Color")
     }
@@ -195,19 +196,19 @@ fun SingleImageScaleAnimation() {
             bitmap = imageResource(R.drawable.food10),
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .preferredSize(animate(if (enabled.value) 100.dp else 250.dp))
+                .preferredSize(animateAsState(if (enabled.value) 100.dp else 250.dp).value)
                 .padding(8.dp)
                 .clickable { enabled.value = !enabled.value }
-                .clip(RoundedCornerShape(animate(if (enabled.value) 0.dp else 8.dp)))
+                .clip(RoundedCornerShape(animateAsState(if (enabled.value) 0.dp else 8.dp).value))
         )
         Image(
             bitmap = imageResource(R.drawable.food12),
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .preferredSize(animate(if (!enabled.value) 100.dp else 250.dp))
+                .preferredSize(animateAsState(if (!enabled.value) 100.dp else 250.dp).value)
                 .padding(8.dp)
                 .clickable { enabled.value = !enabled.value }
-                .clip(RoundedCornerShape(animate(if (!enabled.value) 0.dp else 8.dp)))
+                .clip(RoundedCornerShape(animateAsState(if (!enabled.value) 0.dp else 8.dp).value))
         )
     }
 }
@@ -487,11 +488,11 @@ private fun DrawLayerAnimations() {
     TitleText(title = "DrawLayer changes + Single value animations")
     var draw by remember { mutableStateOf(false) }
     val modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-        scaleX = animate(if (draw) 2f else 1f),
-        scaleY = animate(if (draw) 2f else 1f),
-        shadowElevation = animate(if (draw) 50f else 5f),
+        scaleX = animateAsState(if (draw) 2f else 1f).value,
+        scaleY = animateAsState(if (draw) 2f else 1f).value,
+        shadowElevation = animateAsState(if (draw) 50f else 5f).value,
         clip = draw,
-        rotationZ = animate(if (draw) 360f else 0f)
+        rotationZ = animateAsState(if (draw) 360f else 0f).value
     ).clickable(onClick = { draw = !draw })
 
     Image(
@@ -506,24 +507,24 @@ private fun DrawLayerAnimations() {
         Image(
             bitmap = imageResource(id = R.drawable.adele21),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw2) 30f else 5f),
-                translationX = animate(target = if (draw2) 320f else 0f),
+                shadowElevation = animateAsState(if (draw2) 30f else 5f).value,
+                translationX = animateAsState(if (draw2) 320f else 0f).value,
                 translationY = 0f,
             ).clickable(onClick = { draw2 = !draw2 })
         )
         Image(
             bitmap = imageResource(id = R.drawable.dualipa),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw2) 30f else 10f),
-                translationX = animate(target = if (draw2) -320f else 0f),
-                translationY = animate(target = if (draw2) 0f else 30f)
+                shadowElevation = animateAsState(if (draw2) 30f else 10f).value,
+                translationX = animateAsState(if (draw2) -320f else 0f).value,
+                translationY = animateAsState(if (draw2) 0f else 30f).value
             ).clickable(onClick = { draw2 = !draw2 })
         )
         Image(
             bitmap = imageResource(id = R.drawable.edsheeran),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw2) 30f else 5f),
-                translationY = animate(target = if (draw2) 0f else 50f)
+                shadowElevation = animateAsState(if (draw2) 30f else 5f).value,
+                translationY = animateAsState(if (draw2) 0f else 50f).value
             ).clickable(onClick = { draw2 = !draw2 })
         )
     }
@@ -534,27 +535,27 @@ private fun DrawLayerAnimations() {
         Image(
             bitmap = imageResource(id = R.drawable.wolves),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw3) 30f else 5f),
-                translationX = animate(target = if (draw3) 320f else 0f),
-                rotationY = animate(target = if (draw3) 45f else 0f),
+                shadowElevation = animateAsState(if (draw3) 30f else 5f).value,
+                translationX = animateAsState(if (draw3) 320f else 0f).value,
+                rotationY = animateAsState(if (draw3) 45f else 0f).value,
                 translationY = 0f
             ).clickable(onClick = { draw3 = !draw3 })
         )
         Image(
             bitmap = imageResource(id = R.drawable.sam),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw3) 30f else 10f),
-                translationX = animate(target = if (draw3) -320f else 0f),
-                rotationY = animate(target = if (draw3) 45f else 0f),
-                translationY = animate(target = if (draw3) 0f else 30f)
+                shadowElevation = animateAsState(if (draw3) 30f else 10f).value,
+                translationX = animateAsState(if (draw3) -320f else 0f).value,
+                rotationY = animateAsState(if (draw3) 45f else 0f).value,
+                translationY = animateAsState(if (draw3) 0f else 30f).value
             ).clickable(onClick = { draw3 = !draw3 })
         )
         Image(
             bitmap = imageResource(id = R.drawable.billie),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw3) 30f else 5f),
-                translationY = animate(target = if (draw3) 0f else 50f),
-                rotationY = animate(target = if (draw3) 45f else 0f)
+                shadowElevation = animateAsState(if (draw3) 30f else 5f).value,
+                translationY = animateAsState(if (draw3) 0f else 50f).value,
+                rotationY = animateAsState(if (draw3) 45f else 0f).value
             ).clickable(onClick = { draw3 = !draw3 })
         )
     }
@@ -565,27 +566,27 @@ private fun DrawLayerAnimations() {
         Image(
             bitmap = imageResource(id = R.drawable.imagindragon),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw4) 30f else 5f),
-                translationX = animate(target = if (draw4) 320f else 0f),
-                rotationZ = animate(target = if (draw4) 45f else 0f),
+                shadowElevation = animateAsState(if (draw4) 30f else 5f).value,
+                translationX = animateAsState(if (draw4) 320f else 0f).value,
+                rotationZ = animateAsState(if (draw4) 45f else 0f).value,
                 translationY = 0f
             ).clickable(onClick = { draw4 = !draw4 })
         )
         Image(
             bitmap = imageResource(id = R.drawable.khalid),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw4) 30f else 10f),
-                translationX = animate(target = if (draw4) -320f else 0f),
-                rotationZ = animate(target = if (draw4) 45f else 0f),
-                translationY = animate(target = if (draw4) 0f else 30f)
+                shadowElevation = animateAsState(if (draw4) 30f else 10f).value,
+                translationX = animateAsState(if (draw4) -320f else 0f).value,
+                rotationZ = animateAsState(if (draw4) 45f else 0f).value,
+                translationY = animateAsState(if (draw4) 0f else 30f).value
             ).clickable(onClick = { draw4 = !draw4 })
         )
         Image(
             bitmap = imageResource(id = R.drawable.camelia),
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animate(if (draw4) 30f else 5f),
-                translationY = animate(target = if (draw4) 0f else 50f),
-                rotationZ = animate(target = if (draw4) 45f else 0f)
+                shadowElevation = animateAsState(if (draw4) 30f else 5f).value,
+                translationY = animateAsState(if (draw4) 0f else 50f).value,
+                rotationZ = animateAsState(if (draw4) 45f else 0f).value,
             ).clickable(onClick = { draw4 = !draw4 })
         )
     }

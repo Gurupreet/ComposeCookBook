@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.datingapp
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -83,7 +84,7 @@ fun DatingHomeScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = cardHeight)
-                    .alpha(animate(if (listEmpty.value) 0f else 1f))
+                    .alpha(animateAsState(if (listEmpty.value) 0f else 1f).value)
             ) {
                 IconButton(
                     onClick = {

@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.utils
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -77,7 +78,7 @@ fun RotateIcon(
     Icon(
         imageVector = asset,
         modifier = modifier
-            .graphicsLayer(rotationZ = animate(if (state) 0f else angle, tween(duration)))
+            .graphicsLayer(rotationZ = animateAsState(if (state) 0f else angle, tween(duration)).value)
     )
 }
 

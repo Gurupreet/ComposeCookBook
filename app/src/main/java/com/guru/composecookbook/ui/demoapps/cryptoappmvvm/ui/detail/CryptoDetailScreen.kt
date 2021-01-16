@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -63,7 +64,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Unit) {
     Column(
         modifier = Modifier.padding(16.dp)
-            .alpha(animate((1 - scrollState.value / 150).coerceIn(0f, 1f)))
+            .alpha(animateAsState((1 - scrollState.value / 150).coerceIn(0f, 1f)).value)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.padding(top = 20.dp)) {
@@ -109,7 +110,7 @@ fun CryptoFloatingActionButton() {
         text = { Text(text = "Trade") },
         onClick = { pressed = !pressed },
         backgroundColor = MaterialTheme.colors.primary,
-        modifier = Modifier.width(animate(if (pressed) 200.dp else 120.dp))
+        modifier = Modifier.width(animateAsState(if (pressed) 200.dp else 120.dp).value)
     )
 }
 

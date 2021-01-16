@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.home.carousel
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
@@ -138,8 +139,8 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     val animateSize = if (isSelected) 320.dp else 180.dp
     val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
-        elevation = animate(animateElevation),
-        modifier = Modifier.preferredSize(animate(animateSize)).padding(24.dp),
+        elevation = animateAsState(animateElevation).value,
+        modifier = Modifier.preferredSize(animateAsState(animateSize).value).padding(24.dp),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
         contentColor = MaterialTheme.colors.onPrimary

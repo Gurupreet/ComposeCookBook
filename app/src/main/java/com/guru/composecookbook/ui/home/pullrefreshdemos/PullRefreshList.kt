@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.home.pullrefreshdemos
 import androidx.compose.animation.animate
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -78,15 +79,15 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
             tint = Color.Black,
             modifier = Modifier.align(Alignment.TopCenter)
                 .graphicsLayer(
-                    translationY = animate(
+                    translationY = animateAsState(
                         animatedProgress.value.coerceIn(
                             initialYTranslate,
                             maximumYTranslate
                         )
-                    ),
-                    rotationZ = animate(
+                    ).value,
+                    rotationZ = animateAsState(
                         animatedProgress.value
-                    )
+                    ).value
                 ).background(Color.LightGray, shape = CircleShape).padding(2.dp)
         )
     }

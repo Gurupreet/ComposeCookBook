@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
@@ -91,10 +92,10 @@ fun MovieDetailContent(movie: Movie?, imageId: Int) {
     ScrollableColumn(
         modifier = Modifier.verticalGradientBackground(dominantColors)
             .padding(
-                animate(
+                animateAsState(
                     if (expand.value) 1.dp else 120.dp,
                     tween(350)
-                )
+                ).value
             )
     ) {
         movie?.let { movie ->
