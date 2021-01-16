@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ScrollableColumn
@@ -37,8 +36,8 @@ import androidx.compose.ui.viewinterop.viewModel
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
+import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.templates.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage

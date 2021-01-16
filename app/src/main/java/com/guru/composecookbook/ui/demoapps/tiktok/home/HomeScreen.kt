@@ -1,7 +1,10 @@
 package com.guru.composecookbook.ui.demoapps.tiktok.home
 
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.AnimationConstants
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.repeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -29,13 +32,12 @@ import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.tiktokRed
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.home.carousel.Pager
-import com.guru.composecookbook.ui.home.carousel.PagerState
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoapps.tiktok.TikTokPlayer
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokHomeInteractionEvents
-import androidx.compose.animation.core.animateAsState
+import com.guru.composecookbook.ui.home.carousel.Pager
+import com.guru.composecookbook.ui.home.carousel.PagerState
 
 
 val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")

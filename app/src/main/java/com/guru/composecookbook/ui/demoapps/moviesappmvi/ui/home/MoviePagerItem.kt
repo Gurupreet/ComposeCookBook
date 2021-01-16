@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable

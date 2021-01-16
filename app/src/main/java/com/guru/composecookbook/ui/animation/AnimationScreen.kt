@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.animation
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -42,7 +43,6 @@ import com.guru.composecookbook.ui.templates.components.ColorPicker
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
-import androidx.compose.animation.core.animateAsState
 
 @Composable
 fun AnimationScreen() {
@@ -648,11 +648,14 @@ fun TickerAnimation() {
         definition = AnimationDefinitions.tickerDefinition,
         initState = dpStartState,
         toState = dpEndState,
-        onStateChangeFinished = {
+        onStateChangeFinished = { it ->
             when (it) {
                 AnimationDefinitions.AnimationState.START -> {
                     dpStartState = AnimationDefinitions.AnimationState.START
                     dpEndState = AnimationDefinitions.AnimationState.END
+                }
+                AnimationDefinitions.AnimationState.MID -> {
+                    // Nothing
                 }
                 AnimationDefinitions.AnimationState.END -> {
                     dpStartState = AnimationDefinitions.AnimationState.END

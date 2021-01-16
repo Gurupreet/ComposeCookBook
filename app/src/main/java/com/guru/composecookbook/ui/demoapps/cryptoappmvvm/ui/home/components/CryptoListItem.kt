@@ -65,7 +65,7 @@ fun CryptoListItem(
             )
             Text(
                 text = "${crypto.dailyChange.roundToThreeDecimals()}" +
-                        " (${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
+                    " (${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
                 style = typography.subtitle2,
                 color = if (crypto.dailyChange > 0) green500 else Color.Red,
                 textAlign = TextAlign.Center,

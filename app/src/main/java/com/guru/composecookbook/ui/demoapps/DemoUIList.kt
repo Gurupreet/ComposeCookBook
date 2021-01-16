@@ -17,9 +17,9 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
+import com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home.MoviesHomeActivity
 import com.guru.composecookbook.ui.demoapps.spotify.SpotifyActivity
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokActivity
-import com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home.MoviesHomeActivity
 
 @Composable
 fun DemoUIList() {

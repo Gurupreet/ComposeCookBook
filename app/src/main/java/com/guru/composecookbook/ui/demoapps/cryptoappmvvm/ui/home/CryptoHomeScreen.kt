@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home
 
 import android.animation.ValueAnimator
 import android.content.Context
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background

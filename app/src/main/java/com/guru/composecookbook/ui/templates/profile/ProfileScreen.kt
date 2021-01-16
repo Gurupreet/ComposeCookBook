@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.templates.profile
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -35,7 +34,6 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
-import androidx.compose.animation.core.animateAsState
 
 private val initialimageFloat = 170f
 private val name = "Gurupreet Singh"

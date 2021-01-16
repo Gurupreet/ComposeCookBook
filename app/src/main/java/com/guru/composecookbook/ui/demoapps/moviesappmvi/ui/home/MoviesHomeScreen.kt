@@ -19,9 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.home.carousel.Pager
 import com.guru.composecookbook.ui.home.carousel.PagerState
-import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 
 @Composable

@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail
 
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -82,7 +81,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
         )
         Text(
             text = "${crypto.dailyChange.roundToTwoDecimals()} " +
-                    " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
+                " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
             color = if (crypto.dailyChange > 0) green700 else Color.Red
         )
     }
@@ -171,7 +170,6 @@ fun FavSection() {
 @Composable
 fun NewsSection(crypto: Crypto) {
     //TODO Add some crypto news api
-    val valueModifier = Modifier.padding(bottom = 16.dp, top = 4.dp)
     Text(
         text = "Recent News",
         modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),

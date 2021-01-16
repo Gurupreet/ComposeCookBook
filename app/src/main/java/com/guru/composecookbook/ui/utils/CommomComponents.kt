@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.utils
 
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column

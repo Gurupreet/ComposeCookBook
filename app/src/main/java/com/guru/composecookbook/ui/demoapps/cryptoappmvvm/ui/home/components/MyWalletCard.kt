@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components
 
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border

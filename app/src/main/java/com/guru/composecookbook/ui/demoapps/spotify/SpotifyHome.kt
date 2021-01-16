@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoapps.spotify
 
-import androidx.compose.animation.animate
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*

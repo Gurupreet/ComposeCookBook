@@ -6,10 +6,9 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Album
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -25,7 +24,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
-import com.guru.composecookbook.ui.home.carousel.CarouselDot
 import com.guru.composecookbook.ui.home.carousel.Pager
 import com.guru.composecookbook.ui.home.carousel.PagerState
 
@@ -61,12 +59,12 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
                 }
             }
             Button(
-                onClick = { if (pagerState.currentPage != onboardingList.size -1) pagerState.currentPage = pagerState.currentPage+1 },
+                onClick = { if (pagerState.currentPage != onboardingList.size - 1) pagerState.currentPage = pagerState.currentPage + 1 },
                 modifier = Modifier
                     .animateContentSize()
                     .align(Alignment.BottomCenter).padding(bottom = 32.dp).height(50.dp).clip(CircleShape)
             ) {
-                Text(text = if (pagerState.currentPage == onboardingList.size -1) "Let's Begin" else "Next", modifier = Modifier.padding(horizontal = 32.dp))
+                Text(text = if (pagerState.currentPage == onboardingList.size - 1) "Let's Begin" else "Next", modifier = Modifier.padding(horizontal = 32.dp))
             }
         }
     }

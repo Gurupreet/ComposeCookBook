@@ -16,9 +16,9 @@ import com.guru.composecookbook.ui.home.androidviews.AndroidViews
 import com.guru.composecookbook.ui.home.carousel.CarouselLayout
 import com.guru.composecookbook.ui.home.constraintlayout.ConstraintLayoutDemos
 import com.guru.composecookbook.ui.home.dialogs.BottomSheetLayouts
-import com.guru.composecookbook.ui.learnwidgets.Layouts
 import com.guru.composecookbook.ui.home.pullrefreshdemos.PullRefreshList
 import com.guru.composecookbook.ui.home.tabslayout.TabLayout
+import com.guru.composecookbook.ui.learnwidgets.Layouts
 
 
 class DynamicUIActivity : AppCompatActivity() {
