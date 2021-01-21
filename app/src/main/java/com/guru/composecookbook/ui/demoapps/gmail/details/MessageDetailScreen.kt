@@ -9,7 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.Position
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
@@ -66,7 +66,7 @@ fun TopBarMoreActionPopupMenu() {
         expanded = expanded.value,
         onDismissRequest = { expanded.value = false },
         toggle = iconButton,
-        dropdownOffset = Position((-32).dp, (-32).dp),
+        dropdownOffset = DpOffset((-32).dp, (-32).dp),
         dropdownModifier = Modifier.background(Color.White)
     ) {
         DropdownMenuItem(onClick = { /* Handle refresh! */ }) {

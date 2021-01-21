@@ -25,7 +25,15 @@ fun Toggles() {
             onCheckedChange = { checked = !checked })
         Switch(
             checked = switched,
-            colors = SwitchConstants.defaultColors(checkedThumbColor = MaterialTheme.colors.primary),
+            colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.primary, disabledCheckedThumbColor = checkedThumbColor
+                .copy(alpha = ContentAlpha.disabled)
+                .compositeOver(MaterialTheme.colors.surface), disabledCheckedTrackColor = checkedTrackColor
+                .copy(alpha = ContentAlpha.disabled)
+                .compositeOver(MaterialTheme.colors.surface), disabledUncheckedThumbColor = uncheckedThumbColor
+                .copy(alpha = ContentAlpha.disabled)
+                .compositeOver(MaterialTheme.colors.surface), disabledUncheckedTrackColor = uncheckedTrackColor
+                .copy(alpha = ContentAlpha.disabled)
+                .compositeOver(MaterialTheme.colors.surface)),
             modifier = Modifier.padding(8.dp),
             onCheckedChange = { switched = it }
         )

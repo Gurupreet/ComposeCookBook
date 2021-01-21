@@ -1,10 +1,7 @@
 package com.guru.composecookbook.ui.templates
 
-import android.util.Log
-import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ScrollableColumn
@@ -21,9 +18,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.*
-import kotlin.math.PI
 import kotlin.math.cos
-import kotlin.math.log
 import kotlin.math.sin
 import kotlin.random.Random
 
@@ -33,7 +28,7 @@ val pieColors = listOf(green200, purple, tiktokRed, tiktokBlue, green700, orange
 fun createRandomFloatList(): List<Float> {
     val list = mutableListOf<Float>()
     (0..20).forEach { _ ->
-        list.add(Random.nextFloat()*10)
+        list.add(Random.nextFloat() * 10)
     }
     return list
 }
@@ -98,7 +93,7 @@ fun LineChart(
 ) {
     val yValues = remember { yAxisValues }
     val x = remember { Animatable(0f) }
-    val xTarget = (yValues.size -1).toFloat()
+    val xTarget = (yValues.size - 1).toFloat()
 
     LaunchedEffect(Unit) {
         x.animateTo(
@@ -146,7 +141,7 @@ fun BarCharts(
 ) {
     val x = remember { Animatable(0f) }
     val yValues = remember { yAxisValues }
-    val xTarget = (yValues.size -1).toFloat()
+    val xTarget = (yValues.size - 1).toFloat()
     LaunchedEffect(Unit) {
         x.animateTo(
             targetValue = xTarget,
@@ -177,7 +172,7 @@ fun PieCharts() {
     Canvas(modifier = Modifier.size(200.dp).padding(16.dp)) {
         var totalPieValue = pieChartValues.sum()
         var startAngle = 0f
-        var radius = size/2f
+        var radius = size / 2f
         pieChartValues.forEachIndexed { index, pieValue ->
             var sliceAngle = 360f * pieValue / totalPieValue
             drawPieSlice(
@@ -186,10 +181,10 @@ fun PieCharts() {
                 startAngle = startAngle,
                 sweepAngle = sliceAngle
             )
-            var textX = radius * cos(startAngle + sliceAngle/2)
-            var textY = radius * sin(startAngle + sliceAngle/2)
+            var textX = radius * cos(startAngle + sliceAngle / 2)
+            var textY = radius * sin(startAngle + sliceAngle / 2)
             startAngle += sliceAngle
-            drawLine()
+            //drawLine()
         }
 
     }
@@ -207,8 +202,6 @@ fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float, colors: List
         size = Size(width, height)
     )
 }
-
-
 
 
 fun getBounds(list: List<Float>): Pair<Float, Float> {
