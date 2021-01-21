@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.templates
 
+import android.util.Log
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
@@ -20,9 +21,14 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.*
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.log
+import kotlin.math.sin
 import kotlin.random.Random
 
-val increasingYValues: List<Float> = (0..20).map { it*10f }
+val pieChartValues = listOf(100f, 200f, 300f, 400f, 260f)
+val pieColors = listOf(green200, purple, tiktokRed, tiktokBlue, green700, orange700)
 
 fun createRandomFloatList(): List<Float> {
     val list = mutableListOf<Float>()
@@ -43,7 +49,8 @@ fun Charts() {
             Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                 LineChart(
                     yAxisValues = createRandomFloatList(),
-                    modifier = Modifier.fillMaxWidth().height(200.dp)
+                    modifier = Modifier.fillMaxWidth().height(200.dp),
+                    lineColors = gradientBluePurple
                 )
             }
 
@@ -70,12 +77,13 @@ fun Charts() {
 
             Card(modifier = Modifier.padding(8.dp), elevation = 16.dp) {
                 BarCharts(
-                    modifier = Modifier.fillMaxWidth().height(150.dp),
+                    modifier = Modifier.fillMaxWidth().height(150.dp).padding(top = 4.dp),
                     yAxisValues = createRandomFloatList(),
                     barColors = instagramGradient
                 )
             }
 
+            PieCharts()
         }
     }
 }
@@ -134,7 +142,7 @@ fun BarCharts(
     barColors: List<Color> = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primary),
     barWidth: Float = 20f,
     yAxisValues: List<Float>,
-    shouldAnimate: Boolean = true,
+    shouldAnimate: Boolean = true
 ) {
     val x = remember { Animatable(0f) }
     val yValues = remember { yAxisValues }
@@ -164,6 +172,33 @@ fun BarCharts(
     }
 }
 
+@Composable
+fun PieCharts() {
+    Canvas(modifier = Modifier.size(200.dp).padding(16.dp)) {
+        var totalPieValue = pieChartValues.sum()
+        var startAngle = 0f
+        var radius = size/2f
+        pieChartValues.forEachIndexed { index, pieValue ->
+            var sliceAngle = 360f * pieValue / totalPieValue
+            drawPieSlice(
+                color = pieColors[index],
+                size = size,
+                startAngle = startAngle,
+                sweepAngle = sliceAngle
+            )
+            var textX = radius * cos(startAngle + sliceAngle/2)
+            var textY = radius * sin(startAngle + sliceAngle/2)
+            startAngle += sliceAngle
+            drawLine()
+        }
+
+    }
+}
+
+fun DrawScope.drawPieSlice(color: Color, size: Size, startAngle: Float, sweepAngle: Float) {
+    drawArc(color = color, size = size, startAngle = startAngle, sweepAngle = sweepAngle,
+        useCenter = true)
+}
 
 fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float, colors: List<Color>) {
     drawRect(
@@ -172,6 +207,9 @@ fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float, colors: List
         size = Size(width, height)
     )
 }
+
+
+
 
 fun getBounds(list: List<Float>): Pair<Float, Float> {
     var min = Float.MAX_VALUE
