@@ -8,9 +8,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -24,10 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.*
 import kotlin.random.Random
 
-val lineChartX = listOf<Float>(100f, 200f, 300f, 400f, 500f, 600f, 900f, 1000f, 1100f, 1200f,
-    1300f, 1400f, 1500f)
-val lineChartY = listOf<Float>(100f, 200f, 250f, 110f, 500f, 200f, 900f, 200f, 250f, 110f, 500f,
-    200f, 600f)
+val increasingYValues: List<Float> = (0..20).map { it*10f }
 
 fun createRandomFloatList(): List<Float> {
     val list = mutableListOf<Float>()
@@ -43,139 +38,137 @@ fun Charts() {
         ScrollableColumn(modifier = Modifier.fillMaxSize()) {
             Spacer(modifier = Modifier.height(30.dp))
             Text(text = "Compose charts", style = MaterialTheme.typography.h6)
-            Spacer(modifier = Modifier.height(30.dp))
-            LineChart()
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                LineChart(
+                    yAxisValues = createRandomFloatList(),
+                    modifier = Modifier.fillMaxWidth().height(200.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                    LineChart(
+                        yAxisValues = createRandomFloatList(),
+                        modifier = Modifier.width(150.dp).height(80.dp),
+                        lineColors = listOf(tiktokBlue, tiktokRed)
+                    )
+                }
+                Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                    LineChart(
+                        yAxisValues = createRandomFloatList(),
+                        modifier = Modifier.width(150.dp).height(80.dp),
+                        lineColors = instagramGradient
+                    )
+                }
+            }
+
             Spacer(modifier = Modifier.height(20.dp))
+
+            Card(modifier = Modifier.padding(8.dp), elevation = 16.dp) {
+                BarCharts(
+                    modifier = Modifier.fillMaxWidth().height(150.dp),
+                    yAxisValues = createRandomFloatList(),
+                    barColors = instagramGradient
+                )
+            }
+
         }
     }
 }
 
 @Composable
-fun LineChart() {
+fun LineChart(
+    modifier: Modifier = Modifier,
+    lineColors: List<Color> = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primary),
+    lineWidth: Float = 4f,
+    yAxisValues: List<Float>,
+    shouldAnimate: Boolean = true,
+) {
+    val yValues = remember { yAxisValues }
     val x = remember { Animatable(0f) }
-    val yValues = remember { createRandomFloatList() }
+    val xTarget = (yValues.size -1).toFloat()
+
     LaunchedEffect(Unit) {
         x.animateTo(
-            targetValue = 20f,
-            animationSpec = tween(durationMillis = 500, easing = LinearEasing),
+            targetValue = xTarget,
+            animationSpec = tween(
+                durationMillis = if (shouldAnimate) 500 else 0,
+                easing = LinearEasing
+            ),
         )
     }
 
-    Canvas(modifier = Modifier.fillMaxWidth().height(300.dp).padding(8.dp)) {
+    Canvas(modifier = modifier.padding(8.dp)) {
         val path = Path()
-        val xbounds = Pair(0f, 20f)
+        val xbounds = Pair(0f, xTarget)
         val ybounds = getBounds(yValues)
         val scaleX = size.width / (xbounds.second - xbounds.first)
         val scaleY = size.height / (ybounds.second - ybounds.first)
         val yMove = ybounds.first * scaleY
-        val xMove = xbounds.first * scaleX
 
-        val startX = 0f * scaleX + xMove
-        val startY = yValues[0] * scaleY + yMove
-        path.moveTo(0f, startY)
-
-        (1..x.value.toInt()).forEachIndexed { index, value ->
-            val x = value * scaleX + xMove - startX
-            val y = size.height - (yValues[index] * scaleY) + yMove
+        (0..x.value.toInt()).forEach { value ->
+            val x = value * scaleX
+            val y = size.height - (yValues[value] * scaleY) + yMove
+            if (value == 0) {
+                path.moveTo(0f, y)
+                return@forEach
+            }
             path.lineTo(x, y)
         }
 
-        drawRect(color = Color.LightGray, size = size)
         drawPath(
             path = path,
-            brush = Brush.linearGradient(listOf(purple200, purple, purple700)),
-            style = Stroke(width = 6f)
+            brush = Brush.linearGradient(lineColors),
+            style = Stroke(width = lineWidth)
         )
     }
-    Spacer(modifier = Modifier.height(24.dp))
-
-    val yValues2 = remember { createRandomFloatList() }
-    val yValues3 = remember { createRandomFloatList() }
-
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-        Canvas(modifier = Modifier.width(200.dp).height(100.dp).padding(4.dp)) {
-            val path = Path()
-            val xbounds = Pair(0f, 20f)
-            val ybounds = getBounds(yValues2)
-            val scaleX = size.width / (xbounds.second - xbounds.first)
-            val scaleY = size.height / (ybounds.second - ybounds.first)
-            val yMove = ybounds.first * scaleY
-            val xMove = xbounds.first * scaleX
-
-            val startX = 0f * scaleX + xMove
-            val startY = yValues2[0] * scaleY + yMove
-            path.moveTo(0f, startY)
-
-            (1..x.value.toInt()).forEachIndexed { index, value ->
-                val x = value * scaleX + xMove - startX
-                val y = size.height - (yValues2[index] * scaleY) + yMove
-                path.lineTo(x, y)
-            }
-
-            drawRect(color = Color.LightGray, size = size)
-            drawPath(
-                path = path,
-                brush = Brush.linearGradient(listOf(tiktokBlue, tiktokRed)),
-                style = Stroke(width = 6f)
-            )
-        }
-        Canvas(modifier = Modifier.width(200.dp).height(100.dp).padding(4.dp)) {
-            val path = Path()
-            val xbounds = Pair(0f, 20f)
-            val ybounds = getBounds(yValues3)
-            val scaleX = size.width / (xbounds.second - xbounds.first)
-            val scaleY = size.height / (ybounds.second - ybounds.first)
-            val yMove = ybounds.first * scaleY
-            val xMove = xbounds.first * scaleX
-
-            val startX = 0f * scaleX + xMove
-            val startY = yValues3[0] * scaleY + yMove
-            path.moveTo(0f, startY)
-
-            (1..x.value.toInt()).forEachIndexed { index, value ->
-                val x = value * scaleX + xMove - startX
-                val y = size.height - (yValues3[index] * scaleY) + yMove
-                path.lineTo(x, y)
-            }
-
-            drawRect(color = Color.LightGray, size = Size(size.width, size.height))
-            drawPath(
-                path = path,
-                brush = Brush.linearGradient(listOf(orange200, orange500, orange700)),
-                style = Stroke(width = 6f)
-            )
-        }
-    }
-
 }
 
 @Composable
-fun BarCharts(xValues: List<Float>, yValues: List<Float>) {
-//    Canvas(modifier = Modifier.fillMaxWidth().height(300.dp)) {
-//        if (xValues.isEmpty() || yValues.isEmpty()) return@Canvas
-//        drawRect(color = Color.Gray, size = size)
-//        val xbounds = getBounds(xValues)
-//        val ybounds = getBounds(yValues)
-//        val scaleX = size.width/(xbounds.second - xbounds.first)
-//        val scaleY = size.height/(ybounds.second - ybounds.first)
-//        val yMove = xbounds.first*scaleY
-//        val xMove = xbounds.first*scaleX
-//        val startX = xValues[0] * scaleX + xMove
-//        val startY = yValues[0] * scaleY + yMove
-//        (1 until xValues.size).forEach { index ->
-//            val x = xValues[index] * scaleX + xMove - startX
-//            val y = size.height-(yValues[index] * scaleY) + yMove
-//            drawBar(topLeft = Offset(x, size.height), width = xMove, height = y)
-//        }
-//
-//    }
+fun BarCharts(
+    modifier: Modifier = Modifier,
+    barColors: List<Color> = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primary),
+    barWidth: Float = 20f,
+    yAxisValues: List<Float>,
+    shouldAnimate: Boolean = true,
+) {
+    val x = remember { Animatable(0f) }
+    val yValues = remember { yAxisValues }
+    val xTarget = (yValues.size -1).toFloat()
+    LaunchedEffect(Unit) {
+        x.animateTo(
+            targetValue = xTarget,
+            animationSpec = tween(
+                durationMillis = if (shouldAnimate) 500 else 0,
+                easing = LinearEasing
+            ),
+        )
+    }
+
+    Canvas(modifier = modifier.padding(horizontal = 8.dp)) {
+        val xbounds = Pair(0f, xTarget)
+        val ybounds = getBounds(yValues)
+        val scaleX = size.width / (xbounds.second - xbounds.first)
+        val scaleY = size.height / (ybounds.second - ybounds.first)
+        val yMove = ybounds.first * scaleY
+
+        (0..x.value.toInt()).forEach { value ->
+            val x = value * scaleX
+            val y = size.height - (yValues[value] * scaleY) + yMove
+            drawBar(topLeft = Offset(x, y), width = barWidth, height = size.height - y, barColors)
+        }
+    }
 }
 
 
-fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float) {
+fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float, colors: List<Color>) {
     drawRect(
         topLeft = topLeft,
-        brush = Brush.linearGradient(listOf(purple200, purple, purple700)),
+        brush = Brush.linearGradient(colors),
         size = Size(width, height)
     )
 }
