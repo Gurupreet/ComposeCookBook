@@ -9,12 +9,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun TemplateScreen() {
     val context = AmbientContext.current
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(modifier = Modifier.fillMaxSize().semantics { testTag = "Template Screen" }) {
         items(templates) { template ->
             Button(
                 onClick = {

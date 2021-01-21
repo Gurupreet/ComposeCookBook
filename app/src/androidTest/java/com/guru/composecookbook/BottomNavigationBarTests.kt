@@ -75,11 +75,11 @@ class BottomNavigationBarTests {
     }
 
     @Test
-    fun bottomNavigationBarMustHaveProfileEntry() {
+    fun bottomNavigationBarMustHaveTemplateEntry() {
         composeAndroidTestRule.apply {
             onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
-                .filterToOne(matcher = hasText("Profile").and(hasClickAction()))
+                .filterToOne(matcher = hasText("Template").and(hasClickAction()))
                 .assertExists()
         }
     }
@@ -108,6 +108,7 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTestApi
     @ExperimentalTesting
     @Test
     fun whenBottomNavEntryWidgetsClickedTheWidgetScreenIsDisplayed() {
@@ -127,6 +128,7 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTestApi
     @ExperimentalTesting
     @Test
     fun whenBottomNavBarAnimEntryClickedAnimationScreenIsDisplayed() {
@@ -143,6 +145,7 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTestApi
     @ExperimentalTesting
     @Test
     fun whenBottomNavBarDemoUiEntryClickedDemoUiScreenIsDisplayed() {
@@ -159,18 +162,19 @@ class BottomNavigationBarTests {
         }
     }
 
+    @ExperimentalTestApi
     @ExperimentalTesting
     @Test
-    fun whenBottomNavigationBarProfileEntryClickedProfileScreenIsDisplayed() {
+    fun whenBottomNavigationBarTemplateEntryClickedTemplateScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithText("Profile")
+            onNodeWithText("Template")
                 .performClick()
 
             clockTestRule.pauseClock()
 
             onRoot()
                 .onChildren()
-                .filterToOne(hasTestTag("Profile Screen"))
+                .filterToOne(hasTestTag("Template Screen"))
                 .assertExists()
         }
     }
