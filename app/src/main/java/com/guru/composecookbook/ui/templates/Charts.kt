@@ -78,7 +78,7 @@ fun Charts() {
                 )
             }
 
-            PieCharts()
+            PieCharts(pieChartValues)
         }
     }
 }
@@ -168,13 +168,26 @@ fun BarCharts(
 }
 
 @Composable
-fun PieCharts() {
+fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
+
+    val index = remember { Animatable(0f) }
+    val pieValues = remember { pieValues }
+    val targetIndex = (pieValues.size - 1).toFloat()
+    LaunchedEffect(Unit) {
+        index.animateTo(
+            targetValue = targetIndex,
+            animationSpec = tween(
+                durationMillis = if (shouldAnimate) 500 else 0,
+                easing = LinearEasing
+            ),
+        )
+    }
     Canvas(modifier = Modifier.size(200.dp).padding(16.dp)) {
         var totalPieValue = pieChartValues.sum()
         var startAngle = 0f
         var radius = size / 2f
-        pieChartValues.forEachIndexed { index, pieValue ->
-            var sliceAngle = 360f * pieValue / totalPieValue
+        (0..index.value.toInt()).forEach { index  ->
+            var sliceAngle = 360f * pieChartValues[index] / totalPieValue
             drawPieSlice(
                 color = pieColors[index],
                 size = size,
