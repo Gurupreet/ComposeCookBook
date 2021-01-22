@@ -1,8 +1,6 @@
 package com.guru.composecookbook.ui.templates
 
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
@@ -22,8 +20,9 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
 
-val pieChartValues = listOf(100f, 200f, 300f, 400f, 260f)
-val pieColors = listOf(green200, purple, tiktokRed, tiktokBlue, green700, orange700)
+val pieColors = listOf(green200, purple, tiktokBlue, tiktokRed, blue700, orange200)
+val increasingChart5Times = (0..10).map { it*it*1f }.toList()
+val increasingChart10Times = (10..20).map { it*it*1f }.toList()
 
 fun createRandomFloatList(): List<Float> {
     val list = mutableListOf<Float>()
@@ -55,16 +54,23 @@ fun Charts() {
                 Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                     LineChart(
                         yAxisValues = createRandomFloatList(),
-                        modifier = Modifier.width(150.dp).height(80.dp),
+                        modifier = Modifier.width(150.dp).height(100.dp),
                         lineColors = listOf(tiktokBlue, tiktokRed)
                     )
                 }
                 Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
-                    LineChart(
-                        yAxisValues = createRandomFloatList(),
-                        modifier = Modifier.width(150.dp).height(80.dp),
-                        lineColors = instagramGradient
-                    )
+                    Box {
+                        LineChart(
+                            yAxisValues = increasingChart5Times,
+                            modifier = Modifier.width(160.dp).height(100.dp),
+                            lineColors = listOf(tiktokBlue, blue200)
+                        )
+                        LineChart(
+                            yAxisValues = increasingChart10Times,
+                            modifier = Modifier.width(160.dp).height(100.dp),
+                            lineColors = listOf(orange200, orange700)
+                        )
+                    }
                 }
             }
 
@@ -78,7 +84,20 @@ fun Charts() {
                 )
             }
 
-            PieCharts(pieChartValues)
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat()*10 }
+                    PieCharts(pieChartValues)
+                }
+                Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat()*10 }
+                    PieCharts(pieChartValues)
+                }
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+
         }
     }
 }
@@ -171,41 +190,37 @@ fun BarCharts(
 fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
 
     val index = remember { Animatable(0f) }
-    val pieValues = remember { pieValues }
-    val targetIndex = (pieValues.size - 1).toFloat()
+    val targetIndex = (pieValues.size -1).toFloat()
     LaunchedEffect(Unit) {
         index.animateTo(
             targetValue = targetIndex,
             animationSpec = tween(
-                durationMillis = if (shouldAnimate) 500 else 0,
-                easing = LinearEasing
+                durationMillis = if (shouldAnimate) 300 else 0,
+                easing = FastOutSlowInEasing
             ),
         )
     }
-    Canvas(modifier = Modifier.size(200.dp).padding(16.dp)) {
-        var totalPieValue = pieChartValues.sum()
+    Canvas(modifier = Modifier.size(180.dp).padding(16.dp)) {
+        var totalPieValue = pieValues.sum()
         var startAngle = 0f
-        var radius = size / 2f
-        (0..index.value.toInt()).forEach { index  ->
-            var sliceAngle = 360f * pieChartValues[index] / totalPieValue
+
+        (0..index.value.toInt()).forEach { index ->
+            var sliceAngle: Float = 360f * pieValues[index] / totalPieValue
             drawPieSlice(
                 color = pieColors[index],
                 size = size,
                 startAngle = startAngle,
-                sweepAngle = sliceAngle
+                sweepAngle = sliceAngle,
             )
-            var textX = radius * cos(startAngle + sliceAngle / 2)
-            var textY = radius * sin(startAngle + sliceAngle / 2)
             startAngle += sliceAngle
-            //drawLine()
         }
 
     }
 }
 
 fun DrawScope.drawPieSlice(color: Color, size: Size, startAngle: Float, sweepAngle: Float) {
-    drawArc(color = color, size = size, startAngle = startAngle, sweepAngle = sweepAngle,
-        useCenter = true)
+    drawArc(
+        color = color, size = size, startAngle = startAngle, sweepAngle = sweepAngle, useCenter = true)
 }
 
 fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float, colors: List<Color>) {
