@@ -18,13 +18,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.theme.green500
-import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.CryptoHomeInteractionEvents
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.utils.roundToThreeDecimals
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.utils.roundToTwoDecimals
+import com.guru.composecookbook.ui.templates.LineChart
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
@@ -51,17 +51,24 @@ fun CryptoListItem(
             modifier = Modifier.preferredSize(40.dp).padding(4.dp),
             contentScale = ContentScale.Crop
         )
-        Text(
-            text = crypto.symbol,
-            style = typography.h6.copy(fontSize = 16.sp),
-            modifier = Modifier.padding(4.dp)
-        )
-        Column(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(0.4f)) {
+            Text(
+                text = crypto.symbol,
+                style = typography.h6.copy(fontSize = 16.sp),
+                modifier = Modifier.padding(horizontal = 4.dp)
+            )
             Text(
                 text = "$${crypto.price}",
-                style = typography.h6,
+                style = typography.h6.copy(fontSize = 16.sp),
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().align(Alignment.End)
+                modifier = Modifier.padding(horizontal = 4.dp)
+            )
+        }
+        Column(modifier = Modifier.weight(1f)) {
+            LineChart(
+                modifier = Modifier.width(100.dp).height(50.dp).align(Alignment.CenterHorizontally),
+                yAxisValues = crypto.chartData,
+                lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
             )
             Text(
                 text = "${crypto.dailyChange.roundToThreeDecimals()}" +

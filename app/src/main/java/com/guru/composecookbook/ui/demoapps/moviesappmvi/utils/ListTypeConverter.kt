@@ -37,5 +37,39 @@ class ListTypeConverter {
 
             return genreIds
         }
+
+        @TypeConverter
+        @JvmStatic
+        fun gettingFloatListFromString(genreIds: String?): List<Float>? {
+            val list = arrayListOf<Float>()
+
+            val array =
+                genreIds?.split(",".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
+            if (array.isNullOrEmpty()) {
+                return null
+            }
+            for (s in array) {
+                if (!s.isEmpty()) {
+                    list.add(s.toFloat())
+                }
+            }
+            return list
+        }
+
+        @TypeConverter
+        @JvmStatic
+        fun writingStringFromFloatList(list: List<Float>?): String? {
+            var genreIds = ""
+            if (genreIds.isEmpty()) {
+                return null
+            } else {
+                for (i in list!!) {
+                    genreIds += ",$i"
+                }
+            }
+
+            return genreIds
+        }
+
     }
 }

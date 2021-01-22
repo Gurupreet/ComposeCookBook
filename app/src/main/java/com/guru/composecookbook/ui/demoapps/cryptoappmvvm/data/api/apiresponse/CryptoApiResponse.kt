@@ -12,5 +12,8 @@ data class CryptoApiResponse(
     val low_24h: Double,
     val price_change_24h: Double,
     val price_change_percentage_24h: Double,
-    val total_supply: Double
+    val total_supply: Double,
+    val sparkline_in_7d: SparkLineData
 )
+
+data class SparkLineData(val price: List<Float>)

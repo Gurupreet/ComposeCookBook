@@ -5,6 +5,7 @@ import androidx.room.*
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 
 @Dao
+@TypeConverters()
 interface CryptoDao {
 
     @Transaction

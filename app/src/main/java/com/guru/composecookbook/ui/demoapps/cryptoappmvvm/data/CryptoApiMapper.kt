@@ -15,6 +15,7 @@ class CryptoApiMapper {
         low = cryptoApiResponse.low_24h,
         volume = cryptoApiResponse.total_volume,
         supply = cryptoApiResponse.total_supply,
-        marketCap = cryptoApiResponse.market_cap
+        marketCap = cryptoApiResponse.market_cap,
+        chartData = cryptoApiResponse.sparkline_in_7d.price
     )
 }

@@ -76,7 +76,7 @@ fun HomeScreenContent(
                     BottomNavType.WIDGETS -> WidgetScreen()
                     BottomNavType.ANIMATION -> AnimationScreen()
                     BottomNavType.DEMOUI -> DemoUIList()
-                    BottomNavType.TEMPLATE -> TemplateScreen()
+                    BottomNavType.TEMPLATE -> TemplateScreen(appThemeState.value.darkTheme)
 
                 }
             }

@@ -14,13 +14,13 @@ import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TemplateScreen() {
+fun TemplateScreen(darkTheme: Boolean) {
     val context = AmbientContext.current
     LazyColumn(modifier = Modifier.fillMaxSize().semantics { testTag = "Template Screen" }) {
         items(templates) { template ->
             Button(
                 onClick = {
-                    context.startActivity(TemplatesActivity.newIntent(context, template, false))
+                    context.startActivity(TemplatesActivity.newIntent(context, template, darkTheme))
                 },
                 modifier = Modifier.fillMaxWidth().padding(12.dp)
             ) {

@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.daos.CryptoDao
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
+import com.guru.composecookbook.ui.demoapps.moviesappmvi.utils.ListTypeConverter
 
-@Database(entities = [Crypto::class], version = 3)
+@Database(entities = [Crypto::class], version = 4)
+@TypeConverters(ListTypeConverter::class)
 abstract class CryptoDatabase : RoomDatabase() {
     abstract fun cryptoDao(): CryptoDao
 

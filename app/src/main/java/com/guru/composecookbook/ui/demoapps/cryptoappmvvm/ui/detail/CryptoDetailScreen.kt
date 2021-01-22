@@ -23,12 +23,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.theme.green700
-import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.utils.roundToTwoDecimals
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.home.lists.VerticalListItemSmall
+import com.guru.composecookbook.ui.templates.BarCharts
+import com.guru.composecookbook.ui.templates.LineChart
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
 
@@ -49,7 +50,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
                     .padding(top = 16.dp, start = 16.dp, end = 16.dp), scrollState = scrollState
             ) {
                 Spacer(modifier = Modifier.height(200.dp))
-                //TODO: Charts
+                CryptoCharts(crypto)
                 StatisticsSection(crypto)
                 FavSection()
                 NewsSection(crypto)
@@ -84,6 +85,30 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
                 " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
             color = if (crypto.dailyChange > 0) green700 else Color.Red
         )
+    }
+}
+
+@Composable
+fun CryptoCharts(crypto: Crypto) {
+    Card(
+        modifier = Modifier.padding(vertical = 8.dp),
+        elevation = 8.dp,
+        shape = RoundedCornerShape(4.dp)
+    ) {
+        Column {
+            LineChart(
+                modifier = Modifier.fillMaxWidth().height(100.dp),
+                yAxisValues = crypto.chartData,
+                lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            BarCharts(
+                modifier = Modifier.fillMaxWidth().height(120.dp),
+                yAxisValues = crypto.chartData,
+                barColors = gradientBluePurple,
+                barWidth = 2f
+            )
+        }
     }
 }
 
