@@ -156,6 +156,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) }
         )
         BottomNavigationItem(
+            modifier = Modifier.testTag("Template"),
             icon = { Icon(imageVector = Icons.Outlined.ShopTwo) },
             selected = homeScreenState.value == BottomNavType.TEMPLATE,
             onClick = {

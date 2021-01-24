@@ -167,7 +167,7 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavigationBarTemplateEntryClickedTemplateScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithText("Template")
+            onNodeWithTag(testTag = "Template")
                 .performClick()
 
             clockTestRule.pauseClock()
