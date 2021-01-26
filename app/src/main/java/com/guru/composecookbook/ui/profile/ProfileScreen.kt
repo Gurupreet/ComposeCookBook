@@ -137,13 +137,13 @@ fun SocialRow() {
             modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 16.dp)
         ) {
             IconButton(onClick = { launchSocialActivity(context, "github") }) {
-                Icon(asset = vectorResource(id = R.drawable.ic_github_square_brands))
+                Icon(vectorResource(id = R.drawable.ic_github_square_brands))
             }
             IconButton(onClick = { launchSocialActivity(context, "twitter") }) {
-                Icon(asset = vectorResource(id = R.drawable.ic_twitter_square_brands))
+                Icon(vectorResource(id = R.drawable.ic_twitter_square_brands))
             }
             IconButton(onClick = { launchSocialActivity(context, "linkedin") }) {
-                Icon(asset = vectorResource(id = R.drawable.ic_linkedin_brands))
+                Icon(vectorResource(id = R.drawable.ic_linkedin_brands))
             }
         }
     }
@@ -161,7 +161,7 @@ fun MoreInfoSection() {
     ListItem(
         icon = {
             Icon(
-                asset = vectorResource(id = R.drawable.ic_github_square_brands),
+                vectorResource(id = R.drawable.ic_github_square_brands),
                 modifier = Modifier.preferredSize(24.dp)
             )
         },
@@ -176,7 +176,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(asset = Icons.Rounded.Email) },
+        icon = { Icon(Icons.Rounded.Email) },
         text = {
             Text(
                 text = "Contact Me",
@@ -188,7 +188,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(asset = Icons.Rounded.Settings) },
+        icon = { Icon(Icons.Rounded.Settings) },
         text = {
             Text(
                 text = "Demo Settings",
@@ -230,14 +230,14 @@ fun TopAppBarView(scroll: Float) {
             },
             navigationIcon = {
                 Image(
-                    asset = imageResource(id = R.drawable.p1),
+                    imageResource(id = R.drawable.p1),
                     modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                         .preferredSize(32.dp).clip(CircleShape)
                 )
             },
             actions = {
                 Icon(
-                    asset = Icons.Default.Settings,
+                    Icons.Default.Settings,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
@@ -250,7 +250,7 @@ fun TopAppBarView(scroll: Float) {
 fun AnimatedImage(scroll: Float) {
     val dynamicAnimationSizeValue = (initialimageFloat - scroll).coerceIn(36f, initialimageFloat)
     Image(
-        asset = imageResource(id = R.drawable.p1),
+        imageResource(id = R.drawable.p1),
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(start = 16.dp)

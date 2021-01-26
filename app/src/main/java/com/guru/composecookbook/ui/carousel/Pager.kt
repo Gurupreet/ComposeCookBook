@@ -10,11 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.drawWithContent
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.drawscope.scale
-import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.layout.Measurable
-import androidx.compose.ui.layout.ParentDataModifier
+import androidx.compose.ui.layout.*
 import androidx.compose.ui.unit.Density
-import androidx.compose.ui.util.lerp
 import kotlin.math.roundToInt
 
 /**
@@ -103,15 +100,15 @@ private val Measurable.page: Int
 
 @Composable
 fun Pager(
+    modifier: Modifier = Modifier,
     state: PagerState,
     orientation: Orientation = Orientation.Horizontal,
     offscreenLimit: Int = 2,
-    modifier: Modifier = Modifier,
     pageContent: @Composable PagerScope.() -> Unit
 ) {
     var pageSize by remember { mutableStateOf(0) }
     Layout(
-        children = {
+        content = {
             val minPage = (state.currentPage - offscreenLimit).coerceAtLeast(state.minPage)
             val maxPage = (state.currentPage + offscreenLimit).coerceAtMost(state.maxPage)
 
@@ -236,19 +233,19 @@ class PagerScope(
             val scale = if (offsetForPage < 0) {
                 // If the page is to the left of the current page, we scale from min -> 1f
                 lerp(
-                    start = unselectedScale,
-                    stop = 1f,
+                    start = ScaleFactor(unselectedScale.toLong()),
+                    stop = ScaleFactor(1),
                     fraction = (1f + offsetForPage).coerceIn(0f, 1f)
                 )
             } else {
                 // If the page is to the right of the current page, we scale from 1f -> min
                 lerp(
-                    start = 1f,
-                    stop = unselectedScale,
+                    start = ScaleFactor(1),
+                    stop = ScaleFactor(unselectedScale.toLong()),
                     fraction = offsetForPage.coerceIn(0f, 1f)
                 )
             }
-            scale(scale, scale, center) {
+            scale(scale.scaleX, scale.scaleY, center) {
                 this@drawWithContent.drawContent()
             }
         }

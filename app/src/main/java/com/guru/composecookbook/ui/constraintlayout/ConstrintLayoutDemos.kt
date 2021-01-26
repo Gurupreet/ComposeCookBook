@@ -52,7 +52,7 @@ fun ConstraintLayoutListItem() {
         createVerticalChain(title, subtitle, space, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            asset = imageResource(id = item.imageId),
+            imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(120.dp)
@@ -105,7 +105,6 @@ fun ConstraintLayoutListItem() {
         )
         IconButton(
             onClick = { },
-            icon = { Icon(Icons.Default.FavoriteBorder) },
             modifier = Modifier
                 .constrainAs(button) {
                     linkTo(
@@ -118,7 +117,9 @@ fun ConstraintLayoutListItem() {
                         endMargin = 8.dp
                     )
                 }
-        )
+        ){
+            Icon(Icons.Default.FavoriteBorder)
+        }
     }
 }
 
@@ -134,7 +135,7 @@ fun ConstraintLayoutBigListItem() {
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            asset = imageResource(id = item.imageId),
+            imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredHeight(200.dp)
@@ -183,13 +184,14 @@ fun ConstraintLayoutBigListItem() {
         )
         IconButton(
             onClick = { },
-            icon = { Icon(Icons.Default.FavoriteBorder) },
             modifier = Modifier
                 .constrainAs(button) {
                     top.linkTo(parent.top, margin = 8.dp)
                     end.linkTo(parent.end, margin = 8.dp)
                 }
-        )
+        ){
+            Icon(Icons.Default.FavoriteBorder)
+        }
     }
 }
 

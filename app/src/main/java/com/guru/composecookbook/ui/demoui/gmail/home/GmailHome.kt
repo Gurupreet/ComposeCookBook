@@ -19,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -115,11 +115,11 @@ fun GmailHome(navController: NavHostController) {
 }
 
 @Composable
-fun IconWithBadge(badge: Int, icon: VectorAsset, modifier: Modifier = Modifier) {
+fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) {
 
     Box(modifier = Modifier.preferredSize(36.dp)) {
         Icon(
-            asset = icon,
+            icon,
             modifier = modifier.align(
                 Alignment.BottomCenter
             )
@@ -161,7 +161,7 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
         AnimatingFabContent(
             icon = {
                 Icon(
-                    asset = Icons.Outlined.Edit
+                    Icons.Outlined.Edit
                 )
             },
             text = {

@@ -45,7 +45,7 @@ fun SpotifyHomeGridItem(album: Album) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Image(
-                asset = imageResource(id = album.imageId),
+                imageResource(id = album.imageId),
                 modifier = Modifier.preferredSize(55.dp),
                 contentScale = ContentScale.Crop
             )
@@ -72,7 +72,7 @@ fun SpotifyLaneItem(album: Album) {
                 })
     ) {
         Image(
-            asset = imageResource(id = album.imageId),
+            imageResource(id = album.imageId),
             modifier = Modifier.preferredWidth(180.dp)
                 .preferredHeight(160.dp),
             contentScale = ContentScale.Crop
@@ -112,7 +112,7 @@ fun SpotifySearchGridItem(album: Album) {
             modifier = Modifier.padding(8.dp)
         )
         Image(
-            asset = imageResource(id = album.imageId),
+            imageResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(70.dp)
                 .align(Alignment.Bottom)

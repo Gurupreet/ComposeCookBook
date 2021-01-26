@@ -19,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Position
@@ -49,7 +49,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
             )
             IconButton(onClick = { isFavourite.value = !isFavourite.value }) {
-                Icon(asset = if (isFavourite.value) Icons.Outlined.Star else Icons.Outlined.StarBorder)
+                Icon(if (isFavourite.value) Icons.Outlined.Star else Icons.Outlined.StarBorder)
             }
         }
 
@@ -57,7 +57,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
 
             Image(
-                asset = imageResource(id = R.drawable.p3),
+                imageResource(id = R.drawable.p3),
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .preferredSize(32.dp)
@@ -92,12 +92,12 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                 )
                 {
                     Text(text = "to me")
-                    Icon(asset = Icons.Outlined.ExpandMore)
+                    Icon(Icons.Outlined.ExpandMore)
                 }
             }
 
             IconButton(onClick = {}) {
-                Icon(asset = Icons.Outlined.SubdirectoryArrowLeft)
+                Icon(Icons.Outlined.SubdirectoryArrowLeft)
             }
 
             MessageActionPopupMenu()
@@ -174,7 +174,7 @@ fun MessageActionPopupMenu() {
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(asset = Icons.Outlined.MoreVert)
+            Icon(Icons.Outlined.MoreVert)
         }
     }
 
@@ -204,14 +204,14 @@ fun MessageActionPopupMenu() {
 
 
 @Composable
-fun ReplyTypeAction(asset: VectorAsset, text: String, modifier: Modifier) {
+fun ReplyTypeAction(asset: ImageVector, text: String, modifier: Modifier) {
     Row(
         modifier = modifier
             .padding(8.dp)
             .border(1.dp, Color.LightGray, shape = RoundedCornerShape(8.dp))
             .padding(horizontal = 8.dp, vertical = 16.dp)
     ) {
-        Icon(asset = asset)
+        Icon(asset)
         Text(
             text = text,
             modifier = Modifier

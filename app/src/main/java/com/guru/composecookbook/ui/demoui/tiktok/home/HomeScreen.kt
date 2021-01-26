@@ -113,13 +113,13 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(asset = vectorResource(id = R.drawable.ic_comment_dots_solid))
+        Icon(vectorResource(id = R.drawable.ic_comment_dots_solid))
         Text(
             text = "1223",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(asset = vectorResource(id = R.drawable.ic_share_solid))
+        Icon(vectorResource(id = R.drawable.ic_share_solid))
         Text(
             text = "238",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
@@ -157,7 +157,7 @@ fun LikeIcon(id: Int) {
         )
     }
     Icon(
-        asset = vectorResource(id = R.drawable.ic_heart_solid),
+        vectorResource(id = R.drawable.ic_heart_solid),
         modifier = Modifier
             .clickable(onClick = { fav = !fav })
             .drawLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
@@ -205,7 +205,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
         Box(modifier = modifier) {
             ImageWithBorder(imageId = imageId, modifier = modifier)
             Icon(
-                asset = Icons.Filled.Add,
+                Icons.Filled.Add,
                 modifier = Modifier
                     .preferredSize(20.dp)
                     .clip(CircleShape)
@@ -220,7 +220,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
 @Composable
 fun ImageWithBorder(imageId: Int, modifier: Modifier) {
     Image(
-        asset = imageResource(id = imageId),
+        imageResource(id = imageId),
         modifier = modifier.padding(8.dp).clip(CircleShape)
             .border(
                 shape = CircleShape,

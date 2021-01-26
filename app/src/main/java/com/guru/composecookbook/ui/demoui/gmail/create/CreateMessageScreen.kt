@@ -26,17 +26,17 @@ fun CreateMessageScreen(navController: NavHostController) {
                 contentColor = Color.Black,
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(asset = Icons.Outlined.ArrowBack)
+                        Icon(Icons.Outlined.ArrowBack)
                     }
 
                 },
                 actions = {
 
                     IconButton(onClick = {}) {
-                        Icon(asset = Icons.Outlined.Attachment)
+                        Icon(Icons.Outlined.Attachment)
                     }
                     IconButton(onClick = {}) {
-                        Icon(asset = Icons.Outlined.Send)
+                        Icon(Icons.Outlined.Send)
                     }
 
                     CreateMessageMoreActionPopupMenu()
@@ -56,7 +56,7 @@ fun CreateMessageMoreActionPopupMenu() {
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(asset = Icons.Outlined.MoreVert)
+            Icon(Icons.Outlined.MoreVert)
         }
     }
 

@@ -19,7 +19,7 @@ import com.guru.composecookbook.theme.tiktokRed
 @Preview
 @Composable
 fun TiktokCreateIcon() {
-    Box(alignment = Alignment.Center) {
+    Box(contentAlignment = Alignment.Center) {
         Row {
             Spacer(
                 modifier = Modifier
@@ -37,7 +37,8 @@ fun TiktokCreateIcon() {
             )
         }
         Icon(
-            asset = Icons.Filled.Add,
+
+            Icons.Filled.Add,
             tint = Color.Black,
             modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))

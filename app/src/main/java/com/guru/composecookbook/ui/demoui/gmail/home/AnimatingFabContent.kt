@@ -24,7 +24,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.util.lerp
+import androidx.compose.ui.layout.ScaleFactor
+import androidx.compose.ui.layout.lerp
 import kotlin.math.roundToInt
 
 
@@ -65,7 +66,7 @@ private fun IconAndTextRow(
 ) {
     Layout(
         modifier = modifier,
-        children = {
+        content = {
             icon()
             Box(modifier = Modifier.drawOpacity(opacityProgress())) {
                 text()
@@ -88,9 +89,9 @@ private fun IconAndTextRow(
         val expandedWidth = iconPlaceable.width + textPlaceable.width + iconPadding * 3
 
         // Apply the animation factor to go from initialWidth to fullWidth
-        val width = lerp(initialWidth, expandedWidth, widthProgress())
+        val width = lerp(ScaleFactor(initialWidth.toLong()), ScaleFactor(expandedWidth.toLong()), widthProgress())
 
-        layout(width.roundToInt(), height) {
+        layout(width.scaleX.toInt(), height) {
             iconPlaceable.place(
                 iconPadding.roundToInt(),
                 constraints.maxHeight / 2 - iconPlaceable.height / 2

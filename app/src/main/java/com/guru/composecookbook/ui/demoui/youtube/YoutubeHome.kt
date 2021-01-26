@@ -33,22 +33,22 @@ fun YoutubeHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     Icon(
-                        asset = vectorResource(id = R.drawable.ic_youtube),
+                        vectorResource(id = R.drawable.ic_youtube),
                         tint = Color.Red,
                         modifier = Modifier.padding(start = 16.dp)
                     )
                 },
                 actions = {
                     Icon(
-                        asset = Icons.Default.Videocam,
+                        Icons.Default.Videocam,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                     Icon(
-                        asset = Icons.Default.Search,
+                        Icons.Default.Search,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                     Image(
-                        asset = imageResource(id = R.drawable.p3),
+                        imageResource(id = R.drawable.p3),
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                             .preferredSize(24.dp).clip(CircleShape)
                     )

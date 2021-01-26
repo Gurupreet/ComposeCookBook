@@ -73,7 +73,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            asset = imageResource(id = album.imageId),
+            imageResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(55.dp).padding(4.dp)
         )
@@ -92,13 +92,13 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
         }
         if (album.id % 3 == 0) {
             Icon(
-                asset = Icons.Default.Favorite,
+                Icons.Default.Favorite,
                 tint = MaterialTheme.colors.primaryVariant,
                 modifier = Modifier.padding(4.dp).preferredSize(20.dp)
             )
         }
         Icon(
-            asset = Icons.Default.MoreVert,
+            Icons.Default.MoreVert,
             tint = Color.LightGray,
             modifier = Modifier.padding(4.dp)
         )
@@ -114,10 +114,10 @@ fun BackgroundListItem() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.Delete)
+            Icon(Icons.Default.Delete)
         }
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.Settings)
+            Icon(Icons.Default.Settings)
         }
     }
 }

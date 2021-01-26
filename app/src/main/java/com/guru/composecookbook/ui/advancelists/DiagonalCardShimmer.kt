@@ -21,7 +21,7 @@ import com.guru.composecookbook.ui.Animations.DiagonalShimmerAnimationDefinition
 
 
 @Composable
-fun DiagonalCardShimmerShimmer(
+fun DiagonalCardShimmer(
     imageHeight: Dp,
     padding: Dp = 16.dp
 ){

@@ -87,7 +87,7 @@ fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
         backgroundColor = blue,
         icon = {
             Icon(
-                asset = Icons.Filled.Favorite,
+                Icons.Filled.Favorite,
                 tint = Color.Red,
                 modifier = animateRotationModifier
             )

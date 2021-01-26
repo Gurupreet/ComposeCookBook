@@ -18,6 +18,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.carousel.Pager
 import com.guru.composecookbook.ui.carousel.PagerState
+import com.guru.composecookbook.ui.components.DiagonalCardShimmer
 import com.guru.composecookbook.ui.dynamic.DynamicUIActivity
 
 class AdvanceListsActivity : AppCompatActivity() {
@@ -51,7 +52,7 @@ class AdvanceListsActivity : AppCompatActivity() {
     }
 
     companion object {
-        val tabs = listOf("Shimmers", "Animated Lists", "Swipeable Lists")
+        val tabs = listOf("Shimmers", "Animated Lists", "Swipeable Lists", "List Shimmer", "Diagonal Shimmer")
         const val DARK_THEME = "darkTheme"
         fun newIntent(context: Context, isDarkTheme: Boolean) =
             Intent(context, AdvanceListsActivity::class.java).apply {
@@ -89,6 +90,7 @@ fun AdvanceListContent() {
                 1 -> AnimatedLists()
                 2 -> SwipeableLists()
                 3 -> LoadingListShimmer()
+                4 -> DiagonalCardShimmer(260.dp)
             }
         }
     }

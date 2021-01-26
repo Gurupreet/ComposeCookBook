@@ -37,7 +37,7 @@ fun SpotifyHome() {
     Box(modifier = Modifier.fillMaxSize()) {
         ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
         Icon(
-            asset = Icons.Outlined.Settings,
+            Icons.Outlined.Settings,
             tint = MaterialTheme.colors.onSurface,
             modifier = Modifier
                 .align(Alignment.TopEnd)
@@ -74,7 +74,7 @@ fun PlayerBottomBar(modifier: Modifier) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            asset = imageResource(id = R.drawable.adele21),
+            imageResource(id = R.drawable.adele21),
             modifier = Modifier.preferredSize(65.dp),
             contentScale = ContentScale.Crop
         )
@@ -83,8 +83,8 @@ fun PlayerBottomBar(modifier: Modifier) {
             style = typography.h6.copy(fontSize = 14.sp),
             modifier = Modifier.padding(8.dp).weight(1f),
         )
-        Icon(asset = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp))
-        Icon(asset = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp))
+        Icon(Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp))
+        Icon(Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp))
     }
 }
 

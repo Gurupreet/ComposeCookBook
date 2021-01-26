@@ -66,7 +66,7 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
             )
             .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {
-        Icon(asset = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
+        Icon(Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
         Text(
             text = album.song,
             color = MaterialTheme.colors.onSurface,
@@ -74,7 +74,7 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
                 .padding(16.dp)
                 .drawOpacity(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
         )
-        Icon(asset = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
+        Icon(Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
     }
 }
 
@@ -165,7 +165,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
             else 250.dp - Dp(scrollState.value / 20)
         val animateImageSize = animate(dynamicValue)
         Image(
-            asset = imageResource(id = album.imageId),
+            imageResource(id = album.imageId),
             modifier = Modifier
                 .preferredSize(animateImageSize)
                 .padding(8.dp)

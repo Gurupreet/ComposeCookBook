@@ -97,7 +97,7 @@ fun HeartButton(
 ){
     if (buttonState.value == HeartButtonState.ACTIVE) {
         Icon(
-            asset = Icons.Default.Favorite.copy(
+            Icons.Default.Favorite.copy(
                 defaultHeight = state[size],
                 defaultWidth = state[size],
             ),
@@ -110,7 +110,7 @@ fun HeartButton(
     }
     else {
         Icon(
-            asset = Icons.Default.Favorite.copy(
+            Icons.Default.Favorite.copy(
                 defaultHeight = state[size],
                 defaultWidth = state[size],
             ),

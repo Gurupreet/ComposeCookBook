@@ -22,7 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AnimationClockAmbient
 import androidx.compose.ui.res.imageResource
@@ -93,9 +93,9 @@ fun CarouselLayout() {
 }
 
 @Composable
-fun CarouselDot(selected: Boolean, color: Color, icon: VectorAsset) {
+fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
     Icon(
-        asset = icon,
+        icon,
         modifier = Modifier.padding(4.dp).preferredSize(12.dp),
         tint = if (selected) color else Color.Gray
     )
@@ -105,7 +105,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: VectorAsset) {
 fun CarouselItem(item: Item) {
     Box {
         Image(
-            asset = imageResource(id = item.imageId),
+            imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .padding(18.dp)
@@ -124,7 +124,7 @@ fun CarouselItem(item: Item) {
 @Composable
 fun CarouselItemCircle(item: Item) {
     Image(
-        asset = imageResource(id = item.imageId),
+        imageResource(id = item.imageId),
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(16.dp)
@@ -151,7 +151,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
                 style = typography.body2
             )
             Image(
-                asset = imageResource(id = item.imageId),
+                imageResource(id = item.imageId),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.padding(4.dp)
                     .align(Alignment.CenterHorizontally)

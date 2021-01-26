@@ -170,7 +170,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
             )
         }
         Icon(
-            asset = Icons.Default.MoreVert,
+            Icons.Default.MoreVert,
             tint = Color.LightGray,
             modifier = Modifier.padding(4.dp)
         )

@@ -64,19 +64,19 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
         if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
     BottomNavigation(backgroundColor = bottomNavBackground) {
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Home) },
+            icon = { Icon(Icons.Outlined.Home) },
             selected = spotifyNavItemState.value == SpotifyNavType.HOME,
             onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
             label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.Search) },
+            icon = { Icon(Icons.Outlined.Search) },
             selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
             onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
             label = { Text(text = stringResource(id = R.string.spotify_nav_search)) }
         )
         BottomNavigationItem(
-            icon = { Icon(asset = Icons.Outlined.LibraryMusic) },
+            icon = { Icon(Icons.Outlined.LibraryMusic) },
             selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
             onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
             label = { Text(text = stringResource(id = R.string.spotify_nav_library)) }

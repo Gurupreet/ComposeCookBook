@@ -94,10 +94,10 @@ fun CryptoBottomBar(onBack: () -> Unit) {
         cutoutShape = CircleShape
     ) {
         IconButton(onClick = { onBack }) {
-            Icon(asset = Icons.Default.ArrowBack)
+            Icon(Icons.Default.ArrowBack)
         }
         IconButton(onClick = {}) {
-            Icon(asset = Icons.Default.MoreVert)
+            Icon(Icons.Default.MoreVert)
         }
     }
 }
@@ -106,7 +106,7 @@ fun CryptoBottomBar(onBack: () -> Unit) {
 fun CryptoFloatingActionButton() {
     var pressed by remember { mutableStateOf(false) }
     ExtendedFloatingActionButton(
-        icon = { Icon(asset = Icons.Default.Add) },
+        icon = { Icon(Icons.Default.Add) },
         text = { Text(text = "Trade") },
         onClick = { pressed = !pressed },
         backgroundColor = MaterialTheme.colors.primary,

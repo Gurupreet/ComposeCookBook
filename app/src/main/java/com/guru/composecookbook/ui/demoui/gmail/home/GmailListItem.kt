@@ -39,7 +39,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            asset = imageResource(id = item.authorImageId),
+            imageResource(id = item.authorImageId),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(50.dp)
@@ -84,13 +84,6 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         var stared by remember(item.id) { mutableStateOf(false) }
         IconButton(
             onClick = { stared = !stared },
-            icon = {
-                Icon(
-                    asset = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
-                    modifier = Modifier.padding(end = 12.dp),
-                    tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
-                )
-            },
             modifier = Modifier
                 .constrainAs(button) {
                     linkTo(
@@ -103,7 +96,13 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
                         endMargin = 16.dp
                     )
                 }
-        )
+        ){
+            Icon(
+                if (stared) Icons.Default.Star else Icons.Default.StarBorder,
+                modifier = Modifier.padding(end = 12.dp),
+                tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
+            )
+        }
     }
 }
 

@@ -77,7 +77,7 @@ fun MoviePagerItem(
                     clicked.value = !clicked.value
                 }) {
                     Icon(
-                        asset = Icons.Default.LibraryAdd,
+                        Icons.Default.LibraryAdd,
                         tint = MaterialTheme.colors.primary,
                         modifier = Modifier
                             .drawLayer(

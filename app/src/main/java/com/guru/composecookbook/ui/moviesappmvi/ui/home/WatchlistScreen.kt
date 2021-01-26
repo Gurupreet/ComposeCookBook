@@ -87,7 +87,7 @@ fun MovieWatchlistItem(
             onClick = { onRemoveFromWatchlist.invoke() },
             modifier = Modifier.align(Alignment.BottomEnd)
         ) {
-            Icon(asset = Icons.Default.RemoveCircleOutline)
+            Icon(Icons.Default.RemoveCircleOutline)
         }
     }
 }
