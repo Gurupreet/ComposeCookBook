@@ -88,6 +88,7 @@ fun AdvanceListContent() {
                 0 -> ShimmerList()
                 1 -> AnimatedLists()
                 2 -> SwipeableLists()
+                3 -> LoadingListShimmer()
             }
         }
     }
