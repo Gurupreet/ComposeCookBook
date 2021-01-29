@@ -356,7 +356,8 @@ object DemoDataProvider {
         "CryptoApp+MVVM",
         "MoviesApp+MVVM",
         "DatingApp",
-        "TikTok"
+        "TikTok",
+        "Paint"
     )
 
 }

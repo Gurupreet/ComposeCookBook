@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
@@ -13,6 +14,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.gmail.home.GmailScreen
 import com.guru.composecookbook.ui.demoapps.instagram.InstagramHome
+import com.guru.composecookbook.ui.demoapps.paint.PaintApp
 import com.guru.composecookbook.ui.demoapps.twitter.TwitterHome
 import com.guru.composecookbook.ui.demoapps.youtube.YoutubeHome
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
@@ -28,6 +30,7 @@ class DemoUIHostActivity : AppCompatActivity() {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
     }
 
+    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
@@ -49,6 +52,7 @@ class DemoUIHostActivity : AppCompatActivity() {
     }
 }
 
+@ExperimentalAnimationApi
 @Composable
 fun DemoUIContent(demoUiType: String) {
     when (demoUiType) {
@@ -56,11 +60,12 @@ fun DemoUIContent(demoUiType: String) {
         "Twitter" -> TwitterHome()
         "Gmail" -> GmailScreen()
         "Youtube" -> YoutubeHome()
+        "Paint" -> PaintApp()
         else -> Text(text = "Comming soon", style = typography.h6)
     }
 }
 
-
+@ExperimentalAnimationApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
