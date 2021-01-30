@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.Icon
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -73,7 +73,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
                 style = typography.h6,
                 modifier = Modifier.padding(end = 8.dp)
             )
-            CoilImage(data = crypto.image, modifier = Modifier.preferredSize(28.dp))
+            CoilImage(data = crypto.image, modifier = Modifier.preferredSize(28.dp), contentDescription = null)
         }
 
         Text(

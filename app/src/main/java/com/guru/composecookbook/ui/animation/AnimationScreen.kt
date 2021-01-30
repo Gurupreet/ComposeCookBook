@@ -195,6 +195,7 @@ fun SingleImageScaleAnimation() {
         Image(
             bitmap = imageResource(R.drawable.food10),
             contentScale = ContentScale.Crop,
+            contentDescription = null,
             modifier = Modifier
                 .preferredSize(animateAsState(if (enabled.value) 100.dp else 250.dp).value)
                 .padding(8.dp)
@@ -204,6 +205,7 @@ fun SingleImageScaleAnimation() {
         Image(
             bitmap = imageResource(R.drawable.food12),
             contentScale = ContentScale.Crop,
+            contentDescription = null,
             modifier = Modifier
                 .preferredSize(animateAsState(if (!enabled.value) 100.dp else 250.dp).value)
                 .padding(8.dp)
@@ -355,12 +357,14 @@ fun DpMultiStateAnimation() {
         Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
             Image(
                 bitmap = imageResource(id = R.drawable.lana),
+                contentDescription = null,
                 modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey])
             )
         }
         Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
             Image(
                 bitmap = imageResource(id = R.drawable.billie),
+                contentDescription = null,
                 modifier = Modifier.height(100.dp - dpAnim[AnimationDefinitions.dpPropKey])
             )
         }
@@ -382,6 +386,7 @@ fun FloatMutliStateAnimation() {
     Card(backgroundColor = Color.White, modifier = Modifier.preferredSize(150.dp)) {
         Image(
             bitmap = imageResource(id = R.drawable.lana),
+            contentDescription = null,
             alpha = floatAnim[AnimationDefinitions.floatPropKey] / 100,
         )
     }
@@ -497,6 +502,7 @@ private fun DrawLayerAnimations() {
 
     Image(
         bitmap = imageResource(id = R.drawable.bp),
+        contentDescription = null,
         modifier = modifier
     )
 
@@ -506,6 +512,7 @@ private fun DrawLayerAnimations() {
     Box {
         Image(
             bitmap = imageResource(id = R.drawable.adele21),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw2) 30f else 5f).value,
                 translationX = animateAsState(if (draw2) 320f else 0f).value,
@@ -514,6 +521,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.dualipa),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw2) 30f else 10f).value,
                 translationX = animateAsState(if (draw2) -320f else 0f).value,
@@ -522,6 +530,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.edsheeran),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw2) 30f else 5f).value,
                 translationY = animateAsState(if (draw2) 0f else 50f).value
@@ -534,6 +543,7 @@ private fun DrawLayerAnimations() {
     Box {
         Image(
             bitmap = imageResource(id = R.drawable.wolves),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw3) 30f else 5f).value,
                 translationX = animateAsState(if (draw3) 320f else 0f).value,
@@ -543,6 +553,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.sam),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw3) 30f else 10f).value,
                 translationX = animateAsState(if (draw3) -320f else 0f).value,
@@ -552,6 +563,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.billie),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw3) 30f else 5f).value,
                 translationY = animateAsState(if (draw3) 0f else 50f).value,
@@ -565,6 +577,7 @@ private fun DrawLayerAnimations() {
     Box {
         Image(
             bitmap = imageResource(id = R.drawable.imagindragon),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw4) 30f else 5f).value,
                 translationX = animateAsState(if (draw4) 320f else 0f).value,
@@ -574,6 +587,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.khalid),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw4) 30f else 10f).value,
                 translationX = animateAsState(if (draw4) -320f else 0f).value,
@@ -583,6 +597,7 @@ private fun DrawLayerAnimations() {
         )
         Image(
             bitmap = imageResource(id = R.drawable.camelia),
+            contentDescription = null,
             modifier = Modifier.preferredSize(150.dp).graphicsLayer(
                 shadowElevation = animateAsState(if (draw4) 30f else 5f).value,
                 translationY = animateAsState(if (draw4) 0f else 50f).value,

@@ -38,17 +38,20 @@ fun MyPhotosSection() {
     ) {
         Image(
             bitmap = imageResource(id = R.drawable.food2),
+            contentDescription = null,
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
         Image(
             bitmap = imageResource(id = R.drawable.food3),
             modifier = imageModifier,
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Image(
             bitmap = imageResource(id = R.drawable.food6),
             modifier = imageModifier,
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
     }
@@ -59,16 +62,19 @@ fun MyPhotosSection() {
         Image(
             bitmap = imageResource(id = R.drawable.food12),
             modifier = imageModifier,
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Image(
             bitmap = imageResource(id = R.drawable.food13),
             modifier = imageModifier,
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Image(
             bitmap = imageResource(id = R.drawable.food15),
             modifier = imageModifier,
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
     }

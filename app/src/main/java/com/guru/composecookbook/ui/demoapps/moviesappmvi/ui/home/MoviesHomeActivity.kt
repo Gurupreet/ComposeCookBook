@@ -105,19 +105,19 @@ fun MoviesBottomBar(navType: MutableState<MovieNavType>) {
         if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
     BottomNavigation(backgroundColor = bottomNavBackground) {
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.MovieCreation) },
+            icon = { Icon(imageVector = Icons.Outlined.MovieCreation, contentDescription = null) },
             selected = navType.value == MovieNavType.SHOWING,
             onClick = { navType.value = MovieNavType.SHOWING },
             label = { Text(text = "Showing") },
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.Subscriptions) },
+            icon = { Icon(imageVector = Icons.Outlined.Subscriptions, contentDescription = null) },
             selected = navType.value == MovieNavType.TRENDING,
             onClick = { navType.value = MovieNavType.TRENDING },
             label = { Text(text = "Trending") }
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.LibraryAdd) },
+            icon = { Icon(imageVector = Icons.Outlined.LibraryAdd, contentDescription = null) },
             selected = navType.value == MovieNavType.WATCHLIST,
             onClick = { navType.value = MovieNavType.WATCHLIST },
             label = { Text(text = "Watchlist") }

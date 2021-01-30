@@ -76,6 +76,7 @@ fun RotateIcon(
 ) {
     Icon(
         imageVector = asset,
+        contentDescription = null,
         modifier = modifier
             .graphicsLayer(rotationZ = animateAsState(if (state) 0f else angle, tween(duration)).value)
     )

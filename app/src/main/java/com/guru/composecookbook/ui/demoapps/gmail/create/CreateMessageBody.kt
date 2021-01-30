@@ -42,6 +42,7 @@ fun CreateMessageBody(navController: NavController) {
             )
             Icon(
                 imageVector = Icons.Outlined.KeyboardArrowDown,
+                contentDescription = null,
                 modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
             )
         }
@@ -66,6 +67,7 @@ fun CreateMessageBody(navController: NavController) {
             )
             Icon(
                 imageVector = Icons.Outlined.KeyboardArrowDown,
+                contentDescription = null,
                 modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
             )
         }

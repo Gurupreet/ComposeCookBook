@@ -23,21 +23,21 @@ fun MessageDetailScreen(navController: NavHostController) {
                 contentColor = Color.Black,
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(imageVector = Icons.Outlined.ArrowBack)
+                        Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = null)
                     }
 
                 },
                 actions = {
 
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Archive)
+                        Icon(imageVector = Icons.Outlined.Archive,  contentDescription = null)
                     }
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Delete)
+                        Icon(imageVector = Icons.Outlined.Delete,  contentDescription = null)
                     }
 
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Mail)
+                        Icon(imageVector = Icons.Outlined.Mail,  contentDescription = null)
 
                     }
 
@@ -58,7 +58,7 @@ fun TopBarMoreActionPopupMenu() {
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(imageVector = Icons.Outlined.MoreVert)
+            Icon(imageVector = Icons.Outlined.MoreVert, contentDescription = null)
         }
     }
 

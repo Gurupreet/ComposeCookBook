@@ -46,6 +46,7 @@ fun SpotifyHomeGridItem(album: Album) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Image(
                 bitmap = imageResource(id = album.imageId),
+                contentDescription = null,
                 modifier = Modifier.preferredSize(55.dp),
                 contentScale = ContentScale.Crop
             )
@@ -75,6 +76,7 @@ fun SpotifyLaneItem(album: Album) {
             bitmap = imageResource(id = album.imageId),
             modifier = Modifier.preferredWidth(180.dp)
                 .preferredHeight(160.dp),
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Text(
@@ -114,6 +116,7 @@ fun SpotifySearchGridItem(album: Album) {
         Image(
             bitmap = imageResource(id = album.imageId),
             contentScale = ContentScale.Crop,
+            contentDescription = null,
             modifier = Modifier.preferredSize(70.dp)
                 .align(Alignment.Bottom)
                 .graphicsLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)

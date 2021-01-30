@@ -63,7 +63,7 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 elevation = if (uiType == DynamicUiType.TABS.name) 0.dp else 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack)
+                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
                     }
                 }
             )

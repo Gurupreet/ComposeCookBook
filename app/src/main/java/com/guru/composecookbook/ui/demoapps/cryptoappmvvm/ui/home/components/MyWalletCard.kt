@@ -46,6 +46,7 @@ fun MyWalletCard() {
         val horizontalCenterGuideline = createGuidelineFromStart(0.5f)
         Icon(
             imageVector = vectorResource(id = R.drawable.ic_ethereum_brands),
+            contentDescription = null,
             modifier = Modifier.preferredSize(28.dp).alpha(0.7f).constrainAs(image) {
                 start.linkTo(parent.start)
                 top.linkTo(title.bottom, margin = 8.dp)
@@ -100,6 +101,7 @@ fun MyWalletCard() {
             icon = {
                 Icon(
                     imageVector = Icons.Default.QrCodeScanner,
+                    contentDescription = null,
                     tint = MaterialTheme.colors.onSurface
                 )
             },
@@ -117,13 +119,14 @@ fun MyWalletCard() {
                     end.linkTo(parent.end)
                     top.linkTo(asset.bottom, margin = 16.dp)
                 },
-            icon = { Icon(imageVector = Icons.Default.Send) },
+            icon = { Icon(imageVector = Icons.Default.Send, contentDescription = null) },
             text = { Text(text = "Send") },
             backgroundColor = Color.Transparent,
             elevation = FloatingActionButtonDefaults.elevation()
         )
         Image(
             imageVector = Icons.Default.QrCodeScanner,
+            contentDescription = null,
             modifier = Modifier.preferredSize(250.dp)
                 .alpha(animateAsState(if (extended) 1f else 0f).value)
                 .constrainAs(scan) {

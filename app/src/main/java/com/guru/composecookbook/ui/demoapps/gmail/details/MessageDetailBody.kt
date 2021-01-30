@@ -58,6 +58,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
             Image(
                 bitmap = imageResource(id = R.drawable.p3),
+                contentDescription = null,
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .preferredSize(32.dp)

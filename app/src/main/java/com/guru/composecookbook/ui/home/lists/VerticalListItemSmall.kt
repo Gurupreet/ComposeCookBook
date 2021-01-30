@@ -51,6 +51,7 @@ fun ItemImage(item: Item, modifier: Modifier = Modifier) {
     Image(
         bitmap = image,
         contentScale = ContentScale.Crop,
+        contentDescription = null,
         modifier = modifier
             .preferredSize(100.dp, 80.dp)
             .clip(MaterialTheme.shapes.medium)
@@ -65,10 +66,10 @@ fun FavIcon(modifier: Modifier = Modifier) {
         onCheckedChange = { isFavourite.value = !isFavourite.value }
     ) {
         if (isFavourite.value) {
-            Icon(imageVector = Icons.Filled.Favorite, modifier = modifier)
+            Icon(imageVector = Icons.Filled.Favorite, contentDescription = null, modifier = modifier)
         } else {
             Icon(
-                imageVector = Icons.Default.FavoriteBorder, modifier = modifier
+                imageVector = Icons.Default.FavoriteBorder, contentDescription = null, modifier = modifier
             )
         }
     }

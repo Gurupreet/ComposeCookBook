@@ -35,6 +35,7 @@ fun YoutubeListItem(item: Tweet) {
 
         Image(
             bitmap = imageResource(id = item.tweetImageId),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredHeight(200.dp)
@@ -48,6 +49,7 @@ fun YoutubeListItem(item: Tweet) {
         )
         Image(
             bitmap = imageResource(id = R.drawable.p3),
+            contentDescription = null,
             modifier = Modifier.preferredSize(32.dp).clip(CircleShape).constrainAs(authorImage) {
                 start.linkTo(parent.start, margin = 12.dp)
                 top.linkTo(image.bottom, margin = 16.dp)
@@ -88,7 +90,7 @@ fun YoutubeListItem(item: Tweet) {
                     end.linkTo(parent.end)
                 }
         ) {
-            Icon(Icons.Default.MoreVert, tint = Color.Gray)
+            Icon(Icons.Default.MoreVert, tint = Color.Gray, contentDescription = null)
         }
     }
 }

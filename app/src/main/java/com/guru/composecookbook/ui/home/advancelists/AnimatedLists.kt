@@ -31,6 +31,7 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.youtube.YoutubeChip
 import com.guru.composecookbook.ui.utils.VerticalGrid
 import dev.chrisbanes.accompanist.coil.CoilImage
+import androidx.compose.foundation.lazy.itemsIndexed
 
 @Composable
 fun AnimatedLists() {
@@ -157,6 +158,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
     ) {
         CoilImage(
             data = "https://picsum.photos/id/${itemIndex + 1}/200/200",
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(55.dp).padding(4.dp)
         )
@@ -175,6 +177,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         }
         Icon(
             imageVector = Icons.Default.MoreVert,
+            contentDescription = null,
             tint = Color.LightGray,
             modifier = Modifier.padding(4.dp)
         )

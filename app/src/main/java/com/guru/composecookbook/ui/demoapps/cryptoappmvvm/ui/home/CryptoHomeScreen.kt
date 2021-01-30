@@ -42,6 +42,8 @@ import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.MyW
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 
 
 @Composable
@@ -86,6 +88,7 @@ fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
             Icon(
                 imageVector = Icons.Filled.Favorite,
                 tint = Color.Red,
+                contentDescription = null,
                 modifier = animateRotationModifier
             )
         }
@@ -128,7 +131,7 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        CoilImage(data = crypto.image, modifier = Modifier.size(24.dp))
+        CoilImage(data = crypto.image, modifier = Modifier.size(24.dp), contentDescription = null)
         Text(
             text = crypto.symbol,
             style = typography.h6.copy(fontSize = 20.sp),

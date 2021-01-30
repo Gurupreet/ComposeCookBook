@@ -9,6 +9,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RemoveCircleOutline
 import androidx.compose.runtime.Composable
@@ -72,6 +73,7 @@ fun MovieWatchlistItem(
     Box(modifier = Modifier.clickable(onClick = onMovieSelected)) {
         CoilImage(
             data = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}",
+            contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
                 .preferredHeight(280.dp),
@@ -92,7 +94,7 @@ fun MovieWatchlistItem(
             onClick = { onRemoveFromWatchlist.invoke() },
             modifier = Modifier.align(Alignment.BottomEnd)
         ) {
-            Icon(imageVector = Icons.Default.RemoveCircleOutline)
+            Icon(imageVector = Icons.Default.RemoveCircleOutline, contentDescription = null)
         }
     }
 }

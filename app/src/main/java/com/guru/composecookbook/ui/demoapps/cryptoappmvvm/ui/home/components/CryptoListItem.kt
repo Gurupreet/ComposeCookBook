@@ -49,6 +49,7 @@ fun CryptoListItem(
         CoilImage(
             data = crypto.image,
             modifier = Modifier.preferredSize(40.dp).padding(4.dp),
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Column(modifier = Modifier.weight(0.4f)) {
@@ -91,6 +92,7 @@ fun CryptoListItem(
         ) {
             Icon(
                 imageVector = if (isFav) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                contentDescription = null,
                 tint = if (isFav) Color.Red else MaterialTheme.colors.onSurface
             )
         }

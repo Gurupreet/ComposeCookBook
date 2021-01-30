@@ -9,6 +9,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
+import androidx.compose.foundation.lazy.items
 import com.guru.composecookbook.data.DemoDataProvider
 
 @Composable
@@ -22,12 +23,12 @@ fun InstagramHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = {}) {
-                        Icon(imageVector = vectorResource(id = R.drawable.ic_instagram))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_instagram), contentDescription = null)
                     }
                 },
                 actions = {
                     IconButton(onClick = {}) {
-                        Icon(imageVector = vectorResource(id = R.drawable.ic_send))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_send), contentDescription = null)
                     }
                 }
             )

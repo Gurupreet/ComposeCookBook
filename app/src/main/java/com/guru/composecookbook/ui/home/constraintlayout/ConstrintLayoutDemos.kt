@@ -57,6 +57,7 @@ fun ConstraintLayoutListItem() {
 
         Image(
             bitmap = imageResource(id = item.imageId),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredSize(120.dp)
@@ -122,7 +123,7 @@ fun ConstraintLayoutListItem() {
                     )
                 }
         ) {
-            Icon(Icons.Default.FavoriteBorder)
+            Icon(Icons.Default.FavoriteBorder, contentDescription = null)
         }
     }
 }
@@ -140,6 +141,7 @@ fun ConstraintLayoutBigListItem() {
 
         Image(
             bitmap = imageResource(id = item.imageId),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .preferredHeight(200.dp)
@@ -194,7 +196,7 @@ fun ConstraintLayoutBigListItem() {
                     end.linkTo(parent.end, margin = 8.dp)
                 }
         ) {
-            Icon(Icons.Default.FavoriteBorder)
+            Icon(Icons.Default.FavoriteBorder, contentDescription = null)
         }
     }
 }

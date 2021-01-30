@@ -38,7 +38,7 @@ class AdvanceListsActivity : AppCompatActivity() {
                             elevation = 0.dp,
                             navigationIcon = {
                                 IconButton(onClick = { onBackPressed() }) {
-                                    Icon(Icons.Filled.ArrowBack)
+                                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
                                 }
                             }
                         )

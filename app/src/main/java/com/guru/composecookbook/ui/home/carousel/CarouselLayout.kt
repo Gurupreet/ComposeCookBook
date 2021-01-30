@@ -97,6 +97,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
     Icon(
         imageVector = icon,
         modifier = Modifier.padding(4.dp).preferredSize(12.dp),
+        contentDescription = null,
         tint = if (selected) color else Color.Gray
     )
 }
@@ -107,6 +108,7 @@ fun CarouselItem(item: Item) {
         Image(
             bitmap = imageResource(id = item.imageId),
             contentScale = ContentScale.Crop,
+            contentDescription = null,
             modifier = Modifier
                 .padding(18.dp)
                 .fillMaxWidth()
@@ -125,6 +127,7 @@ fun CarouselItem(item: Item) {
 fun CarouselItemCircle(item: Item) {
     Image(
         bitmap = imageResource(id = item.imageId),
+        contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(16.dp)
@@ -153,6 +156,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
             Image(
                 bitmap = imageResource(id = item.imageId),
                 contentScale = ContentScale.Crop,
+                contentDescription = null,
                 modifier = Modifier.padding(4.dp)
                     .align(Alignment.CenterHorizontally)
                     .preferredSize(100.dp).clip(CircleShape)

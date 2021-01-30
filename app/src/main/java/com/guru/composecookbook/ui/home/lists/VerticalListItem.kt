@@ -28,6 +28,7 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
         Image(
             imageResource(item.imageId),
             modifier = imageModifier,
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Spacer(Modifier.preferredHeight(16.dp))

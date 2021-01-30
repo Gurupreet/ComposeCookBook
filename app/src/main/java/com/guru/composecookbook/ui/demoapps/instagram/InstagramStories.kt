@@ -26,6 +26,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.instagramGradient
 import com.guru.composecookbook.theme.typography
+import androidx.compose.foundation.lazy.items
 
 @Composable
 fun InstagramStories() {
@@ -82,6 +83,7 @@ fun StoryListItem(post: Tweet) {
         Image(
             bitmap = imageResource(id = post.authorImageId),
             contentScale = ContentScale.Crop,
+            contentDescription = null,
             modifier = imageModifier
         )
         Text(text = post.author, style = typography.caption, textAlign = TextAlign.Center)

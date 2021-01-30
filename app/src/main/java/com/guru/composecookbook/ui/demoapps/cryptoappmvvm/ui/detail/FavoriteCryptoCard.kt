@@ -20,7 +20,7 @@ fun FavoriteCryptoCard(crypto: Crypto) {
     Card(elevation = 8.dp, modifier = Modifier.padding(end = 8.dp, top = 8.dp)) {
         Column(modifier = Modifier.padding(16.dp).preferredWidth(120.dp).preferredHeight(180.dp)) {
             Row(modifier = Modifier.weight(1f)) {
-                CoilImage(data = crypto.image, modifier = Modifier.preferredSize(24.dp))
+                CoilImage(data = crypto.image, modifier = Modifier.preferredSize(24.dp), contentDescription = null)
                 Text(
                     text = crypto.name,
                     modifier = Modifier.padding(horizontal = 8.dp),

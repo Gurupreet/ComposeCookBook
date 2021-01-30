@@ -232,6 +232,7 @@ fun TopAppBarView(scroll: Float) {
             navigationIcon = {
                 Image(
                     bitmap = imageResource(id = R.drawable.p1),
+                    contentDescription = null,
                     modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                         .preferredSize(32.dp).clip(CircleShape)
                 )
@@ -239,6 +240,7 @@ fun TopAppBarView(scroll: Float) {
             actions = {
                 Icon(
                     imageVector = Icons.Default.Settings,
+                    contentDescription = null,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
@@ -253,6 +255,7 @@ fun AnimatedImage(scroll: Float) {
     Image(
         bitmap = imageResource(id = R.drawable.p1),
         contentScale = ContentScale.Crop,
+        contentDescription = null,
         modifier = Modifier
             .padding(start = 16.dp)
             .preferredSize(animateAsState(Dp(dynamicAnimationSizeValue)).value)

@@ -4,7 +4,7 @@ import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.Icon
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -76,6 +76,7 @@ fun PlayerBottomBar(modifier: Modifier) {
         Image(
             bitmap = imageResource(id = R.drawable.adele21),
             modifier = Modifier.preferredSize(65.dp),
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Text(

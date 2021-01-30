@@ -67,15 +67,16 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
     Box(modifier = draggableModifier) {
         LazyColumn(state = lazyListState) {
             items(
-                items = albums,
-                itemContent = {
-                    SpotifySongListItem(album = it)
+                count = albums.size,
+                itemContent = { index ->
+                    SpotifySongListItem(album = albums[index])
                 })
         }
         //Animated Icon
         Icon(
             imageVector = Icons.Default.RotateRight,
             tint = Color.Black,
+            contentDescription = null,
             modifier = Modifier.align(Alignment.TopCenter)
                 .graphicsLayer(
                     translationY = animateAsState(

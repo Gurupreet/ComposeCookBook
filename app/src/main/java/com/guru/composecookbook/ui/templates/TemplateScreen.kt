@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.dp
 fun TemplateScreen(darkTheme: Boolean) {
     val context = AmbientContext.current
     LazyColumn(modifier = Modifier.fillMaxSize().semantics { testTag = "Template Screen" }) {
-        items(templates) { template ->
+        items(templates.size) { index ->
+            val template = templates[index]
             Button(
                 onClick = {
                     context.startActivity(TemplatesActivity.newIntent(context, template, darkTheme))

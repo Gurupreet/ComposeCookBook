@@ -164,6 +164,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
         val animateImageSize = animateAsState(dynamicValue).value
         Image(
             bitmap = imageResource(id = album.imageId),
+            contentDescription = null,
             modifier = Modifier
                 .preferredSize(animateImageSize)
                 .padding(8.dp)

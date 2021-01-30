@@ -7,6 +7,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyColumnFor
@@ -42,8 +43,8 @@ fun PaintAppBar() {
     TopAppBar(
         title = { Text("Compose Paint") },
         actions = {
-            IconButton(onClick = {}, content = { Icon(imageVector = Icons.Default.AccountBox) })
-            IconButton(onClick = {}, content = { Icon(imageVector = Icons.Default.AccountBox) })
+            IconButton(onClick = {}, content = { Icon(imageVector = Icons.Default.AccountBox, contentDescription = null) })
+            IconButton(onClick = {}, content = { Icon(imageVector = Icons.Default.AccountBox, contentDescription = null) })
         }
     )
 }
@@ -118,7 +119,7 @@ fun DrawingTools(drawColor: MutableState<Color>, drawBrush: MutableState<Float>)
     Row(modifier = Modifier.padding(8.dp)) {
         Column(modifier = Modifier.padding(horizontal = 8.dp)) {
             FloatingActionButton(onClick = { showBrushes = !showBrushes }) {
-                Icon(imageVector = Icons.Default.AccountBox)
+                Icon(imageVector = Icons.Default.AccountBox, contentDescription = null)
             }
             AnimatedVisibility(visible = showBrushes) {
                 LazyColumn {

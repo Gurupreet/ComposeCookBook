@@ -39,6 +39,7 @@ fun TiktokCreateIcon() {
         Icon(
             imageVector = Icons.Filled.Add,
             tint = Color.Black,
+            contentDescription = null,
             modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))
                 .background(Color.White)

@@ -219,6 +219,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
 fun ImageWithBorder(imageId: Int, modifier: Modifier) {
     Image(
         bitmap = imageResource(id = imageId),
+        contentDescription = null,
         modifier = modifier.padding(8.dp).clip(CircleShape)
             .border(
                 shape = CircleShape,

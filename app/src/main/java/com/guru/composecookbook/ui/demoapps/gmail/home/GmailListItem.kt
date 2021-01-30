@@ -48,6 +48,7 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
         Image(
             bitmap = imageResource(id = item.authorImageId),
             contentScale = ContentScale.Crop,
+            contentDescription = null,
             modifier = Modifier
                 .preferredSize(50.dp)
                 .clip(CircleShape)
@@ -105,6 +106,7 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
         ) {
             Icon(
                 imageVector = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
+                contentDescription = null,
                 tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
             )
         }
@@ -115,10 +117,10 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
 fun GmailListActionItems(modifier: Modifier) {
     Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary)
+            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary)
+            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
         }
     }
 }

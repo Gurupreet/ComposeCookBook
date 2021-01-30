@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.Composable
@@ -32,6 +33,7 @@ fun TwitterHome() {
                 title = {
                     Icon(
                         imageVector = vectorResource(id = R.drawable.ic_twitter),
+                        contentDescription = null,
                         tint = twitterColor,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -42,6 +44,7 @@ fun TwitterHome() {
                 navigationIcon = {
                     Image(
                         bitmap = imageResource(id = R.drawable.p6),
+                        contentDescription = null,
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                             .preferredSize(32.dp).clip(CircleShape)
                     )
@@ -49,6 +52,7 @@ fun TwitterHome() {
                 actions = {
                     Icon(
                         imageVector = Icons.Default.StarBorder,
+                        contentDescription = null,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                 }
@@ -83,7 +87,7 @@ fun TwitterHomeContent() {
 fun FloatingActionButton(rippleExplode: MutableState<Boolean>) {
     ExtendedFloatingActionButton(
         text = { Text(text = "Tweet") },
-        icon = { Icon(imageVector = vectorResource(id = R.drawable.ic_twitter)) },
+        icon = { Icon(imageVector = vectorResource(id = R.drawable.ic_twitter), contentDescription = null) },
         onClick = { rippleExplode.value = !rippleExplode.value },
         backgroundColor = twitterColor
     )

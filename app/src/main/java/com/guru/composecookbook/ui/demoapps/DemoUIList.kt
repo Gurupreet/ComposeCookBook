@@ -30,8 +30,9 @@ fun DemoUIList() {
     ) {
         LazyColumn {
             items(
-                items = demoUis,
-                itemContent = { title ->
+                count = demoUis.size,
+                itemContent = { index ->
+                    val title = demoUis[index]
                     Button(
                         onClick = {
                             when (title) {

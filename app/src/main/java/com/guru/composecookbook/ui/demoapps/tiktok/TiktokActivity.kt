@@ -87,11 +87,11 @@ fun TikTokBottomNavigation(navController: NavHostController) {
 @Composable
 fun BottomBarIcon(screen: TikTokScreen) {
     when (screen) {
-        TikTokScreen.Home -> Icon(imageVector = Icons.Filled.Home)
-        TikTokScreen.Discover -> Icon(imageVector = Icons.Filled.Search)
+        TikTokScreen.Home -> Icon(imageVector = Icons.Filled.Home, contentDescription = null)
+        TikTokScreen.Discover -> Icon(imageVector = Icons.Filled.Search, contentDescription = null)
         TikTokScreen.Create -> TiktokCreateIcon()
-        TikTokScreen.Inbox -> Icon(imageVector = Icons.Filled.Inbox)
-        TikTokScreen.Me -> Icon(imageVector = Icons.Filled.Person)
+        TikTokScreen.Inbox -> Icon(imageVector = Icons.Filled.Inbox, contentDescription = null)
+        TikTokScreen.Me -> Icon(imageVector = Icons.Filled.Person, contentDescription = null)
     }
 }
 

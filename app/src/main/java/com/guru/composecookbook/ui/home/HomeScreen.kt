@@ -30,6 +30,7 @@ import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
 import com.guru.composecookbook.ui.home.lists.ListViewActivity
+import androidx.compose.foundation.lazy.items
 
 
 @Composable
@@ -46,10 +47,10 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
                         appThemeState.value = appThemeState
                             .value.copy(darkTheme = !appThemeState.value.darkTheme)
                     }) {
-                        Icon(imageVector = vectorResource(id = R.drawable.ic_sleep))
+                        Icon(imageVector = vectorResource(id = R.drawable.ic_sleep), contentDescription = null)
                     }
                     IconButton(onClick = { showMenu.value = !showMenu.value }) {
-                        Icon(imageVector = Icons.Default.Palette)
+                        Icon(imageVector = Icons.Default.Palette, contentDescription = null)
                     }
                 },
             )
@@ -130,7 +131,7 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
         modifier = Modifier.padding(8.dp).clickable(onClick = onPalletChange),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(imageVector = Icons.Filled.FiberManualRecord, tint = color)
+        Icon(imageVector = Icons.Filled.FiberManualRecord, tint = color, contentDescription = null)
         Text(text = name, modifier = Modifier.padding(8.dp))
     }
 }

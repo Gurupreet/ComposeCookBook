@@ -72,7 +72,7 @@ fun SpotifySearchBar() {
             modifier = Modifier.padding(4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(imageVector = Icons.Default.Search, tint = Color.LightGray)
+            Icon(imageVector = Icons.Default.Search, tint = Color.LightGray, contentDescription = null)
             Text(
                 text = "Artists, songs, or podcasts",
                 color = MaterialTheme.colors.surface,

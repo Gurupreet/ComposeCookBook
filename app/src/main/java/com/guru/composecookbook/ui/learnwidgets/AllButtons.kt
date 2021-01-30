@@ -62,6 +62,7 @@ fun AllButtons() {
             Row {
                 Icon(
                     imageVector = Icons.Default.FavoriteBorder,
+                    contentDescription = null,
                     modifier = Modifier.padding(end = 4.dp)
                 )
                 Text(text = "Icon Button")
@@ -71,6 +72,7 @@ fun AllButtons() {
             Text(text = "Icon Button")
             Icon(
                 imageVector = Icons.Default.FavoriteBorder,
+                contentDescription = null,
                 modifier = Modifier.padding(start = 4.dp)
             )
         }

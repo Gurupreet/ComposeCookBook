@@ -21,6 +21,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import androidx.compose.foundation.lazy.items
 
 @Composable
 fun YoutubeHome() {
@@ -34,6 +35,7 @@ fun YoutubeHome() {
                 navigationIcon = {
                     Icon(
                         imageVector = vectorResource(id = R.drawable.ic_youtube),
+                        contentDescription = null,
                         tint = Color.Red,
                         modifier = Modifier.padding(start = 16.dp)
                     )
@@ -41,14 +43,17 @@ fun YoutubeHome() {
                 actions = {
                     Icon(
                         imageVector = Icons.Default.Videocam,
+                        contentDescription = null,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                     Icon(
                         imageVector = Icons.Default.Search,
+                        contentDescription = null,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                     Image(
                         bitmap = imageResource(id = R.drawable.p3),
+                        contentDescription = null,
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                             .preferredSize(24.dp).clip(CircleShape)
                     )

@@ -58,6 +58,7 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
             Image(
                 bitmap = imageResource(album.imageId),
                 contentScale = ContentScale.Crop,
+                contentDescription = null,
                 modifier = Modifier.height(randomHeight)
             )
             Text(

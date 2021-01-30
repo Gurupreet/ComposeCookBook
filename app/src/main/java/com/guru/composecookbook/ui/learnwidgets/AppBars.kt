@@ -44,7 +44,7 @@ fun TopAppBarsDemo() {
         elevation = 8.dp,
         navigationIcon = {
             IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Default.ArrowBack)
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null,)
             }
         }
     )
@@ -58,12 +58,12 @@ fun TopAppBarsDemo() {
         elevation = 8.dp,
         navigationIcon = {
             IconButton(onClick = {}) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_instagram))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_instagram), contentDescription = null)
             }
         },
         actions = {
             IconButton(onClick = {}) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_send))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_send), contentDescription = null)
             }
         }
     )
@@ -74,6 +74,7 @@ fun TopAppBarsDemo() {
         title = {
             Icon(
                 imageVector = vectorResource(id = R.drawable.ic_twitter),
+                contentDescription = null,
                 tint = twitterColor,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -84,6 +85,7 @@ fun TopAppBarsDemo() {
         navigationIcon = {
             Image(
                 bitmap = imageResource(id = R.drawable.p6),
+                contentDescription = null,
                 modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                     .preferredSize(32.dp).clip(CircleShape)
             )
@@ -91,6 +93,7 @@ fun TopAppBarsDemo() {
         actions = {
             Icon(
                 imageVector = Icons.Default.StarBorder,
+                contentDescription = null,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
         }
@@ -107,7 +110,7 @@ fun BottomAppBarDemo() {
         cutoutShape = CircleShape
     ) {
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.MoreHoriz)
+            Icon(imageVector = Icons.Default.MoreHoriz, contentDescription = null)
         }
         TitleText(title = "Bottom App Bar")
     }
@@ -120,19 +123,19 @@ fun NavigationBarDemo() {
     val spotifyNavItemState = remember { mutableStateOf(SpotifyNavType.HOME) }
     BottomNavigation(backgroundColor = MaterialTheme.colors.surface) {
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.Home) },
+            icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.HOME,
             onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
             label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.Search) },
+            icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
             onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
             label = { Text(text = stringResource(id = R.string.spotify_nav_search)) }
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.LibraryMusic) },
+            icon = { Icon(imageVector = Icons.Outlined.LibraryMusic, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
             onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
             label = { Text(text = stringResource(id = R.string.spotify_nav_library)) }
@@ -143,17 +146,17 @@ fun NavigationBarDemo() {
 
     BottomNavigation {
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.ReadMore) },
+            icon = { Icon(imageVector = Icons.Outlined.ReadMore, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.HOME,
             onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.Search) },
+            icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
             onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.CleanHands) },
+            icon = { Icon(imageVector = Icons.Outlined.CleanHands, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
             onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
         )

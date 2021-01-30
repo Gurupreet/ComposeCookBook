@@ -60,6 +60,7 @@ fun ColorPicker(
         Icon(
             imageVector = Icons.Filled.FiberManualRecord,
             tint = activeColor,
+            contentDescription = null,
             modifier = Modifier
                 .offset(x = dragDp)
                 .border(

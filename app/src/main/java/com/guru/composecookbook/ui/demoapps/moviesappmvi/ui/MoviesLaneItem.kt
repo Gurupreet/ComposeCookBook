@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import dev.chrisbanes.accompanist.coil.CoilImage
+import androidx.compose.foundation.lazy.items
 
 
 @Composable
@@ -32,6 +33,7 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
             itemContent = { movie: Movie ->
                 CoilImage(
                     data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                    contentDescription = null,
                     modifier = Modifier
                         .preferredWidth(190.dp)
                         .preferredHeight(300.dp)

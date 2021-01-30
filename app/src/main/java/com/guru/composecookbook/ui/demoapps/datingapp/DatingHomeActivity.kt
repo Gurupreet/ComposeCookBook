@@ -73,17 +73,17 @@ fun DatingBottomBar(navType: MutableState<DatingNavType>) {
         elevation = 4.dp
     ) {
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Filled.Style) },
+            icon = { Icon(imageVector = Icons.Filled.Style,  contentDescription = null) },
             selected = navType.value == DatingNavType.PEOPLES,
             onClick = { navType.value = DatingNavType.PEOPLES },
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Filled.Textsms) },
+            icon = { Icon(imageVector = Icons.Filled.Textsms,  contentDescription = null) },
             selected = navType.value == DatingNavType.CHATS,
             onClick = { navType.value = DatingNavType.CHATS },
         )
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Filled.PersonPin) },
+            icon = { Icon(imageVector = Icons.Filled.PersonPin,  contentDescription = null) },
             selected = navType.value == DatingNavType.PROFILE,
             onClick = { navType.value = DatingNavType.PROFILE },
         )

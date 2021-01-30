@@ -35,6 +35,7 @@ fun SpotifySongListItem(album: Album) {
     ) {
         Image(
             bitmap = imageResource(id = album.imageId),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(55.dp).padding(4.dp)
         )
@@ -54,12 +55,14 @@ fun SpotifySongListItem(album: Album) {
         if (album.id % 3 == 0) {
             Icon(
                 imageVector = Icons.Default.Favorite,
+                contentDescription = null,
                 tint = MaterialTheme.colors.primaryVariant,
                 modifier = Modifier.padding(4.dp).preferredSize(20.dp)
             )
         }
         Icon(
             imageVector = Icons.Default.MoreVert,
+            contentDescription = null,
             tint = Color.LightGray,
             modifier = Modifier.padding(4.dp)
         )

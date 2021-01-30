@@ -31,6 +31,7 @@ fun HorizontalListItem(
             Image(
                 bitmap = image,
                 contentScale = ContentScale.Crop,
+                contentDescription = null,
                 modifier = Modifier
                     .preferredHeight(100.dp)
                     .fillMaxWidth()

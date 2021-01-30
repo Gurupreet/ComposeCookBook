@@ -59,6 +59,7 @@ fun MoviePagerItem(
             CoilImage(
                 data = posterFullPath,
                 contentScale = ContentScale.Crop,
+                contentDescription = null,
                 modifier = Modifier.fillMaxWidth().preferredHeight(360.dp)
             )
             Row(
@@ -79,6 +80,7 @@ fun MoviePagerItem(
                     Icon(
                         imageVector = Icons.Default.LibraryAdd,
                         tint = MaterialTheme.colors.primary,
+                        contentDescription = null,
                         modifier = Modifier
                             .graphicsLayer(
                                 rotationY = animateAsState(

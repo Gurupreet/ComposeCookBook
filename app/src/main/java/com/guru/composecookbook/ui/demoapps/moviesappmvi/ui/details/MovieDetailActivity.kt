@@ -41,6 +41,7 @@ import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.templates.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
+import androidx.compose.foundation.lazy.items
 
 class MovieDetailActivity : AppCompatActivity() {
     val movie by lazy {
@@ -101,6 +102,7 @@ fun MovieDetailContent(movie: Movie?, imageId: Int) {
             CoilImage(
                 data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
                 contentScale = ContentScale.Crop,
+                contentDescription = null,
                 modifier = Modifier
                     .preferredHeight(
                         600.dp
@@ -123,6 +125,7 @@ fun MovieDetailContent(movie: Movie?, imageId: Int) {
                     IconButton(onClick = {}) {
                         Icon(
                             imageVector = Icons.Default.LibraryAdd,
+                            contentDescription = null,
                             tint = MaterialTheme.colors.primary
                         )
                     }
@@ -171,6 +174,7 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
                 itemContent = { movie: Movie ->
                     CoilImage(
                         data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                        contentDescription = null,
                         modifier = Modifier
                             .preferredWidth(200.dp)
                             .preferredHeight(300.dp)

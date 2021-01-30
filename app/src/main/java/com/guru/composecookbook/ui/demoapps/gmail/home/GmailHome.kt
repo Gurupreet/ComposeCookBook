@@ -45,6 +45,7 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.ui.demoapps.gmail.create.CreateMessageScreen
 import com.guru.composecookbook.ui.demoapps.gmail.details.MessageDetailScreen
 import kotlin.math.absoluteValue
+import androidx.compose.foundation.lazy.items
 
 
 @Composable
@@ -442,6 +443,7 @@ fun GmailUserEmail(imageId: Int, name: String, email: String, badgeCount: Int) {
     ) {
         Image(
             bitmap = imageResource(id = imageId),
+            contentDescription = null,
             modifier = Modifier
                 .preferredSize(32.dp)
                 .clip(CircleShape)

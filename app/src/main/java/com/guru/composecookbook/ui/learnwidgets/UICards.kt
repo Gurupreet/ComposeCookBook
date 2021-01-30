@@ -59,6 +59,7 @@ fun UICards() {
         Row {
             Image(
                 bitmap = imageResource(id = R.drawable.p3),
+                contentDescription = null,
                 modifier = Modifier.preferredSize(60.dp)
             )
             Text(text = item.title, modifier = Modifier.padding(16.dp))
@@ -81,7 +82,8 @@ fun UICards() {
     Divider(modifier = Modifier.padding(4.dp))
     ListItem(text = { Text(item.title) }, secondaryText = { Text(item.subtitle) }, icon = {
         Image(
-            imageResource(R.drawable.p3)
+            imageResource(R.drawable.p3),
+            contentDescription = null,
         )
     })
     Divider(modifier = Modifier.padding(4.dp))
@@ -89,7 +91,7 @@ fun UICards() {
     ListItem(
         text = { Text(item.title) },
         secondaryText = { Text(item.subtitle) },
-        icon = { Image(imageResource(id = R.drawable.p1)) },
+        icon = { Image(imageResource(id = R.drawable.p1), contentDescription = null) },
         overlineText = { Text("Overline text") },
         singleLineSecondaryText = false
     )
@@ -97,8 +99,8 @@ fun UICards() {
     ListItem(
         text = { Text(item.title) },
         secondaryText = { Text(item.subtitle) },
-        icon = { Image(imageResource(id = R.drawable.p2)) },
-        trailing = { Icon(Icons.Default.ShoppingCart) },
+        icon = { Image(imageResource(id = R.drawable.p2), contentDescription = null) },
+        trailing = { Icon(Icons.Default.ShoppingCart,  contentDescription = null) },
         singleLineSecondaryText = false
     )
     Divider()

@@ -98,6 +98,7 @@ fun DatingHomeScreen() {
                     Icon(
                         imageVector = Icons.Default.Cancel,
                         tint = Color.Gray,
+                        contentDescription = null,
                         modifier = Modifier.preferredSize(36.dp)
                     )
                 }
@@ -113,6 +114,7 @@ fun DatingHomeScreen() {
                 ) {
                     Icon(
                         imageVector = Icons.Default.Favorite,
+                        contentDescription = null,
                         tint = Color.Red,
                         modifier = Modifier.preferredSize(36.dp)
                     )
@@ -128,6 +130,7 @@ fun CardContent(album: Album) {
         Image(
             bitmap = imageResource(album.imageId),
             contentScale = ContentScale.Crop,
+            contentDescription = null,
             modifier = Modifier.weight(1f)
         )
         Row(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)) {
@@ -142,6 +145,7 @@ fun CardContent(album: Album) {
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
                 tint = purple,
+                contentDescription = null
             )
             Text(
                 text = "${Random.nextInt(1, 15)} km",
@@ -169,6 +173,7 @@ fun DatingLoader(modifier: Modifier) {
         Image(
             bitmap = imageResource(id = R.drawable.adele21),
             modifier = modifier.preferredSize(50.dp).clip(CircleShape),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
         )
     }

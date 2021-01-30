@@ -32,6 +32,7 @@ fun GridListItem(
             Image(
                 bitmap = image,
                 contentScale = ContentScale.Crop,
+                contentDescription = null,
                 modifier = Modifier
                     .preferredHeight(80.dp)
                     .fillMaxWidth()

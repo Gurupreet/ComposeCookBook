@@ -55,7 +55,7 @@ fun TextInputs() {
 
     OutlinedTextField(
         value = text,
-        leadingIcon = { Icon(imageVector = Icons.Default.Email) },
+        leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },
@@ -66,8 +66,8 @@ fun TextInputs() {
     )
     OutlinedTextField(
         value = text,
-        leadingIcon = { Icon(imageVector = Icons.Default.Email) },
-        trailingIcon = { Icon(imageVector = Icons.Default.Edit) },
+        leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
+        trailingIcon = { Icon(imageVector = Icons.Default.Edit, contentDescription = null) },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },

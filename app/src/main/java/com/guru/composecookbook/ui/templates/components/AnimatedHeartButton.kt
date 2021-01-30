@@ -103,10 +103,10 @@ private fun HeartButton(
     if (buttonState.value == HeartButtonState.ACTIVE) {
         CoilImage(
             R.drawable.heart_red,
+            contentDescription = null,
             modifier = modifier
                 .clickable(
                     onClick = onToggle,
-                    indication = null,
                 )
                 .width(state[size])
                 .height(state[size]),
@@ -114,10 +114,10 @@ private fun HeartButton(
     } else {
         CoilImage(
             R.drawable.heart_grey,
+            contentDescription = null,
             modifier = modifier
                 .clickable(
                     onClick = onToggle,
-                    indication = null,
                 )
                 .width(state[size])
                 .height(state[size]),

@@ -23,6 +23,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoapps.instagram.InstagramStories
 import com.guru.composecookbook.ui.demoapps.instagram.StoryListItem
 import com.guru.composecookbook.ui.utils.VerticalGrid
+import androidx.compose.foundation.lazy.items
 
 class ListViewActivity : AppCompatActivity() {
 
@@ -77,7 +78,7 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack)
+                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
                     }
                 }
             )

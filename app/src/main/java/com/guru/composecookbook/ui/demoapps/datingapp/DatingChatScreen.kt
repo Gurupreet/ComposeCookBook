@@ -33,6 +33,7 @@ import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import kotlin.random.Random
+import androidx.compose.foundation.lazy.items
 
 @Composable
 fun DatingChatScreen() {
@@ -109,11 +110,13 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
         Box {
             Image(
                 bitmap = imageResource(id = imageId),
+                contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = modifier.clip(CircleShape)
             )
             Icon(
                 imageVector = Icons.Default.Lens,
+                contentDescription = null,
                 tint = green500,
                 modifier = Modifier.preferredSize(14.dp).align(Alignment.BottomEnd)
             )
@@ -121,6 +124,7 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
     } else {
         Image(
             bitmap = imageResource(id = imageId),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier.clip(CircleShape)
         )
@@ -151,7 +155,7 @@ fun MatchesImage(imageId: Int) {
                 )
             )
         )
-    Image(bitmap = imageResource(id = imageId), modifier = modifier)
+    Image(bitmap = imageResource(id = imageId), modifier = modifier,  contentDescription = null)
 }
 
 val randomMessages = listOf(

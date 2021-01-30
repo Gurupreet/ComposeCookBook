@@ -58,6 +58,7 @@ private fun InstagramLikesSection(post: Tweet) {
         Image(
             bitmap = imageResource(id = post.authorImageId),
             modifier = Modifier.preferredSize(20.dp).clip(CircleShape),
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Text(
@@ -75,17 +76,19 @@ private fun InstagramIconSection() {
         IconToggleButton(checked = fav, onCheckedChange = { fav = it }) {
             val icon = if (fav) Icons.Default.Favorite else Icons.Default.FavoriteBorder
             val tint = if (fav) Color.Red else MaterialTheme.colors.onBackground
-            Icon(imageVector = icon, modifier = Modifier.preferredSize(44.dp), tint = tint)
+            Icon(imageVector = icon, modifier = Modifier.preferredSize(44.dp), tint = tint, contentDescription = null)
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(
                 imageVector = vectorResource(id = R.drawable.ic_speech_bubble),
+                contentDescription = null,
                 modifier = Modifier.preferredSize(44.dp)
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(
                 imageVector = vectorResource(id = R.drawable.ic_send),
+                contentDescription = null,
                 modifier = Modifier.preferredSize(44.dp)
             )
         }
@@ -101,6 +104,7 @@ private fun ProfileInfoSection(post: Tweet) {
         Image(
             bitmap = imageResource(id = post.authorImageId),
             modifier = Modifier.preferredSize(32.dp).clip(CircleShape),
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         // Which ever element has weight defined will take most space available
@@ -110,7 +114,7 @@ private fun ProfileInfoSection(post: Tweet) {
             modifier = Modifier.padding(8.dp).weight(1f),
             textAlign = TextAlign.Left
         )
-        Icon(imageVector = Icons.Default.MoreVert)
+        Icon(imageVector = Icons.Default.MoreVert, contentDescription = null)
     }
 }
 
@@ -120,6 +124,7 @@ private fun InstagramImage(imageId: Int) {
         Image(
             bitmap = imageResource(id = imageId),
             modifier = Modifier.fillMaxWidth().preferredHeight(450.dp),
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
     }

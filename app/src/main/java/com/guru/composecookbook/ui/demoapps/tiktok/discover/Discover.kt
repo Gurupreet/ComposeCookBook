@@ -26,6 +26,8 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
 import dev.chrisbanes.accompanist.coil.CoilImage
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 
 val lanes =
     listOf("OhHO ohNO", "FunFacts", "HappyDeepavli", "HalloweenIsHere", "BoomBoom", "No no no no")
@@ -54,6 +56,7 @@ fun LanesSection() {
                     Row(modifier = Modifier.padding(8.dp)) {
                         Icon(
                             imageVector = vectorResource(id = R.drawable.ic_hashtag_solid),
+                            contentDescription = null,
                             modifier = Modifier.size(32.dp)
                                 .border(
                                     border = BorderStroke(0.5.dp, Color.LightGray),
@@ -81,6 +84,7 @@ fun LanesSection() {
                             itemContent = {
                                 CoilImage(
                                     data = "https://picsum.photos/id/${it}/200/200",
+                                    contentDescription = null,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier.height(150.dp).width(120.dp).padding(2.dp),
                                 )
@@ -95,7 +99,7 @@ fun LanesSection() {
 fun SearchSection() {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Row(modifier = Modifier.weight(1f).background(customGray).padding(4.dp)) {
-            Icon(imageVector = Icons.Default.Search, modifier = Modifier.padding(4.dp))
+            Icon(imageVector = Icons.Default.Search, modifier = Modifier.padding(4.dp), contentDescription = null)
             Text(
                 text = "Search",
                 color = Color.DarkGray,
@@ -103,7 +107,7 @@ fun SearchSection() {
             )
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.QrCodeScanner)
+            Icon(imageVector = Icons.Default.QrCodeScanner, contentDescription = null)
         }
     }
 }

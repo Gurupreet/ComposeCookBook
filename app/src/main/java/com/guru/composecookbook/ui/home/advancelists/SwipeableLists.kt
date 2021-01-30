@@ -34,6 +34,7 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.swipeGesture
+import androidx.compose.foundation.lazy.itemsIndexed
 
 @Composable
 fun SwipeableLists() {
@@ -83,6 +84,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
     ) {
         Image(
             bitmap = imageResource(id = album.imageId),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(55.dp).padding(4.dp)
         )
@@ -102,12 +104,14 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
         if (album.id % 3 == 0) {
             Icon(
                 imageVector = Icons.Default.Favorite,
+                contentDescription = null,
                 tint = MaterialTheme.colors.primaryVariant,
                 modifier = Modifier.padding(4.dp).preferredSize(20.dp)
             )
         }
         Icon(
             imageVector = Icons.Default.MoreVert,
+            contentDescription = null,
             tint = Color.LightGray,
             modifier = Modifier.padding(4.dp)
         )
@@ -118,10 +122,10 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
 fun BackgroundListItem(modifier: Modifier) {
     Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary)
+            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary)
+            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
         }
     }
 }

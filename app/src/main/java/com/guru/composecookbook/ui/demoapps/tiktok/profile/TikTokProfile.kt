@@ -46,6 +46,7 @@ fun ProfileTopSection(album: Album) {
     Spacer(modifier = Modifier.height(16.dp))
     Image(
         bitmap = imageResource(id = album.imageId),
+        contentDescription = null,
         modifier = Modifier.size(100.dp)
             .clip(CircleShape)
     )
@@ -93,6 +94,7 @@ fun ProfileTopSection(album: Album) {
         }
         Icon(
             imageVector = vectorResource(id = R.drawable.ic_instagram),
+            contentDescription = null,
             modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
                 .border(
                     border = BorderStroke(
@@ -103,6 +105,7 @@ fun ProfileTopSection(album: Album) {
         )
         Icon(
             imageVector = Icons.Default.ArrowDropDown,
+            contentDescription = null,
             modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
                 .border(
                     border = BorderStroke(
@@ -150,6 +153,7 @@ fun ProfileTabs() {
         list.forEach {
             Image(
                 bitmap = imageResource(id = it.imageId),
+                contentDescription = null,
                 modifier = Modifier.fillMaxWidth().height(150.dp),
                 contentScale = ContentScale.Crop
             )
