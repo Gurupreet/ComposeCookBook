@@ -86,9 +86,9 @@ Please get **Android Studio Arctic Fox 2020.3.1 Canary 4** or above to build thi
 
 ## Official Documentations
 - Official Google Documentation
+  - [Compose Pathway](https://developer.android.com/courses/pathways/compose)
   - [Jetpack compose](https://developer.android.com/jetpack/compose)
   - [Jetpack compose Samples](https://github.com/android/compose-samples)
-  - [Jetpack Compose Codelabs](https://codelabs.developers.google.com/codelabs/jetpack-compose-layouts/index.html#0)
   
 - [Compose Academy ](https://compose.academy/)
 
