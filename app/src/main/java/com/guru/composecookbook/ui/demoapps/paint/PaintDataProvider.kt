@@ -7,13 +7,9 @@ object PaintDataProvider {
         Color.Black,
         Color.LightGray,
         Color.Gray,
-        Color.Red,
-        Color.Yellow,
-        Color.Blue,
         Color.Magenta,
-        Color.Green,
         Color.Cyan
     )
 
-    val strokeList = (1..40 step 5).toList()
+    val strokeList = (1..50 step 5).toList()
 }

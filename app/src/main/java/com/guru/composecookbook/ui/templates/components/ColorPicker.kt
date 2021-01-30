@@ -82,13 +82,6 @@ fun ColorPicker(
                 )
         )
     }
-    Text(
-        text = "I listen to color picker",
-        style = MaterialTheme.typography.h6,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
-        color = activeColor
-    )
 }
 
 fun createColorMap(): List<Color> {
