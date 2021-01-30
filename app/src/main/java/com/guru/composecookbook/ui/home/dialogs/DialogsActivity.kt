@@ -6,11 +6,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -85,7 +84,7 @@ fun DialogsOptionList() {
 
     // I am not sure why updating the `dialogState.showDialog = true` is not working. May be I am
     // missing something. I had to update whole state via copy
-    ScrollableColumn(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(16.dp)) {
         Button(
             onClick = { dialogState = dialogState.copy(showDialog = true) },
             modifier = Modifier.fillMaxWidth().padding(16.dp)

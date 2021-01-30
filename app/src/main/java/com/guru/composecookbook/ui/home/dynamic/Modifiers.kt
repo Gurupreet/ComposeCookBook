@@ -1,8 +1,6 @@
 package com.guru.composecookbook.ui.home.dynamic
 
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
@@ -28,7 +26,7 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun HowToModifiers() {
-    ScrollableColumn {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         Text(
             text = "Order in modifier values matters",
             style = typography.h6,

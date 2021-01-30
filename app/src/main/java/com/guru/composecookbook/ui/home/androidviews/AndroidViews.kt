@@ -7,11 +7,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,7 +37,7 @@ import com.guru.composecookbook.ui.utils.TitleText
 
 @Composable
 fun AndroidViews() {
-    ScrollableColumn {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         TitleText(title = "Android Views Inside Compose(ScrollableColumn)")
         val context = AmbientContext.current
         AndroidTextView(context)

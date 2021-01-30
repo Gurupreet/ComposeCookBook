@@ -1,8 +1,6 @@
 package com.guru.composecookbook.ui.home.tabslayout
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -84,7 +82,7 @@ fun TabLayout() {
 fun ScrollableListOfTabs() {
     val tweets = remember { DemoDataProvider.tweetList.filter { it.tweetImageId > 0 } }
     var selectedIndex = remember { mutableStateOf(0) }
-    ScrollableColumn {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         ScrollableTabRow(
             selectedTabIndex = selectedIndex.value,
             divider = emptyContent(), /* Disable the built-in divider */

@@ -3,6 +3,8 @@ package com.guru.composecookbook.ui.learnwidgets
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.OutlinedButton
@@ -20,7 +22,7 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun Layouts() {
-    ScrollableColumn {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         TypesOfRows()
         TypeOfColumns()
         TypeOfBoxs()

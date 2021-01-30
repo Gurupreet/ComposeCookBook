@@ -24,6 +24,8 @@ import com.guru.composecookbook.ui.demoapps.instagram.InstagramStories
 import com.guru.composecookbook.ui.demoapps.instagram.StoryListItem
 import com.guru.composecookbook.ui.utils.VerticalGrid
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 class ListViewActivity : AppCompatActivity() {
 
@@ -123,7 +125,7 @@ fun VerticalListView() {
 @Composable
 fun HorizontalListView() {
     val list = remember { DemoDataProvider.itemList }
-    ScrollableColumn {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         Text(
             modifier = Modifier.padding(16.dp),
             text = "Good Food",
@@ -157,7 +159,7 @@ fun GridListView() {
     // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
     val list = remember { DemoDataProvider.itemList.take(4) }
     val posts = remember { DemoDataProvider.tweetList }
-    ScrollableColumn {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         VerticalGrid(columns = 2) {
             list.forEach {
                 GridListItem(item = it)

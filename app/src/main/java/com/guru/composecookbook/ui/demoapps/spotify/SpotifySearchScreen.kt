@@ -5,6 +5,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -43,9 +44,8 @@ fun SpotifySearchScreen() {
                 .fillMaxSize().alpha(1f - scrollState.value / 200)
             // Just reducing the opacity by small fraction when scroll happens
         )
-        ScrollableColumn(
-            scrollState = scrollState,
-            modifier = Modifier
+        Column(
+            modifier = Modifier.verticalScroll(scrollState)
         ) {
             Spacer(modifier = Modifier.height(180.dp))
             Column(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {

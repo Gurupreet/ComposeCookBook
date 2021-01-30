@@ -2,9 +2,12 @@ package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
@@ -29,8 +32,8 @@ fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvent
         "Trending TV shows",
         "Top rated TV shows",
     )
-    ScrollableColumn(
-        modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)
+    Column(
+        modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient).verticalScroll(rememberScrollState())
     ) {
         Spacer(modifier = Modifier.height(statusBarHeight))
 

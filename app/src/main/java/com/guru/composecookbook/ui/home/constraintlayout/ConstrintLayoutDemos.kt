@@ -1,8 +1,6 @@
 package com.guru.composecookbook.ui.home.constraintlayout
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
@@ -26,7 +24,7 @@ import com.guru.composecookbook.ui.demoapps.youtube.YoutubeListItem
 
 @Composable
 fun ConstraintLayoutDemos() {
-    ScrollableColumn(modifier = Modifier.padding(8.dp)) {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(8.dp)) {
         ConstraintLayoutListItem()
         Spacer(modifier = Modifier.height(20.dp))
         ConstraintLayoutBigListItem()
