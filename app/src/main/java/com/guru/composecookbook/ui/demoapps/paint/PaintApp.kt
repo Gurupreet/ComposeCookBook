@@ -39,10 +39,7 @@ fun PaintApp() {
         val paths =  rememberPathStateList()
         Scaffold(
             topBar = {
-                PaintAppBar(
-                    onRevert = {  },
-                    onDelete = { paths.value = mutableListOf() }
-                )
+                PaintAppBar { paths.value.clear() }
             }
         ) {
             PaintBody(paths)
@@ -51,12 +48,10 @@ fun PaintApp() {
 }
 
 @Composable
-fun PaintAppBar(onDelete: () -> Unit, onRevert: () -> Unit) {
+fun PaintAppBar(onDelete: () -> Unit) {
     TopAppBar(
         title = { Text("Compose Paint") },
         actions = {
-            IconButton(onClick = onRevert, content = { Icon(imageVector = Icons.Default.Restore,
-                contentDescription = null) })
             IconButton(onClick = onDelete, content = { Icon(imageVector = Icons.Default.Delete,
                 contentDescription = null) })
         }
@@ -72,6 +67,7 @@ fun PaintBody(paths: MutableState<MutableList<PathState>>) {
         val drawBrush = remember { mutableStateOf(5f) }
         val usedColors = remember { mutableStateOf(mutableSetOf(Color.Black, Color.White, Color.Gray)) }
         // on every change of brush or color start a new path and save old one in list
+
         paths.value.add(PathState(path = Path(), color = drawColor.value, stroke = drawBrush.value))
 
         DrawingCanvas(drawColor, drawBrush, usedColors, paths.value)
