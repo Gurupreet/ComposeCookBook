@@ -1,7 +1,6 @@
 package com.guru.composecookbook.ui.home.advancelists
 
 import androidx.compose.animation.transition
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState

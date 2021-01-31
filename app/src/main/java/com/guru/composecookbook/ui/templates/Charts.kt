@@ -16,13 +16,11 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.*
-import kotlin.math.cos
-import kotlin.math.sin
 import kotlin.random.Random
 
 val pieColors = listOf(green200, purple, tiktokBlue, tiktokRed, blue700, orange200)
-val increasingChart5Times = (0..10).map { it*it*1f }.toList()
-val increasingChart10Times = (10..20).map { it*it*1f }.toList()
+val increasingChart5Times = (0..10).map { it * it * 1f }.toList()
+val increasingChart10Times = (10..20).map { it * it * 1f }.toList()
 
 fun createRandomFloatList(): List<Float> {
     val list = mutableListOf<Float>()
@@ -88,11 +86,11 @@ fun Charts() {
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                 Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
-                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat()*10 }
+                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
                     PieCharts(pieChartValues)
                 }
                 Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
-                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat()*10 }
+                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
                     PieCharts(pieChartValues)
                 }
             }
@@ -190,7 +188,7 @@ fun BarCharts(
 fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
 
     val index = remember { Animatable(0f) }
-    val targetIndex = (pieValues.size -1).toFloat()
+    val targetIndex = (pieValues.size - 1).toFloat()
     LaunchedEffect(Unit) {
         index.animateTo(
             targetValue = targetIndex,

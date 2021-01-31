@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.home.carousel
 
 import androidx.compose.animation.core.animateAsState
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape

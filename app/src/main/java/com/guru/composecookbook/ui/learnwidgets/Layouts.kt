@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.learnwidgets
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState

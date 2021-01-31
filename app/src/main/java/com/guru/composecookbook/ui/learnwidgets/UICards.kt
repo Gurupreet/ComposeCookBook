@@ -100,7 +100,7 @@ fun UICards() {
         text = { Text(item.title) },
         secondaryText = { Text(item.subtitle) },
         icon = { Image(imageResource(id = R.drawable.p2), contentDescription = null) },
-        trailing = { Icon(Icons.Default.ShoppingCart,  contentDescription = null) },
+        trailing = { Icon(Icons.Default.ShoppingCart, contentDescription = null) },
         singleLineSecondaryText = false
     )
     Divider()

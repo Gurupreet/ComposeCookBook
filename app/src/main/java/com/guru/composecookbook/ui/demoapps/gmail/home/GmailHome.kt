@@ -5,12 +5,11 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PersonAdd
@@ -45,7 +44,6 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.ui.demoapps.gmail.create.CreateMessageScreen
 import com.guru.composecookbook.ui.demoapps.gmail.details.MessageDetailScreen
 import kotlin.math.absoluteValue
-import androidx.compose.foundation.lazy.items
 
 
 @Composable

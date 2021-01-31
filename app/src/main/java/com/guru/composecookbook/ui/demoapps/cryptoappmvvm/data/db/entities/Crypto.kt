@@ -2,8 +2,6 @@ package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.guru.composecookbook.ui.demoapps.moviesappmvi.utils.ListTypeConverter
 import java.io.Serializable
 
 @Entity(tableName = "crypto_fav_table")

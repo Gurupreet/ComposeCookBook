@@ -30,14 +30,14 @@ fun MessageDetailScreen(navController: NavHostController) {
                 actions = {
 
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Archive,  contentDescription = null)
+                        Icon(imageVector = Icons.Outlined.Archive, contentDescription = null)
                     }
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Delete,  contentDescription = null)
+                        Icon(imageVector = Icons.Outlined.Delete, contentDescription = null)
                     }
 
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Mail,  contentDescription = null)
+                        Icon(imageVector = Icons.Outlined.Mail, contentDescription = null)
 
                     }
 

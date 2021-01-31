@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -33,7 +34,6 @@ import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import kotlin.random.Random
-import androidx.compose.foundation.lazy.items
 
 @Composable
 fun DatingChatScreen() {
@@ -155,7 +155,7 @@ fun MatchesImage(imageId: Int) {
                 )
             )
         )
-    Image(bitmap = imageResource(id = imageId), modifier = modifier,  contentDescription = null)
+    Image(bitmap = imageResource(id = imageId), modifier = modifier, contentDescription = null)
 }
 
 val randomMessages = listOf(

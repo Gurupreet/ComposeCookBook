@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState

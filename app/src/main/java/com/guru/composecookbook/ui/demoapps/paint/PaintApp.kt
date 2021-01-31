@@ -4,17 +4,16 @@ import android.view.MotionEvent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.animatedColor
 import androidx.compose.foundation.*
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.Brush
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -23,23 +22,21 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.platform.AmbientDensity
-import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.templates.components.ColorPicker
-import com.guru.composecookbook.ui.utils.VerticalGrid
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 
 @ExperimentalAnimationApi
 @Composable
 fun PaintApp() {
     ComposeCookBookTheme(darkTheme = false) {
-        val paths =  rememberPathStateList()
+        val paths = rememberPathStateList()
         Scaffold(
             topBar = {
-                PaintAppBar { paths.value.clear() }
+                PaintAppBar { paths.value = mutableListOf() }
             }
         ) {
             PaintBody(paths)
@@ -52,8 +49,10 @@ fun PaintAppBar(onDelete: () -> Unit) {
     TopAppBar(
         title = { Text("Compose Paint") },
         actions = {
-            IconButton(onClick = onDelete, content = { Icon(imageVector = Icons.Default.Delete,
-                contentDescription = null) })
+            IconButton(onClick = onDelete, content = {
+                Icon(imageVector = Icons.Default.Delete,
+                    contentDescription = null)
+            })
         }
     )
 }
@@ -124,13 +123,13 @@ fun DrawingCanvas(
 @Composable
 fun DrawingTools(drawColor: MutableState<Color>, drawBrush: MutableState<Float>, usedColors: MutableSet<Color>) {
     var showBrushes by remember { mutableStateOf(false) }
-    val strokes = remember {  PaintDataProvider.strokeList }
+    val strokes = remember { PaintDataProvider.strokeList }
 
     Column(modifier = Modifier.padding(horizontal = 8.dp)) {
         ColorPicker(
             onColorSelected = { color ->
                 drawColor.value = color
-        })
+            })
         Row(modifier = Modifier.horizontalGradientBackground(listOf(graySurface, Color.Black))
             .padding(horizontal = 8.dp, vertical = 4.dp)
             .horizontalScroll(rememberScrollState())

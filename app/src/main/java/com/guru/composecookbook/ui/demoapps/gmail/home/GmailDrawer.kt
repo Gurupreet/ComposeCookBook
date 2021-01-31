@@ -71,7 +71,7 @@ fun GmailDrawer(modifier: Modifier = Modifier) {
 fun DrawerItem(icon: ImageVector, title: String, msgCount: String = "") {
 
     Row {
-        Icon(imageVector = icon, modifier = Modifier.padding(16.dp),  contentDescription = null)
+        Icon(imageVector = icon, modifier = Modifier.padding(16.dp), contentDescription = null)
         Text(
             modifier = Modifier.weight(1f)
                 .align(Alignment.CenterVertically)

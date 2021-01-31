@@ -32,10 +32,10 @@ fun CreateMessageScreen(navController: NavHostController) {
                 actions = {
 
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Attachment,  contentDescription = null)
+                        Icon(imageVector = Icons.Outlined.Attachment, contentDescription = null)
                     }
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Send,  contentDescription = null)
+                        Icon(imageVector = Icons.Outlined.Send, contentDescription = null)
                     }
 
                     CreateMessageMoreActionPopupMenu()

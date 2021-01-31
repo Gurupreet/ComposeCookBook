@@ -18,7 +18,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.theme.gradientGreenColors
+import com.guru.composecookbook.theme.gradientRedColors
+import com.guru.composecookbook.theme.green500
+import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.CryptoHomeInteractionEvents

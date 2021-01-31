@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.learnwidgets
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -32,17 +31,17 @@ fun WidgetScreen() {
 
 @Composable
 fun WidgetScreenContent() {
-        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            AllButtons()
-            Chips()
-            TextDemo()
-            TextInputs()
-            Loaders()
-            Toggles()
-            AppBars()
-            SnackBars()
-            UICards()
-        }
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+        AllButtons()
+        Chips()
+        TextDemo()
+        TextInputs()
+        Loaders()
+        Toggles()
+        AppBars()
+        SnackBars()
+        UICards()
+    }
 }
 
 
