@@ -14,7 +14,8 @@ import androidx.compose.material.icons.filled.Style
 import androidx.compose.material.icons.filled.Textsms
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,7 +35,7 @@ class DatingHomeActivity : AppCompatActivity() {
 
         setContent {
             ComposeCookBookTheme(false) {
-                val navType = savedInstanceState { DatingNavType.PEOPLES }
+                val navType = rememberSaveable { mutableStateOf(DatingNavType.PEOPLES) }
                 Scaffold(
                     topBar = { DatingHomeAppbar(navType) },
                     bottomBar = { DatingBottomBar(navType) }
@@ -56,7 +57,7 @@ class DatingHomeActivity : AppCompatActivity() {
 
 @Composable
 fun DatingHomeContent(navType: MutableState<DatingNavType>) {
-    Crossfade(current = navType) {
+    Crossfade(targetState = navType) {
         when (navType.value) {
             DatingNavType.PEOPLES -> DatingHomeScreen()
             DatingNavType.CHATS -> DatingChatScreen()

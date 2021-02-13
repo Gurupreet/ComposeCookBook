@@ -2,7 +2,8 @@ package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home
 
 import android.animation.ValueAnimator
 import android.content.Context
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -73,7 +74,7 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
 fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
     val animateRotationModifier = Modifier.graphicsLayer(
         //So on every count change this basically runs as we only add 1 at a time
-        rotationX = animateAsState(if (count % 2 == 0) 360f else 0f, tween(800)).value
+        rotationX = animateFloatAsState(if (count % 2 == 0) 360f else 0f, tween(800)).value
     )
     ExtendedFloatingActionButton(
         text = { Text(text = "$count coins", modifier = animateRotationModifier) },
@@ -99,7 +100,7 @@ fun ShowFavorites(
     Column(
         modifier = Modifier.padding(8.dp)
             .fillMaxWidth()
-            .height(animateAsState(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp).value)
+            .height(animateDpAsState(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp).value)
     ) {
         Text(text = "My Favorites", modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
         LazyRow {

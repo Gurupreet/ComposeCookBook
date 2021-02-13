@@ -14,6 +14,8 @@ import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
@@ -50,7 +52,7 @@ class SpotifyActivity : AppCompatActivity() {
 
 @Composable
 fun SpotifyAppContent() {
-    val spotifyNavItemState = savedInstanceState { SpotifyNavType.HOME }
+    val spotifyNavItemState = rememberSaveable { mutableStateOf(SpotifyNavType.HOME) }
     Scaffold(
         bottomBar = { SpotifyBottomNavigation(spotifyNavItemState) },
         bodyContent = { SpotifyBodyContent(spotifyNavItemState.value) }
@@ -85,7 +87,7 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
 
 @Composable
 fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
-    Crossfade(current = spotifyNavType) { spotifyNavType ->
+    Crossfade(targetState = spotifyNavType) { spotifyNavType ->
         when (spotifyNavType) {
             SpotifyNavType.HOME -> SpotifyHome()
             SpotifyNavType.SEARCH -> SpotifySearchScreen()

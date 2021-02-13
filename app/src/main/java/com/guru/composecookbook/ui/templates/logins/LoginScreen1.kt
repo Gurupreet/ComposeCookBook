@@ -6,6 +6,7 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -28,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
-import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
 import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 fun LoginOnboarding() {
     var loggedIn by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
-    Crossfade(current = loggedIn) {
+    Crossfade(targetState = loggedIn) {
         if (loggedIn) {
             OnBoardingScreen1 {
                 loggedIn = false
@@ -80,7 +80,7 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
 
             OutlinedTextField(
                 value = email,
-                leadingIcon = { Icon(imageVector = Icons.Default.Email) },
+                leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "Email") },
                 maxLines = 1,
                 isErrorValue = hasError,
                 modifier = Modifier.fillMaxWidth(),
@@ -91,41 +91,44 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 },
                 interactionState = emailInteractionState,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next),
-                onImeActionPerformed = { _, keyboardController ->
+                keyboardActions = KeyboardActions(onDone = {
                     passwordInteractionState.addInteraction(interaction = Interaction.Focused)
                     passwordInteractionState.addInteraction(interaction = Interaction.Pressed)
                     emailInteractionState.removeInteraction(Interaction.Focused)
-                }
+                })
             )
             OutlinedTextField(
                 value = password,
-                leadingIcon = { Icon(imageVector = Icons.Default.VpnKey) },
+                leadingIcon = { Icon(imageVector = Icons.Default.VpnKey, contentDescription =
+                null) },
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.RemoveRedEye,
+                        contentDescription = null,
                         modifier = Modifier.clickable(onClick = {
-                            passwordVisualTransformation = if (passwordVisualTransformation != VisualTransformation.None) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            }
+                            passwordVisualTransformation =
+                                if (passwordVisualTransformation != VisualTransformation.None) {
+                                    VisualTransformation.None
+                                } else {
+                                    PasswordVisualTransformation()
+                                }
                         })
                     )
                 },
                 maxLines = 1,
                 isErrorValue = hasError,
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text(text = "Password") },
+                label =  { Text(text = "Password") },
                 placeholder = { Text(text = "12334444") },
                 interactionState = passwordInteractionState,
                 visualTransformation = passwordVisualTransformation,
                 onValueChange = {
                     password = it
                 },
-                onImeActionPerformed = { _, keyboardController ->
-                    keyboardController?.hideSoftwareKeyboard()
+                keyboardActions = KeyboardActions(onDone = {
+                    //
                     passwordInteractionState.removeInteraction(interaction = Interaction.Focused)
-                },
+                }),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done)
             )
             var loading by remember { mutableStateOf(false) }
@@ -144,7 +147,8 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                     .clip(CircleShape)
             ) {
                 if (loading) {
-                    HorizontalDottedProgressBar()
+                    //TODO fix progress bar animations
+                    //HorizontalDottedProgressBar()
                 } else {
                     Text(text = "Log In")
                 }
@@ -163,7 +167,7 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             }
 
             OutlinedButton(onClick = { }, modifier = Modifier.fillMaxWidth().height(50.dp)) {
-                Icon(imageVector = Icons.Default.Facebook)
+                Icon(imageVector = Icons.Default.Facebook, contentDescription = "facebook")
                 Text(
                     text = "Sign in with Facebook",
                     style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
@@ -173,7 +177,7 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             }
             Spacer(modifier = Modifier.height(8.dp))
             OutlinedButton(onClick = { }, modifier = Modifier.fillMaxWidth().height(50.dp)) {
-                Icon(imageVector = Icons.Default.Email)
+                Icon(imageVector = Icons.Default.Email, contentDescription = "Gmail")
                 Text(
                     text = "Sign in with Gmail",
                     style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),

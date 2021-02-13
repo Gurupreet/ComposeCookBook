@@ -37,7 +37,7 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun AnimatedLists() {
     val tweets = DemoDataProvider.tweetList
     val animations = listOf("Fade", "Scale", "Slide", "Fade+Slide", "Slide up", "RotateX")
-
+    //TODO optimise dispose methods
     Column {
         var animationIndex by remember { mutableStateOf(0) }
         VerticalGrid(columns = 3, modifier = Modifier.padding(vertical = 12.dp)) {
@@ -67,39 +67,48 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
     val animatedModifier = when (animationIndex) {
         0 -> {
             val animatedProgress = animatedFloat(0f)
-            onActive {
+            DisposableEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 1f,
                     anim = tween(600)
                 )
+                onDispose {
+
+                }
             }
             Modifier.padding(8.dp).alpha(animatedProgress.value)
         }
         1 -> {
             val animatedProgress = animatedFloat(0.8f)
-            onActive {
+            DisposableEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 1f,
                     anim = tween(300, easing = LinearEasing)
                 )
+                onDispose {
+
+                }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
         }
         2 -> {
             val animatedProgress = animatedFloat(300f)
-            onActive {
+            DisposableEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 0f,
                     anim = tween(300, easing = FastOutSlowInEasing)
                 )
+                onDispose {
+
+                }
             }
             Modifier.padding(8.dp).graphicsLayer(translationX = animatedProgress.value)
         }
         3 -> {
             val animatedProgress = animatedFloat(-300f)
             val opacityProgress = animatedFloat(0f)
-            onActive {
+            DisposableEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 0f,
                     anim = tween(300, easing = LinearEasing)
@@ -108,6 +117,9 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     targetValue = 1f,
                     anim = tween(600)
                 )
+                onDispose {
+
+                }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(translationX = animatedProgress.value)
@@ -116,7 +128,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         4 -> {
             val animatedProgress = animatedFloat(300f)
             val opacityProgress = animatedFloat(0f)
-            onActive {
+            DisposableEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 0f,
                     anim = tween(300, easing = LinearEasing)
@@ -125,6 +137,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     targetValue = 1f,
                     anim = tween(600)
                 )
+                onDispose {  }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(translationY = animatedProgress.value)
@@ -132,22 +145,24 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         }
         5 -> {
             val animatedProgress = animatedFloat(0f)
-            onActive {
+            DisposableEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 360f,
                     anim = tween(400, easing = FastOutSlowInEasing)
                 )
+                onDispose {  }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(rotationX = animatedProgress.value)
         }
         else -> {
             val animatedProgress = animatedFloat(0.8f)
-            onActive {
+            DisposableEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 1f,
                     anim = tween(300)
                 )
+                onDispose {  }
             }
             Modifier.padding(8.dp).alpha(animatedProgress.value)
         }

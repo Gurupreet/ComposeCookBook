@@ -3,7 +3,8 @@ package com.guru.composecookbook.ui.templates.profile
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -53,6 +54,7 @@ private fun launchSocialActivity(context: Context, socialType: String) {
     context.startActivity(intent)
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun ProfileScreen() {
     Scaffold {
@@ -80,7 +82,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
         AnimatedImage(scroll = scrollState.value)
         Column(
             modifier = Modifier.padding(start = 8.dp, top = 48.dp)
-                .alpha(animateAsState(if (visibilityChangeFloat) 0f else 1f).value)
+                .alpha(animateFloatAsState(if (visibilityChangeFloat) 0f else 1f).value)
         ) {
             Text(
                 text = name,
@@ -95,6 +97,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun BottomScrollingContent() {
     Column(modifier = Modifier.background(MaterialTheme.colors.surface).padding(8.dp)) {
@@ -136,18 +139,20 @@ fun SocialRow() {
             modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 16.dp)
         ) {
             IconButton(onClick = { launchSocialActivity(context, "github") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_github_square_brands))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_github_square_brands), contentDescription = null)
             }
             IconButton(onClick = { launchSocialActivity(context, "twitter") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_twitter_square_brands))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_twitter_square_brands), contentDescription = null)
             }
             IconButton(onClick = { launchSocialActivity(context, "linkedin") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_linkedin_brands))
+                Icon(imageVector = vectorResource(id = R.drawable.ic_linkedin_brands), contentDescription = null)
             }
         }
     }
 }
 
+
+@ExperimentalMaterialApi
 @Composable
 fun MoreInfoSection() {
     val context = AmbientContext.current
@@ -161,7 +166,8 @@ fun MoreInfoSection() {
         icon = {
             Icon(
                 imageVector = vectorResource(id = R.drawable.ic_github_square_brands),
-                modifier = Modifier.preferredSize(24.dp)
+                modifier = Modifier.preferredSize(24.dp),
+                contentDescription = null
             )
         },
         text = {
@@ -175,7 +181,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(imageVector = Icons.Rounded.Email) },
+        icon = { Icon(imageVector = Icons.Rounded.Email, contentDescription = null) },
         text = {
             Text(
                 text = "Contact Me",
@@ -187,7 +193,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(imageVector = Icons.Rounded.Settings) },
+        icon = { Icon(imageVector = Icons.Rounded.Settings, contentDescription = null) },
         text = {
             Text(
                 text = "Demo Settings",
@@ -256,7 +262,7 @@ fun AnimatedImage(scroll: Float) {
         contentDescription = null,
         modifier = Modifier
             .padding(start = 16.dp)
-            .preferredSize(animateAsState(Dp(dynamicAnimationSizeValue)).value)
+            .preferredSize(animateDpAsState(Dp(dynamicAnimationSizeValue)).value)
             .clip(CircleShape)
     )
 }
@@ -271,6 +277,7 @@ private fun TopBackground() {
     )
 }
 
+@ExperimentalMaterialApi
 @Preview
 @Composable
 fun ShowProfileScreen() {

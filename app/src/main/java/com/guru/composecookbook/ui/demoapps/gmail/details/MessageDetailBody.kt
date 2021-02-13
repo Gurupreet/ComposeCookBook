@@ -1,12 +1,14 @@
 package com.guru.composecookbook.ui.demoapps.gmail.details
 
 import android.webkit.WebView
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -22,7 +24,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -48,7 +49,10 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
             )
             IconButton(onClick = { isFavourite.value = !isFavourite.value }) {
-                Icon(imageVector = if (isFavourite.value) Icons.Outlined.Star else Icons.Outlined.StarBorder)
+                Icon(
+                    imageVector = if (isFavourite.value) Icons.Outlined.Star else Icons.Outlined.StarBorder,
+                    contentDescription = ""
+                )
             }
         }
 
@@ -89,12 +93,12 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                 )
                 {
                     Text(text = "to me")
-                    Icon(imageVector = Icons.Outlined.ExpandMore)
+                    Icon(imageVector = Icons.Outlined.ExpandMore, contentDescription = null)
                 }
             }
 
             IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Outlined.SubdirectoryArrowLeft)
+                Icon(imageVector = Icons.Outlined.SubdirectoryArrowLeft, contentDescription = null)
             }
 
             MessageActionPopupMenu()
@@ -171,32 +175,32 @@ fun MessageActionPopupMenu() {
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(imageVector = Icons.Outlined.MoreVert)
+            Icon(imageVector = Icons.Outlined.MoreVert, contentDescription = null)
         }
     }
-
-    DropdownMenu(
-        expanded = expanded.value,
-        onDismissRequest = { expanded.value = false },
-        toggle = iconButton,
-        dropdownOffset = DpOffset((-32).dp, (-32).dp),
-        dropdownModifier = Modifier.background(Color.White)
-    ) {
-        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
-            Text("Reply all")
-        }
-        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
-            Text("Forward")
-        }
-
-        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-            Text("Add star")
-        }
-
-        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-            Text("Print")
-        }
-    }
+    //TODO check drop down fix
+//    DropdownMenu(
+//        expanded = expanded.value,
+//        onDismissRequest = { expanded.value = false },
+//        toggle = iconButton,
+//        dropdownOffset = DpOffset((-32).dp, (-32).dp),
+//        dropdownModifier = Modifier.background(Color.White)
+//    ) {
+//        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
+//            Text("Reply all")
+//        }
+//        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
+//            Text("Forward")
+//        }
+//
+//        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
+//            Text("Add star")
+//        }
+//
+//        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
+//            Text("Print")
+//        }
+//    }
 }
 
 
@@ -208,7 +212,7 @@ fun ReplyTypeAction(asset: ImageVector, text: String, modifier: Modifier) {
             .border(1.dp, Color.LightGray, shape = RoundedCornerShape(8.dp))
             .padding(horizontal = 8.dp, vertical = 16.dp)
     ) {
-        Icon(imageVector = asset)
+        Icon(imageVector = asset, contentDescription = null)
         Text(
             text = text,
             modifier = Modifier

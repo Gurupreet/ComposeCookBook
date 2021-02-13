@@ -135,14 +135,14 @@ fun ProfileTabs() {
             onClick = { selectedIndex = 0 },
             modifier = Modifier.padding(12.dp)
         ) {
-            Icon(imageVector = Icons.Default.VerticalDistribute)
+            Icon(imageVector = Icons.Default.VerticalDistribute, contentDescription = null)
         }
         Tab(
             selected = selectedIndex == 0,
             onClick = { selectedIndex = 1 },
             modifier = Modifier.padding(12.dp)
         ) {
-            Icon(imageVector = Icons.Default.FavoriteBorder)
+            Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = null)
         }
     }
 
@@ -166,12 +166,12 @@ fun ProfileAppBar(album: Album, navHostController: NavHostController) {
         backgroundColor = MaterialTheme.colors.surface,
         navigationIcon = {
             IconButton(onClick = { navHostController.popBackStack() }) {
-                Icon(imageVector = Icons.Filled.ArrowBack)
+                Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
             }
         },
         actions = {
             IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Filled.MoreVert)
+                Icon(imageVector = Icons.Filled.MoreVert, contentDescription = null)
             }
         }
     )

@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.tiktok.home
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.AnimationConstants
 import androidx.compose.animation.core.LinearEasing
@@ -9,6 +10,7 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -24,6 +26,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.AmbientAnimationClock
 import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -110,28 +113,27 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(imageVector = vectorResource(id = R.drawable.ic_comment_dots_solid))
+        Icon(painter = painterResource(id = R.drawable.ic_comment_dots_solid),
+            contentDescription = null)
         Text(
             text = "1223",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(imageVector = vectorResource(id = R.drawable.ic_share_solid))
+        Icon(imageVector = vectorResource(id = R.drawable.ic_share_solid), contentDescription = null)
         Text(
             text = "238",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 32.dp)
         )
         val rotation = animatedFloat(initVal = 0f)
-        onActive {
             rotation.animateTo(
                 targetValue = 360f,
                 anim = repeatable(
-                    iterations = AnimationConstants.Infinite,
+                    iterations = 10000,
                     animation = tween(durationMillis = 3500, easing = LinearEasing),
                 ),
             )
-        }
         ProfileImageWithFollow(
             modifier = Modifier.preferredSize(64.dp).graphicsLayer(rotationZ = rotation.value),
             false,
@@ -154,11 +156,12 @@ fun LikeIcon(id: Int) {
         )
     }
     Icon(
-        imageVector = vectorResource(id = R.drawable.ic_heart_solid),
+        painter = painterResource(id = R.drawable.ic_heart_solid),
+        contentDescription = null,
         modifier = Modifier
             .clickable(onClick = { fav = !fav })
             .graphicsLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
-        tint = androidx.compose.animation.animateAsState(if (fav) tiktokRed else Color.White).value
+        tint = animateColorAsState(if (fav) tiktokRed else Color.White).value
     )
 }
 
@@ -203,6 +206,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
             ImageWithBorder(imageId = imageId, modifier = modifier)
             Icon(
                 imageVector = Icons.Filled.Add,
+                contentDescription = null,
                 modifier = Modifier
                     .preferredSize(20.dp)
                     .clip(CircleShape)
@@ -217,7 +221,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
 @Composable
 fun ImageWithBorder(imageId: Int, modifier: Modifier) {
     Image(
-        bitmap = imageResource(id = imageId),
+        painter = painterResource(id = imageId),
         contentDescription = null,
         modifier = modifier.padding(8.dp).clip(CircleShape)
             .border(

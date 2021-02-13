@@ -14,6 +14,8 @@ import androidx.compose.material.icons.outlined.MovieCreation
 import androidx.compose.material.icons.outlined.Subscriptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,12 +39,12 @@ class MoviesHomeActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
             ComposeCookBookTheme {
-                val navType = savedInstanceState { MovieNavType.SHOWING }
+                val navType = rememberSaveable { mutableStateOf(MovieNavType.SHOWING) }
                 val viewModel: MoviesHomeViewModel = viewModel()
                 Scaffold(
                     bottomBar = { MoviesBottomBar(navType) }
                 ) {
-                    Crossfade(current = navType) {
+                    Crossfade(targetState = navType) {
                         when (navType.value) {
                             MovieNavType.SHOWING -> MovieHomeScreen(
                                 moviesHomeInteractionEvents = {

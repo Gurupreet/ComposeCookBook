@@ -15,6 +15,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
 
+@ExperimentalMaterialApi
 @Composable
 fun UICards() {
     Text(
@@ -33,7 +34,7 @@ fun UICards() {
     Card(
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         backgroundColor = MaterialTheme.colors.primary,
-        shape = RoundedCornerShape(topLeft = 16.dp, bottomRight = 16.dp)
+        shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp)
     ) {
         Column {
             Text(

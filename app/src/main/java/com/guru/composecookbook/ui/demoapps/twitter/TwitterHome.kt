@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.twitterColor
-import com.guru.composecookbook.ui.animation.FloatMultiStateAnimationExplode
 
 @Composable
 fun TwitterHome() {
@@ -62,7 +61,8 @@ fun TwitterHome() {
             val rippleExplode = remember { mutableStateOf(false) }
             FloatingActionButton(rippleExplode)
             if (rippleExplode.value) {
-                FloatMultiStateAnimationExplode(duration = 300)
+                // TODO fix animation
+               // FloatMultiStateAnimationExplode(duration = 300)
             }
         },
         bodyContent = {

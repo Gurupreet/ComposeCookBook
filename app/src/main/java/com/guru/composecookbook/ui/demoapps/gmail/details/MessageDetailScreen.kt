@@ -61,27 +61,27 @@ fun TopBarMoreActionPopupMenu() {
             Icon(imageVector = Icons.Outlined.MoreVert, contentDescription = null)
         }
     }
-
-    DropdownMenu(
-        expanded = expanded.value,
-        onDismissRequest = { expanded.value = false },
-        toggle = iconButton,
-        dropdownOffset = DpOffset((-32).dp, (-32).dp),
-        dropdownModifier = Modifier.background(Color.White)
-    ) {
-        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
-            Text("Move To")
-        }
-        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
-            Text("Print")
-        }
-
-        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-            Text("Report Spam")
-        }
-
-        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-            Text("Help and feedback")
-        }
-    }
+    // TODO fix dropdown menu
+//    DropdownMenu(
+//        expanded = expanded.value,
+//        onDismissRequest = { expanded.value = false },
+//        toggle = iconButton,
+//        dropdownOffset = DpOffset((-32).dp, (-32).dp),
+//        dropdownModifier = Modifier.background(Color.White)
+//    ) {
+//        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
+//            Text("Move To")
+//        }
+//        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
+//            Text("Print")
+//        }
+//
+//        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
+//            Text("Report Spam")
+//        }
+//
+//        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
+//            Text("Help and feedback")
+//        }
+//    }
 }

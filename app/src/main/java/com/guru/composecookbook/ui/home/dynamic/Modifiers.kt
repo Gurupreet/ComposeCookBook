@@ -53,7 +53,7 @@ fun HowToModifiers() {
         DemoElementButton(modifier = Modifier.clip(RoundedCornerShape(12.dp)))
         DemoText("Modifier.clip(RoundedCornerShape(topLeft = 12.dp, bottomRight = 12.dp))")
         DemoElementButton(
-            modifier = Modifier.clip(RoundedCornerShape(topLeft = 12.dp, bottomRight = 12.dp))
+            modifier = Modifier.clip(RoundedCornerShape(topStart = 12.dp, bottomEnd = 12.dp))
         )
         DemoText("Modifier.clip(CutCornerShape(12))")
         DemoElementButton(modifier = Modifier.clip(CutCornerShape(12.dp)))

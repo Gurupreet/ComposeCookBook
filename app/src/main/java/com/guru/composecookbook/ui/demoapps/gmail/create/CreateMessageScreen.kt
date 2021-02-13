@@ -52,7 +52,7 @@ fun CreateMessageScreen(navController: NavHostController) {
 fun CreateMessageMoreActionPopupMenu() {
 
     val expanded = remember { mutableStateOf(false) }
-
+    //TODO check dropdown if it's still working
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
             Icon(imageVector = Icons.Outlined.MoreVert, contentDescription = null)
@@ -62,9 +62,9 @@ fun CreateMessageMoreActionPopupMenu() {
     DropdownMenu(
         expanded = expanded.value,
         onDismissRequest = { expanded.value = false },
-        toggle = iconButton,
-        dropdownOffset = DpOffset((-32).dp, (-32).dp),
-        dropdownModifier = Modifier.background(MaterialTheme.colors.surface)
+       // toggle = iconButton,
+        offset = DpOffset((-32).dp, (-32).dp),
+        modifier = Modifier.background(MaterialTheme.colors.surface)
     ) {
         DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
             Text("Schedule send")

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -18,6 +19,7 @@ class TemplatesActivity : AppCompatActivity() {
     private val templateType: String by lazy { intent.getStringExtra(TYPE) ?: "Profiles" }
     private val darkTheme: Boolean by lazy { intent.getBooleanExtra(DARK_THEME, true) }
 
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -40,6 +42,7 @@ class TemplatesActivity : AppCompatActivity() {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun TemplateApp(templateType: String) {
     when (templateType) {

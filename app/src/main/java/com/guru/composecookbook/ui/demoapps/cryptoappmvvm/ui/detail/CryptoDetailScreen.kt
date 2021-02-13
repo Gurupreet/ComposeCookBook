@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -63,7 +64,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Unit) {
     Column(
         modifier = Modifier.padding(16.dp)
-            .alpha(animateAsState((1 - scrollState.value / 150).coerceIn(0f, 1f)).value)
+            .alpha(animateFloatAsState((1 - scrollState.value / 150).coerceIn(0f, 1f)).value)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.padding(top = 20.dp)) {
@@ -117,10 +118,10 @@ fun CryptoBottomBar(onBack: () -> Unit) {
         cutoutShape = CircleShape
     ) {
         IconButton(onClick = { onBack }) {
-            Icon(imageVector = Icons.Default.ArrowBack)
+            Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "")
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.MoreVert)
+            Icon(imageVector = Icons.Default.MoreVert, contentDescription = "")
         }
     }
 }
@@ -129,11 +130,11 @@ fun CryptoBottomBar(onBack: () -> Unit) {
 fun CryptoFloatingActionButton() {
     var pressed by remember { mutableStateOf(false) }
     ExtendedFloatingActionButton(
-        icon = { Icon(imageVector = Icons.Default.Add) },
+        icon = { Icon(imageVector = Icons.Default.Add, contentDescription = "") },
         text = { Text(text = "Trade") },
         onClick = { pressed = !pressed },
         backgroundColor = MaterialTheme.colors.primary,
-        modifier = Modifier.width(animateAsState(if (pressed) 200.dp else 120.dp).value)
+        modifier = Modifier.width(animateDpAsState(if (pressed) 200.dp else 120.dp).value)
     )
 }
 

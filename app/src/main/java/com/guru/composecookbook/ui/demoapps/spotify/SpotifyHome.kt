@@ -1,10 +1,11 @@
 package com.guru.composecookbook.ui.demoapps.spotify
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -39,10 +40,11 @@ fun SpotifyHome() {
         Icon(
             imageVector = Icons.Outlined.Settings,
             tint = MaterialTheme.colors.onSurface,
+            contentDescription = null,
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
-                .alpha(animateAsState(1f - scrollState.value / 200f).value)
+                .alpha(animateFloatAsState(1f - scrollState.value / 200f).value)
         )
         PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
     }
@@ -84,8 +86,10 @@ fun PlayerBottomBar(modifier: Modifier) {
             style = typography.h6.copy(fontSize = 14.sp),
             modifier = Modifier.padding(8.dp).weight(1f),
         )
-        Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp))
-        Icon(imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp))
+        Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),
+            contentDescription = null)
+        Icon(imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp),
+            contentDescription = null)
     }
 }
 

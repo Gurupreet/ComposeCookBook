@@ -137,7 +137,8 @@ fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) 
             imageVector = icon,
             modifier = modifier.align(
                 Alignment.BottomCenter
-            )
+            ),
+            contentDescription = null
         )
 
         if (badge != 0) {
@@ -173,21 +174,22 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
         backgroundColor = MaterialTheme.colors.surface,
         contentColor = MaterialTheme.colors.primary
     ) {
-        AnimatingFabContent(
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Edit
-                )
-            },
-            text = {
-                Text(
-                    text = "Compose",
-                    modifier = Modifier.padding(end = 8.dp)
-                )
-            },
-            extended = expandState
-
-        )
+        //TODO animation fix
+//        AnimatingFabContent(
+//            icon = {
+//                Icon(
+//                    imageVector = Icons.Outlined.Edit
+//                )
+//            },
+//            text = {
+//                Text(
+//                    text = "Compose",
+//                    modifier = Modifier.padding(end = 8.dp)
+//                )
+//            },
+//            extended = expandState
+//
+//        )
     }
 
 
@@ -305,7 +307,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         IconButton(onClick = { showUserDialog.value = false }) {
-                            Icon(Icons.Outlined.Close)
+                            Icon(Icons.Outlined.Close, contentDescription = null)
                         }
 
                         Text(
@@ -360,7 +362,8 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                         Icon(
                             imageVector = Icons.Default.PersonAdd,
                             tint = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(8.dp)
+                            modifier = Modifier.padding(8.dp),
+                            contentDescription = null
                         )
 
                         Text(
@@ -380,7 +383,8 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                         Icon(
                             imageVector = Icons.Default.AccountCircle,
                             tint = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(8.dp)
+                            modifier = Modifier.padding(8.dp),
+                            contentDescription = null
                         )
                         Text(
                             text = "Manage accounts on this device",

@@ -1,6 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.datingapp
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.animation.FloatMultiStateAnimationCircleCanvas
 import com.guru.composecookbook.ui.demoapps.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
@@ -83,7 +82,7 @@ fun DatingHomeScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = cardHeight)
-                    .alpha(animateAsState(if (listEmpty.value) 0f else 1f).value)
+                    .alpha(animateFloatAsState(if (listEmpty.value) 0f else 1f).value)
             ) {
                 IconButton(
                     onClick = {
@@ -169,7 +168,8 @@ fun CardContent(album: Album) {
 @Composable
 fun DatingLoader(modifier: Modifier) {
     Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().clip(CircleShape)) {
-        FloatMultiStateAnimationCircleCanvas(purple, 400f)
+        //TODO dating loader animation
+     //   FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
             bitmap = imageResource(id = R.drawable.adele21),
             modifier = modifier.preferredSize(50.dp).clip(CircleShape),

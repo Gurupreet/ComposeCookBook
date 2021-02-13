@@ -19,12 +19,14 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
 
+@ExperimentalMaterialApi
 @Composable
 fun BottomSheetLayouts() {
     BottomSheetDrawer()
 }
 
 
+@ExperimentalMaterialApi
 @Composable
 fun BottomSheetDrawer(
 ) {
@@ -110,6 +112,7 @@ fun BottomSheetDrawer(
     }
 }
 
+@ExperimentalMaterialApi
 @Preview
 @Composable
 fun PreviewBottomSheetLayouts() {

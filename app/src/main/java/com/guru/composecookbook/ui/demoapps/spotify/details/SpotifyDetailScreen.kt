@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.spotify.details
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -62,7 +63,8 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
             )
             .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {
-        Icon(imageVector = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface)
+        Icon(imageVector = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface,
+            contentDescription = null)
         Text(
             text = album.song,
             color = MaterialTheme.colors.onSurface,
@@ -70,7 +72,8 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
                 .padding(16.dp)
                 .alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
         )
-        Icon(imageVector = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface)
+        Icon(imageVector = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface,
+            contentDescription = null)
     }
 }
 
@@ -83,7 +86,7 @@ fun TopSectionOverlay(scrollState: ScrollState) {
             .height(400.dp)
             .background(
                 MaterialTheme.colors.surface.copy(
-                    alpha = animateAsState(dynamicAlpha).value
+                    alpha = animateFloatAsState(dynamicAlpha).value
                 )
             )
     )
@@ -159,7 +162,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
         val dynamicValue =
             if (250.dp - Dp(scrollState.value / 50) < 10.dp) 10.dp //prevent going 0 cause crash
             else 250.dp - Dp(scrollState.value / 20)
-        val animateImageSize = animateAsState(dynamicValue).value
+        val animateImageSize = animateDpAsState(dynamicValue).value
         Image(
             bitmap = imageResource(id = album.imageId),
             contentDescription = null,

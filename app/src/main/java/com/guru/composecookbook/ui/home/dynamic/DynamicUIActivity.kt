@@ -31,6 +31,7 @@ class DynamicUIActivity : AppCompatActivity() {
         intent?.getBooleanExtra(DARK_THEME, false) ?: false
     }
 
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -54,6 +55,7 @@ class DynamicUIActivity : AppCompatActivity() {
 }
 
 
+@ExperimentalMaterialApi
 @Composable
 fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
     Scaffold(
@@ -101,6 +103,7 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
     )
 }
 
+@ExperimentalMaterialApi
 @Preview
 @Composable
 fun PreviewDynamicUI() {
