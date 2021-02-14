@@ -14,7 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +38,7 @@ import com.guru.composecookbook.ui.utils.TitleText
 fun AndroidViews() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         TitleText(title = "Android Views Inside @Column()")
-        val context = AmbientContext.current
+        val context = LocalContext.current
         AndroidTextView(context)
         AndroidButton(context)
         AndroidLottieView(context)
@@ -171,7 +171,7 @@ private fun MapViewContainer(
 
 @Composable
 fun rememberMapViewWithLifecycle(): MapView {
-    val context = AmbientContext.current
+    val context = LocalContext.current
     val mapView = remember {
         MapView(context)
     }

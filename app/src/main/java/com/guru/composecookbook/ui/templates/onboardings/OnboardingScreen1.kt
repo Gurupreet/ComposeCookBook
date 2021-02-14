@@ -17,8 +17,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalAnimationClock
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,7 +30,7 @@ import com.guru.composecookbook.ui.home.carousel.PagerState
 @Composable
 fun OnBoardingScreen1(onSkip: () -> Unit) {
     val pagerState: PagerState = run {
-        val clock = AmbientAnimationClock.current
+        val clock = LocalAnimationClock.current
         remember(clock) {
             PagerState(clock, 0, 0, onboardingList.size - 1)
         }
@@ -73,7 +73,7 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
 @Composable
 fun OnboardingPagerItem(page: Int) {
     Column(modifier = Modifier.padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        LottieLoadingView(AmbientContext.current, onboardingList[page].third)
+        LottieLoadingView(LocalContext.current, onboardingList[page].third)
         Text(
             text = onboardingList[page].first,
             style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.ExtraBold),

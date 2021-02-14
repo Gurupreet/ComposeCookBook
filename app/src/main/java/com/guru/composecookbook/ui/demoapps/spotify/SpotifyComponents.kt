@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -63,7 +62,7 @@ fun SpotifyHomeGridItem(album: Album) {
 
 @Composable
 fun SpotifyLaneItem(album: Album) {
-    val context = AmbientContext.current
+    val context = LocalContext.current
     val album = remember { album }
     Column(
         modifier =

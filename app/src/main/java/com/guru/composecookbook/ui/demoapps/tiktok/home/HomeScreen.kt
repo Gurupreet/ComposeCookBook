@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.demoapps.tiktok.home
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.AnimationConstants
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
@@ -23,8 +22,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalAnimationClock
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -48,7 +47,7 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val movies = SpotifyDataProvider.albums
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
-        val clock = AmbientAnimationClock.current
+        val clock = LocalAnimationClock.current
         remember(clock) {
             PagerState(clock, 0, 0, movies.size - 1)
         }
@@ -71,7 +70,7 @@ fun PagerItem(
     selected: Boolean,
     tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
 ) {
-    val context = AmbientContext.current
+    val context = LocalContext.current
 
     Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp))) {
         TikTokPlayer(context, videos[album.id % 3], selected)

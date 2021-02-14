@@ -22,8 +22,8 @@ import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
-import androidx.compose.ui.platform.AmbientConfiguration
-import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import kotlin.random.Random
 import android.graphics.Color as AndroidColor
@@ -33,11 +33,11 @@ fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
 
-    val screenWidth = AmbientConfiguration.current.screenWidthDp.dp
-    val screenWidthInPx = with(AmbientDensity.current) { screenWidth.toPx() }
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
+    val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
     var activeColor by remember { mutableStateOf<Color>(Red) }
     var dragPosition by remember { mutableStateOf(0f) }
-    val dragDp = with(AmbientDensity.current) { dragPosition.toDp() - 12.dp } // icon offset width
+    val dragDp = with(LocalDensity.current) { dragPosition.toDp() - 12.dp } // icon offset width
 
     Box(modifier = Modifier.padding(8.dp)) {
         //slider

@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInteropFilter
-import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -163,7 +163,7 @@ fun DrawingTools(drawColor: MutableState<Color>, drawBrush: MutableState<Float>,
                         modifier = Modifier
                             .padding(8.dp)
                             .border(
-                                border = BorderStroke(width = with(AmbientDensity.current) { it.toDp() }, color = Color.Gray),
+                                border = BorderStroke(width = with(LocalDensity.current) { it.toDp() }, color = Color.Gray),
                                 shape = CircleShape
                             )
                     ) {

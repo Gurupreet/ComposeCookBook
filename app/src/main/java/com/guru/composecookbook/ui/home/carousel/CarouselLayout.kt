@@ -25,7 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.AmbientAnimationClock
+import androidx.compose.ui.platform.LocalAnimationClock
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,7 +39,7 @@ fun CarouselLayout() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         val items = remember { DemoDataProvider.itemList.take(10) }
         val pagerState: PagerState = run {
-            val clock = AmbientAnimationClock.current
+            val clock = LocalAnimationClock.current
             remember(clock) { PagerState(clock, 2, 0, items.size - 1) }
         }
         val selectedPage = remember { mutableStateOf(2) }

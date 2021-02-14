@@ -23,7 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -80,7 +80,7 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
 
         LazyColumn(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
             item { Spacer(modifier = Modifier.height(20.dp)) }
-            item { LottieLoadingView(context = AmbientContext.current) }
+            item { LottieLoadingView(context = LocalContext.current) }
             item {
                 Text(
                     text = "Welcome Back",

@@ -9,7 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,7 +24,7 @@ import com.guru.composecookbook.ui.demoapps.tiktok.TiktokActivity
 @Composable
 fun DemoUIList() {
     val demoUis = remember { DemoDataProvider.demoUiList }
-    val context = AmbientContext.current
+    val context = LocalContext.current
     Scaffold(
         modifier = Modifier.semantics { testTag = "Demo UI List Screen" }
     ) {
