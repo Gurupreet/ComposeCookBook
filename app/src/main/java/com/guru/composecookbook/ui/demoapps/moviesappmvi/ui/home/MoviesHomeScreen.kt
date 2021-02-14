@@ -1,8 +1,8 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
 import android.util.Log
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -38,16 +38,23 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
     val swatch = generateDominantColorState(currentBitmap.value)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)
 
-    ScrollableColumn(
-        modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantColors)
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalGradientBackground(dominantColors),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(modifier = Modifier.height(30.dp))
-        Text(
-            text = "Now Showing",
-            style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
-            modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally)
-        )
-        MoviesPager(imageId, moviesHomeInteractionEvents)
+        // use `item` for separate elements like headers
+        // and `items` for lists of identical elements
+        item { Spacer(modifier = Modifier.height(30.dp)) }
+        item {
+            Text(
+                text = "Now Showing",
+                style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+                modifier = Modifier.padding(16.dp)
+            )
+        }
+        item { MoviesPager(imageId, moviesHomeInteractionEvents) }
     }
 }
 

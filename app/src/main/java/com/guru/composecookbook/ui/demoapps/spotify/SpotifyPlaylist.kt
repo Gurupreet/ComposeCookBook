@@ -1,14 +1,9 @@
 package com.guru.composecookbook.ui.demoapps.spotify
 
 import android.content.Context
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -33,13 +28,18 @@ fun SpotifyPlayList() {
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
 
     val context = AmbientContext.current
-    ScrollableColumn(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-        Spacer(modifier = Modifier.height(50.dp))
-        SpotifyTitle(text = "Your Library")
-        Spacer(modifier = Modifier.height(20.dp))
-        StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-            albums.forEach {
-                PlaylistItemWithRandomHeight(it, context)
+    rememberScrollState(0f)
+    LazyColumn(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+        // use `item` for separate elements like headers
+        // and `items` for lists of identical elements
+        item { Spacer(modifier = Modifier.height(50.dp)) }
+        item { SpotifyTitle(text = "Your Library") }
+        item { Spacer(modifier = Modifier.height(20.dp)) }
+        item {
+            StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
+                albums.forEach {
+                    PlaylistItemWithRandomHeight(it, context)
+                }
             }
         }
     }

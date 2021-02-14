@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.platform.AmbientLifecycleOwner
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +37,7 @@ import com.guru.composecookbook.ui.utils.TitleText
 @Composable
 fun AndroidViews() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        TitleText(title = "Android Views Inside Compose(ScrollableColumn)")
+        TitleText(title = "Android Views Inside @Column()")
         val context = AmbientContext.current
         AndroidTextView(context)
         AndroidButton(context)

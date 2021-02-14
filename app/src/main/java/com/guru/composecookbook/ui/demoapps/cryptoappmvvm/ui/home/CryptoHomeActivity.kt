@@ -71,6 +71,6 @@ class CryptoHomeActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview5() {
     ComposeCookBookTheme {
-        CryptoHomeScreen({})
+        CryptoHomeScreen()
     }
 }

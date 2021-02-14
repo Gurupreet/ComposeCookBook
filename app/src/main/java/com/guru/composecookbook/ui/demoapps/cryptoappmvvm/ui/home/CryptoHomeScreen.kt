@@ -43,7 +43,7 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 
 
 @Composable
-fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit) {
+fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit = {}) {
     val viewModel: CryptoHomeViewModel = viewModel()
     val uiState by viewModel.viewStateFlow.collectAsState()
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())

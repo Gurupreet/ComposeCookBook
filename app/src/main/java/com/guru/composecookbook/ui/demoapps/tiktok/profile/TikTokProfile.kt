@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.demoapps.tiktok.profile
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -32,8 +33,8 @@ fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {
         Scaffold(
             topBar = { ProfileAppBar(album, navHostController) }
         ) {
-            ScrollableColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-                ProfileTopSection(album)
+            LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
+                item { ProfileTopSection(album) }
             }
         }
     }
