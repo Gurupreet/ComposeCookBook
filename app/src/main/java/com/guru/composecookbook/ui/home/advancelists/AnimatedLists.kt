@@ -1,6 +1,6 @@
 package com.guru.composecookbook.ui.home.advancelists
 
-import androidx.compose.animation.animatedFloat
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -66,105 +66,94 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
 
     val animatedModifier = when (animationIndex) {
         0 -> {
-            val animatedProgress = animatedFloat(0f)
-            DisposableEffect(Unit) {
+            val animatedProgress = remember { Animatable(initialValue = 0f)}
+            LaunchedEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 1f,
-                    anim = tween(600)
+                    animationSpec = tween(600)
                 )
-                onDispose {
-
-                }
             }
-            Modifier.padding(8.dp).alpha(animatedProgress.value)
+            Modifier.padding(8.dp)
+                .alpha(animatedProgress.value)
         }
         1 -> {
-            val animatedProgress = animatedFloat(0.8f)
-            DisposableEffect(Unit) {
+            val animatedProgress = remember { Animatable(initialValue = 0.8f) }
+            LaunchedEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 1f,
-                    anim = tween(300, easing = LinearEasing)
+                    animationSpec = tween(300, easing = LinearEasing)
                 )
-                onDispose {
-
-                }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
         }
         2 -> {
-            val animatedProgress = animatedFloat(300f)
-            DisposableEffect(Unit) {
+            val animatedProgress = remember { Animatable(initialValue = 300f) }
+            LaunchedEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 0f,
-                    anim = tween(300, easing = FastOutSlowInEasing)
+                    animationSpec = tween(300, easing = FastOutSlowInEasing)
                 )
-                onDispose {
-
-                }
             }
-            Modifier.padding(8.dp).graphicsLayer(translationX = animatedProgress.value)
+            Modifier.padding(8.dp)
+                .graphicsLayer(translationX = animatedProgress.value)
         }
         3 -> {
-            val animatedProgress = animatedFloat(-300f)
-            val opacityProgress = animatedFloat(0f)
-            DisposableEffect(Unit) {
+            val animatedProgress = remember { Animatable(initialValue = -300f) }
+            val opacityProgress = remember { Animatable(initialValue = 0f) }
+            LaunchedEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 0f,
-                    anim = tween(300, easing = LinearEasing)
+                    animationSpec = tween(300, easing = LinearEasing)
                 )
                 opacityProgress.animateTo(
                     targetValue = 1f,
-                    anim = tween(600)
+                    animationSpec = tween(600)
                 )
-                onDispose {
-
-                }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(translationX = animatedProgress.value)
                 .alpha(opacityProgress.value)
         }
         4 -> {
-            val animatedProgress = animatedFloat(300f)
-            val opacityProgress = animatedFloat(0f)
-            DisposableEffect(Unit) {
+            val animatedProgress = remember { Animatable(initialValue = 300f) }
+            val opacityProgress = remember { Animatable(initialValue = 0f) }
+            LaunchedEffect(Unit) {
+                // TODO : fix animation rendering
                 animatedProgress.animateTo(
                     targetValue = 0f,
-                    anim = tween(300, easing = LinearEasing)
+                    animationSpec = tween(300, easing = LinearEasing)
                 )
                 opacityProgress.animateTo(
                     targetValue = 1f,
-                    anim = tween(600)
+                    animationSpec = tween(600)
                 )
-                onDispose {  }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(translationY = animatedProgress.value)
                 .alpha(opacityProgress.value)
         }
         5 -> {
-            val animatedProgress = animatedFloat(0f)
-            DisposableEffect(Unit) {
+            val animatedProgress = remember { Animatable(initialValue = 0f) }
+            LaunchedEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 360f,
-                    anim = tween(400, easing = FastOutSlowInEasing)
+                    animationSpec = tween(400, easing = FastOutSlowInEasing)
                 )
-                onDispose {  }
             }
             Modifier.padding(8.dp)
                 .graphicsLayer(rotationX = animatedProgress.value)
         }
         else -> {
-            val animatedProgress = animatedFloat(0.8f)
-            DisposableEffect(Unit) {
+            val animatedProgress = remember { Animatable(initialValue = 0.8f) }
+            LaunchedEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 1f,
-                    anim = tween(300)
+                    animationSpec = tween(300)
                 )
-                onDispose {  }
             }
-            Modifier.padding(8.dp).alpha(animatedProgress.value)
+            Modifier.padding(8.dp)
+                .alpha(animatedProgress.value)
         }
     }
     Row(
