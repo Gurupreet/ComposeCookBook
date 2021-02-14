@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
@@ -37,19 +37,19 @@ fun MyPhotosSection() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
-            bitmap = imageResource(id = R.drawable.food2),
+            painter = painterResource(id = R.drawable.food2),
             contentDescription = null,
             modifier = imageModifier,
             contentScale = ContentScale.Crop
         )
         Image(
-            bitmap = imageResource(id = R.drawable.food3),
+            painter = painterResource(id = R.drawable.food3),
             modifier = imageModifier,
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Image(
-            bitmap = imageResource(id = R.drawable.food6),
+            painter = painterResource(id = R.drawable.food6),
             modifier = imageModifier,
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -60,19 +60,19 @@ fun MyPhotosSection() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
-            bitmap = imageResource(id = R.drawable.food12),
+            painter = painterResource(id = R.drawable.food12),
             modifier = imageModifier,
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Image(
-            bitmap = imageResource(id = R.drawable.food13),
+            painter = painterResource(id = R.drawable.food13),
             modifier = imageModifier,
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Image(
-            bitmap = imageResource(id = R.drawable.food15),
+            painter = painterResource(id = R.drawable.food15),
             modifier = imageModifier,
             contentDescription = null,
             contentScale = ContentScale.Crop

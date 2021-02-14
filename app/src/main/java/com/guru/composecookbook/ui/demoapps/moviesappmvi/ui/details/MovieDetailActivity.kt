@@ -27,8 +27,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -86,7 +87,12 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
     var dominantColors = listOf(graySurface, Color.Black)
 
     if (imageId != 0) {
-        var currentBitmap = imageResource(id = imageId).asAndroidBitmap()
+        val context = LocalContext.current
+        val currentBitmap = imageFromResource(
+            res = context.resources,
+            resId = imageId
+        ).asAndroidBitmap()
+
         val swatch = generateDominantColorState(currentBitmap)
         dominantColors = listOf(Color(swatch.rgb), Color.Black)
     }
@@ -100,68 +106,68 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
                 ).value
             )
     ) {
-            item {
-                CoilImage(
-                    data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
-                    contentScale = ContentScale.Crop,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .preferredHeight(
-                            600.dp
-                        ).fillMaxWidth(),
-                    onRequestCompleted = {
-                        expand.value = true
-                    }
-                )
-            }
-            item {
-                Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
-                    Row(
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text(
-                            text = movie.title,
-                            modifier = Modifier.padding(8.dp),
-                            style = typography.h6
+        item {
+            CoilImage(
+                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                contentScale = ContentScale.Crop,
+                contentDescription = null,
+                modifier = Modifier
+                    .preferredHeight(
+                        600.dp
+                    ).fillMaxWidth(),
+                onRequestCompleted = {
+                    expand.value = true
+                }
+            )
+        }
+        item {
+            Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = movie.title,
+                        modifier = Modifier.padding(8.dp),
+                        style = typography.h6
+                    )
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Default.LibraryAdd,
+                            contentDescription = null,
+                            tint = MaterialTheme.colors.primary
                         )
-                        IconButton(onClick = {}) {
-                            Icon(
-                                imageVector = Icons.Default.LibraryAdd,
-                                contentDescription = null,
-                                tint = MaterialTheme.colors.primary
-                            )
-                        }
-                    }
-                    GenreSection(viewModel, movie.genre_ids)
-                    Text(
-                        text = "Release: ${movie.release_date}",
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                        style = typography.h6.copy(fontSize = 12.sp)
-                    )
-                    Text(
-                        text = "PG13  •  ${movie.vote_average}/10",
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                        style = typography.h6.copy(
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                    Text(
-                        text = movie.overview,
-                        modifier = Modifier
-                            .padding(8.dp),
-                        style = typography.subtitle2
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    SimilarMoviesSection(movie, viewModel)
-                    Spacer(modifier = Modifier.height(50.dp))
-                    Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
-                        Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
                     }
                 }
+                GenreSection(viewModel, movie.genre_ids)
+                Text(
+                    text = "Release: ${movie.release_date}",
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                    style = typography.h6.copy(fontSize = 12.sp)
+                )
+                Text(
+                    text = "PG13  •  ${movie.vote_average}/10",
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                    style = typography.h6.copy(
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                Text(
+                    text = movie.overview,
+                    modifier = Modifier
+                        .padding(8.dp),
+                    style = typography.subtitle2
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                SimilarMoviesSection(movie, viewModel)
+                Spacer(modifier = Modifier.height(50.dp))
+                Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
+                    Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
+                }
             }
+        }
 
     }
 }

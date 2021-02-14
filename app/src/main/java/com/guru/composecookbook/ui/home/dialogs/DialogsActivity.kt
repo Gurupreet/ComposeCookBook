@@ -17,7 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -194,7 +194,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(bitmap = imageResource(DemoDataProvider.item.imageId), contentDescription = null)
+                    Image(painter = painterResource(DemoDataProvider.item.imageId), contentDescription = null)
                 },
                 buttons = {
                     TextButton(
@@ -211,7 +211,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(bitmap = imageResource(DemoDataProvider.item.imageId), contentDescription = null)
+                    Image(painter = painterResource(DemoDataProvider.item.imageId), contentDescription = null)
                     Text(
                         item.subtitle + item.title + item.subtitle + item.title,
                         style = typography.subtitle2
@@ -233,7 +233,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
                     Image(
-                        bitmap = imageResource(DemoDataProvider.item.imageId),
+                        painter = painterResource(DemoDataProvider.item.imageId),
                         contentDescription = null,
                         modifier = Modifier.clip(RoundedCornerShape(16.dp))
                     )

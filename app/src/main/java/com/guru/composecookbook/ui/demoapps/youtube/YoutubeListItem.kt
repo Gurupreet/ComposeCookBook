@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,9 +35,8 @@ fun YoutubeListItem(item: Tweet) {
     ) {
         val (image, authorImage, title, subtitle, button) = createRefs()
         createVerticalChain(title, subtitle, chainStyle = ChainStyle.Packed)
-
         Image(
-            bitmap = imageResource(id = item.tweetImageId),
+            painter = painterResource(id = item.tweetImageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -51,7 +50,7 @@ fun YoutubeListItem(item: Tweet) {
                 }
         )
         Image(
-            bitmap = imageResource(id = R.drawable.p3),
+            painter = painterResource(id = R.drawable.p3),
             contentDescription = null,
             modifier = Modifier.preferredSize(32.dp).clip(CircleShape).constrainAs(authorImage) {
                 start.linkTo(parent.start, margin = 12.dp)

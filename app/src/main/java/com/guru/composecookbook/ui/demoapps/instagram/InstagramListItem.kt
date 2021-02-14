@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,7 +56,7 @@ private fun InstagramLikesSection(post: Tweet) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            bitmap = imageResource(id = post.authorImageId),
+            painter = painterResource(id = post.authorImageId),
             modifier = Modifier.preferredSize(20.dp).clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -102,7 +102,7 @@ private fun ProfileInfoSection(post: Tweet) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            bitmap = imageResource(id = post.authorImageId),
+            painter = painterResource(id = post.authorImageId),
             modifier = Modifier.preferredSize(32.dp).clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -122,7 +122,7 @@ private fun ProfileInfoSection(post: Tweet) {
 private fun InstagramImage(imageId: Int) {
     if (imageId != 0) {
         Image(
-            bitmap = imageResource(id = imageId),
+            painter = painterResource(id = imageId),
             modifier = Modifier.fillMaxWidth().preferredHeight(450.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop

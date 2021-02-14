@@ -17,7 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
@@ -52,7 +52,7 @@ fun YoutubeHome() {
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                     Image(
-                        bitmap = imageResource(id = R.drawable.p3),
+                        painter = painterResource(id = R.drawable.p3),
                         contentDescription = null,
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                             .preferredSize(24.dp).clip(CircleShape)

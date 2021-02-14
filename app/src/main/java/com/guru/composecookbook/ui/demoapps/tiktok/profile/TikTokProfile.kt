@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -44,7 +44,7 @@ fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {
 fun ProfileTopSection(album: Album) {
     Spacer(modifier = Modifier.height(16.dp))
     Image(
-        bitmap = imageResource(id = album.imageId),
+        painter = painterResource(id = album.imageId),
         contentDescription = null,
         modifier = Modifier.size(100.dp)
             .clip(CircleShape)
@@ -151,7 +151,7 @@ fun ProfileTabs() {
     VerticalGrid(columns = 3) {
         list.forEach {
             Image(
-                bitmap = imageResource(id = it.imageId),
+                painter = painterResource(id = it.imageId),
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth().height(150.dp),
                 contentScale = ContentScale.Crop

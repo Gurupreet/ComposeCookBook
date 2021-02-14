@@ -21,7 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
@@ -63,7 +63,7 @@ fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableS
         )
 
         Image(
-            bitmap = imageResource(id = R.drawable.p3),
+            painter = painterResource(id = R.drawable.p3),
             contentDescription = null,
             modifier = Modifier
                 .padding(horizontal = 8.dp)

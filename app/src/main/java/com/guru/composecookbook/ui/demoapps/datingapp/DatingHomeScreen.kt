@@ -20,7 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AmbientConfiguration
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
@@ -127,7 +127,7 @@ fun DatingHomeScreen() {
 fun CardContent(album: Album) {
     Column {
         Image(
-            bitmap = imageResource(album.imageId),
+            painter = painterResource(album.imageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier.weight(1f)
@@ -171,7 +171,7 @@ fun DatingLoader(modifier: Modifier) {
         //TODO dating loader animation
      //   FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
-            bitmap = imageResource(id = R.drawable.adele21),
+            painter = painterResource(id = R.drawable.adele21),
             modifier = modifier.preferredSize(50.dp).clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop,

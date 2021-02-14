@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
@@ -56,7 +56,7 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
     })) {
         Column {
             Image(
-                bitmap = imageResource(album.imageId),
+                painter = painterResource(album.imageId),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier.height(randomHeight)

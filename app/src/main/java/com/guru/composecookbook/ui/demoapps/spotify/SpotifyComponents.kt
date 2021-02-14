@@ -17,9 +17,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -45,7 +47,7 @@ fun SpotifyHomeGridItem(album: Album) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Image(
-                bitmap = imageResource(id = album.imageId),
+                painter = painterResource(id = album.imageId),
                 contentDescription = null,
                 modifier = Modifier.preferredSize(55.dp),
                 contentScale = ContentScale.Crop
@@ -73,7 +75,7 @@ fun SpotifyLaneItem(album: Album) {
                 })
     ) {
         Image(
-            bitmap = imageResource(id = album.imageId),
+            painter = painterResource(id = album.imageId),
             modifier = Modifier.preferredWidth(180.dp)
                 .preferredHeight(160.dp),
             contentDescription = null,
@@ -91,11 +93,11 @@ fun SpotifyLaneItem(album: Album) {
 
 @Composable
 fun SpotifySearchGridItem(album: Album) {
-    val imageBitmap = imageResource(id = album.imageId).asAndroidBitmap()
+    val context = LocalContext.current
+    val imageBitmap = imageFromResource(res = context.resources, resId = album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(imageBitmap) }
     val dominantGradient =
         remember { listOf(Color(swatch.rgb), Color(swatch.rgb).copy(alpha = 0.6f)) }
-    val context = AmbientContext.current
     Row(
         modifier = Modifier
             .padding(8.dp)
@@ -114,7 +116,7 @@ fun SpotifySearchGridItem(album: Album) {
             modifier = Modifier.padding(8.dp)
         )
         Image(
-            bitmap = imageResource(id = album.imageId),
+            painter = painterResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier.preferredSize(70.dp)

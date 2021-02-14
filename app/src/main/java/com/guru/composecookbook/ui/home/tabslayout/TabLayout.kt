@@ -19,7 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -145,7 +145,7 @@ private fun CustomImageChip(
     ) {
         Row(modifier = Modifier) {
             Image(
-                bitmap = imageResource(imageId),
+                painter = painterResource(imageId),
                 contentDescription = null,
                 modifier = Modifier.padding(8.dp).preferredSize(20.dp).clip(CircleShape)
             )

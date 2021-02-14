@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -26,7 +26,7 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
             .clip(shape = MaterialTheme.shapes.medium)
 
         Image(
-            imageResource(item.imageId),
+            painter = painterResource(item.imageId),
             modifier = imageModifier,
             contentDescription = null,
             contentScale = ContentScale.Crop

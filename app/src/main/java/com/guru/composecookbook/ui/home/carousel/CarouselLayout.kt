@@ -26,7 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -107,7 +107,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
 fun CarouselItem(item: Item) {
     Box {
         Image(
-            bitmap = imageResource(id = item.imageId),
+            painter = painterResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier
@@ -127,7 +127,7 @@ fun CarouselItem(item: Item) {
 @Composable
 fun CarouselItemCircle(item: Item) {
     Image(
-        bitmap = imageResource(id = item.imageId),
+        painter = painterResource(id = item.imageId),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
@@ -155,7 +155,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
                 style = typography.body2
             )
             Image(
-                bitmap = imageResource(id = item.imageId),
+                painter = painterResource(id = item.imageId),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier.padding(4.dp)

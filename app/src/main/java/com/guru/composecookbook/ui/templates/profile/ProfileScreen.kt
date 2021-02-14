@@ -19,7 +19,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.semantics
@@ -235,7 +236,7 @@ fun TopAppBarView(scroll: Float) {
             },
             navigationIcon = {
                 Image(
-                    bitmap = imageResource(id = R.drawable.p1),
+                    painter = painterResource(id = R.drawable.p1),
                     contentDescription = null,
                     modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                         .preferredSize(32.dp).clip(CircleShape)
@@ -257,7 +258,7 @@ fun TopAppBarView(scroll: Float) {
 fun AnimatedImage(scroll: Float) {
     val dynamicAnimationSizeValue = (initialimageFloat - scroll).coerceIn(36f, initialimageFloat)
     Image(
-        bitmap = imageResource(id = R.drawable.p1),
+        painter = painterResource(id = R.drawable.p1),
         contentScale = ContentScale.Crop,
         contentDescription = null,
         modifier = Modifier

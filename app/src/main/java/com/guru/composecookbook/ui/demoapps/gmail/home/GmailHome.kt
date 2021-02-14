@@ -26,7 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.AmbientDensity
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -443,7 +443,7 @@ fun GmailUserEmail(imageId: Int, name: String, email: String, badgeCount: Int) {
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Image(
-            bitmap = imageResource(id = imageId),
+            painter = painterResource(id = imageId),
             contentDescription = null,
             modifier = Modifier
                 .preferredSize(32.dp)

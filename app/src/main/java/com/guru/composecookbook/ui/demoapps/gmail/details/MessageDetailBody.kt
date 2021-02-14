@@ -21,7 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -64,7 +64,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
 
                 Image(
-                    bitmap = imageResource(id = R.drawable.p3),
+                    painter = painterResource(id = R.drawable.p3),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(horizontal = 8.dp)

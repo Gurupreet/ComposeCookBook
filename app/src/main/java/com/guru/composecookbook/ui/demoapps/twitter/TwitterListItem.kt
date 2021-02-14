@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -68,7 +68,7 @@ private fun NameAndHandle(tweet: Tweet) {
 @Composable
 private fun AuthorImage(tweet: Tweet) {
     Image(
-        bitmap = imageResource(id = tweet.authorImageId),
+        painter = painterResource(id = tweet.authorImageId),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
@@ -82,7 +82,7 @@ private fun AuthorImage(tweet: Tweet) {
 private fun TweetImage(imageId: Int) {
     if (imageId != 0) {
         Image(
-            bitmap = imageResource(id = imageId),
+            painter = painterResource(id = imageId),
             contentDescription = null,
             modifier = Modifier.padding(top = 8.dp)
                 .fillMaxWidth()

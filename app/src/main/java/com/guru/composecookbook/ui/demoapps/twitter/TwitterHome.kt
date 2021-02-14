@@ -16,7 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,7 +42,7 @@ fun TwitterHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     Image(
-                        bitmap = imageResource(id = R.drawable.p6),
+                        painter = painterResource(id = R.drawable.p6),
                         contentDescription = null,
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                             .preferredSize(32.dp).clip(CircleShape)

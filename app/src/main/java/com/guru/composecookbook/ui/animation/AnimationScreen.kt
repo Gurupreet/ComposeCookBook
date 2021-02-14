@@ -23,7 +23,7 @@
 //import androidx.compose.ui.graphics.drawscope.Stroke
 //import androidx.compose.ui.graphics.graphicsLayer
 //import androidx.compose.ui.layout.ContentScale
-//import androidx.compose.ui.res.imageResource
+//import androidx.compose.ui.res.painterResource
 //import androidx.compose.ui.res.vectorResource
 //import androidx.compose.ui.semantics.semantics
 //import androidx.compose.ui.semantics.testTag
@@ -194,7 +194,7 @@
 //    val enabled = remember { mutableStateOf(true) }
 //    Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.padding(8.dp)) {
 //        Image(
-//            bitmap = imageResource(R.drawable.food10),
+//            painter = painterResource(R.drawable.food10),
 //            contentScale = ContentScale.Crop,
 //            contentDescription = null,
 //            modifier = Modifier
@@ -204,7 +204,7 @@
 //                .clip(RoundedCornerShape(animateAsState(if (enabled.value) 0.dp else 8.dp).value))
 //        )
 //        Image(
-//            bitmap = imageResource(R.drawable.food12),
+//            painter = painterResource(R.drawable.food12),
 //            contentScale = ContentScale.Crop,
 //            contentDescription = null,
 //            modifier = Modifier
@@ -357,14 +357,14 @@
 //    Row(horizontalArrangement = Arrangement.SpaceAround) {
 //        Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
 //            Image(
-//                bitmap = imageResource(id = R.drawable.lana),
+//                painter = painterResource(id = R.drawable.lana),
 //                contentDescription = null,
 //                modifier = Modifier.height(dpAnim[AnimationDefinitions.dpPropKey])
 //            )
 //        }
 //        Card(modifier = Modifier.preferredSize(120.dp).padding(12.dp)) {
 //            Image(
-//                bitmap = imageResource(id = R.drawable.billie),
+//                painter = painterResource(id = R.drawable.billie),
 //                contentDescription = null,
 //                modifier = Modifier.height(100.dp - dpAnim[AnimationDefinitions.dpPropKey])
 //            )
@@ -386,7 +386,7 @@
 //
 //    Card(backgroundColor = Color.White, modifier = Modifier.preferredSize(150.dp)) {
 //        Image(
-//            bitmap = imageResource(id = R.drawable.lana),
+//            painter = painterResource(id = R.drawable.lana),
 //            contentDescription = null,
 //            alpha = floatAnim[AnimationDefinitions.floatPropKey] / 100,
 //        )
@@ -502,7 +502,7 @@
 //    ).clickable(onClick = { draw = !draw })
 //
 //    Image(
-//        bitmap = imageResource(id = R.drawable.bp),
+//        painter = painterResource(id = R.drawable.bp),
 //        contentDescription = null,
 //        modifier = modifier
 //    )
@@ -512,7 +512,7 @@
 //
 //    Box {
 //        Image(
-//            bitmap = imageResource(id = R.drawable.adele21),
+//            painter = painterResource(id = R.drawable.adele21),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw2) 30f else 5f).value,
@@ -521,7 +521,7 @@
 //            ).clickable(onClick = { draw2 = !draw2 })
 //        )
 //        Image(
-//            bitmap = imageResource(id = R.drawable.dualipa),
+//            painter = painterResource(id = R.drawable.dualipa),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw2) 30f else 10f).value,
@@ -530,7 +530,7 @@
 //            ).clickable(onClick = { draw2 = !draw2 })
 //        )
 //        Image(
-//            bitmap = imageResource(id = R.drawable.edsheeran),
+//            painter = painterResource(id = R.drawable.edsheeran),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw2) 30f else 5f).value,
@@ -543,7 +543,7 @@
 //
 //    Box {
 //        Image(
-//            bitmap = imageResource(id = R.drawable.wolves),
+//            painter = painterResource(id = R.drawable.wolves),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw3) 30f else 5f).value,
@@ -553,7 +553,7 @@
 //            ).clickable(onClick = { draw3 = !draw3 })
 //        )
 //        Image(
-//            bitmap = imageResource(id = R.drawable.sam),
+//            painter = painterResource(id = R.drawable.sam),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw3) 30f else 10f).value,
@@ -563,7 +563,7 @@
 //            ).clickable(onClick = { draw3 = !draw3 })
 //        )
 //        Image(
-//            bitmap = imageResource(id = R.drawable.billie),
+//            painter = painterResource(id = R.drawable.billie),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw3) 30f else 5f).value,
@@ -577,7 +577,7 @@
 //
 //    Box {
 //        Image(
-//            bitmap = imageResource(id = R.drawable.imagindragon),
+//            painter = painterResource(id = R.drawable.imagindragon),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw4) 30f else 5f).value,
@@ -587,7 +587,7 @@
 //            ).clickable(onClick = { draw4 = !draw4 })
 //        )
 //        Image(
-//            bitmap = imageResource(id = R.drawable.khalid),
+//            painter = painterResource(id = R.drawable.khalid),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw4) 30f else 10f).value,
@@ -597,7 +597,7 @@
 //            ).clickable(onClick = { draw4 = !draw4 })
 //        )
 //        Image(
-//            bitmap = imageResource(id = R.drawable.camelia),
+//            painter = painterResource(id = R.drawable.camelia),
 //            contentDescription = null,
 //            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
 //                shadowElevation = animateAsState(if (draw4) 30f else 5f).value,

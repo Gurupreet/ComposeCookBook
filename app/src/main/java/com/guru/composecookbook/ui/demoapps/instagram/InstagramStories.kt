@@ -20,7 +20,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -81,7 +81,7 @@ fun StoryListItem(post: Tweet) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
-            bitmap = imageResource(id = post.authorImageId),
+            painter = painterResource(id = post.authorImageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = imageModifier

@@ -17,7 +17,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.graphics.imageFromResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -35,7 +37,8 @@ import com.guru.composecookbook.ui.utils.verticalGradientBackground
 @Composable
 fun SpotifyDetailScreen(album: Album) {
     val scrollState = rememberScrollState(0f)
-    val image = imageResource(id = album.imageId).asAndroidBitmap()
+    val context = LocalContext.current
+    val image = imageFromResource(res = context.resources, resId = album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(image) }
     val dominantColors = listOf(Color(swatch.rgb), MaterialTheme.colors.surface)
     val dominantGradient = remember { dominantColors }
@@ -164,7 +167,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
             else 250.dp - Dp(scrollState.value / 20)
         val animateImageSize = animateDpAsState(dynamicValue).value
         Image(
-            bitmap = imageResource(id = album.imageId),
+            painter = painterResource(id = album.imageId),
             contentDescription = null,
             modifier = Modifier
                 .preferredSize(animateImageSize)
