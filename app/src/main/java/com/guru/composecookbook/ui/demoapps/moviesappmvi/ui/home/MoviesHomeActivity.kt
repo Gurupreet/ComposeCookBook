@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.*
@@ -16,10 +17,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
@@ -33,7 +32,7 @@ sealed class MoviesHomeInteractionEvents {
     data class RemoveFromMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
 }
 
-class MoviesHomeActivity : AppCompatActivity() {
+class MoviesHomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

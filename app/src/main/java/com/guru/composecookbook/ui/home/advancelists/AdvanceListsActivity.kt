@@ -3,7 +3,8 @@ package com.guru.composecookbook.ui.home.advancelists
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -11,7 +12,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -20,7 +20,7 @@ import com.guru.composecookbook.ui.home.carousel.Pager
 import com.guru.composecookbook.ui.home.carousel.PagerState
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
-class AdvanceListsActivity : AppCompatActivity() {
+class AdvanceListsActivity : ComponentActivity() {
 
     private val isDarkTheme: Boolean by lazy {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false

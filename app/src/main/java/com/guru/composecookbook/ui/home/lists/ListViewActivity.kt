@@ -3,7 +3,8 @@ package com.guru.composecookbook.ui.home.lists
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,7 +18,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -26,7 +26,7 @@ import com.guru.composecookbook.ui.demoapps.instagram.InstagramStories
 import com.guru.composecookbook.ui.demoapps.instagram.StoryListItem
 import com.guru.composecookbook.ui.utils.VerticalGrid
 
-class ListViewActivity : AppCompatActivity() {
+class ListViewActivity : ComponentActivity() {
 
     private val listType: String by lazy {
         intent?.getStringExtra(TYPE) ?: ListViewType.VERTICAL.name

@@ -21,7 +21,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto

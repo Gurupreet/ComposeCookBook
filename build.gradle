@@ -12,7 +12,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha05'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha06'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -25,6 +25,9 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
     }
     tasks.withType(JavaCompile) {
         options.compilerArgs << "-Xlint:deprecation"

@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -16,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
@@ -26,7 +26,7 @@ import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.datingapp.components.ProfileScreen
 
-class DatingHomeActivity : AppCompatActivity() {
+class DatingHomeActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

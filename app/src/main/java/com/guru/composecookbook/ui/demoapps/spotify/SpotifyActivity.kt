@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.*
@@ -16,8 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
@@ -25,7 +24,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
-class SpotifyActivity : AppCompatActivity() {
+class SpotifyActivity : ComponentActivity() {
 
     private val isDarkTheme: Boolean by lazy {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false

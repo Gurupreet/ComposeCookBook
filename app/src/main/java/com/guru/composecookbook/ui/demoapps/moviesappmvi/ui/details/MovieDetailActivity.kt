@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ScrollableColumn
@@ -27,13 +28,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
@@ -43,7 +43,7 @@ import com.guru.composecookbook.ui.templates.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
 
-class MovieDetailActivity : AppCompatActivity() {
+class MovieDetailActivity : ComponentActivity() {
     val movie by lazy {
         intent.getSerializableExtra(MOVIE) as Movie?
     }

@@ -3,16 +3,16 @@ package com.guru.composecookbook.ui.demoapps.spotify.details
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 
-class SpotifyDetailActivity : AppCompatActivity() {
+class SpotifyDetailActivity : ComponentActivity() {
 
     private val album: Album by lazy {
         intent?.getSerializableExtra(ALBUM) as Album

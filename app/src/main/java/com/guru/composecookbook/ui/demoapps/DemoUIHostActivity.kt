@@ -3,11 +3,11 @@ package com.guru.composecookbook.ui.demoapps
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -20,7 +20,7 @@ import com.guru.composecookbook.ui.demoapps.youtube.YoutubeHome
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
 
-class DemoUIHostActivity : AppCompatActivity() {
+class DemoUIHostActivity : ComponentActivity() {
 
     private val demoUiType: String by lazy {
         intent?.getStringExtra(DynamicUIActivity.TYPE) ?: DynamicUiType.TABS.name

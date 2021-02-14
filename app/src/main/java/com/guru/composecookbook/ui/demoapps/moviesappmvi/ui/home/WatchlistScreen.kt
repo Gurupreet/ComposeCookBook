@@ -22,7 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider

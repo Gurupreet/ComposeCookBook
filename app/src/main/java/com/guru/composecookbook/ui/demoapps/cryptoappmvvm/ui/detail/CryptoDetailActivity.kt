@@ -4,15 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 
-class CryptoDetailActivity : AppCompatActivity() {
+class CryptoDetailActivity : ComponentActivity() {
 
     val crypto by lazy {
         intent.getSerializableExtra(CRYPTO) as Crypto

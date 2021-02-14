@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail.CryptoDetailActivity
@@ -20,7 +20,7 @@ sealed class CryptoHomeInteractionEvents {
     object LoadMoreItems : CryptoHomeInteractionEvents()
 }
 
-class CryptoHomeActivity : AppCompatActivity() {
+class CryptoHomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
