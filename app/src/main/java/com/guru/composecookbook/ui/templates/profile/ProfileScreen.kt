@@ -20,9 +20,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -140,13 +139,13 @@ fun SocialRow() {
             modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 16.dp)
         ) {
             IconButton(onClick = { launchSocialActivity(context, "github") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_github_square_brands), contentDescription = null)
+                Icon(painter = painterResource(id = R.drawable.ic_github_square_brands), contentDescription = null)
             }
             IconButton(onClick = { launchSocialActivity(context, "twitter") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_twitter_square_brands), contentDescription = null)
+                Icon(painter = painterResource(id = R.drawable.ic_twitter_square_brands), contentDescription = null)
             }
             IconButton(onClick = { launchSocialActivity(context, "linkedin") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_linkedin_brands), contentDescription = null)
+                Icon(painter = painterResource(id = R.drawable.ic_linkedin_brands), contentDescription = null)
             }
         }
     }
@@ -166,7 +165,7 @@ fun MoreInfoSection() {
     ListItem(
         icon = {
             Icon(
-                imageVector = vectorResource(id = R.drawable.ic_github_square_brands),
+                painter = painterResource(id = R.drawable.ic_github_square_brands),
                 modifier = Modifier.preferredSize(24.dp),
                 contentDescription = null
             )

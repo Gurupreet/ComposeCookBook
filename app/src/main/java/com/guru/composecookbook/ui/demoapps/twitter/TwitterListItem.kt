@@ -19,7 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -102,7 +101,7 @@ fun TweetIconSection(tweet: Tweet) {
         IconButton(onClick = {}) {
             Row {
                 Icon(
-                    imageVector = vectorResource(id = R.drawable.ic_speech_bubble),
+                    painter = painterResource(id = R.drawable.ic_speech_bubble),
                     contentDescription = null,
                     modifier = Modifier.preferredSize(16.dp),
                     tint = Color.LightGray
@@ -118,7 +117,7 @@ fun TweetIconSection(tweet: Tweet) {
         IconButton(onClick = {}) {
             Row {
                 Icon(
-                    imageVector = vectorResource(id = R.drawable.ic_retweet_solid),
+                    painter = painterResource(id = R.drawable.ic_retweet_solid),
                     contentDescription = null,
                     modifier = Modifier.preferredSize(16.dp),
                     tint = Color.LightGray

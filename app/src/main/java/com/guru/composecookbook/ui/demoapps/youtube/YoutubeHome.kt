@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
@@ -34,7 +33,7 @@ fun YoutubeHome() {
                 elevation = 8.dp,
                 navigationIcon = {
                     Icon(
-                        imageVector = vectorResource(id = R.drawable.ic_youtube),
+                        painter = painterResource(id = R.drawable.ic_youtube),
                         contentDescription = null,
                         tint = Color.Red,
                         modifier = Modifier.padding(start = 16.dp)

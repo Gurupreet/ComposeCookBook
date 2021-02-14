@@ -17,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
@@ -31,7 +30,7 @@ fun TwitterHome() {
             TopAppBar(
                 title = {
                     Icon(
-                        imageVector = vectorResource(id = R.drawable.ic_twitter),
+                        painter = painterResource(id = R.drawable.ic_twitter),
                         contentDescription = null,
                         tint = twitterColor,
                         modifier = Modifier.fillMaxWidth()
@@ -87,7 +86,7 @@ fun TwitterHomeContent() {
 fun FloatingActionButton(rippleExplode: MutableState<Boolean>) {
     ExtendedFloatingActionButton(
         text = { Text(text = "Tweet") },
-        icon = { Icon(imageVector = vectorResource(id = R.drawable.ic_twitter), contentDescription = null) },
+        icon = { Icon(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = null) },
         onClick = { rippleExplode.value = !rippleExplode.value },
         backgroundColor = twitterColor
     )

@@ -15,7 +15,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -92,7 +91,7 @@ fun ProfileTopSection(album: Album) {
             Text(text = "Follow", modifier = Modifier.padding(horizontal = 32.dp))
         }
         Icon(
-            imageVector = vectorResource(id = R.drawable.ic_instagram),
+            painter = painterResource(id = R.drawable.ic_instagram),
             contentDescription = null,
             modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
                 .border(

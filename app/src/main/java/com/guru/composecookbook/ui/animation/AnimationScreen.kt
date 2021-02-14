@@ -24,7 +24,7 @@
 //import androidx.compose.ui.graphics.graphicsLayer
 //import androidx.compose.ui.layout.ContentScale
 //import androidx.compose.ui.res.painterResource
-//import androidx.compose.ui.res.vectorResource
+//import androidx.compose.ui.res.painterResource
 //import androidx.compose.ui.semantics.semantics
 //import androidx.compose.ui.semantics.testTag
 //import androidx.compose.ui.tooling.preview.Preview

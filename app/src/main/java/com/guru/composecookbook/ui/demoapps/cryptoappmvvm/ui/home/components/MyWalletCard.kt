@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,7 +47,7 @@ fun MyWalletCard() {
         val (title, image, price, asset, dailyChange, send, receive, scan) = createRefs()
         val horizontalCenterGuideline = createGuidelineFromStart(0.5f)
         Icon(
-            imageVector = vectorResource(id = R.drawable.ic_ethereum_brands),
+            painter = painterResource(id = R.drawable.ic_ethereum_brands),
             contentDescription = null,
             modifier = Modifier.preferredSize(28.dp).alpha(0.7f).constrainAs(image) {
                 start.linkTo(parent.start)

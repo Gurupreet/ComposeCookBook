@@ -25,7 +25,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalAnimationClock
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -118,7 +117,7 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(imageVector = vectorResource(id = R.drawable.ic_share_solid), contentDescription = null)
+        Icon(painter = painterResource(id = R.drawable.ic_share_solid), contentDescription = null)
         Text(
             text = "238",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),

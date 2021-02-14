@@ -18,7 +18,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -80,14 +79,14 @@ private fun InstagramIconSection() {
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(
-                imageVector = vectorResource(id = R.drawable.ic_speech_bubble),
+                painter = painterResource(id = R.drawable.ic_speech_bubble),
                 contentDescription = null,
                 modifier = Modifier.preferredSize(44.dp)
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(
-                imageVector = vectorResource(id = R.drawable.ic_send),
+                painter = painterResource(id = R.drawable.ic_send),
                 contentDescription = null,
                 modifier = Modifier.preferredSize(44.dp)
             )
