@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.green700
@@ -204,7 +205,7 @@ fun TypeOfBoxs() {
 fun ConstraintLayouts() {
     Text(text = "ConstraintLayouts", style = typography.h6, modifier = Modifier.padding(8.dp))
 
-    ConstraintLayout(
+   ConstraintLayout(
         modifier = Modifier.background(Color.LightGray).fillMaxWidth()
             .preferredHeight(150.dp)
     ) {
