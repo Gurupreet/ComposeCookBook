@@ -218,7 +218,7 @@ fun GmailContent(
     // ensures that the user intents to have scroll gesture..
     val isVisibleScrolled =
         oldIndex.value != lazyListState.firstVisibleItemIndex ||
-            (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
+                (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
 
     println("${lazyListState.firstVisibleItemIndex}  ${lazyListState.firstVisibleItemScrollOffset}")
 

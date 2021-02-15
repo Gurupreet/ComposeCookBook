@@ -50,7 +50,10 @@ fun Charts() {
             item { Spacer(modifier = Modifier.height(10.dp)) }
 
             item {
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
                     Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                         LineChart(
                             yAxisValues = createRandomFloatList(),
@@ -88,7 +91,10 @@ fun Charts() {
             item { Spacer(modifier = Modifier.height(10.dp)) }
 
             item {
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
                     Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                         val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
                         PieCharts(pieChartValues)
@@ -224,7 +230,12 @@ fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
 
 fun DrawScope.drawPieSlice(color: Color, size: Size, startAngle: Float, sweepAngle: Float) {
     drawArc(
-        color = color, size = size, startAngle = startAngle, sweepAngle = sweepAngle, useCenter = true)
+        color = color,
+        size = size,
+        startAngle = startAngle,
+        sweepAngle = sweepAngle,
+        useCenter = true
+    )
 }
 
 fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float, colors: List<Color>) {

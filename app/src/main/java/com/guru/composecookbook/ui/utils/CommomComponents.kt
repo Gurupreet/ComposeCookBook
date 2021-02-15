@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -83,8 +82,10 @@ fun RotateIcon(
         imageVector = asset,
         contentDescription = null,
         modifier = modifier
-            .graphicsLayer(rotationZ = animateFloatAsState(if (state) 0f else angle, tween(duration))
-                .value)
+            .graphicsLayer(
+                rotationZ = animateFloatAsState(if (state) 0f else angle, tween(duration))
+                    .value
+            )
     )
 }
 

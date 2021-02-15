@@ -18,8 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.gesture.doubleTapGestureFilter
-import androidx.compose.ui.gesture.longPressGestureFilter
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
@@ -122,7 +120,7 @@ fun HowToModifiers() {
             .padding(8.dp))
         DemoText("Use Modifier.pointerInput() for all drag, tag, long press gestures")
         DemoElementText(modifier = Modifier.background(teal200).pointerInput("key") {
-            this.detectTapGestures {  }
+            this.detectTapGestures { }
         }
             .padding(8.dp))
 

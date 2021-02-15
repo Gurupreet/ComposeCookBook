@@ -87,10 +87,14 @@ fun PlayerBottomBar(modifier: Modifier) {
             style = typography.h6.copy(fontSize = 14.sp),
             modifier = Modifier.padding(8.dp).weight(1f),
         )
-        Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),
-            contentDescription = null)
-        Icon(imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp),
-            contentDescription = null)
+        Icon(
+            imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),
+            contentDescription = null
+        )
+        Icon(
+            imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp),
+            contentDescription = null
+        )
     }
 }
 

@@ -61,7 +61,7 @@ fun TwitterHome() {
             FloatingActionButton(rippleExplode)
             if (rippleExplode.value) {
                 // TODO fix animation
-               // FloatMultiStateAnimationExplode(duration = 300)
+                // FloatMultiStateAnimationExplode(duration = 300)
             }
         },
         bodyContent = {
@@ -86,7 +86,12 @@ fun TwitterHomeContent() {
 fun FloatingActionButton(rippleExplode: MutableState<Boolean>) {
     ExtendedFloatingActionButton(
         text = { Text(text = "Tweet") },
-        icon = { Icon(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = null) },
+        icon = {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_twitter),
+                contentDescription = null
+            )
+        },
         onClick = { rippleExplode.value = !rippleExplode.value },
         backgroundColor = twitterColor
     )

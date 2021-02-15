@@ -3,7 +3,6 @@ package com.guru.composecookbook.ui.demoapps.spotify.details
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -67,8 +66,10 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
             )
             .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {
-        Icon(imageVector = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface,
-            contentDescription = null)
+        Icon(
+            imageVector = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface,
+            contentDescription = null
+        )
         Text(
             text = album.song,
             color = MaterialTheme.colors.onSurface,
@@ -76,8 +77,10 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
                 .padding(16.dp)
                 .alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
         )
-        Icon(imageVector = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface,
-            contentDescription = null)
+        Icon(
+            imageVector = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface,
+            contentDescription = null
+        )
     }
 }
 

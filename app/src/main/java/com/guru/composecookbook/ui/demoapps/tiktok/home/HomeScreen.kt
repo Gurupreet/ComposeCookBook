@@ -110,8 +110,10 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(painter = painterResource(id = R.drawable.ic_comment_dots_solid),
-            contentDescription = null)
+        Icon(
+            painter = painterResource(id = R.drawable.ic_comment_dots_solid),
+            contentDescription = null
+        )
         Text(
             text = "1223",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
@@ -124,13 +126,13 @@ fun VideoIconsSection(
             modifier = Modifier.padding(top = 4.dp, bottom = 32.dp)
         )
         val rotation = animatedFloat(initVal = 0f)
-            rotation.animateTo(
-                targetValue = 360f,
-                anim = repeatable(
-                    iterations = 10000,
-                    animation = tween(durationMillis = 3500, easing = LinearEasing),
-                ),
-            )
+        rotation.animateTo(
+            targetValue = 360f,
+            anim = repeatable(
+                iterations = 10000,
+                animation = tween(durationMillis = 3500, easing = LinearEasing),
+            ),
+        )
         ProfileImageWithFollow(
             modifier = Modifier.preferredSize(64.dp).graphicsLayer(rotationZ = rotation.value),
             false,

@@ -2,7 +2,7 @@
 buildscript {
     ext {
         compose_version = '1.0.0-alpha12'
-        nav_compose_version='1.0.0-alpha07'
+        nav_compose_version = '1.0.0-alpha07'
         kotlin_version = "1.4.30"
     }
 

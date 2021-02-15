@@ -99,7 +99,11 @@ fun LanesSection() {
 fun SearchSection() {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Row(modifier = Modifier.weight(1f).background(customGray).padding(4.dp)) {
-            Icon(imageVector = Icons.Default.Search, modifier = Modifier.padding(4.dp), contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.Search,
+                modifier = Modifier.padding(4.dp),
+                contentDescription = null
+            )
             Text(
                 text = "Search",
                 color = Color.DarkGray,

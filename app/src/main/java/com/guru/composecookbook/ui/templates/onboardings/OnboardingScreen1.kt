@@ -47,7 +47,8 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
             Text(
                 text = "Skip",
                 style = MaterialTheme.typography.subtitle2,
-                modifier = Modifier.align(Alignment.TopEnd).padding(vertical = 48.dp, horizontal = 16.dp).clickable(onClick = onSkip)
+                modifier = Modifier.align(Alignment.TopEnd)
+                    .padding(vertical = 48.dp, horizontal = 16.dp).clickable(onClick = onSkip)
             )
             Row(modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp)) {
                 onboardingList.forEachIndexed { index, _ ->
@@ -59,12 +60,19 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
                 }
             }
             Button(
-                onClick = { if (pagerState.currentPage != onboardingList.size - 1) pagerState.currentPage = pagerState.currentPage + 1 },
+                onClick = {
+                    if (pagerState.currentPage != onboardingList.size - 1) pagerState.currentPage =
+                        pagerState.currentPage + 1
+                },
                 modifier = Modifier
                     .animateContentSize()
-                    .align(Alignment.BottomCenter).padding(bottom = 32.dp).height(50.dp).clip(CircleShape)
+                    .align(Alignment.BottomCenter).padding(bottom = 32.dp).height(50.dp)
+                    .clip(CircleShape)
             ) {
-                Text(text = if (pagerState.currentPage == onboardingList.size - 1) "Let's Begin" else "Next", modifier = Modifier.padding(horizontal = 32.dp))
+                Text(
+                    text = if (pagerState.currentPage == onboardingList.size - 1) "Let's Begin" else "Next",
+                    modifier = Modifier.padding(horizontal = 32.dp)
+                )
             }
         }
     }
@@ -72,7 +80,10 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
 
 @Composable
 fun OnboardingPagerItem(page: Int) {
-    Column(modifier = Modifier.padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.padding(horizontal = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         LottieLoadingView(LocalContext.current, onboardingList[page].third)
         Text(
             text = onboardingList[page].first,
@@ -113,8 +124,20 @@ fun OnboardingPagerSlide(selected: Boolean, color: Color, icon: ImageVector) {
 }
 
 val onboardingList = listOf(
-    Triple("Team Collaborations", "Our tools help your teams collaborate for the best output results", "profile.json"),
-    Triple("Improve Productivity", "Our tools are designed to improve productivity by automating all the stuff for you", "working.json"),
-    Triple("Growth Tracking", "We provide dashboard and charts to track your growth easily and suggestions.", "food.json")
+    Triple(
+        "Team Collaborations",
+        "Our tools help your teams collaborate for the best output results",
+        "profile.json"
+    ),
+    Triple(
+        "Improve Productivity",
+        "Our tools are designed to improve productivity by automating all the stuff for you",
+        "working.json"
+    ),
+    Triple(
+        "Growth Tracking",
+        "We provide dashboard and charts to track your growth easily and suggestions.",
+        "food.json"
+    )
 )
 

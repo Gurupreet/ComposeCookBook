@@ -182,21 +182,21 @@ fun TypeOfBoxs() {
     Box(modifier = boxModifier) {
         Card(
             backgroundColor = green700, elevation = 4.dp, modifier = Modifier.preferredSize(
-            200
-                .dp
-        ).align(Alignment.TopStart)
+                200
+                    .dp
+            ).align(Alignment.TopStart)
         ) {}
         Card(
             backgroundColor = green500, elevation = 4.dp, modifier = Modifier.preferredSize(
-            150
-                .dp
-        ).align(Alignment.Center)
+                150
+                    .dp
+            ).align(Alignment.Center)
         ) {}
         Card(
             backgroundColor = green200, elevation = 4.dp, modifier = Modifier.preferredSize(
-            100
-                .dp
-        ).align(Alignment.BottomEnd)
+                100
+                    .dp
+            ).align(Alignment.BottomEnd)
         ) {}
     }
 }
@@ -205,7 +205,7 @@ fun TypeOfBoxs() {
 fun ConstraintLayouts() {
     Text(text = "ConstraintLayouts", style = typography.h6, modifier = Modifier.padding(8.dp))
 
-   ConstraintLayout(
+    ConstraintLayout(
         modifier = Modifier.background(Color.LightGray).fillMaxWidth()
             .preferredHeight(150.dp)
     ) {

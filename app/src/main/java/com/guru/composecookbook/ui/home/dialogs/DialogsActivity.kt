@@ -194,7 +194,10 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(painter = painterResource(DemoDataProvider.item.imageId), contentDescription = null)
+                    Image(
+                        painter = painterResource(DemoDataProvider.item.imageId),
+                        contentDescription = null
+                    )
                 },
                 buttons = {
                     TextButton(
@@ -211,7 +214,10 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
                     Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(painter = painterResource(DemoDataProvider.item.imageId), contentDescription = null)
+                    Image(
+                        painter = painterResource(DemoDataProvider.item.imageId),
+                        contentDescription = null
+                    )
                     Text(
                         item.subtitle + item.title + item.subtitle + item.title,
                         style = typography.subtitle2

@@ -19,7 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
-import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
@@ -92,9 +91,11 @@ fun createColorMap(): List<Color> {
         val randomSaturation = 90 + Random.nextFloat() * 10
         val randomLightness = 50 + Random.nextFloat() * 10
         val hsv = AndroidColor.HSVToColor(
-            floatArrayOf(i.toFloat(),
+            floatArrayOf(
+                i.toFloat(),
                 randomSaturation,
-                randomLightness)
+                randomLightness
+            )
         )
         colorList.add(Color(hsv))
     }

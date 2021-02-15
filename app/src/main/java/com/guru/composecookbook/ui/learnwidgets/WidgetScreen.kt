@@ -1,6 +1,8 @@
 package com.guru.composecookbook.ui.learnwidgets
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
@@ -34,16 +36,16 @@ fun WidgetScreen() {
 @ExperimentalMaterialApi
 @Composable
 fun WidgetScreenContent() {
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        AllButtons()
-        Chips()
-        TextDemo()
-        TextInputs()
-        Loaders()
-        Toggles()
-        AppBars()
-        SnackBars()
-        UICards()
+    LazyColumn(state = rememberLazyListState()) {
+        item { AllButtons() }
+        item { Chips() }
+        item { TextDemo() }
+        item { TextInputs() }
+        item { Loaders() }
+        item { Toggles() }
+        item { AppBars() }
+        item { SnackBars() }
+        item { UICards() }
     }
 }
 

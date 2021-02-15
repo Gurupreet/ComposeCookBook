@@ -75,7 +75,12 @@ private fun InstagramIconSection() {
         IconToggleButton(checked = fav, onCheckedChange = { fav = it }) {
             val icon = if (fav) Icons.Default.Favorite else Icons.Default.FavoriteBorder
             val tint = if (fav) Color.Red else MaterialTheme.colors.onBackground
-            Icon(imageVector = icon, modifier = Modifier.preferredSize(44.dp), tint = tint, contentDescription = null)
+            Icon(
+                imageVector = icon,
+                modifier = Modifier.preferredSize(44.dp),
+                tint = tint,
+                contentDescription = null
+            )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(

@@ -122,10 +122,18 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
 fun BackgroundListItem(modifier: Modifier) {
     Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.Delete,
+                tint = MaterialTheme.colors.onPrimary,
+                contentDescription = null
+            )
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.AccountBox,
+                tint = MaterialTheme.colors.onPrimary,
+                contentDescription = null
+            )
         }
     }
 }

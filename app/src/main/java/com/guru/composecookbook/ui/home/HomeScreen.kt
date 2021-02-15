@@ -47,7 +47,10 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
                         appThemeState.value = appThemeState
                             .value.copy(darkTheme = !appThemeState.value.darkTheme)
                     }) {
-                        Icon(painter = painterResource(id = R.drawable.ic_sleep), contentDescription = null)
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_sleep),
+                            contentDescription = null
+                        )
                     }
                     IconButton(onClick = { showMenu.value = !showMenu.value }) {
                         Icon(imageVector = Icons.Default.Palette, contentDescription = null)

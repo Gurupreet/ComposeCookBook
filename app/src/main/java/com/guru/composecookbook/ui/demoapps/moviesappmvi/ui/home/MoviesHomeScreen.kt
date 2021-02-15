@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.platform.LocalAnimationClock
-import androidx.compose.ui.platform.LocalAnimationClock
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -36,7 +35,8 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
     //TODO dynamic gradient from poster via coil right now It's just getting from local images
     val imageId = remember { mutableStateOf(R.drawable.camelia) }
     val context = LocalContext.current
-    val defaultBitmap = imageFromResource(res = context.resources, resId = imageId.value).asAndroidBitmap()
+    val defaultBitmap =
+        imageFromResource(res = context.resources, resId = imageId.value).asAndroidBitmap()
     val currentBitmap = mutableStateOf(defaultBitmap)
     val swatch = generateDominantColorState(currentBitmap.value)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)

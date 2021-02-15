@@ -120,10 +120,18 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
 fun GmailListActionItems(modifier: Modifier) {
     Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.Delete,
+                tint = MaterialTheme.colors.onPrimary,
+                contentDescription = null
+            )
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.AccountBox,
+                tint = MaterialTheme.colors.onPrimary,
+                contentDescription = null
+            )
         }
     }
 }

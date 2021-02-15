@@ -47,7 +47,8 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
             CryptoTopSection(crypto, scrollState)
             Column(
                 modifier = Modifier
-                    .padding(top = 16.dp, start = 16.dp, end = 16.dp).verticalScroll(state = scrollState)
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                    .verticalScroll(state = scrollState)
             ) {
                 Spacer(modifier = Modifier.height(200.dp))
                 CryptoCharts(crypto)
@@ -73,7 +74,11 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
                 style = typography.h6,
                 modifier = Modifier.padding(end = 8.dp)
             )
-            CoilImage(data = crypto.image, modifier = Modifier.preferredSize(28.dp), contentDescription = null)
+            CoilImage(
+                data = crypto.image,
+                modifier = Modifier.preferredSize(28.dp),
+                contentDescription = null
+            )
         }
 
         Text(
@@ -82,7 +87,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
         )
         Text(
             text = "${crypto.dailyChange.roundToTwoDecimals()} " +
-                " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
+                    " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
             color = if (crypto.dailyChange > 0) green700 else Color.Red
         )
     }

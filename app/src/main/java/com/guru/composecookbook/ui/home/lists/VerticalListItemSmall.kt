@@ -65,10 +65,16 @@ fun FavIcon(modifier: Modifier = Modifier) {
         onCheckedChange = { isFavourite.value = !isFavourite.value }
     ) {
         if (isFavourite.value) {
-            Icon(imageVector = Icons.Filled.Favorite, contentDescription = null, modifier = modifier)
+            Icon(
+                imageVector = Icons.Filled.Favorite,
+                contentDescription = null,
+                modifier = modifier
+            )
         } else {
             Icon(
-                imageVector = Icons.Default.FavoriteBorder, contentDescription = null, modifier = modifier
+                imageVector = Icons.Default.FavoriteBorder,
+                contentDescription = null,
+                modifier = modifier
             )
         }
     }

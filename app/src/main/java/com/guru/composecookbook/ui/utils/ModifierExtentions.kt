@@ -98,7 +98,7 @@ fun Modifier.swipeGesture(
     maxSwipe: Float,
     onItemSwiped: () -> Unit
 ): Modifier = composed {
-    (this then  dragGestureFilter(
+    (this then dragGestureFilter(
         canDrag = { it == swipeDirection },
         dragObserver = dragObserver(
             swipeValue = swipeValue,

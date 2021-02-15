@@ -93,7 +93,8 @@ fun SpotifyLaneItem(album: Album) {
 @Composable
 fun SpotifySearchGridItem(album: Album) {
     val context = LocalContext.current
-    val imageBitmap = imageFromResource(res = context.resources, resId = album.imageId).asAndroidBitmap()
+    val imageBitmap =
+        imageFromResource(res = context.resources, resId = album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(imageBitmap) }
     val dominantGradient =
         remember { listOf(Color(swatch.rgb), Color(swatch.rgb).copy(alpha = 0.6f)) }

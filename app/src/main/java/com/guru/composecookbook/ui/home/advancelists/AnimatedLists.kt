@@ -66,7 +66,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
 
     val animatedModifier = when (animationIndex) {
         0 -> {
-            val animatedProgress = remember { Animatable(initialValue = 0f)}
+            val animatedProgress = remember { Animatable(initialValue = 0f) }
             LaunchedEffect(Unit) {
                 animatedProgress.animateTo(
                     targetValue = 1f,
