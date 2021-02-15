@@ -1,5 +1,6 @@
 package com.guru.composecookbook
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -16,6 +17,7 @@ class BottomNavigationBarTests {
     private val bottomNavigationBarTestTag: String = "bottom_navigation_bar"
 
 
+    @ExperimentalMaterialApi
     @Before
     fun setUp() {
 
@@ -109,7 +111,6 @@ class BottomNavigationBarTests {
     }
 
     @ExperimentalTestApi
-    @ExperimentalTesting
     @Test
     fun whenBottomNavEntryWidgetsClickedTheWidgetScreenIsDisplayed() {
         composeAndroidTestRule.apply {
@@ -119,7 +120,6 @@ class BottomNavigationBarTests {
 
             // The widgets screen contains infinite animations.
             // If we don's pause the clock, the test will wait forever and no assertion could be done
-            clockTestRule.pauseClock()
 
             onRoot()
                 .onChildren()
@@ -129,14 +129,12 @@ class BottomNavigationBarTests {
     }
 
     @ExperimentalTestApi
-    @ExperimentalTesting
     @Test
     fun whenBottomNavBarAnimEntryClickedAnimationScreenIsDisplayed() {
         composeAndroidTestRule.apply {
             onNodeWithText("Anim")
                 .performClick()
 
-            clockTestRule.pauseClock()
 
             onRoot()
                 .onChildren()
@@ -146,14 +144,12 @@ class BottomNavigationBarTests {
     }
 
     @ExperimentalTestApi
-    @ExperimentalTesting
     @Test
     fun whenBottomNavBarDemoUiEntryClickedDemoUiScreenIsDisplayed() {
         composeAndroidTestRule.apply {
             onNodeWithText("DemoUI")
                 .performClick()
 
-            clockTestRule.pauseClock()
 
             onRoot()
                 .onChildren()
@@ -163,14 +159,12 @@ class BottomNavigationBarTests {
     }
 
     @ExperimentalTestApi
-    @ExperimentalTesting
     @Test
     fun whenBottomNavigationBarTemplateEntryClickedTemplateScreenIsDisplayed() {
         composeAndroidTestRule.apply {
             onNodeWithText("Template")
                 .performClick()
 
-            clockTestRule.pauseClock()
 
             onRoot()
                 .onChildren()

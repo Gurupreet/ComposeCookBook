@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.home
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
@@ -19,6 +20,7 @@ class HomeScreenTest {
     @get: Rule
     val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
+    @ExperimentalMaterialApi
     @Before
     fun setUp() {
         composeAndroidTestRule.setContent {
