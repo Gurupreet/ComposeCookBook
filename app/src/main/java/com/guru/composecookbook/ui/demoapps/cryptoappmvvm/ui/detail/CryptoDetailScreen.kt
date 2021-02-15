@@ -44,16 +44,16 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
     ) {
         Box(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             val scrollState = rememberScrollState(0f)
-            CryptoTopSection(crypto, scrollState, onBack)
-            ScrollableColumn(
+            CryptoTopSection(crypto, scrollState)
+            Column(
                 modifier = Modifier
-                    .padding(top = 16.dp, start = 16.dp, end = 16.dp), scrollState = scrollState
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp).verticalScroll(state = scrollState)
             ) {
                 Spacer(modifier = Modifier.height(200.dp))
                 CryptoCharts(crypto)
                 StatisticsSection(crypto)
                 FavSection()
-                NewsSection(crypto)
+                NewsSection()
                 Spacer(modifier = Modifier.height(100.dp))
             }
         }
@@ -61,7 +61,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 }
 
 @Composable
-fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Unit) {
+fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
     Column(
         modifier = Modifier.padding(16.dp)
             .alpha(animateFloatAsState((1 - scrollState.value / 150).coerceIn(0f, 1f)).value)
@@ -117,7 +117,7 @@ fun CryptoBottomBar(onBack: () -> Unit) {
     BottomAppBar(
         cutoutShape = CircleShape
     ) {
-        IconButton(onClick = { onBack }) {
+        IconButton(onClick = onBack) {
             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "")
         }
         IconButton(onClick = {}) {
@@ -193,7 +193,7 @@ fun FavSection() {
 }
 
 @Composable
-fun NewsSection(crypto: Crypto) {
+fun NewsSection() {
     //TODO Add some crypto news api
     Text(
         text = "Recent News",

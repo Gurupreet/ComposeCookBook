@@ -27,6 +27,7 @@ import com.guru.composecookbook.ui.demoapps.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
 import com.guru.composecookbook.ui.learnwidgets.WidgetScreen
 import com.guru.composecookbook.ui.templates.TemplateScreen
+import com.guru.composecookbook.ui.utils.ComingSoon
 import com.guru.composecookbook.ui.utils.RotateIcon
 
 class MainActivity : ComponentActivity() {
@@ -76,7 +77,7 @@ fun HomeScreenContent(
                 when (screen) {
                     BottomNavType.HOME -> HomeScreen(appThemeState)
                     BottomNavType.WIDGETS -> WidgetScreen()
-                    BottomNavType.ANIMATION -> Text(text = "Re do animations again....")
+                    BottomNavType.ANIMATION -> ComingSoon()
                     BottomNavType.DEMOUI -> DemoUIList()
                     BottomNavType.TEMPLATE -> TemplateScreen(appThemeState.value.darkTheme)
 

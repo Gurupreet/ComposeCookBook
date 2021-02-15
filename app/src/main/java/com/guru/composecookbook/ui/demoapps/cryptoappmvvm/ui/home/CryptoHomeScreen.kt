@@ -40,8 +40,10 @@ import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.MyW
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
+@ExperimentalCoroutinesApi
 @Composable
 fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit = {}) {
     val viewModel: CryptoHomeViewModel = viewModel()
@@ -198,7 +200,6 @@ fun LottieLoadingView(context: Context) {
 @Preview
 @Composable
 fun PreviewCryptoHomeScreen() {
-    val uiState = CryptoHomeUIState(CryptoDemoDataProvider.demoList, false)
     val crypto = CryptoDemoDataProvider.bitcoin
     Column {
         FavoriteItem(crypto = crypto, {})

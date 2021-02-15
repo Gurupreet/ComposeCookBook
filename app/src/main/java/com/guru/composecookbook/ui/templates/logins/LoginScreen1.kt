@@ -33,10 +33,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieAnimationSpec
-import com.airbnb.lottie.compose.rememberLottieAnimationState
-import com.guru.composecookbook.R
 import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -269,13 +265,4 @@ fun LottieLoadingView(context: Context) {
     AndroidView({ lottieView }, modifier = Modifier.fillMaxWidth().height(250.dp)) {
         it.playAnimation()
     }
-
-    val lottieSpec = remember { LottieAnimationSpec.RawRes(R.raw.cryptoload) }
-    val lottieAnimationState =
-        rememberLottieAnimationState(autoPlay = true, repeatCount = Integer.MAX_VALUE)
-
-    LottieAnimation(
-        spec = lottieSpec,
-        modifier = Modifier.preferredSize(100.dp)
-    )
 }

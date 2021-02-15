@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail.CryptoDetailActivity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 sealed class CryptoHomeInteractionEvents {
     data class AddedToFav(val crypto: Crypto) : CryptoHomeInteractionEvents()
@@ -21,6 +22,7 @@ sealed class CryptoHomeInteractionEvents {
 }
 
 class CryptoHomeActivity : ComponentActivity() {
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -34,7 +36,7 @@ class CryptoHomeActivity : ComponentActivity() {
         }
     }
 
-    fun handleInteractionEvents(
+    private fun handleInteractionEvents(
         cryptoHomeInteractionEvents: CryptoHomeInteractionEvents,
         viewModel: CryptoHomeViewModel
     ) {
@@ -67,6 +69,7 @@ class CryptoHomeActivity : ComponentActivity() {
 }
 
 
+@ExperimentalCoroutinesApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview5() {

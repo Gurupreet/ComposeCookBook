@@ -22,6 +22,8 @@ import androidx.compose.ui.layout.MeasureScope
 import androidx.compose.ui.unit.Constraints
 import kotlin.math.abs
 
+//TODO update drag observers and animatedFloat
+
 fun Modifier.horizontalGradientBackground(
     colors: List<Color>
 ) = gradientBackground(colors) { gradientColors, size ->
@@ -96,7 +98,7 @@ fun Modifier.swipeGesture(
     maxSwipe: Float,
     onItemSwiped: () -> Unit
 ): Modifier = composed {
-    (this then dragGestureFilter(
+    (this then  dragGestureFilter(
         canDrag = { it == swipeDirection },
         dragObserver = dragObserver(
             swipeValue = swipeValue,

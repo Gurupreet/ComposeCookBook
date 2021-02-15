@@ -35,7 +35,6 @@ import kotlin.random.Random
 @Composable
 fun DatingHomeScreen() {
     val configuration = LocalConfiguration.current
-    val screenWidth = configuration.screenWidthDp.dp
     val screenHeight = configuration.screenHeightDp.dp
     val cardHeight = screenHeight - 200.dp
 
@@ -65,7 +64,7 @@ fun DatingHomeScreen() {
                             start = 16.dp,
                             end = 16.dp
                         ),
-                    { swipeResult, album ->
+                    { _, album ->
                         if (persons.isNotEmpty()) {
                             persons.remove(album)
                             if (persons.isEmpty()) {

@@ -5,6 +5,7 @@ package com.guru.composecookbook.ui.templates.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -22,6 +23,7 @@ import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
@@ -48,10 +50,12 @@ fun ColorPicker(
                 .clip(RoundedCornerShape(4.dp))
                 .background(brush = colorMapGradient(screenWidthInPx))
                 .align(Alignment.Center)
-                .tapGestureFilter { offset ->
-                    dragPosition = offset.x
-                    activeColor = getActiveColor(dragPosition, screenWidthInPx)
-                    onColorSelected.invoke(activeColor)
+                .pointerInput("painter") {
+                    detectTapGestures { offset ->
+                        dragPosition = offset.x
+                        activeColor = getActiveColor(dragPosition, screenWidthInPx)
+                        onColorSelected.invoke(activeColor)
+                    }
                 }
         )
         // draggable icon

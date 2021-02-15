@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.demoapps.spotify.details
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -97,7 +98,7 @@ fun TopSectionOverlay(scrollState: ScrollState) {
 
 @Composable
 fun BottomScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
-    ScrollableColumn(scrollState = scrollState, modifier = Modifier) {
+    Column(modifier = Modifier.verticalScroll(state = scrollState)) {
         Spacer(modifier = Modifier.height(480.dp))
         Column(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             SongListScrollingSection()

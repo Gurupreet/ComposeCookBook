@@ -66,7 +66,7 @@ fun ProfileScreen() {
             val scrollState = rememberScrollState(0f)
             TopAppBarView(scrollState.value)
             TopBackground()
-            ScrollableColumn(scrollState = scrollState, modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier.fillMaxSize().verticalScroll(state = scrollState)) {
                 Spacer(modifier = Modifier.height(100.dp))
                 TopScrollingContent(scrollState)
                 BottomScrollingContent()

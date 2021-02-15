@@ -52,9 +52,10 @@ fun SpotifyHome() {
 
 @Composable
 fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
-    ScrollableColumn(
-        scrollState = scrollState,
-        modifier = Modifier.horizontalGradientBackground(surfaceGradient).padding(8.dp)
+    Column(
+        modifier = Modifier
+            .horizontalGradientBackground(surfaceGradient)
+            .padding(8.dp).verticalScroll(state = scrollState)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         SpotifyTitle("Good Evening")

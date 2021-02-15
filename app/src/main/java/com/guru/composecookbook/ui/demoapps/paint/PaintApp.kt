@@ -82,7 +82,7 @@ fun DrawingCanvas(
     usedColors: MutableState<MutableSet<Color>>,
     paths: List<PathState>
 ) {
-    var currentPath = paths.last().path
+    val currentPath = paths.last().path
     val movePath = remember { mutableStateOf<Offset?>(null) }
 
     Canvas(modifier = Modifier.fillMaxSize().padding(top = 100.dp).pointerInteropFilter {
@@ -96,7 +96,6 @@ fun DrawingCanvas(
             }
             else -> {
                 movePath.value = null
-                false
             }
         }
         true

@@ -88,7 +88,7 @@ fun ScrollableListOfTabs() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         ScrollableTabRow(
             selectedTabIndex = selectedIndex.value,
-            divider = emptyContent(), /* Disable the built-in divider */
+            divider = {}, /* Disable the built-in divider */
             edgePadding = 16.dp,
             indicator = noIndicator,
             backgroundColor = Color.Transparent,
