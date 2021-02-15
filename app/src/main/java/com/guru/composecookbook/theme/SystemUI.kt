@@ -22,7 +22,7 @@ package com.guru.composecookbook.theme
 import android.os.Build
 import android.view.View
 import android.view.Window
-import androidx.compose.runtime.staticAmbientOf
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.luminance
@@ -58,10 +58,10 @@ class SystemUiController(private val window: Window) {
             @Suppress("DEPRECATION")
             if (darkIcons) {
                 window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or
-                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             } else {
                 window.decorView.systemUiVisibility = window.decorView.systemUiVisibility and
-                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
             }
         }
     }
@@ -93,10 +93,10 @@ class SystemUiController(private val window: Window) {
             @Suppress("DEPRECATION")
             if (darkIcons) {
                 window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or
-                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                        View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
             } else {
                 window.decorView.systemUiVisibility = window.decorView.systemUiVisibility and
-                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR.inv()
+                        View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR.inv()
             }
         }
     }
@@ -118,10 +118,10 @@ class SystemUiController(private val window: Window) {
 }
 
 /**
- * An [androidx.compose.Ambient] holding the current [SystemUiController] or throws an error if none
+ * An [androidx.compose.Local] holding the current [SystemUiController] or throws an error if none
  * is [provided][androidx.compose.Providers].
  */
-val AmbientSystemUiController = staticAmbientOf<SystemUiController> {
+val LocalSystemUiController = staticCompositionLocalOf<SystemUiController> {
     error("No SystemUiController provided")
 }
 

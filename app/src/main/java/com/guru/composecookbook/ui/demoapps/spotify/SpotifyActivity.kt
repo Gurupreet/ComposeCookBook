@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.*
@@ -14,8 +15,8 @@ import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
-import androidx.compose.ui.platform.setContent
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
@@ -23,7 +24,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
-class SpotifyActivity : AppCompatActivity() {
+class SpotifyActivity : ComponentActivity() {
 
     private val isDarkTheme: Boolean by lazy {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
@@ -50,7 +51,7 @@ class SpotifyActivity : AppCompatActivity() {
 
 @Composable
 fun SpotifyAppContent() {
-    val spotifyNavItemState = savedInstanceState { SpotifyNavType.HOME }
+    val spotifyNavItemState = rememberSaveable { mutableStateOf(SpotifyNavType.HOME) }
     Scaffold(
         bottomBar = { SpotifyBottomNavigation(spotifyNavItemState) },
         bodyContent = { SpotifyBodyContent(spotifyNavItemState.value) }
@@ -85,7 +86,7 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
 
 @Composable
 fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
-    Crossfade(current = spotifyNavType) { spotifyNavType ->
+    Crossfade(targetState = spotifyNavType) { spotifyNavType ->
         when (spotifyNavType) {
             SpotifyNavType.HOME -> SpotifyHome()
             SpotifyNavType.SEARCH -> SpotifySearchScreen()

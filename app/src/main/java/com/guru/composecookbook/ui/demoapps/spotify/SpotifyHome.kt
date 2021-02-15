@@ -1,10 +1,11 @@
 package com.guru.composecookbook.ui.demoapps.spotify
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -18,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,10 +40,11 @@ fun SpotifyHome() {
         Icon(
             imageVector = Icons.Outlined.Settings,
             tint = MaterialTheme.colors.onSurface,
+            contentDescription = null,
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
-                .alpha(animateAsState(1f - scrollState.value / 200f).value)
+                .alpha(animateFloatAsState(1f - scrollState.value / 200f).value)
         )
         PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
     }
@@ -50,9 +52,10 @@ fun SpotifyHome() {
 
 @Composable
 fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
-    ScrollableColumn(
-        scrollState = scrollState,
-        modifier = Modifier.horizontalGradientBackground(surfaceGradient).padding(8.dp)
+    Column(
+        modifier = Modifier
+            .horizontalGradientBackground(surfaceGradient)
+            .padding(8.dp).verticalScroll(state = scrollState)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         SpotifyTitle("Good Evening")
@@ -74,7 +77,7 @@ fun PlayerBottomBar(modifier: Modifier) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            bitmap = imageResource(id = R.drawable.adele21),
+            painter = painterResource(id = R.drawable.adele21),
             modifier = Modifier.preferredSize(65.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -84,8 +87,14 @@ fun PlayerBottomBar(modifier: Modifier) {
             style = typography.h6.copy(fontSize = 14.sp),
             modifier = Modifier.padding(8.dp).weight(1f),
         )
-        Icon(imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp))
-        Icon(imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp))
+        Icon(
+            imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),
+            contentDescription = null
+        )
+        Icon(
+            imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp),
+            contentDescription = null
+        )
     }
 }
 

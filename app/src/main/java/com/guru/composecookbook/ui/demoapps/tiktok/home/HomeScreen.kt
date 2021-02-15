@@ -1,7 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.tiktok.home
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.AnimationConstants
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
@@ -9,6 +9,7 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -21,10 +22,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.platform.LocalAnimationClock
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,7 +46,7 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val movies = SpotifyDataProvider.albums
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
-        val clock = AmbientAnimationClock.current
+        val clock = LocalAnimationClock.current
         remember(clock) {
             PagerState(clock, 0, 0, movies.size - 1)
         }
@@ -69,7 +69,7 @@ fun PagerItem(
     selected: Boolean,
     tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
 ) {
-    val context = AmbientContext.current
+    val context = LocalContext.current
 
     Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp))) {
         TikTokPlayer(context, videos[album.id % 3], selected)
@@ -110,28 +110,29 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(imageVector = vectorResource(id = R.drawable.ic_comment_dots_solid))
+        Icon(
+            painter = painterResource(id = R.drawable.ic_comment_dots_solid),
+            contentDescription = null
+        )
         Text(
             text = "1223",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(imageVector = vectorResource(id = R.drawable.ic_share_solid))
+        Icon(painter = painterResource(id = R.drawable.ic_share_solid), contentDescription = null)
         Text(
             text = "238",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 32.dp)
         )
         val rotation = animatedFloat(initVal = 0f)
-        onActive {
-            rotation.animateTo(
-                targetValue = 360f,
-                anim = repeatable(
-                    iterations = AnimationConstants.Infinite,
-                    animation = tween(durationMillis = 3500, easing = LinearEasing),
-                ),
-            )
-        }
+        rotation.animateTo(
+            targetValue = 360f,
+            anim = repeatable(
+                iterations = 10000,
+                animation = tween(durationMillis = 3500, easing = LinearEasing),
+            ),
+        )
         ProfileImageWithFollow(
             modifier = Modifier.preferredSize(64.dp).graphicsLayer(rotationZ = rotation.value),
             false,
@@ -154,11 +155,12 @@ fun LikeIcon(id: Int) {
         )
     }
     Icon(
-        imageVector = vectorResource(id = R.drawable.ic_heart_solid),
+        painter = painterResource(id = R.drawable.ic_heart_solid),
+        contentDescription = null,
         modifier = Modifier
             .clickable(onClick = { fav = !fav })
             .graphicsLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
-        tint = androidx.compose.animation.animateAsState(if (fav) tiktokRed else Color.White).value
+        tint = animateColorAsState(if (fav) tiktokRed else Color.White).value
     )
 }
 
@@ -203,6 +205,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
             ImageWithBorder(imageId = imageId, modifier = modifier)
             Icon(
                 imageVector = Icons.Filled.Add,
+                contentDescription = null,
                 modifier = Modifier
                     .preferredSize(20.dp)
                     .clip(CircleShape)
@@ -217,7 +220,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
 @Composable
 fun ImageWithBorder(imageId: Int, modifier: Modifier) {
     Image(
-        bitmap = imageResource(id = imageId),
+        painter = painterResource(id = imageId),
         contentDescription = null,
         modifier = modifier.padding(8.dp).clip(CircleShape)
             .border(

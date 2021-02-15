@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.green700
@@ -181,21 +182,21 @@ fun TypeOfBoxs() {
     Box(modifier = boxModifier) {
         Card(
             backgroundColor = green700, elevation = 4.dp, modifier = Modifier.preferredSize(
-            200
-                .dp
-        ).align(Alignment.TopStart)
+                200
+                    .dp
+            ).align(Alignment.TopStart)
         ) {}
         Card(
             backgroundColor = green500, elevation = 4.dp, modifier = Modifier.preferredSize(
-            150
-                .dp
-        ).align(Alignment.Center)
+                150
+                    .dp
+            ).align(Alignment.Center)
         ) {}
         Card(
             backgroundColor = green200, elevation = 4.dp, modifier = Modifier.preferredSize(
-            100
-                .dp
-        ).align(Alignment.BottomEnd)
+                100
+                    .dp
+            ).align(Alignment.BottomEnd)
         ) {}
     }
 }

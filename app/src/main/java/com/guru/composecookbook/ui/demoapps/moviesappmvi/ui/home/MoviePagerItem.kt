@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -35,8 +36,8 @@ fun MoviePagerItem(
     addToWatchList: () -> Unit,
     openMovieDetail: () -> Unit
 ) {
-    val animateHeight = animateAsState(if (isSelected) 645.dp else 360.dp).value
-    val animateWidth = animateAsState(if (isSelected) 340.dp else 320.dp).value
+    val animateHeight = animateDpAsState(if (isSelected) 645.dp else 360.dp).value
+    val animateWidth = animateDpAsState(if (isSelected) 340.dp else 320.dp).value
     val animateElevation = if (isSelected) 12.dp else 2.dp
     val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
 
@@ -45,7 +46,7 @@ fun MoviePagerItem(
     }
 
     Card(
-        elevation = animateAsState(animateElevation).value,
+        elevation = animateDpAsState(animateElevation).value,
         modifier = Modifier
             .preferredWidth(animateWidth)
             .preferredHeight(animateHeight)
@@ -83,7 +84,7 @@ fun MoviePagerItem(
                         contentDescription = null,
                         modifier = Modifier
                             .graphicsLayer(
-                                rotationY = animateAsState(
+                                rotationY = animateFloatAsState(
                                     if (clicked.value) 720f else 0f, tween(400)
                                 ).value
                             )

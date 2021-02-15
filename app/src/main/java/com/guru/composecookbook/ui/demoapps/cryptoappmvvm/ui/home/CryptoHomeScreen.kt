@@ -2,7 +2,8 @@ package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home
 
 import android.animation.ValueAnimator
 import android.content.Context
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,13 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.airbnb.lottie.LottieAnimationView
 import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface
@@ -39,10 +40,12 @@ import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.MyW
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
+@ExperimentalCoroutinesApi
 @Composable
-fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit) {
+fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit = {}) {
     val viewModel: CryptoHomeViewModel = viewModel()
     val uiState by viewModel.viewStateFlow.collectAsState()
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
@@ -73,7 +76,7 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
 fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
     val animateRotationModifier = Modifier.graphicsLayer(
         //So on every count change this basically runs as we only add 1 at a time
-        rotationX = animateAsState(if (count % 2 == 0) 360f else 0f, tween(800)).value
+        rotationX = animateFloatAsState(if (count % 2 == 0) 360f else 0f, tween(800)).value
     )
     ExtendedFloatingActionButton(
         text = { Text(text = "$count coins", modifier = animateRotationModifier) },
@@ -99,7 +102,7 @@ fun ShowFavorites(
     Column(
         modifier = Modifier.padding(8.dp)
             .fillMaxWidth()
-            .height(animateAsState(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp).value)
+            .height(animateDpAsState(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp).value)
     ) {
         Text(text = "My Favorites", modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
         LazyRow {
@@ -144,7 +147,7 @@ fun CryptoList(
     listScrollState: LazyListState,
     onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
-    val context = AmbientContext.current
+    val context = LocalContext.current
 
     if (uiState.cryptos.isEmpty()) {
         LottieLoadingView(context = context)
@@ -197,7 +200,6 @@ fun LottieLoadingView(context: Context) {
 @Preview
 @Composable
 fun PreviewCryptoHomeScreen() {
-    val uiState = CryptoHomeUIState(CryptoDemoDataProvider.demoList, false)
     val crypto = CryptoDemoDataProvider.bitcoin
     Column {
         FavoriteItem(crypto = crypto, {})

@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInteropFilter
-import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -50,8 +50,10 @@ fun PaintAppBar(onDelete: () -> Unit) {
         title = { Text("Compose Paint") },
         actions = {
             IconButton(onClick = onDelete, content = {
-                Icon(imageVector = Icons.Default.Delete,
-                    contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = null
+                )
             })
         }
     )
@@ -64,7 +66,8 @@ fun PaintBody(paths: MutableState<MutableList<PathState>>) {
     Box(modifier = Modifier.fillMaxSize()) {
         val drawColor = remember { mutableStateOf(Color.Black) }
         val drawBrush = remember { mutableStateOf(5f) }
-        val usedColors = remember { mutableStateOf(mutableSetOf(Color.Black, Color.White, Color.Gray)) }
+        val usedColors =
+            remember { mutableStateOf(mutableSetOf(Color.Black, Color.White, Color.Gray)) }
         // on every change of brush or color start a new path and save old one in list
 
         paths.value.add(PathState(path = Path(), color = drawColor.value, stroke = drawBrush.value))
@@ -82,7 +85,7 @@ fun DrawingCanvas(
     usedColors: MutableState<MutableSet<Color>>,
     paths: List<PathState>
 ) {
-    var currentPath = paths.last().path
+    val currentPath = paths.last().path
     val movePath = remember { mutableStateOf<Offset?>(null) }
 
     Canvas(modifier = Modifier.fillMaxSize().padding(top = 100.dp).pointerInteropFilter {
@@ -96,7 +99,6 @@ fun DrawingCanvas(
             }
             else -> {
                 movePath.value = null
-                false
             }
         }
         true
@@ -121,7 +123,11 @@ fun DrawingCanvas(
 
 @ExperimentalAnimationApi
 @Composable
-fun DrawingTools(drawColor: MutableState<Color>, drawBrush: MutableState<Float>, usedColors: MutableSet<Color>) {
+fun DrawingTools(
+    drawColor: MutableState<Color>,
+    drawBrush: MutableState<Float>,
+    usedColors: MutableSet<Color>
+) {
     var showBrushes by remember { mutableStateOf(false) }
     val strokes = remember { PaintDataProvider.strokeList }
 
@@ -130,10 +136,11 @@ fun DrawingTools(drawColor: MutableState<Color>, drawBrush: MutableState<Float>,
             onColorSelected = { color ->
                 drawColor.value = color
             })
-        Row(modifier = Modifier.horizontalGradientBackground(listOf(graySurface, Color.Black))
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-            .horizontalScroll(rememberScrollState())
-            .animateContentSize()
+        Row(
+            modifier = Modifier.horizontalGradientBackground(listOf(graySurface, Color.Black))
+                .padding(horizontal = 8.dp, vertical = 4.dp)
+                .horizontalScroll(rememberScrollState())
+                .animateContentSize()
         ) {
             usedColors.forEach {
                 Icon(
@@ -150,7 +157,11 @@ fun DrawingTools(drawColor: MutableState<Color>, drawBrush: MutableState<Float>,
             onClick = { showBrushes = !showBrushes },
             modifier = Modifier.padding(vertical = 4.dp),
         ) {
-            Icon(imageVector = Icons.Default.Brush, contentDescription = null, tint = drawColor.value)
+            Icon(
+                imageVector = Icons.Default.Brush,
+                contentDescription = null,
+                tint = drawColor.value
+            )
         }
         AnimatedVisibility(visible = showBrushes) {
             LazyColumn {
@@ -163,7 +174,10 @@ fun DrawingTools(drawColor: MutableState<Color>, drawBrush: MutableState<Float>,
                         modifier = Modifier
                             .padding(8.dp)
                             .border(
-                                border = BorderStroke(width = with(AmbientDensity.current) { it.toDp() }, color = Color.Gray),
+                                border = BorderStroke(
+                                    width = with(LocalDensity.current) { it.toDp() },
+                                    color = Color.Gray
+                                ),
                                 shape = CircleShape
                             )
                     ) {

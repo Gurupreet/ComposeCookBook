@@ -3,12 +3,12 @@ package com.guru.composecookbook.ui.home.dynamic
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -21,7 +21,7 @@ import com.guru.composecookbook.ui.home.tabslayout.TabLayout
 import com.guru.composecookbook.ui.learnwidgets.Layouts
 
 
-class DynamicUIActivity : AppCompatActivity() {
+class DynamicUIActivity : ComponentActivity() {
 
     private val dynamicUiType: String by lazy {
         intent?.getStringExtra(TYPE) ?: DynamicUiType.TABS.name
@@ -31,6 +31,7 @@ class DynamicUIActivity : AppCompatActivity() {
         intent?.getBooleanExtra(DARK_THEME, false) ?: false
     }
 
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -54,6 +55,7 @@ class DynamicUIActivity : AppCompatActivity() {
 }
 
 
+@ExperimentalMaterialApi
 @Composable
 fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
     Scaffold(
@@ -101,6 +103,7 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
     )
 }
 
+@ExperimentalMaterialApi
 @Preview
 @Composable
 fun PreviewDynamicUI() {

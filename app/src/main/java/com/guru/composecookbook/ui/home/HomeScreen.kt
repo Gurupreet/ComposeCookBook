@@ -17,8 +17,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,7 +47,10 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
                         appThemeState.value = appThemeState
                             .value.copy(darkTheme = !appThemeState.value.darkTheme)
                     }) {
-                        Icon(imageVector = vectorResource(id = R.drawable.ic_sleep), contentDescription = null)
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_sleep),
+                            contentDescription = null
+                        )
                     }
                     IconButton(onClick = { showMenu.value = !showMenu.value }) {
                         Icon(imageVector = Icons.Default.Palette, contentDescription = null)
@@ -72,7 +75,7 @@ fun HomeScreenContent(
     showMenu: MutableState<Boolean>,
     onPalletChange: (ColorPallet) -> Unit
 ) {
-    val context = AmbientContext.current
+    val context = LocalContext.current
     val list = remember { DemoDataProvider.homeScreenListItems }
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(

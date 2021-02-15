@@ -14,8 +14,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.platform.AmbientLifecycleOwner
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -37,8 +37,8 @@ import com.guru.composecookbook.ui.utils.TitleText
 @Composable
 fun AndroidViews() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        TitleText(title = "Android Views Inside Compose(ScrollableColumn)")
-        val context = AmbientContext.current
+        TitleText(title = "Android Views Inside @Column()")
+        val context = LocalContext.current
         AndroidTextView(context)
         AndroidButton(context)
         AndroidLottieView(context)
@@ -171,15 +171,15 @@ private fun MapViewContainer(
 
 @Composable
 fun rememberMapViewWithLifecycle(): MapView {
-    val context = AmbientContext.current
+    val context = LocalContext.current
     val mapView = remember {
         MapView(context)
     }
 
     // Makes MapView follow the lifecycle of this composable
     val lifecycleObserver = rememberMapLifecycleObserver(mapView)
-    val lifecycle = AmbientLifecycleOwner.current.lifecycle
-    onCommit(lifecycle) {
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    DisposableEffect(lifecycle) {
         lifecycle.addObserver(lifecycleObserver)
         onDispose {
             lifecycle.removeObserver(lifecycleObserver)

@@ -22,7 +22,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -109,7 +109,7 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
     if (showDot) {
         Box {
             Image(
-                bitmap = imageResource(id = imageId),
+                painter = painterResource(id = imageId),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = modifier.clip(CircleShape)
@@ -123,7 +123,7 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
         }
     } else {
         Image(
-            bitmap = imageResource(id = imageId),
+            painter = painterResource(id = imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier.clip(CircleShape)
@@ -155,7 +155,7 @@ fun MatchesImage(imageId: Int) {
                 )
             )
         )
-    Image(bitmap = imageResource(id = imageId), modifier = modifier, contentDescription = null)
+    Image(painter = painterResource(id = imageId), modifier = modifier, contentDescription = null)
 }
 
 val randomMessages = listOf(

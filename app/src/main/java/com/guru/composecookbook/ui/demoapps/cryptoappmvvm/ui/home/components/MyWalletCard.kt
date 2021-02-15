@@ -1,9 +1,13 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -14,12 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.green500
@@ -36,16 +41,16 @@ fun MyWalletCard() {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
-            .preferredHeight(animateAsState(animateHeight).value)
-            .alpha(animateAsState(opacity).value)
-            .clip(RoundedCornerShape(bottomLeft = 24.dp, bottomRight = 24.dp))
+            .preferredHeight(animateDpAsState(animateHeight).value)
+            .alpha(animateFloatAsState(opacity).value)
+            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
             .horizontalGradientBackground(gradientBluePurple)
             .padding(top = paddingWithStatusBarHeight, bottom = 8.dp, start = 8.dp, end = 8.dp)
     ) {
         val (title, image, price, asset, dailyChange, send, receive, scan) = createRefs()
         val horizontalCenterGuideline = createGuidelineFromStart(0.5f)
         Icon(
-            imageVector = vectorResource(id = R.drawable.ic_ethereum_brands),
+            painter = painterResource(id = R.drawable.ic_ethereum_brands),
             contentDescription = null,
             modifier = Modifier.preferredSize(28.dp).alpha(0.7f).constrainAs(image) {
                 start.linkTo(parent.start)
@@ -128,7 +133,7 @@ fun MyWalletCard() {
             imageVector = Icons.Default.QrCodeScanner,
             contentDescription = null,
             modifier = Modifier.preferredSize(250.dp)
-                .alpha(animateAsState(if (extended) 1f else 0f).value)
+                .alpha(animateFloatAsState(if (extended) 1f else 0f).value)
                 .constrainAs(scan) {
                     top.linkTo(receive.bottom, margin = 50.dp)
                     start.linkTo(parent.start)

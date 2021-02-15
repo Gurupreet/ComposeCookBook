@@ -2,7 +2,10 @@ package com.guru.composecookbook.ui.demoapps.youtube
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -15,10 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
@@ -32,9 +38,8 @@ fun YoutubeListItem(item: Tweet) {
     ) {
         val (image, authorImage, title, subtitle, button) = createRefs()
         createVerticalChain(title, subtitle, chainStyle = ChainStyle.Packed)
-
         Image(
-            bitmap = imageResource(id = item.tweetImageId),
+            painter = painterResource(id = item.tweetImageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -48,7 +53,7 @@ fun YoutubeListItem(item: Tweet) {
                 }
         )
         Image(
-            bitmap = imageResource(id = R.drawable.p3),
+            painter = painterResource(id = R.drawable.p3),
             contentDescription = null,
             modifier = Modifier.preferredSize(32.dp).clip(CircleShape).constrainAs(authorImage) {
                 start.linkTo(parent.start, margin = 12.dp)

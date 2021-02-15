@@ -3,7 +3,7 @@ package com.guru.composecookbook.ui.demoapps.tiktok
 import android.content.Context
 import android.net.Uri
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.onDispose
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.exoplayer2.C
@@ -39,8 +39,9 @@ fun TikTokPlayer(context: Context, url: String, selected: Boolean) {
 
     tiktokPlayer.playWhenReady = selected
 
-    onDispose(callback = {
-        tiktokPlayer.release()
-    })
-
+    DisposableEffect(key1 = url) {
+        onDispose {
+            tiktokPlayer.release()
+        }
+    }
 }

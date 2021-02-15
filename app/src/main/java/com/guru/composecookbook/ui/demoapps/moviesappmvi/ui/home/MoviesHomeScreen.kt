@@ -1,8 +1,8 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
 import android.util.Log
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -12,11 +12,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.graphics.imageFromResource
+import androidx.compose.ui.platform.LocalAnimationClock
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
@@ -32,22 +33,31 @@ fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -
 @Composable
 fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
     //TODO dynamic gradient from poster via coil right now It's just getting from local images
-    var imageId = remember { mutableStateOf(R.drawable.camelia) }
-    val defaultBitmap = imageResource(id = imageId.value).asAndroidBitmap()
-    var currentBitmap = mutableStateOf(defaultBitmap)
+    val imageId = remember { mutableStateOf(R.drawable.camelia) }
+    val context = LocalContext.current
+    val defaultBitmap =
+        imageFromResource(res = context.resources, resId = imageId.value).asAndroidBitmap()
+    val currentBitmap = mutableStateOf(defaultBitmap)
     val swatch = generateDominantColorState(currentBitmap.value)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)
 
-    ScrollableColumn(
-        modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantColors)
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalGradientBackground(dominantColors),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(modifier = Modifier.height(30.dp))
-        Text(
-            text = "Now Showing",
-            style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
-            modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally)
-        )
-        MoviesPager(imageId, moviesHomeInteractionEvents)
+        // use `item` for separate elements like headers
+        // and `items` for lists of identical elements
+        item { Spacer(modifier = Modifier.height(30.dp)) }
+        item {
+            Text(
+                text = "Now Showing",
+                style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+                modifier = Modifier.padding(16.dp)
+            )
+        }
+        item { MoviesPager(imageId, moviesHomeInteractionEvents) }
     }
 }
 
@@ -63,7 +73,7 @@ fun MoviesPager(
 
     if (movies.isNotEmpty()) {
         val pagerState: PagerState = run {
-            val clock = AmbientAnimationClock.current
+            val clock = LocalAnimationClock.current
             remember(clock) {
                 PagerState(clock, 0, 0, movies.size - 1)
             }

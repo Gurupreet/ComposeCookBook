@@ -3,7 +3,8 @@ package com.guru.composecookbook.ui.templates.profile
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -17,10 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.AmbientContext
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -53,6 +53,7 @@ private fun launchSocialActivity(context: Context, socialType: String) {
     context.startActivity(intent)
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun ProfileScreen() {
     Scaffold {
@@ -64,7 +65,7 @@ fun ProfileScreen() {
             val scrollState = rememberScrollState(0f)
             TopAppBarView(scrollState.value)
             TopBackground()
-            ScrollableColumn(scrollState = scrollState, modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier.fillMaxSize().verticalScroll(state = scrollState)) {
                 Spacer(modifier = Modifier.height(100.dp))
                 TopScrollingContent(scrollState)
                 BottomScrollingContent()
@@ -80,7 +81,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
         AnimatedImage(scroll = scrollState.value)
         Column(
             modifier = Modifier.padding(start = 8.dp, top = 48.dp)
-                .alpha(animateAsState(if (visibilityChangeFloat) 0f else 1f).value)
+                .alpha(animateFloatAsState(if (visibilityChangeFloat) 0f else 1f).value)
         ) {
             Text(
                 text = name,
@@ -95,6 +96,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun BottomScrollingContent() {
     Column(modifier = Modifier.background(MaterialTheme.colors.surface).padding(8.dp)) {
@@ -130,27 +132,38 @@ fun BottomScrollingContent() {
 @Composable
 fun SocialRow() {
     Card(elevation = 8.dp, modifier = Modifier.padding(8.dp)) {
-        val context = AmbientContext.current
+        val context = LocalContext.current
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 16.dp)
         ) {
             IconButton(onClick = { launchSocialActivity(context, "github") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_github_square_brands))
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_github_square_brands),
+                    contentDescription = null
+                )
             }
             IconButton(onClick = { launchSocialActivity(context, "twitter") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_twitter_square_brands))
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_twitter_square_brands),
+                    contentDescription = null
+                )
             }
             IconButton(onClick = { launchSocialActivity(context, "linkedin") }) {
-                Icon(imageVector = vectorResource(id = R.drawable.ic_linkedin_brands))
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_linkedin_brands),
+                    contentDescription = null
+                )
             }
         }
     }
 }
 
+
+@ExperimentalMaterialApi
 @Composable
 fun MoreInfoSection() {
-    val context = AmbientContext.current
+    val context = LocalContext.current
     Text(
         text = "More Info",
         style = typography.h6,
@@ -160,8 +173,9 @@ fun MoreInfoSection() {
     ListItem(
         icon = {
             Icon(
-                imageVector = vectorResource(id = R.drawable.ic_github_square_brands),
-                modifier = Modifier.preferredSize(24.dp)
+                painter = painterResource(id = R.drawable.ic_github_square_brands),
+                modifier = Modifier.preferredSize(24.dp),
+                contentDescription = null
             )
         },
         text = {
@@ -175,7 +189,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(imageVector = Icons.Rounded.Email) },
+        icon = { Icon(imageVector = Icons.Rounded.Email, contentDescription = null) },
         text = {
             Text(
                 text = "Contact Me",
@@ -187,7 +201,7 @@ fun MoreInfoSection() {
             .clickable(onClick = { launchSocialActivity(context, "repository") })
     )
     ListItem(
-        icon = { Icon(imageVector = Icons.Rounded.Settings) },
+        icon = { Icon(imageVector = Icons.Rounded.Settings, contentDescription = null) },
         text = {
             Text(
                 text = "Demo Settings",
@@ -229,7 +243,7 @@ fun TopAppBarView(scroll: Float) {
             },
             navigationIcon = {
                 Image(
-                    bitmap = imageResource(id = R.drawable.p1),
+                    painter = painterResource(id = R.drawable.p1),
                     contentDescription = null,
                     modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
                         .preferredSize(32.dp).clip(CircleShape)
@@ -251,12 +265,12 @@ fun TopAppBarView(scroll: Float) {
 fun AnimatedImage(scroll: Float) {
     val dynamicAnimationSizeValue = (initialimageFloat - scroll).coerceIn(36f, initialimageFloat)
     Image(
-        bitmap = imageResource(id = R.drawable.p1),
+        painter = painterResource(id = R.drawable.p1),
         contentScale = ContentScale.Crop,
         contentDescription = null,
         modifier = Modifier
             .padding(start = 16.dp)
-            .preferredSize(animateAsState(Dp(dynamicAnimationSizeValue)).value)
+            .preferredSize(animateDpAsState(Dp(dynamicAnimationSizeValue)).value)
             .clip(CircleShape)
     )
 }
@@ -271,6 +285,7 @@ private fun TopBackground() {
     )
 }
 
+@ExperimentalMaterialApi
 @Preview
 @Composable
 fun ShowProfileScreen() {

@@ -1,6 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.datingapp
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -19,14 +19,13 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.AmbientConfiguration
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.animation.FloatMultiStateAnimationCircleCanvas
 import com.guru.composecookbook.ui.demoapps.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
@@ -35,8 +34,7 @@ import kotlin.random.Random
 
 @Composable
 fun DatingHomeScreen() {
-    val configuration = AmbientConfiguration.current
-    val screenWidth = configuration.screenWidthDp.dp
+    val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     val cardHeight = screenHeight - 200.dp
 
@@ -66,7 +64,7 @@ fun DatingHomeScreen() {
                             start = 16.dp,
                             end = 16.dp
                         ),
-                    { swipeResult, album ->
+                    { _, album ->
                         if (persons.isNotEmpty()) {
                             persons.remove(album)
                             if (persons.isEmpty()) {
@@ -83,7 +81,7 @@ fun DatingHomeScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = cardHeight)
-                    .alpha(animateAsState(if (listEmpty.value) 0f else 1f).value)
+                    .alpha(animateFloatAsState(if (listEmpty.value) 0f else 1f).value)
             ) {
                 IconButton(
                     onClick = {
@@ -128,7 +126,7 @@ fun DatingHomeScreen() {
 fun CardContent(album: Album) {
     Column {
         Image(
-            bitmap = imageResource(album.imageId),
+            painter = painterResource(album.imageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier.weight(1f)
@@ -169,9 +167,10 @@ fun CardContent(album: Album) {
 @Composable
 fun DatingLoader(modifier: Modifier) {
     Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().clip(CircleShape)) {
-        FloatMultiStateAnimationCircleCanvas(purple, 400f)
+        //TODO dating loader animation
+        //   FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
-            bitmap = imageResource(id = R.drawable.adele21),
+            painter = painterResource(id = R.drawable.adele21),
             modifier = modifier.preferredSize(50.dp).clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop,

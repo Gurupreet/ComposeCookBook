@@ -9,7 +9,7 @@ import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Genre
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.utils.ListTypeConverter
 
-@Database(entities = [Movie::class, Genre::class], version = 1)
+@Database(entities = [Movie::class, Genre::class], version = 1, exportSchema = false)
 @TypeConverters(ListTypeConverter::class)
 abstract class MoviesDatabase : RoomDatabase() {
     abstract fun moviesDao(): MoviesDao

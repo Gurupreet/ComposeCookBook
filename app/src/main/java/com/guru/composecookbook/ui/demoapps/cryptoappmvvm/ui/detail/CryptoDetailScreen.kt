@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -20,7 +21,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
@@ -43,16 +44,17 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
     ) {
         Box(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
             val scrollState = rememberScrollState(0f)
-            CryptoTopSection(crypto, scrollState, onBack)
-            ScrollableColumn(
+            CryptoTopSection(crypto, scrollState)
+            Column(
                 modifier = Modifier
-                    .padding(top = 16.dp, start = 16.dp, end = 16.dp), scrollState = scrollState
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                    .verticalScroll(state = scrollState)
             ) {
                 Spacer(modifier = Modifier.height(200.dp))
                 CryptoCharts(crypto)
                 StatisticsSection(crypto)
                 FavSection()
-                NewsSection(crypto)
+                NewsSection()
                 Spacer(modifier = Modifier.height(100.dp))
             }
         }
@@ -60,10 +62,10 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 }
 
 @Composable
-fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Unit) {
+fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
     Column(
         modifier = Modifier.padding(16.dp)
-            .alpha(animateAsState((1 - scrollState.value / 150).coerceIn(0f, 1f)).value)
+            .alpha(animateFloatAsState((1 - scrollState.value / 150).coerceIn(0f, 1f)).value)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.padding(top = 20.dp)) {
@@ -72,7 +74,11 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
                 style = typography.h6,
                 modifier = Modifier.padding(end = 8.dp)
             )
-            CoilImage(data = crypto.image, modifier = Modifier.preferredSize(28.dp), contentDescription = null)
+            CoilImage(
+                data = crypto.image,
+                modifier = Modifier.preferredSize(28.dp),
+                contentDescription = null
+            )
         }
 
         Text(
@@ -81,7 +87,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState, onBack: () -> Uni
         )
         Text(
             text = "${crypto.dailyChange.roundToTwoDecimals()} " +
-                " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
+                    " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
             color = if (crypto.dailyChange > 0) green700 else Color.Red
         )
     }
@@ -116,11 +122,11 @@ fun CryptoBottomBar(onBack: () -> Unit) {
     BottomAppBar(
         cutoutShape = CircleShape
     ) {
-        IconButton(onClick = { onBack }) {
-            Icon(imageVector = Icons.Default.ArrowBack)
+        IconButton(onClick = onBack) {
+            Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "")
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.MoreVert)
+            Icon(imageVector = Icons.Default.MoreVert, contentDescription = "")
         }
     }
 }
@@ -129,11 +135,11 @@ fun CryptoBottomBar(onBack: () -> Unit) {
 fun CryptoFloatingActionButton() {
     var pressed by remember { mutableStateOf(false) }
     ExtendedFloatingActionButton(
-        icon = { Icon(imageVector = Icons.Default.Add) },
+        icon = { Icon(imageVector = Icons.Default.Add, contentDescription = "") },
         text = { Text(text = "Trade") },
         onClick = { pressed = !pressed },
         backgroundColor = MaterialTheme.colors.primary,
-        modifier = Modifier.width(animateAsState(if (pressed) 200.dp else 120.dp).value)
+        modifier = Modifier.width(animateDpAsState(if (pressed) 200.dp else 120.dp).value)
     )
 }
 
@@ -192,7 +198,7 @@ fun FavSection() {
 }
 
 @Composable
-fun NewsSection(crypto: Crypto) {
+fun NewsSection() {
     //TODO Add some crypto news api
     Text(
         text = "Recent News",

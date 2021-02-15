@@ -5,6 +5,7 @@ package com.guru.composecookbook.ui.templates.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,12 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
-import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
-import androidx.compose.ui.platform.AmbientConfiguration
-import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import kotlin.random.Random
 import android.graphics.Color as AndroidColor
@@ -33,11 +34,11 @@ fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
 
-    val screenWidth = AmbientConfiguration.current.screenWidthDp.dp
-    val screenWidthInPx = with(AmbientDensity.current) { screenWidth.toPx() }
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
+    val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
     var activeColor by remember { mutableStateOf<Color>(Red) }
     var dragPosition by remember { mutableStateOf(0f) }
-    val dragDp = with(AmbientDensity.current) { dragPosition.toDp() - 12.dp } // icon offset width
+    val dragDp = with(LocalDensity.current) { dragPosition.toDp() - 12.dp } // icon offset width
 
     Box(modifier = Modifier.padding(8.dp)) {
         //slider
@@ -48,10 +49,12 @@ fun ColorPicker(
                 .clip(RoundedCornerShape(4.dp))
                 .background(brush = colorMapGradient(screenWidthInPx))
                 .align(Alignment.Center)
-                .tapGestureFilter { offset ->
-                    dragPosition = offset.x
-                    activeColor = getActiveColor(dragPosition, screenWidthInPx)
-                    onColorSelected.invoke(activeColor)
+                .pointerInput("painter") {
+                    detectTapGestures { offset ->
+                        dragPosition = offset.x
+                        activeColor = getActiveColor(dragPosition, screenWidthInPx)
+                        onColorSelected.invoke(activeColor)
+                    }
                 }
         )
         // draggable icon
@@ -88,9 +91,11 @@ fun createColorMap(): List<Color> {
         val randomSaturation = 90 + Random.nextFloat() * 10
         val randomLightness = 50 + Random.nextFloat() * 10
         val hsv = AndroidColor.HSVToColor(
-            floatArrayOf(i.toFloat(),
+            floatArrayOf(
+                i.toFloat(),
                 randomSaturation,
-                randomLightness)
+                randomLightness
+            )
         )
         colorList.add(Color(hsv))
     }

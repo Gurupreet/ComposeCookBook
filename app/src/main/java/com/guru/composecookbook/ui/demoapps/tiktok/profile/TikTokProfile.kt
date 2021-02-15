@@ -1,7 +1,11 @@
 package com.guru.composecookbook.ui.demoapps.tiktok.profile
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -13,8 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -32,8 +35,8 @@ fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {
         Scaffold(
             topBar = { ProfileAppBar(album, navHostController) }
         ) {
-            ScrollableColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-                ProfileTopSection(album)
+            LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
+                item { ProfileTopSection(album) }
             }
         }
     }
@@ -43,7 +46,7 @@ fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {
 fun ProfileTopSection(album: Album) {
     Spacer(modifier = Modifier.height(16.dp))
     Image(
-        bitmap = imageResource(id = album.imageId),
+        painter = painterResource(id = album.imageId),
         contentDescription = null,
         modifier = Modifier.size(100.dp)
             .clip(CircleShape)
@@ -91,7 +94,7 @@ fun ProfileTopSection(album: Album) {
             Text(text = "Follow", modifier = Modifier.padding(horizontal = 32.dp))
         }
         Icon(
-            imageVector = vectorResource(id = R.drawable.ic_instagram),
+            painter = painterResource(id = R.drawable.ic_instagram),
             contentDescription = null,
             modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
                 .border(
@@ -135,14 +138,14 @@ fun ProfileTabs() {
             onClick = { selectedIndex = 0 },
             modifier = Modifier.padding(12.dp)
         ) {
-            Icon(imageVector = Icons.Default.VerticalDistribute)
+            Icon(imageVector = Icons.Default.VerticalDistribute, contentDescription = null)
         }
         Tab(
             selected = selectedIndex == 0,
             onClick = { selectedIndex = 1 },
             modifier = Modifier.padding(12.dp)
         ) {
-            Icon(imageVector = Icons.Default.FavoriteBorder)
+            Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = null)
         }
     }
 
@@ -150,7 +153,7 @@ fun ProfileTabs() {
     VerticalGrid(columns = 3) {
         list.forEach {
             Image(
-                bitmap = imageResource(id = it.imageId),
+                painter = painterResource(id = it.imageId),
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth().height(150.dp),
                 contentScale = ContentScale.Crop
@@ -166,12 +169,12 @@ fun ProfileAppBar(album: Album, navHostController: NavHostController) {
         backgroundColor = MaterialTheme.colors.surface,
         navigationIcon = {
             IconButton(onClick = { navHostController.popBackStack() }) {
-                Icon(imageVector = Icons.Filled.ArrowBack)
+                Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
             }
         },
         actions = {
             IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Filled.MoreVert)
+                Icon(imageVector = Icons.Filled.MoreVert, contentDescription = null)
             }
         }
     )

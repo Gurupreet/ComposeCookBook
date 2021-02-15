@@ -15,7 +15,6 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Close
-import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Mail
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -26,8 +25,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.AmbientDensity
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -137,7 +136,8 @@ fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) 
             imageVector = icon,
             modifier = modifier.align(
                 Alignment.BottomCenter
-            )
+            ),
+            contentDescription = null
         )
 
         if (badge != 0) {
@@ -173,21 +173,22 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
         backgroundColor = MaterialTheme.colors.surface,
         contentColor = MaterialTheme.colors.primary
     ) {
-        AnimatingFabContent(
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Edit
-                )
-            },
-            text = {
-                Text(
-                    text = "Compose",
-                    modifier = Modifier.padding(end = 8.dp)
-                )
-            },
-            extended = expandState
-
-        )
+        //TODO animation fix
+//        AnimatingFabContent(
+//            icon = {
+//                Icon(
+//                    imageVector = Icons.Outlined.Edit
+//                )
+//            },
+//            text = {
+//                Text(
+//                    text = "Compose",
+//                    modifier = Modifier.padding(end = 8.dp)
+//                )
+//            },
+//            extended = expandState
+//
+//        )
     }
 
 
@@ -212,12 +213,12 @@ fun GmailContent(
     val oldIndex = remember { mutableStateOf(0) }
     val searchOffsetY = remember { mutableStateOf(0) }
 
-    val searchLayoutHeightPx = with(AmbientDensity.current) { 70.dp.toPx() }
+    val searchLayoutHeightPx = with(LocalDensity.current) { 70.dp.toPx() }
 
     // ensures that the user intents to have scroll gesture..
     val isVisibleScrolled =
         oldIndex.value != lazyListState.firstVisibleItemIndex ||
-            (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
+                (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
 
     println("${lazyListState.firstVisibleItemIndex}  ${lazyListState.firstVisibleItemScrollOffset}")
 
@@ -305,7 +306,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         IconButton(onClick = { showUserDialog.value = false }) {
-                            Icon(Icons.Outlined.Close)
+                            Icon(Icons.Outlined.Close, contentDescription = null)
                         }
 
                         Text(
@@ -360,7 +361,8 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                         Icon(
                             imageVector = Icons.Default.PersonAdd,
                             tint = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(8.dp)
+                            modifier = Modifier.padding(8.dp),
+                            contentDescription = null
                         )
 
                         Text(
@@ -380,7 +382,8 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                         Icon(
                             imageVector = Icons.Default.AccountCircle,
                             tint = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(8.dp)
+                            modifier = Modifier.padding(8.dp),
+                            contentDescription = null
                         )
                         Text(
                             text = "Manage accounts on this device",
@@ -440,7 +443,7 @@ fun GmailUserEmail(imageId: Int, name: String, email: String, badgeCount: Int) {
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Image(
-            bitmap = imageResource(id = imageId),
+            painter = painterResource(id = imageId),
             contentDescription = null,
             modifier = Modifier
                 .preferredSize(32.dp)

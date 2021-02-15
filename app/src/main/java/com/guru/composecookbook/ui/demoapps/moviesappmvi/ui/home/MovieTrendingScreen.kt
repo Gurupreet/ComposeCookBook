@@ -13,7 +13,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.MoviesLaneItem
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
@@ -32,7 +32,8 @@ fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvent
         "Top rated TV shows",
     )
     Column(
-        modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient).verticalScroll(rememberScrollState())
+        modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)
+            .verticalScroll(rememberScrollState())
     ) {
         Spacer(modifier = Modifier.height(statusBarHeight))
 

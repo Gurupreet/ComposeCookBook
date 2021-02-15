@@ -1,6 +1,6 @@
 package com.guru.composecookbook.ui.home.carousel
 
-import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -25,8 +25,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalAnimationClock
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -39,7 +39,7 @@ fun CarouselLayout() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         val items = remember { DemoDataProvider.itemList.take(10) }
         val pagerState: PagerState = run {
-            val clock = AmbientAnimationClock.current
+            val clock = LocalAnimationClock.current
             remember(clock) { PagerState(clock, 2, 0, items.size - 1) }
         }
         val selectedPage = remember { mutableStateOf(2) }
@@ -107,7 +107,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
 fun CarouselItem(item: Item) {
     Box {
         Image(
-            bitmap = imageResource(id = item.imageId),
+            painter = painterResource(id = item.imageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier
@@ -127,7 +127,7 @@ fun CarouselItem(item: Item) {
 @Composable
 fun CarouselItemCircle(item: Item) {
     Image(
-        bitmap = imageResource(id = item.imageId),
+        painter = painterResource(id = item.imageId),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
@@ -142,8 +142,8 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     val animateSize = if (isSelected) 320.dp else 180.dp
     val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
-        elevation = animateAsState(animateElevation).value,
-        modifier = Modifier.preferredSize(animateAsState(animateSize).value).padding(24.dp),
+        elevation = animateDpAsState(animateElevation).value,
+        modifier = Modifier.preferredSize(animateDpAsState(animateSize).value).padding(24.dp),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
         contentColor = MaterialTheme.colors.onPrimary
@@ -155,7 +155,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
                 style = typography.body2
             )
             Image(
-                bitmap = imageResource(id = item.imageId),
+                painter = painterResource(id = item.imageId),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier.padding(4.dp)

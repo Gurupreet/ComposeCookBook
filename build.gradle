@@ -1,9 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.0.0-alpha11'
-        nav_compose_version='1.0.0-alpha04'
-        kotlin_version = "1.4.21-2"
+        compose_version = '1.0.0-alpha12'
+        nav_compose_version = '1.0.0-alpha07'
+        kotlin_version = "1.4.30"
     }
 
     repositories {
@@ -12,7 +12,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha05'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha06'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -25,6 +25,9 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
     }
     tasks.withType(JavaCompile) {
         options.compilerArgs << "-Xlint:deprecation"

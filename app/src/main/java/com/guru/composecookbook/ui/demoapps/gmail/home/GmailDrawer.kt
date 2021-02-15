@@ -1,9 +1,9 @@
 package com.guru.composecookbook.ui.demoapps.gmail.home
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -27,41 +27,41 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun GmailDrawer(modifier: Modifier = Modifier) {
 
-    ScrollableColumn(modifier = modifier) {
+    LazyColumn(modifier = modifier) {
+        // use `item` for separate elements like headers
+        // and `items` for lists of identical elements
+        item {
+            Text(
+                text = "Gmail",
+                color = Color.Red,
+                fontSize = 24.sp,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
+            )
+        }
 
-        Text(
-            text = "Gmail",
-            color = Color.Red,
-            fontSize = 24.sp,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
-        )
+        item { Divider(thickness = 0.3.dp) }
+        item { Spacer(modifier.padding(top = 8.dp)) }
+        item { DrawerItem(icon = Icons.Filled.AllInbox, title = "All Inbox") }
+        item { Spacer(modifier.padding(top = 8.dp)) }
+        item { Divider(thickness = 0.3.dp) }
 
-        Divider(thickness = 0.3.dp)
-        Spacer(modifier.padding(top = 8.dp))
-        DrawerItem(icon = Icons.Filled.AllInbox, title = "All Inbox")
-        Spacer(modifier.padding(top = 8.dp))
-        Divider(thickness = 0.3.dp)
+        item { Spacer(modifier.padding(top = 8.dp)) }
 
+        item { DrawerItem(icon = Icons.Outlined.Inbox, title = "Primary") }
+        item { DrawerItem(icon = Icons.Outlined.Groups, title = "Social") }
+        item { DrawerItem(icon = Icons.Outlined.LocalOffer, title = "Promotion") }
 
-        Spacer(modifier.padding(top = 8.dp))
+        item { DrawerCategory(title = "RECENT LABELS") }
+        item { DrawerItem(icon = Icons.Outlined.Label, title = "[Imap]/Trash") }
+        item { DrawerItem(icon = Icons.Outlined.Label, title = "facebook") }
 
-
-
-        DrawerItem(icon = Icons.Outlined.Inbox, title = "Primary")
-        DrawerItem(icon = Icons.Outlined.Groups, title = "Social")
-        DrawerItem(icon = Icons.Outlined.LocalOffer, title = "Promotion")
-
-        DrawerCategory(title = "RECENT LABELS")
-        DrawerItem(icon = Icons.Outlined.Label, title = "[Imap]/Trash")
-        DrawerItem(icon = Icons.Outlined.Label, title = "facebook")
-
-        DrawerCategory(title = "ALL LABELS")
-        DrawerItem(icon = Icons.Outlined.StarBorder, title = "Starred")
-        DrawerItem(icon = Icons.Outlined.AccessTime, title = "Snoozed")
-        DrawerItem(icon = Icons.Outlined.LabelImportant, title = "Important", "99+")
-        DrawerItem(icon = Icons.Outlined.Send, title = "Sent", "99+")
-        DrawerItem(icon = Icons.Outlined.MoreTime, title = "Scheduled", "99+")
-        DrawerItem(icon = Icons.Outlined.MarkunreadMailbox, title = "Outbox", "10")
+        item { DrawerCategory(title = "ALL LABELS") }
+        item { DrawerItem(icon = Icons.Outlined.StarBorder, title = "Starred") }
+        item { DrawerItem(icon = Icons.Outlined.AccessTime, title = "Snoozed") }
+        item { DrawerItem(icon = Icons.Outlined.LabelImportant, title = "Important", "99+") }
+        item { DrawerItem(icon = Icons.Outlined.Send, title = "Sent", "99+") }
+        item { DrawerItem(icon = Icons.Outlined.MoreTime, title = "Scheduled", "99+") }
+        item { DrawerItem(icon = Icons.Outlined.MarkunreadMailbox, title = "Outbox", "10") }
 
     }
 

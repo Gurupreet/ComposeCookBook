@@ -3,7 +3,8 @@ package com.guru.composecookbook.ui.demoapps.tiktok
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -12,7 +13,6 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.platform.setContent
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
@@ -31,7 +31,7 @@ sealed class TiktokHomeInteractionEvents {
     object OpenComments : TiktokHomeInteractionEvents()
 }
 
-class TiktokActivity : AppCompatActivity() {
+class TiktokActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // We can also use  SystemUiController(window) to control status theme inside compose.

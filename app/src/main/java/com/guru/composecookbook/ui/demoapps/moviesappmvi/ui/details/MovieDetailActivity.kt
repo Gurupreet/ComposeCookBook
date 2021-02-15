@@ -4,12 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.core.animateAsState
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,14 +27,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
@@ -43,7 +44,7 @@ import com.guru.composecookbook.ui.templates.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
 import dev.chrisbanes.accompanist.coil.CoilImage
 
-class MovieDetailActivity : AppCompatActivity() {
+class MovieDetailActivity : ComponentActivity() {
     val movie by lazy {
         intent.getSerializableExtra(MOVIE) as Movie?
     }
@@ -56,7 +57,9 @@ class MovieDetailActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
             ComposeCookBookTheme {
-                MovieDetailContent(movie, imageId)
+                movie?.let {
+                    MovieDetailContent(it, imageId)
+                }
             }
         }
     }
@@ -78,27 +81,32 @@ class MovieDetailActivity : AppCompatActivity() {
 }
 
 @Composable
-fun MovieDetailContent(movie: Movie?, imageId: Int) {
+fun MovieDetailContent(movie: Movie, imageId: Int) {
     val expand = remember { mutableStateOf(false) }
     val viewModel: MovieDetailViewModel = viewModel()
     var dominantColors = listOf(graySurface, Color.Black)
 
     if (imageId != 0) {
-        var currentBitmap = imageResource(id = imageId).asAndroidBitmap()
+        val context = LocalContext.current
+        val currentBitmap = imageFromResource(
+            res = context.resources,
+            resId = imageId
+        ).asAndroidBitmap()
+
         val swatch = generateDominantColorState(currentBitmap)
         dominantColors = listOf(Color(swatch.rgb), Color.Black)
     }
 
-    ScrollableColumn(
+    LazyColumn(
         modifier = Modifier.verticalGradientBackground(dominantColors)
             .padding(
-                animateAsState(
+                animateDpAsState(
                     if (expand.value) 1.dp else 120.dp,
                     tween(350)
                 ).value
             )
     ) {
-        movie?.let { movie ->
+        item {
             CoilImage(
                 data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
                 contentScale = ContentScale.Crop,
@@ -111,6 +119,8 @@ fun MovieDetailContent(movie: Movie?, imageId: Int) {
                     expand.value = true
                 }
             )
+        }
+        item {
             Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -158,6 +168,7 @@ fun MovieDetailContent(movie: Movie?, imageId: Int) {
                 }
             }
         }
+
     }
 }
 

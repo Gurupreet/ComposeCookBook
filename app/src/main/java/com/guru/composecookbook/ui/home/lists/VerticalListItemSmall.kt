@@ -19,7 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
@@ -47,9 +47,8 @@ fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
 
 @Composable
 fun ItemImage(item: Item, modifier: Modifier = Modifier) {
-    val image = imageResource(item.imageId)
     Image(
-        bitmap = image,
+        painter = painterResource(id = item.imageId),
         contentScale = ContentScale.Crop,
         contentDescription = null,
         modifier = modifier
@@ -66,10 +65,16 @@ fun FavIcon(modifier: Modifier = Modifier) {
         onCheckedChange = { isFavourite.value = !isFavourite.value }
     ) {
         if (isFavourite.value) {
-            Icon(imageVector = Icons.Filled.Favorite, contentDescription = null, modifier = modifier)
+            Icon(
+                imageVector = Icons.Filled.Favorite,
+                contentDescription = null,
+                modifier = modifier
+            )
         } else {
             Icon(
-                imageVector = Icons.Default.FavoriteBorder, contentDescription = null, modifier = modifier
+                imageVector = Icons.Default.FavoriteBorder,
+                contentDescription = null,
+                modifier = modifier
             )
         }
     }

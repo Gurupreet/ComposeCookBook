@@ -17,9 +17,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.MyWalletCard
 import com.guru.composecookbook.ui.demoapps.gmail.home.GmailListItem
@@ -57,7 +60,7 @@ fun ConstraintLayoutListItem() {
         createVerticalChain(title, subtitle, space, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            bitmap = imageResource(id = item.imageId),
+            painter = painterResource(id = item.imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -141,7 +144,7 @@ fun ConstraintLayoutBigListItem() {
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            bitmap = imageResource(id = item.imageId),
+            painter = painterResource(id = item.imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

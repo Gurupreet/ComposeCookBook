@@ -9,12 +9,13 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.typography
 
+@ExperimentalMaterialApi
 @Composable
 fun UICards() {
     Text(
@@ -33,7 +34,7 @@ fun UICards() {
     Card(
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         backgroundColor = MaterialTheme.colors.primary,
-        shape = RoundedCornerShape(topLeft = 16.dp, bottomRight = 16.dp)
+        shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp)
     ) {
         Column {
             Text(
@@ -58,7 +59,7 @@ fun UICards() {
     ) {
         Row {
             Image(
-                bitmap = imageResource(id = R.drawable.p3),
+                painter = painterResource(id = R.drawable.p3),
                 contentDescription = null,
                 modifier = Modifier.preferredSize(60.dp)
             )
@@ -82,7 +83,7 @@ fun UICards() {
     Divider(modifier = Modifier.padding(4.dp))
     ListItem(text = { Text(item.title) }, secondaryText = { Text(item.subtitle) }, icon = {
         Image(
-            imageResource(R.drawable.p3),
+            painter = painterResource(R.drawable.p3),
             contentDescription = null,
         )
     })
@@ -91,7 +92,7 @@ fun UICards() {
     ListItem(
         text = { Text(item.title) },
         secondaryText = { Text(item.subtitle) },
-        icon = { Image(imageResource(id = R.drawable.p1), contentDescription = null) },
+        icon = { Image(painter = painterResource(id = R.drawable.p1), contentDescription = null) },
         overlineText = { Text("Overline text") },
         singleLineSecondaryText = false
     )
@@ -99,7 +100,7 @@ fun UICards() {
     ListItem(
         text = { Text(item.title) },
         secondaryText = { Text(item.subtitle) },
-        icon = { Image(imageResource(id = R.drawable.p2), contentDescription = null) },
+        icon = { Image(painter = painterResource(id = R.drawable.p2), contentDescription = null) },
         trailing = { Icon(Icons.Default.ShoppingCart, contentDescription = null) },
         singleLineSecondaryText = false
     )

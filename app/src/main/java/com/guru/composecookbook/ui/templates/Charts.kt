@@ -2,8 +2,8 @@ package com.guru.composecookbook.ui.templates
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -33,68 +33,80 @@ fun createRandomFloatList(): List<Float> {
 @Composable
 fun Charts() {
     Scaffold {
-        ScrollableColumn(modifier = Modifier.fillMaxSize()) {
-            Spacer(modifier = Modifier.height(30.dp))
-            Text(text = "Compose charts", style = MaterialTheme.typography.h6)
-            Spacer(modifier = Modifier.height(10.dp))
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            item { Spacer(modifier = Modifier.height(30.dp)) }
+            item { Text(text = "Compose charts", style = MaterialTheme.typography.h6) }
+            item { Spacer(modifier = Modifier.height(10.dp)) }
 
-            Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
-                LineChart(
-                    yAxisValues = createRandomFloatList(),
-                    modifier = Modifier.fillMaxWidth().height(200.dp),
-                    lineColors = gradientBluePurple
-                )
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+            item {
                 Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                     LineChart(
                         yAxisValues = createRandomFloatList(),
-                        modifier = Modifier.width(150.dp).height(100.dp),
-                        lineColors = listOf(tiktokBlue, tiktokRed)
+                        modifier = Modifier.fillMaxWidth().height(200.dp),
+                        lineColors = gradientBluePurple
                     )
                 }
-                Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
-                    Box {
+            }
+            item { Spacer(modifier = Modifier.height(10.dp)) }
+
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                         LineChart(
-                            yAxisValues = increasingChart5Times,
-                            modifier = Modifier.width(160.dp).height(100.dp),
-                            lineColors = listOf(tiktokBlue, blue200)
+                            yAxisValues = createRandomFloatList(),
+                            modifier = Modifier.width(150.dp).height(100.dp),
+                            lineColors = listOf(tiktokBlue, tiktokRed)
                         )
-                        LineChart(
-                            yAxisValues = increasingChart10Times,
-                            modifier = Modifier.width(160.dp).height(100.dp),
-                            lineColors = listOf(orange200, orange700)
-                        )
+                    }
+                    Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                        Box {
+                            LineChart(
+                                yAxisValues = increasingChart5Times,
+                                modifier = Modifier.width(160.dp).height(100.dp),
+                                lineColors = listOf(tiktokBlue, blue200)
+                            )
+                            LineChart(
+                                yAxisValues = increasingChart10Times,
+                                modifier = Modifier.width(160.dp).height(100.dp),
+                                lineColors = listOf(orange200, orange700)
+                            )
+                        }
+                    }
+                }
+            }
+            item { Spacer(modifier = Modifier.height(20.dp)) }
+
+            item {
+                Card(modifier = Modifier.padding(8.dp), elevation = 16.dp) {
+                    BarCharts(
+                        modifier = Modifier.fillMaxWidth().height(150.dp).padding(top = 4.dp),
+                        yAxisValues = createRandomFloatList(),
+                        barColors = instagramGradient
+                    )
+                }
+            }
+            item { Spacer(modifier = Modifier.height(10.dp)) }
+
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                        val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
+                        PieCharts(pieChartValues)
+                    }
+                    Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+                        val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
+                        PieCharts(pieChartValues)
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Card(modifier = Modifier.padding(8.dp), elevation = 16.dp) {
-                BarCharts(
-                    modifier = Modifier.fillMaxWidth().height(150.dp).padding(top = 4.dp),
-                    yAxisValues = createRandomFloatList(),
-                    barColors = instagramGradient
-                )
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
-                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
-                    PieCharts(pieChartValues)
-                }
-                Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
-                    val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
-                    PieCharts(pieChartValues)
-                }
-            }
-            Spacer(modifier = Modifier.height(20.dp))
+            item { Spacer(modifier = Modifier.height(20.dp)) }
 
         }
     }
@@ -199,7 +211,7 @@ fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
         )
     }
     Canvas(modifier = Modifier.size(180.dp).padding(16.dp)) {
-        var totalPieValue = pieValues.sum()
+        val totalPieValue = pieValues.sum()
         var startAngle = 0f
 
         (0..index.value.toInt()).forEach { index ->
@@ -218,7 +230,12 @@ fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
 
 fun DrawScope.drawPieSlice(color: Color, size: Size, startAngle: Float, sweepAngle: Float) {
     drawArc(
-        color = color, size = size, startAngle = startAngle, sweepAngle = sweepAngle, useCenter = true)
+        color = color,
+        size = size,
+        startAngle = startAngle,
+        sweepAngle = sweepAngle,
+        useCenter = true
+    )
 }
 
 fun DrawScope.drawBar(topLeft: Offset, width: Float, height: Float, colors: List<Color>) {
@@ -234,8 +251,8 @@ fun getBounds(list: List<Float>): Pair<Float, Float> {
     var min = Float.MAX_VALUE
     var max = -Float.MAX_VALUE
     list.forEach {
-        min = Math.min(min, it)
-        max = Math.max(max, it)
+        min = min.coerceAtMost(it)
+        max = max.coerceAtLeast(it)
     }
     return Pair(min, max)
 }

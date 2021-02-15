@@ -21,10 +21,13 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.ui.utils.swipeGesture
@@ -46,7 +49,7 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
         createVerticalChain(title, subtitle, source, chainStyle = ChainStyle.Packed)
 
         Image(
-            bitmap = imageResource(id = item.authorImageId),
+            painter = painterResource(id = item.authorImageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier
@@ -117,10 +120,18 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
 fun GmailListActionItems(modifier: Modifier) {
     Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.Delete, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.Delete,
+                tint = MaterialTheme.colors.onPrimary,
+                contentDescription = null
+            )
         }
         IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.AccountBox, tint = MaterialTheme.colors.onPrimary, contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.AccountBox,
+                tint = MaterialTheme.colors.onPrimary,
+                contentDescription = null
+            )
         }
     }
 }

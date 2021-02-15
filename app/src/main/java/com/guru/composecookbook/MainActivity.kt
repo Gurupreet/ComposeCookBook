@@ -1,7 +1,8 @@
 package com.guru.composecookbook
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
@@ -12,9 +13,8 @@ import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ShopTwo
 import androidx.compose.runtime.*
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -22,14 +22,15 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.*
-import com.guru.composecookbook.ui.animation.AnimationScreen
 import com.guru.composecookbook.ui.demoapps.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
 import com.guru.composecookbook.ui.learnwidgets.WidgetScreen
 import com.guru.composecookbook.ui.templates.TemplateScreen
+import com.guru.composecookbook.ui.utils.ComingSoon
 import com.guru.composecookbook.ui.utils.RotateIcon
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //for adView demo
@@ -62,6 +63,7 @@ fun BaseView(
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun HomeScreenContent(
     homeScreen: BottomNavType,
@@ -74,7 +76,7 @@ fun HomeScreenContent(
                 when (screen) {
                     BottomNavType.HOME -> HomeScreen(appThemeState)
                     BottomNavType.WIDGETS -> WidgetScreen()
-                    BottomNavType.ANIMATION -> AnimationScreen()
+                    BottomNavType.ANIMATION -> ComingSoon()
                     BottomNavType.DEMOUI -> DemoUIList()
                     BottomNavType.TEMPLATE -> TemplateScreen(appThemeState.value.darkTheme)
 
@@ -84,10 +86,11 @@ fun HomeScreenContent(
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
     //Default home screen state is always HOME
-    val homeScreenState = savedInstanceState { BottomNavType.HOME }
+    val homeScreenState = rememberSaveable { mutableStateOf(BottomNavType.HOME) }
     val bottomNavBarContentDescription = stringResource(id = R.string.a11y_bottom_navigation_bar)
 
     Column {
@@ -167,6 +170,7 @@ fun BottomNavigationContent(
     }
 }
 
+@ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

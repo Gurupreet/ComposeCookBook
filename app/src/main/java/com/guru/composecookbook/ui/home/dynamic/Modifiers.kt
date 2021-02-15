@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.home.dynamic
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -17,10 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.gesture.doubleTapGestureFilter
-import androidx.compose.ui.gesture.longPressGestureFilter
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.green500
@@ -53,7 +54,7 @@ fun HowToModifiers() {
         DemoElementButton(modifier = Modifier.clip(RoundedCornerShape(12.dp)))
         DemoText("Modifier.clip(RoundedCornerShape(topLeft = 12.dp, bottomRight = 12.dp))")
         DemoElementButton(
-            modifier = Modifier.clip(RoundedCornerShape(topLeft = 12.dp, bottomRight = 12.dp))
+            modifier = Modifier.clip(RoundedCornerShape(topStart = 12.dp, bottomEnd = 12.dp))
         )
         DemoText("Modifier.clip(CutCornerShape(12))")
         DemoElementButton(modifier = Modifier.clip(CutCornerShape(12.dp)))
@@ -112,11 +113,15 @@ fun HowToModifiers() {
             modifier = Modifier.clickable(onClick = {}).background(teal200).padding(8.dp)
 
         )
-        DemoText("Add double tap: Modifier.doubleTapGestureFilter{ } ")
-        DemoElementText(modifier = Modifier.background(teal200).doubleTapGestureFilter { }
+        DemoText("Add double tap: Modifier.pointerInteropFilter for tap and motion events ")
+        DemoElementText(modifier = Modifier.background(teal200).pointerInteropFilter {
+            true
+        }
             .padding(8.dp))
-        DemoText("Add long press: Modifier.doubleTapGestureFilter{ } ")
-        DemoElementText(modifier = Modifier.background(teal200).longPressGestureFilter { }
+        DemoText("Use Modifier.pointerInput() for all drag, tag, long press gestures")
+        DemoElementText(modifier = Modifier.background(teal200).pointerInput("key") {
+            this.detectTapGestures { }
+        }
             .padding(8.dp))
 
     }

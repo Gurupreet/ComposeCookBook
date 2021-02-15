@@ -3,15 +3,15 @@ package com.guru.composecookbook.ui.home.advancelists
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.AmbientAnimationClock
-import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.platform.LocalAnimationClock
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -20,7 +20,7 @@ import com.guru.composecookbook.ui.home.carousel.Pager
 import com.guru.composecookbook.ui.home.carousel.PagerState
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
-class AdvanceListsActivity : AppCompatActivity() {
+class AdvanceListsActivity : ComponentActivity() {
 
     private val isDarkTheme: Boolean by lazy {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
@@ -64,7 +64,7 @@ class AdvanceListsActivity : AppCompatActivity() {
 fun AdvanceListContent() {
     var selectedIndex by remember { mutableStateOf(0) }
     val pagerState: PagerState = run {
-        val clock = AmbientAnimationClock.current
+        val clock = LocalAnimationClock.current
         remember(clock) {
             PagerState(clock, 0, 0, tabs.size - 1)
         }
@@ -85,7 +85,7 @@ fun AdvanceListContent() {
         Pager(state = pagerState, modifier = Modifier.weight(1f)) {
             selectedIndex = pagerState.currentPage
             when (page) {
-                0 -> ShimmerList()
+                0 -> Text(text = "fix shimmer list")
                 1 -> AnimatedLists()
                 2 -> SwipeableLists()
             }
@@ -97,6 +97,6 @@ fun AdvanceListContent() {
 @Composable
 fun DefaultPreview10() {
     ComposeCookBookTheme {
-        ShimmerList()
+        //ShimmerList()
     }
 }

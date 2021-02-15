@@ -17,7 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,7 +34,7 @@ fun SpotifySongListItem(album: Album) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            bitmap = imageResource(id = album.imageId),
+            painter = painterResource(id = album.imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.preferredSize(55.dp).padding(4.dp)
