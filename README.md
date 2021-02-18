@@ -64,6 +64,10 @@ Shimmer Lists             | List Scroll Animations      |  Pull Refresh/Swipe Li
 :-------------------------:|:-------------------------: | :-------------------------:
 ![](https://media.giphy.com/media/VQof1yEEbEgcqgY7WW/giphy.gif)  |  ![](https://media.giphy.com/media/hhpnI1beJr6gRi4btK/giphy.gif) | In progres
 
+## If this project helped you in any way feel free to show some love
+<a href="https://www.buymeacoffee.com/gurupreet" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="160">
+</a>
 
 ## How to get started
 Please get **Android Studio Arctic Fox 2020.3.1 Canary 4** or above to build this project [from here](https://developer.android.com/studio/preview/).
