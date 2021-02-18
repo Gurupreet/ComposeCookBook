@@ -1,5 +1,6 @@
 package com.guru.composecookbook
 
+import AnimationScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -76,7 +77,7 @@ fun HomeScreenContent(
                 when (screen) {
                     BottomNavType.HOME -> HomeScreen(appThemeState)
                     BottomNavType.WIDGETS -> WidgetScreen()
-                    BottomNavType.ANIMATION -> ComingSoon()
+                    BottomNavType.ANIMATION -> AnimationScreen()
                     BottomNavType.DEMOUI -> DemoUIList()
                     BottomNavType.TEMPLATE -> TemplateScreen(appThemeState.value.darkTheme)
 

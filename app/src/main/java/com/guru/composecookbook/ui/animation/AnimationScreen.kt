@@ -1,222 +1,223 @@
-//package com.guru.composecookbook.ui.animation
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.ui.utils.RotateIcon
+import com.guru.composecookbook.ui.utils.SubtitleText
+import com.guru.composecookbook.ui.utils.TitleText
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.unit.Dp
+
+@Composable
+fun AnimationScreen() {
+    var animateIcon by remember { mutableStateOf(false) }
+    Scaffold(
+        modifier = Modifier.semantics { testTag = "Animation Screen" },
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Animations") },
+                elevation = 8.dp,
+                navigationIcon = {
+                    IconButton(onClick = { animateIcon = !animateIcon }) {
+                        RotateIcon(
+                            state = animateIcon,
+                            asset = Icons.Filled.PlayArrow,
+                            angle = 1440f,
+                            duration = 3000
+                        )
+                    }
+                }
+            )
+        },
+        bodyContent = {
+            AnimationScreenContent()
+        }
+    )
+}
+
+@Composable
+fun AnimationScreenContent() {
+    Column(
+        modifier = Modifier.verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.padding(4.dp))
+        TitleText(title = "Animate as State")
+        AnimationsForStates()
+        SubtitleText(subtitle = "animate(Color)")
+        //SimpleColorAnimation()
+        Spacer(modifier = Modifier.padding(4.dp))
+        SubtitleText(subtitle = "animate(Color)+animate(Dp)")
+        //SingleScaleAndColorAnimation()
+        Spacer(modifier = Modifier.padding(4.dp))
+        SubtitleText(subtitle = "animate(Dp)")
+        //SingleImageScaleAnimation()
+        Spacer(modifier = Modifier.padding(4.dp))
+        SubtitleText(subtitle = "animateContentSize()")
+        //SingleAnimationContent()
+        Spacer(modifier = Modifier.padding(8.dp))
+        TitleText(title = "Visibility Animations: Experimental")
+        Spacer(modifier = Modifier.padding(8.dp))
+        //VisibilityAnimationFAB()
+        Spacer(modifier = Modifier.padding(8.dp))
+        //VisibilityAnimationFade()
+        Spacer(modifier = Modifier.padding(8.dp))
+        //VisibilityAnimationShrinkExpand()
+        Spacer(modifier = Modifier.padding(8.dp))
+        //SlideInOutSample()
+        Spacer(modifier = Modifier.padding(8.dp))
+        TitleText(title = "Multi State Animations")
+        Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Three different colorPropKey state with repeat")
+        //ColorMultistateAnimation()
+        Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Different DpPropKey value states animation")
+        //DpMultiStateAnimation()
+        Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Different FloatPropKey value states animation")
+        //FloatMutliStateAnimation()
+        Spacer(modifier = Modifier.padding(8.dp))
+        TitleText(title = "Multi State Animations on Canvas")
+        val ripple = remember { mutableStateOf(false) }
+        if (ripple.value) {
+          //  FloatMultiStateAnimationExplode(500)
+        }
+        Button(onClick = { ripple.value = !ripple.value }) {
+            Text(text = "Top top explode")
+        }
+        Spacer(modifier = Modifier.padding(8.dp))
+        SubtitleText(subtitle = "Circle stroke canvas drawing + rotation animation")
+        //FloatMultiStateAnimationCircleStrokeCanvas()
+        Spacer(modifier = Modifier.padding(30.dp))
+        SubtitleText(subtitle = "Multiple Circle canvas+ Scaling radius")
+        //FloatMultiStateAnimationCircleCanvas()
+        Spacer(modifier = Modifier.padding(50.dp))
+        //draw layer animations
+        //DrawLayerAnimations()
+        Spacer(modifier = Modifier.padding(50.dp))
+        //Animated Values animation
+        //AnimatedValuesAnimations()
+        Spacer(modifier = Modifier.padding(50.dp))
+        //TickerAnimation()
+        Spacer(modifier = Modifier.padding(100.dp))
+      //  ColorPicker(onColorSelected = { /*TODO*/ })
+        Spacer(modifier = Modifier.padding(100.dp))
+    }
+}
+
+@Composable
+fun AnimationsForStates() {
+    SimpleColorStateAnimation()
+    SimpleDpStateAnimations()
+    SimpleFloatStateAnimation()
+    SimpleAnimateCustomStateClass()
+}
+
+@Composable
+fun SimpleColorStateAnimation() {
+    SubtitleText(subtitle = "Animate color")
+    val enabled = remember { mutableStateOf(true) }
+    val animatedColor = animateColorAsState(targetValue =
+    if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary)
+
+    val buttonColors = ButtonDefaults.buttonColors(
+        backgroundColor = animatedColor.value
+    )
+
+    Button(
+    onClick = { enabled.value = !enabled.value },
+    colors = buttonColors,
+    modifier = Modifier.padding(16.dp).fillMaxWidth()
+    ) {
+        Text("Color Animation")
+    }
+}
 //
-//import androidx.compose.animation.*
-//import androidx.compose.animation.core.FastOutSlowInEasing
-//import androidx.compose.animation.core.LinearOutSlowInEasing
-//import androidx.compose.animation.core.animateAsState
-//import androidx.compose.animation.core.tween
-//import androidx.compose.foundation.*
-//import androidx.compose.foundation.layout.*
-//import androidx.compose.foundation.shape.RoundedCornerShape
-//import androidx.compose.material.*
-//import androidx.compose.material.icons.Icons
-//import androidx.compose.material.icons.filled.PlayArrow
-//import androidx.compose.runtime.*
-//import androidx.compose.ui.Alignment
-//import androidx.compose.ui.Modifier
-//import androidx.compose.ui.draw.clip
-//import androidx.compose.ui.geometry.Offset
-//import androidx.compose.ui.geometry.Size
-//import androidx.compose.ui.gesture.DragObserver
-//import androidx.compose.ui.gesture.rawDragGestureFilter
-//import androidx.compose.ui.graphics.Color
-//import androidx.compose.ui.graphics.drawscope.Stroke
-//import androidx.compose.ui.graphics.graphicsLayer
-//import androidx.compose.ui.layout.ContentScale
-//import androidx.compose.ui.res.painterResource
-//import androidx.compose.ui.res.painterResource
-//import androidx.compose.ui.semantics.semantics
-//import androidx.compose.ui.semantics.testTag
-//import androidx.compose.ui.tooling.preview.Preview
-//import androidx.compose.ui.unit.Dp
-//import androidx.compose.ui.unit.IntOffset
-//import androidx.compose.ui.unit.IntSize
-//import androidx.compose.ui.unit.dp
-//import com.guru.composecookbook.R
-//import com.guru.composecookbook.data.DemoDataProvider
-//import com.guru.composecookbook.theme.green200
-//import com.guru.composecookbook.theme.green500
-//import com.guru.composecookbook.theme.green700
-//import com.guru.composecookbook.ui.templates.components.ColorPicker
-//import com.guru.composecookbook.ui.utils.RotateIcon
-//import com.guru.composecookbook.ui.utils.SubtitleText
-//import com.guru.composecookbook.ui.utils.TitleText
-//
-//@Composable
-//fun AnimationScreen() {
-//    var animateIcon by remember { mutableStateOf(false) }
-//    Scaffold(
-//        modifier = Modifier.semantics { testTag = "Animation Screen" },
-//        topBar = {
-//            TopAppBar(
-//                title = { Text(text = "Animations") },
-//                elevation = 8.dp,
-//                navigationIcon = {
-//                    IconButton(onClick = { animateIcon = !animateIcon }) {
-//                        RotateIcon(
-//                            state = animateIcon,
-//                            asset = Icons.Filled.PlayArrow,
-//                            angle = 1440f,
-//                            duration = 3000
-//                        )
-//                    }
-//                }
-//            )
-//        },
-//        bodyContent = {
-//            AnimationScreenContent()
-//        }
-//    )
-//}
-//
-//@Composable
-//fun AnimationScreenContent() {
-//    Column(
-//        modifier = Modifier.verticalScroll(rememberScrollState()),
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        Spacer(modifier = Modifier.padding(4.dp))
-//        TitleText(title = "Single value animations")
-//        SubtitleText(subtitle = "animate(Color)")
-//        SimpleColorAnimation()
-//        Spacer(modifier = Modifier.padding(4.dp))
-//        SubtitleText(subtitle = "animate(Color)+animate(Dp)")
-//        SingleScaleAndColorAnimation()
-//        Spacer(modifier = Modifier.padding(4.dp))
-//        SubtitleText(subtitle = "animate(Dp)")
-//        SingleImageScaleAnimation()
-//        Spacer(modifier = Modifier.padding(4.dp))
-//        SubtitleText(subtitle = "animateContentSize()")
-//        SingleAnimationContent()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        TitleText(title = "Visibility Animations: Experimental")
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        VisibilityAnimationFAB()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        VisibilityAnimationFade()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        VisibilityAnimationShrinkExpand()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        SlideInOutSample()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        TitleText(title = "Multi State Animations")
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        SubtitleText(subtitle = "Three different colorPropKey state with repeat")
-//        ColorMultistateAnimation()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        SubtitleText(subtitle = "Different DpPropKey value states animation")
-//        DpMultiStateAnimation()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        SubtitleText(subtitle = "Different FloatPropKey value states animation")
-//        FloatMutliStateAnimation()
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        TitleText(title = "Multi State Animations on Canvas")
-//        val ripple = remember { mutableStateOf(false) }
-//        if (ripple.value) {
-//            FloatMultiStateAnimationExplode(500)
-//        }
-//        Button(onClick = { ripple.value = !ripple.value }) {
-//            Text(text = "Top top explode")
-//        }
-//        Spacer(modifier = Modifier.padding(8.dp))
-//        SubtitleText(subtitle = "Circle stroke canvas drawing + rotation animation")
-//        FloatMultiStateAnimationCircleStrokeCanvas()
-//        Spacer(modifier = Modifier.padding(30.dp))
-//        SubtitleText(subtitle = "Multiple Circle canvas+ Scaling radius")
-//        FloatMultiStateAnimationCircleCanvas()
-//        Spacer(modifier = Modifier.padding(50.dp))
-//        //draw layer animations
-//        DrawLayerAnimations()
-//        Spacer(modifier = Modifier.padding(50.dp))
-//        //Animated Values animation
-//        AnimatedValuesAnimations()
-//        Spacer(modifier = Modifier.padding(50.dp))
-//        TickerAnimation()
-//        Spacer(modifier = Modifier.padding(100.dp))
-//        ColorPicker(onColorSelected = { /*TODO*/ })
-//        Spacer(modifier = Modifier.padding(100.dp))
-//    }
-//}
-//
-//@Composable
-//fun SimpleColorAnimation() {
-//    val enabled = remember { mutableStateOf(true) }
-//    val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
-//    val buttonColors = ButtonDefaults.buttonColors(
-//        backgroundColor = animateAsState(color).value
-//    )
-//    Button(
-//        onClick = { enabled.value = !enabled.value },
-//        colors = buttonColors,
-//        modifier = Modifier.padding(16.dp).fillMaxWidth()
-//    ) {
-//        Text("Color Animation")
-//    }
-//}
-//
-//@Composable
-//fun SingleScaleAndColorAnimation() {
-//    val enabled = remember { mutableStateOf(true) }
-//    val color = if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
-//    val height = if (enabled.value) 40.dp else 60.dp
-//    val width = if (enabled.value) 150.dp else 300.dp
-//    val buttonColors = ButtonDefaults.buttonColors(
-//        backgroundColor = animateAsState(color).value
-//    )
-//    Button(
-//        onClick = { enabled.value = !enabled.value },
-//        colors = buttonColors,
-//        modifier = Modifier
-//            .padding(16.dp)
-//            .preferredHeight(animateAsState(height).value)
-//            .preferredWidth(animateAsState(width).value),
-//    ) {
-//        Text("Scale & Color")
-//    }
-//}
-//
-//@Composable
-//fun SingleAnimationContent() {
-//    val enabled = remember { mutableStateOf(true) }
-//    Box(
-//        modifier = Modifier.padding(12.dp).animateContentSize().background(green500)
-//            .clickable { enabled.value = !enabled.value },
-//    ) {
-//        Text(
-//            if (enabled.value) "Auto animate for child content size changes using animateContentSize() for Read More" else DemoDataProvider.longText,
-//            modifier = Modifier.padding(12.dp)
-//        )
-//    }
-//}
-//
-//@Composable
-//fun SingleImageScaleAnimation() {
-//    val enabled = remember { mutableStateOf(true) }
-//    Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.padding(8.dp)) {
-//        Image(
-//            painter = painterResource(R.drawable.food10),
-//            contentScale = ContentScale.Crop,
-//            contentDescription = null,
-//            modifier = Modifier
-//                .preferredSize(animateAsState(if (enabled.value) 100.dp else 250.dp).value)
-//                .padding(8.dp)
-//                .clickable { enabled.value = !enabled.value }
-//                .clip(RoundedCornerShape(animateAsState(if (enabled.value) 0.dp else 8.dp).value))
-//        )
-//        Image(
-//            painter = painterResource(R.drawable.food12),
-//            contentScale = ContentScale.Crop,
-//            contentDescription = null,
-//            modifier = Modifier
-//                .preferredSize(animateAsState(if (!enabled.value) 100.dp else 250.dp).value)
-//                .padding(8.dp)
-//                .clickable { enabled.value = !enabled.value }
-//                .clip(RoundedCornerShape(animateAsState(if (!enabled.value) 0.dp else 8.dp).value))
-//        )
-//    }
-//}
-//
-//
+@Composable
+fun SimpleDpStateAnimations() {
+    SubtitleText(subtitle = "Animate DP value")
+    var enabled by remember { mutableStateOf(true) }
+    val animatedColorState = animateColorAsState(
+        targetValue = if (enabled) MaterialTheme.colors.primary else MaterialTheme.colors.secondary)
+    val animatedHeightState = animateDpAsState(targetValue = if (enabled) 40.dp else 60.dp)
+    val animatedWidthState = animateDpAsState(if (enabled) 150.dp else 300.dp)
+    val buttonColors = ButtonDefaults.buttonColors(
+        backgroundColor = animatedColorState.value
+    )
+    Button(
+        onClick = { enabled = !enabled },
+        colors = buttonColors,
+        modifier = Modifier
+            .padding(16.dp)
+            .height(animatedHeightState.value)
+            .preferredWidth(animatedWidthState.value),
+    ) {
+        Text("Scale & Color")
+    }
+}
+
+@Composable
+fun SimpleFloatStateAnimation() {
+    SubtitleText(subtitle = "Animate Float value")
+
+    var enabled by remember { mutableStateOf(true) }
+    val animatedFloatState = animateFloatAsState(targetValue = if (enabled) 1f else 0.5f)
+    Button(
+        onClick = { enabled = !enabled },
+        modifier = Modifier
+            .padding(16.dp)
+            .alpha(animatedFloatState.value)
+    ) {
+        Text("Opacity change")
+    }
+}
+
+data class CustomAnimationState(val width: Dp, val rotation: Float)
+@Composable
+fun SimpleAnimateCustomStateClass() {
+    SubtitleText(subtitle = "Animate Custom State state with 2D vector")
+    var enabled by remember { mutableStateOf(true) }
+    val initUiState = CustomAnimationState(200.dp, 0f)
+    val targetUiState = CustomAnimationState(300.dp, 15f)
+
+    val uiState = if (enabled) initUiState else targetUiState
+
+    val animatedUiState by animateValueAsState(
+        targetValue = uiState,
+        typeConverter = TwoWayConverter(
+            convertToVector = { AnimationVector2D(it.width.value, it.rotation) },
+            convertFromVector = { CustomAnimationState(it.v1.dp, it.v2)}
+        ),
+        animationSpec = tween(600)
+    )
+
+    Button(
+        onClick = { enabled = !enabled },
+        modifier = Modifier
+            .padding(16.dp)
+            .width(animatedUiState.width)
+            .rotate(animatedUiState.rotation)
+    ) {
+        Text("Custom State Animation")
+    }
+}
+
 //@OptIn(ExperimentalAnimationApi::class)
 //@Composable
 //fun VisibilityAnimationFAB() {
