@@ -1,20 +1,15 @@
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.*
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material.icons.filled.PlayCircleFilled
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
@@ -23,15 +18,22 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.positionChange
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import com.guru.composecookbook.R
+import com.guru.composecookbook.theme.green200
+import com.guru.composecookbook.theme.green500
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun AnimationScreen() {
@@ -70,6 +72,7 @@ fun AnimationScreenContent() {
         item { TitleText(title = "State Animations(Fire and forget)") }
         item { AnimationsForStates() }
         item { AnimationsWithVisibilityApi() }
+        item { AnimatableSuspendedAnimations() }
       //  ColorPicker(onColorSelected = { /*TODO*/ })
         item { Spacer(modifier = Modifier.padding(100.dp)) }
     }
@@ -97,6 +100,23 @@ fun AnimationsWithVisibilityApi() {
     Spacer(modifier = Modifier.height(50.dp))
     TitleText(title = "Using Visibility Apis(Experimental)")
     AnimateVisibilityAnim()
+    Divider()
+    AnimateVisibilityWithSlideInOutSample()
+    Divider()
+    VisibilityAnimationWithShrinkExpand()
+    Divider()
+    AnimateContentSize()
+}
+
+@Composable
+fun AnimatableSuspendedAnimations() {
+    TitleText(title = "Suspending Animations via Animatable(floatValue) with Bounds")
+    SubtitleText(subtitle = "Use it with PointerInput or LaunchedEffects")
+    SimpleDismissUsingAnimatable()
+    Divider()
+    PointerInputWithAnimateable()
+    Divider()
+    DraggableCardWithAnimatable()
     Divider()
 }
 
@@ -386,51 +406,148 @@ fun AnimateVisibilityAnim() {
 //    }
 //}
 //
-//@OptIn(ExperimentalAnimationApi::class)
-//@Composable
-//fun VisibilityAnimationShrinkExpand() {
-//    var visibility by remember { mutableStateOf(true) }
-//    Row(
-//        Modifier.padding(start = 12.dp, end = 12.dp).width(200.dp).height(60.dp)
-//            .background(green500).clickable(onClick = { visibility = !visibility })
-//    ) {
-//        AnimatedVisibility(
-//            visibility,
-//            modifier = Modifier.align(Alignment.CenterVertically),
-//            enter = expandIn(Alignment.Center, { fullSize: IntSize -> fullSize * 4 }),
-//            exit = shrinkOut(Alignment.Center)
-//        ) {
-//            Text(modifier = Modifier.padding(start = 12.dp), text = "Tap to Shrink expand")
-//        }
-//    }
-//}
-//
-//
-//@OptIn(ExperimentalAnimationApi::class)
-//@Composable
-//fun SlideInOutSample() {
-//    var visibility by remember { mutableStateOf(true) }
-//    Row(
-//        Modifier.padding(start = 12.dp, end = 12.dp).width(200.dp).height(60.dp)
-//            .background(green500).clickable(onClick = { visibility = !visibility })
-//    ) {
-//        AnimatedVisibility(
-//            visibility,
-//            enter = slideIn(
-//                { IntOffset(0, 100) },
-//                tween(500, easing = LinearOutSlowInEasing)
-//            ),
-//            exit = slideOut(
-//                { IntOffset(0, 50) },
-//                tween(500, easing = FastOutSlowInEasing)
-//
-//            )
-//        ) {
-//            // Content that needs to appear/disappear goes here:
-//            Text("Tap for Sliding animation")
-//        }
-//    }
-//}
+@OptIn(ExperimentalAnimationApi::class)
+@Composable
+fun VisibilityAnimationWithShrinkExpand() {
+    SubtitleText(subtitle = "Visibility animation with expand/shrink as enter/exit")
+    var visibility by remember { mutableStateOf(true) }
+
+    Row(
+        Modifier.padding(12.dp).width(200.dp).height(60.dp)
+            .background(green200).clickable(onClick = { visibility = !visibility })
+    ) {
+        AnimatedVisibility(
+            visibility,
+            modifier = Modifier.align(Alignment.CenterVertically),
+            enter = expandIn(Alignment.Center, { fullSize: IntSize -> fullSize * 4 }),
+            exit = shrinkOut(Alignment.Center)
+        ) {
+            Button(modifier = Modifier.padding(start = 12.dp), onClick = {visibility = !visibility}) {
+                Text(text = "Shrink/Expand")
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalAnimationApi::class)
+@Composable
+fun AnimateVisibilityWithSlideInOutSample() {
+    SubtitleText(subtitle = "Visibility animation with fade and slide as enter/exit")
+    var visibility by remember { mutableStateOf(true) }
+    Row(
+        Modifier.padding(12.dp).width(200.dp).height(60.dp)
+            .background(green500).clickable(onClick = { visibility = !visibility })
+    ) {
+        AnimatedVisibility(
+            visibility,
+            enter = slideIn(
+                { IntOffset(0, 120) },
+                tween(500, easing = LinearOutSlowInEasing)
+            ) + fadeIn(1f,  tween(500, easing = LinearOutSlowInEasing)),
+            exit = slideOut(
+                { IntOffset(0, 120) },
+                tween(500, easing = FastOutSlowInEasing)
+            ) + fadeOut(0.5f,  tween(500, easing = LinearOutSlowInEasing))
+        ) {
+            // Content that needs to appear/disappear goes here:
+            Text("Tap for Sliding animation")
+        }
+    }
+}
+
+@Composable
+fun AnimateContentSize() {
+    SubtitleText(subtitle = "Using Modifier.animateContentSize() to animate content change")
+    var count by remember { mutableStateOf(1) }
+
+    Row(modifier = Modifier.animateContentSize().clickable { if (count < 10) count += 3 else count = 1 }) {
+        (0..count).forEach {
+            Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
+        }
+    }
+}
+
+@Composable
+fun SimpleDismissUsingAnimatable() {
+    val animatableValue = remember { Animatable(0f) }
+    animatableValue.updateBounds(-100f, 100f)
+    var enable by remember { mutableStateOf(true) }
+    Card(
+        backgroundColor = green200,
+        modifier = Modifier.size(100.dp).offset(x = Dp(animatableValue.value)).clickable { enable = !enable },
+    ) {
+        LaunchedEffect(enable) {
+            if (enable) {
+                animatableValue.animateTo(100f)
+            } else {
+                animatableValue.animateTo(-100f)
+            }
+        }
+    }
+}
+
+@Composable
+fun PointerInputWithAnimateable() {
+    SubtitleText(subtitle = "Drag using Pointer input with Animatable in coroutines")
+    val pointerAnimatableX = remember { Animatable(0f) }
+
+    val modifier = Modifier.pointerInput(Unit) {
+        coroutineScope {
+            while (true) {
+                val firstDownId = awaitPointerEventScope {
+                    awaitFirstDown().id
+                }
+                awaitPointerEventScope {
+                    horizontalDrag(firstDownId, onDrag = {
+                        launch {
+                            pointerAnimatableX.animateTo(it.position.x)
+                        }
+                    })
+                }
+            }
+        }
+    }
+    Card(
+        backgroundColor = green200,
+        modifier = modifier.size(100.dp)
+            .offset(x = pointerAnimatableX.value.dp)
+    ) {
+    }
+}
+
+@Composable
+fun DraggableCardWithAnimatable() {
+    SubtitleText(subtitle = "Drag using Pointer input with Animatable in coroutines")
+    Spacer(modifier = Modifier.height(100.dp))
+    val pointerAnimatableX = remember { Animatable(0f) }
+    val pointerAnimatableY = remember { Animatable(0f) }
+
+   // pointerAnimatableX.updateBounds(-200f, 200f)
+    //pointerAnimatableY.updateBounds(-200f, 200f)
+
+    val modifier = Modifier.pointerInput(Unit) {
+        coroutineScope {
+          detectDragGestures(onDragCancel = {
+              launch {
+                  pointerAnimatableX.snapTo(0f)
+                  pointerAnimatableY.snapTo(0f)
+              }
+          }) { _, dragAmount ->
+              launch {
+                  pointerAnimatableX.animateTo(dragAmount.x)
+                  pointerAnimatableY.animateTo(dragAmount.y)
+              }
+          }
+        }
+    }
+    Card(
+        backgroundColor = green200,
+        modifier = modifier.size(100.dp)
+            .offset(x = pointerAnimatableX.value.dp, y = pointerAnimatableX.value.dp)
+    ) {
+    }
+    Spacer(modifier = Modifier.height(100.dp))
+}
 //
 //@Composable
 //fun ColorMultistateAnimation() {
