@@ -33,7 +33,3 @@ allprojects {
         options.compilerArgs << "-Xlint:deprecation"
     }
 }
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
