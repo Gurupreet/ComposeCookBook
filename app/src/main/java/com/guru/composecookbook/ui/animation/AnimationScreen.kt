@@ -32,8 +32,14 @@ import androidx.compose.ui.unit.IntSize
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
+import com.guru.composecookbook.theme.orange
+import com.guru.composecookbook.theme.purple
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+
+enum class MyAnimationState {
+    START, MID, END
+}
 
 @Composable
 fun AnimationScreen() {
@@ -73,6 +79,7 @@ fun AnimationScreenContent() {
         item { AnimationsForStates() }
         item { AnimationsWithVisibilityApi() }
         item { AnimatableSuspendedAnimations() }
+        item { TransitionAnimationsWithMultipleStates() }
       //  ColorPicker(onColorSelected = { /*TODO*/ })
         item { Spacer(modifier = Modifier.padding(100.dp)) }
     }
@@ -121,6 +128,88 @@ fun AnimatableSuspendedAnimations() {
 }
 
 @Composable
+fun TransitionAnimationsWithMultipleStates() {
+    TitleText(title = "Multi-state Animations via Transition and States")
+    MultiStateColorPositionAnimation()
+    Divider()
+    MultiStateInfiniteTransition()
+}
+
+@Composable
+fun MultiStateColorPositionAnimation() {
+    SubtitleText(subtitle = "Multi State color and position transition")
+    Spacer(modifier = Modifier.height(80.dp))
+    var animationState by remember { mutableStateOf(MyAnimationState.START) }
+    val startColor = green200
+    val midColor = purple
+    val endColor = orange
+    
+    val transition = updateTransition(targetState = animationState)
+    
+    val animatedColor by transition.animateColor(
+        transitionSpec = { tween(500) }
+    ) { state ->
+        when (state) {
+            MyAnimationState.START -> startColor
+            MyAnimationState.MID -> midColor
+            MyAnimationState.END -> endColor
+        }
+    }
+
+    val position by transition.animateDp(
+        transitionSpec = { tween(500) }
+    ) { state ->
+        when (state) {
+            MyAnimationState.START -> 0.dp
+            MyAnimationState.MID -> 80.dp
+            MyAnimationState.END -> (-80).dp
+        }
+    }
+    FloatingActionButton(
+        backgroundColor = animatedColor,
+        modifier = Modifier.offset(x = position, y = position),
+        onClick = {
+            animationState = when (animationState) {
+                MyAnimationState.START  -> MyAnimationState.MID
+                MyAnimationState.MID  -> MyAnimationState.END
+                MyAnimationState.END  -> MyAnimationState.START
+            }
+    }) {
+        Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
+    }
+}
+
+@Composable
+fun MultiStateInfiniteTransition() {
+    SubtitleText(subtitle = "Multi State infinite transition")
+    Spacer(modifier = Modifier.height(80.dp))
+    val startColor = green200
+    val endColor = orange
+
+    val transition = rememberInfiniteTransition()
+
+    val animatedColor by transition.animateColor(
+        initialValue = startColor,
+        targetValue = endColor,
+        animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
+    )
+
+    val position by transition.animateFloat(
+        initialValue = -80f,
+        targetValue = 80f,
+        animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
+    )
+
+    FloatingActionButton(
+        backgroundColor = animatedColor,
+        modifier = Modifier.offset(x = position.dp),
+        onClick = {
+        }) {
+        Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
+    }
+}
+
+@Composable
 fun SimpleColorStateAnimation() {
     SubtitleText(subtitle = "Animate color")
     val enabled = remember { mutableStateOf(true) }
@@ -134,7 +223,9 @@ fun SimpleColorStateAnimation() {
     Button(
     onClick = { enabled.value = !enabled.value },
     colors = buttonColors,
-    modifier = Modifier.padding(16.dp).fillMaxWidth()
+    modifier = Modifier
+        .padding(16.dp)
+        .fillMaxWidth()
     ) {
         Text("Color Animation")
     }
@@ -246,13 +337,16 @@ fun SimpleAnimateCustomStateClass() {
 fun DrawLayerWithAnimateAsStateAnimations() {
     TitleText(title = "Float state Animations on graphicsLayer")
     var draw by remember { mutableStateOf(false) }
-    val modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-        scaleX = animateFloatAsState(if (draw) 2f else 1f).value,
-        scaleY = animateFloatAsState(if (draw) 2f else 1f).value,
-        shadowElevation = animateFloatAsState(if (draw) 50f else 5f).value,
-        clip = draw,
-        rotationZ = animateFloatAsState(if (draw) 360f else 0f).value
-    ).clickable(onClick = { draw = !draw })
+    val modifier = Modifier
+        .preferredSize(150.dp)
+        .graphicsLayer(
+            scaleX = animateFloatAsState(if (draw) 2f else 1f).value,
+            scaleY = animateFloatAsState(if (draw) 2f else 1f).value,
+            shadowElevation = animateFloatAsState(if (draw) 50f else 5f).value,
+            clip = draw,
+            rotationZ = animateFloatAsState(if (draw) 360f else 0f).value
+        )
+        .clickable(onClick = { draw = !draw })
 
     Image(
         painter = painterResource(id = R.drawable.bp),
@@ -267,28 +361,37 @@ fun DrawLayerWithAnimateAsStateAnimations() {
         Image(
             painter = painterResource(id = R.drawable.adele21),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw2) 30f else 5f).value,
-                translationX = animateFloatAsState(if (draw2) 320f else 0f).value,
-                translationY = 0f,
-            ).clickable(onClick = { draw2 = !draw2 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw2) 30f else 5f).value,
+                    translationX = animateFloatAsState(if (draw2) 320f else 0f).value,
+                    translationY = 0f,
+                )
+                .clickable(onClick = { draw2 = !draw2 })
         )
         Image(
             painter = painterResource(id = R.drawable.dualipa),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw2) 30f else 10f).value,
-                translationX = animateFloatAsState(if (draw2) -320f else 0f).value,
-                translationY = animateFloatAsState(if (draw2) 0f else 30f).value
-            ).clickable(onClick = { draw2 = !draw2 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw2) 30f else 10f).value,
+                    translationX = animateFloatAsState(if (draw2) -320f else 0f).value,
+                    translationY = animateFloatAsState(if (draw2) 0f else 30f).value
+                )
+                .clickable(onClick = { draw2 = !draw2 })
         )
         Image(
             painter = painterResource(id = R.drawable.edsheeran),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw2) 30f else 5f).value,
-                translationY = animateFloatAsState(if (draw2) 0f else 50f).value
-            ).clickable(onClick = { draw2 = !draw2 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw2) 30f else 5f).value,
+                    translationY = animateFloatAsState(if (draw2) 0f else 50f).value
+                )
+                .clickable(onClick = { draw2 = !draw2 })
         )
     }
     Spacer(modifier = Modifier.padding(30.dp))
@@ -298,31 +401,40 @@ fun DrawLayerWithAnimateAsStateAnimations() {
         Image(
             painter = painterResource(id = R.drawable.wolves),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw3) 30f else 5f).value,
-                translationX = animateFloatAsState(if (draw3) 320f else 0f).value,
-                rotationY = animateFloatAsState(if (draw3) 45f else 0f).value,
-                translationY = 0f
-            ).clickable(onClick = { draw3 = !draw3 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw3) 30f else 5f).value,
+                    translationX = animateFloatAsState(if (draw3) 320f else 0f).value,
+                    rotationY = animateFloatAsState(if (draw3) 45f else 0f).value,
+                    translationY = 0f
+                )
+                .clickable(onClick = { draw3 = !draw3 })
         )
         Image(
             painter = painterResource(id = R.drawable.sam),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw3) 30f else 10f).value,
-                translationX = animateFloatAsState(if (draw3) -320f else 0f).value,
-                rotationY = animateFloatAsState(if (draw3) 45f else 0f).value,
-                translationY = animateFloatAsState(if (draw3) 0f else 30f).value
-            ).clickable(onClick = { draw3 = !draw3 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw3) 30f else 10f).value,
+                    translationX = animateFloatAsState(if (draw3) -320f else 0f).value,
+                    rotationY = animateFloatAsState(if (draw3) 45f else 0f).value,
+                    translationY = animateFloatAsState(if (draw3) 0f else 30f).value
+                )
+                .clickable(onClick = { draw3 = !draw3 })
         )
         Image(
             painter = painterResource(id = R.drawable.billie),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw3) 30f else 5f).value,
-                translationY = animateFloatAsState(if (draw3) 0f else 50f).value,
-                rotationY = animateFloatAsState(if (draw3) 45f else 0f).value
-            ).clickable(onClick = { draw3 = !draw3 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw3) 30f else 5f).value,
+                    translationY = animateFloatAsState(if (draw3) 0f else 50f).value,
+                    rotationY = animateFloatAsState(if (draw3) 45f else 0f).value
+                )
+                .clickable(onClick = { draw3 = !draw3 })
         )
     }
     Spacer(modifier = Modifier.padding(30.dp))
@@ -332,31 +444,40 @@ fun DrawLayerWithAnimateAsStateAnimations() {
         Image(
             painter = painterResource(id = R.drawable.imagindragon),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw4) 30f else 5f).value,
-                translationX = animateFloatAsState(if (draw4) 320f else 0f).value,
-                rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
-                translationY = 0f
-            ).clickable(onClick = { draw4 = !draw4 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw4) 30f else 5f).value,
+                    translationX = animateFloatAsState(if (draw4) 320f else 0f).value,
+                    rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
+                    translationY = 0f
+                )
+                .clickable(onClick = { draw4 = !draw4 })
         )
         Image(
             painter = painterResource(id = R.drawable.khalid),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw4) 30f else 10f).value,
-                translationX = animateFloatAsState(if (draw4) -320f else 0f).value,
-                rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
-                translationY = animateFloatAsState(if (draw4) 0f else 30f).value
-            ).clickable(onClick = { draw4 = !draw4 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw4) 30f else 10f).value,
+                    translationX = animateFloatAsState(if (draw4) -320f else 0f).value,
+                    rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
+                    translationY = animateFloatAsState(if (draw4) 0f else 30f).value
+                )
+                .clickable(onClick = { draw4 = !draw4 })
         )
         Image(
             painter = painterResource(id = R.drawable.camelia),
             contentDescription = null,
-            modifier = Modifier.preferredSize(150.dp).graphicsLayer(
-                shadowElevation = animateFloatAsState(if (draw4) 30f else 5f).value,
-                translationY = animateFloatAsState(if (draw4) 0f else 50f).value,
-                rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
-            ).clickable(onClick = { draw4 = !draw4 })
+            modifier = Modifier
+                .preferredSize(150.dp)
+                .graphicsLayer(
+                    shadowElevation = animateFloatAsState(if (draw4) 30f else 5f).value,
+                    translationY = animateFloatAsState(if (draw4) 0f else 50f).value,
+                    rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
+                )
+                .clickable(onClick = { draw4 = !draw4 })
         )
         Spacer(modifier = Modifier.padding(60.dp))
     }
@@ -386,26 +507,7 @@ fun AnimateVisibilityAnim() {
     }
 
 }
-//
-//@OptIn(ExperimentalAnimationApi::class)
-//@Composable
-//fun VisibilityAnimationFade() {
-//    var visibility by remember { mutableStateOf(true) }
-//    Row(
-//        Modifier.padding(start = 12.dp, end = 12.dp).width(200.dp).height(60.dp)
-//            .background(green500).clickable(onClick = { visibility = !visibility })
-//    ) {
-//        AnimatedVisibility(
-//            visibility,
-//            modifier = Modifier.align(Alignment.CenterVertically),
-//            enter = fadeIn(1f),
-//            exit = fadeOut(0f)
-//        ) {
-//            Text(modifier = Modifier.padding(start = 12.dp), text = "Tap to Fade In Out")
-//        }
-//    }
-//}
-//
+
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun VisibilityAnimationWithShrinkExpand() {
@@ -413,8 +515,12 @@ fun VisibilityAnimationWithShrinkExpand() {
     var visibility by remember { mutableStateOf(true) }
 
     Row(
-        Modifier.padding(12.dp).width(200.dp).height(60.dp)
-            .background(green200).clickable(onClick = { visibility = !visibility })
+        Modifier
+            .padding(12.dp)
+            .width(200.dp)
+            .height(60.dp)
+            .background(green200)
+            .clickable(onClick = { visibility = !visibility })
     ) {
         AnimatedVisibility(
             visibility,
@@ -435,8 +541,12 @@ fun AnimateVisibilityWithSlideInOutSample() {
     SubtitleText(subtitle = "Visibility animation with fade and slide as enter/exit")
     var visibility by remember { mutableStateOf(true) }
     Row(
-        Modifier.padding(12.dp).width(200.dp).height(60.dp)
-            .background(green500).clickable(onClick = { visibility = !visibility })
+        Modifier
+            .padding(12.dp)
+            .width(200.dp)
+            .height(60.dp)
+            .background(green500)
+            .clickable(onClick = { visibility = !visibility })
     ) {
         AnimatedVisibility(
             visibility,
@@ -460,7 +570,9 @@ fun AnimateContentSize() {
     SubtitleText(subtitle = "Using Modifier.animateContentSize() to animate content change")
     var count by remember { mutableStateOf(1) }
 
-    Row(modifier = Modifier.animateContentSize().clickable { if (count < 10) count += 3 else count = 1 }) {
+    Row(modifier = Modifier
+        .animateContentSize()
+        .clickable { if (count < 10) count += 3 else count = 1 }) {
         (0..count).forEach {
             Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
         }
@@ -474,7 +586,10 @@ fun SimpleDismissUsingAnimatable() {
     var enable by remember { mutableStateOf(true) }
     Card(
         backgroundColor = green200,
-        modifier = Modifier.size(100.dp).offset(x = Dp(animatableValue.value)).clickable { enable = !enable },
+        modifier = Modifier
+            .size(100.dp)
+            .offset(x = Dp(animatableValue.value))
+            .clickable { enable = !enable },
     ) {
         LaunchedEffect(enable) {
             if (enable) {
@@ -509,7 +624,8 @@ fun PointerInputWithAnimateable() {
     }
     Card(
         backgroundColor = green200,
-        modifier = modifier.size(100.dp)
+        modifier = modifier
+            .size(100.dp)
             .offset(x = pointerAnimatableX.value.dp)
     ) {
     }
@@ -542,12 +658,14 @@ fun DraggableCardWithAnimatable() {
     }
     Card(
         backgroundColor = green200,
-        modifier = modifier.size(100.dp)
+        modifier = modifier
+            .size(100.dp)
             .offset(x = pointerAnimatableX.value.dp, y = pointerAnimatableX.value.dp)
     ) {
     }
     Spacer(modifier = Modifier.height(100.dp))
 }
+
 //
 //@Composable
 //fun ColorMultistateAnimation() {
@@ -733,54 +851,6 @@ fun DraggableCardWithAnimatable() {
 //}
 //
 
-//
-//@Composable
-//fun AnimatedValuesAnimations() {
-//    val moveX = -1000f
-//    val moveXMax = 1000f
-//    TitleText(title = "Animated Value to Animations + drag")
-//    val xFloat = animatedFloat(initVal = 0f)
-//
-//    val dragObserver = object : DragObserver {
-//        override fun onStart(downPosition: Offset) {
-//            xFloat.setBounds(moveX, moveXMax)
-//            super.onStart(downPosition)
-//        }
-//
-//        override fun onStop(velocity: Offset) {
-//            xFloat.snapTo(moveX)
-//            super.onStop(velocity)
-//        }
-//
-//        override fun onCancel() {
-//            xFloat.snapTo(moveX)
-//            super.onCancel()
-//        }
-//
-//        override fun onDrag(dragDistance: Offset): Offset {
-//            xFloat.animateTo(xFloat.targetValue + dragDistance.x)
-//            return super.onDrag(dragDistance)
-//        }
-//    }
-//
-//    CardElement(
-//        modifier = Modifier.background(green500).preferredSize(200.dp)
-//            .rawDragGestureFilter(dragObserver)
-//            .offset(
-//                x = Dp(xFloat.value),
-//            )
-//    )
-//}
-//
-//@Composable
-//fun CardElement(modifier: Modifier = Modifier) {
-//    Card(
-//        backgroundColor = MaterialTheme.colors.primary,
-//        modifier = modifier
-//    ) {}
-//}
-//
-//
 //@Composable
 //fun TickerAnimation() {
 //    var dpStartState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
