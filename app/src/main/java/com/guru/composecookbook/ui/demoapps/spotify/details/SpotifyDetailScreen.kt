@@ -114,7 +114,7 @@ fun BottomScrollableContent(scrollState: ScrollState, surfaceGradient: List<Colo
 fun SongListScrollingSection() {
     ShuffleButton()
     DownloadedRow()
-    val items = remember { SpotifyDataProvider.albums }
+    val items = remember { SpotifyDataProvider.getSpotifyAlbums() }
     items.forEach {
         SpotifySongListItem(album = it)
     }
@@ -153,7 +153,7 @@ fun ShuffleButton() {
             .clip(CircleShape),
     ) {
         Text(
-            text = "SHUFFLE PLAY",
+            text = "Adopt Now",
             style = typography.h6.copy(fontSize = 14.sp),
             color = MaterialTheme.colors.onSurface,
             modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)

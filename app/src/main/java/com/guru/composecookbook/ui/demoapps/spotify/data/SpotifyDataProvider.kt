@@ -5,6 +5,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.graySurface
 
 object SpotifyDataProvider {
+
     fun spotifySurfaceGradient(isDark: Boolean) =
         if (isDark) listOf(graySurface, Color.Black) else listOf(Color.White, Color.LightGray)
 
@@ -15,6 +16,15 @@ object SpotifyDataProvider {
         "Recommended for today",
         "Bollywood",
         "Acoustic only"
+    )
+
+    val listOfPupsHomeLanes = listOf(
+        "Recently Adopted",
+        "Ready for adoption",
+        "Looking for family",
+        "Ready to join you",
+        "Cutie pies",
+        "Cool pups"
     )
 
     val album = Album(
@@ -187,4 +197,172 @@ object SpotifyDataProvider {
             genre = "Pop"
         ),
     )
+
+    val pupsAlbum = mutableListOf(
+        Album(
+            id = 1,
+            artist = "Toby",
+            song = "Toby",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup1,
+            genre = "Pop"
+        ),
+        Album(
+            id = 2,
+            artist = "Milo",
+            song = "Milo",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup2,
+            genre = "R&B"
+        ),
+        Album(
+            id = 3,
+            artist = "Tommy",
+            song = "Tommy",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup3,
+            genre = "K-pop"
+        ),
+        Album(
+            id = 4,
+            artist = "Edy",
+            song = "Edy",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup4,
+            genre = "Acoustic"
+        ),
+        Album(
+            id = 5,
+            artist = "Buddy",
+            song = "Buddy",
+            descriptions = "Born: 2014",
+            imageId = R.drawable.pup5,
+            genre = "Jazz"
+        ),
+        Album(
+            id = 6,
+            artist = "Luna",
+            song = "Luna",
+            descriptions = "2019",
+            imageId = R.drawable.pup6,
+            genre = "RnB"
+        ),
+        Album(
+            id = 7,
+            artist = "Add",
+            song = "Add",
+            descriptions = "2019",
+            imageId = R.drawable.pup7,
+            genre = "Pop"
+        ),
+        Album(
+            id = 8,
+            artist = "Sam",
+            song = "Sam",
+            descriptions = "Born: 2018",
+            imageId = R.drawable.pup8,
+            genre = "Pop"
+        ),
+        Album(
+            id = 9,
+            artist = "Billie",
+            song = "Billie",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup9,
+            genre = "Pop"
+        ),
+        Album(
+            id = 10,
+            artist = "Lupa",
+            song = "Lupa",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup10,
+            genre = "Music"
+        ),
+        Album(
+            id = 11,
+            artist = "Tony",
+            song = "Tony",
+            descriptions = "2019",
+            imageId = R.drawable.pup11,
+            genre = "Party"
+        ),
+        Album(
+            id = 12,
+            artist = "Mello",
+            song = "Mello",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup12,
+            genre = "DJ"
+        ),
+        Album(
+            id = 13,
+            artist = "Manny",
+            song = "Manny",
+            descriptions = "2019",
+            imageId = R.drawable.pup13,
+            genre = "Rap"
+        ),
+        Album(
+            id = 14,
+            artist = "Star",
+            song = "Star",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup14,
+            genre = "Mood"
+        ),
+        Album(
+            id = 15,
+            artist = "Katy",
+            song = "Katy",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup15,
+            genre = "Chill"
+        ),
+        Album(
+            id = 16,
+            artist = "Snow",
+            song = "Snow",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup16,
+            genre = "Latin"
+        ),
+        Album(
+            id = 17,
+            artist = "Lena",
+            song = "Lena",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup17,
+            genre = "Rock"
+        ),
+        Album(
+            id = 18,
+            artist = "Edi",
+            song = "Edi",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup18,
+            genre = "Solo"
+        ),
+        Album(
+            id = 19,
+            artist = "Akira",
+            song = "Akira",
+            descriptions = "2017",
+            imageId = R.drawable.pup19,
+            genre = "Pop"
+        ),
+        Album(
+            id = 20,
+            artist = "Chiko",
+            song = "Chiko",
+            descriptions = "Born: 2016",
+            imageId = R.drawable.pup20,
+            genre = "Pop"
+        ),
+    )
+
+    fun getSpotifyAlbums() = pupsAlbum
+
+    fun getSpotifyLanes() = listOfPupsHomeLanes
+
 }

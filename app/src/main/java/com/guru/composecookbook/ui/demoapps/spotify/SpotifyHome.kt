@@ -46,7 +46,7 @@ fun SpotifyHome() {
                 .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
                 .alpha(animateFloatAsState(1f - scrollState.value / 200f).value)
         )
-        PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
+     //   PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
     }
 }
 
@@ -58,7 +58,7 @@ fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
             .padding(8.dp).verticalScroll(state = scrollState)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
-        SpotifyTitle("Good Evening")
+        SpotifyTitle("Adoptify")
         HomeGridSection()
         HomeLanesSection()
         Spacer(modifier = Modifier.height(100.dp))
@@ -109,7 +109,7 @@ fun SpotifyTitle(text: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun HomeGridSection() {
-    val items = remember { SpotifyDataProvider.albums }
+    val items = remember { SpotifyDataProvider.pupsAlbum }
     VerticalGrid {
         items.take(6).forEach {
             SpotifyHomeGridItem(album = it)
@@ -119,7 +119,7 @@ fun HomeGridSection() {
 
 @Composable
 fun HomeLanesSection() {
-    val categories = remember { SpotifyDataProvider.listOfSpotifyHomeLanes }
+    val categories = remember { SpotifyDataProvider.getSpotifyLanes() }
     categories.forEachIndexed { index, lane ->
         SpotifyTitle(text = lane)
         SpotifyLane(index)
@@ -128,8 +128,8 @@ fun HomeLanesSection() {
 
 @Composable
 fun SpotifyLane(index: Int) {
-    val itemsEven = remember { SpotifyDataProvider.albums }
-    val itemsOdd = remember { SpotifyDataProvider.albums.asReversed() }
+    val itemsEven = remember { SpotifyDataProvider.getAlbums(true) }
+    val itemsOdd = remember { SpotifyDataProvider.getAlbums(true).asReversed() }
     LazyRow {
         items(if (index % 2 == 0) itemsEven else itemsOdd) {
             SpotifyLaneItem(album = it)

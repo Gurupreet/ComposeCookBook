@@ -30,7 +30,7 @@ import kotlin.random.Random
 
 @Composable
 fun SpotifyPlayList() {
-    val albums = remember { SpotifyDataProvider.albums }
+    val albums = remember { SpotifyDataProvider.pupsAlbum }
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
 
     val context = LocalContext.current
@@ -39,7 +39,7 @@ fun SpotifyPlayList() {
         // use `item` for separate elements like headers
         // and `items` for lists of identical elements
         item { Spacer(modifier = Modifier.height(50.dp)) }
-        item { SpotifyTitle(text = "Your Library") }
+        item { SpotifyTitle(text = "Your Favourites") }
         item { Spacer(modifier = Modifier.height(20.dp)) }
         item {
             StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
