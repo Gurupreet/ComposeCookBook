@@ -60,8 +60,7 @@ fun TwitterHome() {
             val rippleExplode = remember { mutableStateOf(false) }
             FloatingActionButton(rippleExplode)
             if (rippleExplode.value) {
-                // TODO fix animation
-                // FloatMultiStateAnimationExplode(duration = 300)
+
             }
         },
         bodyContent = {

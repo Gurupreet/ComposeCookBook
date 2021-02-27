@@ -199,7 +199,6 @@ fun FavSection() {
 
 @Composable
 fun NewsSection() {
-    //TODO Add some crypto news api
     Text(
         text = "Recent News",
         modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),

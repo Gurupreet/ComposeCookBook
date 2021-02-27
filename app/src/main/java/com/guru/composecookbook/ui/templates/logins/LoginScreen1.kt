@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
+import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
 import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -181,8 +182,7 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                         .clip(CircleShape)
                 ) {
                     if (loading) {
-                        //TODO fix progress bar animations
-                        //HorizontalDottedProgressBar()
+                        HorizontalDottedProgressBar()
                     } else {
                         Text(text = "Log In")
                     }

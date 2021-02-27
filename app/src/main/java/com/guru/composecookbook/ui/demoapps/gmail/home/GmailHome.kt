@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Mail
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -173,22 +174,22 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
         backgroundColor = MaterialTheme.colors.surface,
         contentColor = MaterialTheme.colors.primary
     ) {
-        //TODO animation fix
-//        AnimatingFabContent(
-//            icon = {
-//                Icon(
-//                    imageVector = Icons.Outlined.Edit
-//                )
-//            },
-//            text = {
-//                Text(
-//                    text = "Compose",
-//                    modifier = Modifier.padding(end = 8.dp)
-//                )
-//            },
-//            extended = expandState
-//
-//        )
+        AnimatingFabContent(
+            icon = {
+                Icon(
+                    imageVector = Icons.Outlined.Edit,
+                    contentDescription = null
+                )
+            },
+            text = {
+                Text(
+                    text = "Compose",
+                    modifier = Modifier.padding(end = 8.dp)
+                )
+            },
+            extended = expandState
+
+        )
     }
 
 

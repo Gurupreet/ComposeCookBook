@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.animation.FloatMultiStateAnimationCircleCanvas
 import com.guru.composecookbook.ui.demoapps.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
@@ -167,8 +168,7 @@ fun CardContent(album: Album) {
 @Composable
 fun DatingLoader(modifier: Modifier) {
     Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().clip(CircleShape)) {
-        //TODO dating loader animation
-        //   FloatMultiStateAnimationCircleCanvas(purple, 400f)
+        FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
             painter = painterResource(id = R.drawable.adele21),
             modifier = modifier.preferredSize(50.dp).clip(CircleShape),
