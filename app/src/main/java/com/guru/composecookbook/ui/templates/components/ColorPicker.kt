@@ -26,6 +26,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.ui.utils.SubtitleText
 import kotlin.random.Random
 import android.graphics.Color as AndroidColor
 
@@ -33,7 +34,7 @@ import android.graphics.Color as AndroidColor
 fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
-
+    SubtitleText(subtitle = "Color picker with draggable")
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
     var activeColor by remember { mutableStateOf<Color>(Red) }
