@@ -119,7 +119,6 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
             val animatedProgress = remember { Animatable(initialValue = 300f) }
             val opacityProgress = remember { Animatable(initialValue = 0f) }
             LaunchedEffect(Unit) {
-                // TODO : fix animation rendering
                 animatedProgress.animateTo(
                     targetValue = 0f,
                     animationSpec = tween(300, easing = LinearEasing)
