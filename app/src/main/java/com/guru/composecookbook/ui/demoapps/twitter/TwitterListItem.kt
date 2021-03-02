@@ -51,7 +51,7 @@ private fun NameAndHandle(tweet: Tweet) {
             imageVector = Icons.Default.CheckCircle,
             contentDescription = null,
             tint = twitterColor,
-            modifier = Modifier.preferredSize(18.dp).align(Alignment.CenterVertically)
+            modifier = Modifier.size(18.dp).align(Alignment.CenterVertically)
                 .padding(top = 2.dp)
         )
         //handle
@@ -72,7 +72,7 @@ private fun AuthorImage(tweet: Tweet) {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(8.dp)
-            .preferredSize(50.dp)
+            .size(50.dp)
             .clip(CircleShape)
     )
 }
@@ -85,7 +85,7 @@ private fun TweetImage(imageId: Int) {
             contentDescription = null,
             modifier = Modifier.padding(top = 8.dp)
                 .fillMaxWidth()
-                .preferredHeight(150.dp)
+                .height(150.dp)
                 .clip(RoundedCornerShape(4.dp)),
             contentScale = ContentScale.Crop
         )
@@ -103,7 +103,7 @@ fun TweetIconSection(tweet: Tweet) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_speech_bubble),
                     contentDescription = null,
-                    modifier = Modifier.preferredSize(16.dp),
+                    modifier = Modifier.size(16.dp),
                     tint = Color.LightGray
                 )
                 Text(
@@ -119,7 +119,7 @@ fun TweetIconSection(tweet: Tweet) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_retweet_solid),
                     contentDescription = null,
-                    modifier = Modifier.preferredSize(16.dp),
+                    modifier = Modifier.size(16.dp),
                     tint = Color.LightGray
                 )
                 Text(
@@ -135,7 +135,7 @@ fun TweetIconSection(tweet: Tweet) {
                 Icon(
                     imageVector = Icons.Default.FavoriteBorder,
                     contentDescription = null,
-                    modifier = Modifier.preferredSize(16.dp),
+                    modifier = Modifier.size(16.dp),
                     tint = Color.LightGray
                 )
                 Text(
@@ -150,7 +150,7 @@ fun TweetIconSection(tweet: Tweet) {
             Icon(
                 imageVector = Icons.Default.Share,
                 contentDescription = null,
-                modifier = Modifier.preferredSize(16.dp),
+                modifier = Modifier.size(16.dp),
                 tint = Color.LightGray
             )
         }

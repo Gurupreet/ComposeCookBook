@@ -48,8 +48,8 @@ fun MoviePagerItem(
     Card(
         elevation = animateDpAsState(animateElevation).value,
         modifier = Modifier
-            .preferredWidth(animateWidth)
-            .preferredHeight(animateHeight)
+            .width(animateWidth)
+            .height(animateHeight)
             .padding(24.dp)
             .clickable(onClick = { openMovieDetail.invoke() }),
         shape = RoundedCornerShape(16.dp),
@@ -61,7 +61,7 @@ fun MoviePagerItem(
                 data = posterFullPath,
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().preferredHeight(360.dp)
+                modifier = Modifier.fillMaxWidth().height(360.dp)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

@@ -76,7 +76,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
             )
             CoilImage(
                 data = crypto.image,
-                modifier = Modifier.preferredSize(28.dp),
+                modifier = Modifier.size(28.dp),
                 contentDescription = null
             )
         }

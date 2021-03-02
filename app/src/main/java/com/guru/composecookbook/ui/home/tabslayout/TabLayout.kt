@@ -146,7 +146,7 @@ private fun CustomImageChip(
             Image(
                 painter = painterResource(imageId),
                 contentDescription = null,
-                modifier = Modifier.padding(8.dp).preferredSize(20.dp).clip(CircleShape)
+                modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape)
             )
             Text(
                 text = text,

@@ -78,7 +78,7 @@ fun MoviesPager(
                 PagerState(clock, 0, 0, movies.size - 1)
             }
         }
-        Pager(state = pagerState, modifier = Modifier.preferredHeight(645.dp)) {
+        Pager(state = pagerState, modifier = Modifier.height(645.dp)) {
             Log.d("pager offset", currentPageOffset.toString())
             val movie = movies[page]
             imageId.value = imageIds[pagerState.currentPage]

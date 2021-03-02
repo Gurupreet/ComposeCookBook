@@ -3,7 +3,7 @@ package com.guru.composecookbook.ui.demoapps.youtube
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -54,7 +54,7 @@ fun YoutubeHome() {
                         painter = painterResource(id = R.drawable.p3),
                         contentDescription = null,
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-                            .preferredSize(24.dp).clip(CircleShape)
+                            .size(24.dp).clip(CircleShape)
                     )
                 }
             )

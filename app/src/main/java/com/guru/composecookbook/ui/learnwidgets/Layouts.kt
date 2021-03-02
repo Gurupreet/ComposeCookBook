@@ -162,17 +162,17 @@ fun TypeOfBoxs() {
         Card(
             backgroundColor = green700,
             elevation = 4.dp,
-            modifier = Modifier.preferredSize(200.dp)
+            modifier = Modifier.size(200.dp)
         ) {}
         Card(
             backgroundColor = green500,
             elevation = 4.dp,
-            modifier = Modifier.preferredSize(150.dp)
+            modifier = Modifier.size(150.dp)
         ) {}
         Card(
             backgroundColor = green200,
             elevation = 4.dp,
-            modifier = Modifier.preferredSize(100.dp)
+            modifier = Modifier.size(100.dp)
         ) {}
     }
     Text(
@@ -181,19 +181,19 @@ fun TypeOfBoxs() {
     )
     Box(modifier = boxModifier) {
         Card(
-            backgroundColor = green700, elevation = 4.dp, modifier = Modifier.preferredSize(
+            backgroundColor = green700, elevation = 4.dp, modifier = Modifier.size(
                 200
                     .dp
             ).align(Alignment.TopStart)
         ) {}
         Card(
-            backgroundColor = green500, elevation = 4.dp, modifier = Modifier.preferredSize(
+            backgroundColor = green500, elevation = 4.dp, modifier = Modifier.size(
                 150
                     .dp
             ).align(Alignment.Center)
         ) {}
         Card(
-            backgroundColor = green200, elevation = 4.dp, modifier = Modifier.preferredSize(
+            backgroundColor = green200, elevation = 4.dp, modifier = Modifier.size(
                 100
                     .dp
             ).align(Alignment.BottomEnd)
@@ -207,7 +207,7 @@ fun ConstraintLayouts() {
 
     ConstraintLayout(
         modifier = Modifier.background(Color.LightGray).fillMaxWidth()
-            .preferredHeight(150.dp)
+            .height(150.dp)
     ) {
         //refs creations
         val (mainButton, mainText, seconderyText, outlineButton) = createRefs()

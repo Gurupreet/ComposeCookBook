@@ -64,7 +64,7 @@ fun ConstraintLayoutListItem() {
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .preferredSize(120.dp)
+                .size(120.dp)
                 .clip(CircleShape)
                 .constrainAs(image) {
                     linkTo(
@@ -99,7 +99,7 @@ fun ConstraintLayoutListItem() {
         )
         Spacer(
             Modifier
-                .preferredHeight(8.dp)
+                .height(8.dp)
                 .constrainAs(space) {
                     linkTo(top = subtitle.bottom, bottom = source.top)
                 }
@@ -148,7 +148,7 @@ fun ConstraintLayoutBigListItem() {
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .preferredHeight(200.dp)
+                .height(200.dp)
                 .constrainAs(image) {
                     linkTo(
                         start = parent.start,

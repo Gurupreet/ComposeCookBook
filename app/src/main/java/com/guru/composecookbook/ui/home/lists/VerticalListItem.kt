@@ -21,7 +21,7 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth().padding(16.dp)) {
 
         val imageModifier = Modifier
-            .preferredHeight(150.dp)
+            .height(150.dp)
             .fillMaxWidth()
             .clip(shape = MaterialTheme.shapes.medium)
 
@@ -31,7 +31,7 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
-        Spacer(Modifier.preferredHeight(16.dp))
+        Spacer(Modifier.height(16.dp))
         Text(
             text = item.title,
             style = typography.h6

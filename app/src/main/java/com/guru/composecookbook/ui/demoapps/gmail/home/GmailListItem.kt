@@ -53,7 +53,7 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier
-                .preferredSize(50.dp)
+                .size(50.dp)
                 .clip(CircleShape)
                 .constrainAs(image) {
                     linkTo(start = parent.start, end = title.start)

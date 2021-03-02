@@ -174,7 +174,7 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
             painter = painterResource(id = album.imageId),
             contentDescription = null,
             modifier = Modifier
-                .preferredSize(animateImageSize)
+                .size(animateImageSize)
                 .padding(8.dp)
         )
         Text(

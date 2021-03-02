@@ -75,7 +75,7 @@
 //            Spacer(
 //                modifier = Modifier
 //                    .fillMaxWidth()
-//                    .preferredSize(200.dp)
+//                    .size(200.dp)
 //                    .background(
 //                        brush = brush
 //                    )
@@ -90,7 +90,7 @@
 //            Spacer(
 //                modifier = Modifier
 //                    .fillMaxWidth()
-//                    .preferredHeight(15.dp)
+//                    .height(15.dp)
 //                    .background(brush = brush)
 //            )
 //        }
@@ -102,7 +102,7 @@
 //            Spacer(
 //                modifier = Modifier
 //                    .fillMaxWidth()
-//                    .preferredHeight(15.dp)
+//                    .height(15.dp)
 //                    .background(brush = brush)
 //            )
 //        }

@@ -3,7 +3,7 @@ package com.guru.composecookbook.ui.demoapps.twitter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -44,7 +44,7 @@ fun TwitterHome() {
                         painter = painterResource(id = R.drawable.p6),
                         contentDescription = null,
                         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-                            .preferredSize(32.dp).clip(CircleShape)
+                            .size(32.dp).clip(CircleShape)
                     )
                 },
                 actions = {

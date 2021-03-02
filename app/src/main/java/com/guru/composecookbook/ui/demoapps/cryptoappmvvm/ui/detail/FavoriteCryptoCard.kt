@@ -18,11 +18,11 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 @Composable
 fun FavoriteCryptoCard(crypto: Crypto) {
     Card(elevation = 8.dp, modifier = Modifier.padding(end = 8.dp, top = 8.dp)) {
-        Column(modifier = Modifier.padding(16.dp).preferredWidth(120.dp).preferredHeight(180.dp)) {
+        Column(modifier = Modifier.padding(16.dp).width(120.dp).height(180.dp)) {
             Row(modifier = Modifier.weight(1f)) {
                 CoilImage(
                     data = crypto.image,
-                    modifier = Modifier.preferredSize(24.dp),
+                    modifier = Modifier.size(24.dp),
                     contentDescription = null
                 )
                 Text(

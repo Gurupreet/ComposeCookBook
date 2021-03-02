@@ -44,7 +44,7 @@ fun CarouselLayout() {
         }
         val selectedPage = remember { mutableStateOf(2) }
 
-        Pager(state = pagerState, modifier = Modifier.preferredHeight(200.dp)) {
+        Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
             val item = items[page]
             selectedPage.value = pagerState.currentPage
             CarouselItem(item)
@@ -60,7 +60,7 @@ fun CarouselLayout() {
         }
         Spacer(modifier = Modifier.height(24.dp))
         //Pager 2
-        Pager(state = pagerState, modifier = Modifier.preferredHeight(200.dp)) {
+        Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
             val item = items[page]
             selectedPage.value = pagerState.currentPage
             CarouselItemCircle(item)
@@ -76,7 +76,7 @@ fun CarouselLayout() {
         }
         Spacer(modifier = Modifier.height(24.dp))
         //Pager 3
-        Pager(state = pagerState, modifier = Modifier.preferredHeight(350.dp)) {
+        Pager(state = pagerState, modifier = Modifier.height(350.dp)) {
             val item = items[page]
             selectedPage.value = pagerState.currentPage
             CarouselItemCard(item, pagerState, selectedPage)
@@ -97,7 +97,7 @@ fun CarouselLayout() {
 fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
     Icon(
         imageVector = icon,
-        modifier = Modifier.padding(4.dp).preferredSize(12.dp),
+        modifier = Modifier.padding(4.dp).size(12.dp),
         contentDescription = null,
         tint = if (selected) color else Color.Gray
     )
@@ -113,7 +113,7 @@ fun CarouselItem(item: Item) {
             modifier = Modifier
                 .padding(18.dp)
                 .fillMaxWidth()
-                .preferredHeight(180.dp).clip(RoundedCornerShape(12.dp))
+                .height(180.dp).clip(RoundedCornerShape(12.dp))
         )
         Text(
             text = item.title,
@@ -132,7 +132,7 @@ fun CarouselItemCircle(item: Item) {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(16.dp)
-            .preferredSize(160.dp).clip(CircleShape)
+            .size(160.dp).clip(CircleShape)
     )
 }
 
@@ -143,7 +143,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
         elevation = animateDpAsState(animateElevation).value,
-        modifier = Modifier.preferredSize(animateDpAsState(animateSize).value).padding(24.dp),
+        modifier = Modifier.size(animateDpAsState(animateSize).value).padding(24.dp),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
         contentColor = MaterialTheme.colors.onPrimary
@@ -160,7 +160,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
                 contentDescription = null,
                 modifier = Modifier.padding(4.dp)
                     .align(Alignment.CenterHorizontally)
-                    .preferredSize(100.dp).clip(CircleShape)
+                    .size(100.dp).clip(CircleShape)
             )
         }
     }

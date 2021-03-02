@@ -6,8 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -37,7 +37,7 @@ fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableS
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .graphicsLayer(translationY = offset.toFloat())
-            .preferredHeight(searchLayoutHeightDp)
+            .height(searchLayoutHeightDp)
             .padding(8.dp)
             .shadow(8.dp, shape = RoundedCornerShape(8.dp), clip = false)
             .background(background, shape = RoundedCornerShape(8.dp))
@@ -67,7 +67,7 @@ fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableS
             contentDescription = null,
             modifier = Modifier
                 .padding(horizontal = 8.dp)
-                .preferredSize(32.dp)
+                .size(32.dp)
                 .clip(CircleShape)
                 .clickable(onClick = {
                     showUserDialog.value = true

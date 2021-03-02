@@ -33,7 +33,7 @@ fun GridListItem(
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier
-                    .preferredHeight(80.dp)
+                    .height(80.dp)
                     .fillMaxWidth()
             )
             Column(modifier = Modifier.padding(8.dp)) {

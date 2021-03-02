@@ -4,7 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -37,7 +37,7 @@ fun SpotifySongListItem(album: Album) {
             painter = painterResource(id = album.imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.preferredSize(55.dp).padding(4.dp)
+            modifier = Modifier.size(55.dp).padding(4.dp)
         )
         Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
             Text(
@@ -57,7 +57,7 @@ fun SpotifySongListItem(album: Album) {
                 imageVector = Icons.Default.Favorite,
                 contentDescription = null,
                 tint = MaterialTheme.colors.primaryVariant,
-                modifier = Modifier.padding(4.dp).preferredSize(20.dp)
+                modifier = Modifier.padding(4.dp).size(20.dp)
             )
         }
         Icon(

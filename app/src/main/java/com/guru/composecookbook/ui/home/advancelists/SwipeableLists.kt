@@ -86,7 +86,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
             painter = painterResource(id = album.imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.preferredSize(55.dp).padding(4.dp)
+            modifier = Modifier.size(55.dp).padding(4.dp)
         )
         Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
             Text(
@@ -106,7 +106,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
                 imageVector = Icons.Default.Favorite,
                 contentDescription = null,
                 tint = MaterialTheme.colors.primaryVariant,
-                modifier = Modifier.padding(4.dp).preferredSize(20.dp)
+                modifier = Modifier.padding(4.dp).size(20.dp)
             )
         }
         Icon(

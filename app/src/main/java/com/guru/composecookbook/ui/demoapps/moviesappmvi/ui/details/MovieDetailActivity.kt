@@ -112,7 +112,7 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier
-                    .preferredHeight(
+                    .height(
                         600.dp
                     ).fillMaxWidth(),
                 onRequestCompleted = {
@@ -187,8 +187,8 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
                         data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
                         contentDescription = null,
                         modifier = Modifier
-                            .preferredWidth(200.dp)
-                            .preferredHeight(300.dp)
+                            .width(200.dp)
+                            .height(300.dp)
                             .padding(12.dp)
                             .clip(RoundedCornerShape(12.dp)),
                         contentScale = ContentScale.Crop

@@ -174,7 +174,7 @@ fun MoreInfoSection() {
         icon = {
             Icon(
                 painter = painterResource(id = R.drawable.ic_github_square_brands),
-                modifier = Modifier.preferredSize(24.dp),
+                modifier = Modifier.size(24.dp),
                 contentDescription = null
             )
         },
@@ -246,7 +246,7 @@ fun TopAppBarView(scroll: Float) {
                     painter = painterResource(id = R.drawable.p1),
                     contentDescription = null,
                     modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-                        .preferredSize(32.dp).clip(CircleShape)
+                        .size(32.dp).clip(CircleShape)
                 )
             },
             actions = {
@@ -270,7 +270,7 @@ fun AnimatedImage(scroll: Float) {
         contentDescription = null,
         modifier = Modifier
             .padding(start = 16.dp)
-            .preferredSize(animateDpAsState(Dp(dynamicAnimationSizeValue)).value)
+            .size(animateDpAsState(Dp(dynamicAnimationSizeValue)).value)
             .clip(CircleShape)
     )
 }
@@ -279,7 +279,7 @@ fun AnimatedImage(scroll: Float) {
 private fun TopBackground() {
     Spacer(
         modifier = Modifier
-            .preferredHeight(150.dp)
+            .height(150.dp)
             .fillMaxWidth()
             .horizontalGradientBackground(gradientBluePurple)
     )

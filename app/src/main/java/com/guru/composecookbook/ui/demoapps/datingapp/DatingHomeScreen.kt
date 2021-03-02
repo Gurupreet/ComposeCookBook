@@ -58,7 +58,7 @@ fun DatingHomeScreen() {
                 DraggableCard(
                     item = album,
                     modifier = Modifier.fillMaxWidth()
-                        .preferredHeight(cardHeight)
+                        .height(cardHeight)
                         .padding(
                             top = 16.dp + (index + 2).dp,
                             bottom = 16.dp,
@@ -90,7 +90,7 @@ fun DatingHomeScreen() {
                     },
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
-                        .preferredSize(60.dp)
+                        .size(60.dp)
                         .clip(CircleShape)
                         .background(MaterialTheme.colors.background)
                 ) {
@@ -98,7 +98,7 @@ fun DatingHomeScreen() {
                         imageVector = Icons.Default.Cancel,
                         tint = Color.Gray,
                         contentDescription = null,
-                        modifier = Modifier.preferredSize(36.dp)
+                        modifier = Modifier.size(36.dp)
                     )
                 }
                 IconButton(
@@ -107,7 +107,7 @@ fun DatingHomeScreen() {
                     },
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
-                        .preferredSize(60.dp)
+                        .size(60.dp)
                         .clip(CircleShape)
                         .background(MaterialTheme.colors.background)
                 ) {
@@ -115,7 +115,7 @@ fun DatingHomeScreen() {
                         imageVector = Icons.Default.Favorite,
                         contentDescription = null,
                         tint = Color.Red,
-                        modifier = Modifier.preferredSize(36.dp)
+                        modifier = Modifier.size(36.dp)
                     )
                 }
             }
@@ -171,7 +171,7 @@ fun DatingLoader(modifier: Modifier) {
         FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
             painter = painterResource(id = R.drawable.adele21),
-            modifier = modifier.preferredSize(50.dp).clip(CircleShape),
+            modifier = modifier.size(50.dp).clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop,
         )

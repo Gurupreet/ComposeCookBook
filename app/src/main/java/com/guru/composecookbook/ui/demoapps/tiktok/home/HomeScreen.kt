@@ -95,7 +95,7 @@ fun VideoIconsSection(
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         ProfileImageWithFollow(
-            modifier = Modifier.preferredSize(64.dp).clickable(onClick = {
+            modifier = Modifier.size(64.dp).clickable(onClick = {
                 tiktokInteractionEvents(
                     TiktokHomeInteractionEvents.OpenProfile(album)
                 )
@@ -134,7 +134,7 @@ fun VideoIconsSection(
             ),
         )
         ProfileImageWithFollow(
-            modifier = Modifier.preferredSize(64.dp).graphicsLayer(rotationZ = rotation.value),
+            modifier = Modifier.size(64.dp).graphicsLayer(rotationZ = rotation.value),
             false,
             album.imageId
         )
@@ -207,7 +207,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
                 imageVector = Icons.Filled.Add,
                 contentDescription = null,
                 modifier = Modifier
-                    .preferredSize(20.dp)
+                    .size(20.dp)
                     .clip(CircleShape)
                     .background(tiktokRed).align(Alignment.BottomCenter)
             )

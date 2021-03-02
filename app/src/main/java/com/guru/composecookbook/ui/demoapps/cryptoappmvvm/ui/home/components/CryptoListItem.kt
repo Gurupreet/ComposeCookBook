@@ -51,7 +51,7 @@ fun CryptoListItem(
     ) {
         CoilImage(
             data = crypto.image,
-            modifier = Modifier.preferredSize(40.dp).padding(4.dp),
+            modifier = Modifier.size(40.dp).padding(4.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
