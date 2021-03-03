@@ -70,7 +70,7 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 }
             )
         },
-        bodyContent = {
+        content = {
             // We setup a base activity and we will change content depending upon ui type so
             // we don't have to create Activity for every feature showcase
             when (uiType) {

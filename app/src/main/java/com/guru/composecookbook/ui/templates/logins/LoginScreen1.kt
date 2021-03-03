@@ -3,10 +3,9 @@ package com.guru.composecookbook.ui.templates.logins
 import android.animation.ValueAnimator
 import android.content.Context
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.Interaction
-import androidx.compose.foundation.InteractionState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -72,8 +71,8 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 PasswordVisualTransformation()
             )
         }
-        val passwordInteractionState by remember { mutableStateOf(InteractionState()) }
-        val emailInteractionState by remember { mutableStateOf(InteractionState()) }
+        val passwordInteractionState = remember { MutableInteractionSource() }
+        val emailInteractionState = remember { MutableInteractionSource() }
 
         LazyColumn(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
             item { Spacer(modifier = Modifier.height(20.dp)) }
@@ -96,41 +95,25 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             item {
                 OutlinedTextField(
                     value = email,
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Email,
-                            contentDescription = "Email"
-                        )
-                    },
+                    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
                     maxLines = 1,
-                    isErrorValue = hasError,
+                    isError = hasError,
                     modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Next),
                     label = { Text(text = "Email address") },
                     placeholder = { Text(text = "abc@gmail.com") },
                     onValueChange = {
                         email = it
                     },
-                    interactionState = emailInteractionState,
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Text,
-                        imeAction = ImeAction.Next
-                    ),
-                    keyboardActions = KeyboardActions(onDone = {
-                        passwordInteractionState.addInteraction(interaction = Interaction.Focused)
-                        passwordInteractionState.addInteraction(interaction = Interaction.Pressed)
-                        emailInteractionState.removeInteraction(Interaction.Focused)
-                    })
+                    interactionSource = emailInteractionState,
                 )
             }
             item {
                 OutlinedTextField(
                     value = password,
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.VpnKey, contentDescription =
-                            null
-                        )
-                    },
+                    leadingIcon = { Icon(imageVector = Icons.Default.VpnKey, contentDescription = null) },
                     trailingIcon = {
                         Icon(
                             imageVector = Icons.Default.RemoveRedEye,
@@ -146,23 +129,18 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                         )
                     },
                     maxLines = 1,
-                    isErrorValue = hasError,
+                    isError = hasError,
                     modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Password,
+                        imeAction = ImeAction.Done),
                     label = { Text(text = "Password") },
                     placeholder = { Text(text = "12334444") },
-                    interactionState = passwordInteractionState,
-                    visualTransformation = passwordVisualTransformation,
                     onValueChange = {
                         password = it
                     },
-                    keyboardActions = KeyboardActions(onDone = {
-                        //
-                        passwordInteractionState.removeInteraction(interaction = Interaction.Focused)
-                    }),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Password,
-                        imeAction = ImeAction.Done
-                    )
+                    interactionSource = passwordInteractionState,
+                    visualTransformation = passwordVisualTransformation,
                 )
             }
             item {

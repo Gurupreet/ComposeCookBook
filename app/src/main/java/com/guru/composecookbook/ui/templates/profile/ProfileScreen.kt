@@ -62,8 +62,8 @@ fun ProfileScreen() {
                 .fillMaxSize()
                 .semantics { testTag = "Profile Screen" }
         ) {
-            val scrollState = rememberScrollState(0f)
-            TopAppBarView(scrollState.value)
+            val scrollState = rememberScrollState(0)
+            TopAppBarView(scrollState.value.toFloat())
             TopBackground()
             Column(modifier = Modifier.fillMaxSize().verticalScroll(state = scrollState)) {
                 Spacer(modifier = Modifier.height(100.dp))
@@ -78,7 +78,7 @@ fun ProfileScreen() {
 fun TopScrollingContent(scrollState: ScrollState) {
     val visibilityChangeFloat = scrollState.value > initialimageFloat - 20
     Row {
-        AnimatedImage(scroll = scrollState.value)
+        AnimatedImage(scroll = scrollState.value.toFloat())
         Column(
             modifier = Modifier.padding(start = 8.dp, top = 48.dp)
                 .alpha(animateFloatAsState(if (visibilityChangeFloat) 0f else 1f).value)

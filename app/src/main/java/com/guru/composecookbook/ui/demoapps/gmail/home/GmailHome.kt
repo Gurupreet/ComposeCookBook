@@ -86,7 +86,7 @@ fun GmailHome(navController: NavHostController) {
         drawerBackgroundColor = MaterialTheme.colors.background,
         drawerContentColor = MaterialTheme.colors.onBackground,
         scaffoldState = scaffoldState,
-        bodyContent = {
+        content = {
             GmailContent(fabExpandState, scaffoldState, navController, showUserDialog)
         },
         bottomBar = {
@@ -103,7 +103,6 @@ fun GmailHome(navController: NavHostController) {
                     },
                     selected = true,
                     label = { Text("Mail") },
-                    alwaysShowLabels = true
                 )
 
 
@@ -118,7 +117,6 @@ fun GmailHome(navController: NavHostController) {
                     },
                     selected = true,
                     label = { Text("Meet") },
-                    alwaysShowLabels = true
                 )
 
 

@@ -43,7 +43,7 @@ fun CreateMessageScreen(navController: NavHostController) {
             )
         },
 
-        bodyContent = { CreateMessageBody(navController) },
+        content = { CreateMessageBody(navController) },
     )
 
 }

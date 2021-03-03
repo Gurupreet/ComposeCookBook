@@ -11,10 +11,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.graphics.imageFromResource
-import androidx.compose.ui.platform.LocalAnimationClock
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -35,8 +35,7 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
     //TODO dynamic gradient from poster via coil right now It's just getting from local images
     val imageId = remember { mutableStateOf(R.drawable.camelia) }
     val context = LocalContext.current
-    val defaultBitmap =
-        imageFromResource(res = context.resources, resId = imageId.value).asAndroidBitmap()
+    val defaultBitmap = ImageBitmap.imageResource(context.resources, imageId.value).asAndroidBitmap()
     val currentBitmap = mutableStateOf(defaultBitmap)
     val swatch = generateDominantColorState(currentBitmap.value)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)
@@ -73,9 +72,8 @@ fun MoviesPager(
 
     if (movies.isNotEmpty()) {
         val pagerState: PagerState = run {
-            val clock = LocalAnimationClock.current
-            remember(clock) {
-                PagerState(clock, 0, 0, movies.size - 1)
+            remember {
+                PagerState( 0, 0, movies.size - 1)
             }
         }
         Pager(state = pagerState, modifier = Modifier.height(645.dp)) {

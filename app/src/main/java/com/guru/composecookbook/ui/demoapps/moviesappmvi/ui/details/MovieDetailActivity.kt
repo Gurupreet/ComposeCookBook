@@ -26,10 +26,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -88,12 +90,9 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
 
     if (imageId != 0) {
         val context = LocalContext.current
-        val currentBitmap = imageFromResource(
-            res = context.resources,
-            resId = imageId
-        ).asAndroidBitmap()
+        val currentBitmap = ImageBitmap.imageResource(context.resources, imageId)
 
-        val swatch = generateDominantColorState(currentBitmap)
+        val swatch = generateDominantColorState(currentBitmap.asAndroidBitmap())
         dominantColors = listOf(Color(swatch.rgb), Color.Black)
     }
 

@@ -148,7 +148,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
         item {
             AndroidView(
-                viewBlock = {
+                factory = {
                     WebView(it).apply {
                         loadDataWithBaseURL(null, sampleMessage, "text/html", "UTF-8", null)
                     }

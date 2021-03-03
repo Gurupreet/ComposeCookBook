@@ -15,11 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -93,8 +94,7 @@ fun SpotifyLaneItem(album: Album) {
 @Composable
 fun SpotifySearchGridItem(album: Album) {
     val context = LocalContext.current
-    val imageBitmap =
-        imageFromResource(res = context.resources, resId = album.imageId).asAndroidBitmap()
+    val imageBitmap = ImageBitmap.imageResource(context.resources, album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(imageBitmap) }
     val dominantGradient =
         remember { listOf(Color(swatch.rgb), Color(swatch.rgb).copy(alpha = 0.6f)) }

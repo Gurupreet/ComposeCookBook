@@ -54,7 +54,7 @@ fun TiktokAppContent() {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { TikTokBottomNavigation(navController) },
-        bodyContent = { TikTokBodyContent(navController) }
+        content = { TikTokBodyContent(navController) }
     )
 }
 

@@ -39,7 +39,7 @@ fun InstagramHome() {
                 }
             )
         },
-        bodyContent = {
+        content = {
             InstagramHomeContent()
         }
     )

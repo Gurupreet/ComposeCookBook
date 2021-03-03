@@ -43,7 +43,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
         floatingActionButtonPosition = FabPosition.Center
     ) {
         Box(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-            val scrollState = rememberScrollState(0f)
+            val scrollState = rememberScrollState(0)
             CryptoTopSection(crypto, scrollState)
             Column(
                 modifier = Modifier
@@ -65,7 +65,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
     Column(
         modifier = Modifier.padding(16.dp)
-            .alpha(animateFloatAsState((1 - scrollState.value / 150).coerceIn(0f, 1f)).value)
+            .alpha(animateFloatAsState((1 - scrollState.value / 150).coerceIn(0, 1).toFloat()).value)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.padding(top = 20.dp)) {

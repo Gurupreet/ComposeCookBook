@@ -33,7 +33,7 @@ import com.guru.composecookbook.ui.utils.horizontalGradientBackground
 
 @Composable
 fun SpotifyHome() {
-    val scrollState = rememberScrollState(0f)
+    val scrollState = rememberScrollState(0)
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     Box(modifier = Modifier.fillMaxSize()) {
         ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)

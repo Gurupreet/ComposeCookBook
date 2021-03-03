@@ -49,8 +49,8 @@ fun DrawCanvas(
             .height(55.dp),
     ) {
 
-        val radius = (4.dp).toIntPx().toFloat()
-        val padding = (6.dp).toIntPx().toFloat()
+        val radius = (4.dp).value
+        val padding = (6.dp).value
 
         for (i in 1..5) {
             if (i - 1 == state.toInt()) {

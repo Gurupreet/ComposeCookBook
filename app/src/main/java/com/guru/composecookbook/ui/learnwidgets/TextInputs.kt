@@ -38,7 +38,7 @@ fun TextInputs() {
         onValueChange = { newValue -> text = newValue },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         label = { Text("label") },
-        placeholder = { Text("placeholder") }
+        placeholder = { Text("placeholder") },
     )
 
     OutlinedTextField(

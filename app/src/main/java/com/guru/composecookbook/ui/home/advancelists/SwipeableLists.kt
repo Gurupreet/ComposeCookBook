@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.home.advancelists
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animatedFloat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -23,7 +22,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.gesture.Direction
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -34,7 +32,6 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.swipeGesture
 
 @Composable
 fun SwipeableLists() {
@@ -69,16 +66,10 @@ fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
 
 @Composable
 fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
-    val itemSwipe = animatedFloat(0f)
-
+   /// val itemSwipe = animatedFloat(0f)
+//TODO fix swipe gesture and drag
     Row(
         modifier = Modifier
-            .swipeGesture(
-                swipeValue = itemSwipe,
-                swipeDirection = Direction.LEFT,
-                maxSwipe = 1200f,
-                onItemSwiped = { onItemSwiped.invoke(index) }
-            )
             .background(MaterialTheme.colors.background),
         verticalAlignment = Alignment.CenterVertically,
     ) {

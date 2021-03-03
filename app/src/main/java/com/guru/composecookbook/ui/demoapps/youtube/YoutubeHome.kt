@@ -59,7 +59,7 @@ fun YoutubeHome() {
                 }
             )
         },
-        bodyContent = {
+        content = {
             YoutubeContent()
         }
     )

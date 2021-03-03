@@ -1,11 +1,12 @@
 package com.guru.composecookbook.ui.demoapps.tiktok.home
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.animatedFloat
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,10 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalAnimationClock
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -46,15 +45,16 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val movies = SpotifyDataProvider.albums
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
-        val clock = LocalAnimationClock.current
-        remember(clock) {
-            PagerState(clock, 0, 0, movies.size - 1)
+        remember {
+            PagerState( 0, 0, movies.size - 1)
         }
     }
     Pager(
         state = pagerState,
         orientation = Orientation.Vertical,
-        modifier = Modifier.fillMaxSize().padding(bottom = bottomBarHeight)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = bottomBarHeight)
     ) {
         val movie = movies[page]
         val isSelected = pagerState.currentPage == page
@@ -71,7 +71,9 @@ fun PagerItem(
 ) {
     val context = LocalContext.current
 
-    Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp))) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .clip(RoundedCornerShape(4.dp))) {
         TikTokPlayer(context, videos[album.id % 3], selected)
         VideoOverLayUI(album, tiktokInteractionEvents)
     }
@@ -80,7 +82,9 @@ fun PagerItem(
 @Composable
 fun VideoOverLayUI(album: Album, tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     Row(
-        modifier = Modifier.fillMaxSize().padding(8.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp),
         verticalAlignment = Alignment.Bottom
     ) {
         VideoInfoSection(Modifier.weight(1f), album)
@@ -95,11 +99,13 @@ fun VideoIconsSection(
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         ProfileImageWithFollow(
-            modifier = Modifier.size(64.dp).clickable(onClick = {
-                tiktokInteractionEvents(
-                    TiktokHomeInteractionEvents.OpenProfile(album)
-                )
-            }),
+            modifier = Modifier
+                .size(64.dp)
+                .clickable(onClick = {
+                    tiktokInteractionEvents(
+                        TiktokHomeInteractionEvents.OpenProfile(album)
+                    )
+                }),
             true,
             album.imageId
         )
@@ -125,16 +131,20 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 32.dp)
         )
-        val rotation = animatedFloat(initVal = 0f)
-        rotation.animateTo(
-            targetValue = 360f,
-            anim = repeatable(
-                iterations = 10000,
-                animation = tween(durationMillis = 3500, easing = LinearEasing),
-            ),
-        )
+        val rotation = remember { Animatable(0f) }
+        LaunchedEffect(Unit) {
+            rotation.animateTo(
+                targetValue = 360f,
+                animationSpec = repeatable(
+                    iterations = 10000,
+                    animation = tween(durationMillis = 3500, easing = LinearEasing),
+                ),
+            )
+        }
         ProfileImageWithFollow(
-            modifier = Modifier.size(64.dp).graphicsLayer(rotationZ = rotation.value),
+            modifier = Modifier
+                .size(64.dp)
+                .graphicsLayer(rotationZ = rotation.value),
             false,
             album.imageId
         )
@@ -144,15 +154,14 @@ fun VideoIconsSection(
 @Composable
 fun LikeIcon(id: Int) {
     var fav by remember(id) { mutableStateOf(false) }
-    val animatedProgress = animatedFloat(1f)
+    val animatedProgress = remember { Animatable(0f) }
     if (!fav) {
-        animatedProgress.animateTo(
-            targetValue = 1.3f,
-            anim = tween(600),
-            onEnd = { _, _ ->
-                animatedProgress.animateTo(targetValue = 1f, tween(300))
-            }
-        )
+        LaunchedEffect(fav) {
+            animatedProgress.animateTo(
+                targetValue = 1.3f,
+                animationSpec = tween(600),
+            )
+        }
     }
     Icon(
         painter = painterResource(id = R.drawable.ic_heart_solid),
@@ -209,7 +218,8 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
                 modifier = Modifier
                     .size(20.dp)
                     .clip(CircleShape)
-                    .background(tiktokRed).align(Alignment.BottomCenter)
+                    .background(tiktokRed)
+                    .align(Alignment.BottomCenter)
             )
         }
     } else {
@@ -222,7 +232,9 @@ fun ImageWithBorder(imageId: Int, modifier: Modifier) {
     Image(
         painter = painterResource(id = imageId),
         contentDescription = null,
-        modifier = modifier.padding(8.dp).clip(CircleShape)
+        modifier = modifier
+            .padding(8.dp)
+            .clip(CircleShape)
             .border(
                 shape = CircleShape,
                 border = BorderStroke(

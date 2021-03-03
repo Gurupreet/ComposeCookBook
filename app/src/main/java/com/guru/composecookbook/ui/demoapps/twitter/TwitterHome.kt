@@ -63,7 +63,7 @@ fun TwitterHome() {
 
             }
         },
-        bodyContent = {
+        content = {
             TwitterHomeContent()
         }
     )

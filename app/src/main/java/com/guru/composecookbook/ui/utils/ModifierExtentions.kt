@@ -1,28 +1,15 @@
 package com.guru.composecookbook.ui.utils
 
-import androidx.compose.animation.core.AnimatedFloat
-import androidx.compose.animation.core.SpringSpec
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.gesture.Direction
-import androidx.compose.ui.gesture.DragObserver
-import androidx.compose.ui.gesture.dragGestureFilter
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
-import androidx.compose.ui.layout.LayoutModifier
-import androidx.compose.ui.layout.Measurable
-import androidx.compose.ui.layout.MeasureResult
-import androidx.compose.ui.layout.MeasureScope
-import androidx.compose.ui.unit.Constraints
-import kotlin.math.abs
-
-//TODO update drag observers and animatedFloat
 
 fun Modifier.horizontalGradientBackground(
     colors: List<Color>
@@ -92,77 +79,78 @@ fun Modifier.gradientTint(
     }
 }
 
-fun Modifier.swipeGesture(
-    swipeValue: AnimatedFloat,
-    swipeDirection: Direction = Direction.LEFT,
-    maxSwipe: Float,
-    onItemSwiped: () -> Unit
-): Modifier = composed {
-    (this then dragGestureFilter(
-        canDrag = { it == swipeDirection },
-        dragObserver = dragObserver(
-            swipeValue = swipeValue,
-            maxSwipe = maxSwipe,
-            onItemSwiped = onItemSwiped
-        )
-    )).then(object : LayoutModifier {
-        override fun MeasureScope.measure(
-            measurable: Measurable,
-            constraints: Constraints
-        ): MeasureResult {
-            val children = measurable.measure(constraints)
-            //  swipeValue.setBounds(-children.width.toFloat()-100f, children.width.toFloat()+100f)
-            return layout(children.width, children.height) {
-                children.place(swipeValue.value.toInt(), 0)
-            }
-        }
-    })
-}
-
-@Composable
-fun dragObserver(
-    swipeValue: AnimatedFloat,
-    maxSwipe: Float,
-    onItemSwiped: () -> Unit
-): DragObserver {
-
-    return object : DragObserver {
-        override fun onStart(downPosition: Offset) {
-            //  swipeValue.setBounds(-maxSwipe, maxSwipe)
-        }
-
-        private fun reset() {
-            swipeValue.animateTo(
-                0f,
-                anim = SpringSpec(
-                    dampingRatio = 0.8f, stiffness = 300f
-                )
-            )
-        }
-
-        override fun onDrag(dragDistance: Offset): Offset {
-            swipeValue.snapTo(swipeValue.targetValue + dragDistance.x)
-            return dragDistance
-        }
-
-        override fun onStop(velocity: Offset) {
-            if (abs(swipeValue.targetValue) < 400f) {
-                reset()
-            } else {
-                val animateTo = if (swipeValue.value > 0) maxSwipe else -maxSwipe
-                swipeValue.animateTo(
-                    animateTo,
-                    anim = SpringSpec<Float>(
-                        dampingRatio = 0.8f, stiffness = 300f
-                    ),
-                    onEnd = { _, _ ->
-                        // On swiped do something
-                        // onItemSwiped.invoke()
-                    }
-                )
-                // actually it should be in animation end but it's bit slow animation I put it out.
-                onItemSwiped.invoke()
-            }
-        }
-    }
-}
+//TODO fix drag obervers
+//fun Modifier.swipeGesture(
+//    swipeValue: AnimatedFloat,
+//    swipeDirection: Direction = Direction.LEFT,
+//    maxSwipe: Float,
+//    onItemSwiped: () -> Unit
+//): Modifier = composed {
+//    (this then dragGestureFilter(
+//        canDrag = { it == swipeDirection },
+//        dragObserver = dragObserver(
+//            swipeValue = swipeValue,
+//            maxSwipe = maxSwipe,
+//            onItemSwiped = onItemSwiped
+//        )
+//    )).then(object : LayoutModifier {
+//        override fun MeasureScope.measure(
+//            measurable: Measurable,
+//            constraints: Constraints
+//        ): MeasureResult {
+//            val children = measurable.measure(constraints)
+//            //  swipeValue.setBounds(-children.width.toFloat()-100f, children.width.toFloat()+100f)
+//            return layout(children.width, children.height) {
+//                children.place(swipeValue.value.toInt(), 0)
+//            }
+//        }
+//    })
+//}
+//
+//@Composable
+//fun dragObserver(
+//    swipeValue: AnimatedFloat,
+//    maxSwipe: Float,
+//    onItemSwiped: () -> Unit
+//): DragObserver {
+//
+//    return object : DragObserver {
+//        override fun onStart(downPosition: Offset) {
+//            //  swipeValue.setBounds(-maxSwipe, maxSwipe)
+//        }
+//
+//        private fun reset() {
+//            swipeValue.animateTo(
+//                0f,
+//                anim = SpringSpec(
+//                    dampingRatio = 0.8f, stiffness = 300f
+//                )
+//            )
+//        }
+//
+//        override fun onDrag(dragDistance: Offset): Offset {
+//            swipeValue.snapTo(swipeValue.targetValue + dragDistance.x)
+//            return dragDistance
+//        }
+//
+//        override fun onStop(velocity: Offset) {
+//            if (abs(swipeValue.targetValue) < 400f) {
+//                reset()
+//            } else {
+//                val animateTo = if (swipeValue.value > 0) maxSwipe else -maxSwipe
+//                swipeValue.animateTo(
+//                    animateTo,
+//                    anim = SpringSpec<Float>(
+//                        dampingRatio = 0.8f, stiffness = 300f
+//                    ),
+//                    onEnd = { _, _ ->
+//                        // On swiped do something
+//                        // onItemSwiped.invoke()
+//                    }
+//                )
+//                // actually it should be in animation end but it's bit slow animation I put it out.
+//                onItemSwiped.invoke()
+//            }
+//        }
+//    }
+//}
