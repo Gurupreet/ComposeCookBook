@@ -55,7 +55,8 @@ fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
     Column(
         modifier = Modifier
             .horizontalGradientBackground(surfaceGradient)
-            .padding(8.dp).verticalScroll(state = scrollState)
+            .padding(8.dp)
+            .verticalScroll(state = scrollState)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         SpotifyTitle("Good Evening")
@@ -71,7 +72,8 @@ fun PlayerBottomBar(modifier: Modifier) {
     val backgroundColor =
         if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
     Row(
-        modifier = modifier.padding(bottom = bottomBarHeight)
+        modifier = modifier
+            .padding(bottom = bottomBarHeight)
             .fillMaxWidth()
             .background(color = backgroundColor),
         verticalAlignment = Alignment.CenterVertically,
@@ -85,7 +87,9 @@ fun PlayerBottomBar(modifier: Modifier) {
         Text(
             text = "Someone Like you by Adele",
             style = typography.h6.copy(fontSize = 14.sp),
-            modifier = Modifier.padding(8.dp).weight(1f),
+            modifier = Modifier
+                .padding(8.dp)
+                .weight(1f),
         )
         Icon(
             imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),

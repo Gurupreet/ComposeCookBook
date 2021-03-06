@@ -42,7 +42,9 @@ fun Charts() {
                 Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                     LineChart(
                         yAxisValues = createRandomFloatList(),
-                        modifier = Modifier.fillMaxWidth().height(200.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(200.dp),
                         lineColors = gradientBluePurple
                     )
                 }
@@ -57,7 +59,9 @@ fun Charts() {
                     Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
                         LineChart(
                             yAxisValues = createRandomFloatList(),
-                            modifier = Modifier.width(150.dp).height(100.dp),
+                            modifier = Modifier
+                                .width(150.dp)
+                                .height(100.dp),
                             lineColors = listOf(tiktokBlue, tiktokRed)
                         )
                     }
@@ -65,12 +69,16 @@ fun Charts() {
                         Box {
                             LineChart(
                                 yAxisValues = increasingChart5Times,
-                                modifier = Modifier.width(160.dp).height(100.dp),
+                                modifier = Modifier
+                                    .width(160.dp)
+                                    .height(100.dp),
                                 lineColors = listOf(tiktokBlue, blue200)
                             )
                             LineChart(
                                 yAxisValues = increasingChart10Times,
-                                modifier = Modifier.width(160.dp).height(100.dp),
+                                modifier = Modifier
+                                    .width(160.dp)
+                                    .height(100.dp),
                                 lineColors = listOf(orange200, orange700)
                             )
                         }
@@ -82,7 +90,10 @@ fun Charts() {
             item {
                 Card(modifier = Modifier.padding(8.dp), elevation = 16.dp) {
                     BarCharts(
-                        modifier = Modifier.fillMaxWidth().height(150.dp).padding(top = 4.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(150.dp)
+                            .padding(top = 4.dp),
                         yAxisValues = createRandomFloatList(),
                         barColors = instagramGradient
                     )
@@ -210,7 +221,9 @@ fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
             ),
         )
     }
-    Canvas(modifier = Modifier.size(180.dp).padding(16.dp)) {
+    Canvas(modifier = Modifier
+        .size(180.dp)
+        .padding(16.dp)) {
         val totalPieValue = pieValues.sum()
         var startAngle = 0f
 

@@ -3,8 +3,8 @@ package com.guru.composecookbook.ui.demoapps.youtube
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
@@ -55,11 +55,14 @@ fun YoutubeListItem(item: Tweet) {
         Image(
             painter = painterResource(id = R.drawable.p3),
             contentDescription = null,
-            modifier = Modifier.size(32.dp).clip(CircleShape).constrainAs(authorImage) {
-                start.linkTo(parent.start, margin = 12.dp)
-                top.linkTo(image.bottom, margin = 16.dp)
-                end.linkTo(title.start)
-            }
+            modifier = Modifier
+                .size(32.dp)
+                .clip(CircleShape)
+                .constrainAs(authorImage) {
+                    start.linkTo(parent.start, margin = 12.dp)
+                    top.linkTo(image.bottom, margin = 16.dp)
+                    end.linkTo(title.start)
+                }
         )
         Text(
             text = item.text,
@@ -82,10 +85,12 @@ fun YoutubeListItem(item: Tweet) {
         Text(
             text = "${item.author} . ${item.likesCount}k views . 6 hours ago",
             style = MaterialTheme.typography.subtitle2,
-            modifier = Modifier.constrainAs(subtitle) {
-                start.linkTo(title.start)
-                width = Dimension.fillToConstraints
-            }.padding(bottom = 16.dp)
+            modifier = Modifier
+                .constrainAs(subtitle) {
+                    start.linkTo(title.start)
+                    width = Dimension.fillToConstraints
+                }
+                .padding(bottom = 16.dp)
         )
         IconButton(
             onClick = { },

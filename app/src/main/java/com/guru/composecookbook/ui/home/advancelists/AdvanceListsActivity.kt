@@ -66,7 +66,7 @@ fun AdvanceListContent() {
     var selectedIndex by remember { mutableStateOf(0) }
     val pagerState: PagerState = run {
         remember {
-            PagerState( 0, 0, tabs.size - 1)
+            PagerState(0, 0, tabs.size - 1)
         }
     }
     Column {

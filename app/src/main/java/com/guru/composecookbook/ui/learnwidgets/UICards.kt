@@ -32,7 +32,9 @@ fun UICards() {
         modifier = Modifier.padding(8.dp)
     )
     Card(
-        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         backgroundColor = MaterialTheme.colors.primary,
         shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp)
     ) {
@@ -53,7 +55,9 @@ fun UICards() {
 
     Text(text = "Inbuilt Card", style = typography.subtitle1, modifier = Modifier.padding(8.dp))
     Card(
-        modifier = Modifier.padding(16.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
         shape = RoundedCornerShape(4.dp),
         elevation = 4.dp
     ) {

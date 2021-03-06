@@ -64,8 +64,15 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
 @Composable
 fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
     Column(
-        modifier = Modifier.padding(16.dp)
-            .alpha(animateFloatAsState((1 - scrollState.value / 150).coerceIn(0, 1).toFloat()).value)
+        modifier = Modifier
+            .padding(16.dp)
+            .alpha(
+                animateFloatAsState(
+                    (1 - scrollState.value / 150)
+                        .coerceIn(0, 1)
+                        .toFloat()
+                ).value
+            )
     ) {
         Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.padding(top = 20.dp)) {
@@ -87,7 +94,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
         )
         Text(
             text = "${crypto.dailyChange.roundToTwoDecimals()} " +
-                    " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
+                " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
             color = if (crypto.dailyChange > 0) green700 else Color.Red
         )
     }
@@ -102,13 +109,17 @@ fun CryptoCharts(crypto: Crypto) {
     ) {
         Column {
             LineChart(
-                modifier = Modifier.fillMaxWidth().height(100.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp),
                 yAxisValues = crypto.chartData,
                 lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
             )
             Spacer(modifier = Modifier.height(10.dp))
             BarCharts(
-                modifier = Modifier.fillMaxWidth().height(120.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(120.dp),
                 yAxisValues = crypto.chartData,
                 barColors = gradientBluePurple,
                 barWidth = 2f
@@ -157,7 +168,9 @@ fun StatisticsSection(crypto: Crypto) {
         shape = RoundedCornerShape(4.dp)
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(text = "24 High", style = typography.subtitle2)
@@ -216,7 +229,10 @@ fun NewsSection() {
             VerticalListItemSmall(item = demoItem)
             Text(
                 text = "See More",
-                modifier = Modifier.align(Alignment.End).clickable(onClick = {}).padding(16.dp)
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .clickable(onClick = {})
+                    .padding(16.dp)
             )
         }
 

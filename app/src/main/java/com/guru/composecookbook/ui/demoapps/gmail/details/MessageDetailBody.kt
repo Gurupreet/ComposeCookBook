@@ -85,7 +85,8 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                             text = "26 Oct",
                             fontSize = 12.sp,
                             textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(start = 4.dp)
+                            modifier = Modifier
+                                .padding(start = 4.dp)
                                 .align(Alignment.CenterVertically)
                         )
                     }

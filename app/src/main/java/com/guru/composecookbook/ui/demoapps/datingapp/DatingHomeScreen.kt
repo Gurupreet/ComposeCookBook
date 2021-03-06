@@ -57,7 +57,8 @@ fun DatingHomeScreen() {
             persons.forEachIndexed { index, album ->
                 DraggableCard(
                     item = album,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .height(cardHeight)
                         .padding(
                             top = 16.dp + (index + 2).dp,
@@ -136,7 +137,9 @@ fun CardContent(album: Album) {
             Text(
                 text = album.artist,
                 style = typography.h6,
-                modifier = Modifier.padding(end = 8.dp).weight(1f),
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .weight(1f),
                 textAlign = TextAlign.Start
             )
             Icon(
@@ -167,11 +170,15 @@ fun CardContent(album: Album) {
 
 @Composable
 fun DatingLoader(modifier: Modifier) {
-    Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().clip(CircleShape)) {
+    Box(contentAlignment = Alignment.Center, modifier = modifier
+        .fillMaxSize()
+        .clip(CircleShape)) {
         FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
             painter = painterResource(id = R.drawable.adele21),
-            modifier = modifier.size(50.dp).clip(CircleShape),
+            modifier = modifier
+                .size(50.dp)
+                .clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop,
         )

@@ -32,7 +32,9 @@ fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvent
         "Top rated TV shows",
     )
     Column(
-        modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)
+        modifier = Modifier
+            .fillMaxSize()
+            .horizontalGradientBackground(surfaceGradient)
             .verticalScroll(rememberScrollState())
     ) {
         Spacer(modifier = Modifier.height(statusBarHeight))

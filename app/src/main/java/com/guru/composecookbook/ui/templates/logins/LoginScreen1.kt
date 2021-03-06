@@ -9,7 +9,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -74,7 +73,9 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
         val passwordInteractionState = remember { MutableInteractionSource() }
         val emailInteractionState = remember { MutableInteractionSource() }
 
-        LazyColumn(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)) {
             item { Spacer(modifier = Modifier.height(20.dp)) }
             item { LottieLoadingView(context = LocalContext.current) }
             item {
@@ -95,13 +96,19 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             item {
                 OutlinedTextField(
                     value = email,
-                    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Email,
+                            contentDescription = null
+                        )
+                    },
                     maxLines = 1,
                     isError = hasError,
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Text,
-                        imeAction = ImeAction.Next),
+                        imeAction = ImeAction.Next
+                    ),
                     label = { Text(text = "Email address") },
                     placeholder = { Text(text = "abc@gmail.com") },
                     onValueChange = {
@@ -113,7 +120,12 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             item {
                 OutlinedTextField(
                     value = password,
-                    leadingIcon = { Icon(imageVector = Icons.Default.VpnKey, contentDescription = null) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.VpnKey,
+                            contentDescription = null
+                        )
+                    },
                     trailingIcon = {
                         Icon(
                             imageVector = Icons.Default.RemoveRedEye,
@@ -133,7 +145,8 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Password,
-                        imeAction = ImeAction.Done),
+                        imeAction = ImeAction.Done
+                    ),
                     label = { Text(text = "Password") },
                     placeholder = { Text(text = "12334444") },
                     onValueChange = {
@@ -156,7 +169,10 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                             onLoginSuccess.invoke()
                         }
                     },
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp).height(50.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp)
+                        .height(50.dp)
                         .clip(CircleShape)
                 ) {
                     if (loading) {
@@ -169,20 +185,27 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             item {
                 Box(modifier = Modifier.padding(vertical = 16.dp)) {
                     Spacer(
-                        modifier = Modifier.align(Alignment.Center)
-                            .height(1.dp).fillMaxWidth().background(Color.LightGray)
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .height(1.dp)
+                            .fillMaxWidth()
+                            .background(Color.LightGray)
                     )
                     Text(
                         text = "Or use",
                         color = Color.LightGray,
-                        modifier = Modifier.align(Alignment.Center)
-                            .background(MaterialTheme.colors.background).padding(horizontal = 16.dp)
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .background(MaterialTheme.colors.background)
+                            .padding(horizontal = 16.dp)
                     )
                 }
             }
 
             item {
-                OutlinedButton(onClick = { }, modifier = Modifier.fillMaxWidth().height(50.dp)) {
+                OutlinedButton(onClick = { }, modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)) {
                     Icon(imageVector = Icons.Default.Facebook, contentDescription = "facebook")
                     Text(
                         text = "Sign in with Facebook",
@@ -196,7 +219,9 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             item { Spacer(modifier = Modifier.height(8.dp)) }
 
             item {
-                OutlinedButton(onClick = { }, modifier = Modifier.fillMaxWidth().height(50.dp)) {
+                OutlinedButton(onClick = { }, modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)) {
                     Icon(imageVector = Icons.Default.Email, contentDescription = "Gmail")
                     Text(
                         text = "Sign in with Gmail",
@@ -217,7 +242,9 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 }
                 Text(
                     text = annotatedString.toAnnotatedString(),
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp)
                         .clickable(onClick = {}),
                     textAlign = TextAlign.Center
                 )
@@ -240,7 +267,9 @@ fun LottieLoadingView(context: Context) {
             repeatCount = ValueAnimator.INFINITE
         }
     }
-    AndroidView({ lottieView }, modifier = Modifier.fillMaxWidth().height(250.dp)) {
+    AndroidView({ lottieView }, modifier = Modifier
+        .fillMaxWidth()
+        .height(250.dp)) {
         it.playAnimation()
     }
 }

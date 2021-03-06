@@ -88,7 +88,9 @@ fun MovieWatchlistItem(
         Text(
             text = movie.title,
             style = typography.h6.copy(fontWeight = FontWeight.ExtraBold),
-            modifier = Modifier.align(Alignment.BottomStart).padding(8.dp)
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .padding(8.dp)
         )
         IconButton(
             onClick = { onRemoveFromWatchlist.invoke() },

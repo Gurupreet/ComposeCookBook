@@ -83,40 +83,54 @@ fun DialogsOptionList() {
 
     // I am not sure why updating the `dialogState.showDialog = true` is not working. May be I am
     // missing something. I had to update whole state via copy
-    Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(16.dp)) {
+    Column(modifier = Modifier
+        .verticalScroll(rememberScrollState())
+        .padding(16.dp)) {
         Button(
             onClick = { dialogState = dialogState.copy(showDialog = true) },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "Plain Message Dialog")
         }
         Button(
             onClick = { dialogState = DialogState(true, DialogType.TITLE) },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "Title Dialog")
         }
         Button(
             onClick = { dialogState = DialogState(true, DialogType.VERTICALBUTTON) },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "Dialog with Vertical buttons")
         }
         Button(
             onClick = { dialogState = DialogState(true, DialogType.IMAGE) },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "Dialog with Image")
         }
         Button(
             onClick = { dialogState = DialogState(true, DialogType.LONGDIALOG) },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "Long Dialog")
         }
         Button(
             onClick = { dialogState = DialogState(true, DialogType.ROUNDED) },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "Extra Rounded Dialog")
         }
@@ -176,13 +190,17 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 buttons = {
                     OutlinedButton(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).width(100.dp)
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .width(100.dp)
                     ) {
                         Text(text = "Cancel")
                     }
                     Button(
                         onClick = onDismiss,
-                        modifier = Modifier.padding(8.dp).width(100.dp)
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .width(100.dp)
                     ) {
                         Text(text = "Ok")
                     }

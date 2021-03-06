@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.demoapps.datingapp.components
 
-import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.tween
@@ -13,7 +12,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
@@ -42,20 +40,23 @@ fun DraggableCard(
     swipeY.updateBounds(swipeYTop, swipeYBottom)
     val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
     val graphicLayer = Modifier.graphicsLayer(
-            translationX = swipeX.value,
-            translationY = swipeY.value,
-            rotationZ = rotationFraction,
-        )
+        translationX = swipeX.value,
+        translationY = swipeY.value,
+        rotationZ = rotationFraction,
+    )
     if (abs(swipeX.value) < swipeXRight - 50f) {
         Card(
             elevation = 16.dp,
-            modifier = modifier.dragContent(
-                swipeX = swipeX,
-                swipeY = swipeY,
-                maxX =  swipeXRight,
-                onSwiped =  { _, _ ->
-                }
-            ).then(graphicLayer).clip(RoundedCornerShape(16.dp))
+            modifier = modifier
+                .dragContent(
+                    swipeX = swipeX,
+                    swipeY = swipeY,
+                    maxX = swipeXRight,
+                    onSwiped = { _, _ ->
+                    }
+                )
+                .then(graphicLayer)
+                .clip(RoundedCornerShape(16.dp))
         ) {
             content()
         }
@@ -67,6 +68,7 @@ fun DraggableCard(
 
     }
 }
+
 fun Modifier.dragContent(
     swipeX: Animatable<Float, AnimationVector1D>,
     swipeY: Animatable<Float, AnimationVector1D>,
@@ -101,7 +103,7 @@ fun Modifier.dragContent(
             change.consumePositionChange()
             coroutineScope.launch {
                 swipeX.animateTo(swipeX.targetValue + dragAmount.x)
-               // swipeY.animateTo(swipeY.targetValue + dragAmount.y)
+                // swipeY.animateTo(swipeY.targetValue + dragAmount.y)
             }
         }
     }

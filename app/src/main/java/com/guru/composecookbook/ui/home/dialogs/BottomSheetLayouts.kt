@@ -1,23 +1,9 @@
 package com.guru.composecookbook.ui.home.dialogs
 
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
-import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.theme.typography
 
 @ExperimentalMaterialApi
 @Composable

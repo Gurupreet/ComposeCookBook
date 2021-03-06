@@ -5,8 +5,6 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.draggable
-import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -44,7 +42,7 @@ fun SwipeableLists() {
             items = albums,
             itemContent = { index, album ->
                 SwipeableListItem(index, album) { index ->
-                   
+
                 }
             })
     }
@@ -106,9 +104,11 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
                 .size(55.dp)
                 .padding(4.dp)
         )
-        Column(modifier = Modifier
-            .padding(horizontal = 4.dp)
-            .weight(1f)) {
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 4.dp)
+                .weight(1f)
+        ) {
             Text(
                 text = album.song,
                 style = typography.h6.copy(fontSize = 16.sp),

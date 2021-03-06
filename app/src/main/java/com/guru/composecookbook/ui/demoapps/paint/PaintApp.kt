@@ -88,21 +88,24 @@ fun DrawingCanvas(
     val currentPath = paths.last().path
     val movePath = remember { mutableStateOf<Offset?>(null) }
 
-    Canvas(modifier = Modifier.fillMaxSize().padding(top = 100.dp).pointerInteropFilter {
-        when (it.action) {
-            MotionEvent.ACTION_DOWN -> {
-                currentPath.moveTo(it.x, it.y)
-                usedColors.value.add(drawColor.value)
+    Canvas(modifier = Modifier
+        .fillMaxSize()
+        .padding(top = 100.dp)
+        .pointerInteropFilter {
+            when (it.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    currentPath.moveTo(it.x, it.y)
+                    usedColors.value.add(drawColor.value)
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    movePath.value = Offset(it.x, it.y)
+                }
+                else -> {
+                    movePath.value = null
+                }
             }
-            MotionEvent.ACTION_MOVE -> {
-                movePath.value = Offset(it.x, it.y)
-            }
-            else -> {
-                movePath.value = null
-            }
-        }
-        true
-    }) {
+            true
+        }) {
         movePath.value?.let {
             currentPath.lineTo(it.x, it.y)
             drawPath(
@@ -137,7 +140,8 @@ fun DrawingTools(
                 drawColor.value = color
             })
         Row(
-            modifier = Modifier.horizontalGradientBackground(listOf(graySurface, Color.Black))
+            modifier = Modifier
+                .horizontalGradientBackground(listOf(graySurface, Color.Black))
                 .padding(horizontal = 8.dp, vertical = 4.dp)
                 .horizontalScroll(rememberScrollState())
                 .animateContentSize()
@@ -147,9 +151,11 @@ fun DrawingTools(
                     imageVector = Icons.Default.Bookmark,
                     contentDescription = null,
                     tint = it,
-                    modifier = Modifier.padding(8.dp).clickable {
-                        drawColor.value = it
-                    }
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clickable {
+                            drawColor.value = it
+                        }
                 )
             }
         }

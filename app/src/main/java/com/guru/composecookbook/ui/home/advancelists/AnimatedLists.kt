@@ -44,9 +44,11 @@ fun AnimatedLists() {
                 YoutubeChip(
                     selected = index == animationIndex,
                     text = title,
-                    modifier = Modifier.padding(8.dp).clickable(onClick = {
-                        animationIndex = index
-                    })
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clickable(onClick = {
+                            animationIndex = index
+                        })
                 )
             }
         }
@@ -72,7 +74,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     animationSpec = tween(600)
                 )
             }
-            Modifier.padding(8.dp)
+            Modifier
+                .padding(8.dp)
                 .alpha(animatedProgress.value)
         }
         1 -> {
@@ -83,7 +86,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     animationSpec = tween(300, easing = LinearEasing)
                 )
             }
-            Modifier.padding(8.dp)
+            Modifier
+                .padding(8.dp)
                 .graphicsLayer(scaleY = animatedProgress.value, scaleX = animatedProgress.value)
         }
         2 -> {
@@ -94,7 +98,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     animationSpec = tween(300, easing = FastOutSlowInEasing)
                 )
             }
-            Modifier.padding(8.dp)
+            Modifier
+                .padding(8.dp)
                 .graphicsLayer(translationX = animatedProgress.value)
         }
         3 -> {
@@ -110,7 +115,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     animationSpec = tween(600)
                 )
             }
-            Modifier.padding(8.dp)
+            Modifier
+                .padding(8.dp)
                 .graphicsLayer(translationX = animatedProgress.value)
                 .alpha(opacityProgress.value)
         }
@@ -127,7 +133,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     animationSpec = tween(600)
                 )
             }
-            Modifier.padding(8.dp)
+            Modifier
+                .padding(8.dp)
                 .graphicsLayer(translationY = animatedProgress.value)
                 .alpha(opacityProgress.value)
         }
@@ -139,7 +146,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     animationSpec = tween(400, easing = FastOutSlowInEasing)
                 )
             }
-            Modifier.padding(8.dp)
+            Modifier
+                .padding(8.dp)
                 .graphicsLayer(rotationX = animatedProgress.value)
         }
         else -> {
@@ -150,7 +158,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                     animationSpec = tween(300)
                 )
             }
-            Modifier.padding(8.dp)
+            Modifier
+                .padding(8.dp)
                 .alpha(animatedProgress.value)
         }
     }
@@ -162,9 +171,13 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
             data = "https://picsum.photos/id/${itemIndex + 1}/200/200",
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.size(55.dp).padding(4.dp)
+            modifier = Modifier
+                .size(55.dp)
+                .padding(4.dp)
         )
-        Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
+        Column(modifier = Modifier
+            .padding(horizontal = 4.dp)
+            .weight(1f)) {
             Text(
                 text = tweet.author,
                 style = typography.h6.copy(fontSize = 16.sp),

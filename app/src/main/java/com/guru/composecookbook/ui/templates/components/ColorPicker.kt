@@ -73,7 +73,8 @@ fun ColorPicker(
                 .border(
                     border = BorderStroke(4.dp, MaterialTheme.colors.onSurface),
                     shape = CircleShape
-                ).draggable(
+                )
+                .draggable(
                     orientation = Orientation.Horizontal,
                     state = rememberDraggableState { delta ->
                         val newValue = dragOffset.value + delta

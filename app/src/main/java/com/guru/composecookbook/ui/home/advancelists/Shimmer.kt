@@ -30,8 +30,10 @@ fun ShimmerList() {
     val translateAnim by transition.animateFloat(
         initialValue = 100f,
         targetValue = 600f,
-        animationSpec = infiniteRepeatable(tween(durationMillis = 1200, easing = LinearEasing),
-            RepeatMode.Restart)
+        animationSpec = infiniteRepeatable(
+            tween(durationMillis = 1200, easing = LinearEasing),
+            RepeatMode.Restart
+        )
     )
 
     val colorAnim by transition.animateColor(
@@ -62,9 +64,11 @@ fun ShimmerList() {
             MaterialTheme.colors.primary else Color.LightGray
     )
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState())) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier

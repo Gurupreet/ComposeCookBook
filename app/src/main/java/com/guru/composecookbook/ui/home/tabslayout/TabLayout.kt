@@ -91,7 +91,9 @@ fun ScrollableListOfTabs() {
             edgePadding = 16.dp,
             indicator = noIndicator,
             backgroundColor = Color.Transparent,
-            modifier = Modifier.fillMaxWidth().padding(8.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         ) {
             tweets.forEachIndexed { index, tweet ->
                 Tab(
@@ -104,7 +106,8 @@ fun ScrollableListOfTabs() {
                         text = tweet.author,
                         imageId = tweet.authorImageId,
                         selected = index == selectedIndex.value,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
                             .padding(horizontal = 4.dp, vertical = 16.dp)
                     )
                 }
@@ -146,7 +149,10 @@ private fun CustomImageChip(
             Image(
                 painter = painterResource(imageId),
                 contentDescription = null,
-                modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape)
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(20.dp)
+                    .clip(CircleShape)
             )
             Text(
                 text = text,

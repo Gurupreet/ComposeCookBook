@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2020 The Android Open Source Project
  *
@@ -20,7 +19,6 @@ package com.guru.composecookbook.ui.demoapps.gmail.home
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.Layout
@@ -49,7 +47,7 @@ fun AnimatingFabContent(
                         easing = LinearEasing,
                         durationMillis = (duration / 12f * 5).roundToInt() // 5 out of 12 frames
                     )
-                ExpandableFabStates.Collapsed isTransitioningTo  ExpandableFabStates.Extended -> {
+                ExpandableFabStates.Collapsed isTransitioningTo ExpandableFabStates.Extended -> {
                     tween(
                         easing = LinearEasing,
                         delayMillis = (duration / 3f).roundToInt(), // 4 out of 12 frames
@@ -74,7 +72,7 @@ fun AnimatingFabContent(
                         easing = FastOutSlowInEasing,
                         durationMillis = duration
                     )
-                ExpandableFabStates.Collapsed isTransitioningTo  ExpandableFabStates.Extended -> {
+                ExpandableFabStates.Collapsed isTransitioningTo ExpandableFabStates.Extended -> {
                     tween(
                         easing = FastOutSlowInEasing,
                         durationMillis = duration

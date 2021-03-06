@@ -65,7 +65,9 @@ fun ProfileScreen() {
             val scrollState = rememberScrollState(0)
             TopAppBarView(scrollState.value.toFloat())
             TopBackground()
-            Column(modifier = Modifier.fillMaxSize().verticalScroll(state = scrollState)) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(state = scrollState)) {
                 Spacer(modifier = Modifier.height(100.dp))
                 TopScrollingContent(scrollState)
                 BottomScrollingContent()
@@ -80,7 +82,8 @@ fun TopScrollingContent(scrollState: ScrollState) {
     Row {
         AnimatedImage(scroll = scrollState.value.toFloat())
         Column(
-            modifier = Modifier.padding(start = 8.dp, top = 48.dp)
+            modifier = Modifier
+                .padding(start = 8.dp, top = 48.dp)
                 .alpha(animateFloatAsState(if (visibilityChangeFloat) 0f else 1f).value)
         ) {
             Text(
@@ -99,7 +102,9 @@ fun TopScrollingContent(scrollState: ScrollState) {
 @ExperimentalMaterialApi
 @Composable
 fun BottomScrollingContent() {
-    Column(modifier = Modifier.background(MaterialTheme.colors.surface).padding(8.dp)) {
+    Column(modifier = Modifier
+        .background(MaterialTheme.colors.surface)
+        .padding(8.dp)) {
         SocialRow()
         Text(
             text = "About Me",
@@ -110,7 +115,9 @@ fun BottomScrollingContent() {
         Text(
             text = stringResource(id = R.string.about_me),
             style = typography.body1,
-            modifier = Modifier.fillMaxWidth().padding(8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
         )
         InterestsSection()
         MyPhotosSection()
@@ -123,7 +130,9 @@ fun BottomScrollingContent() {
         Text(
             text = stringResource(id = R.string.about_project),
             style = typography.body1,
-            modifier = Modifier.fillMaxWidth().padding(8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
         )
         MoreInfoSection()
     }
@@ -135,7 +144,9 @@ fun SocialRow() {
         val context = LocalContext.current
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 32.dp, vertical = 16.dp)
         ) {
             IconButton(onClick = { launchSocialActivity(context, "github") }) {
                 Icon(
@@ -245,8 +256,10 @@ fun TopAppBarView(scroll: Float) {
                 Image(
                     painter = painterResource(id = R.drawable.p1),
                     contentDescription = null,
-                    modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-                        .size(32.dp).clip(CircleShape)
+                    modifier = Modifier
+                        .padding(vertical = 4.dp, horizontal = 8.dp)
+                        .size(32.dp)
+                        .clip(CircleShape)
                 )
             },
             actions = {

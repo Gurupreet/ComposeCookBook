@@ -16,14 +16,18 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TemplateScreen(darkTheme: Boolean) {
     val context = LocalContext.current
-    LazyColumn(modifier = Modifier.fillMaxSize().semantics { testTag = "Template Screen" }) {
+    LazyColumn(modifier = Modifier
+        .fillMaxSize()
+        .semantics { testTag = "Template Screen" }) {
         items(templates.size) { index ->
             val template = templates[index]
             Button(
                 onClick = {
                     context.startActivity(TemplatesActivity.newIntent(context, template, darkTheme))
                 },
-                modifier = Modifier.fillMaxWidth().padding(12.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp)
             ) {
                 Text(text = template, modifier = Modifier.padding(8.dp))
             }

@@ -1,8 +1,8 @@
 package com.guru.composecookbook.ui.home.carousel
 
-import androidx.compose.foundation.gestures.draggable
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.*
@@ -11,17 +11,8 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Measurable
 import androidx.compose.ui.layout.ParentDataModifier
 import androidx.compose.ui.unit.Density
-import kotlin.math.roundToInt
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.structuralEqualityPolicy
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 /**
  * This is a modified version of:

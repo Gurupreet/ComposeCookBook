@@ -32,7 +32,9 @@ import com.guru.composecookbook.theme.typography
 fun TwitterListItem(tweet: Tweet) {
     Row {
         AuthorImage(tweet)
-        Column(modifier = Modifier.padding(8.dp).fillMaxWidth()) {
+        Column(modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()) {
             NameAndHandle(tweet)
             Text(text = tweet.text, style = typography.body1)
             TweetImage(tweet.tweetImageId)
@@ -51,7 +53,9 @@ private fun NameAndHandle(tweet: Tweet) {
             imageVector = Icons.Default.CheckCircle,
             contentDescription = null,
             tint = twitterColor,
-            modifier = Modifier.size(18.dp).align(Alignment.CenterVertically)
+            modifier = Modifier
+                .size(18.dp)
+                .align(Alignment.CenterVertically)
                 .padding(top = 2.dp)
         )
         //handle
@@ -83,7 +87,8 @@ private fun TweetImage(imageId: Int) {
         Image(
             painter = painterResource(id = imageId),
             contentDescription = null,
-            modifier = Modifier.padding(top = 8.dp)
+            modifier = Modifier
+                .padding(top = 8.dp)
                 .fillMaxWidth()
                 .height(150.dp)
                 .clip(RoundedCornerShape(4.dp)),
@@ -95,7 +100,9 @@ private fun TweetImage(imageId: Int) {
 @Composable
 fun TweetIconSection(tweet: Tweet) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(end = 16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(end = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         IconButton(onClick = {}) {

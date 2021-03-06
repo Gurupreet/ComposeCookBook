@@ -51,12 +51,16 @@ fun InstagramListItem(post: Tweet) {
 @Composable
 private fun InstagramLikesSection(post: Tweet) {
     Row(
-        modifier = Modifier.padding(start = 8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(start = 8.dp)
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             painter = painterResource(id = post.authorImageId),
-            modifier = Modifier.size(20.dp).clip(CircleShape),
+            modifier = Modifier
+                .size(20.dp)
+                .clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -102,12 +106,16 @@ private fun InstagramIconSection() {
 @Composable
 private fun ProfileInfoSection(post: Tweet) {
     Row(
-        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             painter = painterResource(id = post.authorImageId),
-            modifier = Modifier.size(32.dp).clip(CircleShape),
+            modifier = Modifier
+                .size(32.dp)
+                .clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -115,7 +123,9 @@ private fun ProfileInfoSection(post: Tweet) {
         Text(
             text = post.author,
             style = typography.body1,
-            modifier = Modifier.padding(8.dp).weight(1f),
+            modifier = Modifier
+                .padding(8.dp)
+                .weight(1f),
             textAlign = TextAlign.Left
         )
         Icon(imageVector = Icons.Default.MoreVert, contentDescription = null)
@@ -127,7 +137,9 @@ private fun InstagramImage(imageId: Int) {
     if (imageId != 0) {
         Image(
             painter = painterResource(id = imageId),
-            modifier = Modifier.fillMaxWidth().height(450.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(450.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )

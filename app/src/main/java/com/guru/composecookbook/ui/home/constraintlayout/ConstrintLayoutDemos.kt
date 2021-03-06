@@ -30,7 +30,9 @@ import com.guru.composecookbook.ui.demoapps.youtube.YoutubeListItem
 
 @Composable
 fun ConstraintLayoutDemos() {
-    Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(8.dp)) {
+    Column(modifier = Modifier
+        .verticalScroll(rememberScrollState())
+        .padding(8.dp)) {
         ConstraintLayoutListItem()
         Spacer(modifier = Modifier.height(20.dp))
         ConstraintLayoutBigListItem()
@@ -186,11 +188,13 @@ fun ConstraintLayoutBigListItem() {
         Text(
             text = item.source,
             style = MaterialTheme.typography.caption,
-            modifier = Modifier.padding(bottom = 12.dp).constrainAs(source) {
-                start.linkTo(title.start)
-                linkTo(top = subtitle.bottom, bottom = parent.bottom)
-                width = Dimension.fillToConstraints
-            }
+            modifier = Modifier
+                .padding(bottom = 12.dp)
+                .constrainAs(source) {
+                    start.linkTo(title.start)
+                    linkTo(top = subtitle.bottom, bottom = parent.bottom)
+                    width = Dimension.fillToConstraints
+                }
         )
         IconButton(
             onClick = { },

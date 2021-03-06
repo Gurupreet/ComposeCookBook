@@ -33,14 +33,17 @@ fun SpotifySearchScreen() {
     val scrollState = rememberScrollState(0)
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
 
-    Box(modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .horizontalGradientBackground(surfaceGradient)) {
         Text(
             text = "Search",
             style = typography.h3.copy(fontWeight = FontWeight.ExtraBold),
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(top = 80.dp, bottom = 40.dp)
-                .fillMaxSize().alpha(1f - scrollState.value / 200)
+                .fillMaxSize()
+                .alpha(1f - scrollState.value / 200)
             // Just reducing the opacity by small fraction when scroll happens
         )
         Column(

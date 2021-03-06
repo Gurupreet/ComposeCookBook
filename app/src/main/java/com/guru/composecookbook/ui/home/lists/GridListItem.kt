@@ -25,7 +25,10 @@ fun GridListItem(
 ) {
     Card(
         shape = MaterialTheme.shapes.medium,
-        modifier = modifier.width(190.dp).height(220.dp).padding(8.dp)
+        modifier = modifier
+            .width(190.dp)
+            .height(220.dp)
+            .padding(8.dp)
     ) {
         Column(modifier = Modifier.clickable(onClick = { })) {
             Image(

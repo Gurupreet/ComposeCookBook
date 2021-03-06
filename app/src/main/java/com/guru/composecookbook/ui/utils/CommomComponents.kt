@@ -24,13 +24,17 @@ import com.guru.composecookbook.ui.templates.logins.LottieLoadingView
 @Composable
 fun ComingSoon() {
     Column(
-        modifier = Modifier.fillMaxSize().padding(50.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(50.dp)
     ) {
         LottieLoadingView(context = LocalContext.current)
         Text(
             text = "Coming Soon",
             style = typography.h5,
-            modifier = Modifier.padding(12.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth(),
             textAlign = TextAlign.Center
         )
         Text(
@@ -45,7 +49,9 @@ fun ComingSoon() {
 
 @Composable
 fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: String = "") {
-    Column(modifier = modifier.fillMaxWidth().padding(16.dp)) {
+    Column(modifier = modifier
+        .fillMaxWidth()
+        .padding(16.dp)) {
         if (title.isNotEmpty()) {
             Text(text = title, style = typography.h6.copy(fontSize = 14.sp))
         }

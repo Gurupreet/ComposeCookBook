@@ -46,9 +46,11 @@ fun SpotifyDetailScreen(album: Album) {
     val surfaceGradient = SpotifyDataProvider
         .spotifySurfaceGradient(isSystemInDarkTheme()).asReversed()
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .verticalGradientBackground(dominantGradient)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalGradientBackground(dominantGradient)
+    ) {
         BoxTopSection(album = album, scrollState = scrollState)
         TopSectionOverlay(scrollState = scrollState)
         BottomScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
@@ -172,9 +174,11 @@ fun ShuffleButton() {
 @Composable
 fun BoxTopSection(album: Album, scrollState: ScrollState) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Spacer(modifier = Modifier
-            .height(100.dp)
-            .fillMaxWidth())
+        Spacer(
+            modifier = Modifier
+                .height(100.dp)
+                .fillMaxWidth()
+        )
         //animate as scroll value increase but not fast so divide by random number 50
         val dynamicValue =
             if (250.dp - Dp(scrollState.value / 50f) < 10.dp) 10.dp //prevent going 0 cause crash

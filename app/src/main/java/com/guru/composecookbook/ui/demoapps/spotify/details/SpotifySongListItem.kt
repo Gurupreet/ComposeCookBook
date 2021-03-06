@@ -37,9 +37,13 @@ fun SpotifySongListItem(album: Album) {
             painter = painterResource(id = album.imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.size(55.dp).padding(4.dp)
+            modifier = Modifier
+                .size(55.dp)
+                .padding(4.dp)
         )
-        Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
+        Column(modifier = Modifier
+            .padding(horizontal = 4.dp)
+            .weight(1f)) {
             Text(
                 text = album.song,
                 style = typography.h6.copy(fontSize = 16.sp),
@@ -57,7 +61,9 @@ fun SpotifySongListItem(album: Album) {
                 imageVector = Icons.Default.Favorite,
                 contentDescription = null,
                 tint = MaterialTheme.colors.primaryVariant,
-                modifier = Modifier.padding(4.dp).size(20.dp)
+                modifier = Modifier
+                    .padding(4.dp)
+                    .size(20.dp)
             )
         }
         Icon(

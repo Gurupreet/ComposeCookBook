@@ -84,10 +84,12 @@ fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) 
             text = item.text,
             style = MaterialTheme.typography.caption,
             maxLines = 2,
-            modifier = Modifier.constrainAs(source) {
-                linkTo(start = title.start, end = starButton.start)
-                width = Dimension.fillToConstraints
-            }.alpha(0.6f)
+            modifier = Modifier
+                .constrainAs(source) {
+                    linkTo(start = title.start, end = starButton.start)
+                    width = Dimension.fillToConstraints
+                }
+                .alpha(0.6f)
         )
         IconButton(
             onClick = { stared = !stared },

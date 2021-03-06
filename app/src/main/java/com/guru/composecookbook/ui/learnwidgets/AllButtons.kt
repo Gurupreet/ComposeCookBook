@@ -111,16 +111,22 @@ fun AllButtons() {
         Text(
             text = "Horizontal gradient",
             style = typography.body2.copy(color = Color.White),
-            modifier = Modifier.padding(12.dp).clickable(onClick = {})
+            modifier = Modifier
+                .padding(12.dp)
+                .clickable(onClick = {})
                 .clip(RoundedCornerShape(4.dp))
-                .background(brush = horizontalGradient).padding(12.dp)
+                .background(brush = horizontalGradient)
+                .padding(12.dp)
         )
         Text(
             text = "Vertical gradient",
             style = typography.body1.copy(color = Color.White),
-            modifier = Modifier.padding(12.dp).clickable(onClick = {})
+            modifier = Modifier
+                .padding(12.dp)
+                .clickable(onClick = {})
                 .clip(RoundedCornerShape(4.dp))
-                .background(brush = verticalGradient).padding(12.dp)
+                .background(brush = verticalGradient)
+                .padding(12.dp)
         )
     }
 }

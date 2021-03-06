@@ -33,7 +33,9 @@ fun MyPhotosSection() {
         .clip(RoundedCornerShape(8.dp))
 
     Row(
-        modifier = Modifier.padding(start = 8.dp, top = 8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(start = 8.dp, top = 8.dp)
+            .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
@@ -56,7 +58,9 @@ fun MyPhotosSection() {
         )
     }
     Row(
-        modifier = Modifier.padding(start = 8.dp, top = 8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(start = 8.dp, top = 8.dp)
+            .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(

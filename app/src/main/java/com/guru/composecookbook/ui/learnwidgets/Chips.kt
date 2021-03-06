@@ -43,14 +43,18 @@ fun Chips() {
     Row(modifier = Modifier.padding(8.dp)) {
         Button(
             onClick = {},
-            modifier = Modifier.padding(8.dp).clip(CircleShape)
+            modifier = Modifier
+                .padding(8.dp)
+                .clip(CircleShape)
         ) {
             Text(text = "Chip button")
         }
         Button(
             onClick = {},
             enabled = false,
-            modifier = Modifier.padding(8.dp).clip(CircleShape)
+            modifier = Modifier
+                .padding(8.dp)
+                .clip(CircleShape)
         ) {
             Text(text = "Disabled chip")
         }
@@ -90,7 +94,10 @@ private fun CustomImageChip(
             Image(
                 painter = painterResource(imageId),
                 contentDescription = null,
-                modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape)
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(20.dp)
+                    .clip(CircleShape)
             )
             Text(
                 text = text,

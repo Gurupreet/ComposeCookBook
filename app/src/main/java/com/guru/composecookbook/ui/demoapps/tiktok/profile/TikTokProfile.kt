@@ -48,7 +48,8 @@ fun ProfileTopSection(album: Album) {
     Image(
         painter = painterResource(id = album.imageId),
         contentDescription = null,
-        modifier = Modifier.size(100.dp)
+        modifier = Modifier
+            .size(100.dp)
             .clip(CircleShape)
     )
     Text(
@@ -57,7 +58,9 @@ fun ProfileTopSection(album: Album) {
         modifier = Modifier.padding(8.dp)
     )
     Row(
-        modifier = Modifier.fillMaxWidth().padding(12.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(12.dp),
         horizontalArrangement = Arrangement.Center
     ) {
         Column(
@@ -89,14 +92,19 @@ fun ProfileTopSection(album: Album) {
                 backgroundColor = tiktokRed,
                 contentColor = Color.White
             ),
-            modifier = Modifier.height(50.dp).padding(horizontal = 2.dp)
+            modifier = Modifier
+                .height(50.dp)
+                .padding(horizontal = 2.dp)
         ) {
             Text(text = "Follow", modifier = Modifier.padding(horizontal = 32.dp))
         }
         Icon(
             painter = painterResource(id = R.drawable.ic_instagram),
             contentDescription = null,
-            modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
+            modifier = Modifier
+                .height(50.dp)
+                .width(50.dp)
+                .padding(2.dp)
                 .border(
                     border = BorderStroke(
                         1.dp,
@@ -107,7 +115,10 @@ fun ProfileTopSection(album: Album) {
         Icon(
             imageVector = Icons.Default.ArrowDropDown,
             contentDescription = null,
-            modifier = Modifier.height(50.dp).width(50.dp).padding(2.dp)
+            modifier = Modifier
+                .height(50.dp)
+                .width(50.dp)
+                .padding(2.dp)
                 .border(
                     border = BorderStroke(
                         1.dp,
@@ -129,7 +140,9 @@ fun ProfileTopSection(album: Album) {
 fun ProfileTabs() {
     var selectedIndex by remember { mutableStateOf(0) }
     Spacer(
-        modifier = Modifier.height(1.dp).background(MaterialTheme.colors.onSurface)
+        modifier = Modifier
+            .height(1.dp)
+            .background(MaterialTheme.colors.onSurface)
             .padding(top = 4.dp)
     )
     TabRow(selectedTabIndex = selectedIndex, backgroundColor = MaterialTheme.colors.surface) {
@@ -155,7 +168,9 @@ fun ProfileTabs() {
             Image(
                 painter = painterResource(id = it.imageId),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().height(150.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(150.dp),
                 contentScale = ContentScale.Crop
             )
         }

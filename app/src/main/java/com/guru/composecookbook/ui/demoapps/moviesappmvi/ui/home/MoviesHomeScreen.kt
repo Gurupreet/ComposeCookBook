@@ -1,7 +1,10 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
 import android.util.Log
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -35,7 +38,8 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
     //TODO dynamic gradient from poster via coil right now It's just getting from local images
     val imageId = remember { mutableStateOf(R.drawable.camelia) }
     val context = LocalContext.current
-    val defaultBitmap = ImageBitmap.imageResource(context.resources, imageId.value).asAndroidBitmap()
+    val defaultBitmap =
+        ImageBitmap.imageResource(context.resources, imageId.value).asAndroidBitmap()
     val currentBitmap = mutableStateOf(defaultBitmap)
     val swatch = generateDominantColorState(currentBitmap.value)
     val dominantColors = listOf(Color(swatch.rgb), Color.Black)
@@ -73,7 +77,7 @@ fun MoviesPager(
     if (movies.isNotEmpty()) {
         val pagerState: PagerState = run {
             remember {
-                PagerState( 0, 0, movies.size - 1)
+                PagerState(0, 0, movies.size - 1)
             }
         }
         Pager(state = pagerState, modifier = Modifier.height(645.dp)) {

@@ -68,7 +68,9 @@ fun DemoUIList() {
                                 }
                             }
                         },
-                        modifier = Modifier.fillMaxWidth().padding(12.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp)
                     ) {
                         Text(text = title, modifier = Modifier.padding(8.dp))
                     }

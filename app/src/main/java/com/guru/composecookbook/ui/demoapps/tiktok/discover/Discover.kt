@@ -57,13 +57,16 @@ fun LanesSection() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_hashtag_solid),
                             contentDescription = null,
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier
+                                .size(32.dp)
                                 .border(
                                     border = BorderStroke(0.5.dp, Color.LightGray),
                                     shape = CircleShape
                                 )
                         )
-                        Column(modifier = Modifier.padding(horizontal = 16.dp).weight(1f)) {
+                        Column(modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .weight(1f)) {
                             Text(
                                 text = laneItem,
                                 modifier = Modifier.padding(vertical = 4.dp),
@@ -74,7 +77,8 @@ fun LanesSection() {
                         Text(
                             text = "${laneItem.length}.2M",
                             style = typography.h6.copy(fontSize = 12.sp),
-                            modifier = Modifier.background(customGray)
+                            modifier = Modifier
+                                .background(customGray)
                                 .padding(horizontal = 16.dp, vertical = 4.dp)
                         )
                     }
@@ -86,7 +90,10 @@ fun LanesSection() {
                                     data = "https://picsum.photos/id/${it}/200/200",
                                     contentDescription = null,
                                     contentScale = ContentScale.Crop,
-                                    modifier = Modifier.height(150.dp).width(120.dp).padding(2.dp),
+                                    modifier = Modifier
+                                        .height(150.dp)
+                                        .width(120.dp)
+                                        .padding(2.dp),
                                 )
                             })
                     }
@@ -98,7 +105,10 @@ fun LanesSection() {
 @Composable
 fun SearchSection() {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-        Row(modifier = Modifier.weight(1f).background(customGray).padding(4.dp)) {
+        Row(modifier = Modifier
+            .weight(1f)
+            .background(customGray)
+            .padding(4.dp)) {
             Icon(
                 imageVector = Icons.Default.Search,
                 modifier = Modifier.padding(4.dp),

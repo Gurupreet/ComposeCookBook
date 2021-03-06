@@ -67,7 +67,9 @@ fun SpotifyLaneItem(album: Album) {
     val album = remember { album }
     Column(
         modifier =
-        Modifier.width(180.dp).padding(8.dp)
+        Modifier
+            .width(180.dp)
+            .padding(8.dp)
             .clickable(
                 onClick = {
                     //Disclaimer: We should pass event top level and there should startActivity
@@ -76,7 +78,8 @@ fun SpotifyLaneItem(album: Album) {
     ) {
         Image(
             painter = painterResource(id = album.imageId),
-            modifier = Modifier.width(180.dp)
+            modifier = Modifier
+                .width(180.dp)
                 .height(160.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -119,7 +122,8 @@ fun SpotifySearchGridItem(album: Album) {
             painter = painterResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
-            modifier = Modifier.size(70.dp)
+            modifier = Modifier
+                .size(70.dp)
                 .align(Alignment.Bottom)
                 .graphicsLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
         )

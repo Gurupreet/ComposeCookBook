@@ -11,7 +11,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.runtime.Composable
@@ -33,18 +32,23 @@ fun CreateMessageBody(navController: NavController) {
 
             Text(
                 text = "From",
-                modifier = Modifier.padding(16.dp).align(Alignment.CenterVertically)
+                modifier = Modifier
+                    .padding(16.dp)
+                    .align(Alignment.CenterVertically)
             )
             Text(
                 text = "subash@gmail.com",
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
                     .padding(vertical = 16.dp)
                     .align(Alignment.CenterVertically)
             )
             Icon(
                 imageVector = Icons.Outlined.KeyboardArrowDown,
                 contentDescription = null,
-                modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .padding(16.dp)
             )
         }
 
@@ -54,21 +58,26 @@ fun CreateMessageBody(navController: NavController) {
 
             Text(
                 text = "To",
-                modifier = Modifier.padding(16.dp).align(Alignment.CenterVertically)
+                modifier = Modifier
+                    .padding(16.dp)
+                    .align(Alignment.CenterVertically)
             )
             BasicTextField(
                 value = TextFieldValue("Subash"),
                 onValueChange = { },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 keyboardActions = KeyboardActions(onDone = {}),
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
                     .padding(vertical = 16.dp)
                     .align(Alignment.CenterVertically)
             )
             Icon(
                 imageVector = Icons.Outlined.KeyboardArrowDown,
                 contentDescription = null,
-                modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .padding(16.dp)
             )
         }
 
@@ -78,7 +87,8 @@ fun CreateMessageBody(navController: NavController) {
             onValueChange = { },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             keyboardActions = KeyboardActions(onDone = {}),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(vertical = 16.dp, horizontal = 16.dp)
         )
 
@@ -90,7 +100,9 @@ fun CreateMessageBody(navController: NavController) {
             onValueChange = { },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             keyboardActions = KeyboardActions(onDone = {}),
-            modifier = Modifier.fillMaxWidth().weight(1f)
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
                 .padding(vertical = 16.dp, horizontal = 16.dp)
         )
 

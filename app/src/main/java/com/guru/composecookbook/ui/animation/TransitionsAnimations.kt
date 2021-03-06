@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.animation
 
+import MyAnimationState
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -71,9 +72,9 @@ fun MultiStateColorPositionAnimation() {
         modifier = Modifier.offset(x = position, y = position),
         onClick = {
             animationState = when (animationState) {
-                MyAnimationState.START  -> MyAnimationState.MID
-                MyAnimationState.MID  -> MyAnimationState.END
-                MyAnimationState.END  -> MyAnimationState.START
+                MyAnimationState.START -> MyAnimationState.MID
+                MyAnimationState.MID -> MyAnimationState.END
+                MyAnimationState.END -> MyAnimationState.START
             }
         }) {
         Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
@@ -114,23 +115,26 @@ fun MultiStateInfiniteTransition() {
 @Composable
 fun FloatMultiStateAnimationCircleStrokeCanvas() {
     SubtitleText(subtitle = "Canvas Circle stroke with transition")
-   val transition = rememberInfiniteTransition()
+    val transition = rememberInfiniteTransition()
 
-   val animatedFloat by transition.animateFloat(
-       initialValue = 0f,
-       targetValue = 360f,
-       animationSpec = infiniteRepeatable(tween(800), RepeatMode.Restart))
+    val animatedFloat by transition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(tween(800), RepeatMode.Restart)
+    )
 
     val stroke = Stroke(8f)
-    Canvas(modifier = Modifier
-        .padding(16.dp)
-        .size(100.dp)) {
+    Canvas(
+        modifier = Modifier
+            .padding(16.dp)
+            .size(100.dp)
+    ) {
         val diameter = size.minDimension
         val radius = diameter / 2f
         val insideRadius = radius - stroke.width
         val topLeftOffset = Offset(10f, 10f)
         val size = Size(insideRadius * 2, insideRadius * 2)
-        var rotationAngle = animatedFloat  - 50f
+        var rotationAngle = animatedFloat - 50f
         drawArc(
             color = green500,
             startAngle = rotationAngle,

@@ -37,7 +37,8 @@ fun CryptoListItem(
     onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .clickable(onClick = {
                 onCryptoHomeInteractionEvents(
                     CryptoHomeInteractionEvents.OpenDetailScreen(
@@ -51,7 +52,9 @@ fun CryptoListItem(
     ) {
         CoilImage(
             data = crypto.image,
-            modifier = Modifier.size(40.dp).padding(4.dp),
+            modifier = Modifier
+                .size(40.dp)
+                .padding(4.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -70,17 +73,22 @@ fun CryptoListItem(
         }
         Column(modifier = Modifier.weight(1f)) {
             LineChart(
-                modifier = Modifier.width(100.dp).height(50.dp).align(Alignment.CenterHorizontally),
+                modifier = Modifier
+                    .width(100.dp)
+                    .height(50.dp)
+                    .align(Alignment.CenterHorizontally),
                 yAxisValues = crypto.chartData,
                 lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
             )
             Text(
                 text = "${crypto.dailyChange.roundToThreeDecimals()}" +
-                        " (${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
+                    " (${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
                 style = typography.subtitle2,
                 color = if (crypto.dailyChange > 0) green500 else Color.Red,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().align(Alignment.End)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.End)
             )
         }
         IconToggleButton(

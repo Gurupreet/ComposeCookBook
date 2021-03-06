@@ -61,7 +61,9 @@ fun MoviePagerItem(
                 data = posterFullPath,
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().height(360.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(360.dp)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

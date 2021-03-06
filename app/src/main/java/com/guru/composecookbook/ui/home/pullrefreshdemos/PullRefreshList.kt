@@ -1,27 +1,11 @@
 package com.guru.composecookbook.ui.home.pullrefreshdemos
 
 
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.draggable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.RotateRight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.demoapps.spotify.details.SpotifySongListItem
 
 @Composable
 fun PullRefreshList(onPullRefresh: () -> Unit) {
@@ -29,7 +13,7 @@ fun PullRefreshList(onPullRefresh: () -> Unit) {
     //TODO revisit pull refresh
     val initialYTranslate = -100f
     val maximumYTranslate = 200f
-    val animatedProgress = remember { Animatable(0f)}
+    val animatedProgress = remember { Animatable(0f) }
     val lazyListState = rememberLazyListState()
 
 //    val draggableModifier = Modifier.draggable(

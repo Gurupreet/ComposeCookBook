@@ -73,7 +73,8 @@ fun DrawerItem(icon: ImageVector, title: String, msgCount: String = "") {
     Row {
         Icon(imageVector = icon, modifier = Modifier.padding(16.dp), contentDescription = null)
         Text(
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
                 .align(Alignment.CenterVertically)
                 .padding(start = 8.dp),
             text = title,
@@ -85,7 +86,9 @@ fun DrawerItem(icon: ImageVector, title: String, msgCount: String = "") {
 
         if (msgCount.isNotEmpty()) {
             Text(
-                modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp),
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .padding(16.dp),
                 text = msgCount,
                 style = MaterialTheme.typography.caption,
                 textAlign = TextAlign.Start

@@ -38,7 +38,7 @@ fun CarouselLayout() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         val items = remember { DemoDataProvider.itemList.take(10) }
         val pagerState: PagerState = run {
-            remember { PagerState( 2, 0, items.size - 1) }
+            remember { PagerState(2, 0, items.size - 1) }
         }
         val selectedPage = remember { mutableStateOf(2) }
 
@@ -95,7 +95,9 @@ fun CarouselLayout() {
 fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
     Icon(
         imageVector = icon,
-        modifier = Modifier.padding(4.dp).size(12.dp),
+        modifier = Modifier
+            .padding(4.dp)
+            .size(12.dp),
         contentDescription = null,
         tint = if (selected) color else Color.Gray
     )
@@ -111,12 +113,15 @@ fun CarouselItem(item: Item) {
             modifier = Modifier
                 .padding(18.dp)
                 .fillMaxWidth()
-                .height(180.dp).clip(RoundedCornerShape(12.dp))
+                .height(180.dp)
+                .clip(RoundedCornerShape(12.dp))
         )
         Text(
             text = item.title,
             style = typography.h6.copy(color = Color.White),
-            modifier = Modifier.fillMaxWidth().padding(24.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp)
                 .align(Alignment.BottomStart),
         )
     }
@@ -130,7 +135,8 @@ fun CarouselItemCircle(item: Item) {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(16.dp)
-            .size(160.dp).clip(CircleShape)
+            .size(160.dp)
+            .clip(CircleShape)
     )
 }
 
@@ -141,7 +147,9 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     val animateElevation = if (isSelected) 12.dp else 2.dp
     Card(
         elevation = animateDpAsState(animateElevation).value,
-        modifier = Modifier.size(animateDpAsState(animateSize).value).padding(24.dp),
+        modifier = Modifier
+            .size(animateDpAsState(animateSize).value)
+            .padding(24.dp),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
         contentColor = MaterialTheme.colors.onPrimary
@@ -149,16 +157,20 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
         Column {
             Text(
                 text = item.title,
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp),
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(8.dp),
                 style = typography.body2
             )
             Image(
                 painter = painterResource(id = item.imageId),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier
+                    .padding(4.dp)
                     .align(Alignment.CenterHorizontally)
-                    .size(100.dp).clip(CircleShape)
+                    .size(100.dp)
+                    .clip(CircleShape)
             )
         }
     }

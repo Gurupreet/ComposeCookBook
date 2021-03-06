@@ -27,7 +27,6 @@ import com.guru.composecookbook.ui.demoapps.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
 import com.guru.composecookbook.ui.learnwidgets.WidgetScreen
 import com.guru.composecookbook.ui.templates.TemplateScreen
-import com.guru.composecookbook.ui.utils.ComingSoon
 import com.guru.composecookbook.ui.utils.RotateIcon
 
 class MainActivity : ComponentActivity() {

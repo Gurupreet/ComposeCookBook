@@ -101,7 +101,8 @@ fun PalletMenu(
     onPalletChange: (ColorPallet) -> Unit
 ) {
     Card(
-        modifier = modifier.padding(8.dp)
+        modifier = modifier
+            .padding(8.dp)
             .animateContentSize(),
         elevation = 8.dp
     ) {
@@ -131,7 +132,9 @@ fun PalletMenu(
 @Composable
 fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
     Row(
-        modifier = Modifier.padding(8.dp).clickable(onClick = onPalletChange),
+        modifier = Modifier
+            .padding(8.dp)
+            .clickable(onClick = onPalletChange),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(imageVector = Icons.Filled.FiberManualRecord, tint = color, contentDescription = null)
@@ -144,7 +147,9 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
 fun HomeScreenListView(homeScreenItems: HomeScreenItems, context: Context, isDarkTheme: Boolean) {
     Button(
         onClick = { homeItemClicked(homeScreenItems, context, isDarkTheme) },
-        modifier = Modifier.fillMaxWidth().padding(16.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
     ) {
         Text(
             text = homeScreenItems.name,

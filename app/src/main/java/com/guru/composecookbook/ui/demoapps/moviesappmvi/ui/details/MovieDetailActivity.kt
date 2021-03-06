@@ -31,7 +31,6 @@ import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -97,7 +96,8 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
     }
 
     LazyColumn(
-        modifier = Modifier.verticalGradientBackground(dominantColors)
+        modifier = Modifier
+            .verticalGradientBackground(dominantColors)
             .padding(
                 animateDpAsState(
                     if (expand.value) 1.dp else 120.dp,
@@ -113,7 +113,8 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
                 modifier = Modifier
                     .height(
                         600.dp
-                    ).fillMaxWidth(),
+                    )
+                    .fillMaxWidth(),
                 onRequestCompleted = {
                     expand.value = true
                 }

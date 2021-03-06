@@ -60,7 +60,9 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
             }
         },
     ) {
-        Column(modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .horizontalGradientBackground(surfaceGradient)) {
             MyWalletCard()
             ShowFavorites(
                 showFave = showFavState,
@@ -100,7 +102,8 @@ fun ShowFavorites(
     onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
     Column(
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier
+            .padding(8.dp)
             .fillMaxWidth()
             .height(animateDpAsState(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp).value)
     ) {
@@ -122,7 +125,8 @@ fun ShowFavorites(
 @Composable
 fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
     Row(
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier
+            .padding(16.dp)
             .background(graySurface)
             .clip(RoundedCornerShape(8.dp))
             .clickable(onClick = openCryptoDetail)
@@ -133,7 +137,9 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
         Text(
             text = crypto.symbol,
             style = typography.h6.copy(fontSize = 20.sp),
-            modifier = Modifier.padding(horizontal = 8.dp).height(32.dp),
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
+                .height(32.dp),
             color = MaterialTheme.colors.onSurface,
             textAlign = TextAlign.Center
         )
@@ -192,7 +198,9 @@ fun LottieLoadingView(context: Context) {
             repeatCount = ValueAnimator.INFINITE
         }
     }
-    AndroidView({ lottieView }, modifier = Modifier.fillMaxWidth().height(150.dp)) {
+    AndroidView({ lottieView }, modifier = Modifier
+        .fillMaxWidth()
+        .height(150.dp)) {
         it.playAnimation()
     }
 }

@@ -40,8 +40,10 @@ fun AnimationsForStates() {
 fun SimpleColorStateAnimation() {
     SubtitleText(subtitle = "Animate color")
     val enabled = remember { mutableStateOf(true) }
-    val animatedColor = animateColorAsState(targetValue =
-    if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary)
+    val animatedColor = animateColorAsState(
+        targetValue =
+        if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
+    )
 
     val buttonColors = ButtonDefaults.buttonColors(
         backgroundColor = animatedColor.value
@@ -57,13 +59,15 @@ fun SimpleColorStateAnimation() {
         Text("Color Animation")
     }
 }
+
 //
 @Composable
 fun SimpleDpStateAnimations() {
     SubtitleText(subtitle = "Animate DP value")
     var enabled by remember { mutableStateOf(true) }
     val animatedColorState = animateColorAsState(
-        targetValue = if (enabled) MaterialTheme.colors.primary else MaterialTheme.colors.secondary)
+        targetValue = if (enabled) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
+    )
     val animatedHeightState = animateDpAsState(targetValue = if (enabled) 40.dp else 60.dp)
     val animatedWidthState = animateDpAsState(if (enabled) 150.dp else 300.dp)
     val buttonColors = ButtonDefaults.buttonColors(
@@ -129,6 +133,7 @@ fun SimpleOffsetStateAnimation() {
 }
 
 data class CustomAnimationState(val width: Dp, val rotation: Float)
+
 @Composable
 fun SimpleAnimateCustomStateClass() {
     SubtitleText(subtitle = "Animate Custom Class State with 2D vector")
@@ -143,7 +148,7 @@ fun SimpleAnimateCustomStateClass() {
         targetValue = uiState,
         typeConverter = TwoWayConverter(
             convertToVector = { AnimationVector2D(it.width.value, it.rotation) },
-            convertFromVector = { CustomAnimationState(it.v1.dp, it.v2)}
+            convertFromVector = { CustomAnimationState(it.v1.dp, it.v2) }
         ),
         animationSpec = tween(600)
     )

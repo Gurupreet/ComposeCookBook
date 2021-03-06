@@ -30,7 +30,8 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
     val typography = MaterialTheme.typography
     Row(
-        modifier = Modifier.clickable(onClick = { })
+        modifier = Modifier
+            .clickable(onClick = { })
             .padding(16.dp)
     ) {
         ItemImage(

@@ -39,7 +39,9 @@ fun TypesOfRows() {
     )
     Row(
         horizontalArrangement = Arrangement.Start,
-        modifier = Modifier.padding(8.dp).fillMaxWidth()
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     ) {
         MultipleTexts()
     }
@@ -47,7 +49,9 @@ fun TypesOfRows() {
         text = "Arrangement.End ", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Row(horizontalArrangement = Arrangement.End, modifier = Modifier.padding(8.dp).fillMaxWidth()) {
+    Row(horizontalArrangement = Arrangement.End, modifier = Modifier
+        .padding(8.dp)
+        .fillMaxWidth()) {
         MultipleTexts()
     }
     Text(
@@ -56,7 +60,9 @@ fun TypesOfRows() {
     )
     Row(
         horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(8.dp).fillMaxWidth()
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     ) {
         MultipleTexts()
     }
@@ -66,7 +72,9 @@ fun TypesOfRows() {
     )
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
-        modifier = Modifier.padding(8.dp).fillMaxWidth()
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     ) {
         MultipleTexts()
     }
@@ -76,7 +84,9 @@ fun TypesOfRows() {
     )
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.padding(8.dp).fillMaxWidth()
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     ) {
         MultipleTexts()
     }
@@ -86,7 +96,9 @@ fun TypesOfRows() {
     )
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.padding(8.dp).fillMaxWidth()
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     ) {
         MultipleTexts()
     }
@@ -94,7 +106,8 @@ fun TypesOfRows() {
 
 @Composable
 fun TypeOfColumns() {
-    val columnModifier = Modifier.padding(8.dp)
+    val columnModifier = Modifier
+        .padding(8.dp)
         .fillMaxWidth()
         .height(150.dp)
         .background(Color.LightGray)
@@ -150,7 +163,8 @@ fun TypeOfColumns() {
 @Composable
 fun TypeOfBoxs() {
     Text(text = "Box", style = typography.h6, modifier = Modifier.padding(8.dp))
-    val boxModifier = Modifier.padding(8.dp)
+    val boxModifier = Modifier
+        .padding(8.dp)
         .background(Color.LightGray)
         .fillMaxWidth()
         .height(250.dp)
@@ -181,22 +195,28 @@ fun TypeOfBoxs() {
     )
     Box(modifier = boxModifier) {
         Card(
-            backgroundColor = green700, elevation = 4.dp, modifier = Modifier.size(
-                200
-                    .dp
-            ).align(Alignment.TopStart)
+            backgroundColor = green700, elevation = 4.dp, modifier = Modifier
+                .size(
+                    200
+                        .dp
+                )
+                .align(Alignment.TopStart)
         ) {}
         Card(
-            backgroundColor = green500, elevation = 4.dp, modifier = Modifier.size(
-                150
-                    .dp
-            ).align(Alignment.Center)
+            backgroundColor = green500, elevation = 4.dp, modifier = Modifier
+                .size(
+                    150
+                        .dp
+                )
+                .align(Alignment.Center)
         ) {}
         Card(
-            backgroundColor = green200, elevation = 4.dp, modifier = Modifier.size(
-                100
-                    .dp
-            ).align(Alignment.BottomEnd)
+            backgroundColor = green200, elevation = 4.dp, modifier = Modifier
+                .size(
+                    100
+                        .dp
+                )
+                .align(Alignment.BottomEnd)
         ) {}
     }
 }
@@ -206,7 +226,9 @@ fun ConstraintLayouts() {
     Text(text = "ConstraintLayouts", style = typography.h6, modifier = Modifier.padding(8.dp))
 
     ConstraintLayout(
-        modifier = Modifier.background(Color.LightGray).fillMaxWidth()
+        modifier = Modifier
+            .background(Color.LightGray)
+            .fillMaxWidth()
             .height(150.dp)
     ) {
         //refs creations

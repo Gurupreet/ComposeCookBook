@@ -53,8 +53,10 @@ fun YoutubeHome() {
                     Image(
                         painter = painterResource(id = R.drawable.p3),
                         contentDescription = null,
-                        modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-                            .size(24.dp).clip(CircleShape)
+                        modifier = Modifier
+                            .padding(vertical = 4.dp, horizontal = 8.dp)
+                            .size(24.dp)
+                            .clip(CircleShape)
                     )
                 }
             )

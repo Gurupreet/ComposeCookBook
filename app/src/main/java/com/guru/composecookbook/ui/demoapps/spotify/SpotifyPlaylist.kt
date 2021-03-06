@@ -56,10 +56,12 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
     // Randomly pick height for album but remember the same height for that album.
     val randomHeight = remember(album.id) { Random.nextInt(180, 380).dp }
 
-    Card(elevation = 8.dp, modifier = Modifier.padding(6.dp).clickable(onClick = {
-        //Disclaimer: We should pass event top level and there should startActivity
-        context.startActivity(SpotifyDetailActivity.newIntent(context, album))
-    })) {
+    Card(elevation = 8.dp, modifier = Modifier
+        .padding(6.dp)
+        .clickable(onClick = {
+            //Disclaimer: We should pass event top level and there should startActivity
+            context.startActivity(SpotifyDetailActivity.newIntent(context, album))
+        })) {
         Column {
             Image(
                 painter = painterResource(album.imageId),

@@ -36,14 +36,18 @@ fun TextInputs() {
     TextField(
         value = text,
         onValueChange = { newValue -> text = newValue },
-        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         label = { Text("label") },
         placeholder = { Text("placeholder") },
     )
 
     OutlinedTextField(
         value = text,
-        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         label = { Text(text = "Password") },
         placeholder = { Text(text = "12334444") },
         visualTransformation = PasswordVisualTransformation(),
@@ -56,7 +60,9 @@ fun TextInputs() {
     OutlinedTextField(
         value = text,
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
-        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },
         placeholder = { Text(text = "Your email") },
@@ -68,7 +74,9 @@ fun TextInputs() {
         value = text,
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
         trailingIcon = { Icon(imageVector = Icons.Default.Edit, contentDescription = null) },
-        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         label = { Text(text = "Email address") },
         placeholder = { Text(text = "Your email") },
@@ -79,7 +87,9 @@ fun TextInputs() {
 
     var numberText by remember { mutableStateOf(TextFieldValue("")) }
     OutlinedTextField(value = numberText,
-        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         label = { Text(text = "Phone number") },
         placeholder = { Text(text = "88888888") },

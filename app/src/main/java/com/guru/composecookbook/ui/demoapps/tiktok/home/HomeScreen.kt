@@ -46,7 +46,7 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
         remember {
-            PagerState( 0, 0, movies.size - 1)
+            PagerState(0, 0, movies.size - 1)
         }
     }
     Pager(
@@ -71,9 +71,11 @@ fun PagerItem(
 ) {
     val context = LocalContext.current
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .clip(RoundedCornerShape(4.dp))) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .clip(RoundedCornerShape(4.dp))
+    ) {
         TikTokPlayer(context, videos[album.id % 3], selected)
         VideoOverLayUI(album, tiktokInteractionEvents)
     }
