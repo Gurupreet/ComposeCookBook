@@ -8,6 +8,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,8 +26,10 @@ import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.utils.SubtitleText
+import kotlin.math.roundToInt
 import kotlin.random.Random
 import android.graphics.Color as AndroidColor
 
@@ -34,14 +37,15 @@ import android.graphics.Color as AndroidColor
 fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
-    //TODO fix drag
     SubtitleText(subtitle = "Color picker with draggable")
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
     var activeColor by remember { mutableStateOf<Color>(Red) }
-    var dragPosition by remember { mutableStateOf(0f) }
-    val dragDp = with(LocalDensity.current) { dragPosition.toDp() - 12.dp } // icon offset width
 
+    val max = screenWidth - 16.dp
+    val min = 0.dp
+    val (minPx, maxPx) = with(LocalDensity.current) { min.toPx() to max.toPx() }
+    val dragOffset = remember { mutableStateOf(0f) }
     Box(modifier = Modifier.padding(8.dp)) {
         //slider
         Spacer(
@@ -53,8 +57,8 @@ fun ColorPicker(
                 .align(Alignment.Center)
                 .pointerInput("painter") {
                     detectTapGestures { offset ->
-                        dragPosition = offset.x
-                        activeColor = getActiveColor(dragPosition, screenWidthInPx)
+                        dragOffset.value = offset.x
+                        activeColor = getActiveColor(dragOffset.value, screenWidthInPx)
                         onColorSelected.invoke(activeColor)
                     }
                 }
@@ -65,23 +69,19 @@ fun ColorPicker(
             tint = activeColor,
             contentDescription = null,
             modifier = Modifier
-                .offset(x = dragDp)
+                .offset { IntOffset(dragOffset.value.roundToInt(), 0) }
                 .border(
                     border = BorderStroke(4.dp, MaterialTheme.colors.onSurface),
                     shape = CircleShape
+                ).draggable(
+                    orientation = Orientation.Horizontal,
+                    state = rememberDraggableState { delta ->
+                        val newValue = dragOffset.value + delta
+                        dragOffset.value = newValue.coerceIn(minPx, maxPx)
+                        activeColor = getActiveColor(dragOffset.value, screenWidthInPx)
+                        onColorSelected.invoke(activeColor)
+                    }
                 )
-//                .draggable(
-//                    orientation = Orientation.Horizontal,
-//                    onDragStarted = { dragDistance ->
-//                        if (dragPosition == 0f) {
-//                            dragPosition = dragDistance.x
-//                        }
-//                        dragPosition = (dragDistance.x).coerceIn(0f,
-//                            screenWidthInPx)
-//                        activeColor = getActiveColor(dragPosition, screenWidthInPx)
-//                        onColorSelected.invoke(activeColor)
-//                    }
-//                )
         )
     }
 }
