@@ -1,12 +1,27 @@
 package com.guru.composecookbook.ui.demoapps.datingapp.components
 
+import android.util.Log
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.consumePositionChange
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.ui.demoapps.datingapp.SwipeResult
+import kotlinx.coroutines.launch
+import kotlin.math.abs
 
 @Composable
 fun DraggableCard(
@@ -15,71 +30,79 @@ fun DraggableCard(
     onSwiped: (Any, Any) -> Unit,
     content: @Composable () -> Unit
 ) {
-    //TODO update drag apis
-//    val configuration = LocalConfiguration.current
-//    val screenWidth = configuration.screenWidthDp.dp
-//    val swipeXLeft = -(screenWidth.value * 3.2).toFloat()
-//    val swipeXRight = (screenWidth.value * 3.2).toFloat()
-//    val swipeYTop = -400f
-//    val swipeYBottom = 400f
-//    val swipeX = animatedFloat(initVal = 0f)
-//    val swipeY = animatedFloat(initVal = 0f)
-//    val tweenTime = 400
-//
-//    val dragObserver = object : DragObserver {
-//
-//        override fun onStart(downPosition: Offset) {
-//            swipeX.setBounds(swipeXLeft, swipeXRight)
-//            swipeY.setBounds(swipeYTop, swipeYBottom)
-//            super.onStart(downPosition)
-//        }
-//
-//        override fun onStop(velocity: Offset) {
-//            // if it's swiped 1/3rd
-//            if (abs(swipeX.targetValue) < abs(swipeXRight) / 4) {
-//                swipeX.animateTo(0f, tween(tweenTime))
-//            } else {
-//                if (swipeX.targetValue > 0) {
-//                    swipeX.animateTo(swipeXRight, tween(tweenTime))
-//                } else {
-//                    swipeX.animateTo(swipeXLeft, tween(tweenTime))
-//                }
-//            }
-//
-//            swipeY.animateTo(0f, tween(tweenTime))
-//            super.onStop(velocity)
-//        }
-//
-//
-//        override fun onCancel() {
-//            swipeX.animateTo(0f, tween(tweenTime))
-//            swipeX.animateTo(0f, tween(tweenTime))
-//            super.onCancel()
-//        }
-//
-//        override fun onDrag(dragDistance: Offset): Offset {
-//            swipeX.animateTo(swipeX.targetValue + dragDistance.x)
-//            swipeY.animateTo(swipeY.targetValue + dragDistance.y)
-//            return super.onDrag(dragDistance)
-//        }
+    val configuration = LocalConfiguration.current
+    val screenWidth = configuration.screenWidthDp.dp
+    val swipeXLeft = -(screenWidth.value * 3.2).toFloat()
+    val swipeXRight = (screenWidth.value * 3.2).toFloat()
+    val swipeYTop = -1000f
+    val swipeYBottom = 1000f
+    val swipeX = remember { Animatable(0f) }
+    val swipeY = remember { Animatable(0f) }
+    swipeX.updateBounds(swipeXLeft, swipeXRight)
+    swipeY.updateBounds(swipeYTop, swipeYBottom)
+    val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
+    val graphicLayer = Modifier.graphicsLayer(
+            translationX = swipeX.value,
+            translationY = swipeY.value,
+            rotationZ = rotationFraction,
+        )
+    if (abs(swipeX.value) < swipeXRight - 50f) {
+        Card(
+            elevation = 16.dp,
+            modifier = modifier.dragContent(
+                swipeX = swipeX,
+                swipeY = swipeY,
+                maxX =  swipeXRight,
+                onSwiped =  { _, _ ->
+                }
+            ).then(graphicLayer).clip(RoundedCornerShape(16.dp))
+        ) {
+            content()
+        }
+    } else {
+        // on swiped
+        val swipeResult = if (swipeX.value > 0) SwipeResult.ACCEPTED else SwipeResult.REJECTED
+        onSwiped(swipeResult, item)
 //    }
-//
-//    val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
-//
-//    if (abs(swipeX.value) < swipeXRight - 50f) {
-//        Card(
-//            elevation = 16.dp,
-//            modifier = modifier.rawDragGestureFilter(dragObserver).graphicsLayer(
-//                translationX = swipeX.value,
-//                translationY = swipeY.value,
-//                rotationZ = rotationFraction,
-//            ).clip(RoundedCornerShape(16.dp))
-//        ) {
-//            content()
-//        }
-//    } else {
-//        // on swiped
-//        val swipeResult = if (swipeX.value > 0) SwipeResult.ACCEPTED else SwipeResult.REJECTED
-//        onSwiped(swipeResult, item)
-//    }
+
+    }
+}
+fun Modifier.dragContent(
+    swipeX: Animatable<Float, AnimationVector1D>,
+    swipeY: Animatable<Float, AnimationVector1D>,
+    maxX: Float,
+    onSwiped: (Any, Any) -> Unit
+): Modifier = composed {
+    val coroutineScope = rememberCoroutineScope()
+    pointerInput(Unit) {
+        this.detectDragGestures(
+            onDragCancel = {
+                coroutineScope.launch {
+                    swipeX.animateTo(0f)
+                    swipeY.animateTo(0f)
+                }
+            },
+            onDragEnd = {
+                coroutineScope.launch {
+                    // if it's swiped 1/4th
+                    if (abs(swipeX.targetValue) < abs(maxX) / 4) {
+                        swipeX.animateTo(0f, tween(400))
+                        swipeY.animateTo(0f, tween(400))
+                    } else {
+                        if (swipeX.targetValue > 0) {
+                            swipeX.animateTo(maxX, tween(400))
+                        } else {
+                            swipeX.animateTo(-maxX, tween(400))
+                        }
+                    }
+                }
+            }
+        ) { change, dragAmount ->
+            change.consumePositionChange()
+            coroutineScope.launch {
+                swipeX.animateTo(swipeX.targetValue + dragAmount.x)
+               // swipeY.animateTo(swipeY.targetValue + dragAmount.y)
+            }
+        }
+    }
 }
