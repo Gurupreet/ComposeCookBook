@@ -37,7 +37,6 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun AnimatedLists() {
     val tweets = DemoDataProvider.tweetList
     val animations = listOf("Fade", "Scale", "Slide", "Fade+Slide", "Slide up", "RotateX")
-    //TODO optimise dispose methods
     Column {
         var animationIndex by remember { mutableStateOf(0) }
         VerticalGrid(columns = 3, modifier = Modifier.padding(vertical = 12.dp)) {

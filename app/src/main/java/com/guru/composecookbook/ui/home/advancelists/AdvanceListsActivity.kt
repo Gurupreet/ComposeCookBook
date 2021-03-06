@@ -25,6 +25,7 @@ class AdvanceListsActivity : ComponentActivity() {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
     }
 
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -59,6 +60,7 @@ class AdvanceListsActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun AdvanceListContent() {
     var selectedIndex by remember { mutableStateOf(0) }
