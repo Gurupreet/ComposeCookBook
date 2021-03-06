@@ -75,7 +75,7 @@ fun ShimmerList() {
                 onClick = { shimmerAnimationType = ShimmerAnimationType.FADE },
                 colors = buttonColors(ShimmerAnimationType.FADE),
                 modifier = Modifier
-                    .preferredWidth(200.dp)
+                    .width(200.dp)
                     .padding(8.dp)
             ) {
                 Text(text = "Fading")
@@ -84,7 +84,7 @@ fun ShimmerList() {
                 onClick = { shimmerAnimationType = ShimmerAnimationType.TRANSLATE },
                 colors = buttonColors(ShimmerAnimationType.TRANSLATE),
                 modifier = Modifier
-                    .preferredWidth(200.dp)
+                    .width(200.dp)
                     .padding(8.dp)
             ) {
                 Text(text = "Translating")
@@ -100,7 +100,7 @@ fun ShimmerList() {
                 onClick = { shimmerAnimationType = ShimmerAnimationType.FADETRANSLATE },
                 colors = buttonColors(ShimmerAnimationType.FADETRANSLATE),
                 modifier = Modifier
-                    .preferredWidth(200.dp)
+                    .width(200.dp)
                     .padding(8.dp)
             ) {
                 Text(text = "Fade+Translate")
@@ -109,7 +109,7 @@ fun ShimmerList() {
                 onClick = { shimmerAnimationType = ShimmerAnimationType.VERTICAL },
                 colors = buttonColors(ShimmerAnimationType.VERTICAL),
                 modifier = Modifier
-                    .preferredWidth(200.dp)
+                    .width(200.dp)
                     .padding(8.dp)
             ) {
                 Text(text = "Vertical")
@@ -130,28 +130,28 @@ fun ShimmerItem(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolean) 
     Row(modifier = Modifier.padding(16.dp)) {
         Spacer(
             modifier = Modifier
-                .preferredSize(100.dp)
+                .size(100.dp)
                 .background(brush = brush)
         )
         Column(modifier = Modifier.padding(8.dp)) {
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .preferredHeight(30.dp)
+                    .height(30.dp)
                     .padding(8.dp)
                     .background(brush = brush)
             )
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .preferredHeight(30.dp)
+                    .height(30.dp)
                     .padding(8.dp)
                     .background(brush = brush)
             )
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .preferredHeight(30.dp)
+                    .height(30.dp)
                     .padding(8.dp)
                     .background(brush = brush)
             )
@@ -167,7 +167,7 @@ fun ShimmerItemBig(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolea
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .preferredSize(200.dp)
+                .size(200.dp)
                 .background(
                     brush = brush
                 )
@@ -176,14 +176,14 @@ fun ShimmerItemBig(lists: List<Color>, floatAnim: Float = 0f, isVertical: Boolea
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .preferredHeight(30.dp)
+                .height(30.dp)
                 .padding(vertical = 8.dp)
                 .background(brush = brush)
         )
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .preferredHeight(30.dp)
+                .height(30.dp)
                 .padding(vertical = 8.dp)
                 .background(brush = brush)
         )

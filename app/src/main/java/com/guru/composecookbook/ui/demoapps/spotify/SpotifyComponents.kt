@@ -15,11 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,7 +49,7 @@ fun SpotifyHomeGridItem(album: Album) {
             Image(
                 painter = painterResource(id = album.imageId),
                 contentDescription = null,
-                modifier = Modifier.preferredSize(55.dp),
+                modifier = Modifier.size(55.dp),
                 contentScale = ContentScale.Crop
             )
             Text(
@@ -66,7 +67,7 @@ fun SpotifyLaneItem(album: Album) {
     val album = remember { album }
     Column(
         modifier =
-        Modifier.preferredWidth(180.dp).padding(8.dp)
+        Modifier.width(180.dp).padding(8.dp)
             .clickable(
                 onClick = {
                     //Disclaimer: We should pass event top level and there should startActivity
@@ -75,8 +76,8 @@ fun SpotifyLaneItem(album: Album) {
     ) {
         Image(
             painter = painterResource(id = album.imageId),
-            modifier = Modifier.preferredWidth(180.dp)
-                .preferredHeight(160.dp),
+            modifier = Modifier.width(180.dp)
+                .height(160.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -93,8 +94,7 @@ fun SpotifyLaneItem(album: Album) {
 @Composable
 fun SpotifySearchGridItem(album: Album) {
     val context = LocalContext.current
-    val imageBitmap =
-        imageFromResource(res = context.resources, resId = album.imageId).asAndroidBitmap()
+    val imageBitmap = ImageBitmap.imageResource(context.resources, album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(imageBitmap) }
     val dominantGradient =
         remember { listOf(Color(swatch.rgb), Color(swatch.rgb).copy(alpha = 0.6f)) }
@@ -105,7 +105,7 @@ fun SpotifySearchGridItem(album: Album) {
                 //Disclaimer: We should pass event top level and there should startActivity
                 context.startActivity(SpotifyDetailActivity.newIntent(context, album))
             })
-            .preferredHeight(100.dp)
+            .height(100.dp)
             .clip(RoundedCornerShape(8.dp))
             .horizontalGradientBackground(dominantGradient),
         horizontalArrangement = Arrangement.SpaceBetween
@@ -119,7 +119,7 @@ fun SpotifySearchGridItem(album: Album) {
             painter = painterResource(id = album.imageId),
             contentScale = ContentScale.Crop,
             contentDescription = null,
-            modifier = Modifier.preferredSize(70.dp)
+            modifier = Modifier.size(70.dp)
                 .align(Alignment.Bottom)
                 .graphicsLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
         )

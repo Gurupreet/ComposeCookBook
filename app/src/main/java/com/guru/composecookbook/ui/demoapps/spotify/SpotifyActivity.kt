@@ -54,7 +54,7 @@ fun SpotifyAppContent() {
     val spotifyNavItemState = rememberSaveable { mutableStateOf(SpotifyNavType.HOME) }
     Scaffold(
         bottomBar = { SpotifyBottomNavigation(spotifyNavItemState) },
-        bodyContent = { SpotifyBodyContent(spotifyNavItemState.value) }
+        content = { SpotifyBodyContent(spotifyNavItemState.value) }
     )
 }
 

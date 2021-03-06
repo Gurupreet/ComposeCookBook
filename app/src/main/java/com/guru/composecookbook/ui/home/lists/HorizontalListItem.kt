@@ -24,7 +24,7 @@ fun HorizontalListItem(
 ) {
     Card(
         shape = MaterialTheme.shapes.medium,
-        modifier = modifier.preferredSize(280.dp, 200.dp)
+        modifier = modifier.size(280.dp, 200.dp)
     ) {
         Column(modifier = Modifier.clickable(onClick = { })) {
             Image(
@@ -32,7 +32,7 @@ fun HorizontalListItem(
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier
-                    .preferredHeight(100.dp)
+                    .height(100.dp)
                     .fillMaxWidth()
             )
             Column(modifier = Modifier.padding(16.dp)) {

@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -14,10 +15,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalAnimationClock
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -30,9 +29,8 @@ import com.guru.composecookbook.ui.home.carousel.PagerState
 @Composable
 fun OnBoardingScreen1(onSkip: () -> Unit) {
     val pagerState: PagerState = run {
-        val clock = LocalAnimationClock.current
-        remember(clock) {
-            PagerState(clock, 0, 0, onboardingList.size - 1)
+        remember {
+            PagerState( 0, 0, onboardingList.size - 1)
         }
     }
     Scaffold {

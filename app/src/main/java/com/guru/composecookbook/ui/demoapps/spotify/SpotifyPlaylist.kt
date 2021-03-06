@@ -34,7 +34,7 @@ fun SpotifyPlayList() {
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
 
     val context = LocalContext.current
-    rememberScrollState(0f)
+    rememberScrollState(0)
     LazyColumn(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
         // use `item` for separate elements like headers
         // and `items` for lists of identical elements

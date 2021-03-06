@@ -30,7 +30,7 @@ fun TextInputs() {
 //    CoreTextField(
 //        value = text,
 //        onValueChange = { newValue -> text = newValue },
-//        modifier = Modifier.padding(8.dp).preferredSize(0.dp),
+//        modifier = Modifier.padding(8.dp).size(0.dp),
 //        cursorColor = Color.Magenta
 //    )
     TextField(
@@ -38,7 +38,7 @@ fun TextInputs() {
         onValueChange = { newValue -> text = newValue },
         modifier = Modifier.padding(8.dp).fillMaxWidth(),
         label = { Text("label") },
-        placeholder = { Text("placeholder") }
+        placeholder = { Text("placeholder") },
     )
 
     OutlinedTextField(

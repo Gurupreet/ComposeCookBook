@@ -4,8 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -43,7 +43,7 @@ fun YoutubeListItem(item: Tweet) {
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .preferredHeight(200.dp)
+                .height(200.dp)
                 .constrainAs(image) {
                     linkTo(
                         start = parent.start,
@@ -55,7 +55,7 @@ fun YoutubeListItem(item: Tweet) {
         Image(
             painter = painterResource(id = R.drawable.p3),
             contentDescription = null,
-            modifier = Modifier.preferredSize(32.dp).clip(CircleShape).constrainAs(authorImage) {
+            modifier = Modifier.size(32.dp).clip(CircleShape).constrainAs(authorImage) {
                 start.linkTo(parent.start, margin = 12.dp)
                 top.linkTo(image.bottom, margin = 16.dp)
                 end.linkTo(title.start)

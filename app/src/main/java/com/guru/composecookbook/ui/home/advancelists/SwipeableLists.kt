@@ -2,16 +2,15 @@ package com.guru.composecookbook.ui.home.advancelists
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animatedFloat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Delete
@@ -23,19 +22,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.gesture.Direction
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.swipeGesture
+import kotlin.math.roundToInt
 
+@ExperimentalMaterialApi
 @Composable
 fun SwipeableLists() {
     val albums by mutableStateOf(SpotifyDataProvider.albums)
@@ -44,13 +44,14 @@ fun SwipeableLists() {
             items = albums,
             itemContent = { index, album ->
                 SwipeableListItem(index, album) { index ->
-                    //TODO On Swiped
+                   
                 }
             })
     }
 }
 
 
+@ExperimentalMaterialApi
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
@@ -67,18 +68,33 @@ fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
     }
 }
 
+enum class SwipeState {
+    SWIPED, VISIBLE
+}
+
+@ExperimentalMaterialApi
 @Composable
 fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
-    val itemSwipe = animatedFloat(0f)
+    val swipeableState = rememberSwipeableState(
+        initialValue = SwipeState.VISIBLE,
+        confirmStateChange = {
+            if (it == SwipeState.SWIPED) {
+                onItemSwiped.invoke(index)
+            }
+            true
+        }
+    )
+    val swipeAnchors = mapOf(0f to SwipeState.VISIBLE, -1000f to SwipeState.SWIPED)
 
     Row(
         modifier = Modifier
-            .swipeGesture(
-                swipeValue = itemSwipe,
-                swipeDirection = Direction.LEFT,
-                maxSwipe = 1200f,
-                onItemSwiped = { onItemSwiped.invoke(index) }
+            .swipeable(
+                state = swipeableState,
+                anchors = swipeAnchors,
+                thresholds = { _, _ -> FractionalThreshold(0.5f) },
+                orientation = Orientation.Horizontal
             )
+            .offset { IntOffset(swipeableState.offset.value.roundToInt(), 0) }
             .background(MaterialTheme.colors.background),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -86,9 +102,13 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
             painter = painterResource(id = album.imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.preferredSize(55.dp).padding(4.dp)
+            modifier = Modifier
+                .size(55.dp)
+                .padding(4.dp)
         )
-        Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
+        Column(modifier = Modifier
+            .padding(horizontal = 4.dp)
+            .weight(1f)) {
             Text(
                 text = album.song,
                 style = typography.h6.copy(fontSize = 16.sp),
@@ -106,7 +126,9 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
                 imageVector = Icons.Default.Favorite,
                 contentDescription = null,
                 tint = MaterialTheme.colors.primaryVariant,
-                modifier = Modifier.padding(4.dp).preferredSize(20.dp)
+                modifier = Modifier
+                    .padding(4.dp)
+                    .size(20.dp)
             )
         }
         Icon(

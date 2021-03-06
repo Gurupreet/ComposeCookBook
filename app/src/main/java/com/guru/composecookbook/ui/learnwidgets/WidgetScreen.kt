@@ -27,7 +27,7 @@ fun WidgetScreen() {
                 elevation = 8.dp
             )
         },
-        bodyContent = {
+        content = {
             WidgetScreenContent()
         }
     )

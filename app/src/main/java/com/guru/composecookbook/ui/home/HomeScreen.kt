@@ -58,7 +58,7 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
                 },
             )
         },
-        bodyContent = {
+        content = {
             HomeScreenContent(appThemeState.value.darkTheme, showMenu) { newPalletSelected ->
                 // Events can be and should be passed to as upper layer as possible here
                 // we are just passing to till HomeScreen.

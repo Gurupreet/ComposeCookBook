@@ -86,7 +86,7 @@ fun GmailHome(navController: NavHostController) {
         drawerBackgroundColor = MaterialTheme.colors.background,
         drawerContentColor = MaterialTheme.colors.onBackground,
         scaffoldState = scaffoldState,
-        bodyContent = {
+        content = {
             GmailContent(fabExpandState, scaffoldState, navController, showUserDialog)
         },
         bottomBar = {
@@ -103,7 +103,6 @@ fun GmailHome(navController: NavHostController) {
                     },
                     selected = true,
                     label = { Text("Mail") },
-                    alwaysShowLabels = true
                 )
 
 
@@ -118,7 +117,6 @@ fun GmailHome(navController: NavHostController) {
                     },
                     selected = true,
                     label = { Text("Meet") },
-                    alwaysShowLabels = true
                 )
 
 
@@ -132,7 +130,7 @@ fun GmailHome(navController: NavHostController) {
 @Composable
 fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) {
 
-    Box(modifier = Modifier.preferredSize(36.dp)) {
+    Box(modifier = Modifier.size(36.dp)) {
         Icon(
             imageVector = icon,
             modifier = modifier.align(
@@ -152,7 +150,7 @@ fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) 
                     .clip(CircleShape)
                     .background(Color.Red)
                     .align(Alignment.TopEnd)
-                    .preferredSize(16.dp)
+                    .size(16.dp)
             )
         }
     }
@@ -169,7 +167,7 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
         },
         modifier = Modifier
             .padding(16.dp)
-            .preferredHeight(48.dp)
+            .height(48.dp)
             .widthIn(min = 48.dp),
         backgroundColor = MaterialTheme.colors.surface,
         contentColor = MaterialTheme.colors.primary
@@ -260,7 +258,7 @@ fun GmailContent(
         LazyColumn(state = lazyListState) {
 
             item {
-                Spacer(modifier = Modifier.preferredHeight(72.dp))
+                Spacer(modifier = Modifier.height(72.dp))
             }
 
             items(tweets) {
@@ -447,7 +445,7 @@ fun GmailUserEmail(imageId: Int, name: String, email: String, badgeCount: Int) {
             painter = painterResource(id = imageId),
             contentDescription = null,
             modifier = Modifier
-                .preferredSize(32.dp)
+                .size(32.dp)
                 .clip(CircleShape)
                 .clickable(onClick = {
 

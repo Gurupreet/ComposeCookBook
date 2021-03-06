@@ -76,13 +76,13 @@ fun MovieWatchlistItem(
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .preferredHeight(280.dp),
+                .height(280.dp),
             contentScale = ContentScale.Crop
         )
         Spacer(//overlay
             modifier = Modifier
                 .fillMaxWidth()
-                .preferredHeight(280.dp)
+                .height(280.dp)
                 .background(Color.Black.copy(alpha = 0.1f))
         )
         Text(

@@ -16,9 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,16 +37,18 @@ import com.guru.composecookbook.ui.utils.verticalGradientBackground
 
 @Composable
 fun SpotifyDetailScreen(album: Album) {
-    val scrollState = rememberScrollState(0f)
+    val scrollState = rememberScrollState(0)
     val context = LocalContext.current
-    val image = imageFromResource(res = context.resources, resId = album.imageId).asAndroidBitmap()
+    val image = ImageBitmap.imageResource(context.resources, id = album.imageId).asAndroidBitmap()
     val swatch = remember(album.id) { generateDominantColorState(image) }
     val dominantColors = listOf(Color(swatch.rgb), MaterialTheme.colors.surface)
     val dominantGradient = remember { dominantColors }
     val surfaceGradient = SpotifyDataProvider
         .spotifySurfaceGradient(isSystemInDarkTheme()).asReversed()
 
-    Box(modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantGradient)) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .verticalGradientBackground(dominantGradient)) {
         BoxTopSection(album = album, scrollState = scrollState)
         TopSectionOverlay(scrollState = scrollState)
         BottomScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
@@ -61,7 +64,7 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
         modifier = Modifier
             .fillMaxWidth()
             .horizontalGradientBackground(
-                if (Dp(scrollState.value) < 1080.dp)
+                if (Dp(scrollState.value.toFloat()) < 1080.dp)
                     listOf(Color.Transparent, Color.Transparent) else surfaceGradient
             )
             .padding(horizontal = 8.dp, vertical = 4.dp)
@@ -89,7 +92,8 @@ fun TopSectionOverlay(scrollState: ScrollState) {
     //slowly increase alpha till it reaches 1
     val dynamicAlpha = ((scrollState.value + 0.00f) / 1000).coerceIn(0f, 1f)
     Box(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .height(400.dp)
             .background(
                 MaterialTheme.colors.surface.copy(
@@ -124,7 +128,9 @@ fun SongListScrollingSection() {
 @Composable
 fun DownloadedRow() {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
@@ -149,7 +155,9 @@ fun ShuffleButton() {
     Button(
         onClick = {},
         colors = ButtonDefaults.buttonColors(backgroundColor = green700),
-        modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp, horizontal = 100.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 12.dp, horizontal = 100.dp)
             .clip(CircleShape),
     ) {
         Text(
@@ -164,17 +172,19 @@ fun ShuffleButton() {
 @Composable
 fun BoxTopSection(album: Album, scrollState: ScrollState) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Spacer(modifier = Modifier.height(100.dp).fillMaxWidth())
+        Spacer(modifier = Modifier
+            .height(100.dp)
+            .fillMaxWidth())
         //animate as scroll value increase but not fast so divide by random number 50
         val dynamicValue =
-            if (250.dp - Dp(scrollState.value / 50) < 10.dp) 10.dp //prevent going 0 cause crash
-            else 250.dp - Dp(scrollState.value / 20)
+            if (250.dp - Dp(scrollState.value / 50f) < 10.dp) 10.dp //prevent going 0 cause crash
+            else 250.dp - Dp(scrollState.value / 20f)
         val animateImageSize = animateDpAsState(dynamicValue).value
         Image(
             painter = painterResource(id = album.imageId),
             contentDescription = null,
             modifier = Modifier
-                .preferredSize(animateImageSize)
+                .size(animateImageSize)
                 .padding(8.dp)
         )
         Text(

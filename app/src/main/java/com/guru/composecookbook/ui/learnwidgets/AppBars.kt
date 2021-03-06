@@ -89,7 +89,7 @@ fun TopAppBarsDemo() {
                 painter = painterResource(id = R.drawable.p6),
                 contentDescription = null,
                 modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-                    .preferredSize(32.dp).clip(CircleShape)
+                    .size(32.dp).clip(CircleShape)
             )
         },
         actions = {

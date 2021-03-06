@@ -5,8 +5,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.layout.preferredWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -44,8 +44,8 @@ fun StoryListItem(post: Tweet) {
         if (post.id == 1) {
             Modifier
                 .padding(start = 8.dp, end = 8.dp, top = 8.dp)
-                .preferredHeight(60.dp)
-                .preferredWidth(60.dp)
+                .height(60.dp)
+                .width(60.dp)
                 .clip(CircleShape)
                 .border(
                     shape = CircleShape,
@@ -57,8 +57,8 @@ fun StoryListItem(post: Tweet) {
         } else {
             Modifier
                 .padding(start = 8.dp, end = 8.dp, top = 8.dp)
-                .preferredHeight(60.dp)
-                .preferredWidth(60.dp)
+                .height(60.dp)
+                .width(60.dp)
                 .clip(CircleShape)
                 .border(
                     shape = CircleShape,

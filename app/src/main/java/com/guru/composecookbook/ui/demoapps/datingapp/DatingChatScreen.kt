@@ -79,7 +79,7 @@ fun DatingChatItem(album: Album) {
         Row(modifier = Modifier.padding(12.dp)) {
             ImageWithChatDot(
                 imageId = album.imageId,
-                modifier = Modifier.preferredSize(50.dp),
+                modifier = Modifier.size(50.dp),
                 showDot = album.id % 3 == 0
             )
             Column(modifier = Modifier.weight(1f)) {
@@ -118,7 +118,7 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
                 imageVector = Icons.Default.Lens,
                 contentDescription = null,
                 tint = green500,
-                modifier = Modifier.preferredSize(14.dp).align(Alignment.BottomEnd)
+                modifier = Modifier.size(14.dp).align(Alignment.BottomEnd)
             )
         }
     } else {
@@ -135,8 +135,8 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
 fun MatchesImage(imageId: Int) {
     val modifier = Modifier
         .padding(start = 8.dp, end = 8.dp, top = 8.dp)
-        .preferredHeight(65.dp)
-        .preferredWidth(65.dp)
+        .height(65.dp)
+        .width(65.dp)
         .clip(CircleShape)
         .border(
             shape = CircleShape,

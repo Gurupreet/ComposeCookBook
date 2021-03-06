@@ -56,7 +56,7 @@ private fun InstagramLikesSection(post: Tweet) {
     ) {
         Image(
             painter = painterResource(id = post.authorImageId),
-            modifier = Modifier.preferredSize(20.dp).clip(CircleShape),
+            modifier = Modifier.size(20.dp).clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -77,7 +77,7 @@ private fun InstagramIconSection() {
             val tint = if (fav) Color.Red else MaterialTheme.colors.onBackground
             Icon(
                 imageVector = icon,
-                modifier = Modifier.preferredSize(44.dp),
+                modifier = Modifier.size(44.dp),
                 tint = tint,
                 contentDescription = null
             )
@@ -86,14 +86,14 @@ private fun InstagramIconSection() {
             Icon(
                 painter = painterResource(id = R.drawable.ic_speech_bubble),
                 contentDescription = null,
-                modifier = Modifier.preferredSize(44.dp)
+                modifier = Modifier.size(44.dp)
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_send),
                 contentDescription = null,
-                modifier = Modifier.preferredSize(44.dp)
+                modifier = Modifier.size(44.dp)
             )
         }
     }
@@ -107,7 +107,7 @@ private fun ProfileInfoSection(post: Tweet) {
     ) {
         Image(
             painter = painterResource(id = post.authorImageId),
-            modifier = Modifier.preferredSize(32.dp).clip(CircleShape),
+            modifier = Modifier.size(32.dp).clip(CircleShape),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -127,7 +127,7 @@ private fun InstagramImage(imageId: Int) {
     if (imageId != 0) {
         Image(
             painter = painterResource(id = imageId),
-            modifier = Modifier.fillMaxWidth().preferredHeight(450.dp),
+            modifier = Modifier.fillMaxWidth().height(450.dp),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )

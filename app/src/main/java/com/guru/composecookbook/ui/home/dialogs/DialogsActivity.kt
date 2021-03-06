@@ -65,7 +65,7 @@ fun DialogScreen(onBack: () -> Unit) {
 
             )
         },
-        bodyContent = {
+        content = {
             DialogsOptionList()
         }
     )

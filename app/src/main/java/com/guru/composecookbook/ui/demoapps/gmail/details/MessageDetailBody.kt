@@ -68,7 +68,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                     contentDescription = null,
                     modifier = Modifier
                         .padding(horizontal = 8.dp)
-                        .preferredSize(32.dp)
+                        .size(32.dp)
                         .clip(CircleShape)
                 )
 
@@ -148,7 +148,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
         item {
             AndroidView(
-                viewBlock = {
+                factory = {
                     WebView(it).apply {
                         loadDataWithBaseURL(null, sampleMessage, "text/html", "UTF-8", null)
                     }

@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.api.MovieApi
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.db.GenreDao
@@ -26,7 +27,7 @@ class MovieRepositoryImpl(
             emit(emptyList<Movie>())
         }
 
-    }.catch {
+    }.catch { e ->
         emit(emptyList<Movie>())
     }.flowOn(Dispatchers.IO)
 

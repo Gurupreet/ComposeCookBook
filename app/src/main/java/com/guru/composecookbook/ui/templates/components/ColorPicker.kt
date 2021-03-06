@@ -5,6 +5,7 @@ package com.guru.composecookbook.ui.templates.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.*
@@ -18,7 +19,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
@@ -34,6 +34,7 @@ import android.graphics.Color as AndroidColor
 fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
+    //TODO fix drag
     SubtitleText(subtitle = "Color picker with draggable")
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
@@ -69,19 +70,18 @@ fun ColorPicker(
                     border = BorderStroke(4.dp, MaterialTheme.colors.onSurface),
                     shape = CircleShape
                 )
-                .draggable(
-                    orientation = Orientation.Horizontal,
-                    onDragStarted = { dragStart ->
-                        if (dragPosition == 0f) {
-                            dragPosition = dragStart.x
-                        }
-                    },
-                    onDrag = { dragDistance ->
-                        dragPosition = (dragDistance + dragPosition).coerceIn(0f, screenWidthInPx)
-                        activeColor = getActiveColor(dragPosition, screenWidthInPx)
-                        onColorSelected.invoke(activeColor)
-                    }
-                )
+//                .draggable(
+//                    orientation = Orientation.Horizontal,
+//                    onDragStarted = { dragDistance ->
+//                        if (dragPosition == 0f) {
+//                            dragPosition = dragDistance.x
+//                        }
+//                        dragPosition = (dragDistance.x).coerceIn(0f,
+//                            screenWidthInPx)
+//                        activeColor = getActiveColor(dragPosition, screenWidthInPx)
+//                        onColorSelected.invoke(activeColor)
+//                    }
+//                )
         )
     }
 }

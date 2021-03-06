@@ -29,7 +29,7 @@ fun MyPhotosSection() {
     Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
     val imageModifier = Modifier
         .padding(vertical = 8.dp, horizontal = 4.dp)
-        .preferredSize(120.dp)
+        .size(120.dp)
         .clip(RoundedCornerShape(8.dp))
 
     Row(

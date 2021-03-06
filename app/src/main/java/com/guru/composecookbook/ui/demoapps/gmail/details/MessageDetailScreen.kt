@@ -45,7 +45,7 @@ fun MessageDetailScreen(navController: NavHostController) {
             )
         },
 
-        bodyContent = { MessageDetailBody() }
+        content = { MessageDetailBody() }
     )
 
 }

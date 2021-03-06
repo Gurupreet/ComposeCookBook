@@ -84,7 +84,7 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                 }
             )
         },
-        bodyContent = {
+        content = {
             when (listType) {
                 ListViewType.VERTICAL.name -> {
                     VerticalListView()

@@ -67,7 +67,7 @@ fun AnimationScreen() {
                 }
             )
         },
-        bodyContent = {
+        content = {
             AnimationScreenContent()
         }
     )

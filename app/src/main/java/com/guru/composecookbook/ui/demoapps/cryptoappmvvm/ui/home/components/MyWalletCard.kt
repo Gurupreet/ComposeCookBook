@@ -6,8 +6,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -41,7 +41,7 @@ fun MyWalletCard() {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
-            .preferredHeight(animateDpAsState(animateHeight).value)
+            .height(animateDpAsState(animateHeight).value)
             .alpha(animateFloatAsState(opacity).value)
             .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
             .horizontalGradientBackground(gradientBluePurple)
@@ -52,7 +52,7 @@ fun MyWalletCard() {
         Icon(
             painter = painterResource(id = R.drawable.ic_ethereum_brands),
             contentDescription = null,
-            modifier = Modifier.preferredSize(28.dp).alpha(0.7f).constrainAs(image) {
+            modifier = Modifier.size(28.dp).alpha(0.7f).constrainAs(image) {
                 start.linkTo(parent.start)
                 top.linkTo(title.bottom, margin = 8.dp)
             }
@@ -132,7 +132,7 @@ fun MyWalletCard() {
         Image(
             imageVector = Icons.Default.QrCodeScanner,
             contentDescription = null,
-            modifier = Modifier.preferredSize(250.dp)
+            modifier = Modifier.size(250.dp)
                 .alpha(animateFloatAsState(if (extended) 1f else 0f).value)
                 .constrainAs(scan) {
                     top.linkTo(receive.bottom, margin = 50.dp)

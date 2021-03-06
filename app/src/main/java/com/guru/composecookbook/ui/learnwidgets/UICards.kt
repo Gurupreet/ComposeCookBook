@@ -61,7 +61,7 @@ fun UICards() {
             Image(
                 painter = painterResource(id = R.drawable.p3),
                 contentDescription = null,
-                modifier = Modifier.preferredSize(60.dp)
+                modifier = Modifier.size(60.dp)
             )
             Text(text = item.title, modifier = Modifier.padding(16.dp))
         }
