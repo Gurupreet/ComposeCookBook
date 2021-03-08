@@ -14,7 +14,7 @@
 
 <div align="center">
     <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#december_16_2020">
-      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20alpha09-brightgreen" />
+      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20beta01-brightgreen" />
     </a>
   <a href = "https://github.com/Gurupreet/ComposeCookBook/network/">
     <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
@@ -60,9 +60,9 @@ CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI
 ![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif) | ![](https://media.giphy.com/media/tVXmwM2ryGlhCcf3Kl/giphy.gif)
 
 ### Advance lists and animations
-Shimmer Lists             | List Scroll Animations      |  Pull Refresh/Swipe List
-:-------------------------:|:-------------------------: | :-------------------------:
-![](https://media.giphy.com/media/VQof1yEEbEgcqgY7WW/giphy.gif)  |  ![](https://media.giphy.com/media/hhpnI1beJr6gRi4btK/giphy.gif) | In progres
+Shimmer Lists             | List Scroll Animations       
+:-------------------------:|:-------------------------: 
+![](https://media.giphy.com/media/VQof1yEEbEgcqgY7WW/giphy.gif)  |  ![](https://media.giphy.com/media/hhpnI1beJr6gRi4btK/giphy.gif)
 
 ## If this project helped you in any way feel free to show some love
 <a href="https://www.buymeacoffee.com/gurupreet" target="_blank">
