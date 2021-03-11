@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.*
+import kotlin.math.min
 import kotlin.random.Random
 
 val pieColors = listOf(green200, purple, tiktokBlue, tiktokRed, blue700, orange200)
@@ -153,7 +154,7 @@ fun LineChart(
         val scaleY = size.height / (ybounds.second - ybounds.first)
         val yMove = ybounds.first * scaleY
 
-        (0..x.value.toInt()).forEach { value ->
+        (0..min(yValues.size - 1, x.value.toInt())).forEach { value ->
             val x = value * scaleX
             val y = size.height - (yValues[value] * scaleY) + yMove
             if (value == 0) {
@@ -199,7 +200,7 @@ fun BarCharts(
         val scaleY = size.height / (ybounds.second - ybounds.first)
         val yMove = ybounds.first * scaleY
 
-        (0..x.value.toInt()).forEach { value ->
+        (0..min(yValues.size - 1, x.value.toInt())).forEach { value ->
             val x = value * scaleX
             val y = size.height - (yValues[value] * scaleY) + yMove
             drawBar(topLeft = Offset(x, y), width = barWidth, height = size.height - y, barColors)
@@ -227,8 +228,8 @@ fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
         val totalPieValue = pieValues.sum()
         var startAngle = 0f
 
-        (0..index.value.toInt()).forEach { index ->
-            var sliceAngle: Float = 360f * pieValues[index] / totalPieValue
+        (0..min(pieValues.size - 1, index.value.toInt())).forEach { index ->
+            val sliceAngle: Float = 360f * pieValues[index] / totalPieValue
             drawPieSlice(
                 color = pieColors[index],
                 size = size,
