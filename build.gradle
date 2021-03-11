@@ -22,12 +22,11 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         google()
         jcenter()
         mavenCentral()
-        maven {
-            url "https://oss.sonatype.org/content/repositories/snapshots"
-        }
+        maven { url 'https://jitpack.io' }
     }
     tasks.withType(JavaCompile) {
         options.compilerArgs << "-Xlint:deprecation"
