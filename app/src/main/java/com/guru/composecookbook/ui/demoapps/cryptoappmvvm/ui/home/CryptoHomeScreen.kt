@@ -28,11 +28,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemsIndexed
 import com.airbnb.lottie.LottieAnimationView
 import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.Models.CryptoHomeUIState
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.CryptoListItem
@@ -47,12 +50,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @Composable
 fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit = {}) {
     val viewModel: CryptoHomeViewModel = viewModel()
-    val uiState by viewModel.viewStateFlow.collectAsState()
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     val favCryptos by viewModel.favCryptoLiveData.observeAsState(emptyList())
     var showFavState by remember { mutableStateOf(false) }
     val listScrollState = rememberLazyListState()
-
+    val pagingItems = viewModel.getAllCryptos().collectAsLazyPagingItems()
     Scaffold(
         floatingActionButton = {
             CryptoFABButton(favCryptos.size) {
@@ -60,16 +62,18 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
             }
         },
     ) {
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .horizontalGradientBackground(surfaceGradient)) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .horizontalGradientBackground(surfaceGradient)
+        ) {
             MyWalletCard()
             ShowFavorites(
                 showFave = showFavState,
                 favCryptos = favCryptos,
                 onCryptoHomeInteractionEvents
             )
-            CryptoList(uiState, favCryptos, listScrollState, onCryptoHomeInteractionEvents)
+            CryptoList(pagingItems, favCryptos, listScrollState, onCryptoHomeInteractionEvents)
         }
     }
 }
@@ -148,46 +152,37 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
 
 @Composable
 fun CryptoList(
-    uiState: CryptoHomeUIState,
+    pagingItems: LazyPagingItems<Crypto>,
     favCryptos: List<Crypto>,
     listScrollState: LazyListState,
     onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
     val context = LocalContext.current
 
-    if (uiState.cryptos.isEmpty()) {
-        LottieLoadingView(context = context)
-    } else {
-        if (listScrollState.firstVisibleItemIndex >= uiState.cryptos.size - 10) {
-            onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.LoadMoreItems)
+    LazyColumn(state = listScrollState) {
+        itemsIndexed(pagingItems) { index, crypto ->
+            crypto?.let {
+                val isFav = favCryptos.contains(crypto)
+                CryptoListItem(
+                    crypto,
+                    isFav,
+                    onCryptoHomeInteractionEvents
+                )
+            }
         }
 
-        LazyColumn(state = listScrollState) {
-            itemsIndexed(
-                items = uiState.cryptos,
-                itemContent = { index: Int, crypto: Crypto ->
-                    val isFav = favCryptos.contains(crypto)
-                    if (index == uiState.cryptos.size - 1) {
-                        Column {
-                            CryptoListItem(
-                                crypto,
-                                isFav,
-                                onCryptoHomeInteractionEvents
-                            )
-                            LottieLoadingView(context = context)
-                        }
-                    } else {
-                        CryptoListItem(
-                            crypto,
-                            isFav,
-                            onCryptoHomeInteractionEvents
-                        )
-                    }
-                })
+        pagingItems.apply {
+            when {
+                loadState.refresh is LoadState.Loading -> item {
+                    LottieLoadingView(context = context)
+                }
+                loadState.append is LoadState.Loading -> {
+                    item { LottieLoadingView(context = context) }
+                }
+            }
         }
     }
-
-    //reload if first visible item is 10 positions away\
+    //reload if first visible item is 10 positions away
 }
 
 @Composable
@@ -198,9 +193,11 @@ fun LottieLoadingView(context: Context) {
             repeatCount = ValueAnimator.INFINITE
         }
     }
-    AndroidView({ lottieView }, modifier = Modifier
-        .fillMaxWidth()
-        .height(150.dp)) {
+    AndroidView(
+        { lottieView }, modifier = Modifier
+            .fillMaxWidth()
+            .height(150.dp)
+    ) {
         it.playAnimation()
     }
 }

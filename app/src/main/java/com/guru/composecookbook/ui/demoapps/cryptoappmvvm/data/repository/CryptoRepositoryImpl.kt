@@ -18,22 +18,18 @@ class CryptoRepositoryImpl(
 ) : CryptoRepository {
 
     @WorkerThread
-    override suspend fun getAllCryptos(page: Int) = flow {
+    override suspend fun getPageCryptos(page: Int, pageSize: Int): List<Crypto> {
         val response = cryptoApi.getAllCrypto(page)
-
-        if (response.isSuccessful && !response.body().isNullOrEmpty()) {
+        return if (response.isSuccessful && !response.body().isNullOrEmpty()) {
             val cryptoApiResponseList = response.body()
             val cryptoList = cryptoApiResponseList?.map { cryptoApiResponse ->
                 cryptoApiMapper.map(cryptoApiResponse)
             }
-            emit(cryptoList ?: emptyList<Crypto>())
+            cryptoList ?: emptyList()
         } else {
-            emit(emptyList<Crypto>())
+            emptyList()
         }
-
-    }.catch {
-        emit(emptyList<Crypto>())
-    }.flowOn(Dispatchers.IO)
+    }
 
     override suspend fun getFavourite(): LiveData<List<Crypto>> = cryptoDao.getFavCryptos()
 
