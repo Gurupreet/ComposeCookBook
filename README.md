@@ -14,7 +14,7 @@
 
 <div align="center">
     <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#december_16_2020">
-      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20beta01-brightgreen" />
+      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20beta02-brightgreen" />
     </a>
   <a href = "https://github.com/Gurupreet/ComposeCookBook/network/">
     <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
@@ -38,6 +38,8 @@ Jetpack Compose is Android’s modern toolkit for building native UI. It simplif
 
 ### Jetpack compose for Desktop:
 [Compose Spotify Desktop](https://github.com/Gurupreet/ComposeSpotifyDesktop)
+### FontAwesomeIcons in Compose:
+[FontAwesome Icon Library ](https://github.com/Gurupreet/FontAwesomeCompose)
 
 ## Screens
 List & Layouts             |  Widgets and building blocks| Animations | Theme
