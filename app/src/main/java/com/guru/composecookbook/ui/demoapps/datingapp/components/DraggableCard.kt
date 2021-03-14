@@ -79,31 +79,37 @@ fun Modifier.dragContent(
     pointerInput(Unit) {
         this.detectDragGestures(
             onDragCancel = {
-                coroutineScope.launch {
-                    swipeX.animateTo(0f)
-                    swipeY.animateTo(0f)
+                coroutineScope.apply {
+                    launch {  swipeX.animateTo(0f) }
+                    launch {  swipeY.animateTo(0f) }
                 }
             },
             onDragEnd = {
-                coroutineScope.launch {
+                coroutineScope.apply {
                     // if it's swiped 1/4th
                     if (abs(swipeX.targetValue) < abs(maxX) / 4) {
-                        swipeX.animateTo(0f, tween(400))
-                        swipeY.animateTo(0f, tween(400))
+                        launch {
+                            swipeX.animateTo(0f, tween(400))
+                        }
+                        launch {
+                            swipeY.animateTo(0f, tween(400))
+                        }
                     } else {
-                        if (swipeX.targetValue > 0) {
-                            swipeX.animateTo(maxX, tween(400))
-                        } else {
-                            swipeX.animateTo(-maxX, tween(400))
+                        launch {
+                            if (swipeX.targetValue > 0) {
+                                swipeX.animateTo(maxX, tween(400))
+                            } else {
+                                swipeX.animateTo(-maxX, tween(400))
+                            }
                         }
                     }
                 }
             }
         ) { change, dragAmount ->
             change.consumePositionChange()
-            coroutineScope.launch {
-                swipeX.animateTo(swipeX.targetValue + dragAmount.x)
-                // swipeY.animateTo(swipeY.targetValue + dragAmount.y)
+            coroutineScope.apply {
+                launch { swipeX.animateTo(swipeX.targetValue + dragAmount.x) }
+                launch { swipeY.animateTo(swipeY.targetValue + dragAmount.y) }
             }
         }
     }

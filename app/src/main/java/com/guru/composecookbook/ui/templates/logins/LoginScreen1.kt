@@ -33,6 +33,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
 import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
 import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
+import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -97,9 +98,9 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 OutlinedTextField(
                     value = email,
                     leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Email,
-                            contentDescription = null
+                        FaIcon(
+                            faIcon = FaIcons.Envelope,
+                            tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
                         )
                     },
                     maxLines = 1,
@@ -121,15 +122,15 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 OutlinedTextField(
                     value = password,
                     leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.VpnKey,
-                            contentDescription = null
+                        FaIcon(
+                            faIcon = FaIcons.Key,
+                            tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
                         )
                     },
                     trailingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.RemoveRedEye,
-                            contentDescription = null,
+                        FaIcon(
+                            faIcon = FaIcons.EyeSlash,
+                            tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
                             modifier = Modifier.clickable(onClick = {
                                 passwordVisualTransformation =
                                     if (passwordVisualTransformation != VisualTransformation.None) {
@@ -206,7 +207,10 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 OutlinedButton(onClick = { }, modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)) {
-                    Icon(imageVector = Icons.Default.Facebook, contentDescription = "facebook")
+                    FaIcon(
+                        faIcon = FaIcons.Facebook,
+                        tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                    )
                     Text(
                         text = "Sign in with Facebook",
                         style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
@@ -222,7 +226,10 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 OutlinedButton(onClick = { }, modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)) {
-                    Icon(imageVector = Icons.Default.Email, contentDescription = "Gmail")
+                    FaIcon(
+                        faIcon = FaIcons.Google,
+                        tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                    )
                     Text(
                         text = "Sign in with Gmail",
                         style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),

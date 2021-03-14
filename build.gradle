@@ -1,9 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.0.0-beta01'
+        compose_version = '1.0.0-beta02'
         nav_compose_version = '1.0.0-alpha08'
-        kotlin_version = "1.4.30"
+        kotlin_version = "1.4.31"
     }
 
     repositories {
@@ -22,12 +22,11 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         google()
         jcenter()
         mavenCentral()
-        maven {
-            url "https://oss.sonatype.org/content/repositories/snapshots"
-        }
+        maven { url 'https://jitpack.io' }
     }
     tasks.withType(JavaCompile) {
         options.compilerArgs << "-Xlint:deprecation"

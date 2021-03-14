@@ -6,9 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -20,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.templates.logins.LottieLoadingView
+import com.guru.fontawesomecomposelib.FaIcon
 
 @Composable
 fun ComingSoon() {
@@ -84,10 +83,12 @@ fun RotateIcon(
     duration: Int,
     modifier: Modifier = Modifier
 ) {
-    Icon(
-        imageVector = asset,
-        contentDescription = null,
+    FaIcon(
+        faIcon = FaIcons.Play,
+        tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+        size = 20.dp,
         modifier = modifier
+            .padding(2.dp)
             .graphicsLayer(
                 rotationZ = animateFloatAsState(if (state) 0f else angle, tween(duration))
                     .value

@@ -25,6 +25,8 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.home.lists.FavIcon
+import com.guru.fontawesomecomposelib.FaIcon
 
 @Composable
 fun InstagramListItem(post: Tweet) {
@@ -77,28 +79,18 @@ private fun InstagramIconSection() {
     Row {
         var fav by remember { mutableStateOf(false) }
         IconToggleButton(checked = fav, onCheckedChange = { fav = it }) {
-            val icon = if (fav) Icons.Default.Favorite else Icons.Default.FavoriteBorder
+            val icon = if (fav) FaIcons.Heart else FaIcons.HeartRegular
             val tint = if (fav) Color.Red else MaterialTheme.colors.onBackground
-            Icon(
-                imageVector = icon,
-                modifier = Modifier.size(44.dp),
+            FaIcon(
+                faIcon = icon,
                 tint = tint,
-                contentDescription = null
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_speech_bubble),
-                contentDescription = null,
-                modifier = Modifier.size(44.dp)
-            )
+           FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colors.onSurface)
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_send),
-                contentDescription = null,
-                modifier = Modifier.size(44.dp)
-            )
+            FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colors.onSurface)
         }
     }
 }
