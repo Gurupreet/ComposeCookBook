@@ -115,9 +115,11 @@ fun BottomNavigationContent(
     var animate by remember { mutableStateOf(false) }
     BottomNavigation(modifier = modifier) {
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 22.dp, tint = LocalContentColor
-                .current.copy(alpha =
-            LocalContentAlpha.current)) },
+            icon = { FaIcon(
+                        faIcon = FaIcons.Home,
+                        tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                    )
+               },
             selected = homeScreenState.value == BottomNavType.HOME,
             onClick = {
                 homeScreenState.value = BottomNavType.HOME
@@ -126,7 +128,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.Tools, size = 22.dp, tint = LocalContentColor
+            icon = { FaIcon(faIcon = FaIcons.Tools, tint = LocalContentColor
                 .current.copy(alpha =
             LocalContentAlpha.current)) },
             selected = homeScreenState.value == BottomNavType.WIDGETS,
@@ -153,7 +155,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_animation)) }
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.LaptopCode, size = 22.dp, tint = LocalContentColor.current.copy(alpha =
+            icon = { FaIcon(faIcon = FaIcons.LaptopCode, tint = LocalContentColor.current.copy(alpha =
             LocalContentAlpha.current)) },
             selected = homeScreenState.value == BottomNavType.DEMOUI,
             onClick = {
@@ -163,7 +165,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) }
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.LayerGroup, size = 22.dp, tint = LocalContentColor
+            icon = { FaIcon(faIcon = FaIcons.LayerGroup, tint = LocalContentColor
                 .current.copy(alpha =
             LocalContentAlpha.current)) },
             selected = homeScreenState.value == BottomNavType.TEMPLATE,

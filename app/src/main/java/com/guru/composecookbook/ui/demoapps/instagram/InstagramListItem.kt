@@ -87,7 +87,7 @@ private fun InstagramIconSection() {
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
-           FaIcon(faIcon = FaIcons.CommentRegular, tint = MaterialTheme.colors.onSurface)
+           FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colors.onSurface)
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colors.onSurface)

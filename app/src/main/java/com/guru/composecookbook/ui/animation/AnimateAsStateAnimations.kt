@@ -170,16 +170,6 @@ fun SimpleAnimateCustomStateClass() {
 fun DrawLayerWithAnimateAsStateAnimations() {
     TitleText(title = "Float state Animations on graphicsLayer")
     var draw by remember { mutableStateOf(false) }
-    val modifier = Modifier
-        .size(150.dp)
-        .graphicsLayer(
-            scaleX = animateFloatAsState(if (draw) 2f else 1f).value,
-            scaleY = animateFloatAsState(if (draw) 2f else 1f).value,
-            shadowElevation = animateFloatAsState(if (draw) 50f else 5f).value,
-            clip = draw,
-            rotationZ = animateFloatAsState(if (draw) 360f else 0f).value
-        )
-        .clickable(onClick = { draw = !draw })
 
     Spacer(modifier = Modifier.padding(30.dp))
     var draw2 by remember { mutableStateOf(false) }

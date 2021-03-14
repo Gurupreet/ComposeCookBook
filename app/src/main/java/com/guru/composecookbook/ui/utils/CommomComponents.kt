@@ -86,8 +86,9 @@ fun RotateIcon(
     FaIcon(
         faIcon = FaIcons.Play,
         tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
-        size = 22.dp,
+        size = 20.dp,
         modifier = modifier
+            .padding(2.dp)
             .graphicsLayer(
                 rotationZ = animateFloatAsState(if (state) 0f else angle, tween(duration))
                     .value
