@@ -47,4 +47,5 @@ val templates = listOf(
     "Canvas Drawing",
     "Animations",
     "Charts",
+    "Adding Payment Card",
 )
