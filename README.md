@@ -66,6 +66,11 @@ Shimmer Lists             | List Scroll Animations
 :-------------------------:|:-------------------------: 
 ![](https://media.giphy.com/media/VQof1yEEbEgcqgY7WW/giphy.gif)  |  ![](https://media.giphy.com/media/hhpnI1beJr6gRi4btK/giphy.gif)
 
+### Templates
+Adding card details        | 
+:-------------------------:|
+![](https://user-images.githubusercontent.com/8813304/112016144-1e21ef00-8b35-11eb-8c33-362c8cbe6c0d.gif)  | 
+
 ## If this project helped you in any way feel free to show some love
 <a href="https://www.buymeacoffee.com/gurupreet" target="_blank">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="160">
