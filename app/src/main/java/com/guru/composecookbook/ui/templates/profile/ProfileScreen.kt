@@ -65,9 +65,11 @@ fun ProfileScreen() {
             val scrollState = rememberScrollState(0)
             TopAppBarView(scrollState.value.toFloat())
             TopBackground()
-            Column(modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(state = scrollState)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(state = scrollState)
+            ) {
                 Spacer(modifier = Modifier.height(100.dp))
                 TopScrollingContent(scrollState)
                 BottomScrollingContent()
@@ -102,9 +104,11 @@ fun TopScrollingContent(scrollState: ScrollState) {
 @ExperimentalMaterialApi
 @Composable
 fun BottomScrollingContent() {
-    Column(modifier = Modifier
-        .background(MaterialTheme.colors.surface)
-        .padding(8.dp)) {
+    Column(
+        modifier = Modifier
+            .background(MaterialTheme.colors.surface)
+            .padding(8.dp)
+    ) {
         SocialRow()
         Text(
             text = "About Me",

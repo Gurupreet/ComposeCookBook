@@ -13,15 +13,16 @@ class PageNumSource<Value : Any>(private val loadPage: suspend (pageNum: Int, pa
         return try {
             val page = params.key ?: 1
             //获取网络数据
-            val result = loadPage(page, params.loadSize)?: return LoadResult.Error(EOFException("No more data!"))
+            val result = loadPage(page, params.loadSize)
+                ?: return LoadResult.Error(EOFException("No more data!"))
 
             LoadResult.Page(
-                    //需要加载的数据
-                    data = result,
-                    //如果可以往上加载更多就设置该参数，否则不设置
-                    prevKey = if (page == 1) null else page - 1,
-                    //加载下一页的key 如果传null就说明到底了
-                    nextKey = page.plus(1)
+                //需要加载的数据
+                data = result,
+                //如果可以往上加载更多就设置该参数，否则不设置
+                prevKey = if (page == 1) null else page - 1,
+                //加载下一页的key 如果传null就说明到底了
+                nextKey = page.plus(1)
             )
         } catch (e: IOException) {
             // IOException for network failures.

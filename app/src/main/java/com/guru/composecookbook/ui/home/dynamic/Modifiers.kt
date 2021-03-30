@@ -42,15 +42,19 @@ fun HowToModifiers() {
         DemoText("Modifier.fillMaxWidth")
         DemoElementButton(modifier = Modifier.fillMaxWidth())
         DemoText("Modifier.fillMaxWidth.padding(12)")
-        DemoElementButton(modifier = Modifier
-            .fillMaxWidth()
-            .padding(12.dp))
+        DemoElementButton(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+        )
         DemoText("Modifier.size(100dp)")
         DemoElementButton(modifier = Modifier.size(100.dp))
         DemoText("Modifier.height(50).width(200)")
-        DemoElementButton(modifier = Modifier
-            .height(50.dp)
-            .width(200.dp))
+        DemoElementButton(
+            modifier = Modifier
+                .height(50.dp)
+                .width(200.dp)
+        )
 
         DemoText("Modifier.clip(CircleShare)")
         DemoElementButton(modifier = Modifier.clip(CircleShape))

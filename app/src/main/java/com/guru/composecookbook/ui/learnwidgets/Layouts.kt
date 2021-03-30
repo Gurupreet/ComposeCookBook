@@ -49,9 +49,11 @@ fun TypesOfRows() {
         text = "Arrangement.End ", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Row(horizontalArrangement = Arrangement.End, modifier = Modifier
-        .padding(8.dp)
-        .fillMaxWidth()) {
+    Row(
+        horizontalArrangement = Arrangement.End, modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+    ) {
         MultipleTexts()
     }
     Text(

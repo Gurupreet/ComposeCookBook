@@ -80,8 +80,8 @@ fun Modifier.dragContent(
         this.detectDragGestures(
             onDragCancel = {
                 coroutineScope.apply {
-                    launch {  swipeX.animateTo(0f) }
-                    launch {  swipeY.animateTo(0f) }
+                    launch { swipeX.animateTo(0f) }
+                    launch { swipeY.animateTo(0f) }
                 }
             },
             onDragEnd = {

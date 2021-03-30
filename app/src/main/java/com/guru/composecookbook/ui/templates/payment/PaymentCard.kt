@@ -66,10 +66,13 @@ fun PaymentCard(
         }
     )
     Box(
-        modifier = Modifier.padding(top= 56.dp)
+        modifier = Modifier.padding(top = 56.dp)
     ) {
         Surface(
-            modifier = Modifier.padding(16.dp).fillMaxWidth().height(220.dp)
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth()
+                .height(220.dp)
                 .graphicsLayer(
                     rotationY = animateFloatAsState(if (backVisible) 180f else 0f).value,
                     translationY = 0f
@@ -90,17 +93,21 @@ fun PaymentCard(
                                 id = R.drawable.card_symbol
                             ),
                             contentDescription = "symbol",
-                            modifier = Modifier.padding(20.dp).constrainAs(symbol) {
-                                start.linkTo(parent.start)
-                                top.linkTo(parent.top)
-                            }
+                            modifier = Modifier
+                                .padding(20.dp)
+                                .constrainAs(symbol) {
+                                    start.linkTo(parent.start)
+                                    top.linkTo(parent.top)
+                                }
                         )
 
                         AnimatedVisibility(visible = visaType != CardType.None,
-                            modifier = Modifier.padding(20.dp).constrainAs(logo) {
-                                end.linkTo(parent.end)
-                                top.linkTo(parent.top)
-                            }) {
+                            modifier = Modifier
+                                .padding(20.dp)
+                                .constrainAs(logo) {
+                                    end.linkTo(parent.end)
+                                    top.linkTo(parent.top)
+                                }) {
                             Image(
                                 painter = painterResource(
                                     id = visaType.image
@@ -185,14 +192,18 @@ fun PaymentCard(
                     ) {
                         val (backScanner) = createRefs()
                         Spacer(
-                            modifier = Modifier.height(50.dp).background(
-                                Color.Black
-                            ).fillMaxWidth().constrainAs(backScanner) {
-                                linkTo(
-                                    top = parent.top,
-                                    bottom = parent.bottom
+                            modifier = Modifier
+                                .height(50.dp)
+                                .background(
+                                    Color.Black
                                 )
-                            }
+                                .fillMaxWidth()
+                                .constrainAs(backScanner) {
+                                    linkTo(
+                                        top = parent.top,
+                                        bottom = parent.bottom
+                                    )
+                                }
                         )
                     }
                 }
@@ -238,7 +249,7 @@ enum class CardType(
 @ExperimentalAnimationApi
 @Preview
 @Composable
-fun PreviewPaymentCard(){
+fun PreviewPaymentCard() {
     PaymentCard(
         TextFieldValue("Elbehiry"),
         TextFieldValue("*****************"),

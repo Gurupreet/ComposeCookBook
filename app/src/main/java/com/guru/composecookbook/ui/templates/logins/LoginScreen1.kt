@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.templates.logins
 
+import FaIcons
 import android.animation.ValueAnimator
 import android.content.Context
 import androidx.compose.animation.Crossfade
@@ -11,11 +12,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Facebook
-import androidx.compose.material.icons.filled.RemoveRedEye
-import androidx.compose.material.icons.filled.VpnKey
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,9 +70,11 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
         val passwordInteractionState = remember { MutableInteractionSource() }
         val emailInteractionState = remember { MutableInteractionSource() }
 
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp)) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp)
+        ) {
             item { Spacer(modifier = Modifier.height(20.dp)) }
             item { LottieLoadingView(context = LocalContext.current) }
             item {
@@ -204,9 +202,11 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             }
 
             item {
-                OutlinedButton(onClick = { }, modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)) {
+                OutlinedButton(
+                    onClick = { }, modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                ) {
                     FaIcon(
                         faIcon = FaIcons.Facebook,
                         tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
@@ -223,9 +223,11 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             item { Spacer(modifier = Modifier.height(8.dp)) }
 
             item {
-                OutlinedButton(onClick = { }, modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)) {
+                OutlinedButton(
+                    onClick = { }, modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                ) {
                     FaIcon(
                         faIcon = FaIcons.Google,
                         tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
@@ -274,9 +276,11 @@ fun LottieLoadingView(context: Context) {
             repeatCount = ValueAnimator.INFINITE
         }
     }
-    AndroidView({ lottieView }, modifier = Modifier
-        .fillMaxWidth()
-        .height(250.dp)) {
+    AndroidView(
+        { lottieView }, modifier = Modifier
+            .fillMaxWidth()
+            .height(250.dp)
+    ) {
         it.playAnimation()
     }
 }

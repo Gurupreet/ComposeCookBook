@@ -222,9 +222,11 @@ fun PieCharts(pieValues: List<Float>, shouldAnimate: Boolean = true) {
             ),
         )
     }
-    Canvas(modifier = Modifier
-        .size(180.dp)
-        .padding(16.dp)) {
+    Canvas(
+        modifier = Modifier
+            .size(180.dp)
+            .padding(16.dp)
+    ) {
         val totalPieValue = pieValues.sum()
         var startAngle = 0f
 

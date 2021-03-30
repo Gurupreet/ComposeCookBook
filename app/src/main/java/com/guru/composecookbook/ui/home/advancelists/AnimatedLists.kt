@@ -175,9 +175,11 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
                 .size(55.dp)
                 .padding(4.dp)
         )
-        Column(modifier = Modifier
-            .padding(horizontal = 4.dp)
-            .weight(1f)) {
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 4.dp)
+                .weight(1f)
+        ) {
             Text(
                 text = tweet.author,
                 style = typography.h6.copy(fontSize = 16.sp),

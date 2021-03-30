@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.instagram
 
+import FaIcons
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -8,8 +9,6 @@ import androidx.compose.material.IconToggleButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,11 +20,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.home.lists.FavIcon
 import com.guru.fontawesomecomposelib.FaIcon
 
 @Composable
@@ -87,7 +84,7 @@ private fun InstagramIconSection() {
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
-           FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colors.onSurface)
+            FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colors.onSurface)
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
             FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colors.onSurface)

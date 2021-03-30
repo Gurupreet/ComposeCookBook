@@ -64,9 +64,11 @@ fun LanesSection() {
                                     shape = CircleShape
                                 )
                         )
-                        Column(modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                            .weight(1f)) {
+                        Column(
+                            modifier = Modifier
+                                .padding(horizontal = 16.dp)
+                                .weight(1f)
+                        ) {
                             Text(
                                 text = laneItem,
                                 modifier = Modifier.padding(vertical = 4.dp),
@@ -105,10 +107,12 @@ fun LanesSection() {
 @Composable
 fun SearchSection() {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-        Row(modifier = Modifier
-            .weight(1f)
-            .background(customGray)
-            .padding(4.dp)) {
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .background(customGray)
+                .padding(4.dp)
+        ) {
             Icon(
                 imageVector = Icons.Default.Search,
                 modifier = Modifier.padding(4.dp),

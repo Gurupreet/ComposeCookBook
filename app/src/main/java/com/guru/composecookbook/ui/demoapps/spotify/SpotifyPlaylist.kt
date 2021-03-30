@@ -61,7 +61,8 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
         .clickable(onClick = {
             //Disclaimer: We should pass event top level and there should startActivity
             context.startActivity(SpotifyDetailActivity.newIntent(context, album))
-        })) {
+        })
+    ) {
         Column {
             Image(
                 painter = painterResource(album.imageId),

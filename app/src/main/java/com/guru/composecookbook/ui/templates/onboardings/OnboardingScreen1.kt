@@ -50,9 +50,11 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
                     .padding(vertical = 48.dp, horizontal = 16.dp)
                     .clickable(onClick = onSkip)
             )
-            Row(modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 120.dp)) {
+            Row(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 120.dp)
+            ) {
                 onboardingList.forEachIndexed { index, _ ->
                     OnboardingPagerSlide(
                         selected = index == pagerState.currentPage,
@@ -112,9 +114,11 @@ fun LottieLoadingView(context: Context, file: String) {
             repeatCount = ValueAnimator.INFINITE
         }
     }
-    AndroidView({ lottieView }, modifier = Modifier
-        .fillMaxWidth()
-        .height(250.dp)) {
+    AndroidView(
+        { lottieView }, modifier = Modifier
+            .fillMaxWidth()
+            .height(250.dp)
+    ) {
         it.playAnimation()
     }
 }

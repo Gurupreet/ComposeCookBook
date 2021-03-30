@@ -1,6 +1,7 @@
 package com.guru.composecookbook
 
 import AnimationScreen
+import FaIcons
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.outlined.Dashboard
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -18,7 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.demoapps.DemoUIList
@@ -115,11 +114,12 @@ fun BottomNavigationContent(
     var animate by remember { mutableStateOf(false) }
     BottomNavigation(modifier = modifier) {
         BottomNavigationItem(
-            icon = { FaIcon(
-                        faIcon = FaIcons.Home,
-                        tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
-                    )
-               },
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.Home,
+                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                )
+            },
             selected = homeScreenState.value == BottomNavType.HOME,
             onClick = {
                 homeScreenState.value = BottomNavType.HOME
@@ -128,9 +128,15 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.Tools, tint = LocalContentColor
-                .current.copy(alpha =
-            LocalContentAlpha.current)) },
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.Tools, tint = LocalContentColor
+                        .current.copy(
+                            alpha =
+                            LocalContentAlpha.current
+                        )
+                )
+            },
             selected = homeScreenState.value == BottomNavType.WIDGETS,
             onClick = {
                 homeScreenState.value = BottomNavType.WIDGETS
@@ -155,8 +161,14 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_animation)) }
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.LaptopCode, tint = LocalContentColor.current.copy(alpha =
-            LocalContentAlpha.current)) },
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.LaptopCode, tint = LocalContentColor.current.copy(
+                        alpha =
+                        LocalContentAlpha.current
+                    )
+                )
+            },
             selected = homeScreenState.value == BottomNavType.DEMOUI,
             onClick = {
                 homeScreenState.value = BottomNavType.DEMOUI
@@ -165,9 +177,15 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) }
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.LayerGroup, tint = LocalContentColor
-                .current.copy(alpha =
-            LocalContentAlpha.current)) },
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.LayerGroup, tint = LocalContentColor
+                        .current.copy(
+                            alpha =
+                            LocalContentAlpha.current
+                        )
+                )
+            },
             selected = homeScreenState.value == BottomNavType.TEMPLATE,
             onClick = {
                 homeScreenState.value = BottomNavType.TEMPLATE

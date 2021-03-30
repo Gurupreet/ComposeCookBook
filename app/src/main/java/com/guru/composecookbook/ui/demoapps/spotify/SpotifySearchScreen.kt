@@ -33,9 +33,11 @@ fun SpotifySearchScreen() {
     val scrollState = rememberScrollState(0)
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .horizontalGradientBackground(surfaceGradient)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .horizontalGradientBackground(surfaceGradient)
+    ) {
         Text(
             text = "Search",
             style = typography.h3.copy(fontWeight = FontWeight.ExtraBold),

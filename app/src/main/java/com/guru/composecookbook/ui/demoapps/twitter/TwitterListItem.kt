@@ -32,9 +32,11 @@ import com.guru.composecookbook.theme.typography
 fun TwitterListItem(tweet: Tweet) {
     Row {
         AuthorImage(tweet)
-        Column(modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth()
+        ) {
             NameAndHandle(tweet)
             Text(text = tweet.text, style = typography.body1)
             TweetImage(tweet.tweetImageId)

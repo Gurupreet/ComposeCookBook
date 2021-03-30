@@ -33,14 +33,18 @@ fun AddPaymentCard() {
                 cvcNumber
             )
             LazyColumn(
-                modifier = Modifier.padding(16.dp).fillMaxWidth()
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
             ) {
                 item {
                     InputItem(
                         textFieldValue = nameText,
                         label = stringResource(id = R.string.card_holder_name),
                         onTextChanged = { nameText = it },
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp)
                     )
                 }
 
@@ -50,14 +54,18 @@ fun AddPaymentCard() {
                         label = stringResource(id = R.string.card_holder_number),
                         keyboardType = KeyboardType.Number,
                         onTextChanged = { cardNumber = it },
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp),
                         visualTransformation = CreditCardFilter
                     )
                 }
 
                 item {
                     Row(
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         InputItem(
@@ -65,7 +73,8 @@ fun AddPaymentCard() {
                             label = stringResource(id = R.string.expiry_date),
                             keyboardType = KeyboardType.Number,
                             onTextChanged = { expiryNumber = it },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier
+                                .weight(1f)
                                 .padding(end = 8.dp)
                         )
                         InputItem(
@@ -73,7 +82,8 @@ fun AddPaymentCard() {
                             label = stringResource(id = R.string.cvc),
                             keyboardType = KeyboardType.Number,
                             onTextChanged = { cvcNumber = it },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier
+                                .weight(1f)
                                 .padding(start = 8.dp)
                         )
                     }
@@ -82,7 +92,9 @@ fun AddPaymentCard() {
                 item {
                     Button(
                         onClick = { },
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
                     ) {
                         Text(
                             text = stringResource(id = R.string.save),

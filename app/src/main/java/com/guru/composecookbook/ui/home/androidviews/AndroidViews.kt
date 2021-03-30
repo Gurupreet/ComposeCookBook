@@ -97,9 +97,11 @@ fun AndroidLottieView(context: Context) {
         }
     }
 
-    AndroidView({ lottieView }, modifier = Modifier
-        .fillMaxWidth()
-        .height(200.dp)) {
+    AndroidView(
+        { lottieView }, modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+    ) {
         it.playAnimation()
     }
 }
@@ -113,9 +115,11 @@ fun AndroidLottieView2(context: Context) {
         }
     }
 
-    AndroidView({ lottieView }, modifier = Modifier
-        .fillMaxWidth()
-        .height(200.dp)) {
+    AndroidView(
+        { lottieView }, modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+    ) {
         it.playAnimation()
     }
 }
@@ -134,10 +138,12 @@ fun AndroidAdView(context: Context) {
         }
     }
 
-    AndroidView({ adView }, modifier = Modifier
-        .fillMaxWidth()
-        .padding(8.dp)
-        .background(Color.Gray))
+    AndroidView(
+        { adView }, modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .background(Color.Gray)
+    )
 }
 
 @Composable

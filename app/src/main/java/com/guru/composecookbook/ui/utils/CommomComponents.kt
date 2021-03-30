@@ -1,12 +1,16 @@
 package com.guru.composecookbook.ui.utils
 
+import FaIcons
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.Divider
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -48,9 +52,11 @@ fun ComingSoon() {
 
 @Composable
 fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: String = "") {
-    Column(modifier = modifier
-        .fillMaxWidth()
-        .padding(16.dp)) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
         if (title.isNotEmpty()) {
             Text(text = title, style = typography.h6.copy(fontSize = 14.sp))
         }

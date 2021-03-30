@@ -83,9 +83,11 @@ fun DialogsOptionList() {
 
     // I am not sure why updating the `dialogState.showDialog = true` is not working. May be I am
     // missing something. I had to update whole state via copy
-    Column(modifier = Modifier
-        .verticalScroll(rememberScrollState())
-        .padding(16.dp)) {
+    Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp)
+    ) {
         Button(
             onClick = { dialogState = dialogState.copy(showDialog = true) },
             modifier = Modifier

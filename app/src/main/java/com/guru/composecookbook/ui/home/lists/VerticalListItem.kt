@@ -18,9 +18,11 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 @Composable
 fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
     val typography = MaterialTheme.typography
-    Column(modifier = modifier
-        .fillMaxWidth()
-        .padding(16.dp)) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
 
         val imageModifier = Modifier
             .height(150.dp)

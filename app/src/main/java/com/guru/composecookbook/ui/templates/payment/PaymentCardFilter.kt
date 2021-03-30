@@ -34,9 +34,9 @@ val CreditCardFilter = VisualTransformation { text ->
 }
 
 val ExpiryCardFilter = VisualTransformation { text ->
-    val out = if (text.length >= 4){
+    val out = if (text.length >= 4) {
         text.take(4)
-    } else{
+    } else {
         text
     }
     TransformedText(AnnotatedString(out.toString()), OffsetMapping.Identity)

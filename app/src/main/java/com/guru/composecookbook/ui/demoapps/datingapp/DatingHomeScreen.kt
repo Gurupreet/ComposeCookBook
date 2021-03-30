@@ -170,9 +170,11 @@ fun CardContent(album: Album) {
 
 @Composable
 fun DatingLoader(modifier: Modifier) {
-    Box(contentAlignment = Alignment.Center, modifier = modifier
-        .fillMaxSize()
-        .clip(CircleShape)) {
+    Box(
+        contentAlignment = Alignment.Center, modifier = modifier
+            .fillMaxSize()
+            .clip(CircleShape)
+    ) {
         FloatMultiStateAnimationCircleCanvas(purple, 400f)
         Image(
             painter = painterResource(id = R.drawable.adele21),
