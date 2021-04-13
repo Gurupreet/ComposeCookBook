@@ -66,7 +66,7 @@ fun CryptoListItem(
             )
             Text(
                 text = "$${crypto.price}",
-                style = typography.h6.copy(fontSize = 16.sp),
+                style = typography.h6.copy(fontSize = 14.sp),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = 4.dp)
             )
