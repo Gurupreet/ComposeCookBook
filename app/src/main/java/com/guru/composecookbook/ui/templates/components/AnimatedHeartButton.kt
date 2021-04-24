@@ -19,7 +19,7 @@
 //import androidx.compose.ui.unit.Dp
 //import androidx.compose.ui.unit.dp
 //import com.guru.composecookbook.R
-//import dev.chrisbanes.accompanist.coil.CoilImage
+//
 //import kotlinx.coroutines.ExperimentalCoroutinesApi
 //
 //

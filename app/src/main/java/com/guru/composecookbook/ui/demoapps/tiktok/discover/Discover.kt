@@ -1,6 +1,7 @@
 package com.guru.composecookbook.ui.demoapps.tiktok.discover
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -24,10 +25,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 
 val lanes =
     listOf("OhHO ohNO", "FunFacts", "HappyDeepavli", "HalloweenIsHere", "BoomBoom", "No no no no")
@@ -88,8 +90,11 @@ fun LanesSection() {
                         items(
                             items = (1..8).toList(),
                             itemContent = {
-                                CoilImage(
-                                    data = "https://picsum.photos/id/${it}/200/200",
+                                Image(
+                                    painter = rememberCoilPainter(
+                                        request = "https://picsum" +
+                                            ".photos/id/${it}/200/200"
+                                    ),
                                     contentDescription = null,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier

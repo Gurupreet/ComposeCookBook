@@ -75,9 +75,10 @@ fun MatchSection() {
 
 @Composable
 fun DatingChatItem(album: Album) {
-    Card(modifier = Modifier
-        .padding(6.dp)
-        .clickable(onClick = {}), elevation = 2.dp
+    Card(
+        modifier = Modifier
+            .padding(6.dp)
+            .clickable(onClick = {}), elevation = 2.dp
     ) {
         Row(modifier = Modifier.padding(12.dp)) {
             ImageWithChatDot(

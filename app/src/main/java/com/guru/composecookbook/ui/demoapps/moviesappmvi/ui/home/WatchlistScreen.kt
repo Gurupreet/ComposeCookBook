@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -23,11 +24,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 
 @Composable
 fun WatchlistScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
@@ -71,8 +73,13 @@ fun MovieWatchlistItem(
     onRemoveFromWatchlist: () -> Unit
 ) {
     Box(modifier = Modifier.clickable(onClick = onMovieSelected)) {
-        CoilImage(
-            data = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}",
+        Image(
+            painter = rememberCoilPainter(
+                request = "https://image.tmdb.org/t/p/original/${
+                    movie
+                        .backdrop_path
+                }"
+            ),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()

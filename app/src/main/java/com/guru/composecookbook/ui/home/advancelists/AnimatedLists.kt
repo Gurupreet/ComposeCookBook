@@ -4,6 +4,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,12 +27,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.youtube.YoutubeChip
 import com.guru.composecookbook.ui.utils.VerticalGrid
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 
 @Composable
 fun AnimatedLists() {
@@ -167,8 +169,13 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         modifier = animatedModifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        CoilImage(
-            data = "https://picsum.photos/id/${itemIndex + 1}/200/200",
+        Image(
+            painter = rememberCoilPainter(
+                request = "https://picsum.photos/id/${
+                    itemIndex +
+                        1
+                }/200/200"
+            ),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

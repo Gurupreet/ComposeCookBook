@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
 import com.guru.composecookbook.theme.green500
@@ -28,7 +30,7 @@ import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.CryptoHomeInte
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.utils.roundToThreeDecimals
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.utils.roundToTwoDecimals
 import com.guru.composecookbook.ui.templates.LineChart
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 
 @Composable
 fun CryptoListItem(
@@ -50,8 +52,8 @@ fun CryptoListItem(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        CoilImage(
-            data = crypto.image,
+        Image(
+            painter = rememberCoilPainter(request = crypto.image),
             modifier = Modifier
                 .size(40.dp)
                 .padding(4.dp),

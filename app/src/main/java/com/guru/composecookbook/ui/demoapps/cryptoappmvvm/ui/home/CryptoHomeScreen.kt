@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -33,6 +34,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.airbnb.lottie.LottieAnimationView
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
@@ -42,7 +44,7 @@ import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.Cry
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.components.MyWalletCard
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
@@ -137,7 +139,13 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        CoilImage(data = crypto.image, modifier = Modifier.size(24.dp), contentDescription = null)
+        Image(
+            painter = rememberCoilPainter(request = crypto.image), modifier = Modifier.size(
+                24
+                    .dp
+            ),
+            contentDescription = null
+        )
         Text(
             text = crypto.symbol,
             style = typography.h6.copy(fontSize = 20.sp),

@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -13,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 
 @Composable
@@ -31,8 +32,11 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
         items(
             items = movies,
             itemContent = { movie: Movie ->
-                CoilImage(
-                    data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                Image(
+                    painter = rememberCoilPainter(
+                        request = "https://image.tmdb" +
+                            ".org/t/p/w500/${movie.poster_path}"
+                    ),
                     contentDescription = null,
                     modifier = Modifier
                         .width(190.dp)

@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
@@ -31,7 +32,7 @@ import com.guru.composecookbook.ui.home.lists.VerticalListItemSmall
 import com.guru.composecookbook.ui.templates.BarCharts
 import com.guru.composecookbook.ui.templates.LineChart
 import com.guru.composecookbook.ui.utils.horizontalGradientBackground
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 
 @Composable
 fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
@@ -81,8 +82,8 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
                 style = typography.h6,
                 modifier = Modifier.padding(end = 8.dp)
             )
-            CoilImage(
-                data = crypto.image,
+            Image(
+                painter = rememberCoilPainter(request = crypto.image),
                 modifier = Modifier.size(28.dp),
                 contentDescription = null
             )

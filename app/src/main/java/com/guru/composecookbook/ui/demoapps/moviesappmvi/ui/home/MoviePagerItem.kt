@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,12 +22,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.DemoMovieDataProvider
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Genre
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.templates.profile.InterestTag
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 
 @Composable
 fun MoviePagerItem(
@@ -57,8 +59,8 @@ fun MoviePagerItem(
         contentColor = MaterialTheme.colors.background
     ) {
         Column {
-            CoilImage(
-                data = posterFullPath,
+            Image(
+                painter = rememberCoilPainter(request = posterFullPath),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier

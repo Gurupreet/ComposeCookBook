@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -8,12 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.CryptoDemoDataProvider
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.data.db.entities.Crypto
 import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.utils.roundToTwoDecimals
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun FavoriteCryptoCard(crypto: Crypto) {
@@ -25,8 +26,8 @@ fun FavoriteCryptoCard(crypto: Crypto) {
                 .height(180.dp)
         ) {
             Row(modifier = Modifier.weight(1f)) {
-                CoilImage(
-                    data = crypto.image,
+                Image(
+                    painter = rememberCoilPainter(request = crypto.image),
                     modifier = Modifier.size(24.dp),
                     contentDescription = null
                 )

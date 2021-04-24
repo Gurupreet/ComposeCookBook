@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -36,6 +37,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.accompanist.coil.rememberCoilPainter
+import com.google.accompanist.imageloading.ImageLoadState
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
@@ -43,7 +46,7 @@ import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.templates.profile.InterestTag
 import com.guru.composecookbook.ui.utils.verticalGradientBackground
-import dev.chrisbanes.accompanist.coil.CoilImage
+
 
 class MovieDetailActivity : ComponentActivity() {
     val movie by lazy {
@@ -106,8 +109,14 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
             )
     ) {
         item {
-            CoilImage(
-                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+            val painter = rememberCoilPainter(
+                request = "https://image.tmdb.org/t/p/w500/${
+                    movie
+                        .poster_path
+                }"
+            )
+            Image(
+                painter = painter,
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier
@@ -115,10 +124,11 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
                         600.dp
                     )
                     .fillMaxWidth(),
-                onRequestCompleted = {
-                    expand.value = true
-                }
             )
+            when (painter.loadState) {
+                is ImageLoadState.Success -> expand.value = true
+                else -> expand.value = false
+            }
         }
         item {
             Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
@@ -183,8 +193,13 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
             items(
                 items = movies,
                 itemContent = { movie: Movie ->
-                    CoilImage(
-                        data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                    Image(
+                        painter = rememberCoilPainter(
+                            request = "https://image.tmdb.org/t/p/w500/${
+                                movie
+                                    .poster_path
+                            }"
+                        ),
                         contentDescription = null,
                         modifier = Modifier
                             .width(200.dp)
