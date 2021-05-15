@@ -14,7 +14,7 @@
 
 <div align="center">
     <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#december_16_2020">
-      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20beta05-brightgreen" />
+      <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20beta06-brightgreen" />
     </a>
   <a href = "https://github.com/Gurupreet/ComposeCookBook/network/">
     <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
@@ -90,7 +90,7 @@ Please get **Android Studio Arctic Fox 2020.3.1 Canary 4** or above to build thi
 
 ## Coming Soon
 - Some of the features that will be available in coming weeks
-  - Advance lists: Pull Refresh, Swipe lsits etc
+  - Advance lists: Pull Refresh, Swipe lists etc
   - Clean Architecture Sample with coroutines.
   - Advance canvas drawing. 
   Much more in pipeline stay tuned!!
