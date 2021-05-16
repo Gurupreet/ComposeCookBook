@@ -6,7 +6,6 @@ import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.util.fastAny
 import com.guru.composecookbook.MainActivity
 import com.guru.composecookbook.MainAppContent
 import com.guru.composecookbook.data.DemoDataProvider
@@ -78,7 +77,7 @@ class HomeScreenTest {
         description = "${SemanticsProperties.Text.name} is in '$homeScreenListItems' items' names (ignoreCase: $ignoreCase)"
     ) { semanticNode ->
         semanticNode.config.getOrNull(SemanticsProperties.Text)?.text.let { nodeText ->
-            homeScreenListItems.fastAny { it.name.equals(nodeText, ignoreCase) }
+            homeScreenListItems.any { it.name.equals(nodeText, ignoreCase) }
         }
     }
 }
