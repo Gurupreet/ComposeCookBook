@@ -11,11 +11,14 @@
 </div>
 
 <br />
-
+ 
 <div align="center">
     <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#december_16_2020">
       <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20beta06-brightgreen" />
     </a>
+  <a href = "https://github.com/Gurupreet/ComposeCookBook/actions/workflows/android.yml/badge.svg">
+      <img src = "https://github.com/Gurupreet/ComposeCookBook/actions/workflows/android.yml/badge.svg" />
+  </a>
   <a href = "https://github.com/Gurupreet/ComposeCookBook/network/">
     <img src = "https://img.shields.io/github/forks/Gurupreet/ComposeCookBook" />
   </a>
