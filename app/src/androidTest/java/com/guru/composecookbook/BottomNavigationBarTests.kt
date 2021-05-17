@@ -1,5 +1,6 @@
 package com.guru.composecookbook
 
+import androidx.activity.ComponentActivity
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.*
@@ -12,7 +13,7 @@ import org.junit.Test
 class BottomNavigationBarTests {
 
     @get: Rule
-    val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
+    val composeAndroidTestRule = createAndroidComposeRule<ComponentActivity>()
 
     private val bottomNavigationBarTestTag: String = "bottom_navigation_bar"
 
@@ -20,7 +21,6 @@ class BottomNavigationBarTests {
     @ExperimentalMaterialApi
     @Before
     fun setUp() {
-
         composeAndroidTestRule.setContent {
             MainAppContent(appThemeState = mutableStateOf(AppThemeState()))
         }
@@ -31,8 +31,8 @@ class BottomNavigationBarTests {
         composeAndroidTestRule.apply {
             onNodeWithTag(bottomNavigationBarTestTag)
                 .onChildren()
-                .assertCountEquals(5)
-                .assertAll(hasClickAction())
+                .filter(hasClickAction())
+                .assertCountEquals(4)
         }
     }
 
