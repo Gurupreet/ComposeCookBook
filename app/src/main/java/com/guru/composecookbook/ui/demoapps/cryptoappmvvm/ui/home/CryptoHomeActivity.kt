@@ -27,7 +27,7 @@ class CryptoHomeActivity : ComponentActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
             ComposeCookBookTheme {
-                val viewModel: CryptoHomeViewModel = viewModel()
+                val viewModel = viewModel(CryptoHomeViewModel::class.java)
                 CryptoHomeScreen(
                     onCryptoHomeInteractionEvents = { handleInteractionEvents(it, viewModel) }
                 )

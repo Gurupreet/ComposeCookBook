@@ -51,7 +51,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit = {}) {
-    val viewModel: CryptoHomeViewModel = viewModel()
+    val viewModel = viewModel(CryptoHomeViewModel::class.java)
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     val favCryptos by viewModel.favCryptoLiveData.observeAsState(emptyList())
     var showFavState by remember { mutableStateOf(false) }

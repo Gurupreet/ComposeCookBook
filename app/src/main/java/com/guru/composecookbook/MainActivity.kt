@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -28,6 +29,7 @@ import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.fontawesomecomposelib.FaIcon
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalFoundationApi
     @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,7 @@ fun BaseView(
     }
 }
 
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @Composable
 fun HomeScreenContent(
@@ -84,6 +87,7 @@ fun HomeScreenContent(
     }
 }
 
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
@@ -196,6 +200,7 @@ fun BottomNavigationContent(
     }
 }
 
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
