@@ -200,7 +200,7 @@ fun BottomNavigationContent(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    val appThemeState = mutableStateOf(AppThemeState(false, ColorPallet.GREEN))
+    val appThemeState = remember { mutableStateOf(AppThemeState(false, ColorPallet.GREEN)) }
     BaseView(appThemeState.value, null) {
         MainAppContent(appThemeState)
     }
