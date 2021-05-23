@@ -1,2 +1,2 @@
 rootProject.name = "ComposeCookBook"
-include ':app'
+include(":app")
