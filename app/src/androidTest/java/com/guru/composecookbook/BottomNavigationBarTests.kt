@@ -1,6 +1,7 @@
 package com.guru.composecookbook
 
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.*
@@ -18,6 +19,7 @@ class BottomNavigationBarTests {
     private val bottomNavigationBarTestTag: String = "bottom_navigation_bar"
 
 
+    @ExperimentalFoundationApi
     @ExperimentalMaterialApi
     @Before
     fun setUp() {
