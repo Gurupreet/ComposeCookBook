@@ -14,6 +14,7 @@ sealed class HomeScreenItems {
     object Modifiers : HomeScreenItems()
     object AndroidViews : HomeScreenItems()
     object PullRefresh : HomeScreenItems()
+    object CustomFling : HomeScreenItems()
 
     val name: String
         get() = when (this) {
@@ -30,5 +31,6 @@ sealed class HomeScreenItems {
             AndroidViews -> "Compose X Android views"
             AdvanceLists -> "Advance Lists"
             PullRefresh -> "Pull refresh demos"
+            CustomFling -> "Custom Fling"
         }
 }

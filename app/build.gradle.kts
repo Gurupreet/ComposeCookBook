@@ -12,7 +12,7 @@ android {
         applicationId = "com.guru.composecookbook"
         minSdk = 21
         targetSdk = 30
-        versionCode  = 1
+        versionCode = 1
         versionName = "1.0"
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -21,7 +21,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -84,6 +87,10 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:${Dependencies.compose}")
     implementation("androidx.compose.ui:ui-tooling:${Dependencies.compose}")
     debugImplementation("androidx.compose.ui:ui-tooling:${Dependencies.compose}")
+
+    // Custom fling behaviour
+    // refer to https://github.com/iamjosephmj/flinger for more insights on the library
+    implementation("com.github.iamjosephmj:flinger:${Dependencies.flinger}")
 
     //paging
     implementation("androidx.paging:paging-runtime:${Dependencies.paging}")

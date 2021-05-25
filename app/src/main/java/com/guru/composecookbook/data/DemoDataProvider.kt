@@ -335,6 +335,7 @@ object DemoDataProvider {
         HomeScreenItems.Layouts,
         HomeScreenItems.Modifiers,
         HomeScreenItems.AdvanceLists,
+        HomeScreenItems.CustomFling,
         HomeScreenItems.AndroidViews,
         HomeScreenItems.Carousel,
         HomeScreenItems.ConstraintsLayout,
