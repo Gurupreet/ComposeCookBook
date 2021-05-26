@@ -32,6 +32,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
+import com.guru.composecookbook.ui.home.customfling.FlingListActivity
 import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
@@ -169,12 +170,14 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
 @Composable
 fun HomeScreenListView(
     homeScreenItems: HomeScreenItems, context: Context, isDarkTheme: Boolean,
-                       isWiderScreen: Boolean) {
+    isWiderScreen: Boolean
+) {
     if (isWiderScreen) {
         Card(
             modifier = Modifier
                 .clickable { homeItemClicked(homeScreenItems, context, isDarkTheme) }
-                .height(150.dp).padding(8.dp),
+                .height(150.dp)
+                .padding(8.dp),
             backgroundColor = MaterialTheme.colors.primary,
             shape = RoundedCornerShape(8.dp),
             elevation = 4.dp,
@@ -244,6 +247,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
         HomeScreenItems.PullRefresh -> {
             DynamicUIActivity.newIntent(context, DynamicUiType.PULLRERESH.name, isDarkTheme)
         }
+        HomeScreenItems.CustomFling -> {
+            FlingListActivity.newIntent(context = context, isDarkTheme = isDarkTheme)
+        }
     }
     context.startActivity(intent)
 }
@@ -253,7 +259,8 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
 @Composable
 fun PreviewHomeScreen() {
     val state = remember {
-        mutableStateOf(AppThemeState(false, ColorPallet.GREEN)) }
+        mutableStateOf(AppThemeState(false, ColorPallet.GREEN))
+    }
     HomeScreen(state)
 }
 
