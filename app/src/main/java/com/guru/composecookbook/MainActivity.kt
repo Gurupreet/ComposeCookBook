@@ -130,6 +130,7 @@ fun BottomNavigationContent(
                 animate = false
             },
             label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
+            modifier = Modifier.testTag("Home")
         )
         BottomNavigationItem(
             icon = {
@@ -146,7 +147,8 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.WIDGETS
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_widgets)) }
+            label = { Text(text = stringResource(id = R.string.navigation_item_widgets)) },
+            modifier = Modifier.testTag("Widgets")
         )
         BottomNavigationItem(
             icon = {
@@ -162,7 +164,9 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.ANIMATION
                 animate = true
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_animation)) }
+            label = { Text(text = stringResource(id = R.string.navigation_item_animation)) },
+            modifier = Modifier.testTag("Anim")
+
         )
         BottomNavigationItem(
             icon = {
@@ -178,7 +182,8 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.DEMOUI
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) }
+            label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) },
+            modifier = Modifier.testTag("DemoUI")
         )
         BottomNavigationItem(
             icon = {
@@ -195,7 +200,9 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.TEMPLATE
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_profile)) }
+            label = { Text(text = stringResource(id = R.string.navigation_item_profile)) },
+            modifier = Modifier.testTag("Template")
+
         )
     }
 }

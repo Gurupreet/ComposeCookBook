@@ -1,49 +1,32 @@
 package com.guru.composecookbook
 
-import androidx.activity.ComponentActivity
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import com.guru.composecookbook.theme.AppThemeState
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 class BottomNavigationBarTests {
 
     @get: Rule
-    val composeAndroidTestRule = createAndroidComposeRule<ComponentActivity>()
+    val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
     private val bottomNavigationBarTestTag: String = "bottom_navigation_bar"
-
-
-    @ExperimentalFoundationApi
-    @ExperimentalMaterialApi
-    @Before
-    fun setUp() {
-        composeAndroidTestRule.setContent {
-            MainAppContent(appThemeState = mutableStateOf(AppThemeState()))
-        }
-    }
 
     @Test
     fun bottomNavigationBarMustHaveFiveEntries() {
         composeAndroidTestRule.apply {
             onNodeWithTag(bottomNavigationBarTestTag)
+                .onChild()
                 .onChildren()
-                .filter(hasClickAction())
-                .assertCountEquals(4)
+                .assertCountEquals(5)
         }
     }
 
     @Test
     fun bottomNavigationBarMustHaveHomeEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag(bottomNavigationBarTestTag)
-                .onChildren()
-                .filterToOne(matcher = hasText("Home").and(hasClickAction()))
+            onNodeWithTag("Home")
+                .assertIsSelectable()
                 .assertExists()
         }
     }
@@ -51,9 +34,8 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveWidgetsEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag(bottomNavigationBarTestTag)
-                .onChildren()
-                .filterToOne(matcher = hasText("Widgets").and(hasClickAction()))
+            onNodeWithTag("Widgets")
+                .assertIsSelectable()
                 .assertExists()
         }
     }
@@ -61,19 +43,18 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveAnimEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag(bottomNavigationBarTestTag)
-                .onChildren()
-                .filterToOne(matcher = hasText("Anim").and(hasClickAction()))
+            onNodeWithTag("Anim")
+                .assertIsSelectable()
                 .assertExists()
+
         }
     }
 
     @Test
     fun bottomNavigationBarMustHaveDemoUiEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag(bottomNavigationBarTestTag)
-                .onChildren()
-                .filterToOne(matcher = hasText("DemoUI").and(hasClickAction()))
+            onNodeWithTag("DemoUI")
+                .assertIsSelectable()
                 .assertExists()
         }
     }
@@ -81,18 +62,19 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveTemplateEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag(bottomNavigationBarTestTag)
-                .onChildren()
-                .filterToOne(matcher = hasText("Template").and(hasClickAction()))
-                .assertExists()
+            composeAndroidTestRule.apply {
+                onNodeWithTag("Template")
+                    .assertIsSelectable()
+                    .assertExists()
+            }
         }
     }
 
     @Test
     fun bottomNavigationBartHomeIsSelectedByDefault() {
         composeAndroidTestRule.apply {
-            onNodeWithText("Home")
-                .assertHasClickAction()
+            onNodeWithTag("Home")
+                .performClick()
                 .assertIsSelected()
                 .onSiblings()
                 .assertAny(isNotSelected())
@@ -102,7 +84,7 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavEntryHomeClickedTheHomeScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithText("Home")
+            onNodeWithTag("Home")
                 .performClick()     // Click on the Home entry in the bottom navigation bar
                 .onAncestors()      // returns BottomNavigation, BottomNavigationContent, Column, MainAppContent, BaseView
                 .onLast()           // returns BaseView - which is the root
@@ -117,7 +99,7 @@ class BottomNavigationBarTests {
     fun whenBottomNavEntryWidgetsClickedTheWidgetScreenIsDisplayed() {
         composeAndroidTestRule.apply {
 
-            onNodeWithText("Widgets")
+            onNodeWithTag("Widgets")
                 .performClick()
 
             // The widgets screen contains infinite animations.
@@ -134,7 +116,7 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavBarAnimEntryClickedAnimationScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithText("Anim")
+            onNodeWithTag("Anim")
                 .performClick()
 
 
@@ -149,7 +131,7 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavBarDemoUiEntryClickedDemoUiScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithText("DemoUI")
+            onNodeWithTag("DemoUI")
                 .performClick()
 
 
@@ -164,13 +146,10 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavigationBarTemplateEntryClickedTemplateScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithText("Template")
+            onNodeWithTag("Template")
                 .performClick()
 
-
-            onRoot()
-                .onChildren()
-                .filterToOne(hasTestTag("Template Screen"))
+            onNodeWithTag("Template Screen")
                 .assertExists()
         }
     }
