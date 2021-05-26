@@ -89,3 +89,4 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+/.idea/inspectionProfiles/Project_Default.xml
