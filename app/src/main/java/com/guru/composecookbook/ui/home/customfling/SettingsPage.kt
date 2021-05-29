@@ -18,6 +18,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.toFloatNum
 
 /**
@@ -185,9 +187,10 @@ fun BuildEditTexts(
             Text(
                 text = "Scroll Friction",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = scrollFriction.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -225,9 +228,10 @@ fun BuildEditTexts(
             Text(
                 text = "absVelocityThreshold",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = absVelocityThreshold.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -267,9 +271,10 @@ fun BuildEditTexts(
             Text(
                 text = "gravitationalForce",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = gravitationalForce.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -311,9 +316,10 @@ fun BuildEditTexts(
             Text(
                 text = "inchesPerMeter",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = inchesPerMeter.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -351,9 +357,10 @@ fun BuildEditTexts(
             Text(
                 text = "decelerationFriction",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = decelerationFriction.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -393,9 +400,10 @@ fun BuildEditTexts(
             Text(
                 text = "decelerationRate",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = decelerationRate.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -437,9 +445,10 @@ fun BuildEditTexts(
             Text(
                 text = "splineInflection",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = splineInflection.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -477,9 +486,10 @@ fun BuildEditTexts(
             Text(
                 text = "splineStartTension",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = splineStartTension.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -518,9 +528,10 @@ fun BuildEditTexts(
             Text(
                 text = "splineEndTension",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = splineEndTension.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
@@ -562,9 +573,10 @@ fun BuildEditTexts(
             Text(
                 text = "numberOfSplinePoints",
                 maxLines = 1,
+                style = typography.caption.copy(fontSize = 10.sp),
                 overflow = TextOverflow.Ellipsis
             )
-            TextField(
+            OutlinedTextField(
                 value = numberOfSplinePoints.value,
                 maxLines = 1,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
