@@ -67,7 +67,7 @@ fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
 }
 
 enum class SwipeState {
-    SWIPED, VISIBLE
+    SWIPED, VISIBLE,MIDDLE
 }
 
 @ExperimentalMaterialApi
@@ -82,7 +82,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
             true
         }
     )
-    val swipeAnchors = mapOf(0f to SwipeState.VISIBLE, -1000f to SwipeState.SWIPED)
+    val swipeAnchors = mapOf(0f to SwipeState.VISIBLE, -1000f to SwipeState.SWIPED , -500f to SwipeState.MIDDLE)
 
     Row(
         modifier = Modifier
