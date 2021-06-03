@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.data.model.HomeScreenItems
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity

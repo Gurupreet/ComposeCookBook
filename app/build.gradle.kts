@@ -5,13 +5,12 @@ plugins {
 }
 
 android {
-
-    compileSdk = 30
+    compileSdk = Configuration.compileSdk
 
     defaultConfig {
         applicationId = "com.guru.composecookbook"
-        minSdk = 21
-        targetSdk = 30
+        minSdk = Configuration.minSdk
+        targetSdk = Configuration.compileSdk
         versionCode = 1
         versionName = "1.0"
         multiDexEnabled = true
@@ -63,6 +62,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+    implementation(project(":theme"))
+    implementation(project(":demos:instagram"))
 
     debugImplementation("org.jetbrains.kotlin:kotlin-reflect:${Dependencies.kotlin}")
 

@@ -1,3 +1,8 @@
+object Configuration {
+    const val compileSdk = 30
+    const val minSdk = 21
+}
+
 object Dependencies {
     const val compose = "1.0.0-beta07"
     const val lifecycleViewModelCompose = "1.0.0-alpha05"

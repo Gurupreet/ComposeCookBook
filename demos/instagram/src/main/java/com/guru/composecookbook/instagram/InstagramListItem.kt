@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.instagram
+package com.guru.composecookbook.instagram
 
 import FaIcons
 import androidx.compose.foundation.Image
