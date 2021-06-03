@@ -15,7 +15,7 @@ class CryptoDetailViewModelFactory(val context: Context): ViewModelProvider.Fact
 }
 
 class CryptoDetailViewModel(context: Context) : ViewModel() {
-    private val cryptoRepository: CryptoRepository = DemoDIGraph.createRepository(context)
+    private val cryptoRepository: CryptoRepository = com.guru.composecookbook.cryptoapp.data.DemoDIGraph.createRepository(context)
 
     //live data to read room database
     val favCryptoLiveData = liveData(Dispatchers.IO) {

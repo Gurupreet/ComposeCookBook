@@ -20,16 +20,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.accompanist.coil.rememberCoilPainter
+import com.guru.composecookbook.charts.LineChart
+import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
+import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
+import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeInteractionEvents
+import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToThreeDecimals
+import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
 import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
-import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
-import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToThreeDecimals
-import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
-import com.guru.composecookbook.charts.LineChart
-import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeInteractionEvents
 
 
 @Composable

@@ -8,10 +8,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
+import com.guru.composecookbook.cryptoapp.data.DemoDIGraph
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.data.repositories.CryptoRepository
-import com.guru.composecookbook.cryptoapp.data.DemoDIGraph
-import com.guru.composecookbook.cryptoapp.ui.internal.paging.PageNumSource
+import com.guru.composecookbook.cryptoapp.data.paging.PageNumSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
