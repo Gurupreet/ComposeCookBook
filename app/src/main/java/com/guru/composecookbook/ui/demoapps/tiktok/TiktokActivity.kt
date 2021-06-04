@@ -61,7 +61,7 @@ fun TiktokAppContent() {
 @Composable
 fun TikTokBottomNavigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
+    val currentRoute = navBackStackEntry?.arguments?.getString("route")
 
     BottomNavigation(backgroundColor = tiktokBlack) {
         TiktokDemoDataProvider.bottomBarList.forEach { tiktokScreen ->
@@ -69,7 +69,7 @@ fun TikTokBottomNavigation(navController: NavHostController) {
                 icon = { BottomBarIcon(tiktokScreen) },
                 selected = currentRoute == tiktokScreen.route,
                 onClick = {
-                    navController.popBackStack(navController.graph.startDestination, false)
+                    navController.popBackStack(navController.graph.startDestinationId, false)
                     if (currentRoute != tiktokScreen.route) {
                         navController.navigate(tiktokScreen.route)
                     }

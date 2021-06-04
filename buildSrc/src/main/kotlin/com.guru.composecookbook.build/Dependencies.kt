@@ -4,18 +4,18 @@ object Configuration {
 }
 
 object Dependencies {
-    const val compose = "1.0.0-beta07"
-    const val lifecycleViewModelCompose = "1.0.0-alpha05"
-    const val activityCompose = "1.3.0-alpha08"
+    const val compose = "1.0.0-beta08"
+    const val lifecycleViewModelCompose = "1.0.0-alpha06"
+    const val activityCompose = "1.3.0-beta01"
     const val pagingCompose = "1.0.0-alpha09"
-    const val navCompose = "1.0.0-alpha08"
+    const val navCompose = "2.4.0-alpha02"
     const val constraintLayoutCompose = "1.0.0-alpha07"
     const val lottieCompose = "1.0.0-beta03-1"
 
     const val fontAwesomeCompose = "1.0.0-beta01"
-    const val accompanistCoil = "0.10.0"
+    const val accompanistCoil = "0.11.0"
 
-    const val kotlin = "1.4.32"
+    const val kotlin = "1.5.10"
     const val coroutine = "1.4.2"
 
     const val androidLifecycleGrouped  ="2.2.0"
@@ -25,7 +25,7 @@ object Dependencies {
     const val paging = "3.0.0"
     const val lottie = "3.6.1"
     const val room = "2.3.0-beta02"
-    const val coreKtx = "1.3.2"
+    const val coreKtx = "1.6.0-beta02"
     const val appcompat = "1.2.0"
     const val paletteKtx = "1.0.0"
     const val material = "1.2.1"

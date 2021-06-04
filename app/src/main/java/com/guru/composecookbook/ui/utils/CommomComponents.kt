@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -26,26 +23,28 @@ import com.guru.fontawesomecomposelib.FaIcon
 
 @Composable
 fun ComingSoon() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(50.dp)
-    ) {
-        LottieLoadingView(context = LocalContext.current)
-        Text(
-            text = "Coming Soon",
-            style = typography.h5,
+    Surface {
+        Column(
             modifier = Modifier
-                .padding(12.dp)
-                .fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "work in progress",
-            style = typography.subtitle2,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
-        )
+                .fillMaxSize()
+                .padding(50.dp)
+        ) {
+            LottieLoadingView(context = LocalContext.current)
+            Text(
+                text = "Coming Soon",
+                style = typography.h5,
+                modifier = Modifier
+                    .padding(12.dp)
+                    .fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = "work in progress",
+                style = typography.subtitle2,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 

@@ -40,12 +40,12 @@ fun TemplateScreen(darkTheme: Boolean) {
 val templates = listOf(
     "Login",
     "Profiles",
-    "Settings",
     "On-boarding",
-    "Empty Screens",
-    "Loaders",
-    "Canvas Drawing",
-    "Animations",
     "Charts",
     "Adding Payment Card",
+    "Empty Screens",
+    "Settings",
+    "Loaders",
+    "Canvas Drawing",
+    "Animations"
 )
