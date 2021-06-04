@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.MoviesLaneItem
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.horizontalGradientBackground
+import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 @Composable
 fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {

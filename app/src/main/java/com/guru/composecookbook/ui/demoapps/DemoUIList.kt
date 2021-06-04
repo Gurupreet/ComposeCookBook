@@ -14,8 +14,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home.MoviesHomeActivity
 import com.guru.composecookbook.ui.demoapps.spotify.SpotifyActivity

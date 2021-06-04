@@ -26,7 +26,7 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.home.carousel.Pager
 import com.guru.composecookbook.ui.home.carousel.PagerState
-import com.guru.composecookbook.ui.utils.verticalGradientBackground
+import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 
 @Composable
 fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {

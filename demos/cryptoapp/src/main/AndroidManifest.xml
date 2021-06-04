@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.guru.composecookbook.cryptoapp">
+
+    <application>
+        <activity
+            android:name=".ui.detail.CryptoDetailActivity"
+            android:label="@string/title_activity_crypto_detail"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+        <activity
+            android:name=".ui.home.CryptoHomeActivity"
+            android:label="@string/title_activity_crypto_home"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+    </application>
+</manifest>

@@ -29,6 +29,8 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.material:material:${Dependencies.material}")
+
     api("com.github.Gurupreet:FontAwesomeCompose:${Dependencies.fontAwesomeCompose}")
     implementation("androidx.compose.ui:ui:${Dependencies.compose}")
     implementation("androidx.compose.material:material:${Dependencies.compose}")

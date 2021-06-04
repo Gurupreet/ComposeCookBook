@@ -32,7 +32,7 @@ import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.verticalGradientBackground
+import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import kotlin.random.Random
 
 @Composable

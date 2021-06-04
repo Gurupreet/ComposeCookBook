@@ -65,6 +65,8 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
     implementation(project(":demos:instagram"))
+    implementation(project(":demos:cryptoapp"))
+    implementation(project(":components:charts"))
 
     debugImplementation("org.jetbrains.kotlin:kotlin-reflect:${Dependencies.kotlin}")
 

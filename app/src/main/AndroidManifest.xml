@@ -56,14 +56,6 @@
             android:label="@string/title_activity_movies_home"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
-            android:name="com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.detail.CryptoDetailActivity"
-            android:label="@string/title_activity_crypto_detail"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
-            android:name="com.guru.composecookbook.ui.demoapps.cryptoappmvvm.ui.home.CryptoHomeActivity"
-            android:label="@string/title_activity_crypto_home"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
             android:name=".ui.demoapps.spotify.details.SpotifyDetailActivity"
             android:label="@string/title_activity_spotify_detail"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />

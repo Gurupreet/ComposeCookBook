@@ -28,7 +28,7 @@ import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.horizontalGradientBackground
+import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 
 @Composable
