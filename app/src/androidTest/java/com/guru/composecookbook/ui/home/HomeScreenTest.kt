@@ -79,7 +79,7 @@ class HomeScreenTest {
     ) = SemanticsMatcher(
         description = "${SemanticsProperties.Text.name} is in '$homeScreenListItems' items' names (ignoreCase: $ignoreCase)"
     ) { semanticNode ->
-        semanticNode.config.getOrNull(SemanticsProperties.Text)?.text.let { nodeText ->
+        semanticNode.config.getOrNull(SemanticsProperties.Text)?.first()?.text.let { nodeText ->
             homeScreenListItems.any { it.name.equals(nodeText, ignoreCase) }
         }
     }
