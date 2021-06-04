@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.home
 
 import com.google.common.truth.Truth.assertThat
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.data.model.HomeScreenItems
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 

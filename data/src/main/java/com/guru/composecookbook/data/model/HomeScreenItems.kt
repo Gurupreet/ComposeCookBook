@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.home
+package com.guru.composecookbook.data.model
 
 sealed class HomeScreenItems {
     object Dialogs : HomeScreenItems()

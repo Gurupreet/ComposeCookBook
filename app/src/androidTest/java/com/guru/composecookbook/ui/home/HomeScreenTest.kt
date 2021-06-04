@@ -10,6 +10,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.guru.composecookbook.MainActivity
 import com.guru.composecookbook.MainAppContent
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.data.model.HomeScreenItems
 import com.guru.composecookbook.theme.AppThemeState
 import org.junit.Before
 import org.junit.Rule

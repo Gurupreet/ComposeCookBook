@@ -1,9 +1,8 @@
 package com.guru.composecookbook.data
 
-import com.guru.composecookbook.R
+import com.guru.composecookbook.data.model.HomeScreenItems
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.data.model.Tweet
-import com.guru.composecookbook.ui.home.HomeScreenItems
 
 object DemoDataProvider {
 
