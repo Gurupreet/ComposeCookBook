@@ -10,9 +10,9 @@ plugins {
 
 dependencies {
     implementation(project(":components:charts"))
+    implementation(project(":demos:cryptoapp:data"))
     implementation(project(":theme"))
     implementation(project(":data"))
-    implementation(project(":demos:cryptoapp-data"))
 
     addComposeOfficialDependencies()
     addComposeThirdPartyDependencies()
