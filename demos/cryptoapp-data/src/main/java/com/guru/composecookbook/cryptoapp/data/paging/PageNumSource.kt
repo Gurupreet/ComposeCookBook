@@ -1,4 +1,4 @@
-package com.guru.composecookbook.cryptoapp.ui.internal.paging
+package com.guru.composecookbook.cryptoapp.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

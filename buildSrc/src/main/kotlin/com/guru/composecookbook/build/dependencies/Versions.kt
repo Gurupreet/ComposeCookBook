@@ -1,9 +1,6 @@
-object Configuration {
-    const val compileSdk = 30
-    const val minSdk = 21
-}
+package com.guru.composecookbook.build.dependencies
 
-object Dependencies {
+internal object Versions {
     const val compose = "1.0.0-beta08"
     const val lifecycleViewModelCompose = "1.0.0-alpha06"
     const val activityCompose = "1.3.0-beta01"
@@ -11,16 +8,11 @@ object Dependencies {
     const val navCompose = "2.4.0-alpha02"
     const val constraintLayoutCompose = "1.0.0-alpha07"
     const val lottieCompose = "1.0.0-beta03-1"
-
     const val fontAwesomeCompose = "1.0.0-beta01"
     const val accompanistCoil = "0.11.0"
-
     const val kotlin = "1.5.10"
     const val coroutine = "1.4.2"
-
     const val androidLifecycleGrouped  ="2.2.0"
-
-    // refer to https://github.com/iamjosephmj/flinger for more insights on the library
     const val flinger = "1.0.0"
     const val paging = "3.0.0"
     const val lottie = "3.6.1"
@@ -39,10 +31,8 @@ object Dependencies {
     const val gson = "2.8.6"
     const val retrofitConverterGson = "2.9.0"
     const val multidex = "2.0.1"
-
     const val junitJupiterApi = "5.7.0"
     const val junitJupiterEngine = "5.7.0"
     const val truth = "1.1"
     const val androidXJunit = "1.1.2"
-
 }

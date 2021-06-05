@@ -35,17 +35,16 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.airbnb.lottie.LottieAnimationView
 import com.google.accompanist.coil.rememberCoilPainter
-import com.guru.composecookbook.theme.blue
-import com.guru.composecookbook.theme.graySurface
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeInteractionEvents
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModel
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModelFactory
 import com.guru.composecookbook.cryptoapp.ui.internal.theme.Colors
+import com.guru.composecookbook.theme.blue
+import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
-
+import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 

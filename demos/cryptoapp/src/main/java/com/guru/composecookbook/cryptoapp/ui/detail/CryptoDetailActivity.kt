@@ -44,7 +44,7 @@ class CryptoDetailActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview6() {
-    val crypto = CryptoDemoDataProvider.bitcoin
+    val crypto = com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider.bitcoin
     ComposeCookBookTheme {
         CryptoDetailScreen(crypto) {
 
