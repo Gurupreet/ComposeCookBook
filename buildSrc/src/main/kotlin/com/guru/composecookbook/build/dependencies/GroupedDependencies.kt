@@ -85,6 +85,7 @@ internal val androidInstrumentationTestsDependencies = listOf(
     Dependencies.composeUiTestJunit4,
     Dependencies.composeActivity,
     Dependencies.androidXJunit,
+    Dependencies.composeUiTestManifest
 )
 
 internal val thirdPartyUiDependencies = listOf(
