@@ -1,0 +1,4 @@
+<resources>
+    <string name="title_activity_crypto_home">CryptoHome</string>
+    <string name="title_activity_crypto_detail">CryptoDetail</string>
+</resources>

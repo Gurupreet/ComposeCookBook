@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.utils.horizontalGradientBackground
+import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 private val initialimageFloat = 170f
 private val name = "Gurupreet Singh"

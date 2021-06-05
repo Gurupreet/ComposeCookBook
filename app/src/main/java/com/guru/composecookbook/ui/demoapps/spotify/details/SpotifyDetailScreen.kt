@@ -32,8 +32,8 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
-import com.guru.composecookbook.ui.utils.horizontalGradientBackground
-import com.guru.composecookbook.ui.utils.verticalGradientBackground
+import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
+import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 
 @Composable
 fun SpotifyDetailScreen(album: Album) {

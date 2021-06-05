@@ -45,7 +45,7 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.moviesappmvi.data.models.Movie
 import com.guru.composecookbook.ui.demoapps.spotify.generateDominantColorState
 import com.guru.composecookbook.ui.templates.profile.InterestTag
-import com.guru.composecookbook.ui.utils.verticalGradientBackground
+import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 
 
 class MovieDetailActivity : ComponentActivity() {

@@ -30,7 +30,7 @@ import com.guru.composecookbook.ui.animation.FloatMultiStateAnimationCircleCanva
 import com.guru.composecookbook.ui.demoapps.datingapp.components.DraggableCard
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.verticalGradientBackground
+import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import kotlin.random.Random
 
 @Composable
