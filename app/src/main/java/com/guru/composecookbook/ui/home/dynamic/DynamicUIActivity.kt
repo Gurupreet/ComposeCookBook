@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.home.androidviews.AndroidViews
-import com.guru.composecookbook.ui.home.carousel.CarouselLayout
+import com.guru.composecookbook.carousel.CarouselLayout
 import com.guru.composecookbook.ui.home.constraintlayout.ConstraintLayoutDemos
 import com.guru.composecookbook.ui.home.dialogs.BottomSheetLayouts
 import com.guru.composecookbook.ui.home.pullrefreshdemos.PullRefreshList

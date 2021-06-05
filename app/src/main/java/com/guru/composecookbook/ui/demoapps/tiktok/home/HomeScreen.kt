@@ -34,8 +34,8 @@ import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoapps.tiktok.TikTokPlayer
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokHomeInteractionEvents
-import com.guru.composecookbook.ui.home.carousel.Pager
-import com.guru.composecookbook.ui.home.carousel.PagerState
+import com.guru.composecookbook.carousel.Pager
+import com.guru.composecookbook.carousel.PagerState
 
 
 val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")

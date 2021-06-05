@@ -46,15 +46,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
-
-        <activity
-            android:name="com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.details.MovieDetailActivity"
-            android:label="@string/title_activity_movie_detail"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
-            android:name="com.guru.composecookbook.ui.demoapps.moviesappmvi.ui.home.MoviesHomeActivity"
-            android:label="@string/title_activity_movies_home"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
             android:name=".ui.demoapps.spotify.details.SpotifyDetailActivity"
             android:label="@string/title_activity_spotify_detail"

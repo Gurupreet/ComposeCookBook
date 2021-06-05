@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.R
+import com.guru.composecookbook.tags.InterestTag
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
