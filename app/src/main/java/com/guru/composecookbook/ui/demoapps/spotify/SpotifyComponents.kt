@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.palette.graphics.Palette
+import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
@@ -138,13 +139,7 @@ fun PreviewSpotifyHomeGridItem() {
 }
 
 fun generateDominantColorState(bitmap: Bitmap): Palette.Swatch {
-    return Palette.Builder(bitmap)
-        .resizeBitmapArea(0)
-        .maximumColorCount(16)
-        .generate()
-        .swatches
-        .maxByOrNull { swatch -> swatch.population }!!
-
+    return bitmap.generateDominantColorState()
 }
 
 @Preview

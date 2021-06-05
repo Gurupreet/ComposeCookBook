@@ -23,8 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.airbnb.lottie.LottieAnimationView
-import com.guru.composecookbook.ui.home.carousel.Pager
-import com.guru.composecookbook.ui.home.carousel.PagerState
+import com.guru.composecookbook.carousel.Pager
+import com.guru.composecookbook.carousel.PagerState
 
 @Composable
 fun OnBoardingScreen1(onSkip: () -> Unit) {

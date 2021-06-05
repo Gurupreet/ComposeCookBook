@@ -1,0 +1,4 @@
+<resources>
+    <string name="title_activity_movies_home">MovieHome</string>
+    <string name="title_activity_movie_detail">MovieDetail</string>
+</resources>

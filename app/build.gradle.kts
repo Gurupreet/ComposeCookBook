@@ -69,8 +69,11 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
     implementation(project(":demos:instagram"))
-    implementation(project(":demos:cryptoapp"))
+    implementation(project(":demos:cryptoapp:app"))
+    implementation(project(":demos:moviesapp:app"))
     implementation(project(":components:charts"))
+    implementation(project(":components:tags"))
+    implementation(project(":components:carousel"))
 
     addKotlinDependencies()
 
