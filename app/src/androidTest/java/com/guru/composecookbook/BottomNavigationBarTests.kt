@@ -85,12 +85,10 @@ class BottomNavigationBarTests {
     fun whenBottomNavEntryHomeClickedTheHomeScreenIsDisplayed() {
         composeAndroidTestRule.apply {
             onNodeWithTag("Home")
-                .performClick()     // Click on the Home entry in the bottom navigation bar
-                .onAncestors()      // returns BottomNavigation, BottomNavigationContent, Column, MainAppContent, BaseView
-                .onLast()           // returns BaseView - which is the root
-                .onChildren()
-                .filterToOne(hasTestTag("Home Screen"))
-                .assertExists()
+                .performClick()
+
+            onNodeWithTag("Home Screen")
+                .assertIsDisplayed()
         }
     }
 
@@ -102,13 +100,8 @@ class BottomNavigationBarTests {
             onNodeWithTag("Widgets")
                 .performClick()
 
-            // The widgets screen contains infinite animations.
-            // If we don's pause the clock, the test will wait forever and no assertion could be done
-
-            onRoot()
-                .onChildren()
-                .filterToOne(hasTestTag("Widget Screen"))
-                .assertExists()
+            onNodeWithTag("Widget Screen")
+                .assertIsDisplayed()
         }
     }
 
@@ -119,11 +112,8 @@ class BottomNavigationBarTests {
             onNodeWithTag("Anim")
                 .performClick()
 
-
-            onRoot()
-                .onChildren()
-                .filterToOne(hasTestTag("Animation Screen"))
-                .assertExists()
+            onNodeWithTag("Animation Screen")
+                .assertIsDisplayed()
         }
     }
 
@@ -134,11 +124,8 @@ class BottomNavigationBarTests {
             onNodeWithTag("DemoUI")
                 .performClick()
 
-
-            onRoot()
-                .onChildren()
-                .filterToOne(hasTestTag("Demo UI List Screen"))
-                .assertExists()
+            onNodeWithTag("Demo UI List Screen")
+                .assertIsDisplayed()
         }
     }
 
