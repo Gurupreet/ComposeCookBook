@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.instagram.InstagramActivity
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
 import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
@@ -36,6 +37,11 @@ fun DemoUIList() {
                     Button(
                         onClick = {
                             when (title) {
+                                "Instagram" -> {
+                                    context.startActivity(
+                                        InstagramActivity.newIntent(context)
+                                    )
+                                }
                                 "Spotify" -> {
                                     context.startActivity(
                                         SpotifyActivity.newIntent(context, false)

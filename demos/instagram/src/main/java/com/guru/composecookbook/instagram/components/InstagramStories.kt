@@ -1,4 +1,4 @@
-package com.guru.composecookbook.instagram
+package com.guru.composecookbook.instagram.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

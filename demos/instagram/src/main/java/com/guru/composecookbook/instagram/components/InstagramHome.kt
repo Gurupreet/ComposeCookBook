@@ -1,4 +1,4 @@
-package com.guru.composecookbook.instagram
+package com.guru.composecookbook.instagram.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,6 +10,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.instagram.R
 
 @Composable
 fun InstagramHome() {
