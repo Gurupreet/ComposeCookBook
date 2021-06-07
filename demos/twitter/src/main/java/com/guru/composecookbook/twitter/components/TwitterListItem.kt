@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.twitter
+package com.guru.composecookbook.twitter.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -22,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
+import com.guru.composecookbook.twitter.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.twitterColor

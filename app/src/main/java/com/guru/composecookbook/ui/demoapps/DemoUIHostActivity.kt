@@ -13,9 +13,8 @@ import androidx.core.content.ContextCompat
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.gmail.home.GmailScreen
-import com.guru.composecookbook.instagram.components.InstagramHome
 import com.guru.composecookbook.ui.demoapps.paint.PaintApp
-import com.guru.composecookbook.ui.demoapps.twitter.TwitterHome
+import com.guru.composecookbook.twitter.components.TwitterHome
 import com.guru.composecookbook.ui.demoapps.youtube.YoutubeHome
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
@@ -56,7 +55,6 @@ class DemoUIHostActivity : ComponentActivity() {
 @Composable
 fun DemoUIContent(demoUiType: String) {
     when (demoUiType) {
-        "Twitter" -> TwitterHome()
         "Gmail" -> GmailScreen()
         "Youtube" -> YoutubeHome()
         "Paint" -> PaintApp()

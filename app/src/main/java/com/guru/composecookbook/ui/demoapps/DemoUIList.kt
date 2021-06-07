@@ -20,6 +20,7 @@ import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
 import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
 import com.guru.composecookbook.ui.utils.TestTags
+import com.guru.composecookbook.twitter.TwitterActivity
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokActivity
 
 @Composable
@@ -40,6 +41,11 @@ fun DemoUIList() {
                                 "Instagram" -> {
                                     context.startActivity(
                                         InstagramActivity.newIntent(context)
+                                    )
+                                }
+                                "Twitter" -> {
+                                    context.startActivity(
+                                        TwitterActivity.newIntent(context)
                                     )
                                 }
                                 "Spotify" -> {
