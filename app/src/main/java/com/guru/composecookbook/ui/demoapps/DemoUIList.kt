@@ -22,6 +22,7 @@ import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
 import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.twitter.TwitterActivity
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokActivity
+import com.guru.composecookbook.youtube.YoutubeActivity
 
 @Composable
 fun DemoUIList() {
@@ -46,6 +47,11 @@ fun DemoUIList() {
                                 "Twitter" -> {
                                     context.startActivity(
                                         TwitterActivity.newIntent(context)
+                                    )
+                                }
+                                "Youtube" -> {
+                                    context.startActivity(
+                                        YoutubeActivity.newIntent(context)
                                     )
                                 }
                                 "Spotify" -> {

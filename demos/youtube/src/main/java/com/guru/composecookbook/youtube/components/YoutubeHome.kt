@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.youtube
+package com.guru.composecookbook.youtube.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
+import com.guru.composecookbook.youtube.R
 import com.guru.composecookbook.data.DemoDataProvider
 
 @Composable

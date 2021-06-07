@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.youtube
+package com.guru.composecookbook.youtube.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.padding

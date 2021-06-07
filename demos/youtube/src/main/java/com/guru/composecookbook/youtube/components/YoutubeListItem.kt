@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.youtube
+package com.guru.composecookbook.youtube.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.guru.composecookbook.R
+import com.guru.composecookbook.youtube.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 

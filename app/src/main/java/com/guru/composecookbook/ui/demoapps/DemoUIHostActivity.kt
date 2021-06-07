@@ -14,8 +14,6 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.gmail.home.GmailScreen
 import com.guru.composecookbook.ui.demoapps.paint.PaintApp
-import com.guru.composecookbook.twitter.components.TwitterHome
-import com.guru.composecookbook.ui.demoapps.youtube.YoutubeHome
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
 
@@ -56,7 +54,6 @@ class DemoUIHostActivity : ComponentActivity() {
 fun DemoUIContent(demoUiType: String) {
     when (demoUiType) {
         "Gmail" -> GmailScreen()
-        "Youtube" -> YoutubeHome()
         "Paint" -> PaintApp()
         else -> Text(text = "Comming soon", style = typography.h6)
     }
