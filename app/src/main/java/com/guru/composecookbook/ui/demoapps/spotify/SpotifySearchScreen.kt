@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.VerticalGrid
+import com.guru.composecookbook.verticalgrid.VerticalGrid
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 @Composable

@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.ui.demoapps.spotify.data.Album
 import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.ui.demoapps.spotify.details.SpotifyDetailActivity
-import com.guru.composecookbook.ui.utils.StaggeredVerticalGrid
+import com.guru.composecookbook.verticalgrid.StaggeredVerticalGrid
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 import kotlin.random.Random
 

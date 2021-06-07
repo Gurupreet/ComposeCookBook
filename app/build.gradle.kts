@@ -74,6 +74,7 @@ dependencies {
     implementation(project(":components:charts"))
     implementation(project(":components:tags"))
     implementation(project(":components:carousel"))
+    implementation(project(":components:verticalgrid"))
 
     addKotlinDependencies()
 

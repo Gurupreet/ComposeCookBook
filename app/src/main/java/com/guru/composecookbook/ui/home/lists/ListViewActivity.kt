@@ -24,7 +24,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.instagram.InstagramStories
 import com.guru.composecookbook.instagram.StoryListItem
-import com.guru.composecookbook.ui.utils.VerticalGrid
+import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 class ListViewActivity : ComponentActivity() {
 

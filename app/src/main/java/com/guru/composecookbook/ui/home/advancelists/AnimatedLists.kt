@@ -32,7 +32,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.demoapps.youtube.YoutubeChip
-import com.guru.composecookbook.ui.utils.VerticalGrid
+import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 
 @Composable

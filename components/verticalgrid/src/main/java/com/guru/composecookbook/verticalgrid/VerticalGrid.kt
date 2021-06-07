@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.utils
+package com.guru.composecookbook.verticalgrid
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
