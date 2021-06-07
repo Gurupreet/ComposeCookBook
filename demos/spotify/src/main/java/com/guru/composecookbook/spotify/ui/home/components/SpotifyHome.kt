@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.spotify
+package com.guru.composecookbook.spotify.ui.home.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
@@ -24,10 +24,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.R
+import com.guru.composecookbook.spotify.R
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
@@ -63,42 +63,6 @@ fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
         HomeGridSection()
         HomeLanesSection()
         Spacer(modifier = Modifier.height(100.dp))
-    }
-}
-
-@Composable
-fun PlayerBottomBar(modifier: Modifier) {
-    val bottomBarHeight = 57.dp
-    val backgroundColor =
-        if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
-    Row(
-        modifier = modifier
-            .padding(bottom = bottomBarHeight)
-            .fillMaxWidth()
-            .background(color = backgroundColor),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.adele21),
-            modifier = Modifier.size(65.dp),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Text(
-            text = "Someone Like you by Adele",
-            style = typography.h6.copy(fontSize = 14.sp),
-            modifier = Modifier
-                .padding(8.dp)
-                .weight(1f),
-        )
-        Icon(
-            imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),
-            contentDescription = null
-        )
-        Icon(
-            imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp),
-            contentDescription = null
-        )
     }
 }
 

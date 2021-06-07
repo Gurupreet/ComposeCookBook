@@ -18,7 +18,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.tiktokBlack
-import com.guru.composecookbook.ui.demoapps.spotify.data.Album
+import com.guru.composecookbook.spotify.data.models.Album
 import com.guru.composecookbook.ui.demoapps.tiktok.discover.DiscoverScreen
 import com.guru.composecookbook.ui.demoapps.tiktok.home.HomeScreen
 import com.guru.composecookbook.ui.demoapps.tiktok.home.TiktokCreateIcon

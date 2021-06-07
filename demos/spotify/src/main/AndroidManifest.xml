@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.guru.composecookbook.spotify">
+    <application>
+        <activity
+            android:name=".ui.home.SpotifyActivity"
+            android:label="@string/title_activity_spotify"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+        <activity
+            android:name=".ui.details.SpotifyDetailActivity"
+            android:label="@string/title_activity_spotify_detail"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+    </application>
+</manifest>

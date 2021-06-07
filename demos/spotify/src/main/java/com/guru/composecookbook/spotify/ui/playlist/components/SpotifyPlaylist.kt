@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.spotify
+package com.guru.composecookbook.spotify.ui.playlist.components
 
 import android.content.Context
 import androidx.compose.foundation.Image
@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -21,9 +20,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.ui.demoapps.spotify.data.Album
-import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.demoapps.spotify.details.SpotifyDetailActivity
+import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
+import com.guru.composecookbook.spotify.ui.home.components.SpotifyTitle
 import com.guru.composecookbook.verticalgrid.StaggeredVerticalGrid
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 import kotlin.random.Random
@@ -32,9 +32,7 @@ import kotlin.random.Random
 fun SpotifyPlayList() {
     val albums = remember { SpotifyDataProvider.albums }
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
-
     val context = LocalContext.current
-    rememberScrollState(0)
     LazyColumn(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
         // use `item` for separate elements like headers
         // and `items` for lists of identical elements

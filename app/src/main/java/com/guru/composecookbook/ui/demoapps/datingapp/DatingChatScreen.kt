@@ -30,8 +30,8 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.instagramGradient
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoapps.spotify.data.Album
-import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import kotlin.random.Random
 

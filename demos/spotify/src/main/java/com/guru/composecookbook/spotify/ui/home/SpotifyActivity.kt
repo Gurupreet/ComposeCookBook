@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.spotify
+package com.guru.composecookbook.spotify.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -19,17 +19,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.guru.composecookbook.R
+import com.guru.composecookbook.spotify.ui.home.components.SpotifyHome
+import com.guru.composecookbook.spotify.ui.playlist.components.SpotifyPlayList
+import com.guru.composecookbook.spotify.ui.search.components.SpotifySearchScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
-import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
+import com.guru.composecookbook.spotify.R
+
+enum class SpotifyNavType {
+    HOME, SEARCH, LIBRARY
+}
 
 class SpotifyActivity : ComponentActivity() {
-
-    private val isDarkTheme: Boolean by lazy {
-        intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

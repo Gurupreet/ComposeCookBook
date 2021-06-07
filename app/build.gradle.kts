@@ -69,6 +69,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
     implementation(project(":demos:instagram"))
+    implementation(project(":demos:spotify"))
     implementation(project(":demos:cryptoapp:app"))
     implementation(project(":demos:moviesapp:app"))
     implementation(project(":components:charts"))

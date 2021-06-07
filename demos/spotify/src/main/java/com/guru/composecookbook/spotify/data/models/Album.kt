@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.spotify.data
+package com.guru.composecookbook.spotify.data.models
 
 import java.io.Serializable
 

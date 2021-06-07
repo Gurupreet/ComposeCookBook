@@ -1,7 +1,8 @@
-package com.guru.composecookbook.ui.demoapps.spotify.data
+package com.guru.composecookbook.spotify.data
 
 import androidx.compose.ui.graphics.Color
-import com.guru.composecookbook.R
+import com.guru.composecookbook.spotify.R
+import com.guru.composecookbook.spotify.data.models.Album
 import com.guru.composecookbook.theme.graySurface
 
 object SpotifyDataProvider {

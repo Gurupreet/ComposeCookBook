@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.spotify.details
+package com.guru.composecookbook.spotify.ui.details
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
+import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.spotify.ui.details.components.SpotifyDetailScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.demoapps.spotify.data.Album
-import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
 
 class SpotifyDetailActivity : ComponentActivity() {
 

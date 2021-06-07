@@ -17,8 +17,8 @@ import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
+import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
 import com.guru.composecookbook.ui.utils.TestTags
-import com.guru.composecookbook.ui.demoapps.spotify.SpotifyActivity
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokActivity
 
 @Composable
