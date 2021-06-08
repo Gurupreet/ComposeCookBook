@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.templates.components
+package com.guru.composecookbook.colorpicker
 
 /// Inspired from https://github.com/msasikanth/compose_colorpicker to understand hue creations .
 
@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.runtime.*
@@ -28,7 +29,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.utils.SubtitleText
+import com.guru.composecookbook.theme.typography
 import kotlin.math.roundToInt
 import kotlin.random.Random
 import android.graphics.Color as AndroidColor
@@ -37,7 +38,11 @@ import android.graphics.Color as AndroidColor
 fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
-    SubtitleText(subtitle = "Color picker with draggable")
+    Text(
+        text = "Color picker with draggable",
+        style = typography.subtitle2,
+        modifier = Modifier.padding(8.dp)
+    )
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
     var activeColor by remember { mutableStateOf<Color>(Red) }

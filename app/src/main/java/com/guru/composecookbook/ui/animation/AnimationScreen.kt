@@ -18,7 +18,7 @@ import com.guru.composecookbook.ui.animation.AnimatableSuspendedAnimations
 import com.guru.composecookbook.ui.animation.AnimationsForStates
 import com.guru.composecookbook.ui.animation.AnimationsWithVisibilityApi
 import com.guru.composecookbook.ui.animation.TransitionAnimationsWithMultipleStates
-import com.guru.composecookbook.ui.templates.components.ColorPicker
+import com.guru.composecookbook.colorpicker.ColorPicker
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.TitleText
 

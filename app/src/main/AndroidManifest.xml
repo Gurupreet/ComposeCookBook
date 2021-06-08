@@ -47,10 +47,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
         <activity
-            android:name=".ui.demoapps.DemoUIHostActivity"
-            android:label="@string/title_activity_demo_uihost"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar">

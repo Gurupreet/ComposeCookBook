@@ -73,6 +73,7 @@ dependencies {
     implementation(project(":demos:twitter"))
     implementation(project(":demos:youtube"))
     implementation(project(":demos:gmail"))
+    implementation(project(":demos:paint"))
     implementation(project(":demos:cryptoapp:app"))
     implementation(project(":demos:moviesapp:app"))
     implementation(project(":components:fab"))
@@ -80,6 +81,7 @@ dependencies {
     implementation(project(":components:tags"))
     implementation(project(":components:carousel"))
     implementation(project(":components:verticalgrid"))
+    implementation(project(":components:colorpicker"))
 
     addKotlinDependencies()
 

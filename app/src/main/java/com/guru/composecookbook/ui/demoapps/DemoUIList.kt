@@ -19,6 +19,7 @@ import com.guru.composecookbook.gmail.ui.GmailActivity
 import com.guru.composecookbook.instagram.InstagramActivity
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
+import com.guru.composecookbook.paint.PaintActivity
 import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
 import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.twitter.TwitterActivity
@@ -60,6 +61,11 @@ fun DemoUIList() {
                                         GmailActivity.newIntent(context)
                                     )
                                 }
+                                "Paint" -> {
+                                    context.startActivity(
+                                        PaintActivity.newIntent(context)
+                                    )
+                                }
                                 "Spotify" -> {
                                     context.startActivity(
                                         SpotifyActivity.newIntent(context, false)
@@ -85,11 +91,7 @@ fun DemoUIList() {
                                         TiktokActivity.newIntent(context)
                                     )
                                 }
-                                else -> {
-                                    context.startActivity(
-                                        DemoUIHostActivity.newIntent(context, title, false)
-                                    )
-                                }
+                                else -> TODO("Create your activity to launch any new demo app")
                             }
                         },
                         modifier = Modifier
