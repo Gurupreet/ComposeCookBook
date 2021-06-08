@@ -5,6 +5,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
+import com.guru.composecookbook.ui.utils.TestTags
 import org.junit.Rule
 import org.junit.Test
 
@@ -21,7 +22,7 @@ class FlingListActivityTest {
     @Test
     fun flingListOfButtonMustBeRendered() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Fling List Activity Button")
+            onNodeWithTag(TestTags.HOME_FLING_LIST_BUTTON)
                 .assertIsDisplayed()
         }
     }
@@ -29,7 +30,7 @@ class FlingListActivityTest {
     @Test
     fun flingListOfHeaderMustBeRendered() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Header")
+            onNodeWithTag(TestTags.HOME_FLING_HEADER)
                 .assertIsDisplayed()
         }
     }
@@ -37,7 +38,7 @@ class FlingListActivityTest {
     @Test
     fun flingListOfLazyColumnMustBeRendered() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Fling List Activity List", true)
+            onNodeWithTag(TestTags.HOME_FLING_LIST, true)
                 .assertExists()
         }
     }
@@ -45,9 +46,9 @@ class FlingListActivityTest {
     @Test
     fun flingListClickOnSettingsButton() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Fling Settings", true)
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_BUTTON, true)
                 .performClick()
-            onNodeWithTag("Settings Page")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_ROOT)
                 .assertIsDisplayed()
         }
     }

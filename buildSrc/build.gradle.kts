@@ -36,8 +36,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
 
     // in order to recognize the "plugins" block in the common script
-    implementation("com.android.tools.build:gradle:7.1.0-alpha01")
+    implementation("com.android.tools.build:gradle:7.1.0-alpha02")
 
     // in order to recognize the "android" block in the common script
-    implementation("com.android.tools.build:gradle-api:7.1.0-alpha01")
+    implementation("com.android.tools.build:gradle-api:7.1.0-alpha02")
 }

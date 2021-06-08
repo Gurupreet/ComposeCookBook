@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.ui.utils.TestTags
 
 @Composable
 fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
@@ -23,7 +24,7 @@ fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .testTag("item-${item.id}")
+            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
     ) {
 
         val imageModifier = Modifier

@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.ui.utils.TestTags
 
 @Composable
 fun HorizontalListItem(
@@ -24,7 +26,9 @@ fun HorizontalListItem(
 ) {
     Card(
         shape = MaterialTheme.shapes.medium,
-        modifier = modifier.size(280.dp, 200.dp)
+        modifier = modifier
+            .size(280.dp, 200.dp)
+            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
     ) {
         Column(modifier = Modifier.clickable(onClick = { })) {
             Image(

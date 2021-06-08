@@ -25,6 +25,7 @@ import androidx.lifecycle.MutableLiveData
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.ui.utils.TestTags
 
 /**
  * This Activity renders the List to Showcase the fling behaviour.
@@ -148,7 +149,7 @@ fun ListViewContent(
                          */
                         Text(
                             text = "Custom Fling",
-                            modifier = Modifier.testTag("Header")
+                            modifier = Modifier.testTag(TestTags.HOME_FLING_HEADER)
                         )
                     }
                 },

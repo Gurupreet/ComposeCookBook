@@ -6,9 +6,11 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
 import com.guru.composecookbook.ui.home.customfling.FlingStateStore
+import com.guru.composecookbook.ui.utils.TestTags
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
+import java.util.*
 
 /**
  *
@@ -40,7 +42,7 @@ class FlingSettingsPageTest {
         composeAndroidTestRule.apply {
             onNodeWithTag("native")
                 .performClick()
-            onNodeWithTag("Custom Editable")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_EDITABLE)
                 .assertDoesNotExist()
         }
     }
@@ -60,7 +62,7 @@ class FlingSettingsPageTest {
         composeAndroidTestRule.apply {
             onNodeWithTag("smooth")
                 .performClick()
-            onNodeWithTag("Custom Editable")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_EDITABLE)
                 .assertDoesNotExist()
         }
     }
@@ -80,7 +82,7 @@ class FlingSettingsPageTest {
         composeAndroidTestRule.apply {
             onNodeWithTag("custom")
                 .performClick()
-            onNodeWithTag("Custom Editable")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_EDITABLE)
                 .assertIsDisplayed()
         }
     }
@@ -92,16 +94,17 @@ class FlingSettingsPageTest {
             onNodeWithTag("native")
                 .performClick()
 
-            onNodeWithTag("apply")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_APPLY)
                 .assertIsDisplayed()
 
-            onNodeWithTag("apply")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_APPLY)
                 .performClick()
 
-            onNodeWithTag("Header")
+            onNodeWithTag(TestTags.HOME_FLING_HEADER)
                 .assertIsDisplayed()
 
-            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.toLowerCase(), "native")
+            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
+                "native")
 
         }
     }
@@ -113,16 +116,17 @@ class FlingSettingsPageTest {
             onNodeWithTag("smooth")
                 .performClick()
 
-            onNodeWithTag("apply")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_APPLY)
                 .assertIsDisplayed()
 
-            onNodeWithTag("apply")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_APPLY)
                 .performClick()
 
-            onNodeWithTag("Header")
+            onNodeWithTag(TestTags.HOME_FLING_HEADER)
                 .assertIsDisplayed()
 
-            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.toLowerCase(), "smooth")
+            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
+                "smooth")
 
         }
     }
@@ -134,24 +138,25 @@ class FlingSettingsPageTest {
             onNodeWithTag("custom")
                 .performClick()
 
-            onNodeWithTag("apply")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_APPLY)
                 .assertIsDisplayed()
 
-            onNodeWithTag("apply")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_APPLY)
                 .performClick()
 
-            onNodeWithTag("Header")
+            onNodeWithTag(TestTags.HOME_FLING_HEADER)
                 .assertIsDisplayed()
 
-            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.toLowerCase(), "custom")
+            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
+                "custom")
         }
     }
 
     private fun launchInitialActivity() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Fling Settings", true)
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_BUTTON, true)
                 .performClick()
-            onNodeWithTag("Settings Page")
+            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_ROOT)
                 .assertIsDisplayed()
         }
     }

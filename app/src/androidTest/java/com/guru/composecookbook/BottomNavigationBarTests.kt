@@ -2,6 +2,7 @@ package com.guru.composecookbook
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import com.guru.composecookbook.ui.utils.TestTags
 import org.junit.Rule
 import org.junit.Test
 
@@ -10,12 +11,10 @@ class BottomNavigationBarTests {
     @get: Rule
     val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
-    private val bottomNavigationBarTestTag: String = "bottom_navigation_bar"
-
     @Test
     fun bottomNavigationBarMustHaveFiveEntries() {
         composeAndroidTestRule.apply {
-            onNodeWithTag(bottomNavigationBarTestTag)
+            onNodeWithTag(TestTags.BOTTOM_NAV_TEST_TAG)
                 .onChild()
                 .onChildren()
                 .assertCountEquals(5)
@@ -25,7 +24,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveHomeEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Home")
+            onNodeWithTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
                 .assertIsSelectable()
                 .assertExists()
         }
@@ -34,7 +33,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveWidgetsEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Widgets")
+            onNodeWithTag(TestTags.BOTTOM_NAV_WIDGETS_TEST_TAG)
                 .assertIsSelectable()
                 .assertExists()
         }
@@ -43,7 +42,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveAnimEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Anim")
+            onNodeWithTag(TestTags.BOTTOM_NAV_ANIM_TEST_TAG)
                 .assertIsSelectable()
                 .assertExists()
 
@@ -53,7 +52,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBarMustHaveDemoUiEntry() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("DemoUI")
+            onNodeWithTag(TestTags.BOTTOM_NAV_DEMO_UI_TEST_TAG)
                 .assertIsSelectable()
                 .assertExists()
         }
@@ -63,7 +62,7 @@ class BottomNavigationBarTests {
     fun bottomNavigationBarMustHaveTemplateEntry() {
         composeAndroidTestRule.apply {
             composeAndroidTestRule.apply {
-                onNodeWithTag("Template")
+                onNodeWithTag(TestTags.BOTTOM_NAV_TEMPLATE_TEST_TAG)
                     .assertIsSelectable()
                     .assertExists()
             }
@@ -73,7 +72,7 @@ class BottomNavigationBarTests {
     @Test
     fun bottomNavigationBartHomeIsSelectedByDefault() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Home")
+            onNodeWithTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
                 .performClick()
                 .assertIsSelected()
                 .onSiblings()
@@ -84,10 +83,10 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavEntryHomeClickedTheHomeScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Home")
+            onNodeWithTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
                 .performClick()
 
-            onNodeWithTag("Home Screen")
+            onNodeWithTag(TestTags.HOME_SCREEN_ROOT)
                 .assertIsDisplayed()
         }
     }
@@ -97,10 +96,10 @@ class BottomNavigationBarTests {
     fun whenBottomNavEntryWidgetsClickedTheWidgetScreenIsDisplayed() {
         composeAndroidTestRule.apply {
 
-            onNodeWithTag("Widgets")
+            onNodeWithTag(TestTags.BOTTOM_NAV_WIDGETS_TEST_TAG)
                 .performClick()
 
-            onNodeWithTag("Widget Screen")
+            onNodeWithTag(TestTags.WIDGET_SCREEN_ROOT)
                 .assertIsDisplayed()
         }
     }
@@ -109,10 +108,10 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavBarAnimEntryClickedAnimationScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Anim")
+            onNodeWithTag(TestTags.BOTTOM_NAV_ANIM_TEST_TAG)
                 .performClick()
 
-            onNodeWithTag("Animation Screen")
+            onNodeWithTag(TestTags.ANIM_SCREEN_ROOT)
                 .assertIsDisplayed()
         }
     }
@@ -121,10 +120,10 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavBarDemoUiEntryClickedDemoUiScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("DemoUI")
+            onNodeWithTag(TestTags.BOTTOM_NAV_DEMO_UI_TEST_TAG)
                 .performClick()
 
-            onNodeWithTag("Demo UI List Screen")
+            onNodeWithTag(TestTags.DEMO_SCREEN_ROOT)
                 .assertIsDisplayed()
         }
     }
@@ -133,10 +132,10 @@ class BottomNavigationBarTests {
     @Test
     fun whenBottomNavigationBarTemplateEntryClickedTemplateScreenIsDisplayed() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Template")
+            onNodeWithTag(TestTags.BOTTOM_NAV_TEMPLATE_TEST_TAG)
                 .performClick()
 
-            onNodeWithTag("Template Screen")
+            onNodeWithTag(TestTags.TEMPLATE_SCREEN_ROOT)
                 .assertExists()
         }
     }

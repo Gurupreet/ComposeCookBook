@@ -10,11 +10,11 @@ import org.junit.Rule
 import org.junit.Test
 
 /**
- * UI test for Vertical List page.
+ * UI test for Horizontal List page.
  *
  * @author https://github.com/iamjosephmj
  */
-class VerticalListTest {
+class HorizontalListTest {
 
     @get: Rule
     val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
@@ -28,17 +28,17 @@ class VerticalListTest {
     }
 
     @Test
-    fun assertIfVerticalListButtonVisible() {
+    fun assertIfHorizontalListButtonVisible() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("button-Vertical ListView")
+            onNodeWithTag("button-Horizontal ListView")
                 .assertIsDisplayed()
         }
     }
 
     @Test
-    fun assertIfVerticalListIsVisible() {
+    fun assertIfHorizontalListIsVisible() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("button-Vertical ListView")
+            onNodeWithTag("button-Horizontal ListView")
                 .assertIsDisplayed()
                 .performClick()
 
