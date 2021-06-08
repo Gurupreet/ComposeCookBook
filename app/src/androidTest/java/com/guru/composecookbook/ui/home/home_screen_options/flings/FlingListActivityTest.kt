@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.flings
+package com.guru.composecookbook.ui.home.home_screen_options.flings
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
