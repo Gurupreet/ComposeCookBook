@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.ui.utils.toFloatNum
 
 /**
@@ -92,7 +93,7 @@ fun DrawApplyButton(onApplyClick: () -> Unit, flingCopyStore: FlingStateStore) {
                 FlingStateStore.INSTANCE = flingCopyStore
                 onApplyClick()
             },
-            modifier = Modifier.size(200.dp, 60.dp).testTag("apply")
+            modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
         ) {
             Text(text = "Apply")
         }
@@ -176,7 +177,7 @@ fun BuildEditTexts(
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.height(100.dp).testTag("Custom Editable")
+        modifier = Modifier.height(100.dp).testTag(TestTags.HOME_FLING_SETTINGS_EDITABLE)
     ) {
         Column(
             modifier = Modifier
@@ -620,7 +621,7 @@ fun BuildEditTexts(
                 FlingStateStore.INSTANCE = flingCopyStore
                 onApplyClick()
             },
-            modifier = Modifier.size(200.dp, 60.dp).testTag("apply")
+            modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
         ) {
             Text(text = "apply")
         }

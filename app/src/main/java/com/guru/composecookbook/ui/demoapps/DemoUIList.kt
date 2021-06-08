@@ -10,14 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
+import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.ui.demoapps.spotify.SpotifyActivity
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokActivity
 
@@ -26,7 +26,7 @@ fun DemoUIList() {
     val demoUis = remember { DemoDataProvider.demoUiList }
     val context = LocalContext.current
     Scaffold(
-        modifier = Modifier.semantics { testTag = "Demo UI List Screen" }
+        modifier = Modifier.testTag(TestTags.DEMO_SCREEN_ROOT)
     ) {
         LazyColumn {
             items(

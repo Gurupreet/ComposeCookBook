@@ -20,6 +20,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
+import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.demoapps.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
@@ -104,7 +105,7 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
         BottomNavigationContent(
             modifier = Modifier
                 .semantics { contentDescription = bottomNavBarContentDescription }
-                .testTag("bottom_navigation_bar"),
+                .testTag(TestTags.BOTTOM_NAV_TEST_TAG),
             homeScreenState = homeScreenState
         )
     }
@@ -130,7 +131,7 @@ fun BottomNavigationContent(
                 animate = false
             },
             label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
-            modifier = Modifier.testTag("Home")
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
         )
         BottomNavigationItem(
             icon = {
@@ -148,7 +149,7 @@ fun BottomNavigationContent(
                 animate = false
             },
             label = { Text(text = stringResource(id = R.string.navigation_item_widgets)) },
-            modifier = Modifier.testTag("Widgets")
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_WIDGETS_TEST_TAG)
         )
         BottomNavigationItem(
             icon = {
@@ -165,7 +166,7 @@ fun BottomNavigationContent(
                 animate = true
             },
             label = { Text(text = stringResource(id = R.string.navigation_item_animation)) },
-            modifier = Modifier.testTag("Anim")
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_ANIM_TEST_TAG)
 
         )
         BottomNavigationItem(
@@ -183,7 +184,7 @@ fun BottomNavigationContent(
                 animate = false
             },
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) },
-            modifier = Modifier.testTag("DemoUI")
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_DEMO_UI_TEST_TAG)
         )
         BottomNavigationItem(
             icon = {
@@ -201,7 +202,7 @@ fun BottomNavigationContent(
                 animate = false
             },
             label = { Text(text = stringResource(id = R.string.navigation_item_profile)) },
-            modifier = Modifier.testTag("Template")
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_TEMPLATE_TEST_TAG)
 
         )
     }

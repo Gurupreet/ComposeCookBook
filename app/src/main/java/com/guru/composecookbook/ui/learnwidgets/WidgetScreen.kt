@@ -8,16 +8,16 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.ui.utils.TestTags
 
 @ExperimentalMaterialApi
 @Composable
 fun WidgetScreen() {
     Scaffold(
-        modifier = Modifier.semantics { testTag = "Widget Screen" },
+        modifier = Modifier.testTag( TestTags.WIDGET_SCREEN_ROOT),
         topBar = {
             TopAppBar(
                 title = { Text(text = "All Material Widgets") },

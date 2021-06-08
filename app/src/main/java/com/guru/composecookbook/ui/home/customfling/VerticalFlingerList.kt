@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.model.Item
+import com.guru.composecookbook.ui.utils.TestTags
 import io.iamjosephmj.flinger.bahaviours.StockFlingBehaviours
 
 /**
@@ -40,7 +41,7 @@ fun VerticalFlingerListView(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
-                .testTag("Fling List Activity Button")
+                .testTag(TestTags.HOME_FLING_LIST_BUTTON)
         ) {
 
             // Settings button
@@ -54,7 +55,7 @@ fun VerticalFlingerListView(
             ) {
                 Text(
                     text = "Settings",
-                    modifier = Modifier.testTag("Fling Settings")
+                    modifier = Modifier.testTag(TestTags.HOME_FLING_SETTINGS_BUTTON)
                 )
             }
             RenderBottomList(list, flingStateStore)
@@ -85,7 +86,7 @@ fun RenderListWithBehaviour(list: List<Item>, flingBehavior: FlingBehavior) {
     LazyColumn(
         // Custom Fling behaviour
         flingBehavior = flingBehavior,
-        modifier = Modifier.testTag("Fling List Activity List")
+        modifier = Modifier.testTag(TestTags.HOME_FLING_LIST)
     ) {
         items(
             items = list,

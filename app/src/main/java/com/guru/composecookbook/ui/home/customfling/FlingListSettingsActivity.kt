@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.ui.utils.TestTags
 
 /**
  * This Activity renders the Settings page.
@@ -88,7 +89,7 @@ fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
                         * Presently I am setting the heading as `Settings`.
                         * @gurupreet, please let me know If I need to change this.
                         */
-                        Text(text = "Settings", modifier = Modifier.testTag("Settings Page"))
+                        Text(text = "Settings", modifier = Modifier.testTag(TestTags.HOME_FLING_SETTINGS_ROOT))
                     }
                 },
                 elevation = 8.dp,
