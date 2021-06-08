@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.gmail.home
+package com.guru.composecookbook.gmail.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,7 +31,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 
 @Composable
-fun GmailListItem(item: Tweet, onItemSwiped: () -> Unit, clickListener: (Tweet) -> Unit) {
+fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
 
     ConstraintLayout(
         modifier = Modifier
@@ -138,7 +138,7 @@ fun GmailListActionItems(modifier: Modifier) {
 @Preview
 fun PreviewGmailItem() {
     val item = DemoDataProvider.tweet
-    GmailListItem(item = item, onItemSwiped = {}) {
+    GmailListItem(item = item) {
 
     }
 }

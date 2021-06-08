@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.gmail.home
+package com.guru.composecookbook.gmail.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,7 +25,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
+import com.guru.composecookbook.gmail.R
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.launch

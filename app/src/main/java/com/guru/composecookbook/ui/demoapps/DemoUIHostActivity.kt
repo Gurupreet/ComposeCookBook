@@ -12,7 +12,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoapps.gmail.home.GmailScreen
 import com.guru.composecookbook.ui.demoapps.paint.PaintApp
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
@@ -53,7 +52,6 @@ class DemoUIHostActivity : ComponentActivity() {
 @Composable
 fun DemoUIContent(demoUiType: String) {
     when (demoUiType) {
-        "Gmail" -> GmailScreen()
         "Paint" -> PaintApp()
         else -> Text(text = "Comming soon", style = typography.h6)
     }

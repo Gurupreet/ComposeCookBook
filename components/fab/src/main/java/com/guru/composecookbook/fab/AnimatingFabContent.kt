@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.guru.composecookbook.ui.demoapps.gmail.home
+package com.guru.composecookbook.fab
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.Box

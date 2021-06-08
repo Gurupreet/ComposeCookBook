@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.gmail.data
+package com.guru.composecookbook.gmail.data
 
 
 var sampleMessage = """

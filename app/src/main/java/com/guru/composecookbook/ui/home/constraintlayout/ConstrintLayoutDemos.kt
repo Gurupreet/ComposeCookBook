@@ -25,7 +25,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.cryptoapp.ui.home.components.MyWalletCard
-import com.guru.composecookbook.ui.demoapps.gmail.home.GmailListItem
+import com.guru.composecookbook.gmail.ui.home.GmailListItem
 import com.guru.composecookbook.youtube.components.YoutubeListItem
 
 @Composable
@@ -40,7 +40,7 @@ fun ConstraintLayoutDemos() {
         ConstraintLayoutBigListItem()
         Spacer(modifier = Modifier.height(20.dp))
         val tweet = DemoDataProvider.tweet
-        GmailListItem(tweet, onItemSwiped = {}) {}
+        GmailListItem(tweet) {}
         Spacer(modifier = Modifier.height(20.dp))
         val tweet2 = DemoDataProvider.tweetList.filter { it.tweetImageId > 0 }.first()
         YoutubeListItem(tweet2)

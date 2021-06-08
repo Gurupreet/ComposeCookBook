@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.gmail.details
+package com.guru.composecookbook.gmail.ui.details
 
 import android.webkit.WebView
 import androidx.compose.foundation.Image
@@ -27,17 +27,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.guru.composecookbook.R
-import com.guru.composecookbook.ui.demoapps.gmail.data.sampleMessage
+import com.guru.composecookbook.gmail.data.sampleMessage
+import com.guru.composecookbook.gmail.R
 
 
 @Preview
 @Composable
 fun MessageDetailBody(modifier: Modifier = Modifier) {
-
     val showExpandedEmailInfo = remember { mutableStateOf(false) }
     val isFavourite = remember { mutableStateOf(false) }
-
     LazyColumn(modifier = modifier) {
 
         item {
@@ -109,13 +107,8 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
                         contentDescription = null
                     )
                 }
-
-                MessageActionPopupMenu()
-
-
             }
         }
-
 
         item {
             if (showExpandedEmailInfo.value) {
@@ -159,10 +152,8 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
 
         }
 
-
         item {
             Row {
-
                 ReplyTypeAction(
                     asset = Icons.Outlined.Undo,
                     text = "Reply",
@@ -183,42 +174,6 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
         }
     }
 
-}
-
-
-@Composable
-fun MessageActionPopupMenu() {
-
-    val expanded = remember { mutableStateOf(false) }
-
-    val iconButton = @Composable {
-        IconButton(onClick = { expanded.value = true }) {
-            Icon(imageVector = Icons.Outlined.MoreVert, contentDescription = null)
-        }
-    }
-    //TODO check drop down fix
-//    DropdownMenu(
-//        expanded = expanded.value,
-//        onDismissRequest = { expanded.value = false },
-//        toggle = iconButton,
-//        dropdownOffset = DpOffset((-32).dp, (-32).dp),
-//        dropdownModifier = Modifier.background(Color.White)
-//    ) {
-//        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
-//            Text("Reply all")
-//        }
-//        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
-//            Text("Forward")
-//        }
-//
-//        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-//            Text("Add star")
-//        }
-//
-//        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-//            Text("Print")
-//        }
-//    }
 }
 
 

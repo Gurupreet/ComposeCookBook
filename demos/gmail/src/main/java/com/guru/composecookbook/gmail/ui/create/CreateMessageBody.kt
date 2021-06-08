@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.gmail.create
+package com.guru.composecookbook.gmail.ui.create
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
@@ -20,16 +20,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CreateMessageBody(navController: NavController) {
-
+fun CreateMessageBody() {
     Column {
-
         Row {
-
             Text(
                 text = "From",
                 modifier = Modifier
@@ -51,11 +47,8 @@ fun CreateMessageBody(navController: NavController) {
                     .padding(16.dp)
             )
         }
-
         Divider(color = Color.LightGray, thickness = 0.5.dp)
-
         Row {
-
             Text(
                 text = "To",
                 modifier = Modifier
@@ -91,10 +84,7 @@ fun CreateMessageBody(navController: NavController) {
                 .fillMaxWidth()
                 .padding(vertical = 16.dp, horizontal = 16.dp)
         )
-
         Divider(color = Color.LightGray, thickness = 0.5.dp)
-
-
         BasicTextField(
             value = TextFieldValue("Compose email"),
             onValueChange = { },

@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.gmail.home
+package com.guru.composecookbook.gmail.ui.home
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

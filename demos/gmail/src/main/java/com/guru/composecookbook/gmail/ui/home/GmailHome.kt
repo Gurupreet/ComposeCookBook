@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.gmail.home
+package com.guru.composecookbook.gmail.ui.home
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -36,19 +36,19 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.guru.composecookbook.R
+import com.guru.composecookbook.gmail.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.fab.AnimatingFabContent
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.green500
-import com.guru.composecookbook.ui.demoapps.gmail.create.CreateMessageScreen
-import com.guru.composecookbook.ui.demoapps.gmail.details.MessageDetailScreen
+import com.guru.composecookbook.gmail.ui.create.CreateMessageScreen
+import com.guru.composecookbook.gmail.ui.details.MessageDetailScreen
 import kotlin.math.absoluteValue
 
 
 @Composable
 fun GmailScreen() {
     val navController = rememberNavController()
-
     NavHost(
         navController = navController,
         startDestination = "home"
@@ -64,10 +64,7 @@ fun GmailScreen() {
         composable("create") {
             CreateMessageScreen(navController = navController)
         }
-
     }
-
-
 }
 
 @Composable
@@ -93,7 +90,6 @@ fun GmailHome(navController: NavHostController) {
             BottomNavigation(
                 backgroundColor = background
             ) {
-
                 BottomNavigationItem(
                     icon = {
                         IconWithBadge(badge = 1, icon = Icons.Outlined.Mail)
@@ -104,13 +100,9 @@ fun GmailHome(navController: NavHostController) {
                     label = { Text("Mail") },
                 )
 
-
                 BottomNavigationItem(
-
                     icon = {
-
                         IconWithBadge(badge = 0, icon = Icons.Outlined.Call)
-
                     },
                     onClick = {
                     },
@@ -192,8 +184,6 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
 
 }
 
-//@OptIn(ExperimentalLazyDsl::class)
-
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun GmailContent(
@@ -266,7 +256,7 @@ fun GmailContent(
                 AnimatedVisibility(visible = visible.value) {
                     Box(modifier = Modifier.background(green500)) {
                         GmailListActionItems(modifier = Modifier.align(Alignment.CenterEnd))
-                        GmailListItem(it, onItemSwiped = { visible.value = false }) {
+                        GmailListItem(it) {
                             navController.navigate("detail")
                         }
                     }

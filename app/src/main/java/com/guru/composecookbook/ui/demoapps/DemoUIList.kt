@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.gmail.ui.GmailActivity
 import com.guru.composecookbook.instagram.InstagramActivity
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
@@ -52,6 +53,11 @@ fun DemoUIList() {
                                 "Youtube" -> {
                                     context.startActivity(
                                         YoutubeActivity.newIntent(context)
+                                    )
+                                }
+                                "Gmail" -> {
+                                    context.startActivity(
+                                        GmailActivity.newIntent(context)
                                     )
                                 }
                                 "Spotify" -> {
