@@ -12,6 +12,7 @@ import com.guru.composecookbook.MainAppContent
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.HomeScreenItems
 import com.guru.composecookbook.theme.AppThemeState
+import com.guru.composecookbook.ui.utils.TestTags
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -34,7 +35,7 @@ class HomeScreenTest {
     @Test
     fun homeListOfEntriesMustBeVisible() {
         composeAndroidTestRule.apply {
-            onNodeWithTag("Home Screen List of entries")
+            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
                 .assertExists()
         }
     }
@@ -44,7 +45,7 @@ class HomeScreenTest {
     fun allDisplayedHomeScreenEntriesMustHaveAClickAction() {
         composeAndroidTestRule.apply {
 
-            onNodeWithTag("Home Screen List of entries")
+            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
                 .onChildren()
                 .assertAll(
                     hasClickAction()
@@ -56,7 +57,7 @@ class HomeScreenTest {
     fun allHomeScreenEntriesMustHaveTextFromTheDataProvider() {
         composeAndroidTestRule.apply {
 
-            onNodeWithTag("Home Screen List of entries")
+            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
                 .onChildren()
                 .assertAll(
                     hasTextInProvidedDemoData(DemoDataProvider.homeScreenListItems)
