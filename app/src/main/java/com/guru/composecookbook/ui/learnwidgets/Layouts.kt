@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -19,6 +20,7 @@ import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.ui.utils.TestTags
 
 @Composable
 fun Layouts() {
@@ -42,6 +44,7 @@ fun TypesOfRows() {
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
+            .testTag(TestTags.HOME_LAYOUTS_ROW_START)
     ) {
         MultipleTexts()
     }
@@ -53,6 +56,7 @@ fun TypesOfRows() {
         horizontalArrangement = Arrangement.End, modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
+            .testTag(TestTags.HOME_LAYOUTS_ROW_END)
     ) {
         MultipleTexts()
     }
@@ -65,6 +69,7 @@ fun TypesOfRows() {
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
+            .testTag(TestTags.HOME_LAYOUTS_ROW_CENTER)
     ) {
         MultipleTexts()
     }
@@ -77,6 +82,7 @@ fun TypesOfRows() {
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
+            .testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_AROUND)
     ) {
         MultipleTexts()
     }
@@ -89,6 +95,7 @@ fun TypesOfRows() {
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
+            .testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_BETWEEN)
     ) {
         MultipleTexts()
     }
@@ -101,6 +108,7 @@ fun TypesOfRows() {
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
+            .testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_EVENLY)
     ) {
         MultipleTexts()
     }
@@ -118,14 +126,22 @@ fun TypeOfColumns() {
         text = "Arrangement.Top", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Column(verticalArrangement = Arrangement.Top, modifier = columnModifier) {
+    Column(
+        verticalArrangement = Arrangement.Top, modifier = columnModifier
+            .testTag(TestTags.HOME_LAYOUTS_COLUMN_TOP)
+    ) {
         MultipleTexts()
     }
     Text(
         text = "Arrangement.Bottom", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Column(verticalArrangement = Arrangement.Bottom, modifier = columnModifier) {
+    Column(
+        verticalArrangement = Arrangement.Bottom,
+        modifier = columnModifier
+            .testTag(TestTags.HOME_LAYOUTS_COLUMN_BOTTOM)
+
+    ) {
         MultipleTexts()
     }
     Text(
@@ -136,6 +152,7 @@ fun TypeOfColumns() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = columnModifier
+            .testTag(TestTags.HOME_LAYOUTS_COLUMN_CENTER)
     ) {
         MultipleTexts()
     }
@@ -143,21 +160,33 @@ fun TypeOfColumns() {
         text = "Arrangement.SpaceAround", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Column(verticalArrangement = Arrangement.SpaceAround, modifier = columnModifier) {
+    Column(
+        verticalArrangement = Arrangement.SpaceAround,
+        modifier = columnModifier
+            .testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_AROUND)
+    ) {
         MultipleTexts()
     }
     Text(
         text = "Arrangement.SpaceEvenly", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Column(verticalArrangement = Arrangement.SpaceEvenly, modifier = columnModifier) {
+    Column(
+        verticalArrangement = Arrangement.SpaceEvenly,
+        modifier = columnModifier
+            .testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_EVENLY)
+    ) {
         MultipleTexts()
     }
     Text(
         text = "Arrangement.SpaceBetween", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Column(verticalArrangement = Arrangement.SpaceBetween, modifier = columnModifier) {
+    Column(
+        verticalArrangement = Arrangement.SpaceBetween,
+        modifier = columnModifier
+            .testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_BETWEEN)
+    ) {
         MultipleTexts()
     }
 }
@@ -174,7 +203,10 @@ fun TypeOfBoxs() {
         text = "Children with no align", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Box(modifier = boxModifier) {
+    Box(
+        modifier = boxModifier
+            .testTag(TestTags.HOME_LAYOUTS_BOX_NO_ALIGN)
+    ) {
         Card(
             backgroundColor = green700,
             elevation = 4.dp,
@@ -195,7 +227,11 @@ fun TypeOfBoxs() {
         text = "Children with Topstart, center & bottomEnd align", style = typography.caption,
         modifier = Modifier.padding(8.dp)
     )
-    Box(modifier = boxModifier) {
+    Box(
+        modifier =
+        boxModifier
+            .testTag(TestTags.HOME_LAYOUTS_BOX_TOP_CENTER_AND_NO_ALIGN)
+    ) {
         Card(
             backgroundColor = green700, elevation = 4.dp, modifier = Modifier
                 .size(
@@ -232,6 +268,7 @@ fun ConstraintLayouts() {
             .background(Color.LightGray)
             .fillMaxWidth()
             .height(150.dp)
+            .testTag(TestTags.HOME_LAYOUTS_CONSTRAINT_LAYOUT)
     ) {
         //refs creations
         val (mainButton, mainText, seconderyText, outlineButton) = createRefs()
