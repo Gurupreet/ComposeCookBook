@@ -24,9 +24,9 @@ import androidx.navigation.NavHostController
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.tiktokRed
-import com.guru.composecookbook.ui.demoapps.spotify.data.Album
-import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.ui.utils.VerticalGrid
+import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 @Composable
 fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {

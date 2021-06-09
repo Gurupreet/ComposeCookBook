@@ -20,8 +20,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoapps.youtube.YoutubeChip
 import com.guru.composecookbook.ui.utils.SubtitleText
+import com.guru.composecookbook.youtube.components.YoutubeChip
 
 @Composable
 fun Chips() {

@@ -15,11 +15,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.gmail.ui.GmailActivity
+import com.guru.composecookbook.instagram.InstagramActivity
 import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
+import com.guru.composecookbook.paint.PaintActivity
+import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
 import com.guru.composecookbook.ui.utils.TestTags
-import com.guru.composecookbook.ui.demoapps.spotify.SpotifyActivity
+import com.guru.composecookbook.twitter.TwitterActivity
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokActivity
+import com.guru.composecookbook.youtube.YoutubeActivity
 
 @Composable
 fun DemoUIList() {
@@ -36,6 +41,31 @@ fun DemoUIList() {
                     Button(
                         onClick = {
                             when (title) {
+                                "Instagram" -> {
+                                    context.startActivity(
+                                        InstagramActivity.newIntent(context)
+                                    )
+                                }
+                                "Twitter" -> {
+                                    context.startActivity(
+                                        TwitterActivity.newIntent(context)
+                                    )
+                                }
+                                "Youtube" -> {
+                                    context.startActivity(
+                                        YoutubeActivity.newIntent(context)
+                                    )
+                                }
+                                "Gmail" -> {
+                                    context.startActivity(
+                                        GmailActivity.newIntent(context)
+                                    )
+                                }
+                                "Paint" -> {
+                                    context.startActivity(
+                                        PaintActivity.newIntent(context)
+                                    )
+                                }
                                 "Spotify" -> {
                                     context.startActivity(
                                         SpotifyActivity.newIntent(context, false)
@@ -61,11 +91,7 @@ fun DemoUIList() {
                                         TiktokActivity.newIntent(context)
                                     )
                                 }
-                                else -> {
-                                    context.startActivity(
-                                        DemoUIHostActivity.newIntent(context, title, false)
-                                    )
-                                }
+                                else -> TODO("Create your activity to launch any new demo app")
                             }
                         },
                         modifier = Modifier

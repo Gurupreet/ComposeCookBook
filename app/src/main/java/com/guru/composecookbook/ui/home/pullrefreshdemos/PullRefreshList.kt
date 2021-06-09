@@ -5,7 +5,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import com.guru.composecookbook.ui.demoapps.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 
 @Composable
 fun PullRefreshList(onPullRefresh: () -> Unit) {

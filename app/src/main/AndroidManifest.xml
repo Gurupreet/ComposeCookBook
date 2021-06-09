@@ -47,18 +47,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
         <activity
-            android:name=".ui.demoapps.spotify.details.SpotifyDetailActivity"
-            android:label="@string/title_activity_spotify_detail"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
-            android:name=".ui.demoapps.spotify.SpotifyActivity"
-            android:label="@string/title_activity_spotify"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
-            android:name=".ui.demoapps.DemoUIHostActivity"
-            android:label="@string/title_activity_demo_uihost"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar">

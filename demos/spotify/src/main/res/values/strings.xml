@@ -1,0 +1,8 @@
+<resources>
+    <string name="title_activity_spotify">Spotify</string>
+    <string name="title_activity_spotify_detail">SpotifyDetail</string>
+
+    <string name="spotify_nav_home">Home</string>
+    <string name="spotify_nav_search">Search</string>
+    <string name="spotify_nav_library">Your Library</string>
+</resources>

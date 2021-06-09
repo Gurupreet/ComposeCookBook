@@ -22,9 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.instagram.InstagramStories
-import com.guru.composecookbook.instagram.StoryListItem
-import com.guru.composecookbook.ui.utils.VerticalGrid
+import com.guru.composecookbook.instagram.components.InstagramStories
+import com.guru.composecookbook.instagram.components.StoryListItem
+import com.guru.composecookbook.verticalgrid.VerticalGrid
 import java.util.*
 
 class ListViewActivity : ComponentActivity() {

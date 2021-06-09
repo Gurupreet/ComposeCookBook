@@ -16,12 +16,6 @@
 
     <string name="about_me">I am an enthusiastic Developer. I love to create things that make the world a better place. I like to work where technology is used to improve core components of life like Health, Education and Environment.</string>
     <string name="about_project">This project was started because of my curiosity about declarative UIs.I have been tracking Jetpack Compose long before alpha release and trying to understand how it is gonna fit in our current existing system. So this is an attempt to showcase how it can be used to make android development more fun, easy and interesting.</string>
-    <string name="title_activity_spotify">Spotify</string>
-
-    <string name="spotify_nav_home">Home</string>
-    <string name="spotify_nav_search">Search</string>
-    <string name="spotify_nav_library">Your Library</string>
-    <string name="title_activity_spotify_detail">SpotifyDetail</string>
 
     <string name="test_adbanner_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="test_admob_id">ca-app-pub-5207778306358129~3940384518</string>

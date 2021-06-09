@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.guru.composecookbook.gmail">
+    <application>
+        <activity
+            android:name=".ui.GmailActivity"
+            android:label="@string/title_activity_gmail"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+    </application>
+</manifest>
