@@ -25,6 +25,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.instagram.components.InstagramStories
 import com.guru.composecookbook.instagram.components.StoryListItem
 import com.guru.composecookbook.verticalgrid.VerticalGrid
+import java.util.*
 
 class ListViewActivity : ComponentActivity() {
 
@@ -73,7 +74,8 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                 title = {
                     Column(modifier = Modifier.padding(4.dp)) {
                         Text(text = "ListView")
-                        Text(text = listType.toLowerCase(), style = MaterialTheme.typography.body2)
+                        Text(text = listType.lowercase(Locale.getDefault()),
+                            style = MaterialTheme.typography.body2)
                     }
                 },
                 elevation = 8.dp,
