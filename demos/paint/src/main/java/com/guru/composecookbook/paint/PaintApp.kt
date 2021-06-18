@@ -1,6 +1,7 @@
 package com.guru.composecookbook.paint
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 
+@ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @Composable
 fun PaintApp() {
@@ -43,6 +45,7 @@ fun PaintAppBar(onDelete: () -> Unit) {
 }
 
 
+@ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @Composable
 fun PaintBody(paths: MutableState<MutableList<PathState>>) {

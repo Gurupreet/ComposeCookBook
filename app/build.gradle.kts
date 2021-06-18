@@ -103,5 +103,4 @@ dependencies {
     addThirdPartyUnitTestsDependencies()
 
     addAndroidInstrumentationTestsDependencies()
-
 }

@@ -3,6 +3,7 @@ package com.guru.composecookbook.paint
 import android.view.MotionEvent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -17,6 +18,7 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.unit.dp
 
 @ExperimentalAnimationApi
+@ExperimentalFoundationApi
 @Composable
 fun DrawingCanvas(
     drawColor: MutableState<Color>,
