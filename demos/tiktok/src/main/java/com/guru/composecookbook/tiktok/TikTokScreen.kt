@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.tiktok
+package com.guru.composecookbook.tiktok
 
 sealed class TikTokScreen(val route: String) {
     object Home : TikTokScreen("Home")

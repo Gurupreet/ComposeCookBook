@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.tiktok
+package com.guru.composecookbook.tiktok.components.home
 
 import android.content.Context
 import android.net.Uri
