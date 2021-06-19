@@ -24,7 +24,6 @@ import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 @Composable
 fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
     val surfaceGradient = Colors.moviesSurfaceGradient(isSystemInDarkTheme())
-    val statusBarHeight = 32.dp
     val viewModel: TrendingViewModel = viewModel(
         factory = TrendingViewModelFactory(LocalContext.current)
     )
@@ -42,8 +41,6 @@ fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvent
             .horizontalGradientBackground(surfaceGradient)
             .verticalScroll(rememberScrollState())
     ) {
-        Spacer(modifier = Modifier.height(statusBarHeight))
-
         if (showLoading.value) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
         }
@@ -51,8 +48,6 @@ fun MovieTrendingScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvent
         listOfSections.forEach {
             DynamicSection(it, viewModel, showLoading, moviesHomeInteractionEvents)
         }
-
-        Spacer(modifier = Modifier.height(100.dp))
     }
 }
 
