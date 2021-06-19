@@ -14,17 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 
 @Composable
 fun SpotifyHomeGridItem(album: Album) {
@@ -56,6 +53,6 @@ fun SpotifyHomeGridItem(album: Album) {
 @Preview
 @Composable
 fun PreviewSpotifyHomeGridItem() {
-    val album = remember { SpotifyDataProvider.album }
+    val album = remember { AlbumsDataProvider.album }
     SpotifyHomeGridItem(album)
 }

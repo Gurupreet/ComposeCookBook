@@ -20,8 +20,8 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
+import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
 import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
@@ -30,7 +30,7 @@ import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 @Composable
 fun SpotifySearchGrid() {
-    val items = remember { SpotifyDataProvider.albums }
+    val items = remember { AlbumsDataProvider.albums }
     //This is not Lazy at the moment Soon we will have LazyLayout coming then will
     //Update it so we have better performance
     VerticalGrid {

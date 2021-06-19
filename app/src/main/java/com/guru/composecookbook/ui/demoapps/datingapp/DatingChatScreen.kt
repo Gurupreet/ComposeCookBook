@@ -30,14 +30,14 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.instagramGradient
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import kotlin.random.Random
 
 @Composable
 fun DatingChatScreen() {
-    val items = SpotifyDataProvider.albums.take(6)
+    val items = AlbumsDataProvider.albums.take(6)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,7 +58,7 @@ fun DatingChatScreen() {
 
 @Composable
 fun MatchSection() {
-    val matches = SpotifyDataProvider.albums.takeLast(10)
+    val matches = AlbumsDataProvider.albums.takeLast(10)
     Text(
         text = "New matches",
         style = typography.h6.copy(fontSize = 16.sp),

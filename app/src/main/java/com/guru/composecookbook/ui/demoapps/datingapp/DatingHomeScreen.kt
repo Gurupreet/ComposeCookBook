@@ -28,8 +28,8 @@ import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.animation.FloatMultiStateAnimationCircleCanvas
 import com.guru.composecookbook.ui.demoapps.datingapp.components.DraggableCard
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import kotlin.random.Random
 
@@ -41,7 +41,7 @@ fun DatingHomeScreen() {
 
     Surface(modifier = Modifier.fillMaxSize()) {
         var persons = mutableListOf<Album>()
-        persons.addAll(SpotifyDataProvider.albums.take(15))
+        persons.addAll(AlbumsDataProvider.albums.take(15))
         val boxModifier = Modifier
 
         Box(

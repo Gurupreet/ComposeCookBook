@@ -24,13 +24,13 @@ import androidx.navigation.NavHostController
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.tiktokRed
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 @Composable
 fun TikTokProfile(userId: String = "10", navHostController: NavHostController) {
-    val album: Album = SpotifyDataProvider.albums.first { it.id.toString() == userId }
+    val album: Album = AlbumsDataProvider.albums.first { it.id.toString() == userId }
     ComposeCookBookTheme(darkTheme = false) {
         Scaffold(
             topBar = { ProfileAppBar(album, navHostController) }
@@ -162,7 +162,7 @@ fun ProfileTabs() {
         }
     }
 
-    val list = remember { SpotifyDataProvider.albums }
+    val list = remember { AlbumsDataProvider.albums }
     VerticalGrid(columns = 3) {
         list.forEach {
             Image(

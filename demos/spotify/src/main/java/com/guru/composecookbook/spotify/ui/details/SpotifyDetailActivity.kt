@@ -8,8 +8,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
+import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.ui.details.components.SpotifyDetailScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 
@@ -42,7 +42,7 @@ class SpotifyDetailActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSpotifyDetailActivity() {
-    val album = SpotifyDataProvider.album
+    val album = AlbumsDataProvider.album
     ComposeCookBookTheme {
         SpotifyDetailScreen(album)
     }

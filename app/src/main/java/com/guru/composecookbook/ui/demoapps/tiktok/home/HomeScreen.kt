@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.tiktokRed
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.ui.demoapps.tiktok.TikTokPlayer
 import com.guru.composecookbook.ui.demoapps.tiktok.TiktokHomeInteractionEvents
 import com.guru.composecookbook.carousel.Pager
@@ -42,7 +42,7 @@ val videos = listOf("t1.mp4", "t2.mp4", "t3.mp4")
 
 @Composable
 fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
-    val movies = SpotifyDataProvider.albums
+    val movies = AlbumsDataProvider.albums
     val bottomBarHeight = 50.dp
     val pagerState: PagerState = run {
         remember {

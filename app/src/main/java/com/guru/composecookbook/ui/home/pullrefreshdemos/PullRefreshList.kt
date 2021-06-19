@@ -5,11 +5,11 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.AlbumsDataProvider
 
 @Composable
 fun PullRefreshList(onPullRefresh: () -> Unit) {
-    val albums = SpotifyDataProvider.albums
+    val albums = AlbumsDataProvider.albums
     //TODO revisit pull refresh
     val initialYTranslate = -100f
     val maximumYTranslate = 200f

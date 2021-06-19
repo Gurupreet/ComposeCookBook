@@ -20,7 +20,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
 import com.guru.composecookbook.spotify.ui.home.components.SpotifyTitle
@@ -30,7 +31,7 @@ import kotlin.random.Random
 
 @Composable
 fun SpotifyPlayList() {
-    val albums = remember { SpotifyDataProvider.albums }
+    val albums = remember { AlbumsDataProvider.albums }
     val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
     val context = LocalContext.current
     LazyColumn(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {

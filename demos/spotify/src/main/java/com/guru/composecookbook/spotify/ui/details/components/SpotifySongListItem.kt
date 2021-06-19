@@ -22,8 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 
 @Composable
 fun SpotifySongListItem(album: Album) {
@@ -78,6 +78,6 @@ fun SpotifySongListItem(album: Album) {
 @Composable
 @Preview
 fun PreviewSpotifySongListItem() {
-    val album = SpotifyDataProvider.album
+    val album = AlbumsDataProvider.album
     SpotifySongListItem(album = album)
 }
