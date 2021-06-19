@@ -4,7 +4,6 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -23,24 +22,43 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.accompanist.coil.rememberCoilPainter
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.moviesapp.data.DemoMovieDataProvider
 import com.guru.composecookbook.moviesapp.data.db.models.Genre
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.tags.InterestTag
+import com.guru.composecookbook.theme.typography
+import kotlin.math.abs
+import kotlin.math.min
 
-
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MoviePagerItem(
     movie: Movie,
     genres: List<Genre>,
     isSelected: Boolean,
+    offset: Float,
     addToWatchList: () -> Unit,
     openMovieDetail: () -> Unit
 ) {
-    val animateHeight = animateDpAsState(if (isSelected) 645.dp else 360.dp).value
-    val animateWidth = animateDpAsState(if (isSelected) 340.dp else 320.dp).value
-    val animateElevation = if (isSelected) 12.dp else 2.dp
+    val animateHeight = getOffsetBasedValue(
+        selectedValue = 645,
+        nonSelectedValue = 360,
+        isSelected = isSelected,
+        offset = offset
+    ).dp
+    val animateWidth = getOffsetBasedValue(
+        selectedValue = 340,
+        nonSelectedValue = 320,
+        isSelected = isSelected,
+        offset = offset
+    ).dp
+    val animateElevation = getOffsetBasedValue(
+        selectedValue = 12,
+        nonSelectedValue = 2,
+        isSelected = isSelected,
+        offset = offset
+    ).dp
+
     val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
 
     val movieGenres = movie.genre_ids?.let { movieGenreIds ->
@@ -52,11 +70,11 @@ fun MoviePagerItem(
         modifier = Modifier
             .width(animateWidth)
             .height(animateHeight)
-            .padding(24.dp)
-            .clickable(onClick = { openMovieDetail.invoke() }),
+            .padding(24.dp),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = MaterialTheme.colors.onBackground,
-        contentColor = MaterialTheme.colors.background
+        contentColor = MaterialTheme.colors.background,
+        onClick = { openMovieDetail.invoke() },
     ) {
         Column {
             Image(
@@ -127,6 +145,18 @@ fun MoviePagerItem(
     }
 }
 
+private fun getOffsetBasedValue(
+    selectedValue: Int,
+    nonSelectedValue: Int,
+    isSelected: Boolean,
+    offset: Float,
+): Float {
+    val actualOffset = if (isSelected) 1 - abs(offset) else abs(offset)
+    val delta = abs(selectedValue - nonSelectedValue)
+    val offsetBasedDelta = delta * actualOffset
+
+    return min(selectedValue, nonSelectedValue) + offsetBasedDelta
+}
 
 @Preview
 @Composable

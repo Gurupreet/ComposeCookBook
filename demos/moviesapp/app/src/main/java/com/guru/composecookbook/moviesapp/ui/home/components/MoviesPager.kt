@@ -15,12 +15,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeInteractionEvents
-import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeViewModel
-import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeViewModelFactory
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
 import com.guru.composecookbook.moviesapp.R
+import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeInteractionEvents
+import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeViewModel
+import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeViewModelFactory
+import kotlin.math.abs
 
 @Composable
 fun MoviesPager(
@@ -35,21 +36,23 @@ fun MoviesPager(
     val error by moviesViewModel.errorLiveData.observeAsState()
 
     if (movies.isNotEmpty()) {
-        val pagerState: PagerState = run {
-            remember {
-                PagerState(0, 0, movies.size - 1)
-            }
-        }
+        val pagerState = remember { PagerState(maxPage = movies.size - 1) }
+
         Pager(state = pagerState, modifier = Modifier.height(645.dp)) {
-            Log.d("pager offset", currentPageOffset.toString())
             val movie = movies[page]
             imageId.value = imageIds[pagerState.currentPage]
             val isSelected = pagerState.currentPage == page
+
+            // Only one page before and one page after the selected page needs to receive non zero offset
+            val filteredOffset = if (abs(pagerState.currentPage - page) < 2) {
+                currentPageOffset
+            } else 0f
 
             MoviePagerItem(
                 movie,
                 genres,
                 isSelected,
+                filteredOffset,
                 { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.AddToMyWatchlist(movie)) }
             ) {
                 moviesHomeInteractionEvents(
