@@ -19,10 +19,6 @@
             android:label="@string/title_activity_templates"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
         <activity
-            android:name=".ui.demoapps.tiktok.TiktokActivity"
-            android:label="@string/title_activity_tiktok"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
             android:name=".ui.home.advancelists.AdvanceListsActivity"
             android:label="@string/title_activity_advance_lists"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />

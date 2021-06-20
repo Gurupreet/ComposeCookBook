@@ -71,6 +71,7 @@ dependencies {
     implementation(project(":demos:instagram"))
     implementation(project(":demos:spotify"))
     implementation(project(":demos:twitter"))
+    implementation(project(":demos:tiktok"))
     implementation(project(":demos:youtube"))
     implementation(project(":demos:gmail"))
     implementation(project(":demos:paint"))

@@ -16,8 +16,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.spotify.data.models.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
+import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
 import com.guru.composecookbook.theme.typography
 
@@ -56,6 +56,6 @@ fun SpotifyLaneItem(album: Album) {
 @Preview
 @Composable
 fun PreviewLaneItem() {
-    val album = remember { SpotifyDataProvider.album }
+    val album = remember { AlbumsDataProvider.album }
     SpotifyLaneItem(album)
 }

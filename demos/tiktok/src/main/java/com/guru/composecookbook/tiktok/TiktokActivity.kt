@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.tiktok
+package com.guru.composecookbook.tiktok
 
 import android.content.Context
 import android.content.Intent
@@ -18,18 +18,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.tiktokBlack
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.ui.demoapps.tiktok.discover.DiscoverScreen
-import com.guru.composecookbook.ui.demoapps.tiktok.home.HomeScreen
-import com.guru.composecookbook.ui.demoapps.tiktok.home.TiktokCreateIcon
-import com.guru.composecookbook.ui.demoapps.tiktok.home.TiktokDemoDataProvider
-import com.guru.composecookbook.ui.demoapps.tiktok.profile.TikTokProfile
-
-sealed class TiktokHomeInteractionEvents {
-    data class OpenProfile(val album: Album) : TiktokHomeInteractionEvents()
-    data class ShareVideo(val album: Album) : TiktokHomeInteractionEvents()
-    object OpenComments : TiktokHomeInteractionEvents()
-}
+import com.guru.composecookbook.tiktok.TikTokScreen
+import com.guru.composecookbook.tiktok.components.discovers.DiscoverScreen
+import com.guru.composecookbook.tiktok.components.home.HomeScreen
+import com.guru.composecookbook.tiktok.components.home.TiktokCreateIcon
+import com.guru.composecookbook.tiktok.TiktokDemoDataProvider
+import com.guru.composecookbook.tiktok.TiktokHomeInteractionEvents
+import com.guru.composecookbook.tiktok.components.profile.ProfileScreen
 
 class TiktokActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,10 +99,10 @@ fun TikTokBodyContent(navController: NavHostController) {
         composable(TikTokScreen.Discover.route) { DiscoverScreen() }
         composable(TikTokScreen.Create.route) { Text(text = "Create:TODO") }
         composable(TikTokScreen.Inbox.route) { Text(text = "Inbox:TODO") }
-        composable(TikTokScreen.Me.route) { TikTokProfile("10", navController) }
+        composable(TikTokScreen.Me.route) { ProfileScreen("10", navController) }
         // This navigation is for going to user profile but it should be moved to separate place
         composable("${TikTokScreen.Profile.route}/{userId}") { backStackEntry ->
-            TikTokProfile(backStackEntry.arguments?.getString("userId")!!, navController)
+            ProfileScreen(backStackEntry.arguments?.getString("userId")!!, navController)
         }
     }
 }

@@ -29,14 +29,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.spotify.data.models.Album
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.data.AlbumsDataProvider
 import kotlin.math.roundToInt
 
 @ExperimentalMaterialApi
 @Composable
 fun SwipeableLists() {
-    val albums by mutableStateOf(SpotifyDataProvider.albums)
+    val albums by mutableStateOf(AlbumsDataProvider.albums)
     LazyColumn {
         itemsIndexed(
             items = albums,

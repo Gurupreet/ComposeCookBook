@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.tiktok.home
+package com.guru.composecookbook.tiktok.components.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

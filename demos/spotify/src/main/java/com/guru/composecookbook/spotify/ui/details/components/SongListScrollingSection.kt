@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.spotify.data.SpotifyDataProvider
+import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.typography
 
@@ -20,7 +20,7 @@ import com.guru.composecookbook.theme.typography
 fun SongListScrollingSection() {
     ShuffleButton()
     DownloadedRow()
-    val items = remember { SpotifyDataProvider.albums }
+    val items = remember { AlbumsDataProvider.albums }
     items.forEach {
         SpotifySongListItem(album = it)
     }
