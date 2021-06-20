@@ -1,5 +1,6 @@
-package com.guru.composecookbook.ui.demoapps.datingapp
+package com.guru.composecookbook.datingapp
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -20,11 +21,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import com.guru.composecookbook.R
+import com.guru.composecookbook.datingapp.components.chat.DatingChatScreen
+import com.guru.composecookbook.datingapp.components.home.DatingHomeScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.demoapps.datingapp.components.ProfileScreen
+import com.guru.composecookbook.datingapp.components.profile.ProfileScreen
 
 class DatingHomeActivity : ComponentActivity() {
 
@@ -55,6 +57,7 @@ class DatingHomeActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnusedCrossfadeTargetStateParameter")
 @Composable
 fun DatingHomeContent(navType: MutableState<DatingNavType>) {
     Crossfade(targetState = navType) {

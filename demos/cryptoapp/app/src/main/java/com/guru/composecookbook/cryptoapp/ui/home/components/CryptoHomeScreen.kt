@@ -1,7 +1,5 @@
 package com.guru.composecookbook.cryptoapp.ui.home.components
 
-import android.animation.ValueAnimator
-import android.content.Context
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -27,13 +25,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
-import com.airbnb.lottie.LottieAnimationView
 import com.google.accompanist.coil.rememberCoilPainter
 import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
@@ -41,6 +37,7 @@ import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeInteractionEvents
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModel
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModelFactory
 import com.guru.composecookbook.cryptoapp.ui.internal.theme.Colors
+import com.guru.composecookbook.lottie.LottieCryptoLoadingView
 import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
@@ -182,32 +179,15 @@ fun CryptoList(
         pagingItems.apply {
             when {
                 loadState.refresh is LoadState.Loading -> item {
-                    LottieLoadingView(context = context)
+                    LottieCryptoLoadingView(context = context)
                 }
                 loadState.append is LoadState.Loading -> {
-                    item { LottieLoadingView(context = context) }
+                    item { LottieCryptoLoadingView(context = context) }
                 }
             }
         }
     }
     //reload if first visible item is 10 positions away
-}
-
-@Composable
-fun LottieLoadingView(context: Context) {
-    val lottieView = remember {
-        LottieAnimationView(context).apply {
-            setAnimation("cryptoload.json")
-            repeatCount = ValueAnimator.INFINITE
-        }
-    }
-    AndroidView(
-        { lottieView }, modifier = Modifier
-            .fillMaxWidth()
-            .height(150.dp)
-    ) {
-        it.playAnimation()
-    }
 }
 
 @Preview

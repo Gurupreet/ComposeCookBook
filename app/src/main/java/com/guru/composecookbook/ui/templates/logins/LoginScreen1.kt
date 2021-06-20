@@ -1,8 +1,6 @@
 package com.guru.composecookbook.ui.templates.logins
 
 import FaIcons
-import android.animation.ValueAnimator
-import android.content.Context
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,8 +23,7 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
-import com.airbnb.lottie.LottieAnimationView
+import com.guru.composecookbook.lottie.LottieWorkingLoadingView
 import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
 import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
 import com.guru.fontawesomecomposelib.FaIcon
@@ -76,7 +73,7 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
                 .padding(horizontal = 16.dp)
         ) {
             item { Spacer(modifier = Modifier.height(20.dp)) }
-            item { LottieLoadingView(context = LocalContext.current) }
+            item { LottieWorkingLoadingView(context = LocalContext.current) }
             item {
                 Text(
                     text = "Welcome Back",
@@ -266,21 +263,3 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
 
 fun invalidInput(email: String, password: String) =
     email.isNullOrBlank() || password.isNullOrBlank()
-
-
-@Composable
-fun LottieLoadingView(context: Context) {
-    val lottieView = remember {
-        LottieAnimationView(context).apply {
-            setAnimation("working.json")
-            repeatCount = ValueAnimator.INFINITE
-        }
-    }
-    AndroidView(
-        { lottieView }, modifier = Modifier
-            .fillMaxWidth()
-            .height(250.dp)
-    ) {
-        it.playAnimation()
-    }
-}

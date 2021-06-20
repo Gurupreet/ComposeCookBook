@@ -31,11 +31,6 @@
             android:name=".ui.home.customfling.FlingListSettingsActivity"
             android:label="@string/title_activity_custom_fling_settings"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-        <activity
-            android:name="com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity"
-            android:label="@string/title_activity_dating_home_activitu"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/test_admob_id" /> <!-- insert your maps api key below to see maps -->

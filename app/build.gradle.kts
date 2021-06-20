@@ -74,6 +74,7 @@ dependencies {
     implementation(project(":demos:tiktok"))
     implementation(project(":demos:youtube"))
     implementation(project(":demos:gmail"))
+    implementation(project(":demos:datingapp"))
     implementation(project(":demos:paint"))
     implementation(project(":demos:cryptoapp:app"))
     implementation(project(":demos:moviesapp:app"))
@@ -83,6 +84,9 @@ dependencies {
     implementation(project(":components:carousel"))
     implementation(project(":components:verticalgrid"))
     implementation(project(":components:colorpicker"))
+    implementation(project(":components:comingsoon"))
+    implementation(project(":animations:canvas"))
+    implementation(project(":animations:lottie"))
 
     addKotlinDependencies()
 

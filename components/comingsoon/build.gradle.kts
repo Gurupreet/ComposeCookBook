@@ -7,19 +7,9 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
-
 dependencies {
-    implementation(project(":components:charts"))
     implementation(project(":animations:lottie"))
-    implementation(project(":demos:cryptoapp:data"))
     implementation(project(":theme"))
-    implementation(project(":data"))
 
     addComposeOfficialDependencies()
-    addComposeThirdPartyDependencies()
-
-    addCoreAndroidUiDependencies()
-    addThirdPartyUiDependencies()
-
-    addCoreAndroidDependencies()
 }
