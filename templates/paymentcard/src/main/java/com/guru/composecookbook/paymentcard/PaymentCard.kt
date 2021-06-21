@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.templates.payment
+package com.guru.composecookbook.paymentcard
 
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
@@ -26,7 +26,6 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.guru.composecookbook.R
 
 @ExperimentalAnimationApi
 @Composable

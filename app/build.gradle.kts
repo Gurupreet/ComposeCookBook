@@ -79,6 +79,7 @@ dependencies {
     implementation(project(":demos:cryptoapp:app"))
     implementation(project(":demos:moviesapp:app"))
     implementation(project(":templates:onboarding"))
+    implementation(project(":templates:paymentcard"))
     implementation(project(":components:fab"))
     implementation(project(":components:charts"))
     implementation(project(":components:tags"))

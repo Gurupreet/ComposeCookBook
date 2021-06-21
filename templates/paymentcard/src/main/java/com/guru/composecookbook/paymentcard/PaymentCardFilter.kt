@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.templates.payment
+package com.guru.composecookbook.paymentcard
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
@@ -31,15 +31,6 @@ val CreditCardFilter = VisualTransformation { text ->
         if (i % 4 == 3 && i != 15) out += " "
     }
     TransformedText(AnnotatedString(out), creditCardOffsetTranslator)
-}
-
-val ExpiryCardFilter = VisualTransformation { text ->
-    val out = if (text.length >= 4) {
-        text.take(4)
-    } else {
-        text
-    }
-    TransformedText(AnnotatedString(out.toString()), OffsetMapping.Identity)
 }
 
 

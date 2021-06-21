@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.templates.payment
+package com.guru.composecookbook.paymentcard
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
@@ -14,11 +14,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
 
 @ExperimentalAnimationApi
 @Composable
-fun AddPaymentCard() {
+fun AddPaymentScreen() {
     var nameText by remember { mutableStateOf(TextFieldValue()) }
     var cardNumber by remember { mutableStateOf(TextFieldValue()) }
     var expiryNumber by remember { mutableStateOf(TextFieldValue()) }

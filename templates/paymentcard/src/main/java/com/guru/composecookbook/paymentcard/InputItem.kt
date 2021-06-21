@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.templates.payment
+package com.guru.composecookbook.paymentcard
 
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
