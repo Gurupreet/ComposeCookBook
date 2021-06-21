@@ -1,6 +1,7 @@
-package com.guru.composecookbook.ui.templates.logins
+package com.guru.composecookbook.login
 
 import FaIcons
+import android.annotation.SuppressLint
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,35 +25,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.lottie.LottieWorkingLoadingView
-import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
 import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 @Composable
-fun LoginOnboarding() {
-    var loggedIn by remember { mutableStateOf(false) }
-    val coroutineScope = rememberCoroutineScope()
-    Crossfade(targetState = loggedIn) {
-        if (loggedIn) {
-            OnBoardingScreen {
-                loggedIn = false
-            }
-        } else {
-            LoginScreen1 {
-                coroutineScope.launch {
-                    delay(2000)
-                    loggedIn = true
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun LoginScreen1(onLoginSuccess: () -> Unit) {
+fun LoginScreen(onLoginSuccess: () -> Unit) {
     Scaffold {
 
         //TextFields
@@ -257,6 +236,27 @@ fun LoginScreen1(onLoginSuccess: () -> Unit) {
             }
 
             item { Spacer(modifier = Modifier.height(100.dp)) }
+        }
+    }
+}
+
+@SuppressLint("UnusedCrossfadeTargetStateParameter")
+@Composable
+fun LoginOnboarding() {
+    var loggedIn by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+    Crossfade(targetState = loggedIn) {
+        if (loggedIn) {
+            OnBoardingScreen {
+                loggedIn = false
+            }
+        } else {
+            LoginScreen {
+                coroutineScope.launch {
+                    delay(2000)
+                    loggedIn = true
+                }
+            }
         }
     }
 }

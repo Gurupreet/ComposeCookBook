@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import com.guru.composecookbook.charts.Charts
 import com.guru.composecookbook.comingsoon.ComingSoon
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.templates.logins.LoginOnboarding
+import com.guru.composecookbook.login.LoginOnboarding
 import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.paymentcard.AddPaymentScreen
 import com.guru.composecookbook.profile.ProfileScreen

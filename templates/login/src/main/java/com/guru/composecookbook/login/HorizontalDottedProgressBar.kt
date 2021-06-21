@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.templates.components
+package com.guru.composecookbook.login
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -12,10 +12,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
-
-enum class SwellState {
-    FIRST, SECOND,
-}
 
 
 @Composable
