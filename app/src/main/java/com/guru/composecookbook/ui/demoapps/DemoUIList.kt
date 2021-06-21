@@ -17,7 +17,7 @@ import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.gmail.ui.GmailActivity
 import com.guru.composecookbook.instagram.InstagramActivity
-import com.guru.composecookbook.ui.demoapps.datingapp.DatingHomeActivity
+import com.guru.composecookbook.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
 import com.guru.composecookbook.paint.PaintActivity
 import com.guru.composecookbook.spotify.ui.home.SpotifyActivity

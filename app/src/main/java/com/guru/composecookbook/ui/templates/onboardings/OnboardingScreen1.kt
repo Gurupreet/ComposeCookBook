@@ -1,7 +1,5 @@
 package com.guru.composecookbook.ui.templates.onboardings
 
-import android.animation.ValueAnimator
-import android.content.Context
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
@@ -21,10 +19,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
-import com.airbnb.lottie.LottieAnimationView
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
+import com.guru.composecookbook.lottie.LottieLoadingView
 
 @Composable
 fun OnBoardingScreen1(onSkip: () -> Unit) {
@@ -90,7 +87,13 @@ fun OnboardingPagerItem(page: Int) {
         modifier = Modifier.padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LottieLoadingView(LocalContext.current, onboardingList[page].third)
+        LottieLoadingView(
+            context = LocalContext.current,
+            file = onboardingList[page].third,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(250.dp)
+        )
         Text(
             text = onboardingList[page].first,
             style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.ExtraBold),
@@ -103,23 +106,6 @@ fun OnboardingPagerItem(page: Int) {
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
-    }
-}
-
-@Composable
-fun LottieLoadingView(context: Context, file: String) {
-    val lottieView = remember {
-        LottieAnimationView(context).apply {
-            setAnimation(file)
-            repeatCount = ValueAnimator.INFINITE
-        }
-    }
-    AndroidView(
-        { lottieView }, modifier = Modifier
-            .fillMaxWidth()
-            .height(250.dp)
-    ) {
-        it.playAnimation()
     }
 }
 

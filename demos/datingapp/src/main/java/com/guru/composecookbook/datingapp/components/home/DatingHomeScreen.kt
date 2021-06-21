@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.datingapp
+package com.guru.composecookbook.datingapp.components.home
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
@@ -23,14 +23,13 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
+import com.guru.composecookbook.canvas.MultiStateAnimationCircleFilledCanvas
+import com.guru.composecookbook.data.R
+import com.guru.composecookbook.data.AlbumsDataProvider
+import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.animation.FloatMultiStateAnimationCircleCanvas
-import com.guru.composecookbook.ui.demoapps.datingapp.components.DraggableCard
-import com.guru.composecookbook.data.model.Album
-import com.guru.composecookbook.data.AlbumsDataProvider
-import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import kotlin.random.Random
 
 @Composable
@@ -40,7 +39,7 @@ fun DatingHomeScreen() {
     val cardHeight = screenHeight - 200.dp
 
     Surface(modifier = Modifier.fillMaxSize()) {
-        var persons = mutableListOf<Album>()
+        val persons = mutableListOf<Album>()
         persons.addAll(AlbumsDataProvider.albums.take(15))
         val boxModifier = Modifier
 
@@ -52,7 +51,7 @@ fun DatingHomeScreen() {
                 )
             )
         ) {
-            var listEmpty = remember { mutableStateOf(false) }
+            val listEmpty = remember { mutableStateOf(false) }
             DatingLoader(modifier = boxModifier)
             persons.forEachIndexed { index, album ->
                 DraggableCard(
@@ -175,7 +174,7 @@ fun DatingLoader(modifier: Modifier) {
             .fillMaxSize()
             .clip(CircleShape)
     ) {
-        FloatMultiStateAnimationCircleCanvas(purple, 400f)
+        MultiStateAnimationCircleFilledCanvas(purple, 400f)
         Image(
             painter = painterResource(id = R.drawable.adele21),
             modifier = modifier
@@ -185,14 +184,4 @@ fun DatingLoader(modifier: Modifier) {
             contentScale = ContentScale.Crop,
         )
     }
-}
-
-@Composable
-fun CancelLikeButtons() {
-
-}
-
-
-enum class SwipeResult {
-    ACCEPTED, REJECTED
 }

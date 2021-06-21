@@ -10,12 +10,12 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import com.guru.composecookbook.charts.Charts
+import com.guru.composecookbook.comingsoon.ComingSoon
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.templates.logins.LoginOnboarding
 import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
 import com.guru.composecookbook.ui.templates.payment.AddPaymentCard
 import com.guru.composecookbook.ui.templates.profile.ProfileScreen
-import com.guru.composecookbook.ui.utils.ComingSoon
 
 class TemplatesActivity : ComponentActivity() {
 

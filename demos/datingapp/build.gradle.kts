@@ -1,5 +1,4 @@
 import com.guru.composecookbook.build.dependencies.*
-
 plugins {
     /**
      * See [common-compose-module-configs-script-plugin.gradle.kts] file
@@ -7,19 +6,12 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
-
 dependencies {
-    implementation(project(":components:charts"))
-    implementation(project(":animations:lottie"))
-    implementation(project(":demos:cryptoapp:data"))
-    implementation(project(":theme"))
+    implementation(project(":animations:canvas"))
+    implementation(project(":components:comingsoon"))
     implementation(project(":data"))
+    implementation(project(":theme"))
 
     addComposeOfficialDependencies()
-    addComposeThirdPartyDependencies()
-
     addCoreAndroidUiDependencies()
-    addThirdPartyUiDependencies()
-
-    addCoreAndroidDependencies()
 }

@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.demoapps.datingapp.components
+package com.guru.composecookbook.datingapp.components.home
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
@@ -17,9 +17,12 @@ import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.demoapps.datingapp.SwipeResult
 import kotlinx.coroutines.launch
 import kotlin.math.abs
+
+enum class SwipeResult {
+    ACCEPTED, REJECTED
+}
 
 @Composable
 fun DraggableCard(
@@ -28,8 +31,7 @@ fun DraggableCard(
     onSwiped: (Any, Any) -> Unit,
     content: @Composable () -> Unit
 ) {
-    val configuration = LocalConfiguration.current
-    val screenWidth = configuration.screenWidthDp.dp
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val swipeXLeft = -(screenWidth.value * 3.2).toFloat()
     val swipeXRight = (screenWidth.value * 3.2).toFloat()
     val swipeYTop = -1000f
@@ -38,13 +40,8 @@ fun DraggableCard(
     val swipeY = remember { Animatable(0f) }
     swipeX.updateBounds(swipeXLeft, swipeXRight)
     swipeY.updateBounds(swipeYTop, swipeYBottom)
-    val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
-    val graphicLayer = Modifier.graphicsLayer(
-        translationX = swipeX.value,
-        translationY = swipeY.value,
-        rotationZ = rotationFraction,
-    )
     if (abs(swipeX.value) < swipeXRight - 50f) {
+        val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
         Card(
             elevation = 16.dp,
             modifier = modifier
@@ -52,10 +49,13 @@ fun DraggableCard(
                     swipeX = swipeX,
                     swipeY = swipeY,
                     maxX = swipeXRight,
-                    onSwiped = { _, _ ->
-                    }
+                    onSwiped = { _, _ -> }
                 )
-                .then(graphicLayer)
+                .graphicsLayer(
+                    translationX = swipeX.value,
+                    translationY = swipeY.value,
+                    rotationZ = rotationFraction,
+                )
                 .clip(RoundedCornerShape(16.dp))
         ) {
             content()
@@ -64,8 +64,6 @@ fun DraggableCard(
         // on swiped
         val swipeResult = if (swipeX.value > 0) SwipeResult.ACCEPTED else SwipeResult.REJECTED
         onSwiped(swipeResult, item)
-//    }
-
     }
 }
 
