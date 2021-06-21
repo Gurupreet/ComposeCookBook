@@ -1,11 +1,14 @@
-package com.guru.composecookbook.ui.templates.onboardings
+package com.guru.composecookbook.onboarding
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Album
 import androidx.compose.runtime.Composable
@@ -13,18 +16,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
-import com.guru.composecookbook.lottie.LottieLoadingView
 
 @Composable
-fun OnBoardingScreen1(onSkip: () -> Unit) {
+fun OnBoardingScreen(onSkip: () -> Unit) {
     val pagerState: PagerState = run {
         remember {
             PagerState(0, 0, onboardingList.size - 1)
@@ -37,7 +34,7 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
                 orientation = Orientation.Horizontal,
                 modifier = Modifier.fillMaxSize()
             ) {
-                OnboardingPagerItem(page)
+                OnboardingPagerItem(onboardingList[page])
             }
             Text(
                 text = "Skip",
@@ -81,56 +78,20 @@ fun OnBoardingScreen1(onSkip: () -> Unit) {
     }
 }
 
-@Composable
-fun OnboardingPagerItem(page: Int) {
-    Column(
-        modifier = Modifier.padding(horizontal = 16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        LottieLoadingView(
-            context = LocalContext.current,
-            file = onboardingList[page].third,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(250.dp)
-        )
-        Text(
-            text = onboardingList[page].first,
-            style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.ExtraBold),
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(16.dp)
-        )
-        Text(
-            text = onboardingList[page].second,
-            style = MaterialTheme.typography.body1,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 16.dp)
-        )
-    }
-}
-
-@Composable
-fun OnboardingPagerSlide(selected: Boolean, color: Color, icon: ImageVector) {
-    Icon(
-        imageVector = icon,
-        modifier = Modifier.padding(4.dp),
-        contentDescription = null,
-        tint = if (selected) color else Color.Gray
-    )
-}
+data class Onboard(val title: String, val description: String, val lottieFile: String)
 
 val onboardingList = listOf(
-    Triple(
+    Onboard(
         "Team Collaborations",
         "Our tools help your teams collaborate for the best output results",
         "profile.json"
     ),
-    Triple(
+    Onboard(
         "Improve Productivity",
         "Our tools are designed to improve productivity by automating all the stuff for you",
         "working.json"
     ),
-    Triple(
+    Onboard(
         "Growth Tracking",
         "We provide dashboard and charts to track your growth easily and suggestions.",
         "food.json"

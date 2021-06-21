@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.lottie.LottieWorkingLoadingView
 import com.guru.composecookbook.ui.templates.components.HorizontalDottedProgressBar
-import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
+import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -37,7 +37,7 @@ fun LoginOnboarding() {
     val coroutineScope = rememberCoroutineScope()
     Crossfade(targetState = loggedIn) {
         if (loggedIn) {
-            OnBoardingScreen1 {
+            OnBoardingScreen {
                 loggedIn = false
             }
         } else {

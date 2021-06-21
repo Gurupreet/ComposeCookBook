@@ -13,7 +13,7 @@ import com.guru.composecookbook.charts.Charts
 import com.guru.composecookbook.comingsoon.ComingSoon
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.templates.logins.LoginOnboarding
-import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
+import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.ui.templates.payment.AddPaymentCard
 import com.guru.composecookbook.ui.templates.profile.ProfileScreen
 
@@ -53,7 +53,7 @@ fun TemplateApp(templateType: String) {
     when (templateType) {
         "Profiles" -> ProfileScreen()
         "Login" -> LoginOnboarding()
-        "On-boarding" -> OnBoardingScreen1 { }
+        "On-boarding" -> OnBoardingScreen { }
         "Charts" -> Charts()
         "Adding Payment Card" -> AddPaymentCard()
         else -> ComingSoon()
