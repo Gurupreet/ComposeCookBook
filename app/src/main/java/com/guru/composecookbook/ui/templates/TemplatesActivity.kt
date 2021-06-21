@@ -15,7 +15,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.templates.logins.LoginOnboarding
 import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.paymentcard.AddPaymentScreen
-import com.guru.composecookbook.ui.templates.profile.ProfileScreen
+import com.guru.composecookbook.profile.ProfileScreen
 
 class TemplatesActivity : ComponentActivity() {
 
