@@ -14,6 +14,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -28,6 +29,7 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography
 
+@ExperimentalComposeUiApi
 @Composable
 fun HowToModifiers() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
@@ -170,6 +172,7 @@ fun DemoText(text: String) {
     )
 }
 
+@ExperimentalComposeUiApi
 @Preview
 @Composable
 fun PreviewHowToModifiers() {
