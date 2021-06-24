@@ -1,0 +1,7 @@
+<resources>
+    <string name="card_holder_name">Card holder name</string>
+    <string name="card_holder_number">Card number</string>
+    <string name="expiry_date">Expiry date</string>
+    <string name="cvc">CVC</string>
+    <string name="save">save</string>
+</resources>
