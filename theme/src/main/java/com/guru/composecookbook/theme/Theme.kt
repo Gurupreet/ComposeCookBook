@@ -118,7 +118,7 @@ enum class ColorPallet {
 fun ComposeCookBookTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     colorPallet: ColorPallet = GREEN,
-    content: @Composable() () -> Unit,
+    content: @Composable () -> Unit,
 ) {
     val colors = when (colorPallet) {
         GREEN -> if (darkTheme) DarkGreenColorPalette else LightGreenColorPalette
