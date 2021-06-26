@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.learnwidgets
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.ExperimentalMaterialApi
@@ -13,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.utils.TestTags
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun WidgetScreen() {
@@ -30,6 +32,7 @@ fun WidgetScreen() {
     )
 }
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun WidgetScreenContent() {
@@ -47,6 +50,7 @@ fun WidgetScreenContent() {
 }
 
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Preview
 @Composable

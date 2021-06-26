@@ -42,7 +42,7 @@ fun DrawCanvas(
     Canvas(
         modifier = Modifier
             .fillMaxWidth()
-            .height(55.dp),
+            .height(60.dp),
     ) {
 
         val radius = (4.dp).value
