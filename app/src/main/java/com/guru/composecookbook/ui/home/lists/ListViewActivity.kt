@@ -21,9 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.instagram.components.InstagramStories
 import com.guru.composecookbook.instagram.components.StoryListItem
+import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import java.util.*
 
@@ -74,8 +74,10 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                 title = {
                     Column(modifier = Modifier.padding(4.dp)) {
                         Text(text = "ListView")
-                        Text(text = listType.lowercase(Locale.getDefault()),
-                            style = MaterialTheme.typography.body2)
+                        Text(
+                            text = listType.lowercase(Locale.getDefault()),
+                            style = MaterialTheme.typography.body2
+                        )
                     }
                 },
                 elevation = 8.dp,

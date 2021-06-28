@@ -23,10 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.datingapp.components.chat.DatingChatScreen
 import com.guru.composecookbook.datingapp.components.home.DatingHomeScreen
+import com.guru.composecookbook.datingapp.components.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.datingapp.components.profile.ProfileScreen
 
 class DatingHomeActivity : ComponentActivity() {
 

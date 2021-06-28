@@ -15,15 +15,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.tiktokBlack
-import com.guru.composecookbook.tiktok.TikTokScreen
 import com.guru.composecookbook.tiktok.components.discovers.DiscoverScreen
 import com.guru.composecookbook.tiktok.components.home.HomeScreen
 import com.guru.composecookbook.tiktok.components.home.TiktokCreateIcon
-import com.guru.composecookbook.tiktok.TiktokDemoDataProvider
-import com.guru.composecookbook.tiktok.TiktokHomeInteractionEvents
 import com.guru.composecookbook.tiktok.components.profile.ProfileScreen
 
 class TiktokActivity : ComponentActivity() {

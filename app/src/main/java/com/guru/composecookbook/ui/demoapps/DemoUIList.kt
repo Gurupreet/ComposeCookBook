@@ -15,15 +15,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeActivity
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.datingapp.DatingHomeActivity
 import com.guru.composecookbook.gmail.ui.GmailActivity
 import com.guru.composecookbook.instagram.InstagramActivity
-import com.guru.composecookbook.datingapp.DatingHomeActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
 import com.guru.composecookbook.paint.PaintActivity
 import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
 import com.guru.composecookbook.tiktok.TiktokActivity
-import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.twitter.TwitterActivity
+import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.youtube.YoutubeActivity
 
 @Composable

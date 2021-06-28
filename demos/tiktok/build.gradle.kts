@@ -1,4 +1,8 @@
-import com.guru.composecookbook.build.dependencies.*
+import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
+import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
+import com.guru.composecookbook.build.dependencies.addGoogleAndroidDependencies
+import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
+
 plugins {
     /**
      * See [common-compose-module-configs-script-plugin.gradle.kts] file

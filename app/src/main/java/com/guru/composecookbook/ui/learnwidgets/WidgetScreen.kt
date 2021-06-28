@@ -19,7 +19,7 @@ import com.guru.composecookbook.ui.utils.TestTags
 @Composable
 fun WidgetScreen() {
     Scaffold(
-        modifier = Modifier.testTag( TestTags.WIDGET_SCREEN_ROOT),
+        modifier = Modifier.testTag(TestTags.WIDGET_SCREEN_ROOT),
         topBar = {
             TopAppBar(
                 title = { Text(text = "All Material Widgets") },

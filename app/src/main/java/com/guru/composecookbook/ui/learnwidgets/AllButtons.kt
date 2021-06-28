@@ -155,8 +155,7 @@ fun AllButtons() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .height(60.dp)
-            .clip(RoundedCornerShape(8.dp)),
+            .height(60.dp),
         iconPadding = PaddingValues(4.dp),
         shape = CircleShape,
     ) {

@@ -36,13 +36,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.guru.composecookbook.gmail.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.fab.AnimatingFabContent
-import com.guru.composecookbook.theme.graySurface
-import com.guru.composecookbook.theme.green500
+import com.guru.composecookbook.gmail.R
 import com.guru.composecookbook.gmail.ui.create.CreateMessageScreen
 import com.guru.composecookbook.gmail.ui.details.MessageDetailScreen
+import com.guru.composecookbook.theme.graySurface
+import com.guru.composecookbook.theme.green500
 import kotlin.math.absoluteValue
 
 

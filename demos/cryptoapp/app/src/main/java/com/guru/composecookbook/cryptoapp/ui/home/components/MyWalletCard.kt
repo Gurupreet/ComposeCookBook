@@ -28,8 +28,8 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.guru.composecookbook.cryptoapp.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.green500
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
+import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MyWalletCard() {

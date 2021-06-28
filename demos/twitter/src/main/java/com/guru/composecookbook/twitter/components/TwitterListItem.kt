@@ -22,11 +22,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.twitter.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.twitterColor
 import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.twitter.R
 
 @Composable
 fun TwitterListItem(tweet: Tweet) {

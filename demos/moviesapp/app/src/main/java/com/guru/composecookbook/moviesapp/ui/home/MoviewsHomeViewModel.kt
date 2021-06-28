@@ -2,14 +2,14 @@ package com.guru.composecookbook.moviesapp.ui.home
 
 import android.content.Context
 import androidx.lifecycle.*
+import com.guru.composecookbook.moviesapp.data.MovieDIGraph
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.data.repositories.MovieRepository
-import com.guru.composecookbook.moviesapp.data.MovieDIGraph
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class MoviesHomeViewModelFactory(val context: Context): ViewModelProvider.Factory {
+class MoviesHomeViewModelFactory(val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return MoviesHomeViewModel(context) as T
     }

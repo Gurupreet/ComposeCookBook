@@ -25,9 +25,9 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.guru.composecookbook.youtube.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
+import com.guru.composecookbook.youtube.R
 
 @Composable
 fun YoutubeListItem(item: Tweet) {

@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.guru.composecookbook.gmail.data.sampleMessage
 import com.guru.composecookbook.gmail.R
+import com.guru.composecookbook.gmail.data.sampleMessage
 
 
 @Preview

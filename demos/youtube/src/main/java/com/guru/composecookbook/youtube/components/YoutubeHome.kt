@@ -19,8 +19,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.youtube.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.youtube.R
 
 @Composable
 fun YoutubeHome() {

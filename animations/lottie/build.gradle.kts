@@ -1,4 +1,6 @@
-import com.guru.composecookbook.build.dependencies.*
+import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
+import com.guru.composecookbook.build.dependencies.addCoreAndroidDependencies
+import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
 
 plugins {
     /**

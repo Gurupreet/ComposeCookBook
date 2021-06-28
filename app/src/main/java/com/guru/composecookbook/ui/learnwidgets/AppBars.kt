@@ -19,9 +19,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
+import com.guru.composecookbook.spotify.ui.home.SpotifyNavType
 import com.guru.composecookbook.theme.twitterColor
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.spotify.ui.home.SpotifyNavType
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
 

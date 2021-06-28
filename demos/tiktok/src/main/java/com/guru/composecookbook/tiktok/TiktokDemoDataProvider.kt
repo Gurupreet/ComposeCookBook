@@ -12,7 +12,14 @@ object TiktokDemoDataProvider {
     )
 
     val lanes =
-        listOf("OhHO ohNO", "FunFacts", "HappyDeepavli", "HalloweenIsHere", "BoomBoom", "No no no no")
+        listOf(
+            "OhHO ohNO",
+            "FunFacts",
+            "HappyDeepavli",
+            "HalloweenIsHere",
+            "BoomBoom",
+            "No no no no"
+        )
 
     val customGray = Color.LightGray.copy(alpha = 0.5f)
 

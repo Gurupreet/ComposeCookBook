@@ -19,12 +19,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.guru.composecookbook.spotify.R
 import com.guru.composecookbook.spotify.ui.home.components.SpotifyHome
 import com.guru.composecookbook.spotify.ui.playlist.components.SpotifyPlayList
 import com.guru.composecookbook.spotify.ui.search.components.SpotifySearchScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
-import com.guru.composecookbook.spotify.R
 
 enum class SpotifyNavType {
     HOME, SEARCH, LIBRARY

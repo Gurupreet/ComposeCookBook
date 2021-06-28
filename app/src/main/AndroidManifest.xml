@@ -31,12 +31,14 @@
             android:name=".ui.home.customfling.FlingListSettingsActivity"
             android:label="@string/title_activity_custom_fling_settings"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/test_admob_id" /> <!-- insert your maps api key below to see maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

@@ -2,7 +2,6 @@ package com.guru.composecookbook.ui.learnwidgets
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
@@ -70,96 +69,100 @@ fun SwipeButton(
         interactionSource = interactionSource,
         indication = rememberRipple()
     ) {
-            BoxWithConstraints(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart) {
-                // Content
-                val maxWidth = this.constraints.maxWidth.toFloat()
+        BoxWithConstraints(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.CenterStart
+        ) {
+            // Content
+            val maxWidth = this.constraints.maxWidth.toFloat()
 
-                when {
-                    collapsed -> {
-                        val animatedProgress = remember { Animatable(initialValue = 0f) }
-                        LaunchedEffect(Unit) {
-                            animatedProgress.animateTo(
-                                targetValue = 1f,
-                                animationSpec = tween(600)
-                            )
-                        }
-                            IconButton(
-                                onClick = { },
-                                modifier = Modifier
-                                    .scale(animatedProgress.value)
-                                    .padding(iconPadding)
-                                    .clip(CircleShape)
-                                    .background(MaterialTheme.colors.onPrimary)
-                                    .align(
-                                        Alignment
-                                            .Center
-                                    )
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Done,
-                                    contentDescription = "Done",
-                                    tint = MaterialTheme.colors.primary
-                                )
-                            }
-                        }
-                    swiped -> {
-                        HorizontalDottedProgressBar()
-                    }
-                    else -> {
-                        CompositionLocalProvider(LocalContentAlpha provides contentColor.alpha) {
-                            ProvideTextStyle(
-                                value = MaterialTheme.typography.button
-                            ) {
-                                Row(
-                                    Modifier
-                                        .fillMaxSize()
-                                        .padding(contentPadding),
-                                    horizontalArrangement = Arrangement.Center,
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    content = content
-                                )
-                            }
-                        }
-                    }
-                }
-                // Swipe Component
-                AnimatedVisibility(visible = !swiped) {
-                    IconButton(onClick = { }, enabled = enabled, modifier = Modifier
-                        .padding(iconPadding)
-                        .align(Alignment.CenterStart)
-                        .offset { IntOffset(dragOffset.value.roundToInt(), 0) }
-                        .draggable(
-                            enabled = enabled,
-                            orientation = Orientation.Horizontal,
-                            state = rememberDraggableState { delta ->
-                                val newValue = dragOffset.value + delta
-                                dragOffset.value = newValue.coerceIn(0f, maxWidth)
-                            },
-                            onDragStopped = {
-                                if (dragOffset.value > maxWidth * 2 / 3) {
-                                    dragOffset.value = maxWidth
-                                    onSwiped.invoke()
-                                } else {
-                                    dragOffset.value = 0f
-                                }
-                            }
+            when {
+                collapsed -> {
+                    val animatedProgress = remember { Animatable(initialValue = 0f) }
+                    LaunchedEffect(Unit) {
+                        animatedProgress.animateTo(
+                            targetValue = 1f,
+                            animationSpec = tween(600)
                         )
-                        .background(MaterialTheme.colors.onPrimary, shape = CircleShape)
+                    }
+                    IconButton(
+                        onClick = { },
+                        modifier = Modifier
+                            .scale(animatedProgress.value)
+                            .padding(iconPadding)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colors.onPrimary)
+                            .align(
+                                Alignment
+                                    .Center
+                            )
                     ) {
                         Icon(
-                            imageVector = icon,
-                            modifier = Modifier.graphicsLayer {
-                                if (rotateIcon) {
-                                    rotationZ += dragOffset.value / 5
-                                }
-                            },
-                            contentDescription = "Arrow",
-                            tint = colors.backgroundColor(enabled).value,
+                            imageVector = Icons.Default.Done,
+                            contentDescription = "Done",
+                            tint = MaterialTheme.colors.primary
                         )
+                    }
+                }
+                swiped -> {
+                    HorizontalDottedProgressBar()
+                }
+                else -> {
+                    dragOffset.value = 0f // when button goes to inital state
+                    CompositionLocalProvider(LocalContentAlpha provides contentColor.alpha) {
+                        ProvideTextStyle(
+                            value = MaterialTheme.typography.button
+                        ) {
+                            Row(
+                                Modifier
+                                    .fillMaxSize()
+                                    .padding(contentPadding),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically,
+                                content = content
+                            )
+                        }
                     }
                 }
             }
+            // Swipe Component
+            AnimatedVisibility(visible = !swiped) {
+                IconButton(onClick = { }, enabled = enabled, modifier = Modifier
+                    .padding(iconPadding)
+                    .align(Alignment.CenterStart)
+                    .offset { IntOffset(dragOffset.value.roundToInt(), 0) }
+                    .draggable(
+                        enabled = enabled,
+                        orientation = Orientation.Horizontal,
+                        state = rememberDraggableState { delta ->
+                            val newValue = dragOffset.value + delta
+                            dragOffset.value = newValue.coerceIn(0f, maxWidth)
+                        },
+                        onDragStopped = {
+                            if (dragOffset.value > maxWidth * 2 / 3) {
+                                dragOffset.value = maxWidth
+                                onSwiped.invoke()
+                            } else {
+                                dragOffset.value = 0f
+                            }
+                        }
+                    )
+                    .background(MaterialTheme.colors.onPrimary, shape = CircleShape)
+                ) {
+                    Icon(
+                        imageVector = icon,
+                        modifier = Modifier.graphicsLayer {
+                            if (rotateIcon) {
+                                rotationZ += dragOffset.value / 5
+                            }
+                        },
+                        contentDescription = "Arrow",
+                        tint = colors.backgroundColor(enabled).value,
+                    )
+                }
+            }
         }
+    }
 }
 
 enum class SwipeButtonState {

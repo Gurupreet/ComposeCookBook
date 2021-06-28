@@ -25,14 +25,11 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.HomeScreenItems
-import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
@@ -40,6 +37,7 @@ import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
 import com.guru.composecookbook.ui.home.lists.ListViewActivity
+import com.guru.composecookbook.ui.utils.TestTags
 import java.util.*
 
 
@@ -105,7 +103,7 @@ fun HomeScreenContent(
             }
         } else {
             LazyColumn(
-                modifier = Modifier.testTag( TestTags.HOME_SCREEN_LIST )
+                modifier = Modifier.testTag(TestTags.HOME_SCREEN_LIST)
             ) {
                 items(
                     items = list,
@@ -214,8 +212,10 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
     //TODO pass theme to following screens
     val intent = when (homeScreenItems) {
         is HomeScreenItems.ListView -> {
-            ListViewActivity.newIntent(context,
-                homeScreenItems.type.uppercase(Locale.getDefault()), isDarkTheme)
+            ListViewActivity.newIntent(
+                context,
+                homeScreenItems.type.uppercase(Locale.getDefault()), isDarkTheme
+            )
         }
         HomeScreenItems.Dialogs -> {
             DialogsActivity.newIntent(context, isDarkTheme)

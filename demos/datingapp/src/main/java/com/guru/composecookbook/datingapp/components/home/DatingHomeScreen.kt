@@ -24,8 +24,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.canvas.MultiStateAnimationCircleFilledCanvas
-import com.guru.composecookbook.data.R
 import com.guru.composecookbook.data.AlbumsDataProvider
+import com.guru.composecookbook.data.R
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import com.guru.composecookbook.theme.purple

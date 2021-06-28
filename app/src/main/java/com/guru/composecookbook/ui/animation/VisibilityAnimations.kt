@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.*
-import com.guru.composecookbook.ui.home.MenuItem
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
 
@@ -68,11 +67,11 @@ fun AnimateVisibilityWithDifferentChildAnimations() {
     SubtitleText(subtitle = "AnimateVisibility() with different child Animations")
     val colors = listOf(green500, blue500, orange500, purple)
     var expanded by remember { mutableStateOf(true) }
-        IconButton(onClick = { expanded = !expanded }) {
-            Icon(imageVector = Icons.Default.RemoveRedEye, contentDescription = "")
-        }
-    
-        AnimatedVisibility(visible = expanded) {
+    IconButton(onClick = { expanded = !expanded }) {
+        Icon(imageVector = Icons.Default.RemoveRedEye, contentDescription = "")
+    }
+
+    AnimatedVisibility(visible = expanded) {
         Column(
             horizontalAlignment = Alignment.Start
         ) {
@@ -83,11 +82,16 @@ fun AnimateVisibilityWithDifferentChildAnimations() {
                         stiffness = Spring.StiffnessLow * (1f - index * 0.2f)
                     )
                 }
-                Card(backgroundColor = color, modifier = Modifier.size(80.dp).padding
-                    (8.dp).animateEnterExit(
-                        enter = slideInHorizontally( { it }, springAnim),
-                        exit = ExitTransition.None
-                )) {
+                Card(
+                    backgroundColor = color, modifier = Modifier
+                        .size(80.dp)
+                        .padding
+                            (8.dp)
+                        .animateEnterExit(
+                            enter = slideInHorizontally({ it }, springAnim),
+                            exit = ExitTransition.None
+                        )
+                ) {
 
                 }
             }

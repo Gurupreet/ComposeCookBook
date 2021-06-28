@@ -93,7 +93,9 @@ fun DrawApplyButton(onApplyClick: () -> Unit, flingCopyStore: FlingStateStore) {
                 FlingStateStore.INSTANCE = flingCopyStore
                 onApplyClick()
             },
-            modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
+            modifier = Modifier
+                .size(200.dp, 60.dp)
+                .testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
         ) {
             Text(text = "Apply")
         }
@@ -177,7 +179,9 @@ fun BuildEditTexts(
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.height(100.dp).testTag(TestTags.HOME_FLING_SETTINGS_EDITABLE)
+        modifier = Modifier
+            .height(100.dp)
+            .testTag(TestTags.HOME_FLING_SETTINGS_EDITABLE)
     ) {
         Column(
             modifier = Modifier
@@ -621,7 +625,9 @@ fun BuildEditTexts(
                 FlingStateStore.INSTANCE = flingCopyStore
                 onApplyClick()
             },
-            modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
+            modifier = Modifier
+                .size(200.dp, 60.dp)
+                .testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
         ) {
             Text(text = "apply")
         }

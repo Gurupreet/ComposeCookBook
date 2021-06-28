@@ -97,7 +97,7 @@ class LayoutsTest {
     }
 
     @Test
-    fun  assertIfColumnBottomVisible() {
+    fun assertIfColumnBottomVisible() {
         clickOnLayoutButton()
         composeAndroidTestRule.apply {
             onNodeWithTag(TestTags.HOME_LAYOUTS_COLUMN_BOTTOM)

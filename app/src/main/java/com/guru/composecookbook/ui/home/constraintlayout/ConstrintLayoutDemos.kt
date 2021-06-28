@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.cryptoapp.ui.home.components.MyWalletCard
+import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.gmail.ui.home.GmailListItem
 import com.guru.composecookbook.youtube.components.YoutubeListItem
 

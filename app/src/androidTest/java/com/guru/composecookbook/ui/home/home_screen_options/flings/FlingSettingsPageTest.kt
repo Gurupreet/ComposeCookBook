@@ -103,8 +103,10 @@ class FlingSettingsPageTest {
             onNodeWithTag(TestTags.HOME_FLING_HEADER)
                 .assertIsDisplayed()
 
-            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
-                "native")
+            Assert.assertEquals(
+                FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
+                "native"
+            )
 
         }
     }
@@ -125,8 +127,10 @@ class FlingSettingsPageTest {
             onNodeWithTag(TestTags.HOME_FLING_HEADER)
                 .assertIsDisplayed()
 
-            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
-                "smooth")
+            Assert.assertEquals(
+                FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
+                "smooth"
+            )
 
         }
     }
@@ -147,8 +151,10 @@ class FlingSettingsPageTest {
             onNodeWithTag(TestTags.HOME_FLING_HEADER)
                 .assertIsDisplayed()
 
-            Assert.assertEquals(FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
-                "custom")
+            Assert.assertEquals(
+                FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
+                "custom"
+            )
         }
     }
 

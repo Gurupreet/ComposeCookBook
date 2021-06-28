@@ -1,4 +1,4 @@
-import com.guru.composecookbook.build.dependencies.*
+import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
 
 plugins {
     /**

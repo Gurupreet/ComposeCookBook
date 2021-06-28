@@ -13,10 +13,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
+import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 class AdvanceListsActivity : ComponentActivity() {

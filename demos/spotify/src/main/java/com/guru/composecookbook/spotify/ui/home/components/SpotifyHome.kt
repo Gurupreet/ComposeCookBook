@@ -1,10 +1,13 @@
 package com.guru.composecookbook.spotify.ui.home.components
 
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.*
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -19,11 +22,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.verticalgrid.VerticalGrid
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
+import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 @Composable
 fun SpotifyHome() {

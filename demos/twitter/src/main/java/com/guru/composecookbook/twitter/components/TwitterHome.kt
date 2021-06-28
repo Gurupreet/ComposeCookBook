@@ -19,9 +19,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.twitter.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.twitterColor
+import com.guru.composecookbook.twitter.R
 
 @Composable
 fun TwitterHome() {

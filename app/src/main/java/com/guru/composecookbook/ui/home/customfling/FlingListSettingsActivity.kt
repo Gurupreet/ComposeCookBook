@@ -89,7 +89,10 @@ fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
                         * Presently I am setting the heading as `Settings`.
                         * @gurupreet, please let me know If I need to change this.
                         */
-                        Text(text = "Settings", modifier = Modifier.testTag(TestTags.HOME_FLING_SETTINGS_ROOT))
+                        Text(
+                            text = "Settings",
+                            modifier = Modifier.testTag(TestTags.HOME_FLING_SETTINGS_ROOT)
+                        )
                     }
                 },
                 elevation = 8.dp,

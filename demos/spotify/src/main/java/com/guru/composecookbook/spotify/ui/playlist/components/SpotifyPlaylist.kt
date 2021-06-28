@@ -20,13 +20,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.data.AlbumsDataProvider
+import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
 import com.guru.composecookbook.spotify.ui.home.components.SpotifyTitle
-import com.guru.composecookbook.verticalgrid.StaggeredVerticalGrid
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
+import com.guru.composecookbook.verticalgrid.StaggeredVerticalGrid
 import kotlin.random.Random
 
 @Composable

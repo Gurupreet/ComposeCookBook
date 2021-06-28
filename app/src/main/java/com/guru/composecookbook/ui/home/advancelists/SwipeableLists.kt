@@ -27,10 +27,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.data.AlbumsDataProvider
+import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.data.model.Album
-import com.guru.composecookbook.data.AlbumsDataProvider
 import kotlin.math.roundToInt
 
 @ExperimentalMaterialApi
@@ -67,7 +67,7 @@ fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
 }
 
 enum class SwipeState {
-    SWIPED, VISIBLE,MIDDLE
+    SWIPED, VISIBLE, MIDDLE
 }
 
 @ExperimentalMaterialApi
@@ -82,7 +82,8 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
             true
         }
     )
-    val swipeAnchors = mapOf(0f to SwipeState.VISIBLE, -1000f to SwipeState.SWIPED , -500f to SwipeState.MIDDLE)
+    val swipeAnchors =
+        mapOf(0f to SwipeState.VISIBLE, -1000f to SwipeState.SWIPED, -500f to SwipeState.MIDDLE)
 
     Row(
         modifier = Modifier

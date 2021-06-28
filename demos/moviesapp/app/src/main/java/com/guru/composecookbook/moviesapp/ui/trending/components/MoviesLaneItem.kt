@@ -15,8 +15,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.coil.rememberCoilPainter
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
+import com.guru.composecookbook.theme.typography
 
 
 @Composable
