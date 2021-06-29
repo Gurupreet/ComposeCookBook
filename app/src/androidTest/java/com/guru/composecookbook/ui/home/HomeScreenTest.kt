@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.home
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.mutableStateOf
@@ -22,6 +23,7 @@ class HomeScreenTest {
     @get: Rule
     val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
+    @ExperimentalAnimationApi
     @ExperimentalFoundationApi
     @ExperimentalMaterialApi
     @Before
