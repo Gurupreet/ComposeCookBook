@@ -36,7 +36,9 @@ import kotlin.math.roundToInt
 @ExperimentalMaterialApi
 @Composable
 fun SwipeableLists() {
-    val albums by mutableStateOf(AlbumsDataProvider.albums)
+    val albums by remember {
+        mutableStateOf(AlbumsDataProvider.albums)
+    }
     LazyColumn {
         itemsIndexed(
             items = albums,
@@ -44,7 +46,8 @@ fun SwipeableLists() {
                 SwipeableListItem(index, album) { index ->
 
                 }
-            })
+            }
+        )
     }
 }
 

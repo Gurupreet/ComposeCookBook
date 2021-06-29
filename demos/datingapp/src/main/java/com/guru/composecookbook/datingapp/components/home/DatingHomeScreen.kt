@@ -65,9 +65,9 @@ fun DatingHomeScreen() {
                             start = 16.dp,
                             end = 16.dp
                         ),
-                    { _, album ->
+                    onSwiped = { _, swipedAlbum ->
                         if (persons.isNotEmpty()) {
-                            persons.remove(album)
+                            persons.remove(swipedAlbum)
                             if (persons.isEmpty()) {
                                 listEmpty.value = true
                             }
