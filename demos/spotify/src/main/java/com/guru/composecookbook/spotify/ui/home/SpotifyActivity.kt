@@ -87,8 +87,8 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
 
 @Composable
 fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
-    Crossfade(targetState = spotifyNavType) { spotifyNavType ->
-        when (spotifyNavType) {
+    Crossfade(targetState = spotifyNavType) { navType ->
+        when (navType) {
             SpotifyNavType.HOME -> SpotifyHome()
             SpotifyNavType.SEARCH -> SpotifySearchScreen()
             SpotifyNavType.LIBRARY -> SpotifyPlayList()

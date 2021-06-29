@@ -148,20 +148,20 @@ fun LineChart(
 
     Canvas(modifier = modifier.padding(8.dp)) {
         val path = Path()
-        val xbounds = Pair(0f, xTarget)
-        val ybounds = getBounds(yValues)
-        val scaleX = size.width / (xbounds.second - xbounds.first)
-        val scaleY = size.height / (ybounds.second - ybounds.first)
-        val yMove = ybounds.first * scaleY
+        val xBounds = Pair(0f, xTarget)
+        val yBounds = getBounds(yValues)
+        val scaleX = size.width / (xBounds.second - xBounds.first)
+        val scaleY = size.height / (yBounds.second - yBounds.first)
+        val yMove = yBounds.first * scaleY
 
         (0..min(yValues.size - 1, x.value.toInt())).forEach { value ->
-            val x = value * scaleX
-            val y = size.height - (yValues[value] * scaleY) + yMove
+            val xPoint = value * scaleX
+            val yPoint = size.height - (yValues[value] * scaleY) + yMove
             if (value == 0) {
-                path.moveTo(0f, y)
+                path.moveTo(0f, yPoint)
                 return@forEach
             }
-            path.lineTo(x, y)
+            path.lineTo(xPoint, yPoint)
         }
 
         drawPath(
@@ -194,16 +194,21 @@ fun BarCharts(
     }
 
     Canvas(modifier = modifier.padding(horizontal = 8.dp)) {
-        val xbounds = Pair(0f, xTarget)
-        val ybounds = getBounds(yValues)
-        val scaleX = size.width / (xbounds.second - xbounds.first)
-        val scaleY = size.height / (ybounds.second - ybounds.first)
-        val yMove = ybounds.first * scaleY
+        val xBounds = Pair(0f, xTarget)
+        val yBounds = getBounds(yValues)
+        val scaleX = size.width / (xBounds.second - xBounds.first)
+        val scaleY = size.height / (yBounds.second - yBounds.first)
+        val yMove = yBounds.first * scaleY
 
         (0..min(yValues.size - 1, x.value.toInt())).forEach { value ->
-            val x = value * scaleX
-            val y = size.height - (yValues[value] * scaleY) + yMove
-            drawBar(topLeft = Offset(x, y), width = barWidth, height = size.height - y, barColors)
+            val xOffset = value * scaleX
+            val yOffset = size.height - (yValues[value] * scaleY) + yMove
+            drawBar(
+                topLeft = Offset(xOffset, yOffset),
+                width = barWidth,
+                height = size.height - yOffset,
+                barColors
+            )
         }
     }
 }
