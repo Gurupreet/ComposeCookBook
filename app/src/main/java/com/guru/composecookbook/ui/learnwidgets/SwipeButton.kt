@@ -54,7 +54,7 @@ fun SwipeButton(
     val dragOffset = remember { mutableStateOf(0f) }
 
     val collapsed = swipeButtonState == SwipeButtonState.COLLAPSED
-    var swiped = swipeButtonState == SwipeButtonState.SWIPED
+    val swiped = swipeButtonState == SwipeButtonState.SWIPED
 
     Surface(
         modifier = modifier,

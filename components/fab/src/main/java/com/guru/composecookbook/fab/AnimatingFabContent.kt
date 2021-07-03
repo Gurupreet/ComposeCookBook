@@ -37,7 +37,7 @@ fun AnimatingFabContent(
     extended: Boolean = true
 ) {
     val currentState = if (extended) ExpandableFabStates.Extended else ExpandableFabStates.Collapsed
-    val transition = updateTransition(targetState = currentState)
+    val transition = updateTransition(targetState = currentState, label = "transition")
     val duration = 200
     val opacityAnim = transition.animateFloat(
         transitionSpec = {
@@ -56,7 +56,7 @@ fun AnimatingFabContent(
                 }
                 else -> snap()
             }
-        }
+        }, label = "opacityAnim"
     ) {
         when (it) {
             ExpandableFabStates.Collapsed -> 0f
@@ -80,7 +80,7 @@ fun AnimatingFabContent(
                 }
                 else -> snap()
             }
-        }
+        }, label = "widthAnimation"
     ) {
         when (it) {
             ExpandableFabStates.Collapsed -> 0f

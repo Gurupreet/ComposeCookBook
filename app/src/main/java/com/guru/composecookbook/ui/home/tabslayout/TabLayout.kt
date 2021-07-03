@@ -35,7 +35,7 @@ private enum class DemoTabs(val value: String) {
 @Composable
 fun TabLayout() {
     val tabsName = remember { DemoTabs.values().map { it.value } }
-    var selectedIndex = remember { mutableStateOf(DemoTabs.APPLE.ordinal) }
+    val selectedIndex = remember { mutableStateOf(DemoTabs.APPLE.ordinal) }
     val icons = listOf(Icons.Default.Info, Icons.Default.Person, Icons.Default.ShoppingCart)
 
     Column {
@@ -83,7 +83,7 @@ fun TabLayout() {
 @Composable
 fun ScrollableListOfTabs() {
     val tweets = remember { DemoDataProvider.tweetList.filter { it.tweetImageId > 0 } }
-    var selectedIndex = remember { mutableStateOf(0) }
+    val selectedIndex = remember { mutableStateOf(0) }
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         ScrollableTabRow(
             selectedTabIndex = selectedIndex.value,

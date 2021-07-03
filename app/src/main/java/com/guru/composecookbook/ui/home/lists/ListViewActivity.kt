@@ -60,7 +60,7 @@ class ListViewActivity : ComponentActivity() {
 }
 
 @Composable
-fun BaseView(isDarkTheme: Boolean, content: @Composable() () -> Unit) {
+fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
     ComposeCookBookTheme(isDarkTheme) {
         content()
     }

@@ -17,7 +17,7 @@
         <activity
             android:name=".ui.templates.TemplatesActivity"
             android:label="@string/title_activity_templates"
-            android:theme="@style/Theme.ComposeCookBook.NoActionBar"></activity>
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
             android:name=".ui.home.advancelists.AdvanceListsActivity"
             android:label="@string/title_activity_advance_lists"

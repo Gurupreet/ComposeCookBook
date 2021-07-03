@@ -110,7 +110,7 @@ fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
 
 
 @Composable
-private fun BaseView(isDarkTheme: Boolean, content: @Composable() () -> Unit) {
+private fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
     ComposeCookBookTheme(isDarkTheme) {
         content()
     }
