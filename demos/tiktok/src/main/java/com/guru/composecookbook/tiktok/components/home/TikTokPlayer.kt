@@ -7,6 +7,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.exoplayer2.C
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
@@ -20,11 +21,14 @@ fun TikTokPlayer(context: Context, url: String, selected: Boolean) {
         SimpleExoPlayer.Builder(context)
             .build()
             .apply {
-                val mediaSource = ProgressiveMediaSource.Factory(
-                    DefaultDataSourceFactory(context, "composeCookBook")
-                )
-                    .createMediaSource(Uri.parse("asset:///${url}"))
-                this.prepare(mediaSource)
+                val mediaSource = ProgressiveMediaSource
+                    .Factory(
+                        DefaultDataSourceFactory(context, "composeCookBook")
+                    )
+                    .createMediaSource(MediaItem.fromUri(Uri.parse("asset:///${url}")))
+
+                this.setMediaSource(mediaSource, true)
+                this.prepare()
             }
     }
     tiktokPlayer.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
