@@ -1,6 +1,6 @@
 package com.guru.composecookbook
 
-import AnimationScreen
+import com.guru.composecookbook.ui.animation.AnimationScreen
 import FaIcons
 import android.os.Bundle
 import androidx.activity.ComponentActivity

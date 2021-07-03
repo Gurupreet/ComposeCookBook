@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.animation
 
-import MyAnimationState
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.Spacer
