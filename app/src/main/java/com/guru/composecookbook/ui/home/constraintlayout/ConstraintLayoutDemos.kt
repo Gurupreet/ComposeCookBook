@@ -42,7 +42,7 @@ fun ConstraintLayoutDemos() {
         val tweet = DemoDataProvider.tweet
         GmailListItem(tweet) {}
         Spacer(modifier = Modifier.height(20.dp))
-        val tweet2 = DemoDataProvider.tweetList.filter { it.tweetImageId > 0 }.first()
+        val tweet2 = DemoDataProvider.tweetList.first { it.tweetImageId > 0 }
         YoutubeListItem(tweet2)
         Spacer(modifier = Modifier.height(20.dp))
         MyWalletCard()
