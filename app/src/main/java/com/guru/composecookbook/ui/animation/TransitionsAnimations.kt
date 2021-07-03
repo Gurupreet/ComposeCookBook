@@ -46,10 +46,11 @@ fun MultiStateColorPositionAnimation() {
     val midColor = purple
     val endColor = orange
 
-    val transition = updateTransition(targetState = animationState)
+    val transition = updateTransition(targetState = animationState, label = "transition")
 
     val animatedColor by transition.animateColor(
-        transitionSpec = { tween(500) }
+        transitionSpec = { tween(500) },
+        label = "animatedColor",
     ) { state ->
         when (state) {
             MyAnimationState.START -> startColor
@@ -59,7 +60,8 @@ fun MultiStateColorPositionAnimation() {
     }
 
     val position by transition.animateDp(
-        transitionSpec = { tween(500) }
+        transitionSpec = { tween(500) },
+        label = "position",
     ) { state ->
         when (state) {
             MyAnimationState.START -> 0.dp
