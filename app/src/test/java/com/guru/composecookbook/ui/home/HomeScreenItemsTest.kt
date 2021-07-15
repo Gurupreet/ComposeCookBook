@@ -11,14 +11,14 @@ internal class HomeScreenItemsTest {
 
 
     @Test
-    fun `Home Screen Entry ListView name must contain its type `() {
+    fun `Home Screen Entry ListView name must contain its type`() {
         val verticalListViewItem = HomeScreenItems.ListView()
         assertThat(verticalListViewItem.name)
             .contains(verticalListViewItem.type)
     }
 
     @Test
-    fun `Default Home Screen Entry ListView type should be Vertical `() {
+    fun `Default Home Screen Entry ListView type should be Vertical`() {
         val verticalListViewItem = HomeScreenItems.ListView()
         assertThat(verticalListViewItem.type)
             .isEqualTo("Vertical")
