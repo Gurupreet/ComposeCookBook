@@ -9,7 +9,7 @@ internal object Versions {
     const val constraintLayoutCompose = "1.0.0-alpha08"
     const val lottieCompose = "1.0.0-beta03-1"
     const val fontAwesomeCompose = "1.0.0-beta02"
-    const val accompanistCoil = "0.13.0"
+    const val accompanistCoil = "0.14.0"
     const val kotlin = "1.5.10"
     const val coroutine = "1.4.2"
     const val androidLifecycleGrouped = "2.2.0"
