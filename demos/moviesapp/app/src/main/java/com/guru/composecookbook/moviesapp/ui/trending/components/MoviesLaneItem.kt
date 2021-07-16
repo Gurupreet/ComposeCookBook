@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.theme.typography
 
@@ -33,8 +33,8 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
             items = movies,
             itemContent = { movie: Movie ->
                 Image(
-                    painter = rememberCoilPainter(
-                        request = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+                    painter = rememberImagePainter(
+                        data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
                     ),
                     contentDescription = null,
                     modifier = Modifier

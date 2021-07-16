@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
-const val initialimageFloat = 170f
+const val initialImageFloat = 170f
 const val name = "Gurupreet Singh"
 const val email = "gurpreet.usit@gmail.com"
 const val twitterUrl = "https://www.twitter.com/_gurupreet"
@@ -69,7 +69,7 @@ fun ProfileScreen() {
 
 @Composable
 fun TopAppBarView(scroll: Float) {
-    if (scroll > initialimageFloat + 5) {
+    if (scroll > initialImageFloat + 5) {
         TopAppBar(
             title = {
                 Text(text = name)

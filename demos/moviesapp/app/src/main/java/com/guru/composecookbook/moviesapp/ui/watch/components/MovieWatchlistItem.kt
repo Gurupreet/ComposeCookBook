@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.theme.typography
 
@@ -28,8 +28,8 @@ fun MovieWatchlistItem(
 ) {
     Box(modifier = Modifier.clickable(onClick = onMovieSelected)) {
         Image(
-            painter = rememberCoilPainter(
-                request = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}"
+            painter = rememberImagePainter(
+                data = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}"
             ),
             contentDescription = null,
             modifier = Modifier

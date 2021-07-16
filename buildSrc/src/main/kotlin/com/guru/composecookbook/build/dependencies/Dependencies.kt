@@ -52,6 +52,7 @@ object Dependencies {
 
     const val coilAccompanist =
         "com.google.accompanist:accompanist-coil:${Versions.accompanistCoil}"
+    const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
     const val lifecycleRuntimeKtx =
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRuntimeKtx}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
