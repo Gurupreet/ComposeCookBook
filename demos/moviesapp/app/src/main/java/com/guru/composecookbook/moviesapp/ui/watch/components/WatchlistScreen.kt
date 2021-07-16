@@ -49,7 +49,8 @@ fun WatchlistScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -
                             )
                         }
                     )
-                })
+                }
+            )
         }
     }
 }

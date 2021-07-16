@@ -100,7 +100,8 @@ fun DemoUIList() {
                     ) {
                         Text(text = title, modifier = Modifier.padding(8.dp))
                     }
-                })
+                }
+            )
         }
     }
 }

@@ -262,4 +262,4 @@ fun LoginOnboarding() {
 }
 
 fun invalidInput(email: String, password: String) =
-    email.isNullOrBlank() || password.isNullOrBlank()
+    email.isBlank() || password.isBlank()

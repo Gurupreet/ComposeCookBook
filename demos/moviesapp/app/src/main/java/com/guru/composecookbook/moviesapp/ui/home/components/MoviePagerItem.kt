@@ -21,7 +21,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.guru.composecookbook.moviesapp.data.DemoMovieDataProvider
 import com.guru.composecookbook.moviesapp.data.db.models.Genre
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
@@ -78,7 +78,7 @@ fun MoviePagerItem(
     ) {
         Column {
             Image(
-                painter = rememberCoilPainter(request = posterFullPath),
+                painter = rememberImagePainter(data = posterFullPath),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
                 modifier = Modifier

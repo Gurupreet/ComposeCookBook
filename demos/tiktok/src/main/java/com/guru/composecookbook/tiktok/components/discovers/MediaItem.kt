@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 
 @Composable
 fun MediaItem(
@@ -16,8 +16,8 @@ fun MediaItem(
     modifier: Modifier = Modifier
 ) {
     Image(
-        painter = rememberCoilPainter(
-            request = "https://picsum.photos/id/${id}/200/200"
+        painter = rememberImagePainter(
+            data = "https://picsum.photos/id/${id}/200/200"
         ),
         contentDescription = null,
         contentScale = ContentScale.Crop,

@@ -23,7 +23,7 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun TopScrollingContent(scrollState: ScrollState) {
-    val visibilityChangeFloat = scrollState.value > initialimageFloat - 20
+    val visibilityChangeFloat = scrollState.value > initialImageFloat - 20
     Row {
         AnimatedImage(scroll = scrollState.value.toFloat())
         Column(
@@ -46,7 +46,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
 
 @Composable
 fun AnimatedImage(scroll: Float) {
-    val dynamicAnimationSizeValue = (initialimageFloat - scroll).coerceIn(36f, initialimageFloat)
+    val dynamicAnimationSizeValue = (initialImageFloat - scroll).coerceIn(36f, initialImageFloat)
     Image(
         painter = painterResource(id = R.drawable.p1),
         contentScale = ContentScale.Crop,
