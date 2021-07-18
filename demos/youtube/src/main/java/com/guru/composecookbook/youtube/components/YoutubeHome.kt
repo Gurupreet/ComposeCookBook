@@ -2,6 +2,7 @@ package com.guru.composecookbook.youtube.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,7 +31,7 @@ fun YoutubeHome() {
                 title = { Text(text = "Youtube") },
                 backgroundColor = MaterialTheme.colors.surface,
                 contentColor = MaterialTheme.colors.onSurface,
-                elevation = 8.dp,
+                elevation = if (MaterialTheme.colors.isLight) 0.dp else 8.dp,
                 navigationIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_youtube),
@@ -62,7 +63,11 @@ fun YoutubeHome() {
             )
         },
         content = {
-            YoutubeContent()
+            Surface(
+                elevation = if (MaterialTheme.colors.isLight) 0.dp else 8.dp,
+            ) {
+                YoutubeContent()
+            }
         }
     )
 }
@@ -73,8 +78,10 @@ fun YoutubeContent() {
     // There is performance issue when using LazyRowFor and LazyColumnFor inside scrollableColumn
     // So using column for now.
     Column {
+        Divider()
         LazyRow(
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier.padding(vertical = 8.dp),
+            contentPadding = PaddingValues(horizontal = 12.dp),
         ) {
             items(
                 items = tweets,
@@ -82,14 +89,18 @@ fun YoutubeContent() {
                     YoutubeChip(
                         selected = it.id == 2,
                         text = it.author,
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier.padding(
+                            horizontal = 4.dp,
+                        )
                     )
-                })
+                }
+            )
         }
         LazyColumn {
             items(
                 items = tweets,
-                itemContent = { item -> YoutubeListItem(item) })
+                itemContent = { item -> YoutubeListItem(item) }
+            )
         }
     }
 }
