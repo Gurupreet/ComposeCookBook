@@ -41,8 +41,10 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
             text = text,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.body2,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(
+                vertical = 8.dp,
+                horizontal = 12.dp,
+            )
         )
-
     }
 }
