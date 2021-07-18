@@ -16,7 +16,9 @@ import androidx.compose.ui.unit.dp
 fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) {
     Surface(
         color = when {
-            selected -> MaterialTheme.colors.onSurface
+            selected -> MaterialTheme.colors.onSurface.copy(
+                alpha = if (MaterialTheme.colors.isLight) 0.8f else 1f
+            )
             else -> Color.Transparent
         },
         contentColor = when {
