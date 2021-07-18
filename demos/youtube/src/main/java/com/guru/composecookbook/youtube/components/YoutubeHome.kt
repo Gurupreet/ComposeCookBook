@@ -63,7 +63,9 @@ fun YoutubeHome() {
             )
         },
         content = {
-            Surface(elevation = 8.dp) {
+            Surface(
+                elevation = if (MaterialTheme.colors.isLight) 0.dp else 8.dp,
+            ) {
                 YoutubeContent()
             }
         }
