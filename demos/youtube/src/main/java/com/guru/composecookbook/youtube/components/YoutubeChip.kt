@@ -17,9 +17,11 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
     Surface(
         color = when {
             selected -> MaterialTheme.colors.onSurface.copy(
-                alpha = if (MaterialTheme.colors.isLight) 0.8f else 1f
+                alpha = if (MaterialTheme.colors.isLight) 0.7f else 1f
             )
-            else -> Color.Transparent
+            else -> MaterialTheme.colors.onSurface.copy(
+                alpha = if (MaterialTheme.colors.isLight) 0.04f else 0.07f
+            )
         },
         contentColor = when {
             selected -> MaterialTheme.colors.surface
@@ -29,8 +31,8 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
         border = BorderStroke(
             width = 1.dp,
             color = when {
-                selected -> MaterialTheme.colors.primary
-                else -> Color.LightGray
+                selected -> MaterialTheme.colors.surface
+                else -> if (MaterialTheme.colors.isLight) Color.LightGray else Color.DarkGray
             }
         ),
         modifier = modifier
