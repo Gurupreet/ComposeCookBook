@@ -62,7 +62,9 @@ fun YoutubeHome() {
             )
         },
         content = {
-            YoutubeContent()
+            Surface(elevation = 8.dp) {
+                YoutubeContent()
+            }
         }
     )
 }
