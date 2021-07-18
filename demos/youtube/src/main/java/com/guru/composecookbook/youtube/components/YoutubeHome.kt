@@ -31,7 +31,7 @@ fun YoutubeHome() {
                 title = { Text(text = "Youtube") },
                 backgroundColor = MaterialTheme.colors.surface,
                 contentColor = MaterialTheme.colors.onSurface,
-                elevation = 8.dp,
+                elevation = if (MaterialTheme.colors.isLight) 0.dp else 8.dp,
                 navigationIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_youtube),
