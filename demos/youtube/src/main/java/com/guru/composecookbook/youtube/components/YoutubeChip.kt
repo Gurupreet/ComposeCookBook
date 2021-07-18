@@ -20,8 +20,8 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
             else -> Color.Transparent
         },
         contentColor = when {
-            selected -> MaterialTheme.colors.onPrimary
-            else -> Color.LightGray
+            selected -> MaterialTheme.colors.surface
+            else -> MaterialTheme.colors.onSurface
         },
         shape = CircleShape,
         border = BorderStroke(
