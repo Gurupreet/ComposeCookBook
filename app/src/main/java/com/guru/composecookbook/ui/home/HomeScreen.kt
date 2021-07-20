@@ -256,6 +256,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
         HomeScreenItems.CustomFling -> {
             FlingListActivity.newIntent(context = context, isDarkTheme = isDarkTheme)
         }
+        HomeScreenItems.MotionLayout -> {
+            DynamicUIActivity.newIntent(context, DynamicUiType.MOTIONLAYOUT.name, isDarkTheme)
+        }
     }
     context.startActivity(intent)
 }

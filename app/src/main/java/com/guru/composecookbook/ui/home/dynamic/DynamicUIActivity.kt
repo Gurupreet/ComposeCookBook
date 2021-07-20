@@ -17,6 +17,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.home.androidviews.AndroidViews
 import com.guru.composecookbook.ui.home.constraintlayout.ConstraintLayoutDemos
 import com.guru.composecookbook.ui.home.dialogs.BottomSheetLayouts
+import com.guru.composecookbook.ui.home.motionlayout.MotionLayoutDemo
 import com.guru.composecookbook.ui.home.pullrefreshdemos.PullRefreshList
 import com.guru.composecookbook.ui.home.tabslayout.TabLayout
 import com.guru.composecookbook.ui.learnwidgets.Layouts
@@ -100,6 +101,9 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 }
                 DynamicUiType.PULLRERESH.name -> {
                     PullRefreshList(onPullRefresh = {})
+                }
+                DynamicUiType.MOTIONLAYOUT.name -> {
+                    MotionLayoutDemo()
                 }
             }
         }

@@ -15,6 +15,7 @@ sealed class HomeScreenItems {
     object AndroidViews : HomeScreenItems()
     object PullRefresh : HomeScreenItems()
     object CustomFling : HomeScreenItems()
+    object MotionLayout: HomeScreenItems()
 
     val name: String
         get() = when (this) {
@@ -23,6 +24,7 @@ sealed class HomeScreenItems {
             is Carousel -> "Carousel"
             is ListView -> "$type ListView"
             ConstraintsLayout -> "Constraint Layout"
+            MotionLayout -> "Motion Layout"
             CollapsingAppBar -> "Collapsing AppBar"
             BottomAppBar -> "BottomAppBar"
             BottomSheets -> "BottomSheets"

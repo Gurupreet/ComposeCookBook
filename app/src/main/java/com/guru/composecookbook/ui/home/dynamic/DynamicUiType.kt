@@ -8,5 +8,6 @@ enum class DynamicUiType {
     CAROUSELL,
     MODIFIERS,
     ANDROIDVIEWS,
-    PULLRERESH
+    PULLRERESH,
+    MOTIONLAYOUT
 }
