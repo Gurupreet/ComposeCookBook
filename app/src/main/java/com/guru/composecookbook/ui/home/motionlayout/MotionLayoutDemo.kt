@@ -41,47 +41,47 @@ private fun ButtonsMotionExample() {
         ConstraintSet(
             """ {
                 button1: { 
-                         width: "spread",
-                height: 60,
-                start: ['parent', 'start', 16],
-                end: ['parent', 'end', 16],
-                top: ['parent', 'top', 16]
+                  width: "spread",
+                  height: 60,
+                  start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['parent', 'top', 16]
                 },
                 button2: { 
-                         width: "spread",
-                height: 60,
-                start: ['parent', 'start', 16],
-                end: ['parent', 'end', 16],
-                top: ['button1', 'bottom', 16]
+                  width: "spread",
+                  height: 60,
+                  start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['button1', 'bottom', 16]
                 },
-                     button3: { 
-                         width: "spread",
-                height: 60,
-                start: ['parent', 'start', 16],
-                end: ['parent', 'end', 16],
-                top: ['button2', 'bottom', 16]
+                button3: { 
+                  width: "spread",
+                  height: 60,
+                  start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['button2', 'bottom', 16]
                 }
             } """
         ),
         ConstraintSet(
             """ {
-                    button1: { 
-                width: 100,
-                height: 60,
-                start: ['parent', 'start', 16],
-                end: ['button2', 'start', 16]
+                button1: { 
+                  width: 100,
+                  height: 60,
+                  start: ['parent', 'start', 16],
+                  end: ['button2', 'start', 16]
                 },
-                      button2: { 
-                width: 100,
-                height: 60,
-                start: ['button1', 'end', 16],
-                end: ['button2', 'start', 16]
+                button2: { 
+                  width: 100,
+                  height: 60,
+                  start: ['button1', 'end', 16],
+                  end: ['button2', 'start', 16]
                 },
-                         button3: { 
-                width: 100,
-                height: 60,
-                start: ['button2', 'end', 16],
-                end: ['parent', 'end', 16]
+                button3: { 
+                  width: 100,
+                  height: 60,
+                  start: ['button2', 'end', 16],
+                  end: ['parent', 'end', 16]
                 }
             } """
         ),
@@ -92,20 +92,20 @@ private fun ButtonsMotionExample() {
             .background(Color.White)
     ) {
         Button(
-            onClick = { animateButton = !animateButton }, modifier = Modifier.layoutId
-                ("button1")
+            onClick = { animateButton = !animateButton },
+            modifier = Modifier.layoutId("button1")
         ) {
             Text(text = "Button1")
         }
         Button(
-            onClick = { animateButton = !animateButton }, modifier = Modifier.layoutId
-                ("button2")
+            onClick = { animateButton = !animateButton },
+            modifier = Modifier.layoutId("button2")
         ) {
             Text(text = "Button2")
         }
         Button(
-            onClick = { animateButton = !animateButton }, modifier = Modifier.layoutId
-                ("button3")
+            onClick = { animateButton = !animateButton },
+            modifier = Modifier.layoutId("button3")
         ) {
             Text(text = "Button3")
         }
@@ -123,51 +123,51 @@ private fun ImageMotionExample() {
     MotionLayout(
         ConstraintSet(
             """ {
-                    image1: { 
-                width: 150,
-                height: 150,
-                start: ['parent', 'start', 16]
+                image1: { 
+                  width: 150,
+                  height: 150,
+                  start: ['parent', 'start', 16]
                 },
-                      image2: { 
-                width: 150,
-                height: 150,
-                start: ['parent', 'start', 24]
+                image2: { 
+                  width: 150,
+                  height: 150,
+                  start: ['parent', 'start', 24]
                 },
-                         image3: { 
-                width: 150,
-                height: 150,
-                start: ['parent', 'start', 32]
+                image3: { 
+                  width: 150,
+                  height: 150,
+                  start: ['parent', 'start', 32]
                 },
-                           image4: { 
-                width: 150,
-                height: 150,
-                start: ['parent', 'start', 40]
+                image4: { 
+                  width: 150,
+                  height: 150,
+                  start: ['parent', 'start', 40]
                 }
             } """
         ),
         ConstraintSet(
             """ {
-                    image1: { 
-                width: 150,
-                height: 150,
-                start: ['parent', 'start', 16]
+                image1: { 
+                  width: 150,
+                  height: 150,
+                  start: ['parent', 'start', 16]
                 },
-                      image2: { 
-                width: 150,
-                height: 150,
-                start: ['image1', 'end', 16]
+                image2: { 
+                  width: 150,
+                  height: 150,
+                  start: ['image1', 'end', 16]
                 },
-                         image3: { 
-                width: 150,
-                height: 150,
-                start: ['parent', 'start', 16],
-                top: ['image1', 'bottom', 16]
+                image3: { 
+                  width: 150,
+                  height: 150,
+                  start: ['parent', 'start', 16],
+                  top: ['image1', 'bottom', 16]
                 },
-                             image4: { 
-                width: 150,
-                height: 150,
-                start: ['image1', 'end', 16],
-                top: ['image1', 'bottom', 16]
+                image4: { 
+                  width: 150,
+                  height: 150,
+                  start: ['image1', 'end', 16],
+                  top: ['image1', 'bottom', 16]
                 }
             } """
         ),
@@ -176,19 +176,27 @@ private fun ImageMotionExample() {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        Image(painter = painterResource(id = albums[0].imageId), contentDescription = "",
+        Image(
+            painter = painterResource(id = albums[0].imageId),
+            contentDescription = "",
             modifier = Modifier
                 .layoutId("image1")
                 .clickable { animateImage = !animateImage })
-        Image(painter = painterResource(id = albums[1].imageId), contentDescription = "",
+        Image(
+            painter = painterResource(id = albums[1].imageId),
+            contentDescription = "",
             modifier = Modifier
                 .layoutId("image2")
                 .clickable { animateImage = !animateImage })
-        Image(painter = painterResource(id = albums[2].imageId), contentDescription = "",
+        Image(
+            painter = painterResource(id = albums[2].imageId),
+            contentDescription = "",
             modifier = Modifier
                 .layoutId("image3")
                 .clickable { animateImage = !animateImage })
-        Image(painter = painterResource(id = albums[3].imageId), contentDescription = "",
+        Image(
+            painter = painterResource(id = albums[3].imageId),
+            contentDescription = "",
             modifier = Modifier
                 .layoutId("image4")
                 .clickable { animateImage = !animateImage })
