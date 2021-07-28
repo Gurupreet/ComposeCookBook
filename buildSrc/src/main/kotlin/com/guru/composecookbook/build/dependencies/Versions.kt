@@ -12,7 +12,7 @@ internal object Versions {
     const val accompanistCoil = "0.14.0"
     const val coilCompose = "1.3.0"
     const val kotlin = "1.5.10"
-    const val coroutine = "1.4.2"
+    const val coroutines = "1.5.1"
     const val androidLifecycleGrouped = "2.2.0"
     const val flinger = "1.0.0"
     const val paging = "3.0.0"

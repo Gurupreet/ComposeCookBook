@@ -61,9 +61,9 @@ object Dependencies {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val okHttpGsonConverter =
         "com.squareup.retrofit2:converter-gson:${Versions.retrofitConverterGson}"
-    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroid =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val lifecycleExtensions =
         "androidx.lifecycle:lifecycle-extensions:${Versions.androidLifecycleGrouped}"
     const val liveDataKtx =
