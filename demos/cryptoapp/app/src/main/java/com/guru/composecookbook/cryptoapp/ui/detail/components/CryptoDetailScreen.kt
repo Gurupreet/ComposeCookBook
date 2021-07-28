@@ -22,7 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.guru.composecookbook.charts.BarCharts
 import com.guru.composecookbook.charts.LineChart
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
@@ -82,7 +82,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
                 modifier = Modifier.padding(end = 8.dp)
             )
             Image(
-                painter = rememberCoilPainter(request = crypto.image),
+                painter = rememberImagePainter(data = crypto.image),
                 modifier = Modifier.size(28.dp),
                 contentDescription = null
             )
