@@ -18,7 +18,7 @@ internal object Versions {
     const val paging = "3.0.0"
     const val lottie = "3.6.1"
     const val room = "2.4.0-alpha03"
-    const val coreKtx = "1.6.0-beta02"
+    const val coreKtx = "1.6.0"
     const val appcompat = "1.2.0"
     const val paletteKtx = "1.0.0"
     const val material = "1.2.1"
