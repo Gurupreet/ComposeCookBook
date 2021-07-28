@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
@@ -27,7 +27,7 @@ fun FavoriteCryptoCard(crypto: Crypto) {
         ) {
             Row(modifier = Modifier.weight(1f)) {
                 Image(
-                    painter = rememberCoilPainter(request = crypto.image),
+                    painter = rememberImagePainter(data = crypto.image),
                     modifier = Modifier.size(24.dp),
                     contentDescription = null
                 )

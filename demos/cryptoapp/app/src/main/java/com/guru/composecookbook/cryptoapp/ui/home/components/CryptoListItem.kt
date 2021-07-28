@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.guru.composecookbook.charts.LineChart
 import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
@@ -53,7 +53,7 @@ fun CryptoListItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            painter = rememberCoilPainter(request = crypto.image),
+            painter = rememberImagePainter(data = crypto.image),
             modifier = Modifier
                 .size(40.dp)
                 .padding(4.dp),
