@@ -1,7 +1,7 @@
 package com.guru.composecookbook.build.dependencies
 
 internal object Versions {
-    const val compose = "1.0.0-rc02"
+    const val compose = "1.0.0"
     const val lifecycleViewModelCompose = "1.0.0-alpha08"
     const val activityCompose = "1.3.0-rc01"
     const val pagingCompose = "1.0.0-alpha12"
@@ -21,7 +21,7 @@ internal object Versions {
     const val coreKtx = "1.6.0"
     const val appcompat = "1.3.1"
     const val paletteKtx = "1.0.0"
-    const val material = "1.2.1"
+    const val material = "1.4.0"
     const val playServicesAds = "19.6.0"
     const val googleMaps = "3.1.0-beta"
     const val playServicesMaps = "17.0.0"
