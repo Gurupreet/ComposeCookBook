@@ -24,8 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.accompanist.coil.rememberCoilPainter
-import com.google.accompanist.imageloading.ImageLoadState
+import coil.annotation.ExperimentalCoilApi
+import coil.compose.ImagePainter
+import coil.compose.rememberImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModel
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModelFactory
@@ -34,6 +35,7 @@ import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import com.guru.composecookbook.theme.typography
 
+@ExperimentalCoilApi
 @Composable
 fun MovieDetailContent(movie: Movie, imageId: Int) {
     val expand = remember { mutableStateOf(false) }
@@ -61,8 +63,8 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
             )
     ) {
         item {
-            val painter = rememberCoilPainter(
-                request = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+            val painter = rememberImagePainter(
+                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
             )
             Image(
                 painter = painter,
@@ -74,8 +76,8 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
                     )
                     .fillMaxWidth(),
             )
-            when (painter.loadState) {
-                is ImageLoadState.Success -> expand.value = true
+            when (painter.state) {
+                is ImagePainter.State.Success -> expand.value = true
                 else -> expand.value = false
             }
         }
