@@ -13,7 +13,7 @@ internal object Versions {
     const val kotlin = "1.5.10"
     const val coroutines = "1.5.1"
     const val androidLifecycleGrouped = "2.2.0"
-    const val flinger = "1.0.0"
+    const val flinger = "1.0.5"
     const val paging = "3.0.1"
     const val lottie = "4.0.0"
     const val room = "2.4.0-alpha03"
