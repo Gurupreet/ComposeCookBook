@@ -31,7 +31,7 @@ object Dependencies {
     const val composeViewModel =
         "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.lifecycleViewModelCompose}"
     const val composeActivity = "androidx.activity:activity-compose:${Versions.activityCompose}"
-    const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.lottieCompose}"
+    const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.lottie}"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
 
     const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
