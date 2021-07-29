@@ -53,7 +53,7 @@ internal val coreAndroidUiDependencies = listOf(
     Dependencies.androidPaletteKtx,
     Dependencies.androidPagingRuntime,
     Dependencies.lifecycleRuntimeKtx,
-    Dependencies.lifecycleExtensions,
+    Dependencies.lifecycleSavedState,
     Dependencies.liveDataKtx,
     Dependencies.viewModelKtx
 )

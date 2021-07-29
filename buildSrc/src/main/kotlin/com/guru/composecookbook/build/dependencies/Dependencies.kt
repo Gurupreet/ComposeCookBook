@@ -53,23 +53,24 @@ object Dependencies {
     const val coilAccompanist =
         "com.google.accompanist:accompanist-coil:${Versions.accompanistCoil}"
     const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
-    const val lifecycleRuntimeKtx =
-        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRuntimeKtx}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val okHttpLoggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val okHttpGsonConverter =
         "com.squareup.retrofit2:converter-gson:${Versions.retrofitConverterGson}"
-    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val coroutinesCore =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroid =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-    const val lifecycleExtensions =
-        "androidx.lifecycle:lifecycle-extensions:${Versions.androidLifecycleGrouped}"
-    const val liveDataKtx =
-        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidLifecycleGrouped}"
     const val viewModelKtx =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidLifecycleGrouped}"
+    const val liveDataKtx =
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidLifecycleGrouped}"
+    const val lifecycleRuntimeKtx =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidLifecycleGrouped}"
+    const val lifecycleSavedState =
+        "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.androidLifecycleGrouped}"
     const val junitJupiterApi = "org.junit.jupiter:junit-jupiter-api:${Versions.junitJupiterApi}"
     const val junitJupiterEngine =
         "org.junit.jupiter:junit-jupiter-engine:${Versions.junitJupiterEngine}"
