@@ -34,6 +34,6 @@ internal object Versions {
     const val multidex = "2.0.1"
     const val junitJupiterApi = "5.7.0"
     const val junitJupiterEngine = "5.7.0"
-    const val truth = "1.1"
+    const val truth = "1.1.3"
     const val androidXJunit = "1.1.2"
 }
