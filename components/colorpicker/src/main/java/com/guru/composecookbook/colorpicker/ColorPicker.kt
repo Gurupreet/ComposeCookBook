@@ -45,7 +45,7 @@ fun ColorPicker(
     )
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
-    var activeColor by remember { mutableStateOf<Color>(Red) }
+    var activeColor by remember { mutableStateOf(Red) }
 
     val max = screenWidth - 16.dp
     val min = 0.dp
