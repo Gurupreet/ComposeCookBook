@@ -57,7 +57,7 @@ TestTags {
     const val HOME_LAYOUTS_BOX_TOP_CENTER_AND_NO_ALIGN = "home_layouts_box_top_center"
 
     //Constraint layout
-    const val HOME_LAYOUTS_CONSTRAINT_LAYOUT = "home_layouts_constraint_layou"
+    const val HOME_LAYOUTS_CONSTRAINT_LAYOUT = "home_layouts_constraint_layout"
 
     /*
      * animation screen

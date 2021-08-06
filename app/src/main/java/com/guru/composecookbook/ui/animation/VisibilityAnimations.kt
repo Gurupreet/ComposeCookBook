@@ -167,7 +167,7 @@ fun AnimateContentSize() {
     Row(modifier = Modifier
         .animateContentSize()
         .clickable { if (count < 10) count += 3 else count = 1 }) {
-        (0..count).forEach {
+        (0..count).forEach { _ ->
             Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
         }
     }
