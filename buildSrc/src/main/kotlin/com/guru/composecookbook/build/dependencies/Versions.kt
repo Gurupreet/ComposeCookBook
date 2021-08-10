@@ -1,8 +1,8 @@
 package com.guru.composecookbook.build.dependencies
 
 internal object Versions {
-    const val compose = "1.0.0"
-    const val lifecycleViewModelCompose = "1.0.0-alpha08"
+    const val compose = "1.0.1"
+    const val lifecycleViewModelCompose = "1.0.0-alpha07"
     const val activityCompose = "1.3.0"
     const val pagingCompose = "1.0.0-alpha12"
     const val navCompose = "2.4.0-alpha05"
@@ -10,7 +10,7 @@ internal object Versions {
     const val fontAwesomeCompose = "1.0.0-beta02"
     const val accompanistCoil = "0.14.0"
     const val coilCompose = "1.3.1"
-    const val kotlin = "1.5.10"
+    const val kotlin = "1.5.21"
     const val coroutines = "1.5.1"
     const val androidLifecycleGrouped = "2.3.1"
     const val flinger = "1.0.5"

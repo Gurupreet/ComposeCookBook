@@ -49,7 +49,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = ProjectConfigs.kotlinCompilerExtensionVersion
     }
-    lint {
+    lintOptions {
         isAbortOnError = false
     }
     packagingOptions {
