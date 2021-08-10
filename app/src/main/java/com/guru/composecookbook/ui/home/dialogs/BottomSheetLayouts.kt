@@ -1,21 +1,32 @@
 package com.guru.composecookbook.ui.home.dialogs
 
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.spotify.R
+import com.guru.composecookbook.theme.graySurface
+import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.home.lists.VerticalListView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -32,26 +43,22 @@ fun BottomSheetLayouts() {
 fun BottomSheetDrawer() {
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
     val coroutineScope = rememberCoroutineScope()
-    val showCustomScrim = remember { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     BottomSheetScaffold(
         content = {
             Box {
-                ScafoldContent(coroutineScope, bottomSheetScaffoldState, showCustomScrim)
-                if (showCustomScrim.value) {
-                    CustomBottomSheetBackgroundScrim(scaffoldState = bottomSheetScaffoldState)
-                }
+                ScafoldContent(coroutineScope, bottomSheetScaffoldState, sheetState)
             }
         },
         sheetContent = {
-          BottomSheetContent()
+            PlayerBottomSheet()
         },
         drawerContent = {
            DrawerContent()
         },
         scaffoldState = bottomSheetScaffoldState,
-        sheetPeekHeight = 0.dp,
-        sheetElevation = 16.dp,
-        sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+        sheetPeekHeight = if (sheetState.isAnimationRunning || sheetState.isVisible) 0.dp else 65
+            .dp,
     )
 }
 
@@ -60,46 +67,52 @@ fun BottomSheetDrawer() {
 private fun ScafoldContent(
     coroutineScope: CoroutineScope,
     bottomSheetScaffoldState: BottomSheetScaffoldState,
-    showCustomScrim: MutableState<Boolean>
+    sheetState: ModalBottomSheetState
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-                .height(55.dp),
-            onClick = {
-                showCustomScrim.value = false
-                coroutineScope.launch {
-                    bottomSheetScaffoldState.bottomSheetState.expand()
-                }
-            }) {
-            Text(text = "Bottom Sheet")
+    ModalBottomSheetLayout(
+        modifier = Modifier.fillMaxSize(),
+        sheetState = sheetState,
+        sheetContent = {
+            BottomSheetContent()
         }
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-                .height(55.dp),
-            onClick = {
-                coroutineScope.launch {
-                    bottomSheetScaffoldState.drawerState.open()
-                }
-            }) {
-            Text(text = "Navigation Drawer")
-        }
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-                .height(55.dp),
-            onClick = {
-                showCustomScrim.value = true
-                coroutineScope.launch {
-                    bottomSheetScaffoldState.bottomSheetState.expand()
-                }
-            }) {
-            Text(text = "BottomSheet + Custom Scrim")
+    ) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .height(55.dp),
+                onClick = {
+                    coroutineScope.launch {
+                        bottomSheetScaffoldState.drawerState.open()
+                    }
+                }) {
+                Text(text = "Navigation Drawer")
+            }
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .height(55.dp),
+                onClick = {
+                    coroutineScope.launch {
+                        bottomSheetScaffoldState.bottomSheetState.expand()
+                    }
+                }) {
+                Text(text = "Bottom Sheet")
+            }
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .height(55.dp),
+                onClick = {
+                    coroutineScope.launch {
+                        sheetState.show()
+                    }
+                }) {
+                Text(text = "Modal Bottom sheet")
+            }
         }
     }
 }
@@ -107,36 +120,7 @@ private fun ScafoldContent(
 
 @Composable
 fun BottomSheetContent() {
-    Text(text = "Bottom Sheet", textAlign = TextAlign.Center, modifier = Modifier
-        .fillMaxWidth()
-        .padding(16.dp))
-    Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .height(55.dp),
-        onClick = {
-        }) {
-        Text(text = "Action 1")
-    }
-    Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .height(55.dp),
-        onClick = {
-        }) {
-        Text(text = "Action 2")
-    }
-    Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .height(55.dp),
-        onClick = {
-        }) {
-        Text(text = "Action 3")
-    }
+    DrawerContent()
 }
 
 @Composable
@@ -166,22 +150,50 @@ fun DrawerContent() {
     }
 }
 
-@ExperimentalMaterialApi
 @Composable
-fun CustomBottomSheetBackgroundScrim(scaffoldState: BottomSheetScaffoldState) {
-    val coroutineScope = rememberCoroutineScope()
-    val bottomSheetProgress = scaffoldState.bottomSheetState.progress
-    val bottomSheetFraction = bottomSheetProgress.fraction
-    if ((bottomSheetProgress.from == BottomSheetValue.Collapsed && bottomSheetFraction < 1.0)
-        || bottomSheetProgress.from == BottomSheetValue.Expanded && scaffoldState.bottomSheetState.progress.fraction.toInt() == 1) {
-        Spacer(modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.onSurface.copy(alpha = DrawerDefaults.ScrimOpacity))
-            .clickable {
-                coroutineScope.launch {
-                    scaffoldState.bottomSheetState.collapse()
-                }
-            }
+fun PlayerBottomSheet() {
+    val backgroundColor = MaterialTheme.colors.background.copy(alpha = 0.7f)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = backgroundColor),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.adele21),
+            modifier = Modifier.size(65.dp),
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
+        Text(
+            text = "Someone Like you by Adele",
+            style = typography.h6.copy(fontSize = 14.sp),
+            modifier = Modifier
+                .padding(8.dp)
+                .weight(1f),
+        )
+        Icon(
+            imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),
+            contentDescription = null
+        )
+        Icon(
+            imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp),
+            contentDescription = null
         )
     }
+    Text(text = "Lyrics", style = typography.h6, modifier = Modifier.padding(16.dp))
+    Text(
+        text = "I heard that you're settled down\n" +
+            "That you found a girl and you're married now\n" +
+            "I heard that your dreams came true\n" +
+            "Guess she gave you things, I didn't give to you\n" +
+            "Old friend, why are you so shy?\n" +
+            "Ain't like you to hold back or hide from the light\n" +
+            "I hate to turn up out of the blue, uninvited\n" +
+            "But I couldn't stay away, I couldn't fight it\n" +
+            "I had hoped you'd see my face\n" +
+            "And that you'd be reminded that for me, it isn't over",
+        modifier = Modifier.padding(16.dp)
+    )
+    
 }
