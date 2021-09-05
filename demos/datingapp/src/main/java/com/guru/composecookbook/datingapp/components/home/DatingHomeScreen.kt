@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -23,10 +24,12 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.canvas.MultiStateAnimationCircleFilledCanvas
-import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.R
 import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.datingapp.DatingHomeViewModel
+import com.guru.composecookbook.datingapp.util.orFalse
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
@@ -34,13 +37,14 @@ import kotlin.random.Random
 
 @Composable
 fun DatingHomeScreen() {
+    val viewModel: DatingHomeViewModel = viewModel()
+    val persons = viewModel.albumLiveData.observeAsState()
+
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     val cardHeight = screenHeight - 200.dp
 
     Surface(modifier = Modifier.fillMaxSize()) {
-        val persons = mutableListOf<Album>()
-        persons.addAll(AlbumsDataProvider.albums.take(15))
         val boxModifier = Modifier
 
         Box(
@@ -53,7 +57,7 @@ fun DatingHomeScreen() {
         ) {
             val listEmpty = remember { mutableStateOf(false) }
             DatingLoader(modifier = boxModifier)
-            persons.forEachIndexed { index, album ->
+            persons.value?.forEachIndexed { index, album ->
                 DraggableCard(
                     item = album,
                     modifier = Modifier
@@ -66,9 +70,9 @@ fun DatingHomeScreen() {
                             end = 16.dp
                         ),
                     onSwiped = { _, swipedAlbum ->
-                        if (persons.isNotEmpty()) {
-                            persons.remove(swipedAlbum)
-                            if (persons.isEmpty()) {
+                        if (persons.value?.isNotEmpty().orFalse()) {
+                            persons.value?.remove(swipedAlbum)
+                            if (persons.value?.isEmpty().orFalse()) {
                                 listEmpty.value = true
                             }
                         }
