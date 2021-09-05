@@ -85,7 +85,7 @@ Adding card details        |
 </a>
 
 ## How to get started
-Please get **Android Studio Arctic Fox 2020.3.1 Canary 4** or above [from here](https://developer.android.com/studio/preview/) and use **JDK 11** to build this project.
+Please get **Android Studio Bumblebee latest Canary** [from here](https://developer.android.com/studio/preview/) and use **JDK 11** to build this project.
 
 ## Features & Where to start
 - __Widgets:__ Widgets Screen show case all the available components to build UI.
