@@ -84,7 +84,7 @@ fun AdvanceListContent() {
         }
         Pager(state = pagerState, modifier = Modifier.weight(1f)) {
             selectedIndex = pagerState.currentPage
-            when (page) {
+            when (commingPage) {
                 0 -> ShimmerList()
                 1 -> AnimatedLists()
                 2 -> SwipeableLists()

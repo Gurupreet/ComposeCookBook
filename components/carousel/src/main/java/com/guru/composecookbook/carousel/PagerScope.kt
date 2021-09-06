@@ -5,7 +5,7 @@ package com.guru.composecookbook.carousel
  */
 class PagerScope(
     private val state: PagerState,
-    val page: Int
+    val commingPage: Int
 ) {
     /**
      * Returns the current selected page

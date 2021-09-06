@@ -130,7 +130,7 @@ private fun ColumnScope.PrepareFirstPager(
         state = pagerState,
         modifier = Modifier.height(200.dp)
     ) {
-        val item = items[page]
+        val item = items[commingPage]
         selectedPage.value = pagerState.currentPage
         CarouselItem(item)
     }
@@ -155,7 +155,7 @@ private fun ColumnScope.PrepareSecondPager(
     selectedPage: MutableState<Int>
 ) {
     Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
-        val item = items[page]
+        val item = items[commingPage]
         selectedPage.value = pagerState.currentPage
         CarouselItemCircle(item)
     }
@@ -178,7 +178,7 @@ private fun ColumnScope.PrepareThirdPager(
     selectedPage: MutableState<Int>
 ) {
     Pager(state = pagerState, modifier = Modifier.height(350.dp)) {
-        val item = items[page]
+        val item = items[commingPage]
         selectedPage.value = pagerState.currentPage
         CarouselItemCard(item, pagerState, selectedPage)
     }

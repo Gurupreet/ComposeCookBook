@@ -38,12 +38,12 @@ fun MoviesPager(
         val pagerState = remember { PagerState(maxPage = movies.size - 1) }
 
         Pager(state = pagerState, modifier = Modifier.height(645.dp)) {
-            val movie = movies[page]
+            val movie = movies[commingPage]
             imageId.value = imageIds[pagerState.currentPage]
-            val isSelected = pagerState.currentPage == page
+            val isSelected = pagerState.currentPage == commingPage
 
             // Only one page before and one page after the selected page needs to receive non zero offset
-            val filteredOffset = if (abs(pagerState.currentPage - page) < 2) {
+            val filteredOffset = if (abs(pagerState.currentPage - commingPage) < 2) {
                 currentPageOffset
             } else 0f
 
