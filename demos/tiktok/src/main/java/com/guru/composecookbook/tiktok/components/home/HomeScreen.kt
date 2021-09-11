@@ -53,8 +53,8 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
             .fillMaxSize()
             .padding(bottom = bottomBarHeight)
     ) {
-        val movie = movies[page]
-        val isSelected = pagerState.currentPage == page
+        val movie = movies[commingPage]
+        val isSelected = pagerState.currentPage == commingPage
         PagerItem(movie, isSelected, tiktokInteractionEvents)
     }
 
