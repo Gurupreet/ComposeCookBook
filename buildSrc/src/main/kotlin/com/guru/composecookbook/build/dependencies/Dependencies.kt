@@ -79,4 +79,6 @@ object Dependencies {
     const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
     const val androidXJunit = "androidx.test.ext:junit:${Versions.androidXJunit}"
 
+    const val biometric = "androidx.biometric:biometric:${Versions.biometric}"
+
 }

@@ -15,7 +15,7 @@ internal object Versions {
     const val androidLifecycleGrouped = "2.3.1"
     const val flinger = "1.0.5"
     const val paging = "3.0.1"
-    const val lottie = "4.0.0"
+    const val lottie = "4.1.0"
     const val room = "2.4.0-alpha03"
     const val coreKtx = "1.6.0"
     const val appcompat = "1.3.1"
@@ -34,4 +34,5 @@ internal object Versions {
     const val junitJupiterEngine = "5.7.0"
     const val truth = "1.1.3"
     const val androidXJunit = "1.1.2"
+    const val biometric = "1.2.0-alpha03"
 }

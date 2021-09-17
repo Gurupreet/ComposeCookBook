@@ -80,6 +80,7 @@ dependencies {
     implementation(project(":demos:moviesapp:app"))
     implementation(project(":templates:onboarding"))
     implementation(project(":templates:paymentcard"))
+    implementation(project(":templates:pinlock"))
     implementation(project(":templates:profile"))
     implementation(project(":templates:login"))
     implementation(project(":components:fab"))
@@ -112,4 +113,5 @@ dependencies {
     addThirdPartyUnitTestsDependencies()
 
     addAndroidInstrumentationTestsDependencies()
+    addBiometricDependency()
 }
