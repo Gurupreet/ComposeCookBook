@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.templates
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -34,7 +33,7 @@ class TemplatesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-     //   val prompt = createBiometricPrompt(this as FragmentActivity)
+        //   val prompt = createBiometricPrompt(this as FragmentActivity)
         setContent {
             ComposeCookBookTheme(darkTheme = darkTheme) {
                 TemplateApp(templateType)
@@ -78,7 +77,7 @@ private fun createBiometricPrompt(activity: FragmentActivity): BiometricPrompt {
             super.onAuthenticationError(errorCode, errString)
             if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
                 //loginWithPassword() // Because in this app, the negative button allows the user
-            // to enter an account password. This is completely optional and your app doesn’t have to do it.
+                // to enter an account password. This is completely optional and your app doesn’t have to do it.
             }
         }
 
@@ -89,7 +88,7 @@ private fun createBiometricPrompt(activity: FragmentActivity): BiometricPrompt {
         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
             super.onAuthenticationSucceeded(result)
             // Proceed with viewing the private encrypted message.
-           // showEncryptedMessage(result.cryptoObject)
+            // showEncryptedMessage(result.cryptoObject)
         }
     }
     val biometricPrompt = BiometricPrompt(activity, executor, callback)

@@ -3,31 +3,22 @@ package com.guru.composecookbook.ui.home.dialogs
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTag
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.spotify.R
-import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.ui.home.lists.VerticalListView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -54,7 +45,7 @@ fun BottomSheetDrawer() {
             PlayerBottomSheet()
         },
         drawerContent = {
-           DrawerContent()
+            DrawerContent()
         },
         scaffoldState = bottomSheetScaffoldState,
         sheetPeekHeight = if (sheetState.isAnimationRunning || sheetState.isVisible) 0.dp else 65
@@ -125,26 +116,32 @@ fun BottomSheetContent() {
 
 @Composable
 fun DrawerContent() {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(16.dp), horizontalArrangement = Arrangement
-        .SpaceBetween) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp), horizontalArrangement = Arrangement
+            .SpaceBetween
+    ) {
         Text(text = "Item 1")
         Icon(imageVector = Icons.Default.List, contentDescription = "List")
     }
 
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(16.dp), horizontalArrangement = Arrangement
-        .SpaceBetween) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp), horizontalArrangement = Arrangement
+            .SpaceBetween
+    ) {
         Text(text = "Item 2")
         Icon(imageVector = Icons.Default.List, contentDescription = "List")
     }
 
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(16.dp), horizontalArrangement = Arrangement
-        .SpaceBetween) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp), horizontalArrangement = Arrangement
+            .SpaceBetween
+    ) {
         Text(text = "Item 3")
         Icon(imageVector = Icons.Default.List, contentDescription = "List")
     }
@@ -195,5 +192,5 @@ fun PlayerBottomSheet() {
             "And that you'd be reminded that for me, it isn't over",
         modifier = Modifier.padding(16.dp)
     )
-    
+
 }

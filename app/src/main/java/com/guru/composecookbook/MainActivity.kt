@@ -1,6 +1,5 @@
 package com.guru.composecookbook
 
-import com.guru.composecookbook.ui.animation.AnimationScreen
 import FaIcons
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -22,6 +21,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.ui.animation.AnimationScreen
 import com.guru.composecookbook.ui.demoapps.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
 import com.guru.composecookbook.ui.learnwidgets.WidgetScreen

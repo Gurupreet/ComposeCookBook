@@ -29,7 +29,7 @@ fun Pager(
 
     Layout(
         content = {
-            state.PrepareContent(offscreenLimit = offscreenLimit){
+            state.PrepareContent(offscreenLimit = offscreenLimit) {
                 content.invoke(this)
             }
         },

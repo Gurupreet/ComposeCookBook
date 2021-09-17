@@ -14,7 +14,7 @@ class DatingHomeViewModel : ViewModel() {
         getAlbums()
     }
 
-    private fun getAlbums(){
+    private fun getAlbums() {
         _albumLiveData.value = AlbumsDataProvider.albums.take(15).toMutableList()
     }
 }

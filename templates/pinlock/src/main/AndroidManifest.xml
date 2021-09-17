@@ -6,7 +6,7 @@
         <activity
             android:name=".BiometricActivity"
             android:exported="true"
-            android:theme="@style/Theme.Transparent"/>
+            android:theme="@style/Theme.Transparent" />
     </application>
 
 </manifest>
