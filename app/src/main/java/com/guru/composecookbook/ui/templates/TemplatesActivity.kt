@@ -20,6 +20,7 @@ import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.paymentcard.AddPaymentScreen
 import com.guru.composecookbook.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.ui.home.clock.ClockDemo
 import com.guru.composecookbook.ui.home.timer.TimerDemo
 import com.guru.pinlock.PinLockView
 
@@ -67,6 +68,7 @@ fun TemplateApp(templateType: String) {
         "Adding Payment Card" -> AddPaymentScreen()
         "Pin Lock/BioMetric" -> PinLockView()
         "Timer" -> TimerDemo()
+        "Clock View" -> ClockDemo()
         else -> ComingSoon()
     }
 }
