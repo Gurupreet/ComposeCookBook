@@ -53,5 +53,6 @@ val templates = listOf(
     "Loaders",
     "Canvas Drawing",
     "Animations",
-    "Timer"
+    "Timer",
+    "Clock View"
 )
