@@ -66,7 +66,7 @@ Gmail full             |  Tiktok
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
 CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI         | Betty
 :-------------------------:|:-------------------------: | :-------------------------:|:-------------------------:
-![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif) | ![](https://media.giphy.com/media/tVXmwM2ryGlhCcf3Kl/giphy.gif) | ![](https://github.com/adrianwitaszak/Betty/raw/master/screenshots/betty.gif)
+![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif) | ![](https://media.giphy.com/media/tVXmwM2ryGlhCcf3Kl/giphy.gif) | ![](https://media.giphy.com/media/Ejeqq59zW3malZ88Si/giphy.gif)
 
 ### Advance lists and animations
 Shimmer Lists             | List Scroll Animations
