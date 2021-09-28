@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Betty</string>
+
+    <!-- ERROR MESSAGES -->
+    <string name="could_not_refresh">Could not refresh: %s</string>
+    <string name="unknown_error_occurred">An unknown error occurred</string>
+    <string name="notification_new_odds">Betty downloaded some new ods for you. Have a look!</string>
+
+</resources>
