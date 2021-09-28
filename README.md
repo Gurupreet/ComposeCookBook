@@ -78,8 +78,11 @@ Adding card details        |
 :-------------------------:|
 ![](https://user-images.githubusercontent.com/8813304/112016144-1e21ef00-8b35-11eb-8c33-362c8cbe6c0d.gif)  | 
 
-### Templates
-Kotlin DSL build.bradle, dependency and configurations templates. Fiind them in *buildSrc*
+### Kotlin DSL Templates
+You can find them in *buildSrc*
+- build.bradle
+- dependency
+- configurations
 
 ## If this project helped you in any way feel free to show some love
 <a href="https://www.buymeacoffee.com/gurupreet" target="_blank">
