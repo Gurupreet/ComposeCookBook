@@ -70,7 +70,7 @@ CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI
 
 Betty                    |  
 :-------------------------:|
-![](https://github.com/adrianwitaszak/Betty/raw/master/screenshots/betty.gif) |  
+<img src="https://github.com/adrianwitaszak/Betty/raw/master/screenshots/betty.gif" width="400" height="900"> |  
 
 ### Advance lists and animations
 Shimmer Lists             | List Scroll Animations
