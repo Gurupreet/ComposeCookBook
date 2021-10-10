@@ -49,9 +49,6 @@ object Dependencies {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-
-    const val coilAccompanist =
-        "com.google.accompanist:accompanist-coil:${Versions.accompanistCoil}"
     const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val okHttpLoggingInterceptor =

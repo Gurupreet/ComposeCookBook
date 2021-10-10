@@ -20,7 +20,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
     }
 }
 
@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     // in order to be able to use "kotlin-android" in the common script
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
 
     // in order to recognize the "plugins" block in the common script
     implementation("com.android.tools.build:gradle:7.1.0-alpha12")
