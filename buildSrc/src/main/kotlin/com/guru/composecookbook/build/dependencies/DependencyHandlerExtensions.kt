@@ -86,3 +86,7 @@ fun DependencyHandler.addThirdPartyUiDependencies() {
         add("implementation", it)
     }
 }
+
+fun DependencyHandler.addBiometricDependency() {
+    add("implementation", Dependencies.biometric)
+}

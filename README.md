@@ -50,9 +50,9 @@ List & Layouts             |  Widgets and building blocks| Animations | Theme
 :-------------------------:|:-------------------------: | :-------------------------: | :-------------------------:
 ![](https://media.giphy.com/media/WOlo2cTDdjGkgdAJQK/giphy.gif)  |  ![](https://media.giphy.com/media/RkEyxCn43aX1MoIdcx/giphy.gif) | ![](https://media.giphy.com/media/pZfwwwOlKQtiyJFPr2/giphy.gif) | ![](https://media.giphy.com/media/kPt0nCCWAcahhJsJh6/giphy.gif)
 
-Flinger                    | 
+Flinger                    |   
 :-------------------------:|
-![](https://media.giphy.com/media/OLa80kZcBXLEZlKiFY/giphy.gif) |
+![](https://media.giphy.com/media/OLa80kZcBXLEZlKiFY/giphy.gif) | 
 
 ### Demo UI
 Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                       | Profile
@@ -63,11 +63,10 @@ Gmail full             |  Tiktok
 :-------------------------:|:-------------------------:
 ![](https://media.giphy.com/media/hrOVD7rbST5shclGkQ/giphy.gif)  |  ![](https://media.giphy.com/media/cimocpJnmSBeJIPxu2/giphy.gif)
 
-
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
-CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI
-:-------------------------:|:-------------------------: | :-------------------------:
-![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif) | ![](https://media.giphy.com/media/tVXmwM2ryGlhCcf3Kl/giphy.gif)
+CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI         | Betty
+:-------------------------:|:-------------------------: | :-------------------------:|:-------------------------:
+![](https://media.giphy.com/media/OtJXUCh2ITINfKuTc0/giphy.gif)  |  ![](https://media.giphy.com/media/BfHMR2EMJkzB1agvpk/giphy.gif) | ![](https://media.giphy.com/media/tVXmwM2ryGlhCcf3Kl/giphy.gif) | ![](https://media.giphy.com/media/Ejeqq59zW3malZ88Si/giphy.gif)
 
 ### Advance lists and animations
 Shimmer Lists             | List Scroll Animations
@@ -79,13 +78,19 @@ Adding card details        |
 :-------------------------:|
 ![](https://user-images.githubusercontent.com/8813304/112016144-1e21ef00-8b35-11eb-8c33-362c8cbe6c0d.gif)  | 
 
+### Kotlin DSL Templates
+You can find them in *buildSrc*
+- build.bradle
+- dependency
+- configurations
+
 ## If this project helped you in any way feel free to show some love
 <a href="https://www.buymeacoffee.com/gurupreet" target="_blank">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="160">
 </a>
 
 ## How to get started
-Please get **Android Studio Arctic Fox 2020.3.1 Canary 4** or above [from here](https://developer.android.com/studio/preview/) and use **JDK 11** to build this project.
+Please get **Android Studio Bumblebee latest Canary** [from here](https://developer.android.com/studio/preview/) and use **JDK 11** to build this project.
 
 ## Features & Where to start
 - __Widgets:__ Widgets Screen show case all the available components to build UI.

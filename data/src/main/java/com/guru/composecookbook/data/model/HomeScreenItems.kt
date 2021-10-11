@@ -15,7 +15,7 @@ sealed class HomeScreenItems {
     object AndroidViews : HomeScreenItems()
     object PullRefresh : HomeScreenItems()
     object CustomFling : HomeScreenItems()
-    object MotionLayout: HomeScreenItems()
+    object MotionLayout : HomeScreenItems()
 
     val name: String
         get() = when (this) {

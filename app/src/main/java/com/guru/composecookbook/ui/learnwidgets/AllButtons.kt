@@ -25,7 +25,6 @@ import com.guru.composecookbook.theme.purple200
 import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import okhttp3.internal.wait
 
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi

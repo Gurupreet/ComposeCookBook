@@ -8,7 +8,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -23,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,71 +34,16 @@ import com.guru.composecookbook.theme.typography
 @Composable
 fun CarouselLayout() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        val items = remember { DemoDataProvider.itemList.take(10) }
+        val items = remember { DemoDataProvider.itemList.take(5) }
         val pagerState: PagerState = run {
-            remember { PagerState(2, 0, items.size - 1) }
+            remember { PagerState(1, 0, items.size - 1) }
         }
         val selectedPage = remember { mutableStateOf(2) }
 
-        Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
-            val item = items[page]
-            selectedPage.value = pagerState.currentPage
-            CarouselItem(item)
-        }
-        Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            items.forEachIndexed { index, _ ->
-                CarouselDot(
-                    selected = index == selectedPage.value,
-                    MaterialTheme.colors.primary,
-                    Icons.Filled.Lens
-                )
-            }
-        }
-        Spacer(modifier = Modifier.height(24.dp))
-        //Pager 2
-        Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
-            val item = items[page]
-            selectedPage.value = pagerState.currentPage
-            CarouselItemCircle(item)
-        }
-        Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            items.forEachIndexed { index, _ ->
-                CarouselDot(
-                    selected = index == selectedPage.value,
-                    MaterialTheme.colors.error,
-                    Icons.Filled.Favorite
-                )
-            }
-        }
-        Spacer(modifier = Modifier.height(24.dp))
-        //Pager 3
-        Pager(state = pagerState, modifier = Modifier.height(350.dp)) {
-            val item = items[page]
-            selectedPage.value = pagerState.currentPage
-            CarouselItemCard(item, pagerState, selectedPage)
-        }
-        Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            items.forEachIndexed { index, _ ->
-                CarouselDot(
-                    selected = index == selectedPage.value,
-                    MaterialTheme.colors.secondary,
-                    Icons.Filled.Album
-                )
-            }
-        }
+        PrepareFirstPager(pagerState, items, selectedPage)
+        PrepareSecondPager(pagerState, items, selectedPage)
+        PrepareThirdPager(pagerState, items, selectedPage)
     }
-}
-
-@Composable
-fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
-    Icon(
-        imageVector = icon,
-        modifier = Modifier
-            .padding(4.dp)
-            .size(12.dp),
-        contentDescription = null,
-        tint = if (selected) color else Color.Gray
-    )
 }
 
 @Composable
@@ -177,6 +120,78 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
 
 }
 
+@Composable
+private fun ColumnScope.PrepareFirstPager(
+    pagerState: PagerState,
+    items: List<Item>,
+    selectedPage: MutableState<Int>
+) {
+    Pager(
+        state = pagerState,
+        modifier = Modifier.height(200.dp)
+    ) {
+        val item = items[commingPage]
+        selectedPage.value = pagerState.currentPage
+        CarouselItem(item)
+    }
+
+    Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+        items.forEachIndexed { index, _ ->
+            CarouselDot(
+                selected = index == selectedPage.value,
+                MaterialTheme.colors.primary,
+                Icons.Filled.Lens
+            )
+        }
+    }
+
+    Spacer(modifier = Modifier.height(24.dp))
+}
+
+@Composable
+private fun ColumnScope.PrepareSecondPager(
+    pagerState: PagerState,
+    items: List<Item>,
+    selectedPage: MutableState<Int>
+) {
+    Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
+        val item = items[commingPage]
+        selectedPage.value = pagerState.currentPage
+        CarouselItemCircle(item)
+    }
+    Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+        items.forEachIndexed { index, _ ->
+            CarouselDot(
+                selected = index == selectedPage.value,
+                MaterialTheme.colors.error,
+                Icons.Filled.Favorite
+            )
+        }
+    }
+    Spacer(modifier = Modifier.height(24.dp))
+}
+
+@Composable
+private fun ColumnScope.PrepareThirdPager(
+    pagerState: PagerState,
+    items: List<Item>,
+    selectedPage: MutableState<Int>
+) {
+    Pager(state = pagerState, modifier = Modifier.height(350.dp)) {
+        val item = items[commingPage]
+        selectedPage.value = pagerState.currentPage
+        CarouselItemCard(item, pagerState, selectedPage)
+    }
+    Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+        items.forEachIndexed { index, _ ->
+            CarouselDot(
+                selected = index == selectedPage.value,
+                MaterialTheme.colors.secondary,
+                Icons.Filled.Album
+            )
+        }
+    }
+}
 
 @Preview
 @Composable

@@ -34,7 +34,7 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
                 orientation = Orientation.Horizontal,
                 modifier = Modifier.fillMaxSize()
             ) {
-                OnboardingPagerItem(onboardingList[page])
+                OnboardingPagerItem(onboardingList[commingPage])
             }
             Text(
                 text = "Skip",
