@@ -5,9 +5,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.guru.composecookbook.data.model.Album
-
+import com.guru.composecookbook.tiktok.R
 @Composable
 fun ProfileAppBar(album: Album, navHostController: NavHostController) {
     TopAppBar(
@@ -15,12 +16,16 @@ fun ProfileAppBar(album: Album, navHostController: NavHostController) {
         backgroundColor = MaterialTheme.colors.surface,
         navigationIcon = {
             IconButton(onClick = { navHostController.popBackStack() }) {
-                Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
+                Icon(imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = stringResource(id = R.string.cd_back)
+                )
             }
         },
         actions = {
             IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Filled.MoreVert, contentDescription = null)
+                Icon(imageVector = Icons.Filled.MoreVert,
+                    contentDescription = stringResource(id = R.string.cd_back)
+                )
             }
         }
     )

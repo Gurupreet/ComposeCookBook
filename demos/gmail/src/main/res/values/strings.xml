@@ -1,3 +1,5 @@
 <resources>
     <string name="title_activity_gmail">Gmail</string>
+    <string name="cd_back">Back</string>
+
 </resources>

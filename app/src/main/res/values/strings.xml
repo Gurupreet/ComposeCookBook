@@ -20,4 +20,6 @@
     <string name="title_activity_custom_fling">Custom Fling</string>
     <string name="title_activity_custom_fling_settings">Custom Fling Settings</string>
     <string name="title_activity_templates">Templates</string>
+    <string name="cd_back">Back</string>
+
 </resources>

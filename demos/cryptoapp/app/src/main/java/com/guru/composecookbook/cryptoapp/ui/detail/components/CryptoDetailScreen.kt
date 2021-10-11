@@ -19,12 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.guru.composecookbook.charts.BarCharts
 import com.guru.composecookbook.charts.LineChart
+import com.guru.composecookbook.cryptoapp.R
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.detail.CryptoDetailViewModel
 import com.guru.composecookbook.cryptoapp.ui.detail.CryptoDetailViewModelFactory
@@ -134,7 +136,9 @@ fun CryptoBottomBar(onBack: () -> Unit) {
         cutoutShape = CircleShape
     ) {
         IconButton(onClick = onBack) {
-            Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "")
+            Icon(imageVector = Icons.Default.ArrowBack,
+                contentDescription = stringResource(id = R.string.cd_back)
+            )
         }
         IconButton(onClick = {}) {
             Icon(imageVector = Icons.Default.MoreVert, contentDescription = "")

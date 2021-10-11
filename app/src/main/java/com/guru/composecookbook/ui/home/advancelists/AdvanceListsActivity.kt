@@ -11,8 +11,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.R
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -38,7 +40,8 @@ class AdvanceListsActivity : ComponentActivity() {
                             elevation = 0.dp,
                             navigationIcon = {
                                 IconButton(onClick = { onBackPressed() }) {
-                                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                                    Icon(Icons.Filled.ArrowBack,
+                                        contentDescription = stringResource(id = R.string.cd_back))
                                 }
                             }
                         )

@@ -6,7 +6,10 @@ import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Attachment
 import androidx.compose.material.icons.outlined.Send
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import com.guru.composecookbook.gmail.R
+
 
 @Composable
 fun CreateMessageScreen(navController: NavHostController) {
@@ -18,7 +21,9 @@ fun CreateMessageScreen(navController: NavHostController) {
                 contentColor = MaterialTheme.colors.onSurface,
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = null)
+                        Icon(imageVector = Icons.Outlined.ArrowBack,
+                            contentDescription = stringResource(id = R.string.cd_back)
+                        )
                     }
 
                 },

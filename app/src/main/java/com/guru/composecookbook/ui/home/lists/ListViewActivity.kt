@@ -18,8 +18,10 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.instagram.components.InstagramStories
 import com.guru.composecookbook.instagram.components.StoryListItem
@@ -83,7 +85,9 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                        Icon(Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(id = R.string.cd_back)
+                        )
                     }
                 }
             )

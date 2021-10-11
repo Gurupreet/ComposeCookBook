@@ -10,8 +10,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.R
 import com.guru.composecookbook.carousel.CarouselLayout
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.home.androidviews.AndroidViews
@@ -69,7 +71,9 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 elevation = if (uiType == DynamicUiType.TABS.name) 0.dp else 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                        Icon(Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(id = R.string.cd_back)
+                        )
                     }
                 }
             )
