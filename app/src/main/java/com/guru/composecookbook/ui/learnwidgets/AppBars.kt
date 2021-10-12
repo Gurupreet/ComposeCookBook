@@ -43,7 +43,9 @@ fun TopAppBarsDemo() {
         elevation = 8.dp,
         navigationIcon = {
             IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                Icon(imageVector = Icons.Default.ArrowBack,
+                    contentDescription = stringResource(id = R.string.cd_back)
+                )
             }
         }
     )

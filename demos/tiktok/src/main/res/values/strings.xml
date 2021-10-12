@@ -1,3 +1,5 @@
 <resources>
     <string name="title_activity_tiktok">TikTok</string>
+    <string name="cd_back">Back</string>
+
 </resources>
