@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -24,11 +25,13 @@ import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.ui.animation.AnimationScreen
 import com.guru.composecookbook.ui.demoapps.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
+import com.guru.composecookbook.ui.home.PalletMenu
 import com.guru.composecookbook.ui.learnwidgets.WidgetScreen
 import com.guru.composecookbook.ui.templates.TemplateScreen
 import com.guru.composecookbook.ui.utils.RotateIcon
 import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.fontawesomecomposelib.FaIcon
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
@@ -73,13 +76,14 @@ fun BaseView(
 fun HomeScreenContent(
     homeScreen: BottomNavType,
     appThemeState: MutableState<AppThemeState>,
+    chooseColorBottomModalState : ModalBottomSheetState, //use for a11y
     modifier: Modifier
 ) {
     Column(modifier = modifier) {
         Crossfade(homeScreen) { screen ->
             Surface(color = MaterialTheme.colors.background) {
                 when (screen) {
-                    BottomNavType.HOME -> HomeScreen(appThemeState)
+                    BottomNavType.HOME -> HomeScreen(appThemeState, chooseColorBottomModalState)
                     BottomNavType.WIDGETS -> WidgetScreen()
                     BottomNavType.ANIMATION -> AnimationScreen()
                     BottomNavType.DEMOUI -> DemoUIList()
@@ -99,20 +103,40 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
     //Default home screen state is always HOME
     val homeScreenState = rememberSaveable { mutableStateOf(BottomNavType.HOME) }
     val bottomNavBarContentDescription = stringResource(id = R.string.a11y_bottom_navigation_bar)
+    val chooseColorBottomModalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
 
-    Column {
-        HomeScreenContent(
-            homeScreen = homeScreenState.value,
-            appThemeState = appThemeState,
-            modifier = Modifier.weight(1f)
-        )
-        BottomNavigationContent(
-            modifier = Modifier
-                .semantics { contentDescription = bottomNavBarContentDescription }
-                .testTag(TestTags.BOTTOM_NAV_TEST_TAG),
-            homeScreenState = homeScreenState
-        )
+    val coroutineScope = rememberCoroutineScope()
+
+    ModalBottomSheetLayout(
+        sheetState = chooseColorBottomModalState,
+        sheetContent = {
+            //Modal used only when user use talkback for the sake of accessibility
+            PalletMenu(
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) { newPalletSelected ->
+                appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
+                coroutineScope.launch {
+                    chooseColorBottomModalState.hide()
+                }
+            }
+        }
+    ) {
+        Column {
+            HomeScreenContent(
+                homeScreen = homeScreenState.value,
+                appThemeState = appThemeState,
+                chooseColorBottomModalState = chooseColorBottomModalState,
+                modifier = Modifier.weight(1f)
+            )
+            BottomNavigationContent(
+                modifier = Modifier
+                    .semantics { contentDescription = bottomNavBarContentDescription }
+                    .testTag(TestTags.BOTTOM_NAV_TEST_TAG),
+                homeScreenState = homeScreenState
+            )
+        }
     }
+
 }
 
 @Composable
