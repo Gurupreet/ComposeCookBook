@@ -21,5 +21,7 @@
     <string name="title_activity_custom_fling_settings">Custom Fling Settings</string>
     <string name="title_activity_templates">Templates</string>
     <string name="cd_back">Back</string>
+    <string name="cd_change_color">Change color</string>
+    <string name="cd_dark_theme">Dark Theme</string>
 
 </resources>
