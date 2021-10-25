@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -167,7 +168,7 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
             icon = {
                 Icon(
                     imageVector = Icons.Outlined.Edit,
-                    contentDescription = null
+                    contentDescription = stringResource(id = R.string.cd_create_new_email)
                 )
             },
             text = {
@@ -266,7 +267,9 @@ fun GmailContent(
         }
 
 
-        SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog)
+        SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog){
+            navController.navigate("create")
+        }
 
     }
 }
