@@ -19,6 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -68,7 +70,9 @@ fun SpotifyTitle(text: String, modifier: Modifier = Modifier) {
     Text(
         text = text,
         style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
-        modifier = modifier.padding(start = 8.dp, end = 4.dp, bottom = 8.dp, top = 24.dp)
+        modifier = modifier
+            .padding(start = 8.dp, end = 4.dp, bottom = 8.dp, top = 24.dp)
+            .semantics { heading() }
     )
 }
 
