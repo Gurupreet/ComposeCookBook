@@ -1,0 +1,171 @@
+package com.guru.composecookbook.cryptoapp.ui
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavType
+import androidx.navigation.Navigator
+import androidx.navigation.navArgument
+import androidx.paging.PagingData
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.wear.compose.material.*
+import androidx.wear.compose.navigation.SwipeDismissableNavHost
+import androidx.wear.compose.navigation.composable
+import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
+import coil.compose.rememberImagePainter
+import com.guru.composecookbook.charts.LineChart
+import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
+import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModel
+import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModelFactory
+import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToThreeDecimals
+import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
+import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.gradientGreenColors
+import com.guru.composecookbook.theme.gradientRedColors
+
+const val SYMBOL_ID = "symbolId"
+class AndroidWearActivity : ComponentActivity() {
+
+    @ExperimentalWearMaterialApi
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            ComposeCookBookTheme(true) {
+                WearStockApp()
+            }
+
+        }
+
+    }
+
+    @ExperimentalWearMaterialApi
+    @Composable
+    fun WearStockApp() {
+        val viewModel: CryptoHomeViewModel = viewModel(factory = CryptoHomeViewModelFactory(LocalContext.current))
+        val pagingItems = viewModel.getAllCryptos().collectAsLazyPagingItems()
+        val scrollState = rememberScalingLazyListState()
+
+        Scaffold(
+            positionIndicator = {
+                PositionIndicator(scalingLazyListState = scrollState)
+            },
+            vignette = {
+                Vignette(vignettePosition = VignettePosition.TopAndBottom)
+            }
+        ) {
+            val navController = rememberSwipeDismissableNavController()
+            SwipeDismissableNavHost(
+                navController = navController,
+                startDestination = WearScreen.StockList.route
+            ) {
+                composable(route = WearScreen.StockList.route) {
+                   StockListScreen(scrollState = scrollState, items = pagingItems) { symbol ->
+                       navController.navigate(WearScreen.StockDetail.route+"/${symbol}")
+                   }
+                }
+                composable(
+                    route = WearScreen.StockDetail.route+"/{$SYMBOL_ID}",
+                    arguments = listOf(navArgument(SYMBOL_ID) { type = NavType.StringType })
+                ) { backStackEntry ->
+                    val symbol = backStackEntry.arguments?.getString(SYMBOL_ID) ?: "btc"
+                    val crypto = pagingItems.snapshot().items.filter { it.symbol == symbol }.first()
+                    crypto?.let {
+                        StockDetailScreen(crypto = it)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+fun StockListScreen(scrollState: ScalingLazyListState, items: LazyPagingItems<Crypto>, onItemSelected: (String) -> Unit) {
+    ScalingLazyColumn(
+        state = scrollState,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.background)
+            .padding(horizontal = 8.dp)) {
+        item {
+            Text(
+                "Compose Watch",
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            )
+        }
+        items(items.itemCount) {
+            val crypto = items[it]!!
+            WearStockListItem(crypto, onItemSelected)
+        }
+    }
+}
+
+@Composable
+fun StockDetailScreen(crypto: Crypto) {
+    Card(onClick = { }, shape = MaterialTheme.shapes.small) {
+        Image(
+            painter = rememberImagePainter(data = crypto.image),
+            modifier = Modifier
+                .size(32.dp)
+                .padding(4.dp),
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
+        Text(text = crypto.symbol)
+        Text(text = crypto.name)
+    }
+}
+@Composable
+fun WearStockListItem(crypto: Crypto, onItemSelected: (String) -> Unit) {
+    Card(onClick = { onItemSelected.invoke(crypto.symbol) }, shape = MaterialTheme.shapes.small) {
+        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painter = rememberImagePainter(data = crypto.image),
+                modifier = Modifier
+                    .size(32.dp)
+                    .padding(4.dp),
+                contentDescription = null,
+                contentScale = ContentScale.Crop
+            )
+            Column(modifier = Modifier.padding(horizontal = 4.dp)) {
+                Text(text = crypto.symbol.uppercase())
+                Text(text = "$"+crypto.price.roundToTwoDecimals())
+            }
+         
+            LineChart(
+                modifier = Modifier
+                    .height(40.dp)
+                    .padding(horizontal = 8.dp)
+                    .weight(1f),
+                yAxisValues = crypto.chartData,
+                lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
+            )
+        }
+    }
+}
+
+sealed class WearScreen(
+    val route: String
+) {
+    object StockList : WearScreen("list")
+    object StockDetail : WearScreen("detail")
+}

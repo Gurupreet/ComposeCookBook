@@ -2,5 +2,10 @@
     <string name="title_activity_crypto_home">CryptoHome</string>
     <string name="title_activity_crypto_detail">CryptoDetail</string>
     <string name="cd_back">Back</string>
+    <string name="title_activity_android_wear">AndroidWearActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
 
 </resources>
