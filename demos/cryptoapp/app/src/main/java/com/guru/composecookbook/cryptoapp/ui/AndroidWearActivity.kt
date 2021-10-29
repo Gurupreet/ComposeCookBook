@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,6 +15,7 @@ import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,6 +41,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
+import com.guru.composecookbook.theme.green500
 
 const val SYMBOL_ID = "symbolId"
 class AndroidWearActivity : ComponentActivity() {
@@ -105,7 +109,7 @@ fun StockListScreen(scrollState: ScalingLazyListState, items: LazyPagingItems<Cr
             .padding(horizontal = 8.dp)) {
         item {
             Text(
-                "Compose Watch",
+                "Cookbook wear",
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -119,21 +123,6 @@ fun StockListScreen(scrollState: ScalingLazyListState, items: LazyPagingItems<Cr
     }
 }
 
-@Composable
-fun StockDetailScreen(crypto: Crypto) {
-    Card(onClick = { }, shape = MaterialTheme.shapes.small) {
-        Image(
-            painter = rememberImagePainter(data = crypto.image),
-            modifier = Modifier
-                .size(32.dp)
-                .padding(4.dp),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Text(text = crypto.symbol)
-        Text(text = crypto.name)
-    }
-}
 @Composable
 fun WearStockListItem(crypto: Crypto, onItemSelected: (String) -> Unit) {
     Card(onClick = { onItemSelected.invoke(crypto.symbol) }, shape = MaterialTheme.shapes.small) {
@@ -159,6 +148,57 @@ fun WearStockListItem(crypto: Crypto, onItemSelected: (String) -> Unit) {
                 yAxisValues = crypto.chartData,
                 lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
             )
+        }
+    }
+}
+
+@Composable
+fun StockDetailScreen(crypto: Crypto) {
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .background(MaterialTheme.colors.background)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painter = rememberImagePainter(data = crypto.image),
+                modifier = Modifier
+                    .size(24.dp)
+                    .padding(end = 8.dp),
+                contentDescription = null,
+                contentScale = ContentScale.Crop
+            )
+            Text(text = crypto.symbol.uppercase(), fontWeight = FontWeight.Bold)
+        }
+        Text(text = "$"+crypto.price.roundToTwoDecimals(), style = MaterialTheme.typography.title3)
+        val plusMinusIndicator = if (crypto.dailyChange > 0) "+" else "-"
+        Text(
+            text = "$plusMinusIndicator${crypto.dailyChange} (${crypto.dailyChangePercentage}%)",
+            color = if (crypto.dailyChange > 0) green500 else Color.Red
+        )
+        LineChart(
+            modifier = Modifier
+                .height(80.dp)
+                .padding(horizontal = 8.dp)
+                .fillMaxWidth(),
+            yAxisValues = crypto.chartData,
+            lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
+        )
+        StatisticsCard(crypto)
+    }
+}
+
+@Composable
+fun StatisticsCard(crypto: Crypto) {
+    Card(onClick = { /*TODO*/ }, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
+        Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(text = "24H High -  ${crypto.high.roundToTwoDecimals()}")
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "24H Low -  ${crypto.low.roundToTwoDecimals()}")
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Vol -  ${crypto.volume.roundToTwoDecimals()}")
         }
     }
 }
