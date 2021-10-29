@@ -48,4 +48,8 @@ class CryptoHomeViewModel(context: Context) : ViewModel() {
             cryptoRepository.removeFavorite(crypto = crypto)
         }
     }
+
+    fun getCryptoFromSymbol(symbol: String) {
+
+    }
 }
