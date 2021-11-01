@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <uses-feature android:name="android.hardware.type.watch" />
-
     <application>
         <uses-library
             android:name="com.google.android.wearable"

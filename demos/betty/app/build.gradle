@@ -70,7 +70,7 @@ dependencies {
     implementation("androidx.compose.animation:animation:$compose_version")
     implementation("androidx.compose.runtime:runtime:$compose_version")
     implementation("androidx.compose.runtime:runtime-livedata:$compose_version")
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha09")
+  //  implementation("androidx.navigation:navigation-compose:2.4.0-alpha09")
     implementation("androidx.compose.ui:ui-tooling:$compose_version")
 
     // Coil

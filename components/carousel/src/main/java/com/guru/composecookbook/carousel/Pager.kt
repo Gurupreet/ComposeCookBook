@@ -73,12 +73,12 @@ fun Pager(
                         }
                     }
                     if (orientation == Orientation.Horizontal) {
-                        placeable.place(
+                        placeable.placeRelative(
                             x = xCenterOffset + ((page - (currentPage - offset)) * placeable.width).roundToInt(),
                             y = yCenterOffset
                         )
                     } else {
-                        placeable.place(
+                        placeable.placeRelative(
                             x = xCenterOffset,
                             y = yCenterOffset + ((page - (currentPage - offset)) * placeable.height).roundToInt()
                         )

@@ -116,7 +116,7 @@ private fun IconAndTextRow(
             Box(modifier = Modifier.alpha(opacityProgress())) {
                 text()
             }
-        }
+        },
     ) { measurables, constraints ->
 
         val iconPlaceable = measurables[0].measure(constraints)
@@ -136,11 +136,11 @@ private fun IconAndTextRow(
         val width = lerp(initialWidth, expandedWidth, widthProgress())
 
         layout(width.roundToInt(), height) {
-            iconPlaceable.place(
+            iconPlaceable.placeRelative(
                 iconPadding.roundToInt(),
                 constraints.maxHeight / 2 - iconPlaceable.height / 2
             )
-            textPlaceable.place(
+            textPlaceable.placeRelative(
                 (iconPlaceable.width + iconPadding * 2).roundToInt(),
                 constraints.maxHeight / 2 - textPlaceable.height / 2
             )

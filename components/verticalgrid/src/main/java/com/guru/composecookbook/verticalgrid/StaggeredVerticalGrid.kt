@@ -58,7 +58,7 @@ fun StaggeredVerticalGrid(
             height = height
         ) {
             placeables.forEach { placeable ->
-                placeable.place(
+                placeable.placeRelative(
                     x = placeableXY.getValue(placeable).first,
                     y = placeableXY.getValue(placeable).second
                 )

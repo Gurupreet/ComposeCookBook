@@ -88,7 +88,7 @@ fun AnimateVisibilityWithDifferentChildAnimations() {
                         .padding
                             (8.dp)
                         .animateEnterExit(
-                            enter = slideInHorizontally({ it }, springAnim),
+                            enter = slideInHorizontally { it },
                             exit = ExitTransition.None
                         )
                 ) {
@@ -117,8 +117,8 @@ fun VisibilityAnimationWithShrinkExpand() {
         AnimatedVisibility(
             visibility,
             modifier = Modifier.align(Alignment.CenterVertically),
-            enter = expandIn(Alignment.Center, { fullSize: IntSize -> fullSize * 4 }),
-            exit = shrinkOut(Alignment.Center)
+            enter = expandIn(expandFrom = Alignment.Center) { it -> it*4 },
+            exit = shrinkOut(shrinkTowards = Alignment.Center) { it -> it  }
         ) {
             Button(
                 modifier = Modifier.padding(start = 12.dp),
@@ -144,14 +144,10 @@ fun AnimateVisibilityWithSlideInOutSample() {
     ) {
         AnimatedVisibility(
             visibility,
-            enter = slideIn(
-                { IntOffset(0, 120) },
-                tween(500, easing = LinearOutSlowInEasing)
-            ) + fadeIn(1f, tween(500, easing = LinearOutSlowInEasing)),
+            enter = slideIn(tween(easing = LinearOutSlowInEasing, durationMillis = 500)) { IntOffset(0, 120) },
             exit = slideOut(
-                { IntOffset(0, 120) },
-                tween(500, easing = FastOutSlowInEasing)
-            ) + fadeOut(0.5f, tween(500, easing = LinearOutSlowInEasing))
+                tween(500, easing = FastOutSlowInEasing),
+            ) { IntOffset(0, 120) }
         ) {
             // Content that needs to appear/disappear goes here:
             Text("Tap for Sliding animation")
