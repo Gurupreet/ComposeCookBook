@@ -62,6 +62,7 @@ fun BaseView(
         ColorPallet.BLUE -> blue700
         ColorPallet.ORANGE -> orange700
         ColorPallet.PURPLE -> purple700
+        else -> green700
     }
     systemUiController?.setStatusBarColor(color = color, darkIcons = appThemeState.darkTheme)
     ComposeCookBookTheme(darkTheme = appThemeState.darkTheme, colorPallet = appThemeState.pallet) {

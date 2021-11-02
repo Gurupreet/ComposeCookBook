@@ -10,7 +10,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,13 +29,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.lottie.LottieWorkingLoadingView
 import com.guru.composecookbook.onboarding.OnBoardingScreen
+import com.guru.composecookbook.theme.helpers.TextFieldDefaultsMaterial
 import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
-    Scaffold {
+    Scaffold() {
 
         //TextFields
         var email by remember { mutableStateOf(TextFieldValue("")) }
@@ -56,14 +61,14 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             item {
                 Text(
                     text = "Welcome Back",
-                    style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.ExtraBold),
                     modifier = Modifier.padding(top = 8.dp)
                 )
             }
             item {
                 Text(
                     text = "We have missed you, Let's start by Sign In!",
-                    style = MaterialTheme.typography.caption,
+                    style = MaterialTheme.typography.labelMedium,
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
             }
@@ -84,6 +89,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next
                     ),
+                    colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
                     label = { Text(text = "Email address") },
                     placeholder = { Text(text = "abc@gmail.com") },
                     onValueChange = {
@@ -115,6 +121,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                             })
                         )
                     },
+                    colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
                     maxLines = 1,
                     isError = hasError,
                     modifier = Modifier.fillMaxWidth(),
@@ -171,7 +178,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                         color = Color.LightGray,
                         modifier = Modifier
                             .align(Alignment.Center)
-                            .background(MaterialTheme.colors.background)
+                            .background(MaterialTheme.colorScheme.background)
                             .padding(horizontal = 16.dp)
                     )
                 }
@@ -189,7 +196,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     )
                     Text(
                         text = "Sign in with Facebook",
-                        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+                        style = MaterialTheme.typography.headlineSmall.copy(fontSize = 14.sp),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -210,7 +217,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     )
                     Text(
                         text = "Sign in with Gmail",
-                        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+                        style = MaterialTheme.typography.headlineSmall.copy(fontSize = 14.sp),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -218,7 +225,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             }
 
             item {
-                val primaryColor = MaterialTheme.colors.primary
+                val primaryColor = MaterialTheme.colorScheme.primary
                 val annotatedString = remember {
                     AnnotatedString.Builder("Don't have an account? Register")
                         .apply {
