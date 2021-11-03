@@ -1,7 +1,10 @@
 package com.guru.composecookbook.paymentcard
 
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
@@ -10,6 +13,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import com.guru.composecookbook.theme.helpers.TextFieldDefaultsMaterial
 
 @Composable
 fun InputItem(
@@ -18,7 +22,7 @@ fun InputItem(
     onTextChanged: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    textStyle: TextStyle = MaterialTheme.typography.body1,
+    textStyle: TextStyle = MaterialTheme.typography.labelMedium,
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
     OutlinedTextField(
@@ -35,10 +39,11 @@ fun InputItem(
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                 Text(
                     text = label,
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.labelMedium
                 )
             }
         },
+        colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
         modifier = modifier,
         visualTransformation = visualTransformation
     )
