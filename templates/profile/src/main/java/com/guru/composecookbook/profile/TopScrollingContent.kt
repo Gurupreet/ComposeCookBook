@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.theme.materialTypography
 
 @Composable
 fun TopScrollingContent(scrollState: ScrollState) {
@@ -33,12 +33,12 @@ fun TopScrollingContent(scrollState: ScrollState) {
         ) {
             Text(
                 text = name,
-                style = typography.h6.copy(fontSize = 18.sp),
+                style = materialTypography.headlineSmall.copy(fontSize = 18.sp),
                 modifier = Modifier.padding(bottom = 4.dp)
             )
             Text(
                 text = "Android developer at Delivery Hero",
-                style = typography.subtitle2
+                style = materialTypography.labelMedium
             )
         }
     }

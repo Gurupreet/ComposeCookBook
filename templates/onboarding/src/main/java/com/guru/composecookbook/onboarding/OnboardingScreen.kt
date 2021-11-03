@@ -5,8 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -38,7 +38,7 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
             }
             Text(
                 text = "Skip",
-                style = MaterialTheme.typography.subtitle2,
+                style = MaterialTheme.typography.labelMedium,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(vertical = 48.dp, horizontal = 16.dp)
@@ -52,7 +52,7 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
                 onboardingList.forEachIndexed { index, _ ->
                     OnboardingPagerSlide(
                         selected = index == pagerState.currentPage,
-                        MaterialTheme.colors.primary,
+                        MaterialTheme.colorScheme.primary,
                         Icons.Filled.Album
                     )
                 }
@@ -71,7 +71,8 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
             ) {
                 Text(
                     text = if (pagerState.currentPage == onboardingList.size - 1) "Let's Begin" else "Next",
-                    modifier = Modifier.padding(horizontal = 32.dp)
+                    modifier = Modifier.padding(horizontal = 32.dp),
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             }
         }

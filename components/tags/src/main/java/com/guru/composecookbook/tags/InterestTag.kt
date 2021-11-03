@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,8 +46,8 @@ private class DefaultTagColors(
 object TagDefaults {
     @Composable
     fun tagColors(
-        backgroundColor: Color = green200.copy(alpha = .2f),
-        contentColor: Color = green700
+        backgroundColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = .2f),
+        contentColor: Color = MaterialTheme.colorScheme.primary
     ): TagColors = DefaultTagColors(backgroundColor = backgroundColor, contentColor = contentColor)
 }
 
