@@ -4,6 +4,7 @@ internal val composeOfficialDependencies = listOf(
     Dependencies.composeUi,
     Dependencies.composeUiTooling,
     Dependencies.composeMaterial,
+    Dependencies.composeMaterial3,
     Dependencies.composeMaterialIconsExtended,
     Dependencies.composeRuntimeLivedata,
     Dependencies.composeConstraintLayout,

@@ -19,7 +19,7 @@ import com.guru.composecookbook.login.LoginOnboarding
 import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.paymentcard.AddPaymentScreen
 import com.guru.composecookbook.profile.ProfileScreen
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.ui.home.clock.ClockDemo
 import com.guru.composecookbook.ui.home.timer.TimerDemo
 import com.guru.pinlock.PinLockView
@@ -37,8 +37,10 @@ class TemplatesActivity : ComponentActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         //   val prompt = createBiometricPrompt(this as FragmentActivity)
         setContent {
-            ComposeCookBookTheme(darkTheme = darkTheme) {
-                TemplateApp(templateType)
+            ComposeCookBookMaterialTheme(darkTheme = darkTheme) {
+                androidx.compose.material3.Surface {
+                    TemplateApp(templateType)
+                }
             }
         }
     }
@@ -85,15 +87,6 @@ private fun createBiometricPrompt(activity: FragmentActivity): BiometricPrompt {
             }
         }
 
-        override fun onAuthenticationFailed() {
-            super.onAuthenticationFailed()
-        }
-
-        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-            super.onAuthenticationSucceeded(result)
-            // Proceed with viewing the private encrypted message.
-            // showEncryptedMessage(result.cryptoObject)
-        }
     }
     val biometricPrompt = BiometricPrompt(activity, executor, callback)
 

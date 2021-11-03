@@ -1,17 +1,24 @@
 package com.guru.composecookbook.theme
 
+
+import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import com.guru.composecookbook.theme.ColorPallet.*
 
 // dark palettes
-private val DarkGreenColorPalette = darkColors(
+private val DarkGreenColorPalette = darkColorScheme(
     primary = green200,
-    primaryVariant = green700,
+    primaryContainer = green700,
     secondary = teal200,
     background = Color.Black,
     surface = Color.Black,
@@ -22,9 +29,9 @@ private val DarkGreenColorPalette = darkColors(
     error = Color.Red,
 )
 
-private val DarkPurpleColorPalette = darkColors(
+private val DarkPurpleColorPalette = darkColorScheme(
     primary = purple200,
-    primaryVariant = purple700,
+    primaryContainer = purple700,
     secondary = teal200,
     background = Color.Black,
     surface = Color.Black,
@@ -35,9 +42,9 @@ private val DarkPurpleColorPalette = darkColors(
     error = Color.Red,
 )
 
-private val DarkBlueColorPalette = darkColors(
+private val DarkBlueColorPalette = darkColorScheme(
     primary = blue200,
-    primaryVariant = blue700,
+    primaryContainer = blue700,
     secondary = teal200,
     background = Color.Black,
     surface = Color.Black,
@@ -48,9 +55,9 @@ private val DarkBlueColorPalette = darkColors(
     error = Color.Red,
 )
 
-private val DarkOrangeColorPalette = darkColors(
+private val DarkOrangeColorPalette = darkColorScheme(
     primary = orange200,
-    primaryVariant = orange700,
+    primaryContainer = orange700,
     secondary = teal200,
     background = Color.Black,
     surface = Color.Black,
@@ -62,9 +69,9 @@ private val DarkOrangeColorPalette = darkColors(
 )
 
 // Light pallets
-private val LightGreenColorPalette = lightColors(
+private val LightGreenColorPalette = lightColorScheme(
     primary = green500,
-    primaryVariant = green700,
+    primaryContainer = green700,
     secondary = teal200,
     background = Color.White,
     surface = Color.White,
@@ -74,9 +81,9 @@ private val LightGreenColorPalette = lightColors(
     onSurface = Color.Black
 )
 
-private val LightPurpleColorPalette = lightColors(
+private val LightPurpleColorPalette = lightColorScheme(
     primary = purple,
-    primaryVariant = purple700,
+    primaryContainer = purple700,
     secondary = teal200,
     background = Color.White,
     surface = Color.White,
@@ -86,9 +93,9 @@ private val LightPurpleColorPalette = lightColors(
     onSurface = Color.Black
 )
 
-private val LightBlueColorPalette = lightColors(
+private val LightBlueColorPalette = lightColorScheme(
     primary = blue500,
-    primaryVariant = blue700,
+    primaryContainer = blue700,
     secondary = teal200,
     background = Color.White,
     surface = Color.White,
@@ -98,9 +105,9 @@ private val LightBlueColorPalette = lightColors(
     onSurface = Color.Black
 )
 
-private val LightOrangeColorPalette = lightColors(
+private val LightOrangeColorPalette = lightColorScheme(
     primary = orange500,
-    primaryVariant = orange700,
+    primaryContainer = orange700,
     secondary = teal200,
     background = Color.White,
     surface = Color.White,
@@ -110,28 +117,32 @@ private val LightOrangeColorPalette = lightColors(
     onSurface = Color.Black
 )
 
-enum class ColorPallet {
-    PURPLE, GREEN, ORANGE, BLUE, WALLPAPER
-}
 
 @Composable
-fun ComposeCookBookTheme(
+fun ComposeCookBookMaterialTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    colorPallet: ColorPallet = GREEN,
+    colorPallet: ColorPallet = WALLPAPER,
     content: @Composable () -> Unit,
 ) {
+    val context = LocalContext.current
+
     val colors = when (colorPallet) {
         GREEN -> if (darkTheme) DarkGreenColorPalette else LightGreenColorPalette
         PURPLE -> if (darkTheme) DarkPurpleColorPalette else LightPurpleColorPalette
         ORANGE -> if (darkTheme) DarkOrangeColorPalette else LightOrangeColorPalette
         BLUE -> if (darkTheme) DarkBlueColorPalette else LightBlueColorPalette
-        else ->  if (darkTheme) DarkBlueColorPalette else LightBlueColorPalette
+        WALLPAPER -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+            if (darkTheme)
+                dynamicDarkColorScheme(context)
+            else
+                dynamicLightColorScheme(context)
+        else
+            if (darkTheme)
+                DarkBlueColorPalette
+            else LightBlueColorPalette
     }
-
-    MaterialTheme(
-        colors = colors,
-        typography = typography,
-        shapes = shapes,
+    androidx.compose.material3.MaterialTheme(
+        colorScheme = colors,
         content = content
     )
 }
