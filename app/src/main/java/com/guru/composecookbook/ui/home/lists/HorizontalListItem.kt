@@ -3,9 +3,8 @@ package com.guru.composecookbook.ui.home.lists
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -17,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.ui.components.Material3Card
 import com.guru.composecookbook.ui.utils.TestTags
 
 @Composable
@@ -24,11 +24,13 @@ fun HorizontalListItem(
     item: Item,
     modifier: Modifier = Modifier
 ) {
-    Card(
-        shape = MaterialTheme.shapes.medium,
+
+    Material3Card(
+        shape = androidx.compose.material.MaterialTheme.shapes.medium,
         modifier = modifier
             .size(280.dp, 200.dp)
-            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
+            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}"),
+        elevation = 2.dp
     ) {
         Column(modifier = Modifier.clickable(onClick = { })) {
             Image(
@@ -42,7 +44,7 @@ fun HorizontalListItem(
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = item.title,
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.titleLarge,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -50,11 +52,11 @@ fun HorizontalListItem(
                     text = item.subtitle,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.bodyMedium
                 )
                 Text(
                     text = item.source,
-                    style = MaterialTheme.typography.subtitle2
+                    style = MaterialTheme.typography.titleSmall
                 )
             }
         }
