@@ -13,10 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.theme.components.Material3Card
 
 @Composable
 fun SocialRow() {
-    Card(elevation = 8.dp, modifier = Modifier.padding(8.dp), backgroundColor = MaterialTheme.colorScheme.surface) {
+    Material3Card(elevation = 8.dp, modifier = Modifier.padding(8.dp), backgroundColor = MaterialTheme.colorScheme.surface) {
         val context = LocalContext.current
         Row(
             horizontalArrangement = Arrangement.SpaceAround,

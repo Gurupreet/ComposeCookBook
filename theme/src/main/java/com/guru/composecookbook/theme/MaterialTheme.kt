@@ -131,7 +131,7 @@ fun ComposeCookBookMaterialTheme(
         PURPLE -> if (darkTheme) DarkPurpleColorPalette else LightPurpleColorPalette
         ORANGE -> if (darkTheme) DarkOrangeColorPalette else LightOrangeColorPalette
         BLUE -> if (darkTheme) DarkBlueColorPalette else LightBlueColorPalette
-        WALLPAPER -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+        WALLPAPER -> if (false)
             if (darkTheme)
                 dynamicDarkColorScheme(context)
             else

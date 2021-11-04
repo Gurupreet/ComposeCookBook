@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.components.Material3Card
+import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.ui.utils.TestTags
 
 @Composable

@@ -1,4 +1,4 @@
-package com.guru.composecookbook.ui.components
+package com.guru.composecookbook.theme.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material3.MaterialTheme
