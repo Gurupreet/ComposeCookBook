@@ -12,9 +12,11 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material.Divider
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -25,6 +27,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.instagram.components.InstagramStories
 import com.guru.composecookbook.instagram.components.StoryListItem
+import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import java.util.*
@@ -63,11 +66,12 @@ class ListViewActivity : ComponentActivity() {
 
 @Composable
 fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
-    ComposeCookBookTheme(isDarkTheme) {
+    ComposeCookBookMaterialTheme(isDarkTheme) {
         content()
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListViewContent(listType: String, onback: () -> Unit) {
     Scaffold(
@@ -75,21 +79,25 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
             TopAppBar(
                 title = {
                     Column(modifier = Modifier.padding(4.dp)) {
-                        Text(text = "ListView")
+                        Text(text = "ListView", color = MaterialTheme.colorScheme.onPrimary)
                         Text(
                             text = listType.lowercase(Locale.getDefault()),
-                            style = MaterialTheme.typography.body2
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onPrimary
                         )
                     }
                 },
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack,
-                            contentDescription = stringResource(id = R.string.cd_back)
+                        Icon(
+                            Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(id = R.string.cd_back),
+                            tint = MaterialTheme.colorScheme.onPrimary
                         )
                     }
-                }
+                },
+                backgroundColor = MaterialTheme.colorScheme.primary
             )
         },
         content = {
@@ -136,7 +144,7 @@ fun HorizontalListView() {
         Text(
             modifier = Modifier.padding(16.dp),
             text = "Good Food",
-            style = MaterialTheme.typography.subtitle1
+            style = MaterialTheme.typography.labelMedium
         )
         LazyRow(
             modifier = Modifier.padding(end = 16.dp)
@@ -154,7 +162,7 @@ fun HorizontalListView() {
         Text(
             modifier = Modifier.padding(16.dp),
             text = "Stories",
-            style = MaterialTheme.typography.subtitle1
+            style = MaterialTheme.typography.labelMedium
         )
         InstagramStories()
     }
@@ -184,7 +192,7 @@ fun GridListView() {
 private fun ListItemDivider() {
     Divider(
         modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = 0.08f)
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
     )
 }
 

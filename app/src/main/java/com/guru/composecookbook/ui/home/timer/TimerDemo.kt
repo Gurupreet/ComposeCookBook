@@ -4,8 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -37,20 +37,20 @@ fun TimerDemo(
                     modifier = Modifier
                         .border(
                             width = 1.dp,
-                            color = MaterialTheme.colors.onSurface,
+                            color = MaterialTheme.colorScheme.onSurface,
                             shape = RoundedCornerShape(4.dp)
                         )
                         .padding(horizontal = 8.dp, vertical = 4.dp),
                     componentModifier = Modifier
                         .background(
-                            color = MaterialTheme.colors.onSurface,
+                            color = MaterialTheme.colorScheme.onSurface,
                             shape = RoundedCornerShape(4.dp)
                         )
                         .padding(horizontal = 4.dp, vertical = 4.dp),
-                    digitStyle = typography.body1.copy(color = MaterialTheme.colors.onPrimary),
+                    digitStyle = typography.body1.copy(color = MaterialTheme.colorScheme.onPrimary),
                     separatorModifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
                     separatorStyle = typography.body1.copy(
-                        color = MaterialTheme.colors.onSurface,
+                        color = MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.Bold
                     )
                 )

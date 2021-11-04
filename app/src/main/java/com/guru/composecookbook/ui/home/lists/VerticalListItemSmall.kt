@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.IconToggleButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -39,8 +39,8 @@ fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
             Modifier.padding(end = 16.dp)
         )
         Column(modifier = Modifier.weight(1f)) {
-            Text(item.title, style = typography.subtitle1)
-            Text(item.subtitle, style = typography.body2)
+            Text(item.title, style = typography.titleMedium)
+            Text(item.subtitle, style = typography.bodyMedium)
         }
         FavIcon(modifier)
     }
@@ -54,7 +54,7 @@ fun ItemImage(item: Item, modifier: Modifier = Modifier) {
         contentDescription = null,
         modifier = modifier
             .size(100.dp, 80.dp)
-            .clip(MaterialTheme.shapes.medium)
+            .clip(androidx.compose.material.MaterialTheme.shapes.medium)
     )
 }
 
