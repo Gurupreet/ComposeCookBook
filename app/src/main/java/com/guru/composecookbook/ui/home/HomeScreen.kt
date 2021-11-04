@@ -2,6 +2,7 @@ package com.guru.composecookbook.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -16,6 +17,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,8 +48,10 @@ import java.util.*
 @OptIn(ExperimentalMaterialApi::class)
 @ExperimentalFoundationApi
 @Composable
-fun HomeScreen(appThemeState: MutableState<AppThemeState>,
-               chooseColorBottomModalState: ModalBottomSheetState) {
+fun HomeScreen(
+    appThemeState: MutableState<AppThemeState>,
+    chooseColorBottomModalState: ModalBottomSheetState
+) {
     val showMenu = remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
@@ -92,7 +96,7 @@ private fun ChangeColorIconButton(
     showMenu: MutableState<Boolean>
 ) {
     val accessibilityManager = LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE)
-                as android.view.accessibility.AccessibilityManager
+            as android.view.accessibility.AccessibilityManager
     IconButton(onClick = {
         if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
             //Showing modal bottom sheet instead when user use a screen reader (otherwise it's not accessible)
@@ -146,7 +150,7 @@ fun HomeScreenContent(
                     })
             }
         }
-        if(showMenu.value){
+        if (showMenu.value) {
             PalletMenu(
                 modifier = Modifier.align(Alignment.TopEnd),
                 onPalletChange
@@ -162,7 +166,7 @@ fun PalletMenu(
     modifier: Modifier,
     onPalletChange: (ColorPallet) -> Unit
 ) {
-    Box(modifier = Modifier.fillMaxWidth()){
+    Box(modifier = Modifier.fillMaxWidth()) {
         Column(
             horizontalAlignment = Alignment.Start,
             modifier = modifier
@@ -181,6 +185,11 @@ fun PalletMenu(
             MenuItem(blue500, "Blue") {
                 onPalletChange.invoke(ColorPallet.BLUE)
             }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                MenuItem(dynamicLightColorScheme(LocalContext.current).primary, "Dynamic") {
+                    onPalletChange.invoke(ColorPallet.WALLPAPER)
+                }
+            }
         }
     }
 }
@@ -193,7 +202,11 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
             .clickable(onClick = onPalletChange),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(imageVector = Icons.Filled.FiberManualRecord, tint = color, contentDescription = null)
+        Icon(
+            imageVector = Icons.Filled.FiberManualRecord,
+            tint = color,
+            contentDescription = null
+        )
         Text(text = name, modifier = Modifier.padding(8.dp))
     }
 }
@@ -257,7 +270,11 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
             DynamicUIActivity.newIntent(context, DynamicUiType.CAROUSELL.name, isDarkTheme)
         }
         HomeScreenItems.ConstraintsLayout -> {
-            DynamicUIActivity.newIntent(context, DynamicUiType.CONSTRAINTLAYOUT.name, isDarkTheme)
+            DynamicUIActivity.newIntent(
+                context,
+                DynamicUiType.CONSTRAINTLAYOUT.name,
+                isDarkTheme
+            )
         }
         HomeScreenItems.CollapsingAppBar -> {
             DynamicUIActivity.newIntent(context, DynamicUiType.TABS.name, isDarkTheme)
@@ -301,7 +318,8 @@ fun PreviewHomeScreen() {
     val state = remember {
         mutableStateOf(AppThemeState(false, ColorPallet.GREEN))
     }
-    val chooseColorBottomModalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+    val chooseColorBottomModalState =
+        rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
 
     HomeScreen(state, chooseColorBottomModalState)
 }

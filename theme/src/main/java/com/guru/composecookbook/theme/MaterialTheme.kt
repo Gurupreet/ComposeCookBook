@@ -138,8 +138,8 @@ fun ComposeCookBookMaterialTheme(
                 dynamicLightColorScheme(context)
         else
             if (darkTheme)
-                DarkBlueColorPalette
-            else LightBlueColorPalette
+                DarkGreenColorPalette
+            else LightGreenColorPalette
     }
     androidx.compose.material3.MaterialTheme(
         colorScheme = colors,

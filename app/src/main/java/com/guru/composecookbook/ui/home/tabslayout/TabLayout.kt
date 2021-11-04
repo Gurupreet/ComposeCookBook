@@ -7,7 +7,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material.ScrollableTabRow
+import androidx.compose.material.Tab
+import androidx.compose.material.TabPosition
+import androidx.compose.material.TabRow
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
@@ -128,18 +132,18 @@ private fun CustomImageChip(
 ) {
     Surface(
         color = when {
-            selected -> MaterialTheme.colors.primary
+            selected -> MaterialTheme.colorScheme.primary
             else -> Color.Transparent
         },
         contentColor = when {
-            selected -> MaterialTheme.colors.onPrimary
+            selected -> MaterialTheme.colorScheme.onPrimary
             else -> Color.LightGray
         },
         shape = RoundedCornerShape(16.dp),
         border = BorderStroke(
             width = 1.dp,
             color = when {
-                selected -> MaterialTheme.colors.primary
+                selected -> MaterialTheme.colorScheme.primary
                 else -> Color.LightGray
             }
         ),
@@ -156,7 +160,7 @@ private fun CustomImageChip(
             )
             Text(
                 text = text,
-                style = MaterialTheme.typography.body2,
+                style = MaterialTheme.typography.labelMedium,
                 modifier = Modifier.padding(end = 8.dp, top = 8.dp, bottom = 8.dp)
             )
         }
