@@ -101,11 +101,12 @@ fun TopAppBarView(scroll: Float) {
 
 @Composable
 private fun TopBackground() {
+    val gradient = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.secondary)
     Spacer(
         modifier = Modifier
             .height(150.dp)
             .fillMaxWidth()
-            .horizontalGradientBackground(gradientBluePurple)
+            .horizontalGradientBackground(gradient)
     )
 }
 
