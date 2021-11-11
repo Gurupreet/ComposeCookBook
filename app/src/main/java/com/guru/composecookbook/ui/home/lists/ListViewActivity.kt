@@ -79,7 +79,7 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
             SmallTopAppBar(
                 title = {
                     Column(modifier = Modifier.padding(4.dp)) {
-                        Text(text = "ListView")
+                        Text(text = "ListView", color = MaterialTheme.colorScheme.onPrimary)
                         Text(
                             text = listType.lowercase(Locale.getDefault()),
                             style = MaterialTheme.typography.labelSmall
@@ -93,7 +93,7 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                             contentDescription = stringResource(id = R.string.cd_back),
                         )
                     }
-                }, 
+                },
             )
         },
         content = {
