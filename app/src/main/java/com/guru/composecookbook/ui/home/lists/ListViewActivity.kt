@@ -76,28 +76,24 @@ fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
 fun ListViewContent(listType: String, onback: () -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(
+            SmallTopAppBar(
                 title = {
                     Column(modifier = Modifier.padding(4.dp)) {
-                        Text(text = "ListView", color = MaterialTheme.colorScheme.onPrimary)
+                        Text(text = "ListView")
                         Text(
                             text = listType.lowercase(Locale.getDefault()),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onPrimary
+                            style = MaterialTheme.typography.labelSmall
                         )
                     }
                 },
-                elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
                         Icon(
                             Icons.Filled.ArrowBack,
                             contentDescription = stringResource(id = R.string.cd_back),
-                            tint = MaterialTheme.colorScheme.onPrimary
                         )
                     }
-                },
-                backgroundColor = MaterialTheme.colorScheme.primary
+                }, 
             )
         },
         content = {

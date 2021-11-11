@@ -4,10 +4,10 @@ import FaIcons
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
+import androidx.compose.material3.Icon
 import androidx.compose.material.IconToggleButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
@@ -77,17 +77,17 @@ private fun InstagramIconSection() {
         var fav by remember { mutableStateOf(false) }
         IconToggleButton(checked = fav, onCheckedChange = { fav = it }) {
             val icon = if (fav) FaIcons.Heart else FaIcons.HeartRegular
-            val tint = if (fav) Color.Red else MaterialTheme.colors.onBackground
+            val tint = if (fav) Color.Red else MaterialTheme.colorScheme.onBackground
             FaIcon(
                 faIcon = icon,
                 tint = tint,
             )
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
-            FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colors.onSurface)
+            FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colorScheme.onSurface)
         }
         IconToggleButton(checked = false, onCheckedChange = {}) {
-            FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colors.onSurface)
+            FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colorScheme.onSurface)
         }
     }
 }

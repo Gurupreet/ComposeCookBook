@@ -5,17 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.carousel.CarouselLayout
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.ui.home.androidviews.AndroidViews
 import com.guru.composecookbook.ui.home.constraintlayout.ConstraintLayoutDemos
 import com.guru.composecookbook.ui.home.dialogs.BottomSheetLayouts
@@ -40,7 +40,7 @@ class DynamicUIActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeCookBookTheme(isDarkTheme) {
+            ComposeCookBookMaterialTheme(isDarkTheme) {
                 DynamicUiWrapper(dynamicUiType) {
                     onBackPressed()
                 }
@@ -60,18 +60,19 @@ class DynamicUIActivity : ComponentActivity() {
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
 fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(
+            SmallTopAppBar(
                 title = { Text(text = uiType) },
-                elevation = if (uiType == DynamicUiType.TABS.name) 0.dp else 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack,
+                        Icon(
+                            Icons.Filled.ArrowBack,
                             contentDescription = stringResource(id = R.string.cd_back)
                         )
                     }
