@@ -11,11 +11,13 @@ import androidx.compose.material.ScrollableTabRow
 import androidx.compose.material.Tab
 import androidx.compose.material.TabPosition
 import androidx.compose.material.TabRow
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,7 +49,10 @@ fun TabLayout() {
         // by overriding right/left swipe on content and updating state of selectedTab or using pager
 
         //Use ScrollableTabRow for list of tabs
-        TabRow(selectedTabIndex = selectedIndex.value) {
+        TabRow(
+            selectedTabIndex = selectedIndex.value,
+            backgroundColor = MaterialTheme.colorScheme.surface
+        ) {
             tabsName.forEachIndexed { index, title ->
                 Tab(
                     selected = index == selectedIndex.value,
@@ -64,7 +69,7 @@ fun TabLayout() {
                             }
                         }
                     },
-                    text = { Text(title) }
+                    text = { Text(title, color = MaterialTheme.colorScheme.onPrimaryContainer) }
                 )
             }
         }
