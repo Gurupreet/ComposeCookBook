@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
@@ -82,7 +82,7 @@ fun ConstraintLayoutListItem() {
         )
         Text(
             text = item.title,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.constrainAs(title) {
                 linkTo(
                     start = image.end,
@@ -95,7 +95,7 @@ fun ConstraintLayoutListItem() {
         )
         Text(
             text = item.subtitle,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.constrainAs(subtitle) {
                 linkTo(start = title.start, end = parent.end)
                 width = Dimension.fillToConstraints
@@ -110,7 +110,7 @@ fun ConstraintLayoutListItem() {
         )
         Text(
             text = item.source,
-            style = MaterialTheme.typography.caption,
+            style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.constrainAs(source) {
                 start.linkTo(title.start)
                 width = Dimension.fillToConstraints
@@ -163,7 +163,7 @@ fun ConstraintLayoutBigListItem() {
         )
         Text(
             text = item.title,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.constrainAs(title) {
                 linkTo(
                     start = parent.start,
@@ -181,7 +181,7 @@ fun ConstraintLayoutBigListItem() {
         )
         Text(
             text = item.subtitle,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.constrainAs(subtitle) {
                 linkTo(start = title.start, end = title.end)
                 width = Dimension.fillToConstraints
@@ -189,7 +189,7 @@ fun ConstraintLayoutBigListItem() {
         )
         Text(
             text = item.source,
-            style = MaterialTheme.typography.caption,
+            style = MaterialTheme.typography.bodySmall,
             modifier = Modifier
                 .padding(bottom = 12.dp)
                 .constrainAs(source) {
