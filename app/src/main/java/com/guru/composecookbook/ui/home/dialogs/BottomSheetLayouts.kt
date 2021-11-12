@@ -9,6 +9,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -36,6 +40,9 @@ fun BottomSheetDrawer() {
     val coroutineScope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     BottomSheetScaffold(
+        drawerBackgroundColor = MaterialTheme.colorScheme.surface,
+        sheetBackgroundColor = MaterialTheme.colorScheme.surface,
+        backgroundColor = MaterialTheme.colorScheme.background,
         content = {
             Box {
                 ScafoldContent(coroutineScope, bottomSheetScaffoldState, sheetState)
@@ -63,6 +70,7 @@ private fun ScafoldContent(
     ModalBottomSheetLayout(
         modifier = Modifier.fillMaxSize(),
         sheetState = sheetState,
+        sheetBackgroundColor = MaterialTheme.colorScheme.surface,
         sheetContent = {
             BottomSheetContent()
         }
@@ -149,7 +157,7 @@ fun DrawerContent() {
 
 @Composable
 fun PlayerBottomSheet() {
-    val backgroundColor = MaterialTheme.colors.background.copy(alpha = 0.7f)
+    val backgroundColor = MaterialTheme.colorScheme.background.copy(alpha = 0.7f)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -181,15 +189,15 @@ fun PlayerBottomSheet() {
     Text(text = "Lyrics", style = typography.h6, modifier = Modifier.padding(16.dp))
     Text(
         text = "I heard that you're settled down\n" +
-            "That you found a girl and you're married now\n" +
-            "I heard that your dreams came true\n" +
-            "Guess she gave you things, I didn't give to you\n" +
-            "Old friend, why are you so shy?\n" +
-            "Ain't like you to hold back or hide from the light\n" +
-            "I hate to turn up out of the blue, uninvited\n" +
-            "But I couldn't stay away, I couldn't fight it\n" +
-            "I had hoped you'd see my face\n" +
-            "And that you'd be reminded that for me, it isn't over",
+                "That you found a girl and you're married now\n" +
+                "I heard that your dreams came true\n" +
+                "Guess she gave you things, I didn't give to you\n" +
+                "Old friend, why are you so shy?\n" +
+                "Ain't like you to hold back or hide from the light\n" +
+                "I hate to turn up out of the blue, uninvited\n" +
+                "But I couldn't stay away, I couldn't fight it\n" +
+                "I had hoped you'd see my face\n" +
+                "And that you'd be reminded that for me, it isn't over",
         modifier = Modifier.padding(16.dp)
     )
 
