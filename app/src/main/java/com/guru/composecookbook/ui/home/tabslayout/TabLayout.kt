@@ -28,9 +28,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.instagram.components.InstagramListItem
+import com.guru.composecookbook.instagram.components.posts.PostItem
 import com.guru.composecookbook.ui.home.lists.GridListView
 import com.guru.composecookbook.ui.home.lists.VerticalListView
+import kotlin.random.Random
 
 private enum class DemoTabs(val value: String) {
     APPLE("Apple"),
@@ -122,7 +123,13 @@ fun ScrollableListOfTabs() {
                 }
             }
         }
-        InstagramListItem(post = tweets[selectedIndex.value])
+        PostItem(
+            post = tweets[selectedIndex.value],
+            isLiked = Random.nextBoolean(),
+            onLikeClicked = {},
+            onCommentsClicked = {},
+            onSendClicked = {}
+        )
     }
 }
 

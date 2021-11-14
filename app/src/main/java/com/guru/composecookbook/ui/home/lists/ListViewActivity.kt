@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -25,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
-import com.guru.composecookbook.instagram.components.InstagramStories
-import com.guru.composecookbook.instagram.components.StoryListItem
+import com.guru.composecookbook.instagram.components.stories.StoryList
+import com.guru.composecookbook.instagram.components.stories.StoryItem
 import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.verticalgrid.VerticalGrid
@@ -136,6 +135,7 @@ fun VerticalListView() {
 @Composable
 fun HorizontalListView() {
     val list = remember { DemoDataProvider.itemList }
+    val profiles = remember { DemoDataProvider.tweetList }
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         Text(
             modifier = Modifier.padding(16.dp),
@@ -160,7 +160,10 @@ fun HorizontalListView() {
             text = "Stories",
             style = MaterialTheme.typography.labelMedium
         )
-        InstagramStories()
+        StoryList(
+            profiles = profiles,
+            onProfileClicked = {}
+        )
     }
 }
 
@@ -178,7 +181,13 @@ fun GridListView() {
         }
         VerticalGrid(columns = 4) {
             posts.forEach {
-                StoryListItem(post = it)
+                StoryItem(
+                    profileImageId = it.authorImageId,
+                    profileName = it.author,
+                    isMe = it.id == 1,
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
+                    onClick = {}
+                )
             }
         }
     }
