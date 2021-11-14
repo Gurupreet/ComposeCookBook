@@ -7,10 +7,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
@@ -66,7 +66,7 @@ fun YoutubeListItem(item: Tweet) {
         )
         Text(
             text = item.text,
-            style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+            style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp),
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.constrainAs(title) {
@@ -85,7 +85,7 @@ fun YoutubeListItem(item: Tweet) {
         )
         Text(
             text = "${item.author} . ${item.likesCount}k views . 6 hours ago",
-            style = MaterialTheme.typography.subtitle2,
+            style = MaterialTheme.typography.titleSmall,
             modifier = Modifier
                 .constrainAs(subtitle) {
                     bottom.linkTo(parent.bottom)

@@ -5,10 +5,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Delete
@@ -35,7 +35,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
 
     ConstraintLayout(
         modifier = Modifier
-            .background(MaterialTheme.colors.background)
+            .background(MaterialTheme.colorScheme.background)
             .fillMaxWidth()
             .clickable { clickListener(item) }
             .padding(horizontal = 12.dp, vertical = 4.dp)
@@ -58,7 +58,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         )
         Text(
             text = item.author,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.constrainAs(title) {
                 start.linkTo(image.end, 16.dp)
                 width = Dimension.fillToConstraints
@@ -66,7 +66,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         )
         Text(
             text = "5 sept",
-            style = MaterialTheme.typography.h6.copy(fontSize = 12.sp),
+            style = MaterialTheme.typography.titleLarge.copy(fontSize = 12.sp),
             modifier = Modifier.constrainAs(time) {
                 end.linkTo(parent.end, margin = 8.dp)
                 top.linkTo(title.top)
@@ -74,7 +74,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         )
         Text(
             text = item.source,
-            style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+            style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp),
             modifier = Modifier.constrainAs(subtitle) {
                 start.linkTo(image.end, 16.dp)
                 width = Dimension.fillToConstraints
@@ -82,7 +82,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         )
         Text(
             text = item.text,
-            style = MaterialTheme.typography.caption,
+            style = MaterialTheme.typography.bodySmall,
             maxLines = 2,
             modifier = Modifier
                 .constrainAs(source) {
@@ -108,7 +108,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
             Icon(
                 imageVector = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
                 contentDescription = null,
-                tint = if (stared) Color.Yellow else MaterialTheme.colors.onSurface
+                tint = if (stared) Color.Yellow else MaterialTheme.colorScheme.onSurface
             )
         }
     }
@@ -120,14 +120,14 @@ fun GmailListActionItems(modifier: Modifier) {
         IconButton(onClick = {}) {
             Icon(
                 imageVector = Icons.Default.Delete,
-                tint = MaterialTheme.colors.onPrimary,
+                tint = MaterialTheme.colorScheme.onPrimary,
                 contentDescription = null
             )
         }
         IconButton(onClick = {}) {
             Icon(
                 imageVector = Icons.Default.AccountBox,
-                tint = MaterialTheme.colors.onPrimary,
+                tint = MaterialTheme.colorScheme.onPrimary,
                 contentDescription = null
             )
         }

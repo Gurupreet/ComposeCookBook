@@ -4,10 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.green700
@@ -120,7 +121,7 @@ fun TypeOfColumns() {
         .padding(8.dp)
         .fillMaxWidth()
         .height(150.dp)
-        .background(Color.LightGray)
+        .background(MaterialTheme.colorScheme.surfaceVariant)
     Text(text = "Column", style = typography.h6, modifier = Modifier.padding(8.dp))
     Text(
         text = "Arrangement.Top", style = typography.caption,
@@ -196,7 +197,7 @@ fun TypeOfBoxs() {
     Text(text = "Box", style = typography.h6, modifier = Modifier.padding(8.dp))
     val boxModifier = Modifier
         .padding(8.dp)
-        .background(Color.LightGray)
+        .background(MaterialTheme.colorScheme.surfaceVariant)
         .fillMaxWidth()
         .height(250.dp)
     Text(
@@ -207,17 +208,17 @@ fun TypeOfBoxs() {
         modifier = boxModifier
             .testTag(TestTags.HOME_LAYOUTS_BOX_NO_ALIGN)
     ) {
-        Card(
+        Material3Card(
             backgroundColor = green700,
             elevation = 4.dp,
             modifier = Modifier.size(200.dp)
         ) {}
-        Card(
+        Material3Card(
             backgroundColor = green500,
             elevation = 4.dp,
             modifier = Modifier.size(150.dp)
         ) {}
-        Card(
+        Material3Card(
             backgroundColor = green200,
             elevation = 4.dp,
             modifier = Modifier.size(100.dp)
@@ -232,17 +233,17 @@ fun TypeOfBoxs() {
         boxModifier
             .testTag(TestTags.HOME_LAYOUTS_BOX_TOP_CENTER_AND_NO_ALIGN)
     ) {
-        Card(
+        Material3Card(
             backgroundColor = green700, elevation = 4.dp, modifier = Modifier
                 .size(200.dp)
                 .align(Alignment.TopStart)
         ) {}
-        Card(
+        Material3Card(
             backgroundColor = green500, elevation = 4.dp, modifier = Modifier
                 .size(150.dp)
                 .align(Alignment.Center)
         ) {}
-        Card(
+        Material3Card(
             backgroundColor = green200, elevation = 4.dp, modifier = Modifier
                 .size(100.dp)
                 .align(Alignment.BottomEnd)
@@ -256,7 +257,7 @@ fun ConstraintLayouts() {
 
     ConstraintLayout(
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(MaterialTheme.colorScheme.surfaceVariant)
             .fillMaxWidth()
             .height(150.dp)
             .testTag(TestTags.HOME_LAYOUTS_CONSTRAINT_LAYOUT)
