@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
@@ -37,7 +38,7 @@ class DialogsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeCookBookTheme(isDarkTheme) {
+            ComposeCookBookMaterialTheme(isDarkTheme) {
                 DialogScreen(onBack = { onBackPressed() })
             }
         }
@@ -52,13 +53,13 @@ class DialogsActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DialogScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(
+            SmallTopAppBar(
                 title = { Text(text = "Dialogs") },
-                elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(imageVector = Icons.Default.ArrowBack,
@@ -153,7 +154,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 text = {
                     Text(item.subtitle)
                 },
-                buttons = {
+                confirmButton = {
                     TextButton(
                         onClick = onDismiss,
                         modifier = Modifier.padding(8.dp)
@@ -169,7 +170,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 text = {
                     Text(item.subtitle)
                 },
-                buttons = {
+                confirmButton = {
                     Row(modifier = Modifier) {
                         TextButton(
                             onClick = onDismiss,
@@ -193,7 +194,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 text = {
                     Text(item.subtitle)
                 },
-                buttons = {
+                confirmButton = {
                     OutlinedButton(
                         onClick = onDismiss,
                         modifier = Modifier
@@ -223,7 +224,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                         contentDescription = null
                     )
                 },
-                buttons = {
+                confirmButton = {
                     TextButton(
                         onClick = onDismiss,
                         modifier = Modifier.padding(8.dp)
@@ -237,17 +238,19 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             AlertDialog(
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
-                    Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(
-                        painter = painterResource(DemoDataProvider.item.imageId),
-                        contentDescription = null
-                    )
-                    Text(
-                        item.subtitle + item.title + item.subtitle + item.title,
-                        style = typography.subtitle2
-                    )
+                    Column {
+                        Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
+                        Image(
+                            painter = painterResource(DemoDataProvider.item.imageId),
+                            contentDescription = null
+                        )
+                        Text(
+                            item.subtitle + item.title + item.subtitle + item.title,
+                            style = typography.subtitle2
+                        )
+                    }
                 },
-                buttons = {
+                confirmButton = {
                     TextButton(
                         onClick = onDismiss,
                         modifier = Modifier.padding(8.dp)
@@ -261,14 +264,16 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             AlertDialog(
                 title = { Text(text = item.title, style = typography.h6) },
                 text = {
-                    Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                    Image(
-                        painter = painterResource(DemoDataProvider.item.imageId),
-                        contentDescription = null,
-                        modifier = Modifier.clip(RoundedCornerShape(16.dp))
-                    )
+                    Column {
+                        Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
+                        Image(
+                            painter = painterResource(DemoDataProvider.item.imageId),
+                            contentDescription = null,
+                            modifier = Modifier.clip(RoundedCornerShape(16.dp))
+                        )
+                    }
                 },
-                buttons = {
+                confirmButton = {
                     TextButton(
                         onClick = onDismiss,
                         modifier = Modifier.padding(8.dp)
