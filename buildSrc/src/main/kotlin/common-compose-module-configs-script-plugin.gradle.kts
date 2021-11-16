@@ -27,4 +27,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = ProjectConfigs.kotlinCompilerExtensionVersion
     }
+    dexOptions {
+        javaMaxHeapSize = "4G"
+    }
 }

@@ -7,19 +7,28 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
+import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.twitter.components.TwitterHome
 
 class TwitterActivity : ComponentActivity() {
-    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
         setContent {
             ComposeCookBookTheme {
-                TwitterHome()
+                val tweets = remember { DemoDataProvider.tweetList }
+                TwitterHome(
+                    tweets = tweets,
+                    onMessagesClick = { /*TODO*/ },
+                    onRetweetClick = { /*TODO*/ },
+                    onLikesClick = { /*TODO*/ },
+                    onShareClick = { /*TODO*/ },
+                    onNewTweetClicked = { /*TODO*/ }
+                )
             }
         }
     }
@@ -34,6 +43,13 @@ class TwitterActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview4() {
     ComposeCookBookTheme {
-        TwitterHome()
+        TwitterHome(
+            tweets = DemoDataProvider.tweetList,
+            onMessagesClick = { /*TODO*/ },
+            onRetweetClick = { /*TODO*/ },
+            onLikesClick = { /*TODO*/ },
+            onShareClick = { /*TODO*/ },
+            onNewTweetClicked = { /*TODO*/ }
+        )
     }
 }
