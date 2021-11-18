@@ -3,9 +3,9 @@ package com.guru.composecookbook.youtube.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,23 +16,23 @@ import androidx.compose.ui.unit.dp
 fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) {
     Surface(
         color = when {
-            selected -> MaterialTheme.colors.onSurface.copy(
-                alpha = if (MaterialTheme.colors.isLight) 0.7f else 1f
+            selected -> MaterialTheme.colorScheme.onSurface.copy(
+                alpha = if (androidx.compose.material.MaterialTheme.colors.isLight) 0.7f else 1f
             )
-            else -> MaterialTheme.colors.onSurface.copy(
-                alpha = if (MaterialTheme.colors.isLight) 0.04f else 0.07f
+            else -> MaterialTheme.colorScheme.inverseOnSurface.copy(
+                alpha = 0.05f
             )
         },
         contentColor = when {
-            selected -> MaterialTheme.colors.surface
-            else -> MaterialTheme.colors.onSurface
+            selected -> MaterialTheme.colorScheme.surface
+            else -> MaterialTheme.colorScheme.onSurface
         },
         shape = CircleShape,
         border = BorderStroke(
             width = 1.dp,
             color = when {
-                selected -> MaterialTheme.colors.surface
-                else -> if (MaterialTheme.colors.isLight) Color.LightGray else Color.DarkGray
+                selected -> MaterialTheme.colorScheme.surface
+                else -> Color.LightGray
             }
         ),
         modifier = modifier
@@ -40,7 +40,7 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
         Text(
             text = text,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.body2,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(
                 vertical = 8.dp,
                 horizontal = 12.dp,

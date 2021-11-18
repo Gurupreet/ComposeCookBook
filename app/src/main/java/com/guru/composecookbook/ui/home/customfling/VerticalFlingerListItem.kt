@@ -2,8 +2,9 @@ package com.guru.composecookbook.ui.home.customfling
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,7 +31,7 @@ fun VerticalFlingerListItem(item: Item, modifier: Modifier = Modifier) {
         val imageModifier = Modifier
             .height(150.dp)
             .fillMaxWidth()
-            .clip(shape = MaterialTheme.shapes.medium)
+            .clip(shape = RoundedCornerShape(8.dp))
 
         Image(
             painter = painterResource(item.imageId),
@@ -41,16 +42,16 @@ fun VerticalFlingerListItem(item: Item, modifier: Modifier = Modifier) {
         Spacer(Modifier.height(16.dp))
         Text(
             text = item.title,
-            style = typography.h6
+            style = typography.titleLarge
         )
         Text(
             text = item.subtitle,
-            style = typography.body2
+            style = typography.bodyMedium
         )
 
         Text(
             text = item.source,
-            style = typography.subtitle2
+            style = typography.titleSmall
         )
     }
 }

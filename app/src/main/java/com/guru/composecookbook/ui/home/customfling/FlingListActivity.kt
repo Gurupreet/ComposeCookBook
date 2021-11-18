@@ -11,7 +11,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -26,6 +26,7 @@ import androidx.lifecycle.MutableLiveData
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
+import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.utils.TestTags
 
@@ -125,11 +126,12 @@ class FlingListActivity : ComponentActivity() {
 
 @Composable
 private fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
-    ComposeCookBookTheme(isDarkTheme) {
+    ComposeCookBookMaterialTheme(isDarkTheme) {
         content()
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListViewContent(
     list: List<Item>,
@@ -142,7 +144,7 @@ fun ListViewContent(
      */
     Scaffold(
         topBar = {
-            TopAppBar(
+            SmallTopAppBar(
                 title = {
                     Column(modifier = Modifier.padding(4.dp)) {
                         /*
@@ -155,7 +157,6 @@ fun ListViewContent(
                         )
                     }
                 },
-                elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
                         Icon(Icons.Filled.ArrowBack,

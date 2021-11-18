@@ -7,9 +7,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Album
 import androidx.compose.material.icons.filled.Favorite
@@ -28,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
+import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.typography
 
@@ -88,14 +88,14 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     val isSelected = selectedPage.value == pagerState.currentPage
     val animateSize = if (isSelected) 320.dp else 180.dp
     val animateElevation = if (isSelected) 12.dp else 2.dp
-    Card(
+    Material3Card(
         elevation = animateDpAsState(animateElevation).value,
         modifier = Modifier
             .size(animateDpAsState(animateSize).value)
             .padding(24.dp),
         shape = RoundedCornerShape(16.dp),
         backgroundColor = green200,
-        contentColor = MaterialTheme.colors.onPrimary
+        contentColor = MaterialTheme.colorScheme.onPrimary
     ) {
         Column {
             Text(
@@ -139,7 +139,7 @@ private fun ColumnScope.PrepareFirstPager(
         items.forEachIndexed { index, _ ->
             CarouselDot(
                 selected = index == selectedPage.value,
-                MaterialTheme.colors.primary,
+                MaterialTheme.colorScheme.primary,
                 Icons.Filled.Lens
             )
         }
@@ -163,7 +163,7 @@ private fun ColumnScope.PrepareSecondPager(
         items.forEachIndexed { index, _ ->
             CarouselDot(
                 selected = index == selectedPage.value,
-                MaterialTheme.colors.error,
+                MaterialTheme.colorScheme.error,
                 Icons.Filled.Favorite
             )
         }
@@ -186,7 +186,7 @@ private fun ColumnScope.PrepareThirdPager(
         items.forEachIndexed { index, _ ->
             CarouselDot(
                 selected = index == selectedPage.value,
-                MaterialTheme.colors.secondary,
+                MaterialTheme.colorScheme.secondary,
                 Icons.Filled.Album
             )
         }

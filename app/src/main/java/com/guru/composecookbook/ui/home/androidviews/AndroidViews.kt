@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
@@ -53,10 +55,11 @@ fun AndroidTextView(context: Context) {
     SubtitleText(subtitle = "Below is Android Textview")
     //simple android textview creation
     // if you are using xml it can be textview = remember { findViewById(R.id.androidTextView }
+    val textColor = LocalContentColor.current.toArgb()
     val androidTextView = remember {
         TextView(context).apply {
             setText(R.string.about_me)
-            setTextColor(ContextCompat.getColor(context, R.color.black))
+            setTextColor(textColor)
         }
     }
     AndroidView({ androidTextView }, modifier = Modifier.padding(8.dp)) {

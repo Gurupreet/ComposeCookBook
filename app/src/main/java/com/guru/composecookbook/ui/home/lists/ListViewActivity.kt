@@ -78,7 +78,7 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
             SmallTopAppBar(
                 title = {
                     Column(modifier = Modifier.padding(4.dp)) {
-                        Text(text = "ListView", color = MaterialTheme.colorScheme.onPrimary)
+                        Text(text = "ListView")
                         Text(
                             text = listType.lowercase(Locale.getDefault()),
                             style = MaterialTheme.typography.labelSmall

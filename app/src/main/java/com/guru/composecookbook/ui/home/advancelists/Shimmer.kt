@@ -6,10 +6,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -60,8 +60,8 @@ fun ShimmerList() {
 
     @Composable
     fun buttonColors(type: ShimmerAnimationType) = ButtonDefaults.buttonColors(
-        backgroundColor = if (shimmerAnimationType == type)
-            MaterialTheme.colors.primary else Color.LightGray
+        containerColor = if (shimmerAnimationType == type)
+            MaterialTheme.colorScheme.primary else Color.LightGray
     )
 
     Column(

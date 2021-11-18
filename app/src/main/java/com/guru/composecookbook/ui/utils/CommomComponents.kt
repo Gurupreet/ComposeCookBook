@@ -40,7 +40,7 @@ fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: 
 
 @Composable
 fun TitleText(modifier: Modifier = Modifier, title: String) {
-    Text(
+    androidx.compose.material3.Text(
         text = title,
         style = typography.h6.copy(fontSize = 14.sp),
         modifier = modifier.padding(8.dp)
@@ -49,7 +49,7 @@ fun TitleText(modifier: Modifier = Modifier, title: String) {
 
 @Composable
 fun SubtitleText(subtitle: String, modifier: Modifier = Modifier) {
-    Text(text = subtitle, style = typography.subtitle2, modifier = modifier.padding(8.dp))
+    androidx.compose.material3.Text(text = subtitle, style = typography.subtitle2, modifier = modifier.padding(8.dp))
 }
 
 @Composable
