@@ -6,9 +6,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ScrollableTabRow
+import androidx.compose.material.Tab
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -17,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
+import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
@@ -27,21 +31,23 @@ class AdvanceListsActivity : ComponentActivity() {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeCookBookTheme(isDarkTheme) {
+            ComposeCookBookMaterialTheme(isDarkTheme) {
                 // A surface container using the 'background' color from the theme
                 Scaffold(
                     topBar = {
-                        TopAppBar(
+                        SmallTopAppBar(
                             title = { Text(text = "Advance Lists(In Progress)") },
-                            elevation = 0.dp,
                             navigationIcon = {
                                 IconButton(onClick = { onBackPressed() }) {
-                                    Icon(Icons.Filled.ArrowBack,
-                                        contentDescription = stringResource(id = R.string.cd_back))
+                                    Icon(
+                                        Icons.Filled.ArrowBack,
+                                        contentDescription = stringResource(id = R.string.cd_back)
+                                    )
                                 }
                             }
                         )
@@ -73,7 +79,11 @@ fun AdvanceListContent() {
         }
     }
     Column {
-        ScrollableTabRow(selectedTabIndex = selectedIndex, edgePadding = 12.dp) {
+        ScrollableTabRow(
+            backgroundColor = MaterialTheme.colorScheme.surface,
+            selectedTabIndex = selectedIndex,
+            edgePadding = 12.dp
+        ) {
             tabs.forEachIndexed { index, title ->
                 Tab(
                     selected = index == selectedIndex,
