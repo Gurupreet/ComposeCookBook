@@ -84,11 +84,6 @@ You can find them in *buildSrc*
 - dependency
 - configurations
 
-## If this project helped you in any way feel free to show some love
-<a href="https://www.buymeacoffee.com/gurupreet" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="160">
-</a>
-
 ## How to get started
 Please get **Android Studio Bumblebee latest Canary** [from here](https://developer.android.com/studio/preview/) and use **JDK 11** to build this project.
 
