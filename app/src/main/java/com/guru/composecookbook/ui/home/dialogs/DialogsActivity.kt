@@ -3,24 +3,28 @@ package com.guru.composecookbook.ui.home.dialogs
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.fragment.app.FragmentActivity
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
@@ -29,7 +33,7 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 
-class DialogsActivity : ComponentActivity() {
+class DialogsActivity : AppCompatActivity() {
 
     private val isDarkTheme: Boolean by lazy {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
@@ -62,7 +66,8 @@ fun DialogScreen(onBack: () -> Unit) {
                 title = { Text(text = "Dialogs") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(imageVector = Icons.Default.ArrowBack,
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
                             contentDescription = stringResource(id = R.string.cd_back)
                         )
                     }
@@ -141,6 +146,25 @@ fun DialogsOptionList() {
         ) {
             Text(text = "Extra Rounded Dialog")
         }
+
+        Button(
+            onClick = { dialogState = DialogState(true, DialogType.DATEPICKER) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Text(text = "Date Picker Dialog")
+        }
+
+        Button(
+            onClick = { dialogState = DialogState(true, DialogType.TIMEPICKER) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Text(text = "Time Picker Dialog")
+        }
+
     }
 }
 
@@ -284,6 +308,37 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 onDismissRequest = onDismiss,
                 shape = RoundedCornerShape(16.dp)
             )
+        DialogType.DATEPICKER -> {
+            val context = LocalContext.current
+            (context as? FragmentActivity)?.supportFragmentManager?.let { manager ->
+
+                val builder = MaterialDatePicker.Builder.datePicker()
+                    .build()
+
+                builder.addOnPositiveButtonClickListener { selectedDate ->
+
+                }
+                builder.addOnDismissListener {
+                    onDismiss()
+                }
+                builder.show(manager, "DatePicker")
+            }
+        }
+
+        DialogType.TIMEPICKER -> {
+            val context = LocalContext.current
+            (context as? FragmentActivity)?.supportFragmentManager?.let { manager ->
+                val builder = MaterialTimePicker.Builder()
+                    .build()
+                builder.addOnPositiveButtonClickListener {
+
+                }
+                builder.addOnDismissListener {
+                    onDismiss.invoke()
+                }
+                builder.show(manager, "TimePicker")
+            }
+        }
 
     }
 
