@@ -3,6 +3,7 @@ package com.guru.composecookbook.profile
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +16,7 @@ fun InterestsSection() {
     Text(
         text = "My Interests",
         style = typography.h6,
+        color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(start = 8.dp, top = 16.dp)
     )
     Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))

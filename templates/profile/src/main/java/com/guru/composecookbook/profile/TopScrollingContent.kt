@@ -37,7 +37,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
                 modifier = Modifier.padding(bottom = 4.dp)
             )
             Text(
-                text = "Android developer at Delivery Hero",
+                text = "Android developer",
                 style = materialTypography.labelMedium
             )
         }

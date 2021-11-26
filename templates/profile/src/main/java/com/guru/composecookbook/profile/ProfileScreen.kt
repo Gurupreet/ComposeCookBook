@@ -101,7 +101,7 @@ fun TopAppBarView(scroll: Float) {
 
 @Composable
 private fun TopBackground() {
-    val gradient = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.secondary)
+    val gradient = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primary.copy(alpha = 0.7f))
     Spacer(
         modifier = Modifier
             .height(150.dp)

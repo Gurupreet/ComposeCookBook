@@ -28,19 +28,22 @@ fun SocialRow() {
             IconButton(onClick = { launchSocialActivity(context, "github") }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_github_square_brands),
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
             IconButton(onClick = { launchSocialActivity(context, "twitter") }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_twitter_square_brands),
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
             IconButton(onClick = { launchSocialActivity(context, "linkedin") }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_linkedin_brands),
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
         }

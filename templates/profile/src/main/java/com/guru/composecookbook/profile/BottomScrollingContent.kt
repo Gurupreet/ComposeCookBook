@@ -26,6 +26,7 @@ fun BottomScrollingContent() {
         Text(
             text = "About Me",
             style = typography.h6,
+            color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 8.dp, top = 12.dp)
         )
         Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
@@ -41,6 +42,7 @@ fun BottomScrollingContent() {
         Text(
             text = "About Project",
             style = typography.h6,
+            color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 8.dp, top = 16.dp)
         )
         Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
