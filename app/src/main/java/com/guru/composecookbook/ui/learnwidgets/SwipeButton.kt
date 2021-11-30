@@ -12,7 +12,10 @@ import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Done
@@ -40,8 +43,8 @@ fun SwipeButton(
     swipeButtonState: SwipeButtonState,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    elevation: ButtonElevation? = ButtonDefaults.elevation(),
-    shape: Shape = MaterialTheme.shapes.small,
+    elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
+    shape: Shape = RoundedCornerShape(20.0.dp),
     border: BorderStroke? = null,
     colors: ButtonColors = ButtonDefaults.buttonColors(),
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
@@ -59,10 +62,11 @@ fun SwipeButton(
     Surface(
         modifier = modifier,
         shape = shape,
-        color = colors.backgroundColor(enabled).value,
+        color = colors.containerColor(enabled).value,
         contentColor = contentColor.copy(alpha = 1f),
         border = border,
-        elevation = elevation?.elevation(enabled, interactionSource)?.value ?: 0.dp,
+        shadowElevation = elevation?.shadowElevation(enabled, interactionSource)?.value ?: 0.dp,
+        tonalElevation = elevation?.tonalElevation(enabled, interactionSource)?.value ?: 0.dp,
         onClick = {},
         enabled = enabled,
         role = Role.Button,
@@ -91,7 +95,7 @@ fun SwipeButton(
                             .scale(animatedProgress.value)
                             .padding(iconPadding)
                             .clip(CircleShape)
-                            .background(MaterialTheme.colors.onPrimary)
+                            .background(MaterialTheme.colorScheme.onPrimary)
                             .align(
                                 Alignment
                                     .Center
@@ -100,7 +104,7 @@ fun SwipeButton(
                         Icon(
                             imageVector = Icons.Default.Done,
                             contentDescription = "Done",
-                            tint = MaterialTheme.colors.primary
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
@@ -111,7 +115,7 @@ fun SwipeButton(
                     dragOffset.value = 0f // when button goes to inital state
                     CompositionLocalProvider(LocalContentAlpha provides contentColor.alpha) {
                         ProvideTextStyle(
-                            value = MaterialTheme.typography.button
+                            value = MaterialTheme.typography.bodyMedium
                         ) {
                             Row(
                                 Modifier
@@ -147,7 +151,7 @@ fun SwipeButton(
                             }
                         }
                     )
-                    .background(MaterialTheme.colors.onPrimary, shape = CircleShape)
+                    .background(MaterialTheme.colorScheme.onPrimary, shape = CircleShape)
                 ) {
                     Icon(
                         imageVector = icon,
@@ -157,7 +161,7 @@ fun SwipeButton(
                             }
                         },
                         contentDescription = "Arrow",
-                        tint = colors.backgroundColor(enabled).value,
+                        tint = colors.containerColor(enabled).value,
                     )
                 }
             }

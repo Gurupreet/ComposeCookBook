@@ -1,9 +1,18 @@
 package com.guru.composecookbook.ui.learnwidgets
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.Icon
+import androidx.compose.material.ListItem
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
@@ -13,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.typography
 
 @ExperimentalMaterialApi
@@ -31,30 +41,30 @@ fun UICards() {
         style = typography.subtitle1,
         modifier = Modifier.padding(8.dp)
     )
-    Card(
+    Material3Card(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth(),
-        backgroundColor = MaterialTheme.colors.primary,
+        backgroundColor = MaterialTheme.colorScheme.primary,
         shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp)
     ) {
         Column {
             Text(
                 text = item.title,
                 modifier = Modifier.padding(8.dp),
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Text(
                 text = item.subtitle,
                 modifier = Modifier.padding(8.dp),
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
     }
     Divider()
 
     Text(text = "Inbuilt Card", style = typography.subtitle1, modifier = Modifier.padding(8.dp))
-    Card(
+    Material3Card(
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth(),

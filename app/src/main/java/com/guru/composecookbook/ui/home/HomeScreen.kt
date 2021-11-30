@@ -13,10 +13,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetState
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -33,6 +37,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.HomeScreenItems
 import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
 import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
@@ -45,7 +50,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 @ExperimentalFoundationApi
 @Composable
 fun HomeScreen(
@@ -58,9 +63,8 @@ fun HomeScreen(
     Scaffold(
         modifier = Modifier.testTag(TestTags.HOME_SCREEN_ROOT),
         topBar = {
-            TopAppBar(
+            SmallTopAppBar(
                 title = { Text(text = "Compose CookBook") },
-                elevation = 8.dp,
                 actions = {
                     IconButton(onClick = {
                         appThemeState.value = appThemeState
@@ -170,7 +174,7 @@ fun PalletMenu(
         Column(
             horizontalAlignment = Alignment.Start,
             modifier = modifier
-                .background(MaterialTheme.colors.background)
+                .background(MaterialTheme.colorScheme.background)
                 .animateContentSize(),
         ) {
             MenuItem(green500, "Green") {
@@ -218,20 +222,20 @@ fun HomeScreenListView(
     isWiderScreen: Boolean
 ) {
     if (isWiderScreen) {
-        Card(
+        Material3Card(
             modifier = Modifier
                 .clickable { homeItemClicked(homeScreenItems, context, isDarkTheme) }
                 .height(150.dp)
                 .padding(8.dp),
-            backgroundColor = MaterialTheme.colors.primary,
+            backgroundColor = MaterialTheme.colorScheme.primary,
             shape = RoundedCornerShape(8.dp),
             elevation = 4.dp,
-            contentColor = MaterialTheme.colors.onPrimary
+            contentColor = MaterialTheme.colorScheme.onPrimary
         ) {
             Text(
                 text = homeScreenItems.name,
                 modifier = Modifier.padding(8.dp),
-                style = MaterialTheme.typography.h6
+                style = MaterialTheme.typography.titleMedium
             )
         }
     } else {
@@ -245,7 +249,7 @@ fun HomeScreenListView(
             Text(
                 text = homeScreenItems.name,
                 modifier = Modifier.padding(8.dp),
-                style = MaterialTheme.typography.button
+                style = MaterialTheme.typography.labelLarge
             )
         }
     }
