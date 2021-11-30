@@ -1,16 +1,26 @@
 package com.guru.composecookbook.ui.animation
 
 import androidx.compose.animation.animateColor
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.material.Divider
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayCircleFilled
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,7 +79,7 @@ fun MultiStateColorPositionAnimation() {
         }
     }
     FloatingActionButton(
-        backgroundColor = animatedColor,
+        containerColor = animatedColor,
         modifier = Modifier.offset(x = position, y = position),
         onClick = {
             animationState = when (animationState) {
@@ -104,7 +114,7 @@ fun MultiStateInfiniteTransition() {
     )
 
     FloatingActionButton(
-        backgroundColor = animatedColor,
+        containerColor = animatedColor,
         modifier = Modifier.offset(x = position.dp),
         onClick = {
         }) {

@@ -9,13 +9,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Card
 import androidx.compose.material.Divider
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
@@ -39,7 +44,7 @@ fun SimpleDismissUsingAnimatable() {
     val animatableValue = remember { Animatable(0f) }
     animatableValue.updateBounds(-100f, 100f)
     var enable by remember { mutableStateOf(true) }
-    Card(
+    Material3Card(
         backgroundColor = green200,
         modifier = Modifier
             .size(100.dp)
@@ -77,7 +82,7 @@ fun PointerInputWithAnimateable() {
             }
         }
     }
-    Card(
+    Material3Card(
         backgroundColor = green200,
         modifier = modifier
             .size(100.dp)
@@ -111,7 +116,7 @@ fun DraggableCardWithAnimatable() {
             }
         }
     }
-    Card(
+    Material3Card(
         backgroundColor = green200,
         modifier = modifier
             .size(100.dp)

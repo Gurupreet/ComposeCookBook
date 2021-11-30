@@ -1,12 +1,35 @@
 package com.guru.composecookbook.ui.animation
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.AnimationVector2D
+import androidx.compose.animation.core.TwoWayConverter
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateOffsetAsState
+import androidx.compose.animation.core.animateValueAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
@@ -42,11 +65,11 @@ fun SimpleColorStateAnimation() {
     val enabled = remember { mutableStateOf(true) }
     val animatedColor = animateColorAsState(
         targetValue =
-        if (enabled.value) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
+        if (enabled.value) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
     )
 
     val buttonColors = ButtonDefaults.buttonColors(
-        backgroundColor = animatedColor.value
+        containerColor = animatedColor.value
     )
 
     Button(
@@ -66,12 +89,12 @@ fun SimpleDpStateAnimations() {
     SubtitleText(subtitle = "Animate DP value")
     var enabled by remember { mutableStateOf(true) }
     val animatedColorState = animateColorAsState(
-        targetValue = if (enabled) MaterialTheme.colors.primary else MaterialTheme.colors.secondary
+        targetValue = if (enabled) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
     )
     val animatedHeightState = animateDpAsState(targetValue = if (enabled) 40.dp else 60.dp)
     val animatedWidthState = animateDpAsState(if (enabled) 150.dp else 300.dp)
     val buttonColors = ButtonDefaults.buttonColors(
-        backgroundColor = animatedColorState.value
+        containerColor = animatedColorState.value
     )
     Button(
         onClick = { enabled = !enabled },
