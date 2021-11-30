@@ -108,12 +108,12 @@ fun AllButtons() {
     }
     Row {
         val horizontalGradient = Brush.horizontalGradient(
-            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primaryContainer),
+            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
             0f,
             250f
         )
         val verticalGradient = Brush.verticalGradient(
-            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primaryContainer),
+            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
             startY = 0f,
             endY = 100f
         )

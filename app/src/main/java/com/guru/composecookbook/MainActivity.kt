@@ -8,20 +8,46 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetState
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.runtime.*
+import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.google.android.gms.ads.MobileAds
-import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.theme.AppThemeState
+import com.guru.composecookbook.theme.ColorPallet
+import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
+import com.guru.composecookbook.theme.SystemUiController
+import com.guru.composecookbook.theme.blue700
+import com.guru.composecookbook.theme.green700
+import com.guru.composecookbook.theme.orange700
+import com.guru.composecookbook.theme.purple700
 import com.guru.composecookbook.ui.animation.AnimationScreen
 import com.guru.composecookbook.ui.demoapps.DemoUIList
 import com.guru.composecookbook.ui.home.HomeScreen
@@ -65,7 +91,10 @@ fun BaseView(
         else -> green700
     }
     systemUiController?.setStatusBarColor(color = color, darkIcons = appThemeState.darkTheme)
-    ComposeCookBookTheme(darkTheme = appThemeState.darkTheme, colorPallet = appThemeState.pallet) {
+    ComposeCookBookMaterialTheme(
+        darkTheme = appThemeState.darkTheme,
+        colorPallet = appThemeState.pallet
+    ) {
         content()
     }
 }
@@ -77,12 +106,12 @@ fun BaseView(
 fun HomeScreenContent(
     homeScreen: BottomNavType,
     appThemeState: MutableState<AppThemeState>,
-    chooseColorBottomModalState : ModalBottomSheetState, //use for a11y
+    chooseColorBottomModalState: ModalBottomSheetState, //use for a11y
     modifier: Modifier
 ) {
     Column(modifier = modifier) {
         Crossfade(homeScreen) { screen ->
-            Surface(color = MaterialTheme.colors.background) {
+            Surface(color = MaterialTheme.colorScheme.background) {
                 when (screen) {
                     BottomNavType.HOME -> HomeScreen(appThemeState, chooseColorBottomModalState)
                     BottomNavType.WIDGETS -> WidgetScreen()
@@ -146,7 +175,10 @@ fun BottomNavigationContent(
     homeScreenState: MutableState<BottomNavType>
 ) {
     var animate by remember { mutableStateOf(false) }
-    BottomNavigation(modifier = modifier) {
+    BottomNavigation(
+        modifier = modifier,
+        backgroundColor = MaterialTheme.colorScheme.surface
+    ) {
         BottomNavigationItem(
             icon = {
                 FaIcon(
@@ -159,7 +191,7 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.HOME
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_home)) },
+            label = { Text(text = stringResource(id = R.string.navigation_item_home), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
         )
         BottomNavigationItem(
@@ -177,7 +209,7 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.WIDGETS
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_widgets)) },
+            label = { Text(text = stringResource(id = R.string.navigation_item_widgets), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_WIDGETS_TEST_TAG)
         )
         BottomNavigationItem(
@@ -194,7 +226,7 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.ANIMATION
                 animate = true
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_animation)) },
+            label = { Text(text = stringResource(id = R.string.navigation_item_animation), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_ANIM_TEST_TAG)
 
         )
@@ -212,7 +244,7 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.DEMOUI
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_demoui)) },
+            label = { Text(text = stringResource(id = R.string.navigation_item_demoui), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_DEMO_UI_TEST_TAG)
         )
         BottomNavigationItem(
@@ -230,7 +262,7 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.TEMPLATE
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_profile)) },
+            label = { Text(text = stringResource(id = R.string.navigation_item_profile), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_TEMPLATE_TEST_TAG)
 
         )
