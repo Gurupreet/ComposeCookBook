@@ -3,9 +3,10 @@ package com.guru.composecookbook.ui.demoapps
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -26,6 +27,7 @@ import com.guru.composecookbook.twitter.TwitterActivity
 import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.youtube.YoutubeActivity
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DemoUIList() {
     val demoUis = remember { DemoDataProvider.demoUiList }
