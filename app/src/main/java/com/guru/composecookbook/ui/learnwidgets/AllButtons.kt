@@ -6,7 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
@@ -50,7 +51,7 @@ fun AllButtons() {
         Button(
             onClick = {},
             modifier = Modifier.padding(8.dp),
-            elevation = ButtonDefaults.elevation()
+            elevation = ButtonDefaults.buttonElevation()
         ) {
             Text(text = "Flat")
         }
@@ -90,8 +91,8 @@ fun AllButtons() {
         contentColor = purple200,
     )
     val mainButtonColor = ButtonDefaults.buttonColors(
-        backgroundColor = purple,
-        contentColor = MaterialTheme.colors.surface
+        containerColor = purple,
+        contentColor = MaterialTheme.colorScheme.surface
     )
     Row {
         OutlinedButton(
@@ -107,12 +108,12 @@ fun AllButtons() {
     }
     Row {
         val horizontalGradient = Brush.horizontalGradient(
-            colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
+            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primaryContainer),
             0f,
             250f
         )
         val verticalGradient = Brush.verticalGradient(
-            colors = listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant),
+            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primaryContainer),
             startY = 0f,
             endY = 100f
         )
