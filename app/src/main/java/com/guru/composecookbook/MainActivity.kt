@@ -20,8 +20,11 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -175,11 +178,11 @@ fun BottomNavigationContent(
     homeScreenState: MutableState<BottomNavType>
 ) {
     var animate by remember { mutableStateOf(false) }
-    BottomNavigation(
+
+    NavigationBar(
         modifier = modifier,
-        backgroundColor = MaterialTheme.colorScheme.surface
     ) {
-        BottomNavigationItem(
+        NavigationBarItem(
             icon = {
                 FaIcon(
                     faIcon = FaIcons.Home,
@@ -194,7 +197,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_home), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
         )
-        BottomNavigationItem(
+        NavigationBarItem(
             icon = {
                 FaIcon(
                     faIcon = FaIcons.Tools, tint = LocalContentColor
@@ -212,7 +215,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_widgets), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_WIDGETS_TEST_TAG)
         )
-        BottomNavigationItem(
+        NavigationBarItem(
             icon = {
                 RotateIcon(
                     state = animate,
@@ -230,7 +233,7 @@ fun BottomNavigationContent(
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_ANIM_TEST_TAG)
 
         )
-        BottomNavigationItem(
+        NavigationBarItem(
             icon = {
                 FaIcon(
                     faIcon = FaIcons.LaptopCode, tint = LocalContentColor.current.copy(
@@ -247,7 +250,7 @@ fun BottomNavigationContent(
             label = { Text(text = stringResource(id = R.string.navigation_item_demoui), style = TextStyle(fontSize = 12.sp)) },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_DEMO_UI_TEST_TAG)
         )
-        BottomNavigationItem(
+        NavigationBarItem(
             icon = {
                 FaIcon(
                     faIcon = FaIcons.LayerGroup, tint = LocalContentColor

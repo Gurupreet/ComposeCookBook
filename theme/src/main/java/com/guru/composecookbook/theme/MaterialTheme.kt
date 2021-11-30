@@ -3,9 +3,6 @@ package com.guru.composecookbook.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -20,12 +17,16 @@ private val DarkGreenColorPalette = darkColorScheme(
     primary = green200,
     primaryContainer = green700,
     secondary = teal200,
+    secondaryContainer = green700,
+    onSecondaryContainer = Color.Black,
     background = Color.Black,
     surface = Color.Black,
+    surfaceVariant = Color.Black,
     onPrimary = Color.Black,
     onSecondary = Color.White,
     onBackground = Color.White,
     onSurface = Color.White,
+    onSurfaceVariant = Color.White,
     error = Color.Red,
 )
 
@@ -33,12 +34,16 @@ private val DarkPurpleColorPalette = darkColorScheme(
     primary = purple200,
     primaryContainer = purple700,
     secondary = teal200,
+    secondaryContainer = purple700,
+    onSecondaryContainer = Color.White,
     background = Color.Black,
     surface = Color.Black,
+    surfaceVariant = Color.Black,
     onPrimary = Color.Black,
     onSecondary = Color.White,
     onBackground = Color.White,
     onSurface = Color.White,
+    onSurfaceVariant = Color.White,
     error = Color.Red,
 )
 
@@ -46,12 +51,16 @@ private val DarkBlueColorPalette = darkColorScheme(
     primary = blue200,
     primaryContainer = blue700,
     secondary = teal200,
+    secondaryContainer = blue700,
+    onSecondaryContainer = Color.White,
     background = Color.Black,
     surface = Color.Black,
+    surfaceVariant = Color.Black,
     onPrimary = Color.Black,
     onSecondary = Color.White,
     onBackground = Color.White,
     onSurface = Color.White,
+    onSurfaceVariant = Color.White,
     error = Color.Red,
 )
 
@@ -59,12 +68,16 @@ private val DarkOrangeColorPalette = darkColorScheme(
     primary = orange200,
     primaryContainer = orange700,
     secondary = teal200,
+    secondaryContainer = orange700,
+    onSecondaryContainer = Color.White,
     background = Color.Black,
     surface = Color.Black,
+    surfaceVariant = Color.Black,
     onPrimary = Color.Black,
     onSecondary = Color.White,
     onBackground = Color.White,
     onSurface = Color.White,
+    onSurfaceVariant = Color.White,
     error = Color.Red,
 )
 
@@ -73,48 +86,64 @@ private val LightGreenColorPalette = lightColorScheme(
     primary = green500,
     primaryContainer = green700,
     secondary = teal200,
+    secondaryContainer = green700,
+    onSecondaryContainer = Color.White,
     background = Color.White,
     surface = Color.White,
+    surfaceVariant = Color.White,
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
+    onSurfaceVariant = Color.Black
 )
 
 private val LightPurpleColorPalette = lightColorScheme(
     primary = purple,
     primaryContainer = purple700,
     secondary = teal200,
+    secondaryContainer = purple700,
+    onSecondaryContainer = Color.White,
     background = Color.White,
     surface = Color.White,
+    surfaceVariant = Color.White,
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
+    onSurfaceVariant = Color.Black,
 )
 
 private val LightBlueColorPalette = lightColorScheme(
     primary = blue500,
     primaryContainer = blue700,
     secondary = teal200,
+    secondaryContainer = blue700,
+    onSecondaryContainer = Color.White,
     background = Color.White,
     surface = Color.White,
+    surfaceVariant = Color.White,
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
+    onSurfaceVariant = Color.Black,
 )
 
 private val LightOrangeColorPalette = lightColorScheme(
     primary = orange500,
     primaryContainer = orange700,
     secondary = teal200,
+    secondaryContainer = orange700,
+    onSecondaryContainer = Color.White,
     background = Color.White,
     surface = Color.White,
+    surfaceVariant = Color.White,
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
+    onSurfaceVariant = Color.Black,
 )
 
 
