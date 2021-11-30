@@ -1,9 +1,23 @@
 package com.guru.composecookbook.ui.learnwidgets
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.Checkbox
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.RadioButton
+import androidx.compose.material.Slider
+import androidx.compose.material.Switch
+import androidx.compose.material.SwitchDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.typography
@@ -25,7 +39,7 @@ fun Toggles() {
             onCheckedChange = { checked = !checked })
         Switch(
             checked = switched,
-            colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.primary),
+            colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colorScheme.primary),
             modifier = Modifier.padding(8.dp),
             onCheckedChange = { switched = it }
         )
