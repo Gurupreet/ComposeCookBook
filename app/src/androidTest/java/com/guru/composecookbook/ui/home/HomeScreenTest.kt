@@ -43,29 +43,29 @@ class HomeScreenTest {
     }
 
 
-//    @Test
-//    fun allDisplayedHomeScreenEntriesMustHaveAClickAction() {
-//        composeAndroidTestRule.apply {
-//
-//            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
-//                .onChildren()
-//                .assertAll(
-//                    hasClickAction()
-//                )
-//        }
-//    }
+    @Test
+    fun allDisplayedHomeScreenEntriesMustHaveAClickAction() {
+        composeAndroidTestRule.apply {
 
-//    @Test
-//    fun allHomeScreenEntriesMustHaveTextFromTheDataProvider() {
-//        composeAndroidTestRule.apply {
-//
-//            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
-//                .onChildren()
-//                .assertAll(
-//                    hasTextInProvidedDemoData(DemoDataProvider.homeScreenListItems)
-//                )
-//        }
-//    }
+            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
+                .onChildren()
+                .assertAll(
+                    hasClickAction()
+                )
+        }
+    }
+
+    @Test
+    fun allHomeScreenEntriesMustHaveTextFromTheDataProvider() {
+        composeAndroidTestRule.apply {
+
+            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
+                .onChildren()
+                .assertAll(
+                    hasTextInProvidedDemoData(DemoDataProvider.homeScreenListItems)
+                )
+        }
+    }
 
     /**
      * Returns whether the node's text matches exactly the text of the name in Home Screen Elements.

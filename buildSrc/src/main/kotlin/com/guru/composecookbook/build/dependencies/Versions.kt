@@ -20,7 +20,7 @@ internal object Versions {
     const val appcompat = "1.3.1"
     const val paletteKtx = "1.0.0"
     const val material = "1.4.0"
-    const val material3 = "1.0.0-alpha01"
+    const val material3 = "1.0.0-alpha02"
     const val playServicesAds = "19.6.0"
     const val googleMaps = "3.1.0-beta"
     const val playServicesMaps = "17.0.1"
