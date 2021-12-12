@@ -7,7 +7,7 @@ internal object Versions {
     const val pagingCompose = "1.0.0-alpha12"
     const val navCompose = "2.4.0-beta01"
     const val constraintLayoutCompose = "1.0.0-beta02"
-    const val fontAwesomeCompose = "1.0.0-beta02"
+    const val fontAwesomeCompose = "1.1.0"
     const val coilCompose = "1.3.1"
     const val kotlin = "1.5.31"
     const val coroutines = "1.5.1"
