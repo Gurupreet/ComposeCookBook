@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.PlayArrow
@@ -14,13 +15,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.lottie.LottieLoadingView
 import com.guru.composecookbook.spotify.R
 import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.CoroutineScope
@@ -67,12 +74,21 @@ private fun ScafoldContent(
     bottomSheetScaffoldState: BottomSheetScaffoldState,
     sheetState: ModalBottomSheetState
 ) {
+    var showFullBottomSheet = remember { mutableStateOf(false) }
     ModalBottomSheetLayout(
         modifier = Modifier.fillMaxSize(),
         sheetState = sheetState,
         sheetBackgroundColor = MaterialTheme.colorScheme.surface,
         sheetContent = {
-            BottomSheetContent()
+            if (showFullBottomSheet.value) {
+                FullBottomSheetContent {
+                    coroutineScope.launch {
+                        sheetState.hide()
+                    }
+                }
+            } else {
+                BottomSheetContent()
+            }
         }
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
@@ -106,11 +122,26 @@ private fun ScafoldContent(
                     .padding(16.dp)
                     .height(55.dp),
                 onClick = {
+                    showFullBottomSheet.value = false
                     coroutineScope.launch {
                         sheetState.show()
                     }
                 }) {
                 Text(text = "Modal Bottom sheet")
+            }
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .height(55.dp),
+                onClick = {
+                    showFullBottomSheet.value = true
+                    coroutineScope.launch {
+                       // sheetState.snapTo(ModalBottomSheetValue.Expanded)
+                        sheetState.show()
+                    }
+                }) {
+                Text(text = "Modal Bottom sheet Full")
             }
         }
     }
@@ -120,6 +151,30 @@ private fun ScafoldContent(
 @Composable
 fun BottomSheetContent() {
     DrawerContent()
+}
+
+@Composable
+fun FullBottomSheetContent(onClose: () -> Unit) {
+    Surface(modifier = Modifier
+        .fillMaxSize()
+        .background(Color.Transparent)
+        .padding(top = 8.dp)) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 8.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            LottieLoadingView(context = LocalContext.current, file = "working.json", modifier = Modifier.size(400.dp))
+            Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Share Me")
+            }
+            TextButton(onClick = { onClose.invoke() }) {
+                Text("back")
+            }
+        }
+    }
 }
 
 @Composable
