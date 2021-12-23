@@ -36,7 +36,7 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.typography
 import kotlin.math.roundToInt
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SwipeableLists() {
     val albums by remember {
@@ -55,8 +55,8 @@ fun SwipeableLists() {
 }
 
 
-@ExperimentalMaterialApi
-@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalMaterialApi::class,
+ExperimentalAnimationApi::class)
 @Composable
 fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
     val visible = remember(album.id) { mutableStateOf(true) }
@@ -76,7 +76,7 @@ enum class SwipeState {
     SWIPED, VISIBLE, MIDDLE
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
     val swipeableState = androidx.compose.material.rememberSwipeableState(

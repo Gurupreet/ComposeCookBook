@@ -25,7 +25,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.typography
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UICards() {
     Text(

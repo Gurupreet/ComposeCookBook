@@ -12,9 +12,9 @@ import com.adwi.betty.ui.components.BettyOddList
 import com.adwi.betty.ui.components.BettyScaffold
 import com.adwi.betty.ui.main.MainViewModel
 
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreen(
     viewModel: MainViewModel

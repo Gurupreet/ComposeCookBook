@@ -33,14 +33,14 @@ import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BottomSheetLayouts() {
     BottomSheetDrawer()
 }
 
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BottomSheetDrawer() {
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
@@ -67,7 +67,7 @@ fun BottomSheetDrawer() {
     )
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun ScafoldContent(
     coroutineScope: CoroutineScope,

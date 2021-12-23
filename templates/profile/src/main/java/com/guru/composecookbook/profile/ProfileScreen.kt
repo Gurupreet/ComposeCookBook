@@ -45,8 +45,8 @@ internal fun launchSocialActivity(context: Context, socialType: String) {
 }
 
 
-@ExperimentalMaterialApi
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterialApi::class,
+ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen() {
     Scaffold {
@@ -110,7 +110,7 @@ private fun TopBackground() {
     )
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Preview
 @Composable
 fun ShowProfileScreen() {

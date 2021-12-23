@@ -13,9 +13,9 @@ import com.adwi.betty.util.NotificationUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
-@ExperimentalFoundationApi
+@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @HiltWorker
 class SetupNotificationsWork @AssistedInject constructor(
     @Assisted private val context: Context,

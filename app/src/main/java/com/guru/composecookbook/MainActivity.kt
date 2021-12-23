@@ -63,9 +63,9 @@ import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    @ExperimentalAnimationApi
-    @ExperimentalFoundationApi
-    @ExperimentalMaterialApi
+    @OptIn(ExperimentalAnimationApi::class,
+    ExperimentalFoundationApi::class,
+    ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //for adView demo
@@ -102,9 +102,9 @@ fun BaseView(
     }
 }
 
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class,
+ExperimentalFoundationApi::class,
+ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreenContent(
     homeScreen: BottomNavType,
@@ -128,9 +128,9 @@ fun HomeScreenContent(
     }
 }
 
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class,
+ExperimentalFoundationApi::class,
+ExperimentalMaterialApi::class)
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
     //Default home screen state is always HOME
@@ -272,9 +272,9 @@ fun BottomNavigationContent(
     }
 }
 
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class,
+ExperimentalFoundationApi::class,
+ExperimentalMaterialApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

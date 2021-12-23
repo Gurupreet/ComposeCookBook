@@ -25,15 +25,15 @@ import com.guru.composecookbook.ui.home.clock.ClockDemo
 import com.guru.composecookbook.ui.home.timer.TimerDemo
 import com.guru.pinlock.PinLockView
 
-@ExperimentalFoundationApi
+@OptIn(ExperimentalFoundationApi::class)
 class TemplatesActivity : ComponentActivity() {
 
     private val templateType: String by lazy { intent.getStringExtra(TYPE) ?: "Profiles" }
     private val darkTheme: Boolean by lazy { intent.getBooleanExtra(DARK_THEME, true) }
 
-    @OptIn(ExperimentalMaterial3Api::class)
-    @ExperimentalAnimationApi
-    @ExperimentalMaterialApi
+    @OptIn(ExperimentalMaterial3Api::class,
+    ExperimentalAnimationApi::class,
+    ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -59,10 +59,10 @@ class TemplatesActivity : ComponentActivity() {
     }
 }
 
-@ExperimentalMaterial3Api
-@ExperimentalFoundationApi
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterial3Api::class,
+ExperimentalFoundationApi::class,
+ExperimentalAnimationApi::class,
+ExperimentalMaterialApi::class)
 @Composable
 fun TemplateApp(templateType: String) {
     when (templateType) {

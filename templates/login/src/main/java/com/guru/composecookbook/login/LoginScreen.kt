@@ -247,7 +247,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
     }
 }
 
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedCrossfadeTargetStateParameter")
 @Composable
 fun LoginOnboarding() {

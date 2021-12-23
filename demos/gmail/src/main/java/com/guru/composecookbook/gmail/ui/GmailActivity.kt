@@ -15,7 +15,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 
 class GmailActivity : ComponentActivity() {
 
-    @ExperimentalFoundationApi
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
@@ -31,8 +31,8 @@ class GmailActivity : ComponentActivity() {
     }
 }
 
-@ExperimentalFoundationApi
-@ExperimentalAnimationApi
+@OptIn(ExperimentalFoundationApi::class,
+ExperimentalAnimationApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {

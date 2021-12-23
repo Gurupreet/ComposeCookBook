@@ -23,7 +23,7 @@ sealed class CryptoHomeInteractionEvents {
 }
 
 class CryptoHomeActivity : ComponentActivity() {
-    @ExperimentalCoroutinesApi
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -71,7 +71,7 @@ class CryptoHomeActivity : ComponentActivity() {
 }
 
 
-@ExperimentalCoroutinesApi
+@OptIn(ExperimentalCoroutinesApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview5() {

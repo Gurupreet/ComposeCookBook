@@ -34,8 +34,8 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.login.HorizontalDottedProgressBar
 import kotlin.math.roundToInt
 
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class,
+ExperimentalMaterialApi::class)
 @Composable
 fun SwipeButton(
     onSwiped: () -> Unit,

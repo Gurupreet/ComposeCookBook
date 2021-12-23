@@ -25,7 +25,7 @@ import com.guru.composecookbook.colorpicker.ColorPicker
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
-@ExperimentalAnimationApi
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun DrawingTools(
     drawColor: MutableState<Color>,

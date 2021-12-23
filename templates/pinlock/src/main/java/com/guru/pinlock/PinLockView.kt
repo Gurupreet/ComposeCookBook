@@ -31,8 +31,8 @@ import com.guru.fontawesomecomposelib.FaIcon
 const val pinSize = 4
 const val password = "2580"
 
-@ExperimentalMaterialApi
-@ExperimentalFoundationApi
+@OptIn(ExperimentalMaterialApi::class,
+ExperimentalFoundationApi::class)
 @Composable
 @Preview
 fun PinLockView() {
@@ -174,7 +174,7 @@ fun PinLockView() {
     }
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PinKeyItem(
     onClick: () -> Unit,

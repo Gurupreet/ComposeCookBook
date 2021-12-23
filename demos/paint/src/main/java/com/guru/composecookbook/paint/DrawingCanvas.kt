@@ -18,9 +18,10 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.unit.dp
 
-@ExperimentalComposeUiApi
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
+@OptIn(
+    ExperimentalComposeUiApi::class,
+ExperimentalAnimationApi::class,
+ExperimentalFoundationApi::class)
 @Composable
 fun DrawingCanvas(
     drawColor: MutableState<Color>,

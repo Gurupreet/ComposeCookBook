@@ -16,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 
-@ExperimentalComposeUiApi
-@ExperimentalFoundationApi
-@ExperimentalAnimationApi
+@OptIn(ExperimentalComposeUiApi::class,
+ExperimentalFoundationApi::class,
+ExperimentalAnimationApi::class)
 @Composable
 fun PaintApp() {
     val paths = remember { mutableStateOf(mutableListOf<PathState>()) }
@@ -47,9 +47,9 @@ fun PaintAppBar(onDelete: () -> Unit) {
 }
 
 
-@ExperimentalComposeUiApi
-@ExperimentalFoundationApi
-@ExperimentalAnimationApi
+@OptIn(ExperimentalComposeUiApi::class,
+ExperimentalFoundationApi::class,
+ExperimentalAnimationApi::class)
 @Composable
 fun PaintBody(paths: MutableState<MutableList<PathState>>) {
     Box(modifier = Modifier.fillMaxSize()) {

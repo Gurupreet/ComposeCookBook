@@ -46,7 +46,7 @@ import com.guru.composecookbook.theme.green500
 const val SYMBOL_ID = "symbolId"
 class AndroidWearActivity : ComponentActivity() {
 
-    @ExperimentalWearMaterialApi
+    @OptIn(ExperimentalWearMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -13,9 +13,9 @@ import com.adwi.betty.work.SetupNotificationsWork
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
-@ExperimentalAnimationApi
+@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalAnimationApi::class)
 abstract class BaseActivity : AppCompatActivity() {
 
     protected abstract val viewModel: BaseViewModel?

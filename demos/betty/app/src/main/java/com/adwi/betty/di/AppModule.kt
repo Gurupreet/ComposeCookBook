@@ -16,9 +16,9 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
-    @ExperimentalAnimationApi
-    @ExperimentalMaterialApi
-    @ExperimentalFoundationApi
+    @OptIn(ExperimentalAnimationApi::class)
+    @OptIn(ExperimentalMaterialApi::class)
+    @OptIn(ExperimentalFoundationApi::class)
     @Singleton
     @Provides
     fun provideNotificationTools(

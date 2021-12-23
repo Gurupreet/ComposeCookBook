@@ -50,8 +50,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 
-@OptIn(ExperimentalMaterialApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
-@ExperimentalFoundationApi
+@OptIn(ExperimentalMaterialApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class,
+ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
     appThemeState: MutableState<AppThemeState>,
@@ -119,8 +119,8 @@ private fun ChangeColorIconButton(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
-@ExperimentalFoundationApi
+@OptIn(ExperimentalMaterialApi::class,
+ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreenContent(
     isDarkTheme: Boolean,
@@ -314,8 +314,8 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
     context.startActivity(intent)
 }
 
-@OptIn(ExperimentalMaterialApi::class)
-@ExperimentalFoundationApi
+@OptIn(ExperimentalMaterialApi::class,
+ExperimentalFoundationApi::class)
 @Preview
 @Composable
 fun PreviewHomeScreen() {

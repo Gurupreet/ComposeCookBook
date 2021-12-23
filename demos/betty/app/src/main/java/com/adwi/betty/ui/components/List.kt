@@ -35,9 +35,9 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.launch
 
 
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BettyOddList(
     progress: Float,
@@ -173,7 +173,7 @@ fun ListHeader(name: String, listSize: Int, modifier: Modifier) {
     }
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BettyOddListItem(
     odd: Odd
@@ -300,16 +300,16 @@ fun ListItemTimeInfoPanel(odd: Odd) {
 
 // PREVIEWS ----------------------------------------------------------------------------------
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Preview(name = "BettyOddListItem", showBackground = true)
 @Composable
 fun BettyOddListItemPreview() {
     BettyOddListItem(odd = Odd.mock)
 }
 
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Preview(name = "BettyOddList", showBackground = true)
 @Composable
 fun BettyOddListPreview() {

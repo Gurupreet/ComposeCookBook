@@ -11,9 +11,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.ui.utils.TestTags
 
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterial3Api::class,
+ExperimentalAnimationApi::class,
+ExperimentalMaterialApi::class)
 @Composable
 fun WidgetScreen() {
     Scaffold(
@@ -29,8 +29,8 @@ fun WidgetScreen() {
     )
 }
 
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class,
+ExperimentalMaterialApi::class)
 @Composable
 fun WidgetScreenContent() {
     LazyColumn(state = rememberLazyListState()) {
@@ -47,8 +47,8 @@ fun WidgetScreenContent() {
 }
 
 
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class,
+ExperimentalMaterialApi::class)
 @Preview
 @Composable
 fun PreviewScreen() {

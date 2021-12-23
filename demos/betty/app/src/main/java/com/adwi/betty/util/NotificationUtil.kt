@@ -25,9 +25,9 @@ import javax.inject.Inject
 
 enum class Channel { ODDS_UPDATE }
 
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
-@ExperimentalAnimationApi
+@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalAnimationApi::class)
 @SuppressLint("NewApi")
 class NotificationUtil @Inject constructor(
     @ApplicationContext private val context: Context

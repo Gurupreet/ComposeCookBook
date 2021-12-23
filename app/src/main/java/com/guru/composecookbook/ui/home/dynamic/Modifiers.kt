@@ -29,7 +29,7 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography
 
-@ExperimentalComposeUiApi
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun HowToModifiers() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
@@ -172,7 +172,7 @@ fun DemoText(text: String) {
     )
 }
 
-@ExperimentalComposeUiApi
+@OptIn(ExperimentalComposeUiApi::class)
 @Preview
 @Composable
 fun PreviewHowToModifiers() {

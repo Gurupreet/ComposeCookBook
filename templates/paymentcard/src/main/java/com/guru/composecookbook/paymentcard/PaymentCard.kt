@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 
-@ExperimentalAnimationApi
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun PaymentCard(
     nameText: TextFieldValue,
@@ -245,7 +245,7 @@ enum class CardType(
     Visa("visa", R.drawable.ic_visa_logo),
 }
 
-@ExperimentalAnimationApi
+@OptIn(ExperimentalAnimationApi::class)
 @Preview
 @Composable
 fun PreviewPaymentCard() {

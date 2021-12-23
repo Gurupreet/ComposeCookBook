@@ -12,8 +12,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalMaterial3Api::class)
-@ExperimentalAnimationApi
+@OptIn(ExperimentalMaterial3Api::class,
+ExperimentalAnimationApi::class)
 @Composable
 fun AddPaymentScreen() {
     var nameText by remember { mutableStateOf(TextFieldValue()) }

@@ -24,9 +24,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.M)
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
-@ExperimentalFoundationApi
+@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
@@ -57,9 +57,9 @@ class MainActivity : BaseActivity() {
 
 }
 
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SetupNavigation() {
     val navController = rememberNavController()

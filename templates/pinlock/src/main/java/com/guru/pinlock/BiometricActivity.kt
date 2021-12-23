@@ -10,10 +10,10 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 
-@ExperimentalFoundationApi
+@OptIn(ExperimentalFoundationApi::class)
 class BiometricActivity : FragmentActivity() {
 
-    @ExperimentalMaterialApi
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val biometricPromt = createBiometricPrompt(this)

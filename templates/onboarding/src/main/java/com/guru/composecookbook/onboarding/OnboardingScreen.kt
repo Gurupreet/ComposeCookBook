@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
 
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OnBoardingScreen(onSkip: () -> Unit) {
     val pagerState: PagerState = run {

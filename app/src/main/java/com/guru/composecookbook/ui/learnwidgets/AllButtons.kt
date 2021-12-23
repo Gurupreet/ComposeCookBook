@@ -27,8 +27,8 @@ import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@ExperimentalMaterialApi
-@ExperimentalAnimationApi
+@OptIn(ExperimentalMaterialApi::class,
+ExperimentalAnimationApi::class)
 @Composable
 fun AllButtons() {
     Text(text = "Buttons", style = typography.h5, modifier = Modifier.padding(8.dp))
@@ -175,8 +175,8 @@ fun AllButtons() {
     }
 }
 
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalAnimationApi::class,
+ExperimentalMaterialApi::class)
 @Preview
 @Composable
 fun PreviewButtons() {

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-@ExperimentalAnimationApi
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun BettyToolBar(appName: String) {
     Box(
@@ -37,7 +37,7 @@ fun BettyToolBar(appName: String) {
 
 // PREVIEWS ----------------------------------------------------------------------------------
 
-@ExperimentalAnimationApi
+@OptIn(ExperimentalAnimationApi::class)
 @Preview(name = "BettyHeader")
 @Composable
 fun BettyHeaderPreview() {

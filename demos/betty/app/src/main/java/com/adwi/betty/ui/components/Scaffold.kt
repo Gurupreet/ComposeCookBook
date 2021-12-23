@@ -12,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import com.adwi.betty.R
 import com.adwi.betty.ui.main.MainViewModel
 
-@ExperimentalAnimationApi
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun BettyScaffold(
     viewModel: MainViewModel,
