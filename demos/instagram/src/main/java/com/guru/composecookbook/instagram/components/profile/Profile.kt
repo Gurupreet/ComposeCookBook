@@ -35,7 +35,7 @@ fun ProfilePicture(
 object ProfileSizes {
     val small = 20.dp
     val medium = 32.dp
-    val large = 60.dp
+    val large = 64.dp
 }
 
 @Preview

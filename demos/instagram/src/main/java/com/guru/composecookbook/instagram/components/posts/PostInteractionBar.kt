@@ -20,14 +20,14 @@ fun PostInteractionBar(
     Row(modifier = modifier) {
         IconToggleButton(checked = isLiked, onCheckedChange = { onLikeClicked() }) {
             val icon = if (isLiked) FaIcons.Heart else FaIcons.HeartRegular
-            val tint = if (isLiked) Color.Red else MaterialTheme.colorScheme.onBackground
+            val tint = if (isLiked) Color.Red else MaterialTheme.colorScheme.onPrimary
             FaIcon(faIcon = icon, tint = tint,)
         }
         IconToggleButton(checked = false, onCheckedChange = { onCommentsClicked() }) {
-            FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colorScheme.onSurface)
+            FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colorScheme.onPrimary)
         }
         IconToggleButton(checked = false, onCheckedChange = { onSendClicked() }) {
-            FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colorScheme.onSurface)
+            FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colorScheme.onPrimary)
         }
     }
 }

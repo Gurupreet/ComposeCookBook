@@ -36,6 +36,7 @@ fun ProfileSection(
         Text(
             text = text,
             style = size.textStyle,
+            color = MaterialTheme.colors.onBackground,
             modifier = Modifier
                 .weight(1f)
                 .padding(start = 8.dp)
