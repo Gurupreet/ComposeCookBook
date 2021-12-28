@@ -83,6 +83,7 @@ dependencies {
     implementation(project(":templates:pinlock"))
     implementation(project(":templates:profile"))
     implementation(project(":templates:login"))
+    implementation(project(":templates:cascademenu"))
     implementation(project(":components:fab"))
     implementation(project(":components:charts"))
     implementation(project(":components:tags"))
