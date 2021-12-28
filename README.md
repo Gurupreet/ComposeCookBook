@@ -74,9 +74,9 @@ Shimmer Lists             | List Scroll Animations
 ![](https://media.giphy.com/media/VQof1yEEbEgcqgY7WW/giphy.gif)  |  ![](https://media.giphy.com/media/hhpnI1beJr6gRi4btK/giphy.gif)
 
 ### Templates
-Adding card details        | 
-:-------------------------:|
-![](https://user-images.githubusercontent.com/8813304/112016144-1e21ef00-8b35-11eb-8c33-362c8cbe6c0d.gif)  | 
+Adding card details        | CaseCade Menu
+:-------------------------:| :-------------------------: 
+![](https://user-images.githubusercontent.com/8813304/112016144-1e21ef00-8b35-11eb-8c33-362c8cbe6c0d.gif)  | ![](https://media.giphy.com/media/WoFe2OZ7kbW2KBkzFN/giphy.gif) 
 
 ### Kotlin DSL Templates
 You can find them in *buildSrc*
