@@ -20,6 +20,7 @@ import com.guru.composecookbook.login.LoginOnboarding
 import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.paymentcard.AddPaymentScreen
 import com.guru.composecookbook.profile.ProfileScreen
+import com.guru.composecookbook.cascademenu.CascadeScreen
 import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
 import com.guru.composecookbook.ui.home.clock.ClockDemo
 import com.guru.composecookbook.ui.home.timer.TimerDemo
@@ -74,6 +75,7 @@ fun TemplateApp(templateType: String) {
         "Pin Lock/BioMetric" -> PinLockView()
         "Timer" -> TimerDemo()
         "Clock View" -> ClockDemo()
+        "Cascade Menu" -> CascadeScreen()
         else -> ComingSoon()
     }
 }
