@@ -4,6 +4,7 @@ import FaIcons
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.ExperimentalMaterialApi
@@ -186,14 +187,11 @@ fun PinKeyItem(
     content: @Composable () -> Unit
 ) {
     Surface(
-        modifier = modifier,
+        modifier = modifier.clickable { onClick.invoke() },
         shape = shape,
         color = backgroundColor,
         contentColor = contentColor,
         tonalElevation = elevation,
-        onClick = onClick,
-        role = Role.Button,
-        indication = rememberRipple()
     ) {
         CompositionLocalProvider(LocalContentAlpha provides contentColor.alpha) {
             ProvideTextStyle(MaterialTheme.typography.displayMedium) {
