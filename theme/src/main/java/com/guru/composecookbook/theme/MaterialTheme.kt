@@ -14,8 +14,9 @@ import com.guru.composecookbook.theme.ColorPallet.*
 
 // dark palettes
 private val DarkGreenColorPalette = darkColorScheme(
-    primary = green200,
-    primaryContainer = green700,
+    primary = green500,
+    primaryContainer = green200,
+    onPrimaryContainer = green700,
     secondary = teal200,
     secondaryContainer = green700,
     onSecondaryContainer = Color.Black,
@@ -84,7 +85,8 @@ private val DarkOrangeColorPalette = darkColorScheme(
 // Light pallets
 private val LightGreenColorPalette = lightColorScheme(
     primary = green500,
-    primaryContainer = green700,
+    primaryContainer = green200,
+    onPrimaryContainer = green700,
     secondary = teal200,
     secondaryContainer = green700,
     onSecondaryContainer = Color.White,

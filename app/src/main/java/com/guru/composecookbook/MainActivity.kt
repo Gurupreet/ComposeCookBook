@@ -1,6 +1,7 @@
 package com.guru.composecookbook
 
 import FaIcons
+import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,8 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ExperimentalMaterialApi
@@ -22,6 +25,8 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
@@ -35,6 +40,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -93,11 +99,11 @@ fun BaseView(
         ColorPallet.PURPLE -> purple700
         else -> green700
     }
-    systemUiController?.setStatusBarColor(color = color, darkIcons = appThemeState.darkTheme)
     ComposeCookBookMaterial3Theme(
         darkTheme = appThemeState.darkTheme,
         colorPallet = appThemeState.pallet
     ) {
+        systemUiController?.setStatusBarColor(color = MaterialTheme.colorScheme.onPrimaryContainer, darkIcons = appThemeState.darkTheme)
         content()
     }
 }
@@ -154,19 +160,38 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
             }
         }
     ) {
-        Column {
-            HomeScreenContent(
-                homeScreen = homeScreenState.value,
-                appThemeState = appThemeState,
-                chooseColorBottomModalState = chooseColorBottomModalState,
-                modifier = Modifier.weight(1f)
-            )
-            BottomNavigationContent(
-                modifier = Modifier
-                    .semantics { contentDescription = bottomNavBarContentDescription }
-                    .testTag(TestTags.BOTTOM_NAV_TEST_TAG),
-                homeScreenState = homeScreenState
-            )
+        val config = LocalConfiguration.current
+        val orientation = config.orientation
+        if (orientation == ORIENTATION_PORTRAIT) {
+            Column {
+                HomeScreenContent(
+                    homeScreen = homeScreenState.value,
+                    appThemeState = appThemeState,
+                    chooseColorBottomModalState = chooseColorBottomModalState,
+                    modifier = Modifier.weight(1f)
+                )
+                BottomNavigationContent(
+                    modifier = Modifier
+                        .semantics { contentDescription = bottomNavBarContentDescription }
+                        .testTag(TestTags.BOTTOM_NAV_TEST_TAG),
+                    homeScreenState = homeScreenState
+                )
+            }
+        } else {
+            Row(modifier = Modifier.fillMaxSize()) {
+                NavigationRailContent(
+                    modifier = Modifier
+                        .semantics { contentDescription = bottomNavBarContentDescription }
+                        .testTag(TestTags.BOTTOM_NAV_TEST_TAG),
+                    homeScreenState = homeScreenState
+                )
+                HomeScreenContent(
+                    homeScreen = homeScreenState.value,
+                    appThemeState = appThemeState,
+                    chooseColorBottomModalState = chooseColorBottomModalState,
+                    modifier = Modifier.weight(1f)
+                )
+            }
         }
     }
 
@@ -178,7 +203,6 @@ fun BottomNavigationContent(
     homeScreenState: MutableState<BottomNavType>
 ) {
     var animate by remember { mutableStateOf(false) }
-
     NavigationBar(
         modifier = modifier,
     ) {
@@ -194,7 +218,12 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.HOME
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_home), style = TextStyle(fontSize = 12.sp)) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_home),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
         )
         NavigationBarItem(
@@ -212,7 +241,12 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.WIDGETS
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_widgets), style = TextStyle(fontSize = 12.sp)) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_widgets),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_WIDGETS_TEST_TAG)
         )
         NavigationBarItem(
@@ -229,7 +263,12 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.ANIMATION
                 animate = true
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_animation), style = TextStyle(fontSize = 12.sp)) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_animation),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_ANIM_TEST_TAG)
 
         )
@@ -247,7 +286,12 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.DEMOUI
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_demoui), style = TextStyle(fontSize = 12.sp)) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_demoui),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_DEMO_UI_TEST_TAG)
         )
         NavigationBarItem(
@@ -265,7 +309,136 @@ fun BottomNavigationContent(
                 homeScreenState.value = BottomNavType.TEMPLATE
                 animate = false
             },
-            label = { Text(text = stringResource(id = R.string.navigation_item_profile), style = TextStyle(fontSize = 12.sp)) },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_profile),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_TEMPLATE_TEST_TAG)
+
+        )
+    }
+}
+
+@Composable
+private fun NavigationRailContent(
+    modifier: Modifier,
+    homeScreenState: MutableState<BottomNavType>,
+) {
+    var animate by remember { mutableStateOf(false) }
+    NavigationRail(
+        modifier = modifier,
+    ) {
+        NavigationRailItem(
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.Home,
+                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                )
+            },
+            selected = homeScreenState.value == BottomNavType.HOME,
+            onClick = {
+                homeScreenState.value = BottomNavType.HOME
+                animate = false
+            },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_home),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_HOME_TEST_TAG)
+        )
+        NavigationRailItem(
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.Tools, tint = LocalContentColor
+                        .current.copy(
+                            alpha =
+                            LocalContentAlpha.current
+                        )
+                )
+            },
+            selected = homeScreenState.value == BottomNavType.WIDGETS,
+            onClick = {
+                homeScreenState.value = BottomNavType.WIDGETS
+                animate = false
+            },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_widgets),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_WIDGETS_TEST_TAG)
+        )
+        NavigationRailItem(
+            icon = {
+                RotateIcon(
+                    state = animate,
+                    asset = Icons.Default.PlayArrow,
+                    angle = 720f,
+                    duration = 2000
+                )
+            },
+            selected = homeScreenState.value == BottomNavType.ANIMATION,
+            onClick = {
+                homeScreenState.value = BottomNavType.ANIMATION
+                animate = true
+            },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_animation),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_ANIM_TEST_TAG)
+
+        )
+        NavigationRailItem(
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.LaptopCode, tint = LocalContentColor.current.copy(
+                        alpha =
+                        LocalContentAlpha.current
+                    )
+                )
+            },
+            selected = homeScreenState.value == BottomNavType.DEMOUI,
+            onClick = {
+                homeScreenState.value = BottomNavType.DEMOUI
+                animate = false
+            },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_demoui),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
+            modifier = Modifier.testTag(TestTags.BOTTOM_NAV_DEMO_UI_TEST_TAG)
+        )
+        NavigationRailItem(
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.LayerGroup, tint = LocalContentColor
+                        .current.copy(
+                            alpha =
+                            LocalContentAlpha.current
+                        )
+                )
+            },
+            selected = homeScreenState.value == BottomNavType.TEMPLATE,
+            onClick = {
+                homeScreenState.value = BottomNavType.TEMPLATE
+                animate = false
+            },
+            label = {
+                Text(
+                    text = stringResource(id = R.string.navigation_item_profile),
+                    style = TextStyle(fontSize = 12.sp)
+                )
+            },
             modifier = Modifier.testTag(TestTags.BOTTOM_NAV_TEMPLATE_TEST_TAG)
 
         )

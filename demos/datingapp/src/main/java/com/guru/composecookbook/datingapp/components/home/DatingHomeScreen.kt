@@ -5,7 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Favorite
@@ -96,7 +96,7 @@ fun DatingHomeScreen() {
                         .padding(horizontal = 16.dp)
                         .size(60.dp)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colors.background)
+                        .background(MaterialTheme.colorScheme.background)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Cancel,
@@ -113,7 +113,7 @@ fun DatingHomeScreen() {
                         .padding(horizontal = 16.dp)
                         .size(60.dp)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colors.background)
+                        .background(MaterialTheme.colorScheme.background)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Favorite,
