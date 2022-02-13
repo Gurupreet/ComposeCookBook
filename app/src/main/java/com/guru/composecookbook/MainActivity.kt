@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.sp
 import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.AppThemeState
 import com.guru.composecookbook.theme.ColorPallet
-import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.SystemUiController
 import com.guru.composecookbook.theme.blue700
 import com.guru.composecookbook.theme.green700
@@ -94,7 +94,7 @@ fun BaseView(
         else -> green700
     }
     systemUiController?.setStatusBarColor(color = color, darkIcons = appThemeState.darkTheme)
-    ComposeCookBookMaterialTheme(
+    ComposeCookBookMaterial3Theme(
         darkTheme = appThemeState.darkTheme,
         colorPallet = appThemeState.pallet
     ) {

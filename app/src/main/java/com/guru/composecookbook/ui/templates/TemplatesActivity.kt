@@ -21,7 +21,7 @@ import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.paymentcard.AddPaymentScreen
 import com.guru.composecookbook.profile.ProfileScreen
 import com.guru.composecookbook.cascademenu.CascadeScreen
-import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.ui.home.clock.ClockDemo
 import com.guru.composecookbook.ui.home.timer.TimerDemo
 import com.guru.pinlock.PinLockView
@@ -40,7 +40,7 @@ class TemplatesActivity : ComponentActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         //   val prompt = createBiometricPrompt(this as FragmentActivity)
         setContent {
-            ComposeCookBookMaterialTheme(darkTheme = darkTheme) {
+            ComposeCookBookMaterial3Theme(darkTheme = darkTheme) {
                 androidx.compose.material3.Surface {
                     TemplateApp(templateType)
                 }

@@ -148,7 +148,7 @@ private val LightOrangeColorPalette = lightColorScheme(
 
 
 @Composable
-fun ComposeCookBookMaterialTheme(
+fun ComposeCookBookMaterial3Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     colorPallet: ColorPallet = WALLPAPER,
     content: @Composable () -> Unit,

@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
-import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
@@ -36,7 +36,7 @@ class AdvanceListsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeCookBookMaterialTheme(isDarkTheme) {
+            ComposeCookBookMaterial3Theme(isDarkTheme) {
                 // A surface container using the 'background' color from the theme
                 Scaffold(
                     topBar = {

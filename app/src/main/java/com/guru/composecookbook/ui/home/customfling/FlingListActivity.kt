@@ -26,7 +26,7 @@ import androidx.lifecycle.MutableLiveData
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
-import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.utils.TestTags
 
@@ -126,7 +126,7 @@ class FlingListActivity : ComponentActivity() {
 
 @Composable
 private fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
-    ComposeCookBookMaterialTheme(isDarkTheme) {
+    ComposeCookBookMaterial3Theme(isDarkTheme) {
         content()
     }
 }

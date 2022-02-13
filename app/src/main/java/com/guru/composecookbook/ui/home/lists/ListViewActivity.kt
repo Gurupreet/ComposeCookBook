@@ -26,7 +26,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.instagram.components.stories.StoryList
 import com.guru.composecookbook.instagram.components.stories.StoryItem
-import com.guru.composecookbook.theme.ComposeCookBookMaterialTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import java.util.*
@@ -65,7 +65,7 @@ class ListViewActivity : ComponentActivity() {
 
 @Composable
 fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
-    ComposeCookBookMaterialTheme(isDarkTheme) {
+    ComposeCookBookMaterial3Theme(isDarkTheme) {
         content()
     }
 }
