@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintSet
+import androidx.constraintlayout.compose.ExperimentalMotionApi
 import androidx.constraintlayout.compose.MotionLayout
 import com.guru.composecookbook.data.AlbumsDataProvider
 
@@ -29,6 +30,7 @@ fun MotionLayoutDemo() {
     }
 }
 
+@OptIn(ExperimentalMotionApi::class)
 @Composable
 private fun ButtonsMotionExample() {
     var animateButton by remember { mutableStateOf(false) }
@@ -111,6 +113,7 @@ private fun ButtonsMotionExample() {
     }
 }
 
+@OptIn(ExperimentalMotionApi::class)
 @Composable
 private fun ImageMotionExample() {
     val albums = AlbumsDataProvider.albums.take(4)
