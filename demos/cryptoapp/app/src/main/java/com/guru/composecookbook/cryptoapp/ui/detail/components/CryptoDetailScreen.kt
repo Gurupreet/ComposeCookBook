@@ -8,7 +8,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.BottomAppBar
+import androidx.compose.material.Card
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
@@ -36,13 +38,13 @@ import com.guru.composecookbook.theme.*
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
     val surfaceGradient = Colors.cryptoSurfaceGradient(isSystemInDarkTheme())
     Scaffold(
         bottomBar = { CryptoBottomBar(onBack) },
         floatingActionButton = { CryptoFloatingActionButton() },
-        isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center
     ) {
         Box(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
@@ -153,7 +155,7 @@ fun CryptoFloatingActionButton() {
         icon = { Icon(imageVector = Icons.Default.Add, contentDescription = "") },
         text = { Text(text = "Trade") },
         onClick = { pressed = !pressed },
-        backgroundColor = MaterialTheme.colors.primary,
+        containerColor = MaterialTheme.colorScheme.primary,
         modifier = Modifier.width(animateDpAsState(if (pressed) 200.dp else 120.dp).value)
     )
 }

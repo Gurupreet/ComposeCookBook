@@ -38,6 +38,7 @@ import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModelFactory
 import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToThreeDecimals
 import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
@@ -50,7 +51,7 @@ class AndroidWearActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeCookBookTheme(true) {
+            ComposeCookBookMaterial3Theme(true) {
                 WearStockApp()
             }
 

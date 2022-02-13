@@ -5,8 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.IconToggleButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -106,7 +105,7 @@ fun CryptoListItem(
             Icon(
                 imageVector = if (isFav) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                 contentDescription = null,
-                tint = if (isFav) Color.Red else MaterialTheme.colors.onSurface
+                tint = if (isFav) Color.Red else MaterialTheme.colorScheme.onSurface
             )
         }
     }

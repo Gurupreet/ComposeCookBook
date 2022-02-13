@@ -11,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.twitter.components.TwitterHome
 
@@ -19,7 +20,7 @@ class TwitterActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 val tweets = remember { DemoDataProvider.tweetList }
                 TwitterHome(
                     tweets = tweets,
@@ -42,7 +43,7 @@ class TwitterActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         TwitterHome(
             tweets = DemoDataProvider.tweetList,
             onMessagesClick = { /*TODO*/ },

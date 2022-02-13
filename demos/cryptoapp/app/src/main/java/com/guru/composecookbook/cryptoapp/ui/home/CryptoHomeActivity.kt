@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.detail.CryptoDetailActivity
 import com.guru.composecookbook.cryptoapp.ui.home.components.CryptoHomeScreen
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -28,7 +29,7 @@ class CryptoHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 val viewModel: CryptoHomeViewModel = viewModel(
                     factory = CryptoHomeViewModelFactory(LocalContext.current)
                 )

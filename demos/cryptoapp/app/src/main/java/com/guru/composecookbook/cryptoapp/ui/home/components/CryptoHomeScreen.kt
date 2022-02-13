@@ -10,7 +10,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
@@ -45,7 +45,7 @@ import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit = {}) {
     val viewModel: CryptoHomeViewModel =
@@ -87,7 +87,7 @@ fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
     ExtendedFloatingActionButton(
         text = { Text(text = "$count coins", modifier = animateRotationModifier) },
         onClick = { showFavState.invoke() },
-        backgroundColor = blue,
+        containerColor = blue,
         icon = {
             Icon(
                 imageVector = Icons.Filled.Favorite,
@@ -149,7 +149,7 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
             modifier = Modifier
                 .padding(horizontal = 8.dp)
                 .height(32.dp),
-            color = MaterialTheme.colors.onSurface,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center
         )
     }

@@ -4,7 +4,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material.TopAppBar
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import com.guru.composecookbook.twitter.components.profiles.ProfilePicture
 import com.guru.composecookbook.twitter.components.profiles.ProfilePictureSizes
 import com.guru.composecookbook.twitter.components.tweets.TweetItem
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TwitterHome(
     tweets: List<Tweet>,
@@ -42,8 +44,8 @@ fun TwitterHome(
                         modifier = Modifier.fillMaxWidth()
                     )
                 },
-                backgroundColor = MaterialTheme.colors.surface,
-                contentColor = MaterialTheme.colors.onSurface,
+                backgroundColor = MaterialTheme.colorScheme.surface,
+                contentColor = MaterialTheme.colorScheme.onSurface,
                 elevation = 8.dp,
                 navigationIcon = {
                     ProfilePicture(
@@ -71,7 +73,7 @@ fun TwitterHome(
                     )
                 },
                 onClick = onNewTweetClicked,
-                backgroundColor = twitterColor
+                containerColor = twitterColor
             )
         },
         content = {
