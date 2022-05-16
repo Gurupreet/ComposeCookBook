@@ -8,9 +8,10 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
@@ -133,15 +134,13 @@ fun HomeScreenContent(
     val isWiderScreen = screenWidth > 550 // Random number for now
     Box(modifier = Modifier.fillMaxSize()) {
         if (isWiderScreen) {
-            LazyVerticalGrid(
-                cells = GridCells.Adaptive(150.dp),
+            androidx.compose.foundation.lazy.grid.LazyVerticalGrid(
+                columns = GridCells.Adaptive(150.dp),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                items(
-                    items = list,
-                    itemContent = {
-                        HomeScreenListView(it, context, isDarkTheme, isWiderScreen)
-                    })
+                items(count = list.size) { index ->
+                    HomeScreenListView(list[index], context, isDarkTheme, isWiderScreen)
+                }
             }
         } else {
             LazyColumn(
