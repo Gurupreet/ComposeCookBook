@@ -1,7 +1,7 @@
 package com.guru.composecookbook.ui.home.clock
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset

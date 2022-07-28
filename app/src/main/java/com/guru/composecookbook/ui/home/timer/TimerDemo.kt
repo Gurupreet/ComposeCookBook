@@ -47,9 +47,9 @@ fun TimerDemo(
                             shape = RoundedCornerShape(4.dp)
                         )
                         .padding(horizontal = 4.dp, vertical = 4.dp),
-                    digitStyle = typography.body1.copy(color = MaterialTheme.colorScheme.onPrimary),
+                    digitStyle = typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onPrimary),
                     separatorModifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
-                    separatorStyle = typography.body1.copy(
+                    separatorStyle = typography.bodyLarge.copy(
                         color = MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.Bold
                     )

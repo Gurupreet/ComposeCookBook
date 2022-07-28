@@ -8,7 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -17,7 +17,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.ui.utils.TestTags
 
 /**
@@ -115,7 +115,7 @@ fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
 
 @Composable
 private fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
-    ComposeCookBookTheme(isDarkTheme) {
+    ComposeCookBookMaterial3Theme(isDarkTheme) {
         content()
     }
 }

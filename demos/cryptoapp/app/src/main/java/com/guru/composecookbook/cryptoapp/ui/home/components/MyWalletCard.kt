@@ -62,7 +62,7 @@ fun MyWalletCard() {
         )
         Text(
             text = "My Wallet",
-            style = typography.body1,
+            style = typography.bodyLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(4.dp)
@@ -96,7 +96,7 @@ fun MyWalletCard() {
         Text(
             text = "24H: +1.23%",
             color = green500,
-            style = typography.body2.copy(fontWeight = FontWeight.Medium),
+            style = typography.bodySmall.copy(fontWeight = FontWeight.Medium),
             modifier = Modifier
                 .padding(4.dp)
                 .constrainAs(dailyChange) {

@@ -17,7 +17,6 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
     Surface(
         color = when {
             selected -> MaterialTheme.colorScheme.onSurface.copy(
-                alpha = if (androidx.compose.material.MaterialTheme.colors.isLight) 0.7f else 1f
             )
             else -> MaterialTheme.colorScheme.inverseOnSurface.copy(
                 alpha = 0.05f

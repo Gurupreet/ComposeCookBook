@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 
 class PaintActivity : ComponentActivity() {
 
@@ -23,7 +23,7 @@ class PaintActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 PaintApp()
             }
         }
@@ -40,7 +40,7 @@ ExperimentalAnimationApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         PaintApp()
     }
 }

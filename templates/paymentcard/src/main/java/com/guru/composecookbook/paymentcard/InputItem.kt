@@ -1,9 +1,9 @@
 package com.guru.composecookbook.paymentcard
 
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.OutlinedTextField
+import androidx.compose.material3.ContentAlpha
+import androidx.compose.material3.LocalContentAlpha
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -43,7 +43,6 @@ fun InputItem(
                 )
             }
         },
-        colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
         modifier = modifier,
         visualTransformation = visualTransformation
     )

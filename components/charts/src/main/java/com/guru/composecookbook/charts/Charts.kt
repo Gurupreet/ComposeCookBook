@@ -11,7 +11,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Card
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -50,7 +50,7 @@ fun createRandomFloatList(): List<Float> {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Charts() {
-    Scaffold {
+    Scaffold { _ ->
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item { Spacer(modifier = Modifier.height(40.dp)) }
             item { Text(text = "Compose charts", style = MaterialTheme.typography.headlineMedium) }
@@ -156,7 +156,7 @@ fun Charts() {
 @Composable
 fun LineChart(
     modifier: Modifier = Modifier,
-    lineColors: List<Color> = listOf(androidx.compose.material.MaterialTheme.colors.primary, androidx.compose.material.MaterialTheme.colors.primary),
+    lineColors: List<Color> = listOf(androidx.compose.material3.MaterialTheme.colors.primary, androidx.compose.material3.MaterialTheme.colors.primary),
     lineWidth: Float = 4f,
     yAxisValues: List<Float>,
     shouldAnimate: Boolean = true,

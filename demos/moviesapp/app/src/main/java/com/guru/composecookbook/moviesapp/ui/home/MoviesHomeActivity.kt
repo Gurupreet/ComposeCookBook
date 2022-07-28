@@ -9,7 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.material.icons.outlined.MovieCreation
@@ -27,7 +27,7 @@ import com.guru.composecookbook.moviesapp.ui.details.MovieDetailActivity
 import com.guru.composecookbook.moviesapp.ui.home.components.MovieHomeScreen
 import com.guru.composecookbook.moviesapp.ui.trending.components.MovieTrendingScreen
 import com.guru.composecookbook.moviesapp.ui.watch.components.WatchlistScreen
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.graySurface
 
 sealed class MoviesHomeInteractionEvents {
@@ -44,7 +44,7 @@ class MoviesHomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 val navType = rememberSaveable { mutableStateOf(MovieNavType.SHOWING) }
                 val viewModel: MoviesHomeViewModel = viewModel(
                     factory = MoviesHomeViewModelFactory(LocalContext.current)

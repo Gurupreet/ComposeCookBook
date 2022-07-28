@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.gmail.ui.home.GmailScreen
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 
 class GmailActivity : ComponentActivity() {
 
@@ -20,7 +20,7 @@ class GmailActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 GmailScreen()
             }
         }
@@ -36,7 +36,7 @@ ExperimentalAnimationApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         GmailScreen()
     }
 }

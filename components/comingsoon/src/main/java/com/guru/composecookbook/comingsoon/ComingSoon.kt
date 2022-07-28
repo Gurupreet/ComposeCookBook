@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -25,7 +25,7 @@ fun ComingSoon() {
             LottieWorkingLoadingView(context = LocalContext.current)
             Text(
                 text = "Coming Soon",
-                style = typography.h5,
+                style = typography.headlineLarge,
                 modifier = Modifier
                     .padding(12.dp)
                     .fillMaxWidth(),
@@ -33,7 +33,7 @@ fun ComingSoon() {
             )
             Text(
                 text = "work in progress",
-                style = typography.subtitle2,
+                style = typography.labelSmall,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )

@@ -9,7 +9,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.youtube.components.YoutubeHome
 
 class YoutubeActivity : ComponentActivity() {
@@ -18,7 +18,7 @@ class YoutubeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 YoutubeHome()
             }
         }
@@ -33,7 +33,7 @@ class YoutubeActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         YoutubeHome()
     }
 }

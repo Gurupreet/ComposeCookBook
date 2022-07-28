@@ -6,9 +6,9 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Colors
-import androidx.compose.material.Divider
-import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material3.Colors
+import androidx.compose.material3.Divider
+import androidx.compose.material3.LocalContentAlpha
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text

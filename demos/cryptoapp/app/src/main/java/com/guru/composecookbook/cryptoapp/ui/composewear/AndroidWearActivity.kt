@@ -39,7 +39,7 @@ import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToThreeDec
 import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
 import com.guru.composecookbook.theme.green500

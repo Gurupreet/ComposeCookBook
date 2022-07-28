@@ -174,6 +174,8 @@ fun ComposeCookBookMaterial3Theme(
     }
     androidx.compose.material3.MaterialTheme(
         colorScheme = colors,
-        content = content
+        content = content,
+        typography = typography,
+        shapes = shapes
     )
 }

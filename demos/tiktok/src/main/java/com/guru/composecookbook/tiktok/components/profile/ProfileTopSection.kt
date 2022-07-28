@@ -6,7 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
@@ -109,7 +109,7 @@ fun ProfileTopSection(album: Album) {
     Text(
         text = "My Songs and albums- ${album.song}, ${album.descriptions}: Stay Tuned",
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 32.dp),
-        style = MaterialTheme.typography.body2,
+        style = MaterialTheme.typography.bodySmall,
         textAlign = TextAlign.Center
     )
     ProfileTabs()

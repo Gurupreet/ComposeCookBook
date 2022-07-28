@@ -10,9 +10,9 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
@@ -112,7 +112,7 @@ fun VideoIconsSection(
         LikeIcon(album.id)
         Text(
             text = "256.4k",
-            style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+            style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
         Icon(
@@ -121,13 +121,13 @@ fun VideoIconsSection(
         )
         Text(
             text = "1223",
-            style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+            style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
         Icon(painter = painterResource(id = R.drawable.ic_share_solid), contentDescription = null)
         Text(
             text = "238",
-            style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+            style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 32.dp)
         )
         val rotation = remember { Animatable(0f) }
@@ -178,13 +178,13 @@ fun VideoInfoSection(modifier: Modifier, album: Album) {
         FilterTag(text = album.genre, modifier = Modifier)
         Text(
             text = "@${album.artist}",
-            style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.ExtraBold),
+            style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.ExtraBold),
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        Text(text = album.song, style = MaterialTheme.typography.body2)
+        Text(text = album.song, style = MaterialTheme.typography.bodySmall)
         Text(
             text = "#${album.artist} #cool #tiktok #videos",
-            style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Medium)
+            style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Medium)
         )
     }
 }
@@ -202,7 +202,7 @@ fun FilterTag(text: String, modifier: Modifier) {
         text = text,
         color = Color.White,
         modifier = tagModifier,
-        style = typography.body2.copy(fontWeight = FontWeight.Bold)
+        style = typography.bodySmall.copy(fontWeight = FontWeight.Bold)
     )
 }
 

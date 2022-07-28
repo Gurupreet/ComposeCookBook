@@ -12,7 +12,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Divider
+import androidx.compose.material3.Divider
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -27,7 +27,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.instagram.components.stories.StoryList
 import com.guru.composecookbook.instagram.components.stories.StoryItem
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import java.util.*
 
@@ -205,7 +205,7 @@ private fun ListItemDivider() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         ListViewContent(
             ListViewType.VERTICAL.name,
             onback = {})

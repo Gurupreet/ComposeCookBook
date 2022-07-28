@@ -5,8 +5,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.Text
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -110,8 +110,8 @@ fun TimerViewPreview() {
         componentModifier = Modifier
             .background(color = blue200, shape = RoundedCornerShape(4.dp))
             .padding(horizontal = 4.dp, vertical = 4.dp),
-        digitStyle = typography.body1.copy(color = orange700),
+        digitStyle = typography.bodyLarge.copy(color = orange700),
         separatorModifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
-        separatorStyle = typography.body1.copy(color = teal200)
+        separatorStyle = typography.bodyLarge.copy(color = teal200)
     )
 }

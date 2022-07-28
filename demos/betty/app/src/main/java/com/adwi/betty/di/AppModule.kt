@@ -3,7 +3,7 @@ package com.adwi.betty.di
 import android.content.Context
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.ExperimentalMaterialApi
 import com.adwi.betty.util.NotificationUtil
 import dagger.Module
 import dagger.Provides

@@ -6,7 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.ExperimentalMaterialApi
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -119,7 +119,7 @@ fun AllButtons() {
         )
         Text(
             text = "Horizontal gradient",
-            style = typography.body2.copy(color = Color.White),
+            style = typography.bodySmall.copy(color = Color.White),
             modifier = Modifier
                 .padding(12.dp)
                 .clickable(onClick = {})
@@ -129,7 +129,7 @@ fun AllButtons() {
         )
         Text(
             text = "Vertical gradient",
-            style = typography.body1.copy(color = Color.White),
+            style = typography.bodyLarge.copy(color = Color.White),
             modifier = Modifier
                 .padding(12.dp)
                 .clickable(onClick = {})
@@ -171,7 +171,7 @@ fun AllButtons() {
         shape = CircleShape,
         enabled = false
     ) {
-        Text(text = "Swipe", style = typography.body1)
+        Text(text = "Swipe", style = typography.bodyLarge)
     }
 }
 

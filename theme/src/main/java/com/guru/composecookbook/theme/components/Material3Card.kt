@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Material3Card(
     modifier: Modifier = Modifier,
-    shape: Shape = androidx.compose.material.MaterialTheme.shapes.medium,
+    shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
     contentColor: Color = contentColorFor(backgroundColor),
     border: BorderStroke? = null,

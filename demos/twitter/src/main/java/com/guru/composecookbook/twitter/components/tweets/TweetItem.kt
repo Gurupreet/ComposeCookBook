@@ -1,7 +1,7 @@
 package com.guru.composecookbook.twitter.components.tweets
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
+import androidx.compose.material3.Divider
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,7 +35,7 @@ fun TweetItem(
                 profilePing = tweet.handle,
                 time = tweet.time
             )
-            Text(text = tweet.text, style = typography.body1)
+            Text(text = tweet.text, style = typography.bodyLarge)
             TweetImage(
                 imageId = tweet.tweetImageId,
                 modifier = Modifier.padding(top = 8.dp)

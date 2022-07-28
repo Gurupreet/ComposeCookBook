@@ -7,13 +7,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material3.ExperimentalMaterialApi
+import androidx.compose.material3.LocalContentAlpha
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.outlined.Circle
-import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -180,7 +180,7 @@ fun PinLockView() {
 fun PinKeyItem(
     onClick: () -> Unit,
     modifier: Modifier = Modifier.padding(8.dp),
-    shape: Shape = androidx.compose.material.MaterialTheme.shapes.small.copy(CornerSize(percent = 50)),
+    shape: Shape = androidx.compose.material3.MaterialTheme.shapes.small.copy(CornerSize(percent = 50)),
     backgroundColor: Color = MaterialTheme.colorScheme.onPrimary,
     contentColor: Color = contentColorFor(backgroundColor),
     elevation: Dp = 4.dp,

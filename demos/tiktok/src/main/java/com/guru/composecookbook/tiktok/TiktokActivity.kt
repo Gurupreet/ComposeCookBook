@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Inbox
@@ -19,7 +19,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.tiktokBlack
 import com.guru.composecookbook.tiktok.components.discovers.DiscoverScreen
 import com.guru.composecookbook.tiktok.components.home.HomeScreen
@@ -33,7 +33,7 @@ class TiktokActivity : ComponentActivity() {
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
 
         setContent {
-            ComposeCookBookTheme(darkTheme = true) {
+            ComposeCookBookMaterial3Theme(darkTheme = true) {
                 TiktokAppContent()
             }
         }

@@ -27,7 +27,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.ui.utils.TestTags
 
 /**
@@ -177,7 +177,7 @@ fun ListViewContent(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         val state =
             MutableLiveData(FlingStateStore.INSTANCE.copy()).observeAsState(FlingStateStore.INSTANCE.copy())
 

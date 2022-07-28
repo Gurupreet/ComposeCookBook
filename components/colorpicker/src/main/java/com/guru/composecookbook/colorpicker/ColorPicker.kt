@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
@@ -49,7 +48,7 @@ fun ColorPicker(
 ) {
     Text(
         text = "Color picker with draggable",
-        style = typography.subtitle2,
+        style = typography.labelSmall,
         modifier = Modifier.padding(8.dp)
     )
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp

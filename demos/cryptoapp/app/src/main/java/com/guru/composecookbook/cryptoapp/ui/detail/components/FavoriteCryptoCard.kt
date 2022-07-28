@@ -2,8 +2,8 @@ package com.guru.composecookbook.cryptoapp.ui.detail.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,7 +34,7 @@ fun FavoriteCryptoCard(crypto: Crypto) {
                 Text(
                     text = crypto.name,
                     modifier = Modifier.padding(horizontal = 8.dp),
-                    style = typography.body2
+                    style = typography.bodySmall
                 )
             }
             Text(

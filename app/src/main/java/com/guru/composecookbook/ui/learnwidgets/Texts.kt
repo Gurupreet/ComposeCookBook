@@ -25,16 +25,16 @@ fun TextDemo() {
         Text(text = "Plain", modifier = textModifier)
         Text(
             text = "Medium Bold",
-            style = typography.body1.copy(fontWeight = FontWeight.Medium),
+            style = typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
             modifier = textModifier
         )
         Text(
             text = "Bold",
-            style = typography.body1.copy(fontWeight = FontWeight.Bold)
+            style = typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
         )
         Text(
             text = "Extra Bold",
-            style = typography.body1.copy(fontWeight = FontWeight.Bold)
+            style = typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
         )
     }
 
@@ -43,17 +43,17 @@ fun TextDemo() {
         Text(text = "Default", modifier = textModifier)
         Text(
             text = "Cursive",
-            style = typography.body1.copy(fontFamily = FontFamily.Cursive),
+            style = typography.bodyLarge.copy(fontFamily = FontFamily.Cursive),
             modifier = textModifier
         )
         Text(
             text = "SansSerif",
-            style = typography.body1.copy(fontFamily = FontFamily.SansSerif),
+            style = typography.bodyLarge.copy(fontFamily = FontFamily.SansSerif),
             modifier = textModifier
         )
         Text(
             text = "Monospace",
-            style = typography.body1.copy(fontFamily = FontFamily.Monospace),
+            style = typography.bodyLarge.copy(fontFamily = FontFamily.Monospace),
             modifier = textModifier
         )
     }

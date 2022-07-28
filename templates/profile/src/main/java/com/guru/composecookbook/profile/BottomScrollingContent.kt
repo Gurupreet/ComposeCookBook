@@ -4,8 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterialApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,7 +32,7 @@ fun BottomScrollingContent() {
         Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
         Text(
             text = stringResource(id = R.string.about_me),
-            style = typography.body1,
+            style = typography.bodyLarge,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),
@@ -48,7 +48,7 @@ fun BottomScrollingContent() {
         Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
         Text(
             text = stringResource(id = R.string.about_project),
-            style = typography.body1,
+            style = typography.bodyLarge,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),

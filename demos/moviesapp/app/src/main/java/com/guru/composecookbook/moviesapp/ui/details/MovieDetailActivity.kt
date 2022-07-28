@@ -9,7 +9,7 @@ import androidx.activity.compose.setContent
 import coil.annotation.ExperimentalCoilApi
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.components.MovieDetailContent
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 
 
 @ExperimentalCoilApi
@@ -25,7 +25,7 @@ class MovieDetailActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 movie?.let {
                     MovieDetailContent(it, imageId)
                 }

@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconToggleButton
+import androidx.compose.material.icon
+import androidx.compose.material.iconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 
 @Composable
 fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
@@ -54,7 +54,7 @@ fun ItemImage(item: Item, modifier: Modifier = Modifier) {
         contentDescription = null,
         modifier = modifier
             .size(100.dp, 80.dp)
-            .clip(androidx.compose.material.MaterialTheme.shapes.medium)
+            .clip(androidx.compose.material3.MaterialTheme.shapes.medium)
     )
 }
 
@@ -86,7 +86,7 @@ fun FavIcon(modifier: Modifier = Modifier) {
 @Composable
 fun PreviewListViewItemSmall() {
     val item = DemoDataProvider.item
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         VerticalListItemSmall(item)
     }
 }

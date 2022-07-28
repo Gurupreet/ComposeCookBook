@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.ui.details.components.SpotifyDetailScreen
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 
 class SpotifyDetailActivity : ComponentActivity() {
 
@@ -23,7 +23,7 @@ class SpotifyDetailActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 SpotifyDetailScreen(album)
             }
         }
@@ -43,7 +43,7 @@ class SpotifyDetailActivity : ComponentActivity() {
 @Composable
 fun PreviewSpotifyDetailActivity() {
     val album = AlbumsDataProvider.album
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         SpotifyDetailScreen(album)
     }
 }

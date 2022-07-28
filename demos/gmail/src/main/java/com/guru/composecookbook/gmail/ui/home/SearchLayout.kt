@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Menu
@@ -76,7 +76,7 @@ fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableS
                 focusedIndicatorColor = background,
                 disabledIndicatorColor = background
             ),
-            textStyle = typography.body2
+            textStyle = typography.bodySmall
         )
 
         val accessibilityManager =

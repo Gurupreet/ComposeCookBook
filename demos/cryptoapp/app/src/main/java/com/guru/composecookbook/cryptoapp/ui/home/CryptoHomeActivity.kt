@@ -14,7 +14,7 @@ import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.detail.CryptoDetailActivity
 import com.guru.composecookbook.cryptoapp.ui.home.components.CryptoHomeScreen
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 sealed class CryptoHomeInteractionEvents {
@@ -76,7 +76,7 @@ class CryptoHomeActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview5() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         CryptoHomeScreen()
     }
 }

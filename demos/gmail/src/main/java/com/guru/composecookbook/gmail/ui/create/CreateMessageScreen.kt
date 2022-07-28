@@ -1,6 +1,6 @@
 package com.guru.composecookbook.gmail.ui.create
 
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Attachment

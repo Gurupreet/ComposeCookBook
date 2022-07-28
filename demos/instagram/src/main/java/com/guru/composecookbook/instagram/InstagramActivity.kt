@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.instagram.components.InstagramHome
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 
 class InstagramActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class InstagramActivity : ComponentActivity() {
         setContent {
             val posts = remember { DemoDataProvider.tweetList.filter { it.tweetImageId != 0 } }
             val profiles = remember { DemoDataProvider.tweetList }
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 InstagramHome(
                     posts = posts,
                     profiles = profiles,
@@ -43,7 +43,7 @@ class InstagramActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         InstagramHome(
             posts = DemoDataProvider.tweetList.filter { it.tweetImageId != 0 },
             profiles = DemoDataProvider.tweetList,

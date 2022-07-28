@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.OutlinedTextField
+import androidx.compose.material3.LocalContentAlpha
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
@@ -34,10 +34,11 @@ import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
-    Scaffold() {
+    Scaffold {
 
         //TextFields
         var email by remember { mutableStateOf(TextFieldValue("")) }
@@ -89,7 +90,6 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next
                     ),
-                    colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
                     label = { Text(text = "Email address") },
                     placeholder = { Text(text = "abc@gmail.com") },
                     onValueChange = {
@@ -121,7 +121,6 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                             })
                         )
                     },
-                    colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
                     maxLines = 1,
                     isError = hasError,
                     modifier = Modifier.fillMaxWidth(),

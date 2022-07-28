@@ -5,9 +5,9 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.data.SpotifyDataProvider
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
@@ -103,7 +103,7 @@ fun BottomScrollableContent(scrollState: ScrollState, surfaceGradient: List<Colo
 @Composable
 fun PreviewDetailScreen() {
     val album = AlbumsDataProvider.album
-    ComposeCookBookTheme(true) {
+    ComposeCookBookMaterial3Theme(true) {
         SpotifyDetailScreen(album = album)
     }
 

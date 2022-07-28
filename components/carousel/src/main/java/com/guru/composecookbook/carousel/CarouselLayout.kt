@@ -103,7 +103,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(8.dp),
-                style = typography.body2
+                style = typography.bodySmall
             )
             Image(
                 painter = painterResource(id = item.imageId),

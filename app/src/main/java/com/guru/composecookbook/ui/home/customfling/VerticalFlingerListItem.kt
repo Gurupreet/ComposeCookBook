@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 
 /**
  * @author https://github.com/iamjosephmj
@@ -60,7 +60,7 @@ fun VerticalFlingerListItem(item: Item, modifier: Modifier = Modifier) {
 @Composable
 fun PreviewVerticalFlingerListItem() {
     val item = DemoDataProvider.item
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         VerticalFlingerListItem(item = item)
     }
 }

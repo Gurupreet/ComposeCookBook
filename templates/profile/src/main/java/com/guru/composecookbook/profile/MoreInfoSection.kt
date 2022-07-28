@@ -3,9 +3,9 @@ package com.guru.composecookbook.profile
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ListItem
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterialApi
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Email
@@ -40,7 +40,7 @@ fun MoreInfoSection() {
         text = {
             Text(
                 text = "Compose Cookbook github",
-                style = typography.body1.copy(fontWeight = FontWeight.Bold)
+                style = typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
             )
         },
         secondaryText = { Text(text = "Tap to checkout the repo for the project") },
@@ -52,7 +52,7 @@ fun MoreInfoSection() {
         text = {
             Text(
                 text = "Contact Me",
-                style = typography.body1.copy(fontWeight = FontWeight.Bold)
+                style = typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
             )
         },
         secondaryText = { Text(text = "Tap to write me about any concern or info at $email") },
@@ -64,7 +64,7 @@ fun MoreInfoSection() {
         text = {
             Text(
                 text = "Demo Settings",
-                style = typography.body1.copy(fontWeight = FontWeight.Bold)
+                style = typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
             )
         },
         secondaryText = { Text(text = "Not included yet. coming soon..") },

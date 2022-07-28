@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -44,7 +44,7 @@ fun DatingChatItem(album: Album) {
             Text(
                 text = "${Random.nextInt(1, 60)} min",
                 color = purple,
-                style = typography.body2,
+                style = typography.bodySmall,
             )
 
         }

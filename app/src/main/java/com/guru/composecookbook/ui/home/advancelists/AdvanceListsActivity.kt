@@ -1,14 +1,15 @@
 package com.guru.composecookbook.ui.home.advancelists
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ScrollableTabRow
-import androidx.compose.material.Tab
+import androidx.compose.material3.ExperimentalMaterialApi
+import androidx.compose.material3.ScrollableTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -21,7 +22,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
@@ -31,6 +32,7 @@ class AdvanceListsActivity : ComponentActivity() {
         intent?.getBooleanExtra(DynamicUIActivity.DARK_THEME, false) ?: false
     }
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class,
     ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,7 +111,7 @@ fun AdvanceListContent() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview10() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         //ShimmerList()
     }
 }

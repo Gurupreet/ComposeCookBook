@@ -8,7 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LibraryMusic
@@ -23,7 +23,7 @@ import com.guru.composecookbook.spotify.R
 import com.guru.composecookbook.spotify.ui.home.components.SpotifyHome
 import com.guru.composecookbook.spotify.ui.playlist.components.SpotifyPlayList
 import com.guru.composecookbook.spotify.ui.search.components.SpotifySearchScreen
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.graySurface
 
 enum class SpotifyNavType {
@@ -35,7 +35,7 @@ class SpotifyActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
-            ComposeCookBookTheme {
+            ComposeCookBookMaterial3Theme {
                 SpotifyAppContent()
             }
         }
@@ -100,7 +100,7 @@ fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
 @Preview
 @Composable
 fun DefaultPreview() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         SpotifyAppContent()
     }
 }

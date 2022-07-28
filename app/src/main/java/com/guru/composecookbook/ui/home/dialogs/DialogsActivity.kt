@@ -28,7 +28,7 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
@@ -347,7 +347,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview3() {
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         DialogsOptionList()
     }
 }

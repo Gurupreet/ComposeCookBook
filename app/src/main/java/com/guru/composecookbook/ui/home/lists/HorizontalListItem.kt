@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.ui.utils.TestTags
 
@@ -26,7 +26,7 @@ fun HorizontalListItem(
 ) {
 
     Material3Card(
-        shape = androidx.compose.material.MaterialTheme.shapes.medium,
+        shape = androidx.compose.material3.MaterialTheme.shapes.medium,
         modifier = modifier
             .size(280.dp, 200.dp)
             .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}"),
@@ -67,7 +67,7 @@ fun HorizontalListItem(
 @Composable
 fun PreviewHorizontalListItem() {
     val item = DemoDataProvider.item
-    ComposeCookBookTheme {
+    ComposeCookBookMaterial3Theme {
         HorizontalListItem(item = item)
     }
 }

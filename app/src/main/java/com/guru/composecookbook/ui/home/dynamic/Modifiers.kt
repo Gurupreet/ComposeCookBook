@@ -167,7 +167,7 @@ fun DemoElementText(modifier: Modifier) {
 fun DemoText(text: String) {
     Text(
         text = text,
-        style = typography.body2.copy(Color.Gray),
+        style = typography.bodySmall.copy(Color.Gray),
         modifier = Modifier.padding(4.dp)
     )
 }

@@ -154,7 +154,7 @@ fun CardContent(album: Album) {
             )
             Text(
                 text = "${Random.nextInt(1, 15)} km",
-                style = typography.body2,
+                style = typography.bodySmall,
                 color = purple
             )
         }

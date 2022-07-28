@@ -8,8 +8,8 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material3.BottomNavigation
+import androidx.compose.material3.BottomNavigationItem
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MyLocation
@@ -27,7 +27,7 @@ import com.guru.composecookbook.datingapp.components.chat.DatingChatScreen
 import com.guru.composecookbook.datingapp.components.home.DatingHomeScreen
 import com.guru.composecookbook.datingapp.components.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 

@@ -5,7 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
+import androidx.compose.material.icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lens
 import androidx.compose.runtime.Composable
