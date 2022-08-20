@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.home.dialogs
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -57,6 +58,7 @@ class DialogsActivity : AppCompatActivity() {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DialogScreen(onBack: () -> Unit) {

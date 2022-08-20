@@ -1,5 +1,6 @@
 package com.guru.composecookbook.gmail.ui.details
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -10,6 +11,7 @@ import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Mail
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
@@ -25,7 +27,8 @@ fun MessageDetailScreen(navController: NavHostController) {
                 contentColor = Color.Black,
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(imageVector = Icons.Outlined.ArrowBack,
+                        Icon(
+                            imageVector = Icons.Outlined.ArrowBack,
                             contentDescription = stringResource(id = R.string.cd_back)
                         )
                     }
@@ -33,7 +36,8 @@ fun MessageDetailScreen(navController: NavHostController) {
                 },
                 actions = {
                     IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Archive,
+                        Icon(
+                            imageVector = Icons.Outlined.Archive,
                             contentDescription = stringResource(id = R.string.cd_back)
                         )
                     }
@@ -47,6 +51,10 @@ fun MessageDetailScreen(navController: NavHostController) {
                 }
             )
         },
-        content = { MessageDetailBody() }
+        content = { paddingValues ->
+            MessageDetailBody(
+                modifier = Modifier.padding(paddingValues),
+            )
+        }
     )
 }

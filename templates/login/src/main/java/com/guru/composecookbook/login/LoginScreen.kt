@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
-    Scaffold() {
+    Scaffold { paddingValues ->
 
         //TextFields
         var email by remember { mutableStateOf(TextFieldValue("")) }
@@ -53,6 +53,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
 
         LazyColumn(
             modifier = Modifier
+                .padding(paddingValues)
                 .fillMaxSize()
                 .padding(horizontal = 16.dp)
         ) {
@@ -247,7 +248,6 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedCrossfadeTargetStateParameter")
 @Composable
 fun LoginOnboarding() {

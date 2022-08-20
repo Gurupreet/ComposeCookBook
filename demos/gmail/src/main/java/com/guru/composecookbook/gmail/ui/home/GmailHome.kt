@@ -1,15 +1,37 @@
 package com.guru.composecookbook.gmail.ui.home
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Divider
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PersonAdd
@@ -17,6 +39,7 @@ import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Mail
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -83,8 +106,14 @@ fun GmailHome(navController: NavHostController) {
         drawerBackgroundColor = MaterialTheme.colors.background,
         drawerContentColor = MaterialTheme.colors.onBackground,
         scaffoldState = scaffoldState,
-        content = {
-            GmailContent(fabExpandState, scaffoldState, navController, showUserDialog)
+        content = { paddingValues ->
+            GmailContent(
+                fabExpandState = fabExpandState,
+                scaffoldState = scaffoldState,
+                navController = navController,
+                showUserDialog = showUserDialog,
+                modifier = Modifier.padding(paddingValues),
+            )
         },
         bottomBar = {
             val background = if (isSystemInDarkTheme()) graySurface else Color.White
@@ -185,13 +214,13 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
 
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun GmailContent(
     fabExpandState: MutableState<Boolean>,
     scaffoldState: ScaffoldState,
     navController: NavHostController,
-    showUserDialog: MutableState<Boolean>
+    showUserDialog: MutableState<Boolean>,
+    modifier: Modifier = Modifier,
 ) {
 
     val tweets = remember { DemoDataProvider.tweetList }
@@ -207,7 +236,7 @@ fun GmailContent(
     // ensures that the user intents to have scroll gesture..
     val isVisibleScrolled =
         oldIndex.value != lazyListState.firstVisibleItemIndex ||
-            (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
+                (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
 
     println("${lazyListState.firstVisibleItemIndex}  ${lazyListState.firstVisibleItemScrollOffset}")
 
@@ -243,7 +272,7 @@ fun GmailContent(
 
 
 
-    Box {
+    Box(modifier = modifier) {
 
         LazyColumn(state = lazyListState) {
 
@@ -267,7 +296,7 @@ fun GmailContent(
         }
 
 
-        SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog){
+        SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog) {
             navController.navigate("create")
         }
 
