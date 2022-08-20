@@ -46,17 +46,22 @@ fun AnimationScreen() {
                 }
             )
         },
-        content = {
-            AnimationScreenContent()
+        content = { paddingValues ->
+            AnimationScreenContent(
+                modifier = Modifier.padding(paddingValues)
+            )
         }
     )
 }
 
 @Composable
-fun AnimationScreenContent() {
+fun AnimationScreenContent(
+    modifier: Modifier = Modifier,
+) {
     LazyColumn(
         state = rememberLazyListState(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier,
     ) {
         item { Spacer(modifier = Modifier.padding(4.dp)) }
         item { TitleText(title = "State Animations(Fire and forget)") }

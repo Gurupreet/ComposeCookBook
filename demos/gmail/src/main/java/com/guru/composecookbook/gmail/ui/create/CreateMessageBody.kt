@@ -21,10 +21,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CreateMessageBody() {
-    Column {
+fun CreateMessageBody(
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier = modifier) {
         Row {
             Text(
                 text = "From",

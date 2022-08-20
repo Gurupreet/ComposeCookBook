@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -72,7 +73,7 @@ fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListViewContent(listType: String, onback: () -> Unit) {
+fun ListViewContent(listType: String, onBack: () -> Unit) {
     Scaffold(
         topBar = {
             SmallTopAppBar(
@@ -86,7 +87,7 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = onback) {
+                    IconButton(onClick = onBack) {
                         Icon(
                             Icons.Filled.ArrowBack,
                             contentDescription = stringResource(id = R.string.cd_back),
@@ -95,23 +96,36 @@ fun ListViewContent(listType: String, onback: () -> Unit) {
                 },
             )
         },
-        content = {
-            when (listType) {
-                ListViewType.VERTICAL.name -> {
-                    VerticalListView()
-                }
-                ListViewType.HORIZONTAL.name -> {
-                    HorizontalListView()
-                }
-                ListViewType.GRID.name -> {
-                    GridListView()
-                }
-                ListViewType.MIX.name -> {
-                    HorizontalListView()
-                }
-            }
+        content = { paddingValues ->
+            ListViewScreen(
+                listType = listType,
+                modifier = Modifier.padding(paddingValues),
+            )
         }
     )
+}
+
+@Composable
+fun ListViewScreen(
+    listType: String,
+    modifier: Modifier = Modifier,
+) {
+    Box(modifier = modifier) {
+        when (listType) {
+            ListViewType.VERTICAL.name -> {
+                VerticalListView()
+            }
+            ListViewType.HORIZONTAL.name -> {
+                HorizontalListView()
+            }
+            ListViewType.GRID.name -> {
+                GridListView()
+            }
+            ListViewType.MIX.name -> {
+                HorizontalListView()
+            }
+        }
+    }
 }
 
 @Composable
@@ -127,7 +141,8 @@ fun VerticalListView() {
                     VerticalListItem(item = item)
                 }
                 ListItemDivider()
-            })
+            }
+        )
     }
 }
 
@@ -208,6 +223,7 @@ fun DefaultPreview2() {
     ComposeCookBookTheme {
         ListViewContent(
             ListViewType.VERTICAL.name,
-            onback = {})
+            onBack = {},
+        )
     }
 }

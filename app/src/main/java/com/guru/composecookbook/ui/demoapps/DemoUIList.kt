@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.demoapps
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -27,6 +28,7 @@ import com.guru.composecookbook.twitter.TwitterActivity
 import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.youtube.YoutubeActivity
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DemoUIList() {

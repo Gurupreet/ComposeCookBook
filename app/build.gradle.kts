@@ -49,8 +49,8 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = ProjectConfigs.kotlinCompilerExtensionVersion
     }
-    lintOptions {
-        isAbortOnError = false
+    lint {
+        abortOnError = false
     }
     packagingOptions {
         resources.excludes.apply {

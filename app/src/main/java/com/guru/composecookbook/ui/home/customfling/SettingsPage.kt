@@ -33,10 +33,13 @@ import com.guru.composecookbook.ui.utils.toFloatNum
  * Entry point.
  */
 @Composable
-fun RenderSettingsPage(onApplyClick: () -> Unit) {
+fun RenderSettingsPage(
+    onApplyClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     // Heading.
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxHeight()
             .fillMaxWidth()
     ) {

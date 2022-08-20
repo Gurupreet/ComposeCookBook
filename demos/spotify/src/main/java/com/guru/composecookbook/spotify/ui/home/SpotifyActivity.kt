@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Home
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.spotify.R
@@ -55,7 +57,12 @@ fun SpotifyAppContent() {
     val spotifyNavItemState = rememberSaveable { mutableStateOf(SpotifyNavType.HOME) }
     Scaffold(
         bottomBar = { SpotifyBottomNavigation(spotifyNavItemState) },
-        content = { SpotifyBodyContent(spotifyNavItemState.value) }
+        content = { paddingValues ->
+            SpotifyBodyContent(
+                spotifyNavItemState.value,
+                modifier = Modifier.padding(paddingValues),
+            )
+        }
     )
 }
 
@@ -86,8 +93,14 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
 }
 
 @Composable
-fun SpotifyBodyContent(spotifyNavType: SpotifyNavType) {
-    Crossfade(targetState = spotifyNavType) { navType ->
+fun SpotifyBodyContent(
+    spotifyNavType: SpotifyNavType,
+    modifier: Modifier = Modifier,
+) {
+    Crossfade(
+        targetState = spotifyNavType,
+        modifier = modifier,
+    ) { navType ->
         when (navType) {
             SpotifyNavType.HOME -> SpotifyHome()
             SpotifyNavType.SEARCH -> SpotifySearchScreen()

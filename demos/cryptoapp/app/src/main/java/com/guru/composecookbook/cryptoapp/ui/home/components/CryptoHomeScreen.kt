@@ -61,9 +61,10 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
                 showFavState = !showFavState
             }
         },
-    ) {
+    ) { paddingValues ->
         Column(
             modifier = Modifier
+                .padding(paddingValues)
                 .fillMaxSize()
                 .horizontalGradientBackground(surfaceGradient)
         ) {

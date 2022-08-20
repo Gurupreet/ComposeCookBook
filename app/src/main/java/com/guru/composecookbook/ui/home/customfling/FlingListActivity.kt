@@ -1,5 +1,6 @@
 package com.guru.composecookbook.ui.home.customfling
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -131,12 +132,13 @@ private fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListViewContent(
     list: List<Item>,
     flingStateStore: State<FlingStateStore>,
-    onback: () -> Unit,
+    onBack: () -> Unit,
     onSettingsClick: () -> Unit
 ) {
     /*
@@ -158,18 +160,23 @@ fun ListViewContent(
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack,
-                            contentDescription = stringResource(id = R.string.cd_back))
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(id = R.string.cd_back)
+                        )
 
                     }
                 }
             )
         },
-        content = {
-            VerticalFlingerListView(list, flingStateStore) {
-                onSettingsClick()
-            }
+        content = { paddingValues ->
+            VerticalFlingerListView(
+                list = list,
+                flingStateStore = flingStateStore,
+                onSettingsClick = onSettingsClick,
+                modifier = Modifier.padding(paddingValues),
+            )
         }
     )
 }
@@ -183,6 +190,6 @@ fun DefaultPreview2() {
 
         ListViewContent(
             DemoDataProvider.itemList, state,
-            onback = {}) {}
+            onBack = {}) {}
     }
 }

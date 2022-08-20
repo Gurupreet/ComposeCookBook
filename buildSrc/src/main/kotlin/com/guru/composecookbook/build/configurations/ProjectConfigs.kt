@@ -7,5 +7,5 @@ object ProjectConfigs {
     const val minSdkVersion = 25
     const val targetSdkVersion = 30
     const val applicationId = "com.guru.composecookbook"
-    const val kotlinCompilerExtensionVersion = Versions.compose
+    const val kotlinCompilerExtensionVersion = Versions.composeCompiler
 }
