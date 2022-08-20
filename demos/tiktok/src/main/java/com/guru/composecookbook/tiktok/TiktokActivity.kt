@@ -1,5 +1,6 @@
 package com.guru.composecookbook.tiktok
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -44,6 +45,7 @@ class TiktokActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TiktokAppContent() {
     val navController = rememberNavController()
@@ -87,6 +89,7 @@ fun BottomBarIcon(screen: TikTokScreen) {
         TikTokScreen.Create -> TiktokCreateIcon()
         TikTokScreen.Inbox -> Icon(imageVector = Icons.Filled.Inbox, contentDescription = null)
         TikTokScreen.Me -> Icon(imageVector = Icons.Filled.Person, contentDescription = null)
+        TikTokScreen.Profile -> { /* this branch added to satisfy exhaustive when */ }
     }
 }
 
