@@ -29,8 +29,12 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
             PagerState(0, 0, onboardingList.size - 1)
         }
     }
-    Scaffold {
-        Box(modifier = Modifier.fillMaxSize()) {
+    Scaffold { paddingValues ->
+        Box(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+        ) {
             Pager(
                 state = pagerState,
                 orientation = Orientation.Horizontal,
