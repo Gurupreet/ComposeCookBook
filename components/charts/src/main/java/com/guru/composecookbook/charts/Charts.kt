@@ -50,8 +50,12 @@ fun createRandomFloatList(): List<Float> {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Charts() {
-    Scaffold {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
+    Scaffold { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+        ) {
             item { Spacer(modifier = Modifier.height(40.dp)) }
             item { Text(text = "Compose charts", style = MaterialTheme.typography.headlineMedium) }
             item { Spacer(modifier = Modifier.height(10.dp)) }
@@ -64,7 +68,7 @@ fun Charts() {
                     LaunchedEffect(Unit) {
                         while (mutableChartData.size < 100) {
                             delay(2000)
-                            mutableChartData.add(Random.nextFloat()*5)
+                            mutableChartData.add(Random.nextFloat() * 5)
                         }
                     }
                     LineChart(
@@ -76,7 +80,7 @@ fun Charts() {
                         shouldDrawLiveDot = true,
                         customXTarget = 100,
 
-                    )
+                        )
                 }
             }
             item { Spacer(modifier = Modifier.height(10.dp)) }
@@ -156,7 +160,10 @@ fun Charts() {
 @Composable
 fun LineChart(
     modifier: Modifier = Modifier,
-    lineColors: List<Color> = listOf(androidx.compose.material.MaterialTheme.colors.primary, androidx.compose.material.MaterialTheme.colors.primary),
+    lineColors: List<Color> = listOf(
+        androidx.compose.material.MaterialTheme.colors.primary,
+        androidx.compose.material.MaterialTheme.colors.primary
+    ),
     lineWidth: Float = 4f,
     yAxisValues: List<Float>,
     shouldAnimate: Boolean = true,
@@ -236,7 +243,10 @@ fun LineChart(
 @Composable
 fun BarCharts(
     modifier: Modifier = Modifier,
-    barColors: List<Color> = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primary),
+    barColors: List<Color> = listOf(
+        MaterialTheme.colorScheme.primary,
+        MaterialTheme.colorScheme.primary
+    ),
     barWidth: Float = 20f,
     yAxisValues: List<Float>,
     shouldAnimate: Boolean = true
