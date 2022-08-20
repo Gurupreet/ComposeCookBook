@@ -76,8 +76,10 @@ fun TwitterHome(
                 containerColor = twitterColor
             )
         },
-        content = {
-            LazyColumn {
+        content = { paddingValues ->
+            LazyColumn(
+                modifier = Modifier.padding(paddingValues)
+            ) {
                 items(tweets) {
                     TweetItem(
                         tweet = it,

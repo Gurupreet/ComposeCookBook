@@ -1,12 +1,16 @@
 package com.guru.composecookbook.tiktok
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Inbox
@@ -14,6 +18,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -45,13 +50,17 @@ class TiktokActivity : ComponentActivity() {
     }
 }
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TiktokAppContent() {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { TikTokBottomNavigation(navController) },
-        content = { TikTokBodyContent(navController) }
+        content = { paddingValues ->
+            TikTokBodyContent(
+                navController = navController,
+                modifier = Modifier.padding(paddingValues),
+            )
+        }
     )
 }
 
@@ -89,13 +98,21 @@ fun BottomBarIcon(screen: TikTokScreen) {
         TikTokScreen.Create -> TiktokCreateIcon()
         TikTokScreen.Inbox -> Icon(imageVector = Icons.Filled.Inbox, contentDescription = null)
         TikTokScreen.Me -> Icon(imageVector = Icons.Filled.Person, contentDescription = null)
-        TikTokScreen.Profile -> { /* this branch added to satisfy exhaustive when */ }
+        TikTokScreen.Profile -> { /* this branch added to satisfy exhaustive when */
+        }
     }
 }
 
 @Composable
-fun TikTokBodyContent(navController: NavHostController) {
-    NavHost(navController, startDestination = TikTokScreen.Home.route) {
+fun TikTokBodyContent(
+    navController: NavHostController,
+    modifier: Modifier = Modifier,
+) {
+    NavHost(
+        navController = navController,
+        startDestination = TikTokScreen.Home.route,
+        modifier = modifier,
+    ) {
         composable(TikTokScreen.Home.route) {
             HomeScreen(tiktokInteractionEvents = { handleInteractionEvent(it, navController) })
         }

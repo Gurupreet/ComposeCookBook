@@ -4,25 +4,42 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallTopAppBar
+import androidx.compose.material3.Text
 import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,8 +53,13 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.HomeScreenItems
-import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.theme.AppThemeState
+import com.guru.composecookbook.theme.ColorPallet
+import com.guru.composecookbook.theme.blue500
 import com.guru.composecookbook.theme.components.Material3Card
+import com.guru.composecookbook.theme.green500
+import com.guru.composecookbook.theme.orange500
+import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
 import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
@@ -50,8 +72,10 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 
-@OptIn(ExperimentalMaterialApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class,
-ExperimentalFoundationApi::class)
+@OptIn(
+    ExperimentalMaterialApi::class,
+    ExperimentalMaterial3Api::class
+)
 @Composable
 fun HomeScreen(
     appThemeState: MutableState<AppThemeState>,
@@ -79,13 +103,18 @@ fun HomeScreen(
                 },
             )
         },
-        content = { _ ->
-            HomeScreenContent(appThemeState.value.darkTheme, showMenu) { newPalletSelected ->
-                // Events can be and should be passed to as upper layer as possible here
-                // we are just passing to till HomeScreen.
-                appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
-                showMenu.value = false
-            }
+        content = { paddingValues ->
+            HomeScreenContent(
+                isDarkTheme = appThemeState.value.darkTheme,
+                showMenu = showMenu,
+                modifier = Modifier.padding(paddingValues),
+                onPalletChange = { newPalletSelected ->
+                    // Events can be and should be passed to as upper layer as possible here
+                    // we are just passing to till HomeScreen.
+                    appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
+                    showMenu.value = false
+                }
+            )
         }
     )
 }
@@ -119,19 +148,18 @@ private fun ChangeColorIconButton(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class,
-ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreenContent(
     isDarkTheme: Boolean,
     showMenu: MutableState<Boolean>,
-    onPalletChange: (ColorPallet) -> Unit
+    onPalletChange: (ColorPallet) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
     val list = remember { DemoDataProvider.homeScreenListItems }
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val isWiderScreen = screenWidth > 550 // Random number for now
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize()) {
         if (isWiderScreen) {
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(150.dp),
@@ -149,7 +177,8 @@ fun HomeScreenContent(
                     items = list,
                     itemContent = {
                         HomeScreenListView(it, context, isDarkTheme, isWiderScreen)
-                    })
+                    }
+                )
             }
         }
         if (showMenu.value) {
@@ -162,7 +191,6 @@ fun HomeScreenContent(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class, androidx.compose.animation.ExperimentalAnimationApi::class)
 @Composable
 fun PalletMenu(
     modifier: Modifier,
@@ -312,8 +340,7 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
     context.startActivity(intent)
 }
 
-@OptIn(ExperimentalMaterialApi::class,
-ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Preview
 @Composable
 fun PreviewHomeScreen() {
