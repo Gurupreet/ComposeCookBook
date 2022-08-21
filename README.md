@@ -61,7 +61,7 @@ Spotify             |  Instagram Demo | Twitter, Gmail, Youtube                 
 
 Gmail full             |  Tiktok                      |  Complete Crypto App Ui
 :-------------------------:|:-------------------------: |:-------------------------:
-![](https://media.giphy.com/media/hrOVD7rbST5shclGkQ/giphy.gif)  |  ![](https://media.giphy.com/media/cimocpJnmSBeJIPxu2/giphy.gif)  |  ![](https://user-images.githubusercontent.com/31402470/185772610-b67843a6-ebb6-4602-bab9-783da98454cc.gif  height="480")
+![](https://media.giphy.com/media/hrOVD7rbST5shclGkQ/giphy.gif)  |  ![](https://media.giphy.com/media/cimocpJnmSBeJIPxu2/giphy.gif)  |  ![](https://media.giphy.com/media/KgV7x4F7s0eu9Swred/giphy.gif)
 
 ### Apps with Api, Retrofit, Room, Flow, Livedata Integration
 CryptoApp MVVM             |  MovieApp MVI              | Dating APP DEMO UI         | Betty
