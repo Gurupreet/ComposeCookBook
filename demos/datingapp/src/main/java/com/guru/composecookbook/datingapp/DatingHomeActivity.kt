@@ -112,6 +112,7 @@ fun DatingBottomBar(navType: MutableState<DatingNavType>) {
     }
 }
 
+@ExperimentalMaterial3Api
 @Composable
 fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
     val title = when (navType.value) {

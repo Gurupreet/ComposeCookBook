@@ -8,11 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.guru.composecookbook.moviesapp.data.MovieDIGraph
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.data.repositories.MoviesLanesRepository
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class TrendingViewModelFactory(val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return TrendingViewModel(context) as T
     }
 }

@@ -62,7 +62,9 @@ interface MovieApi {
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
-                .addInterceptor(HttpLoggingInterceptor())
+                .addInterceptor(
+                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                )
                 .build()
 
             return Retrofit.Builder()
