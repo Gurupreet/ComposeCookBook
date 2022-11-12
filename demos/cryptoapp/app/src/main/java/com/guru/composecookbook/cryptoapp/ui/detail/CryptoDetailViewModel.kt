@@ -9,7 +9,7 @@ import com.guru.composecookbook.cryptoapp.data.repositories.CryptoRepository
 import kotlinx.coroutines.Dispatchers
 
 class CryptoDetailViewModelFactory(val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return CryptoDetailViewModel(context) as T
     }
 }

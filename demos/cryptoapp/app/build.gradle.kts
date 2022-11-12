@@ -15,7 +15,7 @@ dependencies {
     implementation(project(":demos:cryptoapp:data"))
     implementation(project(":theme"))
     implementation(project(":data"))
-    implementation("androidx.wear:wear:1.1.0")
+    implementation("androidx.wear:wear:1.2.0")
 
     addComposeOfficialDependencies()
     addComposeThirdPartyDependencies()

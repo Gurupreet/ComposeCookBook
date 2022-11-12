@@ -18,7 +18,7 @@
             android:value="true" />
 
         <activity
-            android:name=".ui.AndroidWearActivity"
+            android:name=".ui.composewear.AndroidWearActivity"
             android:exported="true"
             android:label="@string/title_activity_android_wear">
             <intent-filter>

@@ -25,6 +25,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.ReadMore
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -51,6 +52,7 @@ fun AppBars() {
     NavigationBarDemo()
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBarsDemo() {
     SubtitleText(subtitle = "Top App bar")
