@@ -62,9 +62,10 @@ fun YoutubeHome() {
                 }
             )
         },
-        content = {
+        content = { paddingValues ->
             Surface(
                 elevation = if (MaterialTheme.colors.isLight) 0.dp else 8.dp,
+                modifier = Modifier.padding(paddingValues)
             ) {
                 YoutubeContent()
             }

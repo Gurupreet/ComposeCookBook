@@ -1,11 +1,26 @@
 package com.guru.composecookbook.cascademenu
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.twotone.*
+import androidx.compose.material.icons.twotone.Close
+import androidx.compose.material.icons.twotone.DeleteSweep
+import androidx.compose.material.icons.twotone.Done
+import androidx.compose.material.icons.twotone.FileCopy
+import androidx.compose.material.icons.twotone.Language
+import androidx.compose.material.icons.twotone.MoreVert
+import androidx.compose.material.icons.twotone.Share
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -19,7 +34,6 @@ import com.guru.composecookbook.cascademenu.cascade.CascadeMenu
 import com.guru.composecookbook.cascademenu.cascade.CascadeMenuItem
 import com.guru.composecookbook.cascademenu.cascade.cascadeMenu
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -39,9 +53,10 @@ fun CascadeScreen() {
         modifier = Modifier.fillMaxSize(),
         backgroundColor = Color.Transparent,
         scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState)
-    ) {
+    ) { paddingValues ->
         Column(
             modifier = Modifier
+                .padding(paddingValues)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.End,

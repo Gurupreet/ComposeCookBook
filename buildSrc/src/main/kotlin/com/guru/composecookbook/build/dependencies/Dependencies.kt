@@ -30,7 +30,7 @@ object Dependencies {
         "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayoutCompose}"
     const val composePaging = "androidx.paging:paging-compose:${Versions.pagingCompose}"
     const val composeViewModel =
-        "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.lifecycleViewModelCompose}"
+        "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.androidLifecycleGrouped}"
     const val composeActivity = "androidx.activity:activity-compose:${Versions.activityCompose}"
     const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.lottie}"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"

@@ -8,18 +8,27 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.material.icons.filled.PersonPin
 import androidx.compose.material.icons.filled.Style
 import androidx.compose.material.icons.filled.Textsms
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallTopAppBar
+import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
@@ -27,7 +36,6 @@ import com.guru.composecookbook.datingapp.components.chat.DatingChatScreen
 import com.guru.composecookbook.datingapp.components.home.DatingHomeScreen
 import com.guru.composecookbook.datingapp.components.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 
@@ -45,8 +53,11 @@ class DatingHomeActivity : ComponentActivity() {
                 Scaffold(
                     topBar = { DatingHomeAppbar(navType) },
                     bottomBar = { DatingBottomBar(navType) }
-                ) {
-                    DatingHomeContent(navType)
+                ) { paddingValues ->
+                    DatingHomeContent(
+                        navType = navType,
+                        modifier = Modifier.padding(paddingValues)
+                    )
                 }
             }
         }
@@ -63,8 +74,11 @@ class DatingHomeActivity : ComponentActivity() {
 
 @SuppressLint("UnusedCrossfadeTargetStateParameter")
 @Composable
-fun DatingHomeContent(navType: MutableState<DatingNavType>) {
-    Crossfade(targetState = navType) {
+fun DatingHomeContent(
+    navType: MutableState<DatingNavType>,
+    modifier: Modifier = Modifier,
+) {
+    Crossfade(targetState = navType, modifier = modifier) {
         when (navType.value) {
             DatingNavType.PEOPLES -> DatingHomeScreen()
             DatingNavType.CHATS -> DatingChatScreen()
@@ -98,6 +112,7 @@ fun DatingBottomBar(navType: MutableState<DatingNavType>) {
     }
 }
 
+@ExperimentalMaterial3Api
 @Composable
 fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
     val title = when (navType.value) {

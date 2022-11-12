@@ -33,9 +33,10 @@ import io.iamjosephmj.flinger.bahaviours.StockFlingBehaviours
 fun VerticalFlingerListView(
     list: List<Item>,
     flingStateStore: State<FlingStateStore>,
-    onSettingsClick: () -> Unit
+    onSettingsClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    Column {
+    Column(modifier = modifier) {
 
         Column(
             modifier = Modifier

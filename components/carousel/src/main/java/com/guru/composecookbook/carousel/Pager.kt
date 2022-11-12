@@ -34,7 +34,7 @@ fun Pager(
             }
         },
         modifier = modifier.draggable(
-            orientation = Orientation.Horizontal,
+            orientation = orientation,
             onDragStarted = {
                 state.selectionState = SelectionState.Undecided
             },

@@ -4,15 +4,25 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.TopAppBar
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,7 +31,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 const val initialImageFloat = 170f
@@ -45,13 +54,13 @@ internal fun launchSocialActivity(context: Context, socialType: String) {
 }
 
 
-@OptIn(ExperimentalMaterialApi::class,
-ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen() {
-    Scaffold {
+    Scaffold { paddingValues ->
         Box(
             modifier = Modifier
+                .padding(paddingValues)
                 .fillMaxSize()
                 .semantics { testTag = "Profile Screen" }
         ) {
@@ -110,7 +119,6 @@ private fun TopBackground() {
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Preview
 @Composable
 fun ShowProfileScreen() {

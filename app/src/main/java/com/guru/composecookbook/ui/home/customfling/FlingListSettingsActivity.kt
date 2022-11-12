@@ -100,16 +100,21 @@ fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
                 elevation = 8.dp,
                 navigationIcon = {
                     IconButton(onClick = onback) {
-                        Icon(Icons.Filled.ArrowBack,
+                        Icon(
+                            Icons.Filled.ArrowBack,
                             contentDescription = stringResource(id = R.string.cd_back)
                         )
                     }
                 }
             )
         },
-        content = {
-            RenderSettingsPage(onApply)
-        })
+        content = { paddingValues ->
+            RenderSettingsPage(
+                onApplyClick = onApply,
+                modifier = Modifier.padding(paddingValues),
+            )
+        }
+    )
 }
 
 

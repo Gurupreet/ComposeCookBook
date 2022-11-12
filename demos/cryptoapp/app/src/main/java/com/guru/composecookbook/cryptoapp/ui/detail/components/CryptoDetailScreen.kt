@@ -46,8 +46,12 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
         bottomBar = { CryptoBottomBar(onBack) },
         floatingActionButton = { CryptoFloatingActionButton() },
         floatingActionButtonPosition = FabPosition.Center
-    ) {
-        Box(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+    ) { paddingValues ->
+        Box(
+            modifier = Modifier
+                .padding(paddingValues)
+                .horizontalGradientBackground(surfaceGradient)
+        ) {
             val scrollState = rememberScrollState(0)
             CryptoTopSection(crypto, scrollState)
             Column(
@@ -98,7 +102,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
         )
         Text(
             text = "${crypto.dailyChange.roundToTwoDecimals()} " +
-                " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
+                    " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
             color = if (crypto.dailyChange > 0) green700 else Color.Red
         )
     }
@@ -138,7 +142,8 @@ fun CryptoBottomBar(onBack: () -> Unit) {
         cutoutShape = CircleShape
     ) {
         IconButton(onClick = onBack) {
-            Icon(imageVector = Icons.Default.ArrowBack,
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
                 contentDescription = stringResource(id = R.string.cd_back)
             )
         }

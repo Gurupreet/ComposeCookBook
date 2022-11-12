@@ -14,6 +14,10 @@
 <br />
 
 <div align="center">
+
+<a href="https://github.com/Gurupreet/ComposeCookBook/releases/download/latest-master/app-debug.apk" >
+      <img src = "https://img.shields.io/badge/Master-Master?color=7885FF&label=Sample%20App&logo=android&style=for-the-badge" />
+    </a>
     <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#december_16_2020">
       <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.1-brightgreen" />
     </a>

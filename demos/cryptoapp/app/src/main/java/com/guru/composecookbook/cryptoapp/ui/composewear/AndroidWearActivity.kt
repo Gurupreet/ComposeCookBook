@@ -1,4 +1,4 @@
-package com.guru.composecookbook.cryptoapp.ui
+package com.guru.composecookbook.cryptoapp.ui.composewear
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,19 +11,15 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
-import androidx.navigation.Navigator
 import androidx.navigation.navArgument
-import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.wear.compose.material.*
@@ -35,11 +31,8 @@ import com.guru.composecookbook.charts.LineChart
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModel
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModelFactory
-import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToThreeDecimals
 import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
-import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
 import com.guru.composecookbook.theme.green500
@@ -89,7 +82,7 @@ class AndroidWearActivity : ComponentActivity() {
                     arguments = listOf(navArgument(SYMBOL_ID) { type = NavType.StringType })
                 ) { backStackEntry ->
                     val symbol = backStackEntry.arguments?.getString(SYMBOL_ID) ?: "btc"
-                    val crypto = pagingItems.snapshot().items.filter { it.symbol == symbol }.first()
+                    val crypto = pagingItems.itemSnapshotList.items.firstOrNull { it.symbol == symbol }
                     crypto?.let {
                         StockDetailScreen(crypto = it)
                     }
