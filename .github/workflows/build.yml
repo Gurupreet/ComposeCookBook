@@ -43,5 +43,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
-          name: QuotesApp-APK
+          name: ComposeCookBook
           path: app/build/outputs/apk/debug/**.apk
