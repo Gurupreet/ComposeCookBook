@@ -1,0 +1,47 @@
+name: Build APK
+
+on:
+
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]  
+    
+  workflow_dispatch:
+
+
+jobs:
+
+  build_job:
+    name: Building the APK
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Restore Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+        
+                    
+      - name: Touch local properties
+        run: touch local.properties
+      - name: Add Api Key
+        run: echo "apiKey=\"\"" >> local.properties   
+        
+      - name: Assemble Debug
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: ComposeCookBook
+          path: app/build/outputs/apk/debug/**.apk

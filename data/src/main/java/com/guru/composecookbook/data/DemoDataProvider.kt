@@ -358,7 +358,8 @@ object DemoDataProvider {
         "MoviesApp+MVVM",
         "DatingApp",
         "TikTok",
-        "Paint"
+        "Paint",
+        "Meditation"
     )
 
 }

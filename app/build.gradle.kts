@@ -78,6 +78,7 @@ dependencies {
     implementation(project(":demos:paint"))
     implementation(project(":demos:cryptoapp:app"))
     implementation(project(":demos:moviesapp:app"))
+    implementation(project(":demos:meditation"))
     implementation(project(":templates:onboarding"))
     implementation(project(":templates:paymentcard"))
     implementation(project(":templates:pinlock"))

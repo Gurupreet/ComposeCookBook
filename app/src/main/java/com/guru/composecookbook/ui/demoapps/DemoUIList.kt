@@ -20,6 +20,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.datingapp.DatingHomeActivity
 import com.guru.composecookbook.gmail.ui.GmailActivity
 import com.guru.composecookbook.instagram.InstagramActivity
+import com.guru.composecookbook.meditation.MeditationActivity
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeActivity
 import com.guru.composecookbook.paint.PaintActivity
 import com.guru.composecookbook.spotify.ui.home.SpotifyActivity
@@ -93,6 +94,11 @@ fun DemoUIList() {
                                 "TikTok" -> {
                                     context.startActivity(
                                         TiktokActivity.newIntent(context)
+                                    )
+                                }
+                                "Meditation" -> {
+                                    context.startActivity(
+                                        MeditationActivity.newIntent(context)
                                     )
                                 }
                                 else -> TODO("Create your activity to launch any new demo app")
