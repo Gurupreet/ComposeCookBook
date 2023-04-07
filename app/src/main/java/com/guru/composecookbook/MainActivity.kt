@@ -6,13 +6,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.ModalBottomSheetLayout
@@ -29,7 +25,6 @@ import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -69,9 +64,6 @@ import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalAnimationApi::class,
-    ExperimentalFoundationApi::class,
-    ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //for adView demo
@@ -108,9 +100,8 @@ fun BaseView(
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class,
-ExperimentalFoundationApi::class,
-ExperimentalMaterialApi::class)
+@OptIn(
+    ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreenContent(
     homeScreen: BottomNavType,
@@ -134,9 +125,7 @@ fun HomeScreenContent(
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class,
-ExperimentalFoundationApi::class,
-ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
     //Default home screen state is always HOME
@@ -445,9 +434,6 @@ private fun NavigationRailContent(
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class,
-ExperimentalFoundationApi::class,
-ExperimentalMaterialApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

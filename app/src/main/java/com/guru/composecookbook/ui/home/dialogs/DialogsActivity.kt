@@ -77,14 +77,16 @@ fun DialogScreen(onBack: () -> Unit) {
 
             )
         },
-        content = {
-            DialogsOptionList()
+        content = {paddingValues->
+            DialogsOptionList(
+                paddingValues = paddingValues
+            )
         }
     )
 }
 
 @Composable
-fun DialogsOptionList() {
+fun DialogsOptionList(paddingValues: PaddingValues) {
     //Here we are using power of making simple data classes act as stateful when using `by state`
     var dialogState by remember { mutableStateOf(DialogState(false, DialogType.SIMPLE)) }
 
@@ -98,7 +100,7 @@ fun DialogsOptionList() {
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+            .padding(paddingValues)
     ) {
         Button(
             onClick = { dialogState = dialogState.copy(showDialog = true) },
@@ -348,8 +350,10 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview3() {
+fun DefaultPreview3(
+    paddingValues:PaddingValues = PaddingValues()
+) {
     ComposeCookBookTheme {
-        DialogsOptionList()
+        DialogsOptionList(paddingValues)
     }
 }
