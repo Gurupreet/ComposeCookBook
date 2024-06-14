@@ -114,7 +114,8 @@ Please get **Android Studio Bumblebee latest Canary** [from here](https://develo
   - [Jetpack compose Samples](https://github.com/android/compose-samples)
 
 - [Compose Academy ](https://compose.academy/)
-- [Jetpack Compose Component List](https://www.composables.com/components)
+
+- [Composables](https://composables.com/)
 
 ## Contribution Info
 - All the contributions are welcomed keeping following points in mind.
