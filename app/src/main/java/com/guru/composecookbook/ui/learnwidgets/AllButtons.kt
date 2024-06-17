@@ -38,12 +38,16 @@ import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * Composable function demonstrating various types of buttons and their customization options.
+ */
 @OptIn(ExperimentalMaterialApi::class,
 ExperimentalAnimationApi::class)
 @Composable
 fun AllButtons() {
     Text(text = "Buttons", style = typography.h5, modifier = Modifier.padding(8.dp))
 
+    // Row 1: Basic Buttons
     Row {
         Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Text(text = "Main Button")
@@ -55,6 +59,8 @@ fun AllButtons() {
             Text(text = "Text Disabled")
         }
     }
+
+    // Row 2: More Button Variations
     Row {
         Button(onClick = {}, modifier = Modifier.padding(8.dp), enabled = false) {
             Text(text = "Disabled")
@@ -74,6 +80,8 @@ fun AllButtons() {
             Text(text = "Rounded")
         }
     }
+
+    // Row 3: Other Button Types
     Row {
         OutlinedButton(onClick = {}, modifier = Modifier.padding(8.dp)) {
             Text(text = "Outline")
@@ -117,6 +125,8 @@ fun AllButtons() {
             Text(text = "Custom colors")
         }
     }
+
+    // Gradient Background Buttons
     Row {
         val horizontalGradient = Brush.horizontalGradient(
             colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
@@ -150,6 +160,7 @@ fun AllButtons() {
         )
     }
 
+    // Swipe Button Examples
     val swipeButtonState = remember {
         mutableStateOf(SwipeButtonState.INITIAL)
     }
@@ -186,6 +197,10 @@ fun AllButtons() {
     }
 }
 
+
+/**
+ * A Composable function to preview the AllButtons Composable.
+ */
 @OptIn(ExperimentalAnimationApi::class,
 ExperimentalMaterialApi::class)
 @Preview

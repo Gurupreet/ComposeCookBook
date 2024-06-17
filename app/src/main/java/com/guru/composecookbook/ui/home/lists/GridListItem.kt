@@ -24,6 +24,12 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.ui.utils.TestTags
 
+/**
+ * Composable function to display a grid list item.
+ *
+ * @param item The item to display, which contains information such as title, subtitle, source, and image.
+ * @param modifier The modifier to be applied to the layout of the grid list item.
+ */
 @Composable
 fun GridListItem(
     item: Item,
@@ -70,6 +76,9 @@ fun GridListItem(
     }
 }
 
+/**
+ * Preview function for GridListItem composable.
+ */
 @Preview
 @Composable
 fun PreviewGridListItem() {

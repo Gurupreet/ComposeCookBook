@@ -26,12 +26,21 @@ import com.guru.composecookbook.ui.home.clock.ClockDemo
 import com.guru.composecookbook.ui.home.timer.TimerDemo
 import com.guru.pinlock.PinLockView
 
+/**
+ * Activity responsible for displaying different templates based on the provided template type and dark theme setting.
+ *
+ * @property templateType The type of template to display, defaults to "Profiles" if not provided.
+ * @property darkTheme Boolean indicating whether to use dark theme for the templates.
+ */
 @OptIn(ExperimentalFoundationApi::class)
 class TemplatesActivity : ComponentActivity() {
 
     private val templateType: String by lazy { intent.getStringExtra(TYPE) ?: "Profiles" }
     private val darkTheme: Boolean by lazy { intent.getBooleanExtra(DARK_THEME, true) }
 
+    /**
+     * Creates the activity UI and sets up the necessary configurations and theme.
+     */
     @OptIn(ExperimentalMaterial3Api::class,
     ExperimentalAnimationApi::class,
     ExperimentalMaterialApi::class)
@@ -52,6 +61,14 @@ class TemplatesActivity : ComponentActivity() {
         private const val TYPE = "type"
         private const val DARK_THEME = "darkTheme"
 
+        /**
+         * Creates an intent to launch TemplatesActivity with the specified parameters.
+         *
+         * @param context The context from which the activity is launched.
+         * @param templateType The type of template to display.
+         * @param isDarkTheme Boolean indicating whether to use dark theme.
+         * @return Intent to launch TemplatesActivity.
+         */
         fun newIntent(context: Context, templateType: String, isDarkTheme: Boolean) =
             Intent(context, TemplatesActivity::class.java).apply {
                 putExtra(TYPE, templateType)
@@ -60,6 +77,12 @@ class TemplatesActivity : ComponentActivity() {
     }
 }
 
+
+/**
+ * Composable function that displays a specific template based on the provided template type.
+ *
+ * @param templateType The type of template to display.
+ */
 @OptIn(ExperimentalMaterial3Api::class,
 ExperimentalFoundationApi::class,
 ExperimentalAnimationApi::class,
@@ -80,6 +103,13 @@ fun TemplateApp(templateType: String) {
     }
 }
 
+
+/**
+ * Creates and returns a BiometricPrompt instance for biometric authentication.
+ *
+ * @param activity The FragmentActivity context to create BiometricPrompt.
+ * @return BiometricPrompt instance.
+ */
 private fun createBiometricPrompt(activity: FragmentActivity): BiometricPrompt {
     val executor = ContextCompat.getMainExecutor(activity)
 

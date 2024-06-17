@@ -23,11 +23,17 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.youtube.components.YoutubeChip
 
+/**
+ * Composable function demonstrating custom chips and chip-like buttons.
+ */
 @Composable
 fun Chips() {
     // There is no in-built chips but you can make yours like below
     Text(text = "Custom Chips", style = typography.h6, modifier = Modifier.padding(8.dp))
+
     SubtitleText(subtitle = "Custom chips with surface")
+
+    // Row displaying custom chips with different configurations
     Row(modifier = Modifier.padding(8.dp)) {
         YoutubeChip(selected = true, text = "Chip", modifier = Modifier.padding(horizontal = 8.dp))
         YoutubeChip(
@@ -39,7 +45,10 @@ fun Chips() {
         Spacer(modifier = Modifier.padding(8.dp))
         CustomImageChip(text = "custom2", imageId = com.guru.composecookbook.data.R.drawable.p6, selected = false)
     }
+
     SubtitleText(subtitle = "Buttons with circle clipping.")
+
+    // Row displaying chip-like buttons with circular clipping
     Row(modifier = Modifier.padding(8.dp)) {
         Button(
             onClick = {},
@@ -62,8 +71,18 @@ fun Chips() {
 }
 
 
-//Inspired from jetcaster sample. I hope compose can add simple Chip UI element that can
-// support images or icons with multiple states.
+/**
+ * Private composable function representing a custom image chip.
+ *
+ * Inspired from jetcaster sample. I hope compose can add simple Chip UI element that can
+ * support images or icons with multiple states.
+ *
+ * @param text The text content of the chip.
+ * @param imageId The resource ID of the image/icon to be displayed in the chip.
+ * @param selected The selected state of the chip.
+ * @param modifier Modifier for styling and layout customization.
+ */
+
 @Composable
 private fun CustomImageChip(
     text: String,
@@ -91,6 +110,8 @@ private fun CustomImageChip(
         modifier = modifier
     ) {
         Row(modifier = Modifier) {
+
+            // Image/icon displayed in the chip, clipped with CircleShape
             Image(
                 painter = painterResource(imageId),
                 contentDescription = null,
@@ -99,6 +120,8 @@ private fun CustomImageChip(
                     .size(20.dp)
                     .clip(CircleShape)
             )
+
+            // Text content of the chip
             Text(
                 text = text,
                 style = MaterialTheme.typography.bodyMedium,

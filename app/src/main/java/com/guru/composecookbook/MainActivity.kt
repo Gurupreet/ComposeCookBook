@@ -65,7 +65,17 @@ import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.launch
 
+/**
+ * Main activity of the application.
+ */
 class MainActivity : ComponentActivity() {
+
+    /**
+     * Sets up the main activity. Initializes the mobile ads and sets the content view.
+     *
+     * @param savedInstanceState Saved instance state.
+     */
+
     @OptIn(ExperimentalAnimationApi::class,
     ExperimentalFoundationApi::class,
     ExperimentalMaterialApi::class)
@@ -83,6 +93,14 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+/**
+ * Composable function for the base view of the app.
+ *
+ * @param appThemeState Current app theme state.
+ * @param systemUiController Controller for system UI.
+ * @param content Composable content to be displayed.
+ */
 @Composable
 fun BaseView(
     appThemeState: AppThemeState,
@@ -105,6 +123,15 @@ fun BaseView(
     }
 }
 
+
+/**
+ * Composable function for the home screen content.
+ *
+ * @param homeScreen Current home screen type.
+ * @param appThemeState Current app theme state.
+ * @param chooseColorBottomModalState State of the bottom modal sheet for color selection.
+ * @param modifier Modifier to be applied to the layout.
+ */
 @OptIn(ExperimentalAnimationApi::class,
 ExperimentalFoundationApi::class,
 ExperimentalMaterialApi::class)
@@ -131,6 +158,12 @@ fun HomeScreenContent(
     }
 }
 
+
+/**
+ * Composable function for the main app content.
+ *
+ * @param appThemeState Current app theme state.
+ */
 @OptIn(ExperimentalAnimationApi::class,
 ExperimentalFoundationApi::class,
 ExperimentalMaterialApi::class)
@@ -194,6 +227,13 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
 
 }
 
+
+/**
+ * Composable function for the bottom navigation content.
+ *
+ * @param modifier Modifier to be applied to the layout.
+ * @param homeScreenState Current home screen state.
+ */
 @Composable
 fun BottomNavigationContent(
     modifier: Modifier = Modifier,
@@ -318,6 +358,13 @@ fun BottomNavigationContent(
     }
 }
 
+
+/**
+ * Composable function for the navigation rail content.
+ *
+ * @param modifier Modifier to be applied to the layout.
+ * @param homeScreenState Current home screen state.
+ */
 @Composable
 private fun NavigationRailContent(
     modifier: Modifier,
@@ -442,6 +489,10 @@ private fun NavigationRailContent(
     }
 }
 
+
+/**
+ * Preview function for the main app content.
+ */
 @OptIn(ExperimentalAnimationApi::class,
 ExperimentalFoundationApi::class,
 ExperimentalMaterialApi::class)
