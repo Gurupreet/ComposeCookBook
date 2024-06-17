@@ -22,21 +22,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.typography
 
+/**
+ * Composable function `Toggles` demonstrates various UI elements such as Checkbox, Switch, RadioButtons, and Sliders.
+ */
 @Composable
 fun Toggles() {
+
+    // Display header text with custom style and padding
     Text(
         text = "Toggles, Switch, Sliders",
         style = typography.h6,
         modifier = Modifier.padding(8.dp)
     )
 
+    // Checkbox with mutable state
     var checked by remember { mutableStateOf(true) }
     var switched by remember { mutableStateOf(true) }
     Row {
+
+        // Checkbox with mutable state
         Checkbox(
             checked = checked,
             modifier = Modifier.padding(8.dp),
             onCheckedChange = { checked = !checked })
+
+        // Switch with mutable state and custom color for checked state
         Switch(
             checked = switched,
             colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colorScheme.primary),
@@ -45,6 +55,7 @@ fun Toggles() {
         )
     }
 
+    // RadioButtons example with selectable options
     var selected by remember { mutableStateOf("Kotlin") }
     Row {
         RadioButton(selected = selected == "Kotlin", onClick = { selected = "Kotlin" })
@@ -73,8 +84,10 @@ fun Toggles() {
     }
 
 
+    // Sliders examples with different configurations
     var sliderState by remember { mutableStateOf(0f) }
 
+    // Basic Slider with continuous range from 0 to 1
     Slider(value = sliderState, modifier = Modifier
         .fillMaxWidth()
         .padding(8.dp),
@@ -84,6 +97,8 @@ fun Toggles() {
     )
 
     var sliderState2 by remember { mutableStateOf(20f) }
+
+    // Slider with defined value range (0 to 100) and 5 discrete steps
     Slider(value = sliderState2, modifier = Modifier
         .fillMaxWidth()
         .padding(8.dp),

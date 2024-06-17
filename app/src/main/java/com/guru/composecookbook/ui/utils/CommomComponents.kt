@@ -24,7 +24,13 @@ import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.typography
 import com.guru.fontawesomecomposelib.FaIcon
 
-
+/**
+ * A Composable function that displays a heading section with a title, subtitle, and a divider.
+ *
+ * @param modifier Modifier to apply to the Column layout.
+ * @param title The title text to display.
+ * @param subtitle The subtitle text to display.
+ */
 @Composable
 fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: String = "") {
     Column(
@@ -42,6 +48,13 @@ fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: 
     }
 }
 
+
+/**
+ * A Composable function that displays a title text with a specific style.
+ *
+ * @param modifier Modifier to apply to the Text component.
+ * @param title The title text to display.
+ */
 @Composable
 fun TitleText(modifier: Modifier = Modifier, title: String) {
     androidx.compose.material3.Text(
@@ -51,11 +64,28 @@ fun TitleText(modifier: Modifier = Modifier, title: String) {
     )
 }
 
+
+/**
+ * A Composable function that displays a subtitle text with a specific style.
+ *
+ * @param subtitle The subtitle text to display.
+ * @param modifier Modifier to apply to the Text component.
+ */
 @Composable
 fun SubtitleText(subtitle: String, modifier: Modifier = Modifier) {
     androidx.compose.material3.Text(text = subtitle, style = typography.subtitle2, modifier = modifier.padding(8.dp))
 }
 
+
+/**
+ * A Composable function that displays a rotating icon.
+ *
+ * @param state A Boolean to control the rotation state of the icon.
+ * @param asset The ImageVector asset to use as the icon.
+ * @param angle The angle in degrees to rotate the icon.
+ * @param duration The duration of the rotation animation in milliseconds.
+ * @param modifier Modifier to apply to the icon.
+ */
 @Composable
 fun RotateIcon(
     state: Boolean,
@@ -81,6 +111,10 @@ fun RotateIcon(
     )
 }
 
+
+/**
+ * A Composable function to preview the HeadingSection Composable.
+ */
 @Preview
 @Composable
 fun PreviewHeading() {

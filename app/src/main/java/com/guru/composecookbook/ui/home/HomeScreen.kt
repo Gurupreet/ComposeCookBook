@@ -71,7 +71,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.util.*
 
-
+/**
+ * Sets up the home screen UI with a top bar and content area.
+ * The top bar includes buttons for toggling the dark theme and opening a color selection menu.
+ * The content area displays the home screen content, including a list of items and a color palette menu.
+ *
+ * @param appThemeState: A mutable state holding the current theme state (light or dark) and color palette.
+ * @param chooseColorBottomModalState: State for controlling the bottom modal sheet used for choosing colors.
+ */
 @OptIn(
     ExperimentalMaterialApi::class,
     ExperimentalMaterial3Api::class
@@ -119,7 +126,14 @@ fun HomeScreen(
     )
 }
 
-
+/**
+ * Adds an icon button that, when clicked, toggles the visibility of the color palette menu or
+ * shows the modal bottom sheet for color selection if accessibility settings are enabled.
+ *
+ * @param coroutineScope: Scope for launching coroutines.
+ * @param chooseColorBottomModalState: State for controlling the color selection modal bottom sheet.
+ * @param showMenu: Mutable state to control the visibility of the color palette menu.
+ */
 @SuppressLint("ServiceCast")
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -148,6 +162,15 @@ private fun ChangeColorIconButton(
     }
 }
 
+/**
+ * Displays a list of home screen items, adapting the layout based on screen width.
+ * Shows a color palette menu if showMenu is true.
+ *
+ * @param isDarkTheme: Boolean indicating whether the dark theme is active.
+ * @param showMenu: Mutable state to control the visibility of the color palette menu.
+ * @param onPalletChange: Callback invoked when a new color palette is selected.
+ * @param modifier: Modifier for styling the composable.
+ */
 @Composable
 fun HomeScreenContent(
     isDarkTheme: Boolean,
@@ -191,6 +214,12 @@ fun HomeScreenContent(
     }
 }
 
+/**
+ * Displays a list of color options for the user to choose from, invoking onPalletChange when a selection is made.
+ *
+ * @param modifier: Modifier for styling the composable.
+ * @param onPalletChange: Callback invoked when a new color palette is selected.
+ */
 @Composable
 fun PalletMenu(
     modifier: Modifier,
@@ -224,6 +253,13 @@ fun PalletMenu(
     }
 }
 
+/**
+ * Displays a row with an icon and text, triggering the onPalletChange callback when clicked.
+ *
+ * @param color: Color of the icon representing the palette.
+ * @param name: Name of the color palette.
+ * @param onPalletChange: Callback invoked when the menu item is clicked.
+ */
 @Composable
 fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
     Row(
@@ -241,7 +277,14 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
     }
 }
 
-
+/**
+ * Displays a card or button for each home screen item, adjusting the layout based on screen width.
+ *
+ * @param homeScreenItems: Item to display in the list.
+ * @param context: Context for starting activities.
+ * @param isDarkTheme: Boolean indicating whether the dark theme is active.
+ * @param isWiderScreen: Boolean indicating if the screen width is wider than a certain threshold.
+ */
 @Composable
 fun HomeScreenListView(
     homeScreenItems: HomeScreenItems, context: Context, isDarkTheme: Boolean,
@@ -281,6 +324,13 @@ fun HomeScreenListView(
     }
 }
 
+/**
+ * Starts a new activity based on the clicked home screen item, passing the theme state to the new activity.
+ *
+ * @param homeScreenItems: Item that was clicked.
+ * @param context: Context for starting activities.
+ * @param isDarkTheme: Boolean indicating whether the dark theme is active.
+ */
 fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTheme: Boolean) {
     //TODO pass theme to following screens
     val intent = when (homeScreenItems) {
@@ -340,6 +390,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
     context.startActivity(intent)
 }
 
+/**
+ * Provides a preview of the HomeScreen composable with default theme state and modal bottom sheet state.
+ */
 @OptIn(ExperimentalMaterialApi::class)
 @Preview
 @Composable
