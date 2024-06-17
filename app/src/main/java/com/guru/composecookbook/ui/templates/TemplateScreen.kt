@@ -14,6 +14,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.ui.utils.TestTags
 
+/**
+ * A Composable function that displays a screen with a list of templates in a LazyColumn.
+ * Each item in the list is a button that, when clicked, starts the corresponding template activity.
+ *
+ * @param darkTheme A Boolean indicating whether the dark theme is enabled.
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TemplateScreen(darkTheme: Boolean) {
@@ -41,6 +47,9 @@ fun TemplateScreen(darkTheme: Boolean) {
 }
 
 
+/**
+ * A list of template names to be displayed in the TemplateScreen.
+ */
 val templates = listOf(
     "Login",
     "Profiles",

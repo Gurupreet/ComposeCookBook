@@ -19,6 +19,12 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.ui.utils.TestTags
 
+/**
+ * Composable function to display a horizontal list item.
+ *
+ * @param item The item to display, which contains information such as title, subtitle, source, and image.
+ * @param modifier The modifier to be applied to the layout of the grid list item.
+ */
 @Composable
 fun HorizontalListItem(
     item: Item,
@@ -63,6 +69,9 @@ fun HorizontalListItem(
     }
 }
 
+/**
+ * Preview function for HorizontalListItem composable.
+ */
 @Preview
 @Composable
 fun PreviewHorizontalListItem() {
