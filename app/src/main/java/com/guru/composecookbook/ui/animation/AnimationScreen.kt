@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -68,6 +69,9 @@ fun AnimationScreenContent(
     modifier = modifier,
   ) {
     item { Spacer(modifier = Modifier.padding(4.dp)) }
+    item { TitleText(title = "Modern Animations") }
+    item { ModernAnimations() }
+    item { Divider() }
     item { TitleText(title = "State Animations(Fire and forget)") }
     item { AnimationsForStates() }
     item { AnimationsWithVisibilityApi() }
