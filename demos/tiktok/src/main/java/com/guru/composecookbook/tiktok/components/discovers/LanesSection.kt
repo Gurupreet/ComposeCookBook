@@ -20,8 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.theme.R
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.tiktok.R
 import com.guru.composecookbook.tiktok.TiktokDemoDataProvider
 import com.guru.composecookbook.tiktok.TiktokDemoDataProvider.customGray
 

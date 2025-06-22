@@ -24,7 +24,6 @@ import com.guru.composecookbook.meditation.ui.theme.Blue
 import com.guru.composecookbook.meditation.ui.theme.DeepBlue
 import com.guru.composecookbook.meditation.ui.theme.Gray
 import com.guru.composecookbook.meditation.ui.theme.TextWhite
-import org.w3c.dom.Text
 
 @Composable
 fun CategoryItem(

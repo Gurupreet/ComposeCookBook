@@ -10,7 +10,7 @@ import com.guru.composecookbook.ui.utils.TestTags
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
-import java.util.*
+import java.util.Locale
 
 /**
  *

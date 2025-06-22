@@ -10,7 +10,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AllInbox
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.AccessTime
+import androidx.compose.material.icons.outlined.Groups
+import androidx.compose.material.icons.outlined.Inbox
+import androidx.compose.material.icons.outlined.Label
+import androidx.compose.material.icons.outlined.LabelImportant
+import androidx.compose.material.icons.outlined.LocalOffer
+import androidx.compose.material.icons.outlined.MarkunreadMailbox
+import androidx.compose.material.icons.outlined.MoreTime
+import androidx.compose.material.icons.outlined.Send
+import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier

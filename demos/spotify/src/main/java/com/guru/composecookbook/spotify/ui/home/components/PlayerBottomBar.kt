@@ -20,7 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.spotify.R
+import com.guru.composecookbook.theme.R
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.typography
 

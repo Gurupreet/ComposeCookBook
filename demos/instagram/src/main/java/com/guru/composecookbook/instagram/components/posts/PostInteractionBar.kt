@@ -3,11 +3,12 @@ package com.guru.composecookbook.instagram.components.posts
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.IconToggleButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.guru.fontawesomecomposelib.FaIcon
+import com.guru.fontawesomecomposelib.FaIcons
 
 @Composable
 fun PostInteractionBar(

@@ -7,12 +7,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,7 +27,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
-import com.guru.composecookbook.youtube.R
 
 @Composable
 fun YoutubeListItem(item: Tweet) {
@@ -53,7 +52,7 @@ fun YoutubeListItem(item: Tweet) {
                 }
         )
         Image(
-            painter = painterResource(id = R.drawable.p3),
+            painter = painterResource(id = com.guru.composecookbook.data.R.drawable.p1),
             contentDescription = null,
             modifier = Modifier
                 .size(32.dp)

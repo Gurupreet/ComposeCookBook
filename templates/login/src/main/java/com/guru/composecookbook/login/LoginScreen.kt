@@ -1,6 +1,6 @@
 package com.guru.composecookbook.login
 
-import FaIcons
+import com.guru.fontawesomecomposelib.FaIcons
 import android.annotation.SuppressLint
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background

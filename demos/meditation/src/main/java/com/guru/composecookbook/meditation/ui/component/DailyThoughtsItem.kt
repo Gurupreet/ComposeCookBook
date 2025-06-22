@@ -2,7 +2,15 @@ package com.guru.composecookbook.meditation.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -15,12 +23,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.meditation.R
 import com.guru.composecookbook.meditation.ui.model.DailyThought
-import com.guru.composecookbook.meditation.ui.theme.TextWhite
-import com.guru.composecookbook.meditation.ui.theme.dp10
 import com.guru.composecookbook.meditation.ui.theme.DarkBlue
 import com.guru.composecookbook.meditation.ui.theme.DeepBlue
-import com.guru.composecookbook.meditation.R
+import com.guru.composecookbook.meditation.ui.theme.TextWhite
+import com.guru.composecookbook.meditation.ui.theme.dp10
 
 @Composable
 fun DailyThoughtsItem(

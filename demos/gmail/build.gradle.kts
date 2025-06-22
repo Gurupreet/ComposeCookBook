@@ -8,6 +8,10 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.gmail"
+}
+
 dependencies {
     implementation(project(":components:fab"))
     implementation(project(":data"))

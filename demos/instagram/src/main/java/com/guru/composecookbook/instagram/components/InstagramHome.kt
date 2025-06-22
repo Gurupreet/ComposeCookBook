@@ -25,82 +25,76 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.data.R
 import com.guru.composecookbook.data.model.Tweet
-import com.guru.composecookbook.instagram.R
 import com.guru.composecookbook.instagram.components.posts.PostList
 import com.guru.composecookbook.instagram.components.stories.StoryList
 import com.guru.composecookbook.instagram.components.stories.StoryPopup
 
 @Composable
 fun InstagramHome(
-    posts: List<Tweet>,
-    profiles: List<Tweet>,
-    onLikeClicked: () -> Unit,
-    onCommentsClicked: () -> Unit,
-    onSendClicked: () -> Unit,
-    onProfileClicked: () -> Unit,
-    onMessagingClicked: () -> Unit
+        posts: List<Tweet>,
+        profiles: List<Tweet>,
+        onLikeClicked: () -> Unit,
+        onCommentsClicked: () -> Unit,
+        onSendClicked: () -> Unit,
+        onProfileClicked: () -> Unit,
+        onMessagingClicked: () -> Unit
 ) {
     var showStory = remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text(text = "Instagram") },
-                    backgroundColor = MaterialTheme.colors.surface,
-                    contentColor = MaterialTheme.colors.onSurface,
-                    elevation = 8.dp,
-                    navigationIcon = {
-                        IconButton(onClick = {}) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_instagram),
-                                contentDescription = null
-                            )
-                        }
-                    },
-                    actions = {
-                        IconButton(onClick = onMessagingClicked) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_send),
-                                contentDescription = "Go to messaging screen",
-                            )
-                        }
-                    }
-                )
-            },
-            content = { paddingValues ->
-                Surface {
-                    Column(
-                        modifier = Modifier.padding(paddingValues)
-                    ) {
-                        StoryList(
-                            profiles = profiles,
-                            onProfileClicked = {
-                                showStory.value = true
-                                onProfileClicked.invoke()
+                topBar = {
+                    TopAppBar(
+                            title = { Text(text = "Instagram") },
+                            backgroundColor = MaterialTheme.colors.surface,
+                            contentColor = MaterialTheme.colors.onSurface,
+                            elevation = 8.dp,
+                            navigationIcon = {
+                                IconButton(onClick = {}) {
+                                    Icon(
+                                            painter = painterResource(id = R.drawable.ic_instagram),
+                                            contentDescription = null
+                                    )
+                                }
+                            },
+                            actions = {
+                                IconButton(onClick = onMessagingClicked) {
+                                    Icon(
+                                            painter = painterResource(id = R.drawable.ic_send),
+                                            contentDescription = "Go to messaging screen",
+                                    )
+                                }
                             }
-                        )
-                        Divider()
-                        PostList(
-                            posts = posts,
-                            onLikeClicked = onLikeClicked,
-                            onCommentsClicked = onCommentsClicked,
-                            onSendClicked = onSendClicked
-                        )
+                    )
+                },
+                content = { paddingValues ->
+                    Surface {
+                        Column(modifier = Modifier.padding(paddingValues)) {
+                            StoryList(
+                                    profiles = profiles,
+                                    onProfileClicked = {
+                                        showStory.value = true
+                                        onProfileClicked.invoke()
+                                    }
+                            )
+                            Divider()
+                            PostList(
+                                    posts = posts,
+                                    onLikeClicked = onLikeClicked,
+                                    onCommentsClicked = onCommentsClicked,
+                                    onSendClicked = onSendClicked
+                            )
+                        }
                     }
                 }
-            }
         )
         AnimatedVisibility(
-            visible = showStory.value,
-            enter = expandVertically() + fadeIn(),
-            exit = shrinkVertically() + fadeOut()
-        ) {
-            StoryPopup(imageIds = DemoDataProvider.itemList.take(5)) {
-                showStory.value = false
-            }
-        }
+                visible = showStory.value,
+                enter = expandVertically() + fadeIn(),
+                exit = shrinkVertically() + fadeOut()
+        ) { StoryPopup(imageIds = DemoDataProvider.itemList.take(5)) { showStory.value = false } }
     }
 }
 
@@ -108,12 +102,12 @@ fun InstagramHome(
 @Composable
 fun PreviewInstagramHome() {
     InstagramHome(
-        posts = DemoDataProvider.tweetList.filter { it.tweetImageId != 0 },
-        profiles = DemoDataProvider.tweetList,
-        onLikeClicked = {},
-        onCommentsClicked = {},
-        onSendClicked = {},
-        onProfileClicked = {},
-        onMessagingClicked = {}
+            posts = DemoDataProvider.tweetList.filter { it.tweetImageId != 0 },
+            profiles = DemoDataProvider.tweetList,
+            onLikeClicked = {},
+            onCommentsClicked = {},
+            onSendClicked = {},
+            onProfileClicked = {},
+            onMessagingClicked = {}
     )
 }

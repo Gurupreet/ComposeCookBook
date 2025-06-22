@@ -50,8 +50,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
+import com.guru.composecookbook.theme.R
 import com.guru.composecookbook.data.model.HomeScreenItems
 import com.guru.composecookbook.theme.AppThemeState
 import com.guru.composecookbook.theme.ColorPallet
@@ -96,7 +96,7 @@ fun HomeScreen(
                     }) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_sleep),
-                            contentDescription = stringResource(id = R.string.cd_dark_theme)
+                            contentDescription = stringResource(id = com.guru.composecookbook.R.string.cd_dark_theme)
                         )
                     }
                     ChangeColorIconButton(coroutineScope, chooseColorBottomModalState, showMenu)
@@ -142,7 +142,7 @@ private fun ChangeColorIconButton(
     }) {
         Icon(
             imageVector = Icons.Default.Palette, contentDescription = stringResource(
-                id = R.string.cd_change_color
+                id = com.guru.composecookbook.R.string.cd_change_color
             )
         )
     }

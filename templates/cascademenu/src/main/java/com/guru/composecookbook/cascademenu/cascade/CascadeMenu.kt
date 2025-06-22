@@ -1,6 +1,9 @@
 package com.guru.composecookbook.cascademenu.cascade
 
 import androidx.compose.animation.*
+import androidx.compose.animation.core.*
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -17,16 +20,16 @@ import androidx.compose.ui.unit.dp
 
 val MAX_WIDTH = 192.dp
 
-@ExperimentalAnimationApi
-fun <T> AnimatedContentScope<T>.animateToPrevious(): ContentTransform {
-    return slideIntoContainer(AnimatedContentScope.SlideDirection.Right) with
-            slideOutOfContainer(AnimatedContentScope.SlideDirection.Right)
+@OptIn(ExperimentalAnimationApi::class)
+fun animateToPrevious(): ContentTransform {
+    return slideInHorizontally { fullWidth -> fullWidth } + fadeIn() with
+            slideOutHorizontally { fullWidth -> -fullWidth } + fadeOut()
 }
 
-@ExperimentalAnimationApi
-fun <T> AnimatedContentScope<T>.animateToNext(): ContentTransform {
-    return slideIntoContainer(AnimatedContentScope.SlideDirection.Left) with
-            slideOutOfContainer(AnimatedContentScope.SlideDirection.Left)
+@OptIn(ExperimentalAnimationApi::class)
+fun animateToNext(): ContentTransform {
+    return slideInHorizontally { fullWidth -> -fullWidth } + fadeIn() with
+            slideOutHorizontally { fullWidth -> fullWidth } + fadeOut()
 }
 
 fun <T : Any> isNavigatingBack(

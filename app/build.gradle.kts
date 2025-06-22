@@ -1,5 +1,19 @@
 import com.guru.composecookbook.build.configurations.ProjectConfigs
-import com.guru.composecookbook.build.dependencies.*
+import com.guru.composecookbook.build.dependencies.addAndroidInstrumentationTestsDependencies
+import com.guru.composecookbook.build.dependencies.addBiometricDependency
+import com.guru.composecookbook.build.dependencies.addComposeDebugDependencies
+import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
+import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependencies
+import com.guru.composecookbook.build.dependencies.addCoreAndroidDependencies
+import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
+import com.guru.composecookbook.build.dependencies.addDataDependencies
+import com.guru.composecookbook.build.dependencies.addGoogleAndroidDependencies
+import com.guru.composecookbook.build.dependencies.addJunit5TestDependencies
+import com.guru.composecookbook.build.dependencies.addKotlinDependencies
+import com.guru.composecookbook.build.dependencies.addKotlinTestDependencies
+import com.guru.composecookbook.build.dependencies.addNetworkingDependencies
+import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
+import com.guru.composecookbook.build.dependencies.addThirdPartyUnitTestsDependencies
 
 plugins {
     id("com.android.application")
@@ -10,6 +24,7 @@ plugins {
 android {
 
     compileSdk = ProjectConfigs.compileSdkVersion
+    namespace = ProjectConfigs.applicationId
 
     defaultConfig {
         applicationId = ProjectConfigs.applicationId
@@ -51,12 +66,6 @@ android {
     }
     lint {
         abortOnError = false
-    }
-    packagingOptions {
-        resources.excludes.apply {
-            add("META-INF/AL2.0")
-            add("META-INF/LGPL2.1")
-        }
     }
     testOptions {
         unitTests.all {

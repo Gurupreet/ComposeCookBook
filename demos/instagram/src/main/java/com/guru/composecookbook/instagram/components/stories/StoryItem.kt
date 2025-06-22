@@ -18,7 +18,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +26,6 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.instagram.components.profile.ProfilePicture
 import com.guru.composecookbook.instagram.components.profile.ProfileSizes
 import com.guru.composecookbook.theme.instagramGradient
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun StoryItem(

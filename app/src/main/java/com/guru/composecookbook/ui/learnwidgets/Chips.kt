@@ -35,9 +35,9 @@ fun Chips() {
             text = "Inactive",
             modifier = Modifier.padding(horizontal = 8.dp)
         )
-        CustomImageChip(text = "custom", imageId = R.drawable.p2, selected = true)
+        CustomImageChip(text = "custom", imageId = com.guru.composecookbook.data.R.drawable.p2, selected = true)
         Spacer(modifier = Modifier.padding(8.dp))
-        CustomImageChip(text = "custom2", imageId = R.drawable.p6, selected = false)
+        CustomImageChip(text = "custom2", imageId = com.guru.composecookbook.data.R.drawable.p6, selected = false)
     }
     SubtitleText(subtitle = "Buttons with circle clipping.")
     Row(modifier = Modifier.padding(8.dp)) {

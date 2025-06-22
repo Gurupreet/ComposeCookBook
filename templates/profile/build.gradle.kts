@@ -7,6 +7,10 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.profile"
+}
+
 dependencies {
     implementation(project(":theme"))
     implementation(project(":data"))

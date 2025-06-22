@@ -12,7 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.theme.blue200
+import com.guru.composecookbook.theme.green700
+import com.guru.composecookbook.theme.orange700
+import com.guru.composecookbook.theme.teal200
+import com.guru.composecookbook.theme.typography
 import java.util.concurrent.TimeUnit
 
 enum class TimerType(private val type: Int) {

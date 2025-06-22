@@ -8,6 +8,10 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.datingapp"
+}
+
 dependencies {
     implementation(project(":animations:canvas"))
     implementation(project(":components:comingsoon"))

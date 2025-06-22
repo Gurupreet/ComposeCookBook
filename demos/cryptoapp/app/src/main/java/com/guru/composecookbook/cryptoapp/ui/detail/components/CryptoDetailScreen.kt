@@ -2,21 +2,44 @@ package com.guru.composecookbook.cryptoapp.ui.detail.components
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.Card
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.runtime.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
@@ -34,8 +57,12 @@ import com.guru.composecookbook.cryptoapp.ui.detail.CryptoDetailViewModel
 import com.guru.composecookbook.cryptoapp.ui.detail.CryptoDetailViewModelFactory
 import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
 import com.guru.composecookbook.cryptoapp.ui.internal.theme.Colors
-import com.guru.composecookbook.theme.*
+import com.guru.composecookbook.theme.gradientBluePurple
+import com.guru.composecookbook.theme.gradientGreenColors
+import com.guru.composecookbook.theme.gradientRedColors
+import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
+import com.guru.composecookbook.theme.typography
 
 
 @OptIn(ExperimentalMaterial3Api::class)

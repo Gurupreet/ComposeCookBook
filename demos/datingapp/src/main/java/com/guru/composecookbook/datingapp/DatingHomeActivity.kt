@@ -36,6 +36,7 @@ import com.guru.composecookbook.datingapp.components.chat.DatingChatScreen
 import com.guru.composecookbook.datingapp.components.home.DatingHomeScreen
 import com.guru.composecookbook.datingapp.components.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
+import com.guru.composecookbook.theme.R
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.typography
 

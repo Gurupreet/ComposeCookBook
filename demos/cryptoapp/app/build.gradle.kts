@@ -1,4 +1,8 @@
-import com.guru.composecookbook.build.dependencies.*
+import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
+import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependencies
+import com.guru.composecookbook.build.dependencies.addCoreAndroidDependencies
+import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
+import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
 
 plugins {
     /**
@@ -6,6 +10,10 @@ plugins {
      */
     id("common-compose-module-configs-script-plugin")
     id("org.jetbrains.kotlin.android")
+}
+
+android {
+    namespace = "com.guru.composecookbook.cryptoapp"
 }
 
 

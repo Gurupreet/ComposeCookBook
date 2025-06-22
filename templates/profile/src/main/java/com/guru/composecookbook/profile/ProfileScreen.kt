@@ -31,6 +31,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.data.R
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 const val initialImageFloat = 170f

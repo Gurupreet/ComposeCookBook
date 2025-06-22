@@ -18,7 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.moviesapp.R
+import com.guru.composecookbook.data.R
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeInteractionEvents
 import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground

@@ -7,14 +7,32 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.runtime.*
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,7 +47,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemsIndexed
 import coil.compose.rememberImagePainter
 import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
@@ -54,7 +71,7 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
     val favCryptos by viewModel.favCryptoLiveData.observeAsState(emptyList())
     var showFavState by remember { mutableStateOf(false) }
     val listScrollState = rememberLazyListState()
-    val pagingItems = viewModel.getAllCryptos().collectAsLazyPagingItems()
+    val cryptos = viewModel.getAllCryptos().collectAsLazyPagingItems()
     Scaffold(
         floatingActionButton = {
             CryptoFABButton(favCryptos.size) {
@@ -74,7 +91,7 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
                 favCryptos = favCryptos,
                 onCryptoHomeInteractionEvents
             )
-            CryptoList(pagingItems, favCryptos, listScrollState, onCryptoHomeInteractionEvents)
+            CryptoList(cryptos, favCryptos, listScrollState, onCryptoHomeInteractionEvents)
         }
     }
 }
@@ -158,7 +175,7 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
 
 @Composable
 fun CryptoList(
-    pagingItems: LazyPagingItems<Crypto>,
+    cryptos: LazyPagingItems<Crypto>,
     favCryptos: List<Crypto>,
     listScrollState: LazyListState,
     onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
@@ -166,7 +183,11 @@ fun CryptoList(
     val context = LocalContext.current
 
     LazyColumn(state = listScrollState) {
-        itemsIndexed(pagingItems) { index, crypto ->
+        items(
+            count = cryptos.itemCount,
+            key = { index -> cryptos[index]?.symbol ?: index.toString() }
+        ) { index ->
+            val crypto = cryptos[index]
             crypto?.let {
                 val isFav = favCryptos.contains(crypto)
                 CryptoListItem(
@@ -177,7 +198,7 @@ fun CryptoList(
             }
         }
 
-        pagingItems.apply {
+        cryptos.apply {
             when {
                 loadState.refresh is LoadState.Loading -> item {
                     LottieCryptoLoadingView(context = context)

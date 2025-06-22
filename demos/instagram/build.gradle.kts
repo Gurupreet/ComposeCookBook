@@ -9,6 +9,10 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.instagram"
+}
+
 dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))

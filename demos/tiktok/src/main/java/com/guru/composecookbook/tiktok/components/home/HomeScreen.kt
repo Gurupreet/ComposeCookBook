@@ -5,9 +5,20 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -15,7 +26,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -33,9 +49,9 @@ import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.theme.tiktokRed
 import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.tiktok.R
 import com.guru.composecookbook.tiktok.TiktokDemoDataProvider
 import com.guru.composecookbook.tiktok.TiktokHomeInteractionEvents
+import com.guru.composecookbook.theme.R as ThemeR
 
 @Composable
 fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
@@ -116,7 +132,7 @@ fun VideoIconsSection(
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
         Icon(
-            painter = painterResource(id = R.drawable.ic_comment_dots_solid),
+            painter =            painterResource(id = ThemeR.drawable.ic_comment_dots_solid),
             contentDescription = null
         )
         Text(
@@ -124,7 +140,7 @@ fun VideoIconsSection(
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
             modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
         )
-        Icon(painter = painterResource(id = R.drawable.ic_share_solid), contentDescription = null)
+        Icon(            painter = painterResource(id = ThemeR.drawable.ic_share_solid),contentDescription = null)
         Text(
             text = "238",
             style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
@@ -163,7 +179,7 @@ fun LikeIcon(id: Int) {
         }
     }
     Icon(
-        painter = painterResource(id = R.drawable.ic_heart_solid),
+        painter = painterResource(id = ThemeR.drawable.ic_heart_solid),
         contentDescription = null,
         modifier = Modifier
             .clickable(onClick = { fav = !fav })

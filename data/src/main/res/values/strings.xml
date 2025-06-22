@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_gmail">Gmail</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_gmail_menu">Menu</string>
+    <string name="cd_gmail_profile">My profile</string>
+    <string name="cd_create_new_email">Create new email</string>
+</resources>

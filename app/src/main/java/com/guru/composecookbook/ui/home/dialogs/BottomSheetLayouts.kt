@@ -1,6 +1,5 @@
 package com.guru.composecookbook.ui.home.dialogs
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -12,24 +11,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.BottomSheetScaffold
-import androidx.compose.material.BottomSheetScaffoldState
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetState
-import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.Surface
-import androidx.compose.material.TextButton
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.rememberBottomSheetScaffoldState
-import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.DismissibleNavigationDrawer
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
+import androidx.compose.material3.TextButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,8 +39,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.lottie.LottieLoadingView
-import com.guru.composecookbook.spotify.R
-import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.data.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -54,109 +49,58 @@ fun BottomSheetLayouts() {
 }
 
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomSheetDrawer() {
-    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
     val coroutineScope = rememberCoroutineScope()
-    val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
-    BottomSheetScaffold(
-        drawerBackgroundColor = MaterialTheme.colorScheme.surface,
-        sheetBackgroundColor = MaterialTheme.colorScheme.surface,
-        backgroundColor = MaterialTheme.colorScheme.background,
-        content = {
-            Box {
-                ScafoldContent(coroutineScope, bottomSheetScaffoldState, sheetState)
+    val sheetState = rememberModalBottomSheetState()
+    val showBottomSheet = remember { mutableStateOf(false) }
+
+    DismissibleNavigationDrawer(
+        drawerContent = {
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(end = 16.dp)
+            ) {
+                DrawerContent()
             }
         },
-        sheetContent = {
-            PlayerBottomSheet()
-        },
-        drawerContent = {
-            DrawerContent()
-        },
-        scaffoldState = bottomSheetScaffoldState,
-        sheetPeekHeight = if (sheetState.isAnimationRunning || sheetState.isVisible) 0.dp else 65
-            .dp,
+        content = {
+            Box(modifier = Modifier.fillMaxSize()) {
+                ScafoldContent(
+                    coroutineScope = coroutineScope,
+                    showBottomSheet = { showBottomSheet.value = it }
+                )
+                
+                if (showBottomSheet.value) {
+                    ModalBottomSheet(
+                        onDismissRequest = { showBottomSheet.value = false },
+                        sheetState = sheetState,
+                        dragHandle = { BottomSheetDefaults.DragHandle() },
+                    ) {
+                        PlayerBottomSheet()
+                    }
+                }
+            }
+        }
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun ScafoldContent(
     coroutineScope: CoroutineScope,
-    bottomSheetScaffoldState: BottomSheetScaffoldState,
-    sheetState: ModalBottomSheetState
+    showBottomSheet: (Boolean) -> Unit
 ) {
-    var showFullBottomSheet = remember { mutableStateOf(false) }
-    ModalBottomSheetLayout(
-        modifier = Modifier.fillMaxSize(),
-        sheetState = sheetState,
-        sheetBackgroundColor = MaterialTheme.colorScheme.surface,
-        sheetContent = {
-            if (showFullBottomSheet.value) {
-                FullBottomSheetContent {
-                    coroutineScope.launch {
-                        sheetState.hide()
-                    }
-                }
-            } else {
-                BottomSheetContent()
-            }
-        }
-    ) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .height(55.dp),
-                onClick = {
-                    coroutineScope.launch {
-                        bottomSheetScaffoldState.drawerState.open()
-                    }
-                }) {
-                Text(text = "Navigation Drawer")
-            }
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .height(55.dp),
-                onClick = {
-                    coroutineScope.launch {
-                        bottomSheetScaffoldState.bottomSheetState.expand()
-                    }
-                }) {
-                Text(text = "Bottom Sheet")
-            }
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .height(55.dp),
-                onClick = {
-                    showFullBottomSheet.value = false
-                    coroutineScope.launch {
-                        sheetState.show()
-                    }
-                }) {
-                Text(text = "Modal Bottom sheet")
-            }
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .height(55.dp),
-                onClick = {
-                    showFullBottomSheet.value = true
-                    coroutineScope.launch {
-                       // sheetState.snapTo(ModalBottomSheetValue.Expanded)
-                        sheetState.show()
-                    }
-                }) {
-                Text(text = "Modal Bottom sheet Full")
-            }
+    Column(modifier = Modifier.fillMaxSize()) {
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+                .height(55.dp),
+            onClick = { showBottomSheet(true) }
+        ) {
+            Text(text = "Show Bottom Sheet")
         }
     }
 }
@@ -241,7 +185,7 @@ fun PlayerBottomSheet() {
         )
         Text(
             text = "Someone Like you by Adele",
-            style = typography.h6.copy(fontSize = 14.sp),
+            style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp),
             modifier = Modifier
                 .padding(8.dp)
                 .weight(1f),
@@ -255,7 +199,7 @@ fun PlayerBottomSheet() {
             contentDescription = null
         )
     }
-    Text(text = "Lyrics", style = typography.h6, modifier = Modifier.padding(16.dp))
+    Text(text = "Lyrics", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(16.dp))
     Text(
         text = "I heard that you're settled down\n" +
                 "That you found a girl and you're married now\n" +

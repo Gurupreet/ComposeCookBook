@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
-import com.guru.composecookbook.moviesapp.R
+import com.guru.composecookbook.data.R
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeInteractionEvents
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeViewModel
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeViewModelFactory

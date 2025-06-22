@@ -11,10 +11,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -26,7 +22,11 @@ import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.ReadMore
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SmallTopAppBar
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -79,14 +79,14 @@ fun TopAppBarsDemo() {
         navigationIcon = {
             IconButton(onClick = {}) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_instagram),
+                    painter = painterResource(id = com.guru.composecookbook.data.R.drawable.ic_instagram),
                     contentDescription = null
                 )
             }
         },
         actions = {
             IconButton(onClick = {}) {
-                Icon(painter = painterResource(id = R.drawable.ic_send), contentDescription = null)
+                Icon(painter = painterResource(id = com.guru.composecookbook.data.R.drawable.ic_send), contentDescription = null)
             }
         }
     )
@@ -96,7 +96,7 @@ fun TopAppBarsDemo() {
     TopAppBar(
         title = {
             Icon(
-                painter = painterResource(id = R.drawable.ic_twitter),
+                painter = painterResource(id = com.guru.composecookbook.theme.R.drawable.ic_twitter),
                 contentDescription = null,
                 tint = twitterColor,
                 modifier = Modifier.fillMaxWidth()
@@ -107,7 +107,7 @@ fun TopAppBarsDemo() {
         elevation = 8.dp,
         navigationIcon = {
             Image(
-                painter = painterResource(id = R.drawable.p6),
+                painter = painterResource(id = com.guru.composecookbook.data.R.drawable.p6),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(vertical = 4.dp, horizontal = 8.dp)
@@ -151,19 +151,19 @@ fun NavigationBarDemo() {
             icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.HOME,
             onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
-            label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
+            label = { Text(text = stringResource(id = com.guru.composecookbook.spotify.R.string.spotify_nav_home)) },
         )
         BottomNavigationItem(
             icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
             onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
-            label = { Text(text = stringResource(id = R.string.spotify_nav_search)) }
+            label = { Text(text = stringResource(id = com.guru.composecookbook.spotify.R.string.spotify_nav_search)) }
         )
         BottomNavigationItem(
             icon = { Icon(imageVector = Icons.Outlined.LibraryMusic, contentDescription = null) },
             selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
             onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
-            label = { Text(text = stringResource(id = R.string.spotify_nav_library)) }
+            label = { Text(text = stringResource(id = com.guru.composecookbook.spotify.R.string.spotify_nav_library)) }
         )
     }
 

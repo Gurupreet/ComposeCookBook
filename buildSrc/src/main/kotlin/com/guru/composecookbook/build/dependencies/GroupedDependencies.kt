@@ -12,6 +12,7 @@ internal val composeOfficialDependencies = listOf(
     Dependencies.composeViewModel,
     Dependencies.composeActivity,
     Dependencies.composeNavigation,
+    Dependencies.composeRuntime,
 )
 
 internal val composeThirdPartyDependencies = listOf(
@@ -40,7 +41,8 @@ internal val kotlinTestDependencies = listOf(
 internal val dataDependencies = listOf(
     Dependencies.roomRuntime,
     Dependencies.roomKtx,
-    Dependencies.androidPagingRuntime
+    Dependencies.androidPagingRuntime,
+    Dependencies.composeRuntime
 )
 
 internal val coreAndroidDependencies = listOf(
@@ -62,8 +64,8 @@ internal val coreAndroidUiDependencies = listOf(
 internal val googleAndroidLibraries = listOf(
     Dependencies.androidExoPlayer,
     Dependencies.playServicesAds,
-    Dependencies.playServicesMaps,
-    Dependencies.googleMaps,
+    Dependencies.playServicesMaps
+    // Removed Dependencies.googleMaps as it's not available
 )
 
 internal val networkingDependencies = listOf(

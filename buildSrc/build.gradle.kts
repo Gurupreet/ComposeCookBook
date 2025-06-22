@@ -20,7 +20,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
     }
 }
 
@@ -29,15 +29,16 @@ repositories {
     mavenLocal()
     mavenCentral()
     google()
+    google()
 }
 
 dependencies {
     // in order to be able to use "kotlin-android" in the common script
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
 
     // in order to recognize the "plugins" block in the common script
-    implementation("com.android.tools.build:gradle:7.2.2")
+    implementation("com.android.tools.build:gradle:8.2.2")
 
     // in order to recognize the "android" block in the common script
-    implementation("com.android.tools.build:gradle-api:7.2.2")
+    implementation("com.android.tools.build:gradle-api:8.2.2")
 }

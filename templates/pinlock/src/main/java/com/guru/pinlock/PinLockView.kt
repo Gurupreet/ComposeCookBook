@@ -1,6 +1,6 @@
 package com.guru.pinlock
 
-import FaIcons
+import com.guru.fontawesomecomposelib.FaIcons
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

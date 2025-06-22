@@ -4,9 +4,19 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.runtime.Composable
@@ -24,9 +34,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.annotation.ExperimentalCoilApi
-import coil.compose.ImagePainter
-import coil.compose.rememberImagePainter
+import coil.compose.AsyncImagePainter
+import coil.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModel
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModelFactory
@@ -35,7 +44,6 @@ import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import com.guru.composecookbook.theme.typography
 
-@ExperimentalCoilApi
 @Composable
 fun MovieDetailContent(movie: Movie, imageId: Int) {
     val expand = remember { mutableStateOf(false) }
@@ -62,9 +70,8 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
                 ).value
             )
     ) {
-        item {
-            val painter = rememberImagePainter(
-                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+        item {            val painter = rememberAsyncImagePainter(
+                model = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
             )
             Image(
                 painter = painter,
@@ -77,7 +84,7 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
                     .fillMaxWidth(),
             )
             when (painter.state) {
-                is ImagePainter.State.Success -> expand.value = true
+                is AsyncImagePainter.State.Success -> expand.value = true
                 else -> expand.value = false
             }
         }

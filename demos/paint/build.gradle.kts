@@ -8,6 +8,10 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.paint"
+}
+
 dependencies {
     implementation(project(":theme"))
     implementation(project(":components:colorpicker"))

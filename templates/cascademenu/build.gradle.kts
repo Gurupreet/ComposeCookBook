@@ -8,6 +8,10 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.cascademenu"
+}
+
 dependencies {
     implementation(project(":theme"))
     implementation(project(":data"))

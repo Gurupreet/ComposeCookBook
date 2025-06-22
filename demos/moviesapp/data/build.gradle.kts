@@ -9,6 +9,10 @@ plugins {
     id("common-kotlin-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.moviesapp.data"
+}
+
 dependencies {
     addCoreAndroidDependencies()
     addNetworkingDependencies()

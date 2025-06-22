@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.guru.composecookbook.data.R
 import com.guru.composecookbook.theme.materialTypography
 
 @Composable

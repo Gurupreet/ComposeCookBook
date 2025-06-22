@@ -8,6 +8,10 @@ plugins {
     id("common-compose-module-configs-script-plugin")
 }
 
+android {
+    namespace = "com.guru.composecookbook.charts"
+}
+
 dependencies {
     implementation(project(":theme"))
 

@@ -20,17 +20,16 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import com.google.android.libraries.maps.CameraUpdateFactory
-import com.google.android.libraries.maps.MapView
-import com.google.android.libraries.maps.model.LatLng
-import com.google.android.libraries.maps.model.MarkerOptions
-import com.guru.composecookbook.R
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.guru.composecookbook.data.R
 import com.guru.composecookbook.lottie.LottieFoodView
 import com.guru.composecookbook.lottie.LottieLoaderLoadingView
 import com.guru.composecookbook.ui.utils.SubtitleText
@@ -58,7 +57,7 @@ fun AndroidTextView(context: Context) {
     val textColor = LocalContentColor.current.toArgb()
     val androidTextView = remember {
         TextView(context).apply {
-            setText(R.string.about_me)
+            setText(com.guru.composecookbook.profile.R.string.about_me)
             setTextColor(textColor)
         }
     }
@@ -104,8 +103,7 @@ fun AndroidAdView(context: Context) {
         val adRequest: AdRequest = AdRequest.Builder().build()
         AdView(context).apply {
             // init test ads
-            adSize = AdSize.SMART_BANNER
-            adUnitId = resources.getString(R.string.test_adbanner_id)
+            adUnitId = resources.getString(com.guru.composecookbook.R.string.test_adbanner_id)
             loadAd(adRequest)
         }
     }
@@ -134,21 +132,20 @@ private fun MapViewContainer(
     latitude: String,
     longitude: String
 ) {
-    AndroidView(
-        { map },
+    AndroidView<MapView>(
+        factory = { map },
         modifier = Modifier
             .fillMaxWidth()
             .height(400.dp)
             .padding(8.dp)
             .clip(RoundedCornerShape(10.dp))
     ) { mapView ->
-        // I think this is slowing the performance of map view loading needs checking !!
-        mapView.getMapAsync {
+        mapView.getMapAsync { googleMap ->
             val position = LatLng(latitude.toDouble(), longitude.toDouble())
-            it.addMarker(
+            googleMap.addMarker(
                 MarkerOptions().position(position)
             )
-            it.moveCamera(CameraUpdateFactory.newLatLng(position))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
         }
     }
 }

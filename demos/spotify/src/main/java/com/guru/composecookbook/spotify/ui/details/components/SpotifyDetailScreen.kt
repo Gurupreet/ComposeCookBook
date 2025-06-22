@@ -2,7 +2,15 @@ package com.guru.composecookbook.spotify.ui.details.components
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
@@ -27,12 +35,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
+import com.guru.composecookbook.spotify.R
 import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
-import com.guru.composecookbook.spotify.R
 
 @Composable
 fun SpotifyDetailScreen(album: Album) {
