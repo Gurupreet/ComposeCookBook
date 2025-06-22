@@ -39,5 +39,5 @@ jobs:
       - name: Compose UI tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: 34
           script: ./gradlew connectedCheck
