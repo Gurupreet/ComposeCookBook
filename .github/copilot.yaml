@@ -1,0 +1,7 @@
+# Enable Copilot for PR review on all pull requests
+pull_request_rules:
+  - trigger: pull_request
+    conditions: []
+    actions:
+      - type: copilot_review
+        enabled: true
