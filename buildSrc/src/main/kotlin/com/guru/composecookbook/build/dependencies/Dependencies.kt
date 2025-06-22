@@ -19,13 +19,19 @@ object Dependencies {
         "com.google.android.gms:play-services-maps:${Versions.playServicesMaps}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    // Material Design 1 and 3 dependencies
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
     const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3}"
+    const val composeMaterial3WindowSizeClass = "androidx.compose.material3:material3-window-size-class:${Versions.material3}"
     const val composeMaterialIconsExtended =
         "androidx.compose.material:material-icons-extended:${Versions.compose}"
+    
+    // Runtime and State Management
     const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeRuntimeLivedata =
         "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+    
+    // Layout and Navigation
     const val composeConstraintLayout =
         "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayoutCompose}"
     const val composePaging = "androidx.paging:paging-compose:${Versions.pagingCompose}"
