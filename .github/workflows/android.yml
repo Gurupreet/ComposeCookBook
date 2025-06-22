@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 17
+          distribution: temurin
+          
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
@@ -33,6 +35,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 17
+          distribution: temurin
       - name: Compose UI tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
