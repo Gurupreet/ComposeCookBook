@@ -15,12 +15,6 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.SubtitleText
 
-/**
- * Demonstrates various configurations and styles of Text composable in Jetpack Compose.
- *
- * @see Text
- * @see SubtitleText
- */
 @Composable
 fun TextDemo() {
     Text(text = "Text Views", style = typography.h5, modifier = Modifier.padding(8.dp))
@@ -106,10 +100,6 @@ fun TextDemo() {
 
 }
 
-
-/**
- * Preview function for the TextDemo content.
- */
 @Preview
 @Composable
 fun PreviewTextDemo() {

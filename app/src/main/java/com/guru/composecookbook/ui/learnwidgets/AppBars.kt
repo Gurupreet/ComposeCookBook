@@ -43,10 +43,6 @@ import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.ui.utils.TitleText
 
-
-/**
- * Composable function demonstrating various types of app bars and navigation bars.
- */
 @Composable
 fun AppBars() {
     Text(text = "App Bars", style = typography.h5, modifier = Modifier.padding(8.dp))
@@ -56,17 +52,11 @@ fun AppBars() {
     NavigationBarDemo()
 }
 
-
-/**
- * Composable function demonstrating different configurations of top app bars.
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBarsDemo() {
-    // Subtitle for top app bar section
     SubtitleText(subtitle = "Top App bar")
 
-    // Small top app bar with back navigation icon
     SmallTopAppBar(
         title = { Text(text = "Home") },
         navigationIcon = {
@@ -81,7 +71,6 @@ fun TopAppBarsDemo() {
 
     Spacer(modifier = Modifier.height(8.dp))
 
-    // Top app bar with title "Instagram" and custom navigation and action icons
     TopAppBar(
         title = { Text(text = "Instagram") },
         backgroundColor = MaterialTheme.colorScheme.surface,
@@ -104,7 +93,6 @@ fun TopAppBarsDemo() {
 
     Spacer(modifier = Modifier.height(8.dp))
 
-    // Top app bar with Twitter icon, custom navigation icon, and action icon
     TopAppBar(
         title = {
             Icon(
@@ -138,16 +126,11 @@ fun TopAppBarsDemo() {
     Spacer(modifier = Modifier.height(8.dp))
 }
 
-
-/**
- * Composable function demonstrating usage of Bottom App Bar.
- */
 @Composable
 fun BottomAppBarDemo() {
     Spacer(modifier = Modifier.height(16.dp))
     SubtitleText("Bottom app bars: Note bottom app bar support FAB cutouts when used with scafolds see demoUI crypto app")
 
-    // Bottom app bar with an IconButton and a TitleText
     BottomAppBar(
         cutoutShape = CircleShape
     ) {
@@ -158,19 +141,11 @@ fun BottomAppBarDemo() {
     }
 }
 
-
-/**
- * Composable function demonstrating usage of Bottom Navigation Bar.
- */
 @Composable
 fun NavigationBarDemo() {
     Spacer(modifier = Modifier.height(16.dp))
     SubtitleText(subtitle = "Bottom Navigation Bars")
-
-    // State to manage selected navigation item in Bottom Navigation Bar
     val spotifyNavItemState = remember { mutableStateOf(SpotifyNavType.HOME) }
-
-    // Bottom Navigation Bar with three items: Home, Search, and Library
     BottomNavigation(backgroundColor = MaterialTheme.colorScheme.surface) {
         BottomNavigationItem(
             icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
@@ -194,7 +169,6 @@ fun NavigationBarDemo() {
 
     Spacer(modifier = Modifier.height(16.dp))
 
-    // Bottom Navigation Bar without labels, showcasing more icons
     BottomNavigation {
         BottomNavigationItem(
             icon = { Icon(imageVector = Icons.Outlined.ReadMore, contentDescription = null) },
@@ -215,9 +189,6 @@ fun NavigationBarDemo() {
 }
 
 
-/**
- * Preview function for AppBars composable.
- */
 @Preview
 @Composable
 fun PreviewAppBars() {
