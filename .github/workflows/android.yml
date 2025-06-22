@@ -37,7 +37,7 @@ jobs:
           java-version: 17
           distribution: temurin
       - name: Compose UI tests
-        uses: reactivecircus/android-emulator-runner@v2
+        uses: reactivecircus/android-emulator-runner@v4
         with:
           api-level: 35
           script: ./gradlew connectedCheck
