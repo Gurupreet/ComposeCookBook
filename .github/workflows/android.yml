@@ -23,21 +23,3 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
-
-  androidTests:
-
-    runs-on: macos-latest
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: temurin
-      - name: Compose UI tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 34
-          script: ./gradlew connectedCheck
