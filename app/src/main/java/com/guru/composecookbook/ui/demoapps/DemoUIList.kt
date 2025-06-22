@@ -33,92 +33,65 @@ import com.guru.composecookbook.youtube.YoutubeActivity
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DemoUIList() {
-    val demoUis = remember { DemoDataProvider.demoUiList }
-    val context = LocalContext.current
-    Scaffold(
-        modifier = Modifier.testTag(TestTags.DEMO_SCREEN_ROOT)
-    ) {
-        LazyColumn {
-            items(
-                count = demoUis.size,
-                itemContent = { index ->
-                    val title = demoUis[index]
-                    Button(
-                        onClick = {
-                            when (title) {
-                                "Instagram" -> {
-                                    context.startActivity(
-                                        InstagramActivity.newIntent(context)
-                                    )
-                                }
-                                "Twitter" -> {
-                                    context.startActivity(
-                                        TwitterActivity.newIntent(context)
-                                    )
-                                }
-                                "Youtube" -> {
-                                    context.startActivity(
-                                        YoutubeActivity.newIntent(context)
-                                    )
-                                }
-                                "Gmail" -> {
-                                    context.startActivity(
-                                        GmailActivity.newIntent(context)
-                                    )
-                                }
-                                "Paint" -> {
-                                    context.startActivity(
-                                        PaintActivity.newIntent(context)
-                                    )
-                                }
-                                "Spotify" -> {
-                                    context.startActivity(
-                                        SpotifyActivity.newIntent(context, false)
-                                    )
-                                }
-                                "CryptoApp+MVVM" -> {
-                                    context.startActivity(
-                                        CryptoHomeActivity.newIntent(context, false)
-                                    )
-                                }
-                                "MoviesApp+MVVM" -> {
-                                    context.startActivity(
-                                        MoviesHomeActivity.newIntent(context, false)
-                                    )
-                                }
-                                "DatingApp" -> {
-                                    context.startActivity(
-                                        DatingHomeActivity.newIntent(context, false)
-                                    )
-                                }
-                                "TikTok" -> {
-                                    context.startActivity(
-                                        TiktokActivity.newIntent(context)
-                                    )
-                                }
-                                "Meditation" -> {
-                                    context.startActivity(
-                                        MeditationActivity.newIntent(context)
-                                    )
-                                }
-                                else -> TODO("Create your activity to launch any new demo app")
-                            }
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp)
-                    ) {
-                        Text(text = title, modifier = Modifier.padding(8.dp))
-                    }
+  val demoUis = remember { DemoDataProvider.demoUiList }
+  val context = LocalContext.current
+  Scaffold(modifier = Modifier.testTag(TestTags.DEMO_SCREEN_ROOT)) {
+    LazyColumn {
+      items(
+        count = demoUis.size,
+        itemContent = { index ->
+          val title = demoUis[index]
+          Button(
+            onClick = {
+              when (title) {
+                "Instagram" -> {
+                  context.startActivity(InstagramActivity.newIntent(context))
                 }
-            )
+                "Twitter" -> {
+                  context.startActivity(TwitterActivity.newIntent(context))
+                }
+                "Youtube" -> {
+                  context.startActivity(YoutubeActivity.newIntent(context))
+                }
+                "Gmail" -> {
+                  context.startActivity(GmailActivity.newIntent(context))
+                }
+                "Paint" -> {
+                  context.startActivity(PaintActivity.newIntent(context))
+                }
+                "Spotify" -> {
+                  context.startActivity(SpotifyActivity.newIntent(context, false))
+                }
+                "CryptoApp+MVVM" -> {
+                  context.startActivity(CryptoHomeActivity.newIntent(context, false))
+                }
+                "MoviesApp+MVVM" -> {
+                  context.startActivity(MoviesHomeActivity.newIntent(context, false))
+                }
+                "DatingApp" -> {
+                  context.startActivity(DatingHomeActivity.newIntent(context, false))
+                }
+                "TikTok" -> {
+                  context.startActivity(TiktokActivity.newIntent(context))
+                }
+                "Meditation" -> {
+                  context.startActivity(MeditationActivity.newIntent(context))
+                }
+                else -> TODO("Create your activity to launch any new demo app")
+              }
+            },
+            modifier = Modifier.fillMaxWidth().padding(12.dp)
+          ) {
+            Text(text = title, modifier = Modifier.padding(8.dp))
+          }
         }
+      )
     }
+  }
 }
-
 
 @Preview
 @Composable
 fun PreviewDemoUis() {
-    DemoUIList()
+  DemoUIList()
 }

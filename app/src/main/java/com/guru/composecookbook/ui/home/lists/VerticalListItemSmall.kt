@@ -28,65 +28,50 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 
 @Composable
 fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
-    val typography = MaterialTheme.typography
-    Row(
-        modifier = Modifier
-            .clickable(onClick = { })
-            .padding(16.dp)
-    ) {
-        ItemImage(
-            item,
-            Modifier.padding(end = 16.dp)
-        )
-        Column(modifier = Modifier.weight(1f)) {
-            Text(item.title, style = typography.titleMedium)
-            Text(item.subtitle, style = typography.bodyMedium)
-        }
-        FavIcon(modifier)
+  val typography = MaterialTheme.typography
+  Row(modifier = Modifier.clickable(onClick = {}).padding(16.dp)) {
+    ItemImage(item, Modifier.padding(end = 16.dp))
+    Column(modifier = Modifier.weight(1f)) {
+      Text(item.title, style = typography.titleMedium)
+      Text(item.subtitle, style = typography.bodyMedium)
     }
+    FavIcon(modifier)
+  }
 }
 
 @Composable
 fun ItemImage(item: Item, modifier: Modifier = Modifier) {
-    Image(
-        painter = painterResource(id = item.imageId),
-        contentScale = ContentScale.Crop,
-        contentDescription = null,
-        modifier = modifier
-            .size(100.dp, 80.dp)
-            .clip(androidx.compose.material.MaterialTheme.shapes.medium)
-    )
+  Image(
+    painter = painterResource(id = item.imageId),
+    contentScale = ContentScale.Crop,
+    contentDescription = null,
+    modifier =
+      modifier.size(100.dp, 80.dp).clip(androidx.compose.material.MaterialTheme.shapes.medium)
+  )
 }
 
 @Composable
 fun FavIcon(modifier: Modifier = Modifier) {
-    val isFavourite = remember { mutableStateOf(true) }
-    IconToggleButton(
-        checked = isFavourite.value,
-        onCheckedChange = { isFavourite.value = !isFavourite.value }
-    ) {
-        if (isFavourite.value) {
-            Icon(
-                imageVector = Icons.Filled.Favorite,
-                contentDescription = null,
-                modifier = modifier
-            )
-        } else {
-            Icon(
-                imageVector = Icons.Default.FavoriteBorder,
-                contentDescription = null,
-                modifier = modifier
-            )
-        }
+  val isFavourite = remember { mutableStateOf(true) }
+  IconToggleButton(
+    checked = isFavourite.value,
+    onCheckedChange = { isFavourite.value = !isFavourite.value }
+  ) {
+    if (isFavourite.value) {
+      Icon(imageVector = Icons.Filled.Favorite, contentDescription = null, modifier = modifier)
+    } else {
+      Icon(
+        imageVector = Icons.Default.FavoriteBorder,
+        contentDescription = null,
+        modifier = modifier
+      )
     }
+  }
 }
-
 
 @Preview
 @Composable
 fun PreviewListViewItemSmall() {
-    val item = DemoDataProvider.item
-    ComposeCookBookTheme {
-        VerticalListItemSmall(item)
-    }
+  val item = DemoDataProvider.item
+  ComposeCookBookTheme { VerticalListItemSmall(item) }
 }

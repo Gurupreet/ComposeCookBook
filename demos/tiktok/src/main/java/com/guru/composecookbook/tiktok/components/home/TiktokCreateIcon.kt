@@ -24,31 +24,25 @@ import com.guru.composecookbook.theme.tiktokRed
 @Preview
 @Composable
 fun TiktokCreateIcon() {
-    Box(contentAlignment = Alignment.Center) {
-        Row {
-            Spacer(
-                modifier = Modifier
-                    .height(30.dp)
-                    .width(24.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(tiktokBlue)
-            )
-            Spacer(
-                modifier = Modifier
-                    .height(30.dp)
-                    .width(24.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(tiktokRed)
-            )
-        }
-        Icon(
-            imageVector = Icons.Filled.Add,
-            tint = Color.Black,
-            contentDescription = null,
-            modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
-                .background(Color.White)
-                .padding(vertical = 4.dp, horizontal = 8.dp)
-        )
+  Box(contentAlignment = Alignment.Center) {
+    Row {
+      Spacer(
+        modifier =
+          Modifier.height(30.dp).width(24.dp).clip(RoundedCornerShape(8.dp)).background(tiktokBlue)
+      )
+      Spacer(
+        modifier =
+          Modifier.height(30.dp).width(24.dp).clip(RoundedCornerShape(8.dp)).background(tiktokRed)
+      )
     }
+    Icon(
+      imageVector = Icons.Filled.Add,
+      tint = Color.Black,
+      contentDescription = null,
+      modifier =
+        Modifier.clip(RoundedCornerShape(8.dp))
+          .background(Color.White)
+          .padding(vertical = 4.dp, horizontal = 8.dp)
+    )
+  }
 }

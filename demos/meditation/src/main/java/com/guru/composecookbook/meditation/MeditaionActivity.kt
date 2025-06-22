@@ -10,17 +10,13 @@ import com.guru.composecookbook.meditation.ui.screen.MeditationHome
 import com.guru.composecookbook.meditation.ui.theme.MeditationAppTheme
 
 class MeditationActivity : ComponentActivity() {
-    @OptIn(ExperimentalFoundationApi::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MeditationAppTheme {
-                MeditationHome()
-            }
-        }
-    }
+  @OptIn(ExperimentalFoundationApi::class)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContent { MeditationAppTheme { MeditationHome() } }
+  }
 
-    companion object {
-        fun newIntent(context: Context) = Intent(context, MeditationActivity::class.java)
-    }
+  companion object {
+    fun newIntent(context: Context) = Intent(context, MeditationActivity::class.java)
+  }
 }

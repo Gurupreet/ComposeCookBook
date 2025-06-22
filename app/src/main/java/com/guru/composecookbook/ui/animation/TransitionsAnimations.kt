@@ -36,104 +36,109 @@ import com.guru.composecookbook.ui.utils.TitleText
 
 @Composable
 fun TransitionAnimationsWithMultipleStates() {
-    TitleText(title = "Multi-state Animations via Transition and States")
-    MultiStateColorPositionAnimation()
-    Divider()
-    MultiStateInfiniteTransition()
-    Divider()
-    FloatMultiStateAnimationCircleStrokeCanvas()
-    Divider()
-    FloatMultiStateAnimationCircleCanvas()
+  TitleText(title = "Multi-state Animations via Transition and States")
+  MultiStateColorPositionAnimation()
+  Divider()
+  MultiStateInfiniteTransition()
+  Divider()
+  FloatMultiStateAnimationCircleStrokeCanvas()
+  Divider()
+  FloatMultiStateAnimationCircleCanvas()
 }
 
 @Composable
 fun MultiStateColorPositionAnimation() {
-    SubtitleText(subtitle = "Multi State color and position transition")
-    Spacer(modifier = Modifier.height(80.dp))
-    var animationState by remember { mutableStateOf(MyAnimationState.START) }
-    val startColor = green200
-    val midColor = purple
-    val endColor = orange
+  SubtitleText(subtitle = "Multi State color and position transition")
+  Spacer(modifier = Modifier.height(80.dp))
+  var animationState by remember { mutableStateOf(MyAnimationState.START) }
+  val startColor = green200
+  val midColor = purple
+  val endColor = orange
 
-    val transition = updateTransition(targetState = animationState, label = "transition")
+  val transition = updateTransition(targetState = animationState, label = "transition")
 
-    val animatedColor by transition.animateColor(
-        transitionSpec = { tween(500) },
-        label = "animatedColor",
+  val animatedColor by
+    transition.animateColor(
+      transitionSpec = { tween(500) },
+      label = "animatedColor",
     ) { state ->
-        when (state) {
-            MyAnimationState.START -> startColor
-            MyAnimationState.MID -> midColor
-            MyAnimationState.END -> endColor
+      when (state) {
+        MyAnimationState.START -> startColor
+        MyAnimationState.MID -> midColor
+        MyAnimationState.END -> endColor
+      }
+    }
+
+  val position by
+    transition.animateDp(
+      transitionSpec = { tween(500) },
+      label = "position",
+    ) { state ->
+      when (state) {
+        MyAnimationState.START -> 0.dp
+        MyAnimationState.MID -> 80.dp
+        MyAnimationState.END -> (-80).dp
+      }
+    }
+  FloatingActionButton(
+    containerColor = animatedColor,
+    modifier = Modifier.offset(x = position, y = position),
+    onClick = {
+      animationState =
+        when (animationState) {
+          MyAnimationState.START -> MyAnimationState.MID
+          MyAnimationState.MID -> MyAnimationState.END
+          MyAnimationState.END -> MyAnimationState.START
         }
     }
-
-    val position by transition.animateDp(
-        transitionSpec = { tween(500) },
-        label = "position",
-    ) { state ->
-        when (state) {
-            MyAnimationState.START -> 0.dp
-            MyAnimationState.MID -> 80.dp
-            MyAnimationState.END -> (-80).dp
-        }
-    }
-    FloatingActionButton(
-        containerColor = animatedColor,
-        modifier = Modifier.offset(x = position, y = position),
-        onClick = {
-            animationState = when (animationState) {
-                MyAnimationState.START -> MyAnimationState.MID
-                MyAnimationState.MID -> MyAnimationState.END
-                MyAnimationState.END -> MyAnimationState.START
-            }
-        }) {
-        Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
-    }
+  ) {
+    Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
+  }
 }
 
 @Composable
 fun MultiStateInfiniteTransition() {
-    SubtitleText(subtitle = "Multi State infinite transition")
-    Spacer(modifier = Modifier.height(80.dp))
-    val startColor = green200
-    val endColor = orange
+  SubtitleText(subtitle = "Multi State infinite transition")
+  Spacer(modifier = Modifier.height(80.dp))
+  val startColor = green200
+  val endColor = orange
 
-    val transition = rememberInfiniteTransition()
+  val transition = rememberInfiniteTransition()
 
-    val animatedColor by transition.animateColor(
-        initialValue = startColor,
-        targetValue = endColor,
-        animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
+  val animatedColor by
+    transition.animateColor(
+      initialValue = startColor,
+      targetValue = endColor,
+      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
     )
 
-    val position by transition.animateFloat(
-        initialValue = -80f,
-        targetValue = 80f,
-        animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
+  val position by
+    transition.animateFloat(
+      initialValue = -80f,
+      targetValue = 80f,
+      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
     )
 
-    FloatingActionButton(
-        containerColor = animatedColor,
-        modifier = Modifier.offset(x = position.dp),
-        onClick = {
-        }) {
-        Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
-    }
+  FloatingActionButton(
+    containerColor = animatedColor,
+    modifier = Modifier.offset(x = position.dp),
+    onClick = {}
+  ) {
+    Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
+  }
 }
-
 
 @Composable
 fun FloatMultiStateAnimationCircleStrokeCanvas() {
-    SubtitleText(subtitle = "Canvas Circle stroke with transition")
-    MultiStateAnimationCircleStrokeCanvas()
+  SubtitleText(subtitle = "Canvas Circle stroke with transition")
+  MultiStateAnimationCircleStrokeCanvas()
 }
 
 @Preview
 @Composable
 fun FloatMultiStateAnimationCircleCanvas(color: Color = green500, radiusEnd: Float = 200f) {
-    SubtitleText(subtitle = "Canvas drawing with infinite transition")
-    Spacer(modifier = Modifier.height(100.dp))
-    MultiStateAnimationCircleFilledCanvas(color, radiusEnd)
-    Spacer(modifier = Modifier.height(100.dp))
+  SubtitleText(subtitle = "Canvas drawing with infinite transition")
+  Spacer(modifier = Modifier.height(100.dp))
+  MultiStateAnimationCircleFilledCanvas(color, radiusEnd)
+  Spacer(modifier = Modifier.height(100.dp))
 }

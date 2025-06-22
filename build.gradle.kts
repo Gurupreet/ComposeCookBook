@@ -9,10 +9,22 @@ buildscript {
     }
 }
 
+plugins {
+    id("com.ncorti.ktfmt.gradle") version "0.12.0" apply false
+}
+
 allprojects {
     repositories {
         mavenCentral()
         google()
         maven(url = "https://jitpack.io")
+    }
+
+    // Apply ktfmt to all projects
+    apply(plugin = "com.ncorti.ktfmt.gradle")
+
+    configure<com.ncorti.ktfmt.gradle.KtfmtExtension> {
+        googleStyle()
+        maxWidth.set(100)
     }
 }

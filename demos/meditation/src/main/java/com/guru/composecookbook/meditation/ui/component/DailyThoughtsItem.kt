@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,66 +30,50 @@ import com.guru.composecookbook.meditation.ui.theme.TextWhite
 import com.guru.composecookbook.meditation.ui.theme.dp10
 
 @Composable
-fun DailyThoughtsItem(
-    dailyThought: DailyThought
-) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(dp10))
-            .background(color = DarkBlue)
-            .height(92.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_daily_thoughts),
-                contentDescription = "Daily Thoughts",
-                Modifier.fillMaxSize()
-            )
+fun DailyThoughtsItem(dailyThought: DailyThought) {
+  Box(
+    modifier = Modifier.clip(RoundedCornerShape(dp10)).background(color = DarkBlue).height(92.dp)
+  ) {
+    Box(modifier = Modifier.fillMaxSize()) {
+      Image(
+        painter = painterResource(id = R.drawable.ic_daily_thoughts),
+        contentDescription = "Daily Thoughts",
+        Modifier.fillMaxSize()
+      )
 
-            Box(
-                modifier = Modifier.padding(
-                    horizontal = 15.dp
-                )
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    Column() {
-                        Text(
-                            text = dailyThought.title,
-                            style = MaterialTheme.typography.h6,
-                            color = dailyThought.textColor,
-                            fontSize = 18.sp
-                        )
-                        Text(
-                            text = dailyThought.description,
-                            color = dailyThought.textColor,
-                            style = MaterialTheme.typography.body1,
-                            fontSize = 11.sp
-                        )
-                    }
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(TextWhite)
-                            .padding(10.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_play),
-                            contentDescription = "Play",
-                            tint = DeepBlue,
-                            modifier = Modifier.size(16.dp)
-                        )
-                    }
-                }
-            }
+      Box(modifier = Modifier.padding(horizontal = 15.dp)) {
+        Row(
+          horizontalArrangement = Arrangement.SpaceBetween,
+          verticalAlignment = Alignment.CenterVertically,
+          modifier = Modifier.fillMaxSize()
+        ) {
+          Column() {
+            Text(
+              text = dailyThought.title,
+              style = MaterialTheme.typography.h6,
+              color = dailyThought.textColor,
+              fontSize = 18.sp
+            )
+            Text(
+              text = dailyThought.description,
+              color = dailyThought.textColor,
+              style = MaterialTheme.typography.body1,
+              fontSize = 11.sp
+            )
+          }
+          Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.size(40.dp).clip(CircleShape).background(TextWhite).padding(10.dp)
+          ) {
+            Icon(
+              painter = painterResource(id = R.drawable.ic_play),
+              contentDescription = "Play",
+              tint = DeepBlue,
+              modifier = Modifier.size(16.dp)
+            )
+          }
         }
+      }
     }
+  }
 }

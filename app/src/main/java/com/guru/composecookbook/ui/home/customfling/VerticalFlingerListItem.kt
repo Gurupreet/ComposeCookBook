@@ -20,51 +20,31 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 
-/**
- * @author https://github.com/iamjosephmj
- */
+/** @author https://github.com/iamjosephmj */
 @Composable
 fun VerticalFlingerListItem(item: Item, modifier: Modifier = Modifier) {
-    val typography = MaterialTheme.typography
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
+  val typography = MaterialTheme.typography
+  Column(modifier = modifier.fillMaxWidth().padding(16.dp)) {
+    val imageModifier =
+      Modifier.height(150.dp).fillMaxWidth().clip(shape = RoundedCornerShape(8.dp))
 
-        val imageModifier = Modifier
-            .height(150.dp)
-            .fillMaxWidth()
-            .clip(shape = RoundedCornerShape(8.dp))
+    Image(
+      painter = painterResource(item.imageId),
+      modifier = imageModifier,
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+    Spacer(Modifier.height(16.dp))
+    Text(text = item.title, style = typography.titleLarge)
+    Text(text = item.subtitle, style = typography.bodyMedium)
 
-        Image(
-            painter = painterResource(item.imageId),
-            modifier = imageModifier,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = item.title,
-            style = typography.titleLarge
-        )
-        Text(
-            text = item.subtitle,
-            style = typography.bodyMedium
-        )
-
-        Text(
-            text = item.source,
-            style = typography.titleSmall
-        )
-    }
+    Text(text = item.source, style = typography.titleSmall)
+  }
 }
 
 @Preview
 @Composable
 fun PreviewVerticalFlingerListItem() {
-    val item = DemoDataProvider.item
-    ComposeCookBookTheme {
-        VerticalFlingerListItem(item = item)
-    }
+  val item = DemoDataProvider.item
+  ComposeCookBookTheme { VerticalFlingerListItem(item = item) }
 }

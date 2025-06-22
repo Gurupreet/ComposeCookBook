@@ -5,10 +5,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 
 @Composable
-fun MeditationAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    MaterialTheme(
-        typography = Typography,
-        shapes = Shapes,
-        content = content,
-    )
+fun MeditationAppTheme(
+  darkTheme: Boolean = isSystemInDarkTheme(),
+  content: @Composable() () -> Unit
+) {
+  MaterialTheme(
+    typography = Typography,
+    shapes = Shapes,
+    content = content,
+  )
 }

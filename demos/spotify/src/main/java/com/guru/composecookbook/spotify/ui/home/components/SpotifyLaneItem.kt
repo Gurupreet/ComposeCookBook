@@ -23,39 +23,37 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SpotifyLaneItem(album: Album) {
-    val context = LocalContext.current
-    Column(
-        modifier =
-        Modifier
-            .width(180.dp)
-            .padding(8.dp)
-            .clickable(
-                onClick = {
-                    //Disclaimer: We should pass event top level and there should startActivity
-                    context.startActivity(SpotifyDetailActivity.newIntent(context, album))
-                })
-    ) {
-        Image(
-            painter = painterResource(id = album.imageId),
-            modifier = Modifier
-                .width(180.dp)
-                .height(160.dp),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
+  val context = LocalContext.current
+  Column(
+    modifier =
+      Modifier.width(180.dp)
+        .padding(8.dp)
+        .clickable(
+          onClick = {
+            // Disclaimer: We should pass event top level and there should startActivity
+            context.startActivity(SpotifyDetailActivity.newIntent(context, album))
+          }
         )
-        Text(
-            text = "${album.song}: ${album.descriptions}",
-            style = typography.body2,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.padding(vertical = 8.dp)
-        )
-    }
+  ) {
+    Image(
+      painter = painterResource(id = album.imageId),
+      modifier = Modifier.width(180.dp).height(160.dp),
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+    Text(
+      text = "${album.song}: ${album.descriptions}",
+      style = typography.body2,
+      maxLines = 2,
+      overflow = TextOverflow.Ellipsis,
+      modifier = Modifier.padding(vertical = 8.dp)
+    )
+  }
 }
 
 @Preview
 @Composable
 fun PreviewLaneItem() {
-    val album = remember { AlbumsDataProvider.album }
-    SpotifyLaneItem(album)
+  val album = remember { AlbumsDataProvider.album }
+  SpotifyLaneItem(album)
 }

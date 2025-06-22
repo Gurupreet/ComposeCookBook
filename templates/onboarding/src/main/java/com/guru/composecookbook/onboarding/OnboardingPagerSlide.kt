@@ -10,10 +10,10 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun OnboardingPagerSlide(selected: Boolean, color: Color, icon: ImageVector) {
-    Icon(
-        imageVector = icon,
-        modifier = Modifier.padding(4.dp),
-        contentDescription = null,
-        tint = if (selected) color else Color.Gray
-    )
+  Icon(
+    imageVector = icon,
+    modifier = Modifier.padding(4.dp),
+    contentDescription = null,
+    tint = if (selected) color else Color.Gray
+  )
 }

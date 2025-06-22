@@ -27,40 +27,38 @@ import com.guru.composecookbook.meditation.ui.theme.Gray
 
 @Composable
 fun BottomMenuItem(
-    item: BottomMenuContent,
-    isSelected: Boolean = false,
-    activeHighlightColor: Color = ButtonBlue,
-    activeTextColor: Color = Color.White,
-    inactiveTextColor: Color = AquaBlue,
-    onItemClick: () -> Unit
+  item: BottomMenuContent,
+  isSelected: Boolean = false,
+  activeHighlightColor: Color = ButtonBlue,
+  activeTextColor: Color = Color.White,
+  inactiveTextColor: Color = AquaBlue,
+  onItemClick: () -> Unit
 ) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+  Column(
+    horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.Center,
+  ) {
+    Box(
+      contentAlignment = Alignment.Center,
+      modifier =
+        Modifier.clip(RoundedCornerShape(15.dp))
+          .background(if (isSelected) activeHighlightColor else Color.Transparent)
+          .clickable { onItemClick() }
+          .padding(15.dp)
     ) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .clip(RoundedCornerShape(15.dp))
-                .background(if (isSelected) activeHighlightColor else Color.Transparent)
-                .clickable {
-                    onItemClick()
-                }
-                .padding(15.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = item.iconId),
-                contentDescription = item.title,
-                tint = if (isSelected) Color.White else Gray,
-                modifier = Modifier.size(20.dp)
-            )
-        }
-        spacerHeight5()
-        Text(
-            text = item.title,
-            style = MaterialTheme.typography.h2,
-            color = if(isSelected) activeTextColor else inactiveTextColor,
-            fontSize = 14.sp
-        )
+      Icon(
+        painter = painterResource(id = item.iconId),
+        contentDescription = item.title,
+        tint = if (isSelected) Color.White else Gray,
+        modifier = Modifier.size(20.dp)
+      )
     }
+    spacerHeight5()
+    Text(
+      text = item.title,
+      style = MaterialTheme.typography.h2,
+      color = if (isSelected) activeTextColor else inactiveTextColor,
+      fontSize = 14.sp
+    )
+  }
 }

@@ -17,43 +17,32 @@ import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeViewModelFactory
 import com.guru.composecookbook.moviesapp.ui.internal.theme.Colors
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
-
 @Composable
 fun WatchlistScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
-    val surfaceGradient = Colors.moviesSurfaceGradient(isSystemInDarkTheme())
-    val viewModel: MoviesHomeViewModel = viewModel(
-        factory = MoviesHomeViewModelFactory(LocalContext.current)
-    )
-    val myWatchlist by viewModel.myWatchlist.observeAsState(emptyList())
-    if (myWatchlist.isEmpty()) {
-        EmptyWatchlistSection()
+  val surfaceGradient = Colors.moviesSurfaceGradient(isSystemInDarkTheme())
+  val viewModel: MoviesHomeViewModel =
+    viewModel(factory = MoviesHomeViewModelFactory(LocalContext.current))
+  val myWatchlist by viewModel.myWatchlist.observeAsState(emptyList())
+  if (myWatchlist.isEmpty()) {
+    EmptyWatchlistSection()
 
-        return
-    }
+    return
+  }
 
-    Surface(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-        LazyColumn {
-            itemsIndexed(
-                items = myWatchlist,
-                itemContent = { _: Int, movie: Movie ->
-                    MovieWatchlistItem(
-                        movie,
-                        {
-                            moviesHomeInteractionEvents(
-                                MoviesHomeInteractionEvents.OpenMovieDetail(movie)
-                            )
-                        },
-                        {
-                            moviesHomeInteractionEvents(
-                                MoviesHomeInteractionEvents.RemoveFromMyWatchlist(movie)
-                            )
-                        }
-                    )
-                }
-            )
+  Surface(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+    LazyColumn {
+      itemsIndexed(
+        items = myWatchlist,
+        itemContent = { _: Int, movie: Movie ->
+          MovieWatchlistItem(
+            movie,
+            { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.OpenMovieDetail(movie)) },
+            {
+              moviesHomeInteractionEvents(MoviesHomeInteractionEvents.RemoveFromMyWatchlist(movie))
+            }
+          )
         }
+      )
     }
+  }
 }
-
-
-

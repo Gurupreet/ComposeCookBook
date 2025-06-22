@@ -34,91 +34,84 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 
 enum class SpotifyNavType {
-    HOME, SEARCH, LIBRARY
+  HOME,
+  SEARCH,
+  LIBRARY
 }
 
 class SpotifyActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        setContent {
-            ComposeCookBookTheme {
-                SpotifyAppContent()
-            }
-        }
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+    setContent { ComposeCookBookTheme { SpotifyAppContent() } }
+  }
 
-    companion object {
-        const val DARK_THEME = "darkTheme"
-        fun newIntent(context: Context, isDarkTheme: Boolean) =
-            Intent(context, SpotifyActivity::class.java).apply {
-                putExtra(DARK_THEME, isDarkTheme)
-            }
-    }
+  companion object {
+    const val DARK_THEME = "darkTheme"
+    fun newIntent(context: Context, isDarkTheme: Boolean) =
+      Intent(context, SpotifyActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
+  }
 }
 
 @Composable
 fun SpotifyAppContent() {
-    val spotifyNavItemState = rememberSaveable { mutableStateOf(SpotifyNavType.HOME) }
-    Scaffold(
-        bottomBar = { SpotifyBottomNavigation(spotifyNavItemState) },
-        content = { paddingValues ->
-            SpotifyBodyContent(
-                spotifyNavItemState.value,
-                modifier = Modifier.padding(paddingValues),
-            )
-        }
-    )
+  val spotifyNavItemState = rememberSaveable { mutableStateOf(SpotifyNavType.HOME) }
+  Scaffold(
+    bottomBar = { SpotifyBottomNavigation(spotifyNavItemState) },
+    content = { paddingValues ->
+      SpotifyBodyContent(
+        spotifyNavItemState.value,
+        modifier = Modifier.padding(paddingValues),
+      )
+    }
+  )
 }
 
 @Composable
 fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
-    val bottomNavBackground =
-        if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
-    BottomNavigation(backgroundColor = bottomNavBackground) {
-        BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
-            selected = spotifyNavItemState.value == SpotifyNavType.HOME,
-            onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
-            label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
-        )
-        BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
-            selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
-            onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
-            label = { Text(text = stringResource(id = R.string.spotify_nav_search)) }
-        )
-        BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Outlined.LibraryMusic, contentDescription = null) },
-            selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
-            onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
-            label = { Text(text = stringResource(id = R.string.spotify_nav_library)) }
-        )
-    }
+  val bottomNavBackground =
+    if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
+  BottomNavigation(backgroundColor = bottomNavBackground) {
+    BottomNavigationItem(
+      icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
+      selected = spotifyNavItemState.value == SpotifyNavType.HOME,
+      onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
+      label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
+    )
+    BottomNavigationItem(
+      icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
+      selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
+      onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
+      label = { Text(text = stringResource(id = R.string.spotify_nav_search)) }
+    )
+    BottomNavigationItem(
+      icon = { Icon(imageVector = Icons.Outlined.LibraryMusic, contentDescription = null) },
+      selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
+      onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
+      label = { Text(text = stringResource(id = R.string.spotify_nav_library)) }
+    )
+  }
 }
 
 @Composable
 fun SpotifyBodyContent(
-    spotifyNavType: SpotifyNavType,
-    modifier: Modifier = Modifier,
+  spotifyNavType: SpotifyNavType,
+  modifier: Modifier = Modifier,
 ) {
-    Crossfade(
-        targetState = spotifyNavType,
-        modifier = modifier,
-    ) { navType ->
-        when (navType) {
-            SpotifyNavType.HOME -> SpotifyHome()
-            SpotifyNavType.SEARCH -> SpotifySearchScreen()
-            SpotifyNavType.LIBRARY -> SpotifyPlayList()
-        }
+  Crossfade(
+    targetState = spotifyNavType,
+    modifier = modifier,
+  ) { navType ->
+    when (navType) {
+      SpotifyNavType.HOME -> SpotifyHome()
+      SpotifyNavType.SEARCH -> SpotifySearchScreen()
+      SpotifyNavType.LIBRARY -> SpotifyPlayList()
     }
+  }
 }
-
 
 @Preview
 @Composable
 fun DefaultPreview() {
-    ComposeCookBookTheme {
-        SpotifyAppContent()
-    }
+  ComposeCookBookTheme { SpotifyAppContent() }
 }

@@ -29,83 +29,80 @@ import com.guru.composecookbook.twitter.components.tweets.TweetItem
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TwitterHome(
-        tweets: List<Tweet>,
-        onMessagesClick: () -> Unit,
-        onRetweetClick: () -> Unit,
-        onLikesClick: () -> Unit,
-        onShareClick: () -> Unit,
-        onNewTweetClicked: () -> Unit,
-        modifier: Modifier = Modifier
+  tweets: List<Tweet>,
+  onMessagesClick: () -> Unit,
+  onRetweetClick: () -> Unit,
+  onLikesClick: () -> Unit,
+  onShareClick: () -> Unit,
+  onNewTweetClicked: () -> Unit,
+  modifier: Modifier = Modifier
 ) {
-    Scaffold(
-            modifier = modifier,
-            topBar = {
-                TopAppBar(
-                        title = {
-                            Icon(
-                                    painter = painterResource(id = R.drawable.ic_twitter),
-                                    contentDescription = null,
-                                    tint = twitterColor,
-                                    modifier = Modifier.fillMaxWidth()
-                            )
-                        },
-                        backgroundColor = MaterialTheme.colorScheme.surface,
-                        contentColor = MaterialTheme.colorScheme.onSurface,
-                        elevation = 8.dp,
-                        navigationIcon = {
-                            ProfilePicture(
-                                    profileImageId = R.drawable.p6,
-                                    size = ProfilePictureSizes.small,
-                                    modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-                            )
-                        },
-                        actions = {
-                            Icon(
-                                    imageVector = Icons.Default.StarBorder,
-                                    contentDescription = null,
-                                    modifier = Modifier.padding(horizontal = 8.dp)
-                            )
-                        }
-                )
-            },
-            floatingActionButton = {
-                ExtendedFloatingActionButton(
-                        text = { Text(text = "Tweet") },
-                        icon = {
-                            Icon(
-                                    painter = painterResource(id = R.drawable.ic_twitter),
-                                    contentDescription = null
-                            )
-                        },
-                        onClick = onNewTweetClicked,
-                        containerColor = twitterColor
-                )
-            },
-            content = { paddingValues ->
-                LazyColumn(modifier = Modifier.padding(paddingValues)) {
-                    items(tweets) {
-                        TweetItem(
-                                tweet = it,
-                                onMessagesClick = onMessagesClick,
-                                onRetweetClick = onRetweetClick,
-                                onLikesClick = onLikesClick,
-                                onShareClick = onShareClick,
-                        )
-                    }
-                }
-            }
-    )
+  Scaffold(
+    modifier = modifier,
+    topBar = {
+      TopAppBar(
+        title = {
+          Icon(
+            painter = painterResource(id = R.drawable.ic_twitter),
+            contentDescription = null,
+            tint = twitterColor,
+            modifier = Modifier.fillMaxWidth()
+          )
+        },
+        backgroundColor = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        elevation = 8.dp,
+        navigationIcon = {
+          ProfilePicture(
+            profileImageId = R.drawable.p6,
+            size = ProfilePictureSizes.small,
+            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+          )
+        },
+        actions = {
+          Icon(
+            imageVector = Icons.Default.StarBorder,
+            contentDescription = null,
+            modifier = Modifier.padding(horizontal = 8.dp)
+          )
+        }
+      )
+    },
+    floatingActionButton = {
+      ExtendedFloatingActionButton(
+        text = { Text(text = "Tweet") },
+        icon = {
+          Icon(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = null)
+        },
+        onClick = onNewTweetClicked,
+        containerColor = twitterColor
+      )
+    },
+    content = { paddingValues ->
+      LazyColumn(modifier = Modifier.padding(paddingValues)) {
+        items(tweets) {
+          TweetItem(
+            tweet = it,
+            onMessagesClick = onMessagesClick,
+            onRetweetClick = onRetweetClick,
+            onLikesClick = onLikesClick,
+            onShareClick = onShareClick,
+          )
+        }
+      }
+    }
+  )
 }
 
 @Preview
 @Composable
 fun ShowTwitterScreen() {
-    TwitterHome(
-            tweets = DemoDataProvider.tweetList,
-            onMessagesClick = { /*TODO*/},
-            onRetweetClick = { /*TODO*/},
-            onLikesClick = { /*TODO*/},
-            onShareClick = { /*TODO*/},
-            onNewTweetClicked = { /*TODO*/}
-    )
+  TwitterHome(
+    tweets = DemoDataProvider.tweetList,
+    onMessagesClick = { /*TODO*/},
+    onRetweetClick = { /*TODO*/},
+    onLikesClick = { /*TODO*/},
+    onShareClick = { /*TODO*/},
+    onNewTweetClicked = { /*TODO*/}
+  )
 }

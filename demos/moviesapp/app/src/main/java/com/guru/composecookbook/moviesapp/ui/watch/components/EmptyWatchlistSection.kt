@@ -13,19 +13,19 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun EmptyWatchlistSection() {
-    Column {
-        Spacer(modifier = Modifier.padding(100.dp))
-        Text(
-            text = "Watchlist is empty",
-            style = typography.h6,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "Please add some movies to your watchlist",
-            style = typography.caption,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
-        )
-    }
+  Column {
+    Spacer(modifier = Modifier.padding(100.dp))
+    Text(
+      text = "Watchlist is empty",
+      style = typography.h6,
+      modifier = Modifier.fillMaxWidth(),
+      textAlign = TextAlign.Center
+    )
+    Text(
+      text = "Please add some movies to your watchlist",
+      style = typography.caption,
+      textAlign = TextAlign.Center,
+      modifier = Modifier.fillMaxWidth(),
+    )
+  }
 }

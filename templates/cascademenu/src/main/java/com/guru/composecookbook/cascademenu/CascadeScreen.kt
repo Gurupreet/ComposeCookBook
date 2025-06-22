@@ -40,90 +40,79 @@ import kotlinx.coroutines.flow.receiveAsFlow
 @ExperimentalAnimationApi
 @Composable
 fun CascadeScreen() {
-    val snackbarHostState = remember { SnackbarHostState() }
-    val channel = remember { Channel<String>(Channel.CONFLATED) }
-    val (isOpen, setIsOpen) = remember { mutableStateOf(false) }
+  val snackbarHostState = remember { SnackbarHostState() }
+  val channel = remember { Channel<String>(Channel.CONFLATED) }
+  val (isOpen, setIsOpen) = remember { mutableStateOf(false) }
 
-    LaunchedEffect(key1 = channel) {
-        channel.receiveAsFlow().collect {
-            snackbarHostState.showSnackbar(it)
+  LaunchedEffect(key1 = channel) {
+    channel.receiveAsFlow().collect { snackbarHostState.showSnackbar(it) }
+  }
+  Scaffold(
+    modifier = Modifier.fillMaxSize(),
+    backgroundColor = Color.Transparent,
+    scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState)
+  ) { paddingValues ->
+    Column(
+      modifier = Modifier.padding(paddingValues).fillMaxSize(),
+      verticalArrangement = Arrangement.Top,
+      horizontalAlignment = Alignment.End,
+    ) {
+      Spacer(modifier = Modifier.height(48.dp))
+      Box(contentAlignment = Alignment.TopEnd) {
+        Menu(
+          isOpen = isOpen,
+          setIsOpen = setIsOpen,
+          itemSelected = {
+            channel.trySend(it)
+            setIsOpen(false)
+          }
+        )
+        IconButton(onClick = { setIsOpen(true) }) {
+          Icon(imageVector = Icons.TwoTone.MoreVert, contentDescription = null)
         }
+      }
     }
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        backgroundColor = Color.Transparent,
-        scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState)
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.End,
-        ) {
-            Spacer(modifier = Modifier.height(48.dp))
-            Box(contentAlignment = Alignment.TopEnd) {
-                Menu(isOpen = isOpen, setIsOpen = setIsOpen, itemSelected = {
-                    channel.trySend(it)
-                    setIsOpen(false)
-                })
-                IconButton(
-                    onClick = { setIsOpen(true) }) {
-                    Icon(
-                        imageVector = Icons.TwoTone.MoreVert,
-                        contentDescription = null
-                    )
-                }
-            }
-        }
-    }
+  }
 }
 
 @ExperimentalAnimationApi
 @Composable
 fun Menu(isOpen: Boolean = false, setIsOpen: (Boolean) -> Unit, itemSelected: (String) -> Unit) {
-    val menu = getMenu()
-    CascadeMenu(
-        isOpen = isOpen,
-        menu = menu,
-        onItemSelected = itemSelected,
-        onDismiss = { setIsOpen(false) },
-        offset = DpOffset(8.dp, 0.dp),
-    )
+  val menu = getMenu()
+  CascadeMenu(
+    isOpen = isOpen,
+    menu = menu,
+    onItemSelected = itemSelected,
+    onDismiss = { setIsOpen(false) },
+    offset = DpOffset(8.dp, 0.dp),
+  )
 }
 
 fun getMenu(): CascadeMenuItem<String> {
-    val menu = cascadeMenu<String> {
-        item("about", "About") {
-            icon(Icons.TwoTone.Language)
+  val menu =
+    cascadeMenu<String> {
+      item("about", "About") { icon(Icons.TwoTone.Language) }
+      item("copy", "Copy") { icon(Icons.TwoTone.FileCopy) }
+      item("share", "Share") {
+        icon(Icons.TwoTone.Share)
+        item("to_clipboard", "To clipboard") {
+          item("pdf", "PDF")
+          item("epub", "EPUB")
+          item("web_page", "Web page")
+          item("microsoft_word", "Microsoft word")
         }
-        item("copy", "Copy") {
-            icon(Icons.TwoTone.FileCopy)
+        item("as_a_file", "As a file") {
+          item("pdf", "PDF")
+          item("epub", "EPUB")
+          item("web_page", "Web page")
+          item("microsoft_word", "Microsoft word")
         }
-        item("share", "Share") {
-            icon(Icons.TwoTone.Share)
-            item("to_clipboard", "To clipboard") {
-                item("pdf", "PDF")
-                item("epub", "EPUB")
-                item("web_page", "Web page")
-                item("microsoft_word", "Microsoft word")
-            }
-            item("as_a_file", "As a file") {
-                item("pdf", "PDF")
-                item("epub", "EPUB")
-                item("web_page", "Web page")
-                item("microsoft_word", "Microsoft word")
-            }
-        }
-        item("remove", "Remove") {
-            icon(Icons.TwoTone.DeleteSweep)
-            item("yep", "Yep") {
-                icon(Icons.TwoTone.Done)
-            }
-            item("go_back", "Go back") {
-                icon(Icons.TwoTone.Close)
-            }
-        }
+      }
+      item("remove", "Remove") {
+        icon(Icons.TwoTone.DeleteSweep)
+        item("yep", "Yep") { icon(Icons.TwoTone.Done) }
+        item("go_back", "Go back") { icon(Icons.TwoTone.Close) }
+      }
     }
-    return menu
+  return menu
 }

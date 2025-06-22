@@ -26,54 +26,54 @@ import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.ui.utils.TitleText
 
 enum class MyAnimationState {
-    START, MID, END
+  START,
+  MID,
+  END
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AnimationScreen() {
-    var animateIcon by remember { mutableStateOf(false) }
-    Scaffold(
-        modifier = Modifier.testTag(TestTags.ANIM_SCREEN_ROOT),
-        topBar = {
-            SmallTopAppBar(
-                title = { Text(text = "Animations") },
-                navigationIcon = {
-                    IconButton(onClick = { animateIcon = !animateIcon }) {
-                        RotateIcon(
-                            state = animateIcon,
-                            asset = Icons.Filled.PlayArrow,
-                            angle = 1440f,
-                            duration = 3000
-                        )
-                    }
-                }
+  var animateIcon by remember { mutableStateOf(false) }
+  Scaffold(
+    modifier = Modifier.testTag(TestTags.ANIM_SCREEN_ROOT),
+    topBar = {
+      SmallTopAppBar(
+        title = { Text(text = "Animations") },
+        navigationIcon = {
+          IconButton(onClick = { animateIcon = !animateIcon }) {
+            RotateIcon(
+              state = animateIcon,
+              asset = Icons.Filled.PlayArrow,
+              angle = 1440f,
+              duration = 3000
             )
-        },
-        content = { paddingValues ->
-            AnimationScreenContent(
-                modifier = Modifier.padding(paddingValues)
-            )
+          }
         }
-    )
+      )
+    },
+    content = { paddingValues ->
+      AnimationScreenContent(modifier = Modifier.padding(paddingValues))
+    }
+  )
 }
 
 @Composable
 fun AnimationScreenContent(
-    modifier: Modifier = Modifier,
+  modifier: Modifier = Modifier,
 ) {
-    LazyColumn(
-        state = rememberLazyListState(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier,
-    ) {
-        item { Spacer(modifier = Modifier.padding(4.dp)) }
-        item { TitleText(title = "State Animations(Fire and forget)") }
-        item { AnimationsForStates() }
-        item { AnimationsWithVisibilityApi() }
-        item { AnimatableSuspendedAnimations() }
-        item { TransitionAnimationsWithMultipleStates() }
-        item { ColorPicker(onColorSelected = { /*TODO*/ }) }
-        item { Spacer(modifier = Modifier.padding(100.dp)) }
-    }
+  LazyColumn(
+    state = rememberLazyListState(),
+    horizontalAlignment = Alignment.CenterHorizontally,
+    modifier = modifier,
+  ) {
+    item { Spacer(modifier = Modifier.padding(4.dp)) }
+    item { TitleText(title = "State Animations(Fire and forget)") }
+    item { AnimationsForStates() }
+    item { AnimationsWithVisibilityApi() }
+    item { AnimatableSuspendedAnimations() }
+    item { TransitionAnimationsWithMultipleStates() }
+    item { ColorPicker(onColorSelected = { /*TODO*/}) }
+    item { Spacer(modifier = Modifier.padding(100.dp)) }
+  }
 }

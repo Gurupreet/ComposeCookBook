@@ -42,103 +42,95 @@ import com.guru.composecookbook.theme.typography
 
 class DatingHomeActivity : ComponentActivity() {
 
-    @OptIn(ExperimentalMaterial3Api::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.purple)
+  @OptIn(ExperimentalMaterial3Api::class)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor = ContextCompat.getColor(this, R.color.purple)
 
-        setContent {
-            ComposeCookBookMaterial3Theme(false) {
-                val navType = rememberSaveable { mutableStateOf(DatingNavType.PEOPLES) }
-                Scaffold(
-                    topBar = { DatingHomeAppbar(navType) },
-                    bottomBar = { DatingBottomBar(navType) }
-                ) { paddingValues ->
-                    DatingHomeContent(
-                        navType = navType,
-                        modifier = Modifier.padding(paddingValues)
-                    )
-                }
-            }
+    setContent {
+      ComposeCookBookMaterial3Theme(false) {
+        val navType = rememberSaveable { mutableStateOf(DatingNavType.PEOPLES) }
+        Scaffold(
+          topBar = { DatingHomeAppbar(navType) },
+          bottomBar = { DatingBottomBar(navType) }
+        ) { paddingValues ->
+          DatingHomeContent(navType = navType, modifier = Modifier.padding(paddingValues))
         }
+      }
     }
+  }
 
-    companion object {
-        const val DARK_THEME = "darkTheme"
-        fun newIntent(context: Context, isDarkTheme: Boolean) =
-            Intent(context, DatingHomeActivity::class.java).apply {
-                putExtra(DARK_THEME, isDarkTheme)
-            }
-    }
+  companion object {
+    const val DARK_THEME = "darkTheme"
+    fun newIntent(context: Context, isDarkTheme: Boolean) =
+      Intent(context, DatingHomeActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
+  }
 }
 
 @SuppressLint("UnusedCrossfadeTargetStateParameter")
 @Composable
 fun DatingHomeContent(
-    navType: MutableState<DatingNavType>,
-    modifier: Modifier = Modifier,
+  navType: MutableState<DatingNavType>,
+  modifier: Modifier = Modifier,
 ) {
-    Crossfade(targetState = navType, modifier = modifier) {
-        when (navType.value) {
-            DatingNavType.PEOPLES -> DatingHomeScreen()
-            DatingNavType.CHATS -> DatingChatScreen()
-            DatingNavType.PROFILE -> ProfileScreen()
-        }
+  Crossfade(targetState = navType, modifier = modifier) {
+    when (navType.value) {
+      DatingNavType.PEOPLES -> DatingHomeScreen()
+      DatingNavType.CHATS -> DatingChatScreen()
+      DatingNavType.PROFILE -> ProfileScreen()
     }
+  }
 }
 
 @Composable
 fun DatingBottomBar(navType: MutableState<DatingNavType>) {
-    NavigationBar(
-        containerColor = MaterialTheme.colorScheme.contentColorFor(purple),
-        contentColor = purple,
-        tonalElevation = 4.dp
-    ) {
-        NavigationBarItem(
-            icon = { Icon(imageVector = Icons.Filled.Style, contentDescription = null) },
-            selected = navType.value == DatingNavType.PEOPLES,
-            onClick = { navType.value = DatingNavType.PEOPLES },
-        )
-        NavigationBarItem(
-            icon = { Icon(imageVector = Icons.Filled.Textsms, contentDescription = null) },
-            selected = navType.value == DatingNavType.CHATS,
-            onClick = { navType.value = DatingNavType.CHATS },
-        )
-        NavigationBarItem(
-            icon = { Icon(imageVector = Icons.Filled.PersonPin, contentDescription = null) },
-            selected = navType.value == DatingNavType.PROFILE,
-            onClick = { navType.value = DatingNavType.PROFILE },
-        )
-    }
+  NavigationBar(
+    containerColor = MaterialTheme.colorScheme.contentColorFor(purple),
+    contentColor = purple,
+    tonalElevation = 4.dp
+  ) {
+    NavigationBarItem(
+      icon = { Icon(imageVector = Icons.Filled.Style, contentDescription = null) },
+      selected = navType.value == DatingNavType.PEOPLES,
+      onClick = { navType.value = DatingNavType.PEOPLES },
+    )
+    NavigationBarItem(
+      icon = { Icon(imageVector = Icons.Filled.Textsms, contentDescription = null) },
+      selected = navType.value == DatingNavType.CHATS,
+      onClick = { navType.value = DatingNavType.CHATS },
+    )
+    NavigationBarItem(
+      icon = { Icon(imageVector = Icons.Filled.PersonPin, contentDescription = null) },
+      selected = navType.value == DatingNavType.PROFILE,
+      onClick = { navType.value = DatingNavType.PROFILE },
+    )
+  }
 }
 
 @ExperimentalMaterial3Api
 @Composable
 fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
-    val title = when (navType.value) {
-        DatingNavType.PEOPLES -> "Discover"
-        DatingNavType.CHATS -> "Chats"
-        DatingNavType.PROFILE -> "My Profile"
+  val title =
+    when (navType.value) {
+      DatingNavType.PEOPLES -> "Discover"
+      DatingNavType.CHATS -> "Chats"
+      DatingNavType.PROFILE -> "My Profile"
     }
-    SmallTopAppBar(
-        title = { Text(title, style = typography.h6) },
-        actions = {
-            IconButton(onClick = {}) {
-                Icons.Default.MyLocation
-            }
-        },
-    )
+  SmallTopAppBar(
+    title = { Text(title, style = typography.h6) },
+    actions = { IconButton(onClick = {}) { Icons.Default.MyLocation } },
+  )
 }
 
 enum class DatingNavType {
-    PEOPLES, CHATS, PROFILE
+  PEOPLES,
+  CHATS,
+  PROFILE
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview9() {
-    ComposeCookBookMaterial3Theme {
-        DatingHomeScreen()
-    }
+  ComposeCookBookMaterial3Theme { DatingHomeScreen() }
 }

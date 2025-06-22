@@ -10,34 +10,28 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 
-
 @Composable
 fun LottieLoadingView(
-    context: Context,
-    file: String,
-    modifier: Modifier = Modifier,
-    iterations: Int = 10
+  context: Context,
+  file: String,
+  modifier: Modifier = Modifier,
+  iterations: Int = 10
 ) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.Asset(file))
-    LottieAnimation(
-        composition,
-        modifier = modifier.defaultMinSize(300.dp),
-        iterations = iterations
-    )
+  val composition by rememberLottieComposition(LottieCompositionSpec.Asset(file))
+  LottieAnimation(composition, modifier = modifier.defaultMinSize(300.dp), iterations = iterations)
 
-    // OLD ANDROID VIEW IMPLEMENTATION
-//    val lottieView = remember {
-//        LottieAnimationView(context).apply {
-//            setAnimation(file)
-//            repeatCount = ValueAnimator.INFINITE
-//        }
-//    }
-//    AndroidView(
-//        { lottieView },
-//        modifier = modifier
-//    ) {
-//        it.playAnimation()
-//    }
-
+  // OLD ANDROID VIEW IMPLEMENTATION
+  //    val lottieView = remember {
+  //        LottieAnimationView(context).apply {
+  //            setAnimation(file)
+  //            repeatCount = ValueAnimator.INFINITE
+  //        }
+  //    }
+  //    AndroidView(
+  //        { lottieView },
+  //        modifier = modifier
+  //    ) {
+  //        it.playAnimation()
+  //    }
 
 }

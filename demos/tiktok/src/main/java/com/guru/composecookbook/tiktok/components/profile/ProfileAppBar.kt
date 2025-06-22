@@ -16,22 +16,24 @@ import com.guru.composecookbook.tiktok.R
 
 @Composable
 fun ProfileAppBar(album: Album, navHostController: NavHostController) {
-    TopAppBar(
-        title = { Text(text = album.artist) },
-        backgroundColor = MaterialTheme.colors.surface,
-        navigationIcon = {
-            IconButton(onClick = { navHostController.popBackStack() }) {
-                Icon(imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(id = R.string.cd_back)
-                )
-            }
-        },
-        actions = {
-            IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Filled.MoreVert,
-                    contentDescription = stringResource(id = R.string.cd_back)
-                )
-            }
-        }
-    )
+  TopAppBar(
+    title = { Text(text = album.artist) },
+    backgroundColor = MaterialTheme.colors.surface,
+    navigationIcon = {
+      IconButton(onClick = { navHostController.popBackStack() }) {
+        Icon(
+          imageVector = Icons.Filled.ArrowBack,
+          contentDescription = stringResource(id = R.string.cd_back)
+        )
+      }
+    },
+    actions = {
+      IconButton(onClick = {}) {
+        Icon(
+          imageVector = Icons.Filled.MoreVert,
+          contentDescription = stringResource(id = R.string.cd_back)
+        )
+      }
+    }
+  )
 }

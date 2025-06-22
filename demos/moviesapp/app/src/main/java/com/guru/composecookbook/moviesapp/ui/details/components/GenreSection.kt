@@ -9,13 +9,9 @@ import com.guru.composecookbook.tags.InterestTag
 
 @Composable
 fun GenreSection(viewModel: MovieDetailViewModel, movieGenreIdArray: List<Int>?) {
-    movieGenreIdArray?.let { movieGenreIds ->
-        val genres by viewModel.genresLiveData.observeAsState(emptyList())
-        val movieGenres = genres.filter { movieGenreIds.contains(it.id) }.take(3)
-        Row {
-            movieGenres.forEach {
-                InterestTag(text = it.name)
-            }
-        }
-    }
+  movieGenreIdArray?.let { movieGenreIds ->
+    val genres by viewModel.genresLiveData.observeAsState(emptyList())
+    val movieGenres = genres.filter { movieGenreIds.contains(it.id) }.take(3)
+    Row { movieGenres.forEach { InterestTag(text = it.name) } }
+  }
 }

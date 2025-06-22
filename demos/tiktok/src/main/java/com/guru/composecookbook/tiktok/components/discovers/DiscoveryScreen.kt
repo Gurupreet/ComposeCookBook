@@ -11,13 +11,13 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 
 @Composable
 fun DiscoverScreen() {
-    ComposeCookBookTheme(darkTheme = false) {
-        Surface {
-            Column {
-                SearchSection()
-                LanesSection()
-                Spacer(modifier = Modifier.height(400.dp))
-            }
-        }
+  ComposeCookBookTheme(darkTheme = false) {
+    Surface {
+      Column {
+        SearchSection()
+        LanesSection()
+        Spacer(modifier = Modifier.height(400.dp))
+      }
     }
+  }
 }

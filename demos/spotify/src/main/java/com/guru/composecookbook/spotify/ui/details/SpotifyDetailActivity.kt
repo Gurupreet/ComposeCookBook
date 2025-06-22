@@ -15,35 +15,24 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 
 class SpotifyDetailActivity : ComponentActivity() {
 
-    private val album: Album by lazy {
-        intent?.getSerializableExtra(ALBUM) as Album
-    }
+  private val album: Album by lazy { intent?.getSerializableExtra(ALBUM) as Album }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
-        setContent {
-            ComposeCookBookTheme {
-                SpotifyDetailScreen(album)
-            }
-        }
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
+    setContent { ComposeCookBookTheme { SpotifyDetailScreen(album) } }
+  }
 
-    companion object {
-        const val ALBUM = "album"
-        fun newIntent(context: Context, album: Album) =
-            Intent(context, SpotifyDetailActivity::class.java).apply {
-                putExtra(ALBUM, album)
-            }
-    }
+  companion object {
+    const val ALBUM = "album"
+    fun newIntent(context: Context, album: Album) =
+      Intent(context, SpotifyDetailActivity::class.java).apply { putExtra(ALBUM, album) }
+  }
 }
-
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewSpotifyDetailActivity() {
-    val album = AlbumsDataProvider.album
-    ComposeCookBookTheme {
-        SpotifyDetailScreen(album)
-    }
+  val album = AlbumsDataProvider.album
+  ComposeCookBookTheme { SpotifyDetailScreen(album) }
 }

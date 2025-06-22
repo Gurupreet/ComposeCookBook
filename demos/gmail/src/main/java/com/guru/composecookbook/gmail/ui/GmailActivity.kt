@@ -15,28 +15,21 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 
 class GmailActivity : ComponentActivity() {
 
-    @OptIn(ExperimentalFoundationApi::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
-        setContent {
-            ComposeCookBookTheme {
-                GmailScreen()
-            }
-        }
-    }
+  @OptIn(ExperimentalFoundationApi::class)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+    setContent { ComposeCookBookTheme { GmailScreen() } }
+  }
 
-    companion object {
-        fun newIntent(context: Context) = Intent(context, GmailActivity::class.java)
-    }
+  companion object {
+    fun newIntent(context: Context) = Intent(context, GmailActivity::class.java)
+  }
 }
 
-@OptIn(ExperimentalFoundationApi::class,
-ExperimentalAnimationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
-        GmailScreen()
-    }
+  ComposeCookBookTheme { GmailScreen() }
 }

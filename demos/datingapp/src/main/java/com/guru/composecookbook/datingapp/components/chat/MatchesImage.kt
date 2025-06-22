@@ -26,53 +26,53 @@ import com.guru.composecookbook.theme.instagramGradient
 
 @Composable
 fun MatchesImage(imageId: Int) {
-    Image(
-        painter = painterResource(id = imageId),
-        modifier = Modifier
-            .padding(start = 8.dp, end = 8.dp, top = 8.dp)
-            .height(65.dp)
-            .width(65.dp)
-            .clip(CircleShape)
-            .border(
-                shape = CircleShape,
-                border = BorderStroke(
-                    width = 3.dp,
-                    brush = Brush.linearGradient(
-                        colors = instagramGradient,
-                        start = Offset(0f, 0f),
-                        end = Offset(100f, 100f)
-                    )
+  Image(
+    painter = painterResource(id = imageId),
+    modifier =
+      Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp)
+        .height(65.dp)
+        .width(65.dp)
+        .clip(CircleShape)
+        .border(
+          shape = CircleShape,
+          border =
+            BorderStroke(
+              width = 3.dp,
+              brush =
+                Brush.linearGradient(
+                  colors = instagramGradient,
+                  start = Offset(0f, 0f),
+                  end = Offset(100f, 100f)
                 )
-            ),
-        contentDescription = null
-    )
+            )
+        ),
+    contentDescription = null
+  )
 }
 
 @Composable
 fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) {
-    if (showDot) {
-        Box {
-            Image(
-                painter = painterResource(id = imageId),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = modifier.clip(CircleShape)
-            )
-            Icon(
-                imageVector = Icons.Default.Lens,
-                contentDescription = null,
-                tint = green500,
-                modifier = Modifier
-                    .size(14.dp)
-                    .align(Alignment.BottomEnd)
-            )
-        }
-    } else {
-        Image(
-            painter = painterResource(id = imageId),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = modifier.clip(CircleShape)
-        )
+  if (showDot) {
+    Box {
+      Image(
+        painter = painterResource(id = imageId),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = modifier.clip(CircleShape)
+      )
+      Icon(
+        imageVector = Icons.Default.Lens,
+        contentDescription = null,
+        tint = green500,
+        modifier = Modifier.size(14.dp).align(Alignment.BottomEnd)
+      )
     }
+  } else {
+    Image(
+      painter = painterResource(id = imageId),
+      contentDescription = null,
+      contentScale = ContentScale.Crop,
+      modifier = modifier.clip(CircleShape)
+    )
+  }
 }

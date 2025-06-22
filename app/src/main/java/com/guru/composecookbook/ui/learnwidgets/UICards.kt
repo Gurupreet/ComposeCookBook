@@ -28,96 +28,87 @@ import com.guru.composecookbook.theme.typography
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UICards() {
-    Text(
-        text = "UI Cards, Boxes and Lists",
-        style = typography.h6,
-        modifier = Modifier.padding(8.dp)
-    )
+  Text(text = "UI Cards, Boxes and Lists", style = typography.h6, modifier = Modifier.padding(8.dp))
 
-    val item = remember { DemoDataProvider.item }
+  val item = remember { DemoDataProvider.item }
 
-    Text(
-        text = "Inbuilt box as container for any Clipping/Alignment controls",
-        style = typography.subtitle1,
-        modifier = Modifier.padding(8.dp)
-    )
-    Material3Card(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth(),
-        backgroundColor = MaterialTheme.colorScheme.primary,
-        shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp)
-    ) {
-        Column {
-            Text(
-                text = item.title,
-                modifier = Modifier.padding(8.dp),
-                color = MaterialTheme.colorScheme.onPrimary
-            )
-            Text(
-                text = item.subtitle,
-                modifier = Modifier.padding(8.dp),
-                color = MaterialTheme.colorScheme.onPrimary
-            )
-        }
+  Text(
+    text = "Inbuilt box as container for any Clipping/Alignment controls",
+    style = typography.subtitle1,
+    modifier = Modifier.padding(8.dp)
+  )
+  Material3Card(
+    modifier = Modifier.padding(8.dp).fillMaxWidth(),
+    backgroundColor = MaterialTheme.colorScheme.primary,
+    shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp)
+  ) {
+    Column {
+      Text(
+        text = item.title,
+        modifier = Modifier.padding(8.dp),
+        color = MaterialTheme.colorScheme.onPrimary
+      )
+      Text(
+        text = item.subtitle,
+        modifier = Modifier.padding(8.dp),
+        color = MaterialTheme.colorScheme.onPrimary
+      )
     }
-    Divider()
+  }
+  Divider()
 
-    Text(text = "Inbuilt Card", style = typography.subtitle1, modifier = Modifier.padding(8.dp))
-    Material3Card(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(4.dp),
-        elevation = 4.dp
-    ) {
-        Row {
-            Image(
-                painter = painterResource(id = R.drawable.p3),
-                contentDescription = null,
-                modifier = Modifier.size(60.dp)
-            )
-            Text(text = item.title, modifier = Modifier.padding(16.dp))
-        }
+  Text(text = "Inbuilt Card", style = typography.subtitle1, modifier = Modifier.padding(8.dp))
+  Material3Card(
+    modifier = Modifier.padding(16.dp).fillMaxWidth(),
+    shape = RoundedCornerShape(4.dp),
+    elevation = 4.dp
+  ) {
+    Row {
+      Image(
+        painter = painterResource(id = R.drawable.p3),
+        contentDescription = null,
+        modifier = Modifier.size(60.dp)
+      )
+      Text(text = item.title, modifier = Modifier.padding(16.dp))
     }
-    Divider()
+  }
+  Divider()
 
-    Text(
-        text = "In-built ListItems",
-        style = typography.subtitle1,
-        modifier = Modifier.padding(8.dp)
-    )
-    ListItem(text = { Text(item.title) }, secondaryText = { Text(item.subtitle) })
-    Divider(modifier = Modifier.padding(4.dp))
-    ListItem(
-        text = { Text(item.title) },
-        secondaryText = { Text(item.subtitle) },
-        singleLineSecondaryText = false
-    )
-    Divider(modifier = Modifier.padding(4.dp))
-    ListItem(text = { Text(item.title) }, secondaryText = { Text(item.subtitle) }, icon = {
-        Image(
-            painter = painterResource(R.drawable.p3),
-            contentDescription = null,
-        )
-    })
-    Divider(modifier = Modifier.padding(4.dp))
-    //I am not sure why this is not going multiline for secondaryText...
-    ListItem(
-        text = { Text(item.title) },
-        secondaryText = { Text(item.subtitle) },
-        icon = { Image(painter = painterResource(id = R.drawable.p1), contentDescription = null) },
-        overlineText = { Text("Overline text") },
-        singleLineSecondaryText = false
-    )
-    Divider()
-    ListItem(
-        text = { Text(item.title) },
-        secondaryText = { Text(item.subtitle) },
-        icon = { Image(painter = painterResource(id = R.drawable.p2), contentDescription = null) },
-        trailing = { Icon(Icons.Default.ShoppingCart, contentDescription = null) },
-        singleLineSecondaryText = false
-    )
-    Divider()
-
+  Text(text = "In-built ListItems", style = typography.subtitle1, modifier = Modifier.padding(8.dp))
+  ListItem(text = { Text(item.title) }, secondaryText = { Text(item.subtitle) })
+  Divider(modifier = Modifier.padding(4.dp))
+  ListItem(
+    text = { Text(item.title) },
+    secondaryText = { Text(item.subtitle) },
+    singleLineSecondaryText = false
+  )
+  Divider(modifier = Modifier.padding(4.dp))
+  ListItem(
+    text = { Text(item.title) },
+    secondaryText = { Text(item.subtitle) },
+    icon = {
+      Image(
+        painter = painterResource(R.drawable.p3),
+        contentDescription = null,
+      )
+    }
+  )
+  Divider(modifier = Modifier.padding(4.dp))
+  // I am not sure why this is not going multiline for secondaryText...
+  ListItem(
+    text = { Text(item.title) },
+    secondaryText = { Text(item.subtitle) },
+    icon = { Image(painter = painterResource(id = R.drawable.p1), contentDescription = null) },
+    overlineText = { Text("Overline text") },
+    singleLineSecondaryText = false
+  )
+  Divider()
+  ListItem(
+    text = { Text(item.title) },
+    secondaryText = { Text(item.subtitle) },
+    icon = { Image(painter = painterResource(id = R.drawable.p2), contentDescription = null) },
+    trailing = { Icon(Icons.Default.ShoppingCart, contentDescription = null) },
+    singleLineSecondaryText = false
+  )
+  Divider()
 }

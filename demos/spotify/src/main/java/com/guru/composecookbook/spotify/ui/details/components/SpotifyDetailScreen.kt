@@ -44,75 +44,70 @@ import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 
 @Composable
 fun SpotifyDetailScreen(album: Album) {
-    val scrollState = rememberScrollState(0)
-    val context = LocalContext.current
-    val image = ImageBitmap.imageResource(context.resources, id = album.imageId).asAndroidBitmap()
-    val swatch = remember(album.id) { image.generateDominantColorState() }
-    val dominantColors = listOf(Color(swatch.rgb), MaterialTheme.colors.surface)
-    val dominantGradient = remember { dominantColors }
-    val surfaceGradient = SpotifyDataProvider
-        .spotifySurfaceGradient(isSystemInDarkTheme()).asReversed()
+  val scrollState = rememberScrollState(0)
+  val context = LocalContext.current
+  val image = ImageBitmap.imageResource(context.resources, id = album.imageId).asAndroidBitmap()
+  val swatch = remember(album.id) { image.generateDominantColorState() }
+  val dominantColors = listOf(Color(swatch.rgb), MaterialTheme.colors.surface)
+  val dominantGradient = remember { dominantColors }
+  val surfaceGradient =
+    SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme()).asReversed()
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalGradientBackground(dominantGradient)
-    ) {
-        BoxTopSection(album = album, scrollState = scrollState)
-        TopSectionOverlay(scrollState = scrollState)
-        BottomScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
-        AnimatedToolBar(album, scrollState, surfaceGradient)
-    }
+  Box(modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantGradient)) {
+    BoxTopSection(album = album, scrollState = scrollState)
+    TopSectionOverlay(scrollState = scrollState)
+    BottomScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
+    AnimatedToolBar(album, scrollState, surfaceGradient)
+  }
 }
 
 @Composable
 fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: List<Color>) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .horizontalGradientBackground(
-                if (Dp(scrollState.value.toFloat()) < 1080.dp)
-                    listOf(Color.Transparent, Color.Transparent) else surfaceGradient
-            )
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-    ) {
-        Icon(
-            imageVector = Icons.Default.ArrowBack, tint = MaterialTheme.colors.onSurface,
-            contentDescription = stringResource(id = R.string.cd_back)
+  Row(
+    horizontalArrangement = Arrangement.SpaceBetween,
+    verticalAlignment = Alignment.CenterVertically,
+    modifier =
+      Modifier.fillMaxWidth()
+        .horizontalGradientBackground(
+          if (Dp(scrollState.value.toFloat()) < 1080.dp)
+            listOf(Color.Transparent, Color.Transparent)
+          else surfaceGradient
         )
-        Text(
-            text = album.song,
-            color = MaterialTheme.colors.onSurface,
-            modifier = Modifier
-                .padding(16.dp)
-                .alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
-        )
-        Icon(
-            imageVector = Icons.Default.MoreVert, tint = MaterialTheme.colors.onSurface,
-            contentDescription = null
-        )
-    }
+        .padding(horizontal = 8.dp, vertical = 4.dp)
+  ) {
+    Icon(
+      imageVector = Icons.Default.ArrowBack,
+      tint = MaterialTheme.colors.onSurface,
+      contentDescription = stringResource(id = R.string.cd_back)
+    )
+    Text(
+      text = album.song,
+      color = MaterialTheme.colors.onSurface,
+      modifier =
+        Modifier.padding(16.dp).alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
+    )
+    Icon(
+      imageVector = Icons.Default.MoreVert,
+      tint = MaterialTheme.colors.onSurface,
+      contentDescription = null
+    )
+  }
 }
 
 @Composable
 fun BottomScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
-    Column(modifier = Modifier.verticalScroll(state = scrollState)) {
-        Spacer(modifier = Modifier.height(480.dp))
-        Column(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-            SongListScrollingSection()
-        }
-        Spacer(modifier = Modifier.height(50.dp))
+  Column(modifier = Modifier.verticalScroll(state = scrollState)) {
+    Spacer(modifier = Modifier.height(480.dp))
+    Column(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+      SongListScrollingSection()
     }
+    Spacer(modifier = Modifier.height(50.dp))
+  }
 }
 
 @Preview
 @Composable
 fun PreviewDetailScreen() {
-    val album = AlbumsDataProvider.album
-    ComposeCookBookTheme(true) {
-        SpotifyDetailScreen(album = album)
-    }
-
+  val album = AlbumsDataProvider.album
+  ComposeCookBookTheme(true) { SpotifyDetailScreen(album = album) }
 }

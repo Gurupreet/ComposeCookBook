@@ -9,16 +9,14 @@ import com.guru.composecookbook.cryptoapp.data.repositories.CryptoRepository
 import kotlinx.coroutines.Dispatchers
 
 class CryptoDetailViewModelFactory(val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CryptoDetailViewModel(context) as T
-    }
+  override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    return CryptoDetailViewModel(context) as T
+  }
 }
 
 class CryptoDetailViewModel(context: Context) : ViewModel() {
-    private val cryptoRepository: CryptoRepository = DemoDIGraph.createRepository(context)
+  private val cryptoRepository: CryptoRepository = DemoDIGraph.createRepository(context)
 
-    //live data to read room database
-    val favCryptoLiveData = liveData(Dispatchers.IO) {
-        emitSource(cryptoRepository.getFavourite())
-    }
+  // live data to read room database
+  val favCryptoLiveData = liveData(Dispatchers.IO) { emitSource(cryptoRepository.getFavourite()) }
 }

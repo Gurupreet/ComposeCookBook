@@ -22,36 +22,27 @@ import com.guru.composecookbook.meditation.ui.model.Topic
 import com.guru.composecookbook.meditation.ui.theme.dp10
 
 @Composable
-fun TopicItem(
-    topic: Topic,
-    itemSize: Dp
-) {
-    Box(modifier = Modifier.padding(horizontal = 7.5.dp, vertical = 7.5.dp)) {
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .size(itemSize)
-                .background(color = topic.color)
-        ) {
-            Image(
-                painter = painterResource(id = topic.image),
-                contentDescription = "Topic",
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.align(Alignment.TopCenter)
-            )
-            Text(
-                topic.title,
-                style = MaterialTheme.typography.h2,
-                fontSize = 18.sp,
-                lineHeight = 26.sp,
-                color = topic.textColor,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .align(
-                        Alignment.BottomStart
-                    )
-                    .padding(bottom = dp10, start = dp10)
-            )
-        }
+fun TopicItem(topic: Topic, itemSize: Dp) {
+  Box(modifier = Modifier.padding(horizontal = 7.5.dp, vertical = 7.5.dp)) {
+    Box(
+      modifier =
+        Modifier.clip(RoundedCornerShape(10.dp)).size(itemSize).background(color = topic.color)
+    ) {
+      Image(
+        painter = painterResource(id = topic.image),
+        contentDescription = "Topic",
+        contentScale = ContentScale.FillBounds,
+        modifier = Modifier.align(Alignment.TopCenter)
+      )
+      Text(
+        topic.title,
+        style = MaterialTheme.typography.h2,
+        fontSize = 18.sp,
+        lineHeight = 26.sp,
+        color = topic.textColor,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.align(Alignment.BottomStart).padding(bottom = dp10, start = dp10)
+      )
     }
+  }
 }

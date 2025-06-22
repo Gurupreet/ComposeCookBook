@@ -38,161 +38,141 @@ import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class,
-ExperimentalAnimationApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalAnimationApi::class)
 @Composable
 fun AllButtons() {
-    Text(text = "Buttons", style = typography.h5, modifier = Modifier.padding(8.dp))
+  Text(text = "Buttons", style = typography.h5, modifier = Modifier.padding(8.dp))
 
-    Row {
-        Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
-            Text(text = "Main Button")
-        }
-        TextButton(onClick = {}, modifier = Modifier.padding(8.dp)) {
-            Text(text = "Text Button")
-        }
-        TextButton(onClick = {}, modifier = Modifier.padding(8.dp), enabled = false) {
-            Text(text = "Text Disabled")
-        }
+  Row {
+    Button(onClick = {}, modifier = Modifier.padding(8.dp)) { Text(text = "Main Button") }
+    TextButton(onClick = {}, modifier = Modifier.padding(8.dp)) { Text(text = "Text Button") }
+    TextButton(onClick = {}, modifier = Modifier.padding(8.dp), enabled = false) {
+      Text(text = "Text Disabled")
     }
-    Row {
-        Button(onClick = {}, modifier = Modifier.padding(8.dp), enabled = false) {
-            Text(text = "Disabled")
-        }
-        Button(
-            onClick = {},
-            modifier = Modifier.padding(8.dp),
-            elevation = ButtonDefaults.buttonElevation()
-        ) {
-            Text(text = "Flat")
-        }
-        Button(
-            onClick = {},
-            modifier = Modifier.padding(8.dp),
-            shape = RoundedCornerShape(12.dp)
-        ) {
-            Text(text = "Rounded")
-        }
+  }
+  Row {
+    Button(onClick = {}, modifier = Modifier.padding(8.dp), enabled = false) {
+      Text(text = "Disabled")
     }
-    Row {
-        OutlinedButton(onClick = {}, modifier = Modifier.padding(8.dp)) {
-            Text(text = "Outline")
-        }
-        Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
-            Row {
-                Icon(
-                    imageVector = Icons.Default.FavoriteBorder,
-                    contentDescription = null,
-                    modifier = Modifier.padding(end = 4.dp)
-                )
-                Text(text = "Icon Button")
-            }
-        }
-        Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
-            Text(text = "Icon Button")
-            Icon(
-                imageVector = Icons.Default.FavoriteBorder,
-                contentDescription = null,
-                modifier = Modifier.padding(start = 4.dp)
-            )
-        }
+    Button(
+      onClick = {},
+      modifier = Modifier.padding(8.dp),
+      elevation = ButtonDefaults.buttonElevation()
+    ) {
+      Text(text = "Flat")
     }
-    //custom background buttons
-    val outlineButtonColor = ButtonDefaults.outlinedButtonColors(
-        contentColor = purple200,
+    Button(onClick = {}, modifier = Modifier.padding(8.dp), shape = RoundedCornerShape(12.dp)) {
+      Text(text = "Rounded")
+    }
+  }
+  Row {
+    OutlinedButton(onClick = {}, modifier = Modifier.padding(8.dp)) { Text(text = "Outline") }
+    Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
+      Row {
+        Icon(
+          imageVector = Icons.Default.FavoriteBorder,
+          contentDescription = null,
+          modifier = Modifier.padding(end = 4.dp)
+        )
+        Text(text = "Icon Button")
+      }
+    }
+    Button(onClick = {}, modifier = Modifier.padding(8.dp)) {
+      Text(text = "Icon Button")
+      Icon(
+        imageVector = Icons.Default.FavoriteBorder,
+        contentDescription = null,
+        modifier = Modifier.padding(start = 4.dp)
+      )
+    }
+  }
+  // custom background buttons
+  val outlineButtonColor =
+    ButtonDefaults.outlinedButtonColors(
+      contentColor = purple200,
     )
-    val mainButtonColor = ButtonDefaults.buttonColors(
-        containerColor = purple,
-        contentColor = MaterialTheme.colorScheme.surface
+  val mainButtonColor =
+    ButtonDefaults.buttonColors(
+      containerColor = purple,
+      contentColor = MaterialTheme.colorScheme.surface
     )
-    Row {
-        OutlinedButton(
-            colors = outlineButtonColor,
-            onClick = {},
-            modifier = Modifier.padding(8.dp)
-        ) {
-            Text(text = "Outline colors")
-        }
-        Button(colors = mainButtonColor, onClick = {}, modifier = Modifier.padding(8.dp)) {
-            Text(text = "Custom colors")
-        }
+  Row {
+    OutlinedButton(colors = outlineButtonColor, onClick = {}, modifier = Modifier.padding(8.dp)) {
+      Text(text = "Outline colors")
     }
-    Row {
-        val horizontalGradient = Brush.horizontalGradient(
-            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
-            0f,
-            250f
-        )
-        val verticalGradient = Brush.verticalGradient(
-            colors = listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
-            startY = 0f,
-            endY = 100f
-        )
-        Text(
-            text = "Horizontal gradient",
-            style = typography.body2.copy(color = Color.White),
-            modifier = Modifier
-                .padding(12.dp)
-                .clickable(onClick = {})
-                .clip(RoundedCornerShape(4.dp))
-                .background(brush = horizontalGradient)
-                .padding(12.dp)
-        )
-        Text(
-            text = "Vertical gradient",
-            style = typography.body1.copy(color = Color.White),
-            modifier = Modifier
-                .padding(12.dp)
-                .clickable(onClick = {})
-                .clip(RoundedCornerShape(4.dp))
-                .background(brush = verticalGradient)
-                .padding(12.dp)
-        )
+    Button(colors = mainButtonColor, onClick = {}, modifier = Modifier.padding(8.dp)) {
+      Text(text = "Custom colors")
     }
+  }
+  Row {
+    val horizontalGradient =
+      Brush.horizontalGradient(
+        colors =
+          listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
+        0f,
+        250f
+      )
+    val verticalGradient =
+      Brush.verticalGradient(
+        colors =
+          listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
+        startY = 0f,
+        endY = 100f
+      )
+    Text(
+      text = "Horizontal gradient",
+      style = typography.body2.copy(color = Color.White),
+      modifier =
+        Modifier.padding(12.dp)
+          .clickable(onClick = {})
+          .clip(RoundedCornerShape(4.dp))
+          .background(brush = horizontalGradient)
+          .padding(12.dp)
+    )
+    Text(
+      text = "Vertical gradient",
+      style = typography.body1.copy(color = Color.White),
+      modifier =
+        Modifier.padding(12.dp)
+          .clickable(onClick = {})
+          .clip(RoundedCornerShape(4.dp))
+          .background(brush = verticalGradient)
+          .padding(12.dp)
+    )
+  }
 
-    val swipeButtonState = remember {
-        mutableStateOf(SwipeButtonState.INITIAL)
-    }
-    val coroutineScope = rememberCoroutineScope()
-    SwipeButton(
-        onSwiped = {
-            swipeButtonState.value = SwipeButtonState.SWIPED
-            coroutineScope.launch {
-                delay(2000)
-                swipeButtonState.value = SwipeButtonState.COLLAPSED
-            }
-        },
-        swipeButtonState = swipeButtonState.value,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .height(60.dp),
-        iconPadding = PaddingValues(4.dp),
-        shape = CircleShape,
-    ) {
-        Text(text = "PAY NOW", style = typography.h6.copy(fontSize = 16.sp))
-    }
-    SwipeButton(
-        onSwiped = {},
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        iconPadding = PaddingValues(4.dp),
-        swipeButtonState = SwipeButtonState.INITIAL,
-        shape = CircleShape,
-        enabled = false
-    ) {
-        Text(text = "Swipe", style = typography.body1)
-    }
+  val swipeButtonState = remember { mutableStateOf(SwipeButtonState.INITIAL) }
+  val coroutineScope = rememberCoroutineScope()
+  SwipeButton(
+    onSwiped = {
+      swipeButtonState.value = SwipeButtonState.SWIPED
+      coroutineScope.launch {
+        delay(2000)
+        swipeButtonState.value = SwipeButtonState.COLLAPSED
+      }
+    },
+    swipeButtonState = swipeButtonState.value,
+    modifier = Modifier.fillMaxWidth().padding(16.dp).height(60.dp),
+    iconPadding = PaddingValues(4.dp),
+    shape = CircleShape,
+  ) {
+    Text(text = "PAY NOW", style = typography.h6.copy(fontSize = 16.sp))
+  }
+  SwipeButton(
+    onSwiped = {},
+    modifier = Modifier.fillMaxWidth().padding(16.dp),
+    iconPadding = PaddingValues(4.dp),
+    swipeButtonState = SwipeButtonState.INITIAL,
+    shape = CircleShape,
+    enabled = false
+  ) {
+    Text(text = "Swipe", style = typography.body1)
+  }
 }
 
-@OptIn(ExperimentalAnimationApi::class,
-ExperimentalMaterialApi::class)
+@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
 @Preview
 @Composable
 fun PreviewButtons() {
-    Column {
-        AllButtons()
-    }
-
+  Column { AllButtons() }
 }

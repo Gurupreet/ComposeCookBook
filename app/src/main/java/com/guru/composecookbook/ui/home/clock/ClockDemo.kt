@@ -19,28 +19,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ClockDemo(
-    viewModel: ClockViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
-) {
-    val clockState: Triple<Float, Float, Float> by viewModel.clockState.collectAsState()
-    Surface {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            ClockView(
-                hourAngle = clockState.first,
-                minuteAngle = clockState.second,
-                secondAngle = clockState.third,
-                modifier = Modifier
-                    .height(200.dp)
-                    .width(200.dp)
-                    .background(color = MaterialTheme.colors.surface, shape = CircleShape)
-            )
-        }
+fun ClockDemo(viewModel: ClockViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+  val clockState: Triple<Float, Float, Float> by viewModel.clockState.collectAsState()
+  Surface {
+    Column(
+      modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(16.dp),
+      verticalArrangement = Arrangement.Center,
+      horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+      ClockView(
+        hourAngle = clockState.first,
+        minuteAngle = clockState.second,
+        secondAngle = clockState.third,
+        modifier =
+          Modifier.height(200.dp)
+            .width(200.dp)
+            .background(color = MaterialTheme.colors.surface, shape = CircleShape)
+      )
     }
+  }
 }

@@ -16,27 +16,21 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun ComingSoon() {
-    Surface {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(50.dp)
-        ) {
-            LottieWorkingLoadingView(context = LocalContext.current)
-            Text(
-                text = "Coming Soon",
-                style = typography.h5,
-                modifier = Modifier
-                    .padding(12.dp)
-                    .fillMaxWidth(),
-                textAlign = TextAlign.Center
-            )
-            Text(
-                text = "work in progress",
-                style = typography.subtitle2,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
+  Surface {
+    Column(modifier = Modifier.fillMaxSize().padding(50.dp)) {
+      LottieWorkingLoadingView(context = LocalContext.current)
+      Text(
+        text = "Coming Soon",
+        style = typography.h5,
+        modifier = Modifier.padding(12.dp).fillMaxWidth(),
+        textAlign = TextAlign.Center
+      )
+      Text(
+        text = "work in progress",
+        style = typography.subtitle2,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.fillMaxWidth()
+      )
     }
+  }
 }

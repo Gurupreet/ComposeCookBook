@@ -17,42 +17,34 @@ import com.guru.composecookbook.theme.typography
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BottomScrollingContent() {
-    Column(
-        modifier = Modifier
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(8.dp)
-    ) {
-        SocialRow()
-        Text(
-            text = "About Me",
-            style = typography.h6,
-            color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.padding(start = 8.dp, top = 12.dp)
-        )
-        Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
-        Text(
-            text = stringResource(id = R.string.about_me),
-            style = typography.body1,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-        )
-        InterestsSection()
-        MyPhotosSection()
-        Text(
-            text = "About Project",
-            style = typography.h6,
-            color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.padding(start = 8.dp, top = 16.dp)
-        )
-        Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
-        Text(
-            text = stringResource(id = R.string.about_project),
-            style = typography.body1,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-        )
-        MoreInfoSection()
-    }
+  Column(modifier = Modifier.background(MaterialTheme.colorScheme.surface).padding(8.dp)) {
+    SocialRow()
+    Text(
+      text = "About Me",
+      style = typography.h6,
+      color = MaterialTheme.colorScheme.primary,
+      modifier = Modifier.padding(start = 8.dp, top = 12.dp)
+    )
+    Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
+    Text(
+      text = stringResource(id = R.string.about_me),
+      style = typography.body1,
+      modifier = Modifier.fillMaxWidth().padding(8.dp),
+    )
+    InterestsSection()
+    MyPhotosSection()
+    Text(
+      text = "About Project",
+      style = typography.h6,
+      color = MaterialTheme.colorScheme.primary,
+      modifier = Modifier.padding(start = 8.dp, top = 16.dp)
+    )
+    Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
+    Text(
+      text = stringResource(id = R.string.about_project),
+      style = typography.body1,
+      modifier = Modifier.fillMaxWidth().padding(8.dp),
+    )
+    MoreInfoSection()
+  }
 }

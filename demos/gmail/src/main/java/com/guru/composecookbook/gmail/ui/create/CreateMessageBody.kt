@@ -22,79 +22,53 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CreateMessageBody(
-    modifier: Modifier = Modifier,
+  modifier: Modifier = Modifier,
 ) {
-    Column(modifier = modifier) {
-        Row {
-            Text(
-                text = "From",
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.CenterVertically)
-            )
-            Text(
-                text = "subash@gmail.com",
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(vertical = 16.dp)
-                    .align(Alignment.CenterVertically)
-            )
-            Icon(
-                imageVector = Icons.Outlined.KeyboardArrowDown,
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .padding(16.dp)
-            )
-        }
-        Divider(color = Color.LightGray, thickness = 0.5.dp)
-        Row {
-            Text(
-                text = "To",
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.CenterVertically)
-            )
-            BasicTextField(
-                value = TextFieldValue("Subash"),
-                onValueChange = { },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                keyboardActions = KeyboardActions(onDone = {}),
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(vertical = 16.dp)
-                    .align(Alignment.CenterVertically)
-            )
-            Icon(
-                imageVector = Icons.Outlined.KeyboardArrowDown,
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .padding(16.dp)
-            )
-        }
-
-        Divider(color = Color.LightGray, thickness = 0.5.dp)
-        BasicTextField(
-            value = TextFieldValue("Subject"),
-            onValueChange = { },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            keyboardActions = KeyboardActions(onDone = {}),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp, horizontal = 16.dp)
-        )
-        Divider(color = Color.LightGray, thickness = 0.5.dp)
-        BasicTextField(
-            value = TextFieldValue("Compose email"),
-            onValueChange = { },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            keyboardActions = KeyboardActions(onDone = {}),
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .padding(vertical = 16.dp, horizontal = 16.dp)
-        )
-
+  Column(modifier = modifier) {
+    Row {
+      Text(text = "From", modifier = Modifier.padding(16.dp).align(Alignment.CenterVertically))
+      Text(
+        text = "subash@gmail.com",
+        modifier = Modifier.weight(1f).padding(vertical = 16.dp).align(Alignment.CenterVertically)
+      )
+      Icon(
+        imageVector = Icons.Outlined.KeyboardArrowDown,
+        contentDescription = null,
+        modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
+      )
     }
+    Divider(color = Color.LightGray, thickness = 0.5.dp)
+    Row {
+      Text(text = "To", modifier = Modifier.padding(16.dp).align(Alignment.CenterVertically))
+      BasicTextField(
+        value = TextFieldValue("Subash"),
+        onValueChange = {},
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        keyboardActions = KeyboardActions(onDone = {}),
+        modifier = Modifier.weight(1f).padding(vertical = 16.dp).align(Alignment.CenterVertically)
+      )
+      Icon(
+        imageVector = Icons.Outlined.KeyboardArrowDown,
+        contentDescription = null,
+        modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)
+      )
+    }
+
+    Divider(color = Color.LightGray, thickness = 0.5.dp)
+    BasicTextField(
+      value = TextFieldValue("Subject"),
+      onValueChange = {},
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+      keyboardActions = KeyboardActions(onDone = {}),
+      modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp, horizontal = 16.dp)
+    )
+    Divider(color = Color.LightGray, thickness = 0.5.dp)
+    BasicTextField(
+      value = TextFieldValue("Compose email"),
+      onValueChange = {},
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+      keyboardActions = KeyboardActions(onDone = {}),
+      modifier = Modifier.fillMaxWidth().weight(1f).padding(vertical = 16.dp, horizontal = 16.dp)
+    )
+  }
 }

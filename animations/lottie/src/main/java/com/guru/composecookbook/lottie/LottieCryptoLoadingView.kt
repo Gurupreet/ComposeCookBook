@@ -9,11 +9,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LottieCryptoLoadingView(context: Context) {
-    LottieLoadingView(
-        context = context,
-        file = "cryptoload.json",
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(150.dp)
-    )
+  LottieLoadingView(
+    context = context,
+    file = "cryptoload.json",
+    modifier = Modifier.fillMaxWidth().height(150.dp)
+  )
 }

@@ -18,26 +18,23 @@ import com.guru.composecookbook.tiktok.TiktokDemoDataProvider
 
 @Composable
 fun SearchSection() {
-    Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-        Row(
-            modifier = Modifier
-                .weight(1f)
-                .background(TiktokDemoDataProvider.customGray)
-                .padding(4.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Search,
-                modifier = Modifier.padding(4.dp),
-                contentDescription = null
-            )
-            Text(
-                text = "Search",
-                color = Color.DarkGray,
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-            )
-        }
-        IconButton(onClick = {}) {
-            Icon(imageVector = Icons.Default.QrCodeScanner, contentDescription = null)
-        }
+  Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(
+      modifier = Modifier.weight(1f).background(TiktokDemoDataProvider.customGray).padding(4.dp)
+    ) {
+      Icon(
+        imageVector = Icons.Default.Search,
+        modifier = Modifier.padding(4.dp),
+        contentDescription = null
+      )
+      Text(
+        text = "Search",
+        color = Color.DarkGray,
+        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+      )
     }
+    IconButton(onClick = {}) {
+      Icon(imageVector = Icons.Default.QrCodeScanner, contentDescription = null)
+    }
+  }
 }

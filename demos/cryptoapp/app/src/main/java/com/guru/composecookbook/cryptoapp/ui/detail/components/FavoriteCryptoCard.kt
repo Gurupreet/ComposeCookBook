@@ -23,42 +23,37 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun FavoriteCryptoCard(crypto: Crypto) {
-    Card(elevation = 8.dp, modifier = Modifier.padding(end = 8.dp, top = 8.dp)) {
-        Column(
-            modifier = Modifier
-                .padding(16.dp)
-                .width(120.dp)
-                .height(180.dp)
-        ) {
-            Row(modifier = Modifier.weight(1f)) {
-                Image(
-                    painter = rememberImagePainter(data = crypto.image),
-                    modifier = Modifier.size(24.dp),
-                    contentDescription = null
-                )
-                Text(
-                    text = crypto.name,
-                    modifier = Modifier.padding(horizontal = 8.dp),
-                    style = typography.body2
-                )
-            }
-            Text(
-                text = crypto.price.roundToTwoDecimals() + " usd",
-                style = typography.h6,
-                color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red
-            )
-            Text(
-                text = "${crypto.dailyChangePercentage.roundToTwoDecimals()} %",
-                style = typography.h6,
-                color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red
-            )
-        }
+  Card(elevation = 8.dp, modifier = Modifier.padding(end = 8.dp, top = 8.dp)) {
+    Column(modifier = Modifier.padding(16.dp).width(120.dp).height(180.dp)) {
+      Row(modifier = Modifier.weight(1f)) {
+        Image(
+          painter = rememberImagePainter(data = crypto.image),
+          modifier = Modifier.size(24.dp),
+          contentDescription = null
+        )
+        Text(
+          text = crypto.name,
+          modifier = Modifier.padding(horizontal = 8.dp),
+          style = typography.body2
+        )
+      }
+      Text(
+        text = crypto.price.roundToTwoDecimals() + " usd",
+        style = typography.h6,
+        color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red
+      )
+      Text(
+        text = "${crypto.dailyChangePercentage.roundToTwoDecimals()} %",
+        style = typography.h6,
+        color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red
+      )
     }
+  }
 }
 
 @Preview
 @Composable
 fun PreviewFavCryptoCard() {
-    val crypto = CryptoDemoDataProvider.bitcoin
-    FavoriteCryptoCard(crypto = crypto)
+  val crypto = CryptoDemoDataProvider.bitcoin
+  FavoriteCryptoCard(crypto = crypto)
 }

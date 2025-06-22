@@ -20,65 +20,60 @@ import com.guru.composecookbook.theme.typography
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 
-
 @Composable
 fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: String = "") {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        if (title.isNotEmpty()) {
-            Text(text = title, style = typography.h6.copy(fontSize = 14.sp))
-        }
-        if (title.isNotEmpty()) {
-            Text(text = subtitle, style = typography.subtitle2)
-        }
-        Divider()
+  Column(modifier = modifier.fillMaxWidth().padding(16.dp)) {
+    if (title.isNotEmpty()) {
+      Text(text = title, style = typography.h6.copy(fontSize = 14.sp))
     }
+    if (title.isNotEmpty()) {
+      Text(text = subtitle, style = typography.subtitle2)
+    }
+    Divider()
+  }
 }
 
 @Composable
 fun TitleText(modifier: Modifier = Modifier, title: String) {
-    androidx.compose.material3.Text(
-        text = title,
-        style = typography.h6.copy(fontSize = 14.sp),
-        modifier = modifier.padding(8.dp)
-    )
+  androidx.compose.material3.Text(
+    text = title,
+    style = typography.h6.copy(fontSize = 14.sp),
+    modifier = modifier.padding(8.dp)
+  )
 }
 
 @Composable
 fun SubtitleText(subtitle: String, modifier: Modifier = Modifier) {
-    androidx.compose.material3.Text(text = subtitle, style = typography.subtitle2, modifier = modifier.padding(8.dp))
+  androidx.compose.material3.Text(
+    text = subtitle,
+    style = typography.subtitle2,
+    modifier = modifier.padding(8.dp)
+  )
 }
 
 @Composable
 fun RotateIcon(
-    state: Boolean,
-    asset: ImageVector,
-    angle: Float,
-    duration: Int,
-    modifier: Modifier = Modifier
+  state: Boolean,
+  asset: ImageVector,
+  angle: Float,
+  duration: Int,
+  modifier: Modifier = Modifier
 ) {
-    FaIcon(
-        faIcon = FaIcons.Play,
-        size = 20.dp,
-        tint = LocalContentColor
-            .current.copy(
-                alpha =
-                LocalContentAlpha.current
-            ),
-        modifier = modifier
-            .padding(2.dp)
-            .graphicsLayer(
-                rotationZ = animateFloatAsState(if (state) 0f else angle, tween(duration))
-                    .value
-            )
-    )
+  FaIcon(
+    faIcon = FaIcons.Play,
+    size = 20.dp,
+    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+    modifier =
+      modifier
+        .padding(2.dp)
+        .graphicsLayer(
+          rotationZ = animateFloatAsState(if (state) 0f else angle, tween(duration)).value
+        )
+  )
 }
 
 @Preview
 @Composable
 fun PreviewHeading() {
-    HeadingSection(title = "Title", subtitle = "this is subtitle")
+  HeadingSection(title = "Title", subtitle = "this is subtitle")
 }

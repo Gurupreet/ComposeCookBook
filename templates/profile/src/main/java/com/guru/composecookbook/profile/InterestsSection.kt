@@ -13,22 +13,22 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun InterestsSection() {
-    Text(
-        text = "My Interests",
-        style = typography.h6,
-        color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(start = 8.dp, top = 16.dp)
-    )
-    Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
-    Row(modifier = Modifier.padding(start = 8.dp, top = 8.dp)) {
-        InterestTag("Android")
-        InterestTag("Compose")
-        InterestTag("Flutter")
-        InterestTag("SwiftUI")
-    }
-    Row(modifier = Modifier.padding(start = 8.dp)) {
-        InterestTag("Video games")
-        InterestTag("Podcasts")
-        InterestTag("Basketball")
-    }
+  Text(
+    text = "My Interests",
+    style = typography.h6,
+    color = MaterialTheme.colorScheme.primary,
+    modifier = Modifier.padding(start = 8.dp, top = 16.dp)
+  )
+  Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
+  Row(modifier = Modifier.padding(start = 8.dp, top = 8.dp)) {
+    InterestTag("Android")
+    InterestTag("Compose")
+    InterestTag("Flutter")
+    InterestTag("SwiftUI")
+  }
+  Row(modifier = Modifier.padding(start = 8.dp)) {
+    InterestTag("Video games")
+    InterestTag("Podcasts")
+    InterestTag("Basketball")
+  }
 }

@@ -15,39 +15,28 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 
 class CryptoDetailActivity : ComponentActivity() {
 
-    val crypto by lazy {
-        intent.getSerializableExtra(CRYPTO) as Crypto
-    }
+  val crypto by lazy { intent.getSerializableExtra(CRYPTO) as Crypto }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        setContent {
-            ComposeCookBookMaterial3Theme {
-                CryptoDetailScreen(crypto) {
-                    onBackPressed()
-                }
-            }
-        }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+    setContent {
+      ComposeCookBookMaterial3Theme {
+        CryptoDetailScreen(crypto) { onBackPressedDispatcher.onBackPressed() }
+      }
     }
+  }
 
-    companion object {
-        const val CRYPTO = "crypto"
-        fun newIntent(context: Context, crypto: Crypto) =
-            Intent(context, CryptoDetailActivity::class.java).apply {
-                putExtra(CRYPTO, crypto)
-            }
-    }
+  companion object {
+    const val CRYPTO = "crypto"
+    fun newIntent(context: Context, crypto: Crypto) =
+      Intent(context, CryptoDetailActivity::class.java).apply { putExtra(CRYPTO, crypto) }
+  }
 }
-
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview6() {
-    val crypto = com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider.bitcoin
-    ComposeCookBookTheme {
-        CryptoDetailScreen(crypto) {
-
-        }
-    }
+  val crypto = com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider.bitcoin
+  ComposeCookBookTheme { CryptoDetailScreen(crypto) {} }
 }

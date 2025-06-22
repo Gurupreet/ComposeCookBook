@@ -31,50 +31,51 @@ import kotlin.random.Random
 
 @Composable
 fun SpotifyPlayList() {
-    val albums = remember { AlbumsDataProvider.albums }
-    val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
-    val context = LocalContext.current
-    LazyColumn(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-        // use `item` for separate elements like headers
-        // and `items` for lists of identical elements
-        item { Spacer(modifier = Modifier.height(50.dp)) }
-        item { SpotifyTitle(text = "Your Library") }
-        item { Spacer(modifier = Modifier.height(20.dp)) }
-        item {
-            StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
-                albums.forEach {
-                    PlaylistItemWithRandomHeight(it, context)
-                }
-            }
-        }
+  val albums = remember { AlbumsDataProvider.albums }
+  val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
+  val context = LocalContext.current
+  LazyColumn(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+    // use `item` for separate elements like headers
+    // and `items` for lists of identical elements
+    item { Spacer(modifier = Modifier.height(50.dp)) }
+    item { SpotifyTitle(text = "Your Library") }
+    item { Spacer(modifier = Modifier.height(20.dp)) }
+    item {
+      StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
+        albums.forEach { PlaylistItemWithRandomHeight(it, context) }
+      }
     }
+  }
 }
 
 @Composable
 fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
-    // Randomly pick height for album but remember the same height for that album.
-    val randomHeight = remember(album.id) { Random.nextInt(180, 380).dp }
+  // Randomly pick height for album but remember the same height for that album.
+  val randomHeight = remember(album.id) { Random.nextInt(180, 380).dp }
 
-    Card(
-        elevation = 8.dp, modifier = Modifier
-            .padding(6.dp)
-            .clickable(onClick = {
-                //Disclaimer: We should pass event top level and there should startActivity
-                context.startActivity(SpotifyDetailActivity.newIntent(context, album))
-            })
-    ) {
-        Column {
-            Image(
-                painter = painterResource(album.imageId),
-                contentScale = ContentScale.Crop,
-                contentDescription = null,
-                modifier = Modifier.height(randomHeight)
-            )
-            Text(
-                text = album.artist,
-                modifier = Modifier.padding(8.dp),
-                style = MaterialTheme.typography.h6.copy(fontSize = 14.sp)
-            )
-        }
+  Card(
+    elevation = 8.dp,
+    modifier =
+      Modifier.padding(6.dp)
+        .clickable(
+          onClick = {
+            // Disclaimer: We should pass event top level and there should startActivity
+            context.startActivity(SpotifyDetailActivity.newIntent(context, album))
+          }
+        )
+  ) {
+    Column {
+      Image(
+        painter = painterResource(album.imageId),
+        contentScale = ContentScale.Crop,
+        contentDescription = null,
+        modifier = Modifier.height(randomHeight)
+      )
+      Text(
+        text = album.artist,
+        modifier = Modifier.padding(8.dp),
+        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp)
+      )
     }
+  }
 }

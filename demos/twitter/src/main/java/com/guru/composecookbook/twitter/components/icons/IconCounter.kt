@@ -40,103 +40,75 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.R
 
-
 object IconCounters {
-    @Composable
-    fun MessagesCounter(
-        counter: Int,
-        modifier: Modifier = Modifier,
-        onClick: () -> Unit
-    ) {
-        IconCounter(
-            painter = painterResource(id = R.drawable.ic_speech_bubble),
-            counter = counter,
-            modifier = modifier.semantics {
-                contentDescription = "$counter reactions. Create a reply too!"
-            },
-            onClick = onClick
-        )
-    }
+  @Composable
+  fun MessagesCounter(counter: Int, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    IconCounter(
+      painter = painterResource(id = R.drawable.ic_speech_bubble),
+      counter = counter,
+      modifier =
+        modifier.semantics { contentDescription = "$counter reactions. Create a reply too!" },
+      onClick = onClick
+    )
+  }
 
-    @Composable
-    fun RetweetCounter(
-        counter: Int,
-        modifier: Modifier = Modifier,
-        onClick: () -> Unit
-    ) {
-        IconCounter(
-            painter = painterResource(id = R.drawable.ic_retweet_solid),
-            counter = counter,
-            modifier = modifier.semantics {
-                contentDescription = "$counter retweets. Retweet this tweet too!"
-            },
-            onClick = onClick
-        )
-    }
+  @Composable
+  fun RetweetCounter(counter: Int, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    IconCounter(
+      painter = painterResource(id = R.drawable.ic_retweet_solid),
+      counter = counter,
+      modifier =
+        modifier.semantics { contentDescription = "$counter retweets. Retweet this tweet too!" },
+      onClick = onClick
+    )
+  }
 
-    @Composable
-    fun LikesCounter(
-        counter: Int,
-        modifier: Modifier = Modifier,
-        onClick: () -> Unit
-    ) {
-        IconCounter(
-            painter = rememberVectorPainter(Icons.Default.FavoriteBorder),
-            counter = counter,
-            modifier = modifier.semantics {
-                contentDescription = "$counter likes. Like this tweet too!"
-            },
-            onClick = onClick
-        )
-    }
+  @Composable
+  fun LikesCounter(counter: Int, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    IconCounter(
+      painter = rememberVectorPainter(Icons.Default.FavoriteBorder),
+      counter = counter,
+      modifier = modifier.semantics { contentDescription = "$counter likes. Like this tweet too!" },
+      onClick = onClick
+    )
+  }
 }
 
 @Composable
 internal fun IconCounter(
-    painter: Painter,
-    counter: Int,
-    modifier: Modifier = Modifier,
-    color: Color = Color.LightGray,
-    textStyle: TextStyle = MaterialTheme.typography.caption,
-    onClick: () -> Unit
+  painter: Painter,
+  counter: Int,
+  modifier: Modifier = Modifier,
+  color: Color = Color.LightGray,
+  textStyle: TextStyle = MaterialTheme.typography.caption,
+  onClick: () -> Unit
 ) {
-    IconButton(modifier = modifier, onClick = onClick) {
-        Row(modifier = Modifier.height(16.dp)) {
-            Icon(
-                painter = painter,
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .aspectRatio(1f),
-                tint = color
-            )
-            Text(
-                text = counter.toString(),
-                modifier = Modifier.padding(start = 8.dp),
-                color = color,
-                style = textStyle
-            )
-        }
+  IconButton(modifier = modifier, onClick = onClick) {
+    Row(modifier = Modifier.height(16.dp)) {
+      Icon(
+        painter = painter,
+        contentDescription = null,
+        modifier = Modifier.fillMaxHeight().aspectRatio(1f),
+        tint = color
+      )
+      Text(
+        text = counter.toString(),
+        modifier = Modifier.padding(start = 8.dp),
+        color = color,
+        style = textStyle
+      )
     }
+  }
 }
 
 @Preview
 @Composable
 fun IconCounterPreview() {
-    Column {
-        IconCounters.MessagesCounter(
-            counter = 122,
-            onClick = {}
-        )
-        IconCounters.RetweetCounter(
-            counter = 105,
-            onClick = {}
-        )
-        IconCounters.LikesCounter(
-            counter = 32,
-            onClick = {}
-        )
-    }
+  Column {
+    IconCounters.MessagesCounter(counter = 122, onClick = {})
+    IconCounters.RetweetCounter(counter = 105, onClick = {})
+    IconCounters.LikesCounter(counter = 32, onClick = {})
+  }
 }
 
 private val idleIconSize = 50.dp
@@ -144,46 +116,48 @@ private val expandedIconSize = 60.dp
 
 @Composable
 fun AnimatedHeartButton() {
-    var needLike by remember { mutableStateOf(true) }
-    val transition = updateTransition(targetState = needLike, label = "LikeTransition")
+  var needLike by remember { mutableStateOf(true) }
+  val transition = updateTransition(targetState = needLike, label = "LikeTransition")
 
-    val animatedSizeDp by transition.animateDp(label = "sizeTransition",
-        transitionSpec = {
-            keyframes {
-                durationMillis = 100
-                expandedIconSize at 50
-                idleIconSize at 100
-            }
-        }) { needLike ->
-        //in both like and not like cases, heart will have same size, we just need the animation here.
-        if (needLike) {
-            idleIconSize
-        } else {
-            idleIconSize
+  val animatedSizeDp by
+    transition.animateDp(
+      label = "sizeTransition",
+      transitionSpec = {
+        keyframes {
+          durationMillis = 100
+          expandedIconSize at 50
+          idleIconSize at 100
         }
-    }
-
-    val heartColor by transition.animateColor(
-        transitionSpec = { tween(100) }, label = "colorTransition"
+      }
     ) { needLike ->
-        if (needLike) {//if heart is not liked, then it will have..
-            Color.Gray
-        } else {//if heart is already liked, then it will have..
-            Color.Red
-        }
+      // in both like and not like cases, heart will have same size, we just need the
+      // animation here.
+      if (needLike) {
+        idleIconSize
+      } else {
+        idleIconSize
+      }
     }
-    Image(
-        modifier = Modifier
-            .size(animatedSizeDp)
-            .clickable(
-                interactionSource = remember {
-                    MutableInteractionSource()
-                },
-                indication = null,
-                onClick = { needLike = !needLike }
-            ),
-        imageVector = Icons.Default.Favorite,
-        contentDescription = "",
-        colorFilter = ColorFilter.tint(heartColor)
-    )
+
+  val heartColor by
+    transition.animateColor(transitionSpec = { tween(100) }, label = "colorTransition") { needLike
+      ->
+      if (needLike) { // if heart is not liked, then it will have..
+        Color.Gray
+      } else { // if heart is already liked, then it will have..
+        Color.Red
+      }
+    }
+  Image(
+    modifier =
+      Modifier.size(animatedSizeDp)
+        .clickable(
+          interactionSource = remember { MutableInteractionSource() },
+          indication = null,
+          onClick = { needLike = !needLike }
+        ),
+    imageVector = Icons.Default.Favorite,
+    contentDescription = "",
+    colorFilter = ColorFilter.tint(heartColor)
+  )
 }

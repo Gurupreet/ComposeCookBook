@@ -15,23 +15,19 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun Loaders() {
-    Text(text = "Progress bars", style = typography.h6, modifier = Modifier.padding(8.dp))
+  Text(text = "Progress bars", style = typography.h6, modifier = Modifier.padding(8.dp))
 
-    Row(modifier = Modifier.padding(8.dp)) {
-        LinearProgressIndicator()
-        CircularProgressIndicator()
-        CircularProgressIndicator(strokeWidth = 8.dp)
-    }
+  Row(modifier = Modifier.padding(8.dp)) {
+    LinearProgressIndicator()
+    CircularProgressIndicator()
+    CircularProgressIndicator(strokeWidth = 8.dp)
+  }
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        LinearProgressIndicator()
-        Text(text = "Loading with text...", modifier = Modifier.padding(8.dp))
-    }
-
-
+  Column(
+    modifier = Modifier.fillMaxWidth().padding(16.dp),
+    horizontalAlignment = Alignment.CenterHorizontally
+  ) {
+    LinearProgressIndicator()
+    Text(text = "Loading with text...", modifier = Modifier.padding(8.dp))
+  }
 }

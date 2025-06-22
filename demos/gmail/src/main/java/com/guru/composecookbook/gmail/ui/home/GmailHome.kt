@@ -69,431 +69,328 @@ import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.green500
 import kotlin.math.absoluteValue
 
-
 @Composable
 fun GmailScreen() {
-    val navController = rememberNavController()
-    NavHost(
-        navController = navController,
-        startDestination = "home"
-    ) {
-        composable("home") {
-            GmailHome(navController = navController)
-        }
+  val navController = rememberNavController()
+  NavHost(navController = navController, startDestination = "home") {
+    composable("home") { GmailHome(navController = navController) }
 
-        composable("detail") {
-            MessageDetailScreen(navController = navController)
-        }
+    composable("detail") { MessageDetailScreen(navController = navController) }
 
-        composable("create") {
-            CreateMessageScreen(navController = navController)
-        }
-    }
+    composable("create") { CreateMessageScreen(navController = navController) }
+  }
 }
 
 @Composable
 fun GmailHome(navController: NavHostController) {
 
-    val scaffoldState = rememberScaffoldState()
-    val fabExpandState = remember { mutableStateOf(false) }
-    val showUserDialog = remember { mutableStateOf(false) }
+  val scaffoldState = rememberScaffoldState()
+  val fabExpandState = remember { mutableStateOf(false) }
+  val showUserDialog = remember { mutableStateOf(false) }
 
-    Scaffold(
-        floatingActionButton = {
-            GmailFloatingActionButton(navController, fabExpandState.value)
-        },
-        drawerContent = { GmailDrawer() },
-        drawerBackgroundColor = MaterialTheme.colors.background,
-        drawerContentColor = MaterialTheme.colors.onBackground,
+  Scaffold(
+    floatingActionButton = { GmailFloatingActionButton(navController, fabExpandState.value) },
+    drawerContent = { GmailDrawer() },
+    drawerBackgroundColor = MaterialTheme.colors.background,
+    drawerContentColor = MaterialTheme.colors.onBackground,
+    scaffoldState = scaffoldState,
+    content = { paddingValues ->
+      GmailContent(
+        fabExpandState = fabExpandState,
         scaffoldState = scaffoldState,
-        content = { paddingValues ->
-            GmailContent(
-                fabExpandState = fabExpandState,
-                scaffoldState = scaffoldState,
-                navController = navController,
-                showUserDialog = showUserDialog,
-                modifier = Modifier.padding(paddingValues),
-            )
-        },
-        bottomBar = {
-            val background = if (isSystemInDarkTheme()) graySurface else Color.White
-            BottomNavigation(
-                backgroundColor = background
-            ) {
-                BottomNavigationItem(
-                    icon = {
-                        IconWithBadge(badge = 1, icon = Icons.Outlined.Mail)
-                    },
-                    onClick = {
-                    },
-                    selected = true,
-                    label = { Text("Mail") },
-                )
+        navController = navController,
+        showUserDialog = showUserDialog,
+        modifier = Modifier.padding(paddingValues),
+      )
+    },
+    bottomBar = {
+      val background = if (isSystemInDarkTheme()) graySurface else Color.White
+      BottomNavigation(backgroundColor = background) {
+        BottomNavigationItem(
+          icon = { IconWithBadge(badge = 1, icon = Icons.Outlined.Mail) },
+          onClick = {},
+          selected = true,
+          label = { Text("Mail") },
+        )
 
-                BottomNavigationItem(
-                    icon = {
-                        IconWithBadge(badge = 0, icon = Icons.Outlined.Call)
-                    },
-                    onClick = {
-                    },
-                    selected = true,
-                    label = { Text("Meet") },
-                )
+        BottomNavigationItem(
+          icon = { IconWithBadge(badge = 0, icon = Icons.Outlined.Call) },
+          onClick = {},
+          selected = true,
+          label = { Text("Meet") },
+        )
+      }
+    },
+  )
 
-
-            }
-        },
-    )
-
-    UserEmailDialog(showUserDialog)
+  UserEmailDialog(showUserDialog)
 }
 
 @Composable
 fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) {
 
-    Box(modifier = Modifier.size(36.dp)) {
-        Icon(
-            imageVector = icon,
-            modifier = modifier.align(
-                Alignment.BottomCenter
-            ),
-            contentDescription = null
-        )
+  Box(modifier = Modifier.size(36.dp)) {
+    Icon(
+      imageVector = icon,
+      modifier = modifier.align(Alignment.BottomCenter),
+      contentDescription = null
+    )
 
-        if (badge != 0) {
-            Text(
-                text = "$badge",
-                textAlign = TextAlign.Center,
-                fontSize = 12.sp,
-                color = MaterialTheme.colors.surface,
-                modifier = Modifier
-                    .padding(top = 4.dp)
-                    .clip(CircleShape)
-                    .background(Color.Red)
-                    .align(Alignment.TopEnd)
-                    .size(16.dp)
-            )
-        }
+    if (badge != 0) {
+      Text(
+        text = "$badge",
+        textAlign = TextAlign.Center,
+        fontSize = 12.sp,
+        color = MaterialTheme.colors.surface,
+        modifier =
+          Modifier.padding(top = 4.dp)
+            .clip(CircleShape)
+            .background(Color.Red)
+            .align(Alignment.TopEnd)
+            .size(16.dp)
+      )
     }
-
+  }
 }
-
 
 @Composable
 fun GmailFloatingActionButton(navController: NavHostController, expandState: Boolean) {
 
-    FloatingActionButton(
-        onClick = {
-            navController.navigate("create")
-        },
-        modifier = Modifier
-            .padding(16.dp)
-            .height(48.dp)
-            .widthIn(min = 48.dp),
-        backgroundColor = MaterialTheme.colors.surface,
-        contentColor = MaterialTheme.colors.primary
-    ) {
-        AnimatingFabContent(
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Edit,
-                    contentDescription = stringResource(id = R.string.cd_create_new_email)
-                )
-            },
-            text = {
-                Text(
-                    text = "Compose",
-                    modifier = Modifier.padding(end = 8.dp)
-                )
-            },
-            extended = expandState
-
+  FloatingActionButton(
+    onClick = { navController.navigate("create") },
+    modifier = Modifier.padding(16.dp).height(48.dp).widthIn(min = 48.dp),
+    backgroundColor = MaterialTheme.colors.surface,
+    contentColor = MaterialTheme.colors.primary
+  ) {
+    AnimatingFabContent(
+      icon = {
+        Icon(
+          imageVector = Icons.Outlined.Edit,
+          contentDescription = stringResource(id = R.string.cd_create_new_email)
         )
-    }
-
-
+      },
+      text = { Text(text = "Compose", modifier = Modifier.padding(end = 8.dp)) },
+      extended = expandState
+    )
+  }
 }
 
 @Composable
 fun GmailContent(
-    fabExpandState: MutableState<Boolean>,
-    scaffoldState: ScaffoldState,
-    navController: NavHostController,
-    showUserDialog: MutableState<Boolean>,
-    modifier: Modifier = Modifier,
+  fabExpandState: MutableState<Boolean>,
+  scaffoldState: ScaffoldState,
+  navController: NavHostController,
+  showUserDialog: MutableState<Boolean>,
+  modifier: Modifier = Modifier,
 ) {
 
-    val tweets = remember { DemoDataProvider.tweetList }
+  val tweets = remember { DemoDataProvider.tweetList }
 
-    val lazyListState = rememberLazyListState()
+  val lazyListState = rememberLazyListState()
 
-    val offsetY = remember { mutableStateOf(0) }
-    val oldIndex = remember { mutableStateOf(0) }
-    val searchOffsetY = remember { mutableStateOf(0) }
+  val offsetY = remember { mutableStateOf(0) }
+  val oldIndex = remember { mutableStateOf(0) }
+  val searchOffsetY = remember { mutableStateOf(0) }
 
-    val searchLayoutHeightPx = with(LocalDensity.current) { 70.dp.toPx() }
+  val searchLayoutHeightPx = with(LocalDensity.current) { 70.dp.toPx() }
 
-    // ensures that the user intents to have scroll gesture..
-    val isVisibleScrolled =
-        oldIndex.value != lazyListState.firstVisibleItemIndex ||
-                (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
+  // ensures that the user intents to have scroll gesture..
+  val isVisibleScrolled =
+    oldIndex.value != lazyListState.firstVisibleItemIndex ||
+      (offsetY.value - lazyListState.firstVisibleItemScrollOffset).absoluteValue > 15
 
-    println("${lazyListState.firstVisibleItemIndex}  ${lazyListState.firstVisibleItemScrollOffset}")
+  println("${lazyListState.firstVisibleItemIndex}  ${lazyListState.firstVisibleItemScrollOffset}")
 
-    if (isVisibleScrolled) {
-        when {
-            oldIndex.value > lazyListState.firstVisibleItemIndex -> {   // down
-                fabExpandState.value = true
-            }
-            oldIndex.value < lazyListState.firstVisibleItemIndex -> {  // up
-                fabExpandState.value = false
-            }
-            oldIndex.value == lazyListState.firstVisibleItemIndex -> {
-                fabExpandState.value = offsetY.value > lazyListState.firstVisibleItemScrollOffset
-            }
-        }
-
-        // for the initial search offset
-        if (lazyListState.firstVisibleItemIndex == 0
-            && lazyListState.firstVisibleItemScrollOffset < searchLayoutHeightPx
-            && !fabExpandState.value
-        ) {
-            searchOffsetY.value = -lazyListState.firstVisibleItemScrollOffset
-        } else if (fabExpandState.value) {
-            searchOffsetY.value = 0
-        } else if (!fabExpandState.value) {
-            searchOffsetY.value = (-searchLayoutHeightPx).toInt()
-        }
-
+  if (isVisibleScrolled) {
+    when {
+      oldIndex.value > lazyListState.firstVisibleItemIndex -> { // down
+        fabExpandState.value = true
+      }
+      oldIndex.value < lazyListState.firstVisibleItemIndex -> { // up
+        fabExpandState.value = false
+      }
+      oldIndex.value == lazyListState.firstVisibleItemIndex -> {
+        fabExpandState.value = offsetY.value > lazyListState.firstVisibleItemScrollOffset
+      }
     }
 
-    offsetY.value = lazyListState.firstVisibleItemScrollOffset
-    oldIndex.value = lazyListState.firstVisibleItemIndex
-
-
-
-    Box(modifier = modifier) {
-
-        LazyColumn(state = lazyListState) {
-
-            item {
-                Spacer(modifier = Modifier.height(72.dp))
-            }
-
-            items(tweets) {
-                val visible = remember(it.id) { mutableStateOf(true) }
-
-                AnimatedVisibility(visible = visible.value) {
-                    Box(modifier = Modifier.background(green500)) {
-                        GmailListActionItems(modifier = Modifier.align(Alignment.CenterEnd))
-                        GmailListItem(it) {
-                            navController.navigate("detail")
-                        }
-                    }
-                }
-            }
-
-        }
-
-
-        SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog) {
-            navController.navigate("create")
-        }
-
+    // for the initial search offset
+    if (
+      lazyListState.firstVisibleItemIndex == 0 &&
+        lazyListState.firstVisibleItemScrollOffset < searchLayoutHeightPx &&
+        !fabExpandState.value
+    ) {
+      searchOffsetY.value = -lazyListState.firstVisibleItemScrollOffset
+    } else if (fabExpandState.value) {
+      searchOffsetY.value = 0
+    } else if (!fabExpandState.value) {
+      searchOffsetY.value = (-searchLayoutHeightPx).toInt()
     }
+  }
+
+  offsetY.value = lazyListState.firstVisibleItemScrollOffset
+  oldIndex.value = lazyListState.firstVisibleItemIndex
+
+  Box(modifier = modifier) {
+    LazyColumn(state = lazyListState) {
+      item { Spacer(modifier = Modifier.height(72.dp)) }
+
+      items(tweets) {
+        val visible = remember(it.id) { mutableStateOf(true) }
+
+        AnimatedVisibility(visible = visible.value) {
+          Box(modifier = Modifier.background(green500)) {
+            GmailListActionItems(modifier = Modifier.align(Alignment.CenterEnd))
+            GmailListItem(it) { navController.navigate("detail") }
+          }
+        }
+      }
+    }
+
+    SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog) {
+      navController.navigate("create")
+    }
+  }
 }
 
 @Composable
 fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
 
-    val background = if (isSystemInDarkTheme()) graySurface else Color.White
+  val background = if (isSystemInDarkTheme()) graySurface else Color.White
 
-    if (showUserDialog.value) {
-        Dialog(
-            onDismissRequest = {
-                showUserDialog.value = false
+  if (showUserDialog.value) {
+    Dialog(onDismissRequest = { showUserDialog.value = false }) {
+      Surface(
+        modifier = Modifier,
+        shape = MaterialTheme.shapes.medium,
+        color = background,
+        contentColor = MaterialTheme.colors.onSurface
+      ) {
+        Column {
+          Row(verticalAlignment = Alignment.CenterVertically) {
+            IconButton(onClick = { showUserDialog.value = false }) {
+              Icon(Icons.Outlined.Close, contentDescription = null)
             }
-        ) {
 
-            Surface(
-                modifier = Modifier,
-                shape = MaterialTheme.shapes.medium,
-                color = background,
-                contentColor = MaterialTheme.colors.onSurface
-            ) {
+            Text(
+              text = "Google",
+              textAlign = TextAlign.Center,
+              fontSize = 24.sp,
+              modifier = Modifier.fillMaxWidth()
+            )
+          }
 
-                Column {
+          GmailUserEmail(R.drawable.p1, "Subash Aryc", "subash@gmail.com", 2)
 
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        IconButton(onClick = { showUserDialog.value = false }) {
-                            Icon(Icons.Outlined.Close, contentDescription = null)
-                        }
+          Text(
+            text = "Manage your Google Account",
+            fontSize = 14.sp,
+            modifier =
+              Modifier.wrapContentWidth()
+                .padding(8.dp)
+                .border(1.dp, Color.Gray.copy(alpha = 0.6f), RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(16.dp))
+                .clickable(onClick = {})
+                .padding(horizontal = 12.dp, vertical = 8.dp)
+                .align(Alignment.CenterHorizontally)
+          )
 
-                        Text(
-                            text = "Google",
-                            textAlign = TextAlign.Center,
-                            fontSize = 24.sp,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                        )
+          Divider(thickness = 1.dp, modifier = Modifier.fillMaxWidth())
 
-                    }
+          GmailUserEmail(
+            imageId = R.drawable.p2,
+            name = "Subash ",
+            email = "aryal.subash@yahoo.com",
+            badgeCount = 39
+          )
+          GmailUserEmail(
+            imageId = R.drawable.p2,
+            name = "Subash Zi ",
+            email = "subashz@gmail.com",
+            badgeCount = 10
+          )
 
-                    GmailUserEmail(R.drawable.p1, "Subash Aryc", "subash@gmail.com", 2)
+          Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+          ) {
+            Icon(
+              imageVector = Icons.Default.PersonAdd,
+              tint = MaterialTheme.colors.onSurface,
+              modifier = Modifier.padding(8.dp),
+              contentDescription = null
+            )
 
-                    Text(
-                        text = "Manage your Google Account",
-                        fontSize = 14.sp,
-                        modifier = Modifier
-                            .wrapContentWidth()
-                            .padding(8.dp)
-                            .border(1.dp, Color.Gray.copy(alpha = 0.6f), RoundedCornerShape(16.dp))
-                            .clip(RoundedCornerShape(16.dp))
-                            .clickable(onClick = {})
-                            .padding(horizontal = 12.dp, vertical = 8.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
+            Text(
+              text = "Add another account",
+              fontSize = 14.sp,
+              color = MaterialTheme.colors.onSurface,
+              modifier = Modifier.padding(start = 8.dp)
+            )
+          }
 
-                    Divider(
-                        thickness = 1.dp,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+          Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+          ) {
+            Icon(
+              imageVector = Icons.Default.AccountCircle,
+              tint = MaterialTheme.colors.onSurface,
+              modifier = Modifier.padding(8.dp),
+              contentDescription = null
+            )
+            Text(
+              text = "Manage accounts on this device",
+              fontSize = 14.sp,
+              color = MaterialTheme.colors.onSurface,
+              modifier = Modifier.padding(start = 8.dp)
+            )
+          }
 
-                    GmailUserEmail(
-                        imageId = R.drawable.p2,
-                        name = "Subash ",
-                        email = "aryal.subash@yahoo.com",
-                        badgeCount = 39
-                    )
-                    GmailUserEmail(
-                        imageId = R.drawable.p2,
-                        name = "Subash Zi ",
-                        email = "subashz@gmail.com",
-                        badgeCount = 10
-                    )
+          Divider(thickness = 1.dp, modifier = Modifier.fillMaxWidth())
 
-
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 8.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.PersonAdd,
-                            tint = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(8.dp),
-                            contentDescription = null
-                        )
-
-                        Text(
-                            text = "Add another account",
-                            fontSize = 14.sp,
-                            color = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(start = 8.dp)
-                        )
-                    }
-
-
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 4.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.AccountCircle,
-                            tint = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(8.dp),
-                            contentDescription = null
-                        )
-                        Text(
-                            text = "Manage accounts on this device",
-                            fontSize = 14.sp,
-                            color = MaterialTheme.colors.onSurface,
-                            modifier = Modifier.padding(start = 8.dp)
-                        )
-                    }
-
-                    Divider(
-                        thickness = 1.dp,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-
-
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .padding(vertical = 8.dp)
-                            .align(Alignment.CenterHorizontally)
-                    ) {
-                        Text(
-                            text = "Privacy Policy",
-                            fontSize = 12.sp,
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(8.dp))
-                                .clickable(onClick = {})
-                                .padding(8.dp)
-                        )
-                        Text(
-                            text = "•"
-                        )
-                        Text(
-                            text = "Terms of service",
-                            fontSize = 12.sp,
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(8.dp))
-                                .clickable(onClick = {})
-                                .padding(8.dp)
-
-                        )
-                    }
-
-                }
-            }
+          Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(vertical = 8.dp).align(Alignment.CenterHorizontally)
+          ) {
+            Text(
+              text = "Privacy Policy",
+              fontSize = 12.sp,
+              modifier =
+                Modifier.clip(RoundedCornerShape(8.dp)).clickable(onClick = {}).padding(8.dp)
+            )
+            Text(text = "•")
+            Text(
+              text = "Terms of service",
+              fontSize = 12.sp,
+              modifier =
+                Modifier.clip(RoundedCornerShape(8.dp)).clickable(onClick = {}).padding(8.dp)
+            )
+          }
         }
-
+      }
     }
-
+  }
 }
 
 @Composable
 fun GmailUserEmail(imageId: Int, name: String, email: String, badgeCount: Int) {
 
-    Row(
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-    ) {
-        Image(
-            painter = painterResource(id = imageId),
-            contentDescription = null,
-            modifier = Modifier
-                .size(32.dp)
-                .clip(CircleShape)
-                .clickable(onClick = {
+  Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+    Image(
+      painter = painterResource(id = imageId),
+      contentDescription = null,
+      modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = {})
+    )
 
-                })
-        )
+    Column(modifier = Modifier.weight(1f).padding(start = 16.dp)) {
+      Text(text = name)
 
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .padding(start = 16.dp)
-        ) {
-            Text(text = name)
+      Row {
+        Text(text = email, fontSize = 12.sp, modifier = Modifier.weight(1f))
 
-            Row {
-                Text(
-                    text = email,
-                    fontSize = 12.sp,
-                    modifier = Modifier.weight(1f)
-                )
-
-                Text(
-                    text = "$badgeCount",
-                    fontSize = 12.sp
-                )
-            }
-        }
-
-
+        Text(text = "$badgeCount", fontSize = 12.sp)
+      }
     }
+  }
 }

@@ -13,21 +13,25 @@ import com.guru.composecookbook.moviesapp.data.db.models.Movie
 @Database(entities = [Movie::class, Genre::class], version = 1, exportSchema = false)
 @TypeConverters(ListTypeConverter::class)
 abstract class MoviesDatabase : RoomDatabase() {
-    abstract fun moviesDao(): MoviesDao
-    abstract fun genreDao(): GenreDao
+  abstract fun moviesDao(): MoviesDao
+  abstract fun genreDao(): GenreDao
 
-    companion object {
-        private var instance: MoviesDatabase? = null
-        private val LOCK = Any()
+  companion object {
+    private var instance: MoviesDatabase? = null
+    private val LOCK = Any()
 
-        fun getInstance(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: buildDatabase(context.applicationContext).also { instance = it }
+    fun getInstance(context: Context) =
+      instance
+        ?: synchronized(LOCK) {
+          instance ?: buildDatabase(context.applicationContext).also { instance = it }
         }
 
-        private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(
-                context.applicationContext,
-                MoviesDatabase::class.java, "movie_database.db"
-            ).build()
-    }
+    private fun buildDatabase(context: Context) =
+      Room.databaseBuilder(
+          context.applicationContext,
+          MoviesDatabase::class.java,
+          "movie_database.db"
+        )
+        .build()
+  }
 }

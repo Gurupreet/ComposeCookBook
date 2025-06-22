@@ -37,82 +37,73 @@ import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 @Composable
 fun SpotifyHome() {
-    val scrollState = rememberScrollState(0)
-    val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
-    Box(modifier = Modifier.fillMaxSize()) {
-        ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
-        Icon(
-            imageVector = Icons.Outlined.Settings,
-            tint = MaterialTheme.colors.onSurface,
-            contentDescription = null,
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
-                .alpha(animateFloatAsState(1f - scrollState.value / 200f).value)
-        )
-        PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
-    }
+  val scrollState = rememberScrollState(0)
+  val surfaceGradient = SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme())
+  Box(modifier = Modifier.fillMaxSize()) {
+    ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
+    Icon(
+      imageVector = Icons.Outlined.Settings,
+      tint = MaterialTheme.colors.onSurface,
+      contentDescription = null,
+      modifier =
+        Modifier.align(Alignment.TopEnd)
+          .padding(start = 12.dp, end = 12.dp, top = 36.dp, bottom = 12.dp)
+          .alpha(animateFloatAsState(1f - scrollState.value / 200f).value)
+    )
+    PlayerBottomBar(Modifier.align(Alignment.BottomCenter))
+  }
 }
 
 @Composable
 fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
-    Column(
-        modifier = Modifier
-            .horizontalGradientBackground(surfaceGradient)
-            .padding(8.dp)
-            .verticalScroll(state = scrollState)
-    ) {
-        Spacer(modifier = Modifier.height(50.dp))
-        SpotifyTitle("Good Evening")
-        HomeGridSection()
-        HomeLanesSection()
-        Spacer(modifier = Modifier.height(100.dp))
-    }
+  Column(
+    modifier =
+      Modifier.horizontalGradientBackground(surfaceGradient)
+        .padding(8.dp)
+        .verticalScroll(state = scrollState)
+  ) {
+    Spacer(modifier = Modifier.height(50.dp))
+    SpotifyTitle("Good Evening")
+    HomeGridSection()
+    HomeLanesSection()
+    Spacer(modifier = Modifier.height(100.dp))
+  }
 }
 
 @Composable
 fun SpotifyTitle(text: String, modifier: Modifier = Modifier) {
-    Text(
-        text = text,
-        style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
-        modifier = modifier
-            .padding(start = 8.dp, end = 4.dp, bottom = 8.dp, top = 24.dp)
-            .semantics { heading() }
-    )
+  Text(
+    text = text,
+    style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+    modifier =
+      modifier.padding(start = 8.dp, end = 4.dp, bottom = 8.dp, top = 24.dp).semantics { heading() }
+  )
 }
 
 @Composable
 fun HomeGridSection() {
-    val items = remember { AlbumsDataProvider.albums }
-    VerticalGrid {
-        items.take(6).forEach {
-            SpotifyHomeGridItem(album = it)
-        }
-    }
+  val items = remember { AlbumsDataProvider.albums }
+  VerticalGrid { items.take(6).forEach { SpotifyHomeGridItem(album = it) } }
 }
 
 @Composable
 fun HomeLanesSection() {
-    val categories = remember { AlbumsDataProvider.listOfSpotifyHomeLanes }
-    categories.forEachIndexed { index, lane ->
-        SpotifyTitle(text = lane)
-        SpotifyLane(index)
-    }
+  val categories = remember { AlbumsDataProvider.listOfSpotifyHomeLanes }
+  categories.forEachIndexed { index, lane ->
+    SpotifyTitle(text = lane)
+    SpotifyLane(index)
+  }
 }
 
 @Composable
 fun SpotifyLane(index: Int) {
-    val itemsEven = remember { AlbumsDataProvider.albums }
-    val itemsOdd = remember { AlbumsDataProvider.albums.asReversed() }
-    LazyRow {
-        items(if (index % 2 == 0) itemsEven else itemsOdd) {
-            SpotifyLaneItem(album = it)
-        }
-    }
+  val itemsEven = remember { AlbumsDataProvider.albums }
+  val itemsOdd = remember { AlbumsDataProvider.albums.asReversed() }
+  LazyRow { items(if (index % 2 == 0) itemsEven else itemsOdd) { SpotifyLaneItem(album = it) } }
 }
 
 @Preview
 @Composable
 fun PreviewSpotifyHome() {
-    PreviewSpotifyHome()
+  PreviewSpotifyHome()
 }

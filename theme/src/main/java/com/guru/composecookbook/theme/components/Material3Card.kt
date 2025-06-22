@@ -13,22 +13,22 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Material3Card(
-    modifier: Modifier = Modifier,
-    shape: Shape = androidx.compose.material.MaterialTheme.shapes.medium,
-    backgroundColor: Color = MaterialTheme.colorScheme.surface,
-    contentColor: Color = contentColorFor(backgroundColor),
-    border: BorderStroke? = null,
-    elevation: Dp = 1.dp,
-    content: @Composable () -> Unit
+  modifier: Modifier = Modifier,
+  shape: Shape = androidx.compose.material.MaterialTheme.shapes.medium,
+  backgroundColor: Color = MaterialTheme.colorScheme.surface,
+  contentColor: Color = contentColorFor(backgroundColor),
+  border: BorderStroke? = null,
+  elevation: Dp = 1.dp,
+  content: @Composable () -> Unit
 ) {
-    Surface(
-        modifier = modifier,
-        shape = shape,
-        color = backgroundColor,
-        contentColor = contentColor,
-        tonalElevation = elevation,
-        shadowElevation = elevation,
-        border = border,
-        content = content
-    )
+  Surface(
+    modifier = modifier,
+    shape = shape,
+    color = backgroundColor,
+    contentColor = contentColor,
+    tonalElevation = elevation,
+    shadowElevation = elevation,
+    border = border,
+    content = content
+  )
 }

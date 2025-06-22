@@ -12,34 +12,32 @@ import com.guru.fontawesomecomposelib.FaIcons
 
 @Composable
 fun PostInteractionBar(
-    isLiked: Boolean,
-    onLikeClicked: () -> Unit,
-    onCommentsClicked: () -> Unit,
-    onSendClicked: () -> Unit,
-    modifier: Modifier = Modifier
+  isLiked: Boolean,
+  onLikeClicked: () -> Unit,
+  onCommentsClicked: () -> Unit,
+  onSendClicked: () -> Unit,
+  modifier: Modifier = Modifier
 ) {
-    Row(modifier = modifier) {
-        IconToggleButton(checked = isLiked, onCheckedChange = { onLikeClicked() }) {
-            val icon = if (isLiked) FaIcons.Heart else FaIcons.HeartRegular
-            val tint = if (isLiked) Color.Red else MaterialTheme.colorScheme.onPrimary
-            FaIcon(faIcon = icon, tint = tint,)
-        }
-        IconToggleButton(checked = false, onCheckedChange = { onCommentsClicked() }) {
-            FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colorScheme.onPrimary)
-        }
-        IconToggleButton(checked = false, onCheckedChange = { onSendClicked() }) {
-            FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colorScheme.onPrimary)
-        }
+  Row(modifier = modifier) {
+    IconToggleButton(checked = isLiked, onCheckedChange = { onLikeClicked() }) {
+      val icon = if (isLiked) FaIcons.Heart else FaIcons.HeartRegular
+      val tint = if (isLiked) Color.Red else MaterialTheme.colorScheme.onPrimary
+      FaIcon(
+        faIcon = icon,
+        tint = tint,
+      )
     }
+    IconToggleButton(checked = false, onCheckedChange = { onCommentsClicked() }) {
+      FaIcon(faIcon = FaIcons.CommentAltRegular, tint = MaterialTheme.colorScheme.onPrimary)
+    }
+    IconToggleButton(checked = false, onCheckedChange = { onSendClicked() }) {
+      FaIcon(faIcon = FaIcons.PaperPlaneRegular, tint = MaterialTheme.colorScheme.onPrimary)
+    }
+  }
 }
 
 @Preview
 @Composable
 fun PostInteractionBarPreview() {
-    PostInteractionBar(
-        isLiked = true,
-        onLikeClicked = {},
-        onCommentsClicked = {},
-        onSendClicked = {}
-    )
+  PostInteractionBar(isLiked = true, onLikeClicked = {}, onCommentsClicked = {}, onSendClicked = {})
 }

@@ -29,71 +29,75 @@ import com.guru.pinlock.PinLockView
 @OptIn(ExperimentalFoundationApi::class)
 class TemplatesActivity : ComponentActivity() {
 
-    private val templateType: String by lazy { intent.getStringExtra(TYPE) ?: "Profiles" }
-    private val darkTheme: Boolean by lazy { intent.getBooleanExtra(DARK_THEME, true) }
+  private val templateType: String by lazy { intent.getStringExtra(TYPE) ?: "Profiles" }
+  private val darkTheme: Boolean by lazy { intent.getBooleanExtra(DARK_THEME, true) }
 
-    @OptIn(ExperimentalMaterial3Api::class,
+  @OptIn(
+    ExperimentalMaterial3Api::class,
     ExperimentalAnimationApi::class,
-    ExperimentalMaterialApi::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        //   val prompt = createBiometricPrompt(this as FragmentActivity)
-        setContent {
-            ComposeCookBookMaterial3Theme(darkTheme = darkTheme) {
-                androidx.compose.material3.Surface {
-                    TemplateApp(templateType)
-                }
-            }
-        }
+    ExperimentalMaterialApi::class
+  )
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+    //   val prompt = createBiometricPrompt(this as FragmentActivity)
+    setContent {
+      ComposeCookBookMaterial3Theme(darkTheme = darkTheme) {
+        androidx.compose.material3.Surface { TemplateApp(templateType) }
+      }
     }
+  }
 
-    companion object {
-        private const val TYPE = "type"
-        private const val DARK_THEME = "darkTheme"
+  companion object {
+    private const val TYPE = "type"
+    private const val DARK_THEME = "darkTheme"
 
-        fun newIntent(context: Context, templateType: String, isDarkTheme: Boolean) =
-            Intent(context, TemplatesActivity::class.java).apply {
-                putExtra(TYPE, templateType)
-                putExtra(DARK_THEME, isDarkTheme)
-            }
-    }
+    fun newIntent(context: Context, templateType: String, isDarkTheme: Boolean) =
+      Intent(context, TemplatesActivity::class.java).apply {
+        putExtra(TYPE, templateType)
+        putExtra(DARK_THEME, isDarkTheme)
+      }
+  }
 }
 
-@OptIn(ExperimentalMaterial3Api::class,
-ExperimentalFoundationApi::class,
-ExperimentalAnimationApi::class,
-ExperimentalMaterialApi::class)
+@OptIn(
+  ExperimentalMaterial3Api::class,
+  ExperimentalFoundationApi::class,
+  ExperimentalAnimationApi::class,
+  ExperimentalMaterialApi::class
+)
 @Composable
 fun TemplateApp(templateType: String) {
-    when (templateType) {
-        "Profiles" -> ProfileScreen()
-        "Login" -> LoginOnboarding()
-        "On-boarding" -> OnBoardingScreen { }
-        "Charts" -> Charts()
-        "Adding Payment Card" -> AddPaymentScreen()
-        "Pin Lock/BioMetric" -> PinLockView()
-        "Timer" -> TimerDemo()
-        "Clock View" -> ClockDemo()
-        "Cascade Menu" -> CascadeScreen()
-        else -> ComingSoon()
-    }
+  when (templateType) {
+    "Profiles" -> ProfileScreen()
+    "Login" -> LoginOnboarding()
+    "On-boarding" -> OnBoardingScreen {}
+    "Charts" -> Charts()
+    "Adding Payment Card" -> AddPaymentScreen()
+    "Pin Lock/BioMetric" -> PinLockView()
+    "Timer" -> TimerDemo()
+    "Clock View" -> ClockDemo()
+    "Cascade Menu" -> CascadeScreen()
+    else -> ComingSoon()
+  }
 }
 
 private fun createBiometricPrompt(activity: FragmentActivity): BiometricPrompt {
-    val executor = ContextCompat.getMainExecutor(activity)
+  val executor = ContextCompat.getMainExecutor(activity)
 
-    val callback = object : BiometricPrompt.AuthenticationCallback() {
-        override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-            super.onAuthenticationError(errorCode, errString)
-            if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
-                //loginWithPassword() // Because in this app, the negative button allows the user
-                // to enter an account password. This is completely optional and your app doesn’t have to do it.
-            }
+  val callback =
+    object : BiometricPrompt.AuthenticationCallback() {
+      override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+        super.onAuthenticationError(errorCode, errString)
+        if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+          // loginWithPassword() // Because in this app, the negative button allows the
+          // user
+          // to enter an account password. This is completely optional and your app
+          // doesn’t have to do it.
         }
-
+      }
     }
-    val biometricPrompt = BiometricPrompt(activity, executor, callback)
+  val biometricPrompt = BiometricPrompt(activity, executor, callback)
 
-    return biometricPrompt
+  return biometricPrompt
 }

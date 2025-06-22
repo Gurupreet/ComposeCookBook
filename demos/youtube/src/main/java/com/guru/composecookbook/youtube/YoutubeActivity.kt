@@ -13,27 +13,21 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.youtube.components.YoutubeHome
 
 class YoutubeActivity : ComponentActivity() {
-    @OptIn(ExperimentalAnimationApi::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
-        setContent {
-            ComposeCookBookTheme {
-                YoutubeHome()
-            }
-        }
-    }
+  @OptIn(ExperimentalAnimationApi::class)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+    setContent { ComposeCookBookTheme { YoutubeHome() } }
+  }
 
-    companion object {
-        fun newIntent(context: Context) = Intent(context, YoutubeActivity::class.java)
-    }
+  companion object {
+    fun newIntent(context: Context) = Intent(context, YoutubeActivity::class.java)
+  }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
-        YoutubeHome()
-    }
+  ComposeCookBookTheme { YoutubeHome() }
 }

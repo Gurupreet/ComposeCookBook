@@ -26,36 +26,33 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun PlayerBottomBar(modifier: Modifier) {
-    val bottomBarHeight = 57.dp
-    val backgroundColor =
-        if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
-    Row(
-        modifier = modifier
-            .padding(bottom = bottomBarHeight)
-            .fillMaxWidth()
-            .background(color = backgroundColor),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.adele21),
-            modifier = Modifier.size(65.dp),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Text(
-            text = "Someone Like you by Adele",
-            style = typography.h6.copy(fontSize = 14.sp),
-            modifier = Modifier
-                .padding(8.dp)
-                .weight(1f),
-        )
-        Icon(
-            imageVector = Icons.Default.FavoriteBorder, modifier = Modifier.padding(8.dp),
-            contentDescription = null
-        )
-        Icon(
-            imageVector = Icons.Default.PlayArrow, modifier = Modifier.padding(8.dp),
-            contentDescription = null
-        )
-    }
+  val bottomBarHeight = 57.dp
+  val backgroundColor = if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
+  Row(
+    modifier =
+      modifier.padding(bottom = bottomBarHeight).fillMaxWidth().background(color = backgroundColor),
+    verticalAlignment = Alignment.CenterVertically,
+  ) {
+    Image(
+      painter = painterResource(id = R.drawable.adele21),
+      modifier = Modifier.size(65.dp),
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+    Text(
+      text = "Someone Like you by Adele",
+      style = typography.h6.copy(fontSize = 14.sp),
+      modifier = Modifier.padding(8.dp).weight(1f),
+    )
+    Icon(
+      imageVector = Icons.Default.FavoriteBorder,
+      modifier = Modifier.padding(8.dp),
+      contentDescription = null
+    )
+    Icon(
+      imageVector = Icons.Default.PlayArrow,
+      modifier = Modifier.padding(8.dp),
+      contentDescription = null
+    )
+  }
 }

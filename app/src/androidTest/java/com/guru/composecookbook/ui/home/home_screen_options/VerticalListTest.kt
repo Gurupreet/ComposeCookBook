@@ -16,35 +16,24 @@ import org.junit.Test
  */
 class VerticalListTest {
 
-    @get: Rule
-    val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
+  @get:Rule val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
-    @Test
-    fun homeListOfEntriesMustBeVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
-                .assertExists()
-        }
+  @Test
+  fun homeListOfEntriesMustBeVisible() {
+    composeAndroidTestRule.apply { onNodeWithTag(TestTags.HOME_SCREEN_LIST).assertExists() }
+  }
+
+  @Test
+  fun assertIfVerticalListButtonVisible() {
+    composeAndroidTestRule.apply { onNodeWithTag("button-Vertical ListView").assertIsDisplayed() }
+  }
+
+  @Test
+  fun assertIfVerticalListIsVisible() {
+    composeAndroidTestRule.apply {
+      onNodeWithTag("button-Vertical ListView").assertIsDisplayed().performClick()
+
+      onNodeWithTag("${TestTags.HOME_SCREEN_LIST_ITEM}-1").assertIsDisplayed()
     }
-
-    @Test
-    fun assertIfVerticalListButtonVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag("button-Vertical ListView")
-                .assertIsDisplayed()
-        }
-    }
-
-    @Test
-    fun assertIfVerticalListIsVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag("button-Vertical ListView")
-                .assertIsDisplayed()
-                .performClick()
-
-            onNodeWithTag("${TestTags.HOME_SCREEN_LIST_ITEM}-1")
-                .assertIsDisplayed()
-        }
-    }
-
+  }
 }

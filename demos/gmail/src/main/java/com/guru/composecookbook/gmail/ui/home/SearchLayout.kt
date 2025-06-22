@@ -41,81 +41,71 @@ import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.launch
 
 @Composable
-fun SearchLayout(offset: Int, drawerState: DrawerState, showUserDialog: MutableState<Boolean>,
-        onCreateNewEmailClickListener : () -> Unit) {
+fun SearchLayout(
+  offset: Int,
+  drawerState: DrawerState,
+  showUserDialog: MutableState<Boolean>,
+  onCreateNewEmailClickListener: () -> Unit
+) {
 
-    val searchLayoutHeightDp = 70.dp
-    val background = if (isSystemInDarkTheme()) graySurface else Color.White.copy(alpha = 0.8f)
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .graphicsLayer(translationY = offset.toFloat())
-            .height(searchLayoutHeightDp)
-            .padding(8.dp)
-            .shadow(8.dp, shape = RoundedCornerShape(8.dp), clip = false)
-            .background(background, shape = RoundedCornerShape(8.dp))
-
+  val searchLayoutHeightDp = 70.dp
+  val background = if (isSystemInDarkTheme()) graySurface else Color.White.copy(alpha = 0.8f)
+  Row(
+    verticalAlignment = Alignment.CenterVertically,
+    modifier =
+      Modifier.graphicsLayer(translationY = offset.toFloat())
+        .height(searchLayoutHeightDp)
+        .padding(8.dp)
+        .shadow(8.dp, shape = RoundedCornerShape(8.dp), clip = false)
+        .background(background, shape = RoundedCornerShape(8.dp))
+  ) {
+    val coroutineScope = rememberCoroutineScope()
+    IconButton(
+      onClick = { coroutineScope.launch { drawerState.open() } },
     ) {
-
-        val coroutineScope = rememberCoroutineScope()
-        IconButton(
-            onClick = {
-                coroutineScope.launch {
-                    drawerState.open()
-                }
-            },
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.Menu,
-                contentDescription = stringResource(id = R.string.cd_gmail_menu)
-            )
-        }
-
-        TextField(
-            value = TextFieldValue(""),
-            placeholder = { Text("Search in emails") },
-            onValueChange = {},
-            modifier = Modifier.weight(1f),
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = background,
-                cursorColor = MaterialTheme.colors.onSurface,
-                focusedIndicatorColor = background,
-                disabledIndicatorColor = background
-            ),
-            textStyle = typography.body2
-        )
-
-        val accessibilityManager =
-            LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE)
-                    as android.view.accessibility.AccessibilityManager
-        if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
-            IconButton(
-                onClick = {
-                    onCreateNewEmailClickListener.invoke()
-                },
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.Edit,
-                    contentDescription = stringResource(id = R.string.cd_create_new_email)
-                )
-            }
-        }
-
-        Image(
-            painter = painterResource(id = R.drawable.p3),
-            contentDescription = stringResource(id = R.string.cd_gmail_profile),
-            modifier = Modifier
-                .padding(horizontal = 8.dp)
-                .size(32.dp)
-                .clip(CircleShape)
-                .clickable(onClick = {
-                    showUserDialog.value = true
-                })
-        )
-
+      Icon(
+        imageVector = Icons.Outlined.Menu,
+        contentDescription = stringResource(id = R.string.cd_gmail_menu)
+      )
     }
+
+    TextField(
+      value = TextFieldValue(""),
+      placeholder = { Text("Search in emails") },
+      onValueChange = {},
+      modifier = Modifier.weight(1f),
+      colors =
+        TextFieldDefaults.textFieldColors(
+          backgroundColor = background,
+          cursorColor = MaterialTheme.colors.onSurface,
+          focusedIndicatorColor = background,
+          disabledIndicatorColor = background
+        ),
+      textStyle = typography.body2
+    )
+
+    val accessibilityManager =
+      LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE)
+        as android.view.accessibility.AccessibilityManager
+    if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
+      IconButton(
+        onClick = { onCreateNewEmailClickListener.invoke() },
+      ) {
+        Icon(
+          imageVector = Icons.Outlined.Edit,
+          contentDescription = stringResource(id = R.string.cd_create_new_email)
+        )
+      }
+    }
+
+    Image(
+      painter = painterResource(id = R.drawable.p3),
+      contentDescription = stringResource(id = R.string.cd_gmail_profile),
+      modifier =
+        Modifier.padding(horizontal = 8.dp)
+          .size(32.dp)
+          .clip(CircleShape)
+          .clickable(onClick = { showUserDialog.value = true })
+    )
+  }
 }
-
-
-
-

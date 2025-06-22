@@ -29,73 +29,61 @@ import com.guru.composecookbook.meditation.ui.theme.ButtonBlue
 import com.guru.composecookbook.meditation.ui.theme.TextWhite
 
 @Composable
-fun FeatureItem(
-    feature: Feature,
-    modifier: Modifier = Modifier,
-    textColor : Color
-) {
-    BoxWithConstraints(
-        modifier = modifier
-    ) {
-        val width = constraints.maxWidth
-        val height = constraints.maxHeight
+fun FeatureItem(feature: Feature, modifier: Modifier = Modifier, textColor: Color) {
+  BoxWithConstraints(modifier = modifier) {
+    val width = constraints.maxWidth
+    val height = constraints.maxHeight
 
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
+    Box(modifier = Modifier.fillMaxSize()) {
+      Image(
+        painter = painterResource(id = feature.image),
+        contentDescription = feature.title,
+        modifier = Modifier.align(Alignment.TopEnd)
+      )
 
-            Image(
-                painter = painterResource(id = feature.image),
-                contentDescription = feature.title,
-                modifier = Modifier.align(Alignment.TopEnd)
-            )
+      Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.Start,
+        modifier = Modifier.fillMaxHeight().padding(start = 15.dp)
+      ) {
+        Text(
+          text = feature.title,
+          style = MaterialTheme.typography.h6,
+          color = textColor,
+          fontSize = 18.sp,
+          fontWeight = FontWeight.Bold
+        )
+        Text(
+          text = feature.description,
+          color = textColor,
+          style = MaterialTheme.typography.body1,
+          fontSize = 14.sp
+        )
+      }
 
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start,
-                modifier = Modifier.fillMaxHeight().padding(start = 15.dp)
-            ) {
-                Text(
-                    text = feature.title,
-                    style = MaterialTheme.typography.h6,
-                    color = textColor,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = feature.description,
-                    color = textColor,
-                    style = MaterialTheme.typography.body1,
-                    fontSize = 14.sp
-                )
-            }
-
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(bottom = 15.dp, start = 15.dp, end = 15.dp),
-                verticalAlignment = Alignment.Bottom
-            ) {
-                Text(
-                    text = feature.time,
-                    color = textColor,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Start",
-                    color = TextWhite,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .clickable {
-                            // Handle the click
-                        }
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(ButtonBlue)
-                        .padding(vertical = 6.dp, horizontal = 15.dp)
-                )
-            }
-        }
+      Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier =
+          Modifier.fillMaxWidth()
+            .fillMaxHeight()
+            .padding(bottom = 15.dp, start = 15.dp, end = 15.dp),
+        verticalAlignment = Alignment.Bottom
+      ) {
+        Text(text = feature.time, color = textColor, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+        Text(
+          text = "Start",
+          color = TextWhite,
+          fontSize = 10.sp,
+          fontWeight = FontWeight.Bold,
+          modifier =
+            Modifier.clickable {
+                // Handle the click
+              }
+              .clip(RoundedCornerShape(12.dp))
+              .background(ButtonBlue)
+              .padding(vertical = 6.dp, horizontal = 15.dp)
+        )
+      }
     }
+  }
 }

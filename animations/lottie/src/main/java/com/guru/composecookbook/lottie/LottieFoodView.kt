@@ -9,11 +9,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LottieFoodView(context: Context) {
-    LottieLoadingView(
-        context = context,
-        file = "food.json",
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-    )
+  LottieLoadingView(
+    context = context,
+    file = "food.json",
+    modifier = Modifier.fillMaxWidth().height(200.dp)
+  )
 }

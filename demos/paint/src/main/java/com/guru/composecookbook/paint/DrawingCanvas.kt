@@ -19,51 +19,42 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.unit.dp
 
 @OptIn(
-    ExperimentalComposeUiApi::class,
-ExperimentalAnimationApi::class,
-ExperimentalFoundationApi::class)
+  ExperimentalComposeUiApi::class,
+  ExperimentalAnimationApi::class,
+  ExperimentalFoundationApi::class
+)
 @Composable
 fun DrawingCanvas(
-    drawColor: MutableState<Color>,
-    drawBrush: MutableState<Float>,
-    usedColors: MutableState<MutableSet<Color>>,
-    paths: List<PathState>
+  drawColor: MutableState<Color>,
+  drawBrush: MutableState<Float>,
+  usedColors: MutableState<MutableSet<Color>>,
+  paths: List<PathState>
 ) {
-    val currentPath = paths.last().path
-    val movePath = remember { mutableStateOf<Offset?>(null) }
+  val currentPath = paths.last().path
+  val movePath = remember { mutableStateOf<Offset?>(null) }
 
-    Canvas(modifier = Modifier
-        .fillMaxSize()
-        .padding(top = 100.dp)
-        .pointerInteropFilter {
-            when (it.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    currentPath.moveTo(it.x, it.y)
-                    usedColors.value.add(drawColor.value)
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    movePath.value = Offset(it.x, it.y)
-                }
-                else -> {
-                    movePath.value = null
-                }
-            }
-            true
-        }) {
-        movePath.value?.let {
-            currentPath.lineTo(it.x, it.y)
-            drawPath(
-                path = currentPath,
-                color = drawColor.value,
-                style = Stroke(drawBrush.value)
-            )
+  Canvas(
+    modifier =
+      Modifier.fillMaxSize().padding(top = 100.dp).pointerInteropFilter {
+        when (it.action) {
+          MotionEvent.ACTION_DOWN -> {
+            currentPath.moveTo(it.x, it.y)
+            usedColors.value.add(drawColor.value)
+          }
+          MotionEvent.ACTION_MOVE -> {
+            movePath.value = Offset(it.x, it.y)
+          }
+          else -> {
+            movePath.value = null
+          }
         }
-        paths.forEach {
-            drawPath(
-                path = it.path,
-                color = it.color,
-                style = Stroke(it.stroke)
-            )
-        }
+        true
+      }
+  ) {
+    movePath.value?.let {
+      currentPath.lineTo(it.x, it.y)
+      drawPath(path = currentPath, color = drawColor.value, style = Stroke(drawBrush.value))
     }
+    paths.forEach { drawPath(path = it.path, color = it.color, style = Stroke(it.stroke)) }
+  }
 }

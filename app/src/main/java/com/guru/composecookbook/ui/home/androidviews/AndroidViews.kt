@@ -23,7 +23,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapView
@@ -37,158 +36,138 @@ import com.guru.composecookbook.ui.utils.TitleText
 
 @Composable
 fun AndroidViews() {
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        TitleText(title = "Android Views Inside @Column()")
-        val context = LocalContext.current
-        AndroidTextView(context)
-        AndroidButton(context)
-        AndroidLottieView(context)
-        AndroidAdView(context)
-        AndroidMapView()
-        Spacer(modifier = Modifier.height(100.dp))
-    }
+  Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    TitleText(title = "Android Views Inside @Column()")
+    val context = LocalContext.current
+    AndroidTextView(context)
+    AndroidButton(context)
+    AndroidLottieView(context)
+    AndroidAdView(context)
+    AndroidMapView()
+    Spacer(modifier = Modifier.height(100.dp))
+  }
 }
 
 @Composable
 fun AndroidTextView(context: Context) {
-    SubtitleText(subtitle = "Below is Android Textview")
-    //simple android textview creation
-    // if you are using xml it can be textview = remember { findViewById(R.id.androidTextView }
-    val textColor = LocalContentColor.current.toArgb()
-    val androidTextView = remember {
-        TextView(context).apply {
-            setText(com.guru.composecookbook.profile.R.string.about_me)
-            setTextColor(textColor)
-        }
+  SubtitleText(subtitle = "Below is Android Textview")
+  // simple android textview creation
+  // if you are using xml it can be textview = remember { findViewById(R.id.androidTextView }
+  val textColor = LocalContentColor.current.toArgb()
+  val androidTextView = remember {
+    TextView(context).apply {
+      setText(com.guru.composecookbook.profile.R.string.about_me)
+      setTextColor(textColor)
     }
-    AndroidView({ androidTextView }, modifier = Modifier.padding(8.dp)) {
-        // Textview inflated in compose
-        // Re composition will call this section again
-        //   it.setText(R.string.about_me)
-    }
+  }
+  AndroidView({ androidTextView }, modifier = Modifier.padding(8.dp)) {
+    // Textview inflated in compose
+    // Re composition will call this section again
+    //   it.setText(R.string.about_me)
+  }
 }
 
 @Composable
 fun AndroidButton(context: Context) {
-    var count by remember { mutableStateOf(0) }
-    SubtitleText(subtitle = "Below is Android Button")
-    //simple android button creation
-    val androidButton = remember {
-        Button(context).apply {
-            // init state of button
-            text = "Click me: $count"
-            setOnClickListener { count++ }
-        }
+  var count by remember { mutableStateOf(0) }
+  SubtitleText(subtitle = "Below is Android Button")
+  // simple android button creation
+  val androidButton = remember {
+    Button(context).apply {
+      // init state of button
+      text = "Click me: $count"
+      setOnClickListener { count++ }
     }
-    // AndroidView is composable  which hosts android views.
-    AndroidView({ androidButton }, modifier = Modifier.padding(8.dp)) {
-        // Button inflated in compose
-        // Re composition will call this section again
-        it.text = "Click me: $count"
-    }
+  }
+  // AndroidView is composable  which hosts android views.
+  AndroidView({ androidButton }, modifier = Modifier.padding(8.dp)) {
+    // Button inflated in compose
+    // Re composition will call this section again
+    it.text = "Click me: $count"
+  }
 }
 
 @Composable
 fun AndroidLottieView(context: Context) {
-    SubtitleText(subtitle = "Android LottieView hosted in compose")
-    LottieLoaderLoadingView(context = context)
-    LottieFoodView(context)
+  SubtitleText(subtitle = "Android LottieView hosted in compose")
+  LottieLoaderLoadingView(context = context)
+  LottieFoodView(context)
 }
 
 @Composable
 fun AndroidAdView(context: Context) {
-    SubtitleText(subtitle = "Android AdView")
+  SubtitleText(subtitle = "Android AdView")
 
-    val adView = remember {
-        val adRequest: AdRequest = AdRequest.Builder().build()
-        AdView(context).apply {
-            // init test ads
-            adUnitId = resources.getString(com.guru.composecookbook.R.string.test_adbanner_id)
-            loadAd(adRequest)
-        }
+  val adView = remember {
+    val adRequest: AdRequest = AdRequest.Builder().build()
+    AdView(context).apply {
+      // init test ads
+      adUnitId = resources.getString(com.guru.composecookbook.R.string.test_adbanner_id)
+      loadAd(adRequest)
     }
+  }
 
-    AndroidView(
-        { adView }, modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            .background(Color.Gray)
-    )
+  AndroidView({ adView }, modifier = Modifier.fillMaxWidth().padding(8.dp).background(Color.Gray))
 }
 
 @Composable
 fun AndroidMapView() {
-    //Please Add your map api key to manifest to see the map.
-    SubtitleText(subtitle = "Android MapView")
-    val map = rememberMapViewWithLifecycle()
-    // Taken from compose samples checkout below for official demo.
-    // https://github.com/android/compose-samples/tree/master/Crane/app/src/main/java/androidx/compose/samples/crane/details
-    MapViewContainer(map = map, latitude = "1.3521", longitude = "103.8198")
+  // Please Add your map api key to manifest to see the map.
+  SubtitleText(subtitle = "Android MapView")
+  val map = rememberMapViewWithLifecycle()
+  // Taken from compose samples checkout below for official demo.
+  // https://github.com/android/compose-samples/tree/master/Crane/app/src/main/java/androidx/compose/samples/crane/details
+  MapViewContainer(map = map, latitude = "1.3521", longitude = "103.8198")
 }
 
 @Composable
-private fun MapViewContainer(
-    map: MapView,
-    latitude: String,
-    longitude: String
-) {
-    AndroidView<MapView>(
-        factory = { map },
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(400.dp)
-            .padding(8.dp)
-            .clip(RoundedCornerShape(10.dp))
-    ) { mapView ->
-        mapView.getMapAsync { googleMap ->
-            val position = LatLng(latitude.toDouble(), longitude.toDouble())
-            googleMap.addMarker(
-                MarkerOptions().position(position)
-            )
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
-        }
+private fun MapViewContainer(map: MapView, latitude: String, longitude: String) {
+  AndroidView<MapView>(
+    factory = { map },
+    modifier = Modifier.fillMaxWidth().height(400.dp).padding(8.dp).clip(RoundedCornerShape(10.dp))
+  ) { mapView ->
+    mapView.getMapAsync { googleMap ->
+      val position = LatLng(latitude.toDouble(), longitude.toDouble())
+      googleMap.addMarker(MarkerOptions().position(position))
+      googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
     }
+  }
 }
-
 
 @Composable
 fun rememberMapViewWithLifecycle(): MapView {
-    val context = LocalContext.current
-    val mapView = remember {
-        MapView(context)
-    }
+  val context = LocalContext.current
+  val mapView = remember { MapView(context) }
 
-    // Makes MapView follow the lifecycle of this composable
-    val lifecycleObserver = rememberMapLifecycleObserver(mapView)
-    val lifecycle = LocalLifecycleOwner.current.lifecycle
-    DisposableEffect(lifecycle) {
-        lifecycle.addObserver(lifecycleObserver)
-        onDispose {
-            lifecycle.removeObserver(lifecycleObserver)
-        }
-    }
+  // Makes MapView follow the lifecycle of this composable
+  val lifecycleObserver = rememberMapLifecycleObserver(mapView)
+  val lifecycle = LocalLifecycleOwner.current.lifecycle
+  DisposableEffect(lifecycle) {
+    lifecycle.addObserver(lifecycleObserver)
+    onDispose { lifecycle.removeObserver(lifecycleObserver) }
+  }
 
-    return mapView
+  return mapView
 }
 
 @Composable
 private fun rememberMapLifecycleObserver(mapView: MapView): LifecycleEventObserver =
-    remember(mapView) {
-        LifecycleEventObserver { _, event ->
-            when (event) {
-                Lifecycle.Event.ON_CREATE -> mapView.onCreate(Bundle())
-                Lifecycle.Event.ON_START -> mapView.onStart()
-                Lifecycle.Event.ON_RESUME -> mapView.onResume()
-                Lifecycle.Event.ON_PAUSE -> mapView.onPause()
-                Lifecycle.Event.ON_STOP -> mapView.onStop()
-                Lifecycle.Event.ON_DESTROY -> mapView.onDestroy()
-                else -> throw IllegalStateException()
-            }
-        }
+  remember(mapView) {
+    LifecycleEventObserver { _, event ->
+      when (event) {
+        Lifecycle.Event.ON_CREATE -> mapView.onCreate(Bundle())
+        Lifecycle.Event.ON_START -> mapView.onStart()
+        Lifecycle.Event.ON_RESUME -> mapView.onResume()
+        Lifecycle.Event.ON_PAUSE -> mapView.onPause()
+        Lifecycle.Event.ON_STOP -> mapView.onStop()
+        Lifecycle.Event.ON_DESTROY -> mapView.onDestroy()
+        else -> throw IllegalStateException()
+      }
     }
+  }
 
 @Preview
 @Composable
 fun ShowAndroidViews() {
-    AndroidViews()
+  AndroidViews()
 }

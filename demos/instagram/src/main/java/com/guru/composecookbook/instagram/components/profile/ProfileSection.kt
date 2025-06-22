@@ -20,69 +20,49 @@ import com.guru.composecookbook.data.DemoDataProvider
 
 @Composable
 fun ProfileSection(
-    @DrawableRes firstImageId: Int,
-    text: String,
-    modifier: Modifier = Modifier,
-    iconRight: @Composable () -> Unit = {},
-    size: ProfileSectionSize = ProfileSectionSizes.small()
+  @DrawableRes firstImageId: Int,
+  text: String,
+  modifier: Modifier = Modifier,
+  iconRight: @Composable () -> Unit = {},
+  size: ProfileSectionSize = ProfileSectionSizes.small()
 ) {
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        ProfilePicture(
-            imageId = firstImageId,
-            contentDescription = null,
-            size = size.profileIconSize
-        )
-        Text(
-            text = text,
-            style = size.textStyle,
-            color = MaterialTheme.colors.onBackground,
-            modifier = Modifier
-                .weight(1f)
-                .padding(start = 8.dp)
-        )
-        iconRight()
-    }
+  Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+    ProfilePicture(imageId = firstImageId, contentDescription = null, size = size.profileIconSize)
+    Text(
+      text = text,
+      style = size.textStyle,
+      color = MaterialTheme.colors.onBackground,
+      modifier = Modifier.weight(1f).padding(start = 8.dp)
+    )
+    iconRight()
+  }
 }
 
-data class ProfileSectionSize(
-    val profileIconSize: Dp,
-    val textStyle: TextStyle
-)
+data class ProfileSectionSize(val profileIconSize: Dp, val textStyle: TextStyle)
 
 object ProfileSectionSizes {
-    @Composable
-    fun small() = ProfileSectionSize(
-        ProfileSizes.small,
-        MaterialTheme.typography.caption
-    )
+  @Composable fun small() = ProfileSectionSize(ProfileSizes.small, MaterialTheme.typography.caption)
 
-    @Composable
-    fun medium() = ProfileSectionSize(
-        ProfileSizes.medium,
-        MaterialTheme.typography.body1
-    )
+  @Composable fun medium() = ProfileSectionSize(ProfileSizes.medium, MaterialTheme.typography.body1)
 }
 
 @Preview
 @Composable
 fun ProfileInfoPreview() {
-    ProfileSection(
-        firstImageId = DemoDataProvider.tweetList.first().authorImageId,
-        text = DemoDataProvider.tweetList.first().author,
-        size = ProfileSectionSizes.medium(),
-        iconRight = { Icon(imageVector = Icons.Default.MoreVert, contentDescription = null) }
-    )
+  ProfileSection(
+    firstImageId = DemoDataProvider.tweetList.first().authorImageId,
+    text = DemoDataProvider.tweetList.first().author,
+    size = ProfileSectionSizes.medium(),
+    iconRight = { Icon(imageVector = Icons.Default.MoreVert, contentDescription = null) }
+  )
 }
 
 @Preview
 @Composable
 fun LikesSectionPreview() {
-    val tweet = DemoDataProvider.tweetList.first()
-    ProfileSection(
-        firstImageId = tweet.authorImageId,
-        text = "Liked by ${tweet.author} and ${tweet.likesCount} others"
-    )
+  val tweet = DemoDataProvider.tweetList.first()
+  ProfileSection(
+    firstImageId = tweet.authorImageId,
+    text = "Liked by ${tweet.author} and ${tweet.likesCount} others"
+  )
 }

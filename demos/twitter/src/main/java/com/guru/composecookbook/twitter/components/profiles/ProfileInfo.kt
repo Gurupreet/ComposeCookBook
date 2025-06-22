@@ -20,36 +20,30 @@ import com.guru.composecookbook.theme.twitterColor
 
 @Composable
 fun ProfileInfo(
-    profileName: String,
-    profilePing: String,
-    time: String,
-    modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.subtitle1
+  profileName: String,
+  profilePing: String,
+  time: String,
+  modifier: Modifier = Modifier,
+  textStyle: TextStyle = MaterialTheme.typography.subtitle1
 ) {
-    Row(
-        modifier = modifier.semantics {
-            contentDescription = "$profilePing post a tweet $time ago"
-        },
-        verticalAlignment = Alignment.Bottom
-    ) {
-        Text(
-            text = profileName,
-            style = textStyle,
-            fontWeight = FontWeight.Bold
-        )
-        Icon(
-            imageVector = Icons.Default.CheckCircle,
-            contentDescription = null,
-            tint = twitterColor,
-            modifier = Modifier
-                .size(textStyle.fontSize.value.dp)
-                .align(Alignment.CenterVertically)
-                .padding(start = 2.dp)
-        )
-        Text(
-            text = "$profilePing · $time",
-            modifier = Modifier.padding(start = 8.dp),
-            style = textStyle
-        )
-    }
+  Row(
+    modifier = modifier.semantics { contentDescription = "$profilePing post a tweet $time ago" },
+    verticalAlignment = Alignment.Bottom
+  ) {
+    Text(text = profileName, style = textStyle, fontWeight = FontWeight.Bold)
+    Icon(
+      imageVector = Icons.Default.CheckCircle,
+      contentDescription = null,
+      tint = twitterColor,
+      modifier =
+        Modifier.size(textStyle.fontSize.value.dp)
+          .align(Alignment.CenterVertically)
+          .padding(start = 2.dp)
+    )
+    Text(
+      text = "$profilePing · $time",
+      modifier = Modifier.padding(start = 8.dp),
+      style = textStyle
+    )
+  }
 }

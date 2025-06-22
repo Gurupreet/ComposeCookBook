@@ -16,44 +16,39 @@ import com.guru.composecookbook.ui.utils.TestTags
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WidgetScreen() {
-    Scaffold(
-        modifier = Modifier.testTag(TestTags.WIDGET_SCREEN_ROOT),
-        topBar = {
-            SmallTopAppBar(
-                title = { Text(text = "All Material Widgets") },
-            )
-        },
-        content = { paddingValues ->
-            WidgetScreenContent(
-                modifier = Modifier.padding(paddingValues)
-            )
-        }
-    )
+  Scaffold(
+    modifier = Modifier.testTag(TestTags.WIDGET_SCREEN_ROOT),
+    topBar = {
+      SmallTopAppBar(
+        title = { Text(text = "All Material Widgets") },
+      )
+    },
+    content = { paddingValues -> WidgetScreenContent(modifier = Modifier.padding(paddingValues)) }
+  )
 }
 
 @Composable
 fun WidgetScreenContent(
-    modifier: Modifier = Modifier,
+  modifier: Modifier = Modifier,
 ) {
-    LazyColumn(
-        state = rememberLazyListState(),
-        modifier = modifier,
-    ) {
-        item { AllButtons() }
-        item { Chips() }
-        item { TextDemo() }
-        item { TextInputs() }
-        item { Loaders() }
-        item { Toggles() }
-        item { AppBars() }
-        item { SnackBars() }
-        item { UICards() }
-    }
+  LazyColumn(
+    state = rememberLazyListState(),
+    modifier = modifier,
+  ) {
+    item { AllButtons() }
+    item { Chips() }
+    item { TextDemo() }
+    item { TextInputs() }
+    item { Loaders() }
+    item { Toggles() }
+    item { AppBars() }
+    item { SnackBars() }
+    item { UICards() }
+  }
 }
-
 
 @Preview
 @Composable
 fun PreviewScreen() {
-    WidgetScreen()
+  WidgetScreen()
 }

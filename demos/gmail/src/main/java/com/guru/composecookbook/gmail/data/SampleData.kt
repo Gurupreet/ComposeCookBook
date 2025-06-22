@@ -1,7 +1,7 @@
 package com.guru.composecookbook.gmail.data
 
-
-var sampleMessage = """
+var sampleMessage =
+  """
     
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
     <head>
@@ -116,5 +116,5 @@ var sampleMessage = """
     </html>
     
     
-""".trimIndent()
-
+"""
+    .trimIndent()

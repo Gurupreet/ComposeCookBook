@@ -25,56 +25,49 @@ import kotlin.math.ceil
 
 @Composable
 fun StaggeredVerticalGrid(
-    modifier: Modifier = Modifier,
-    maxColumnWidth: Dp,
-    content: @Composable () -> Unit
+  modifier: Modifier = Modifier,
+  maxColumnWidth: Dp,
+  content: @Composable () -> Unit
 ) {
-    Layout(
-        content = content,
-        modifier = modifier
-    ) { measurables, constraints ->
-        val placeableXY: MutableMap<Placeable, Pair<Int, Int>> = mutableMapOf()
+  Layout(content = content, modifier = modifier) { measurables, constraints ->
+    val placeableXY: MutableMap<Placeable, Pair<Int, Int>> = mutableMapOf()
 
-        check(constraints.hasBoundedWidth) {
-            "Unbounded width not supported"
-        }
-        val columns = ceil(constraints.maxWidth / maxColumnWidth.toPx()).toInt()
-        val columnWidth = constraints.maxWidth / columns
-        val itemConstraints = constraints.copy(maxWidth = columnWidth)
-        val colHeights = IntArray(columns) { 0 } // track each column's height
-        val placeables = measurables.map { measurable ->
-            val column = shortestColumn(colHeights)
-            val placeable = measurable.measure(itemConstraints)
-            placeableXY[placeable] = Pair(columnWidth * column, colHeights[column])
-            colHeights[column] += placeable.height
-            placeable
-        }
+    check(constraints.hasBoundedWidth) { "Unbounded width not supported" }
+    val columns = ceil(constraints.maxWidth / maxColumnWidth.toPx()).toInt()
+    val columnWidth = constraints.maxWidth / columns
+    val itemConstraints = constraints.copy(maxWidth = columnWidth)
+    val colHeights = IntArray(columns) { 0 } // track each column's height
+    val placeables =
+      measurables.map { measurable ->
+        val column = shortestColumn(colHeights)
+        val placeable = measurable.measure(itemConstraints)
+        placeableXY[placeable] = Pair(columnWidth * column, colHeights[column])
+        colHeights[column] += placeable.height
+        placeable
+      }
 
-        val height = colHeights.maxOrNull()
-            ?.coerceIn(constraints.minHeight, constraints.maxHeight)
-            ?: constraints.minHeight
-        layout(
-            width = constraints.maxWidth,
-            height = height
-        ) {
-            placeables.forEach { placeable ->
-                placeable.placeRelative(
-                    x = placeableXY.getValue(placeable).first,
-                    y = placeableXY.getValue(placeable).second
-                )
-            }
-        }
+    val height =
+      colHeights.maxOrNull()?.coerceIn(constraints.minHeight, constraints.maxHeight)
+        ?: constraints.minHeight
+    layout(width = constraints.maxWidth, height = height) {
+      placeables.forEach { placeable ->
+        placeable.placeRelative(
+          x = placeableXY.getValue(placeable).first,
+          y = placeableXY.getValue(placeable).second
+        )
+      }
     }
+  }
 }
 
 private fun shortestColumn(colHeights: IntArray): Int {
-    var minHeight = Int.MAX_VALUE
-    var column = 0
-    colHeights.forEachIndexed { index, height ->
-        if (height < minHeight) {
-            minHeight = height
-            column = index
-        }
+  var minHeight = Int.MAX_VALUE
+  var column = 0
+  colHeights.forEachIndexed { index, height ->
+    if (height < minHeight) {
+      minHeight = height
+      column = index
     }
-    return column
+  }
+  return column
 }

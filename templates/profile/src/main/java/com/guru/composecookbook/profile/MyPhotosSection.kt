@@ -17,68 +17,60 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MyPhotosSection() {
-    Text(
-        text = "My Photography",
-        style = typography.h6,
-        color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(start = 8.dp, top = 16.dp)
+  Text(
+    text = "My Photography",
+    style = typography.h6,
+    color = MaterialTheme.colorScheme.primary,
+    modifier = Modifier.padding(start = 8.dp, top = 16.dp)
+  )
+  Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
+  val imageModifier =
+    Modifier.padding(vertical = 8.dp, horizontal = 4.dp).size(120.dp).clip(RoundedCornerShape(8.dp))
+
+  Row(
+    modifier = Modifier.padding(start = 8.dp, top = 8.dp).fillMaxWidth(),
+    horizontalArrangement = Arrangement.SpaceBetween
+  ) {
+    Image(
+      painter = painterResource(id = R.drawable.food2),
+      contentDescription = null,
+      modifier = imageModifier,
+      contentScale = ContentScale.Crop
     )
-    Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
-    val imageModifier = Modifier
-        .padding(vertical = 8.dp, horizontal = 4.dp)
-        .size(120.dp)
-        .clip(RoundedCornerShape(8.dp))
-
-    Row(
-        modifier = Modifier
-            .padding(start = 8.dp, top = 8.dp)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.food2),
-            contentDescription = null,
-            modifier = imageModifier,
-            contentScale = ContentScale.Crop
-        )
-        Image(
-            painter = painterResource(id = R.drawable.food3),
-            modifier = imageModifier,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Image(
-            painter = painterResource(id = R.drawable.food6),
-            modifier = imageModifier,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-    }
-    Row(
-        modifier = Modifier
-            .padding(start = 8.dp, top = 8.dp)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.food12),
-            modifier = imageModifier,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Image(
-            painter = painterResource(id = R.drawable.food13),
-            modifier = imageModifier,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Image(
-            painter = painterResource(id = R.drawable.food15),
-            modifier = imageModifier,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-    }
+    Image(
+      painter = painterResource(id = R.drawable.food3),
+      modifier = imageModifier,
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+    Image(
+      painter = painterResource(id = R.drawable.food6),
+      modifier = imageModifier,
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+  }
+  Row(
+    modifier = Modifier.padding(start = 8.dp, top = 8.dp).fillMaxWidth(),
+    horizontalArrangement = Arrangement.SpaceBetween
+  ) {
+    Image(
+      painter = painterResource(id = R.drawable.food12),
+      modifier = imageModifier,
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+    Image(
+      painter = painterResource(id = R.drawable.food13),
+      modifier = imageModifier,
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+    Image(
+      painter = painterResource(id = R.drawable.food15),
+      modifier = imageModifier,
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+  }
 }
-
-

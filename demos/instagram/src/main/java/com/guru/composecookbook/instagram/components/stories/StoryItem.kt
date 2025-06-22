@@ -29,66 +29,64 @@ import com.guru.composecookbook.theme.instagramGradient
 
 @Composable
 fun StoryItem(
-    @DrawableRes profileImageId: Int,
-    profileName: String,
-    isMe: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.caption,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+  @DrawableRes profileImageId: Int,
+  profileName: String,
+  isMe: Boolean,
+  onClick: () -> Unit,
+  modifier: Modifier = Modifier,
+  textStyle: TextStyle = MaterialTheme.typography.caption,
+  interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
-    val borderColor = if (isMe) {
-        SolidColor(Color.LightGray)
+  val borderColor =
+    if (isMe) {
+      SolidColor(Color.LightGray)
     } else {
-        Brush.linearGradient(
-            colors = instagramGradient,
-            start = Offset(x = 0f, y = 0f),
-            end = Offset(x = 100f, y = 100f)
-        )
+      Brush.linearGradient(
+        colors = instagramGradient,
+        start = Offset(x = 0f, y = 0f),
+        end = Offset(x = 100f, y = 100f)
+      )
     }
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        ProfilePicture(
-            imageId = profileImageId,
-            contentDescription = null,
-            size = ProfileSizes.large,
-            modifier = Modifier
-                .border(
-                    shape = CircleShape,
-                    border = BorderStroke(width = 3.dp, brush = borderColor)
-                )
-                .clickable(
-                    interactionSource = interactionSource,
-                    indication = rememberRipple(bounded = false, radius = ProfileSizes.large / 2),
-                    enabled = true,
-                    onClickLabel = null,
-                    onClick = onClick
-                )
-        )
-        Text(text = profileName, style = textStyle, textAlign = TextAlign.Center)
-    }
+  Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+    ProfilePicture(
+      imageId = profileImageId,
+      contentDescription = null,
+      size = ProfileSizes.large,
+      modifier =
+        Modifier.border(
+            shape = CircleShape,
+            border = BorderStroke(width = 3.dp, brush = borderColor)
+          )
+          .clickable(
+            interactionSource = interactionSource,
+            indication = rememberRipple(bounded = false, radius = ProfileSizes.large / 2),
+            enabled = true,
+            onClickLabel = null,
+            onClick = onClick
+          )
+    )
+    Text(text = profileName, style = textStyle, textAlign = TextAlign.Center)
+  }
 }
 
 @Preview
 @Composable
 fun StoryItemPreview() {
-    StoryItem(
-        profileImageId = DemoDataProvider.tweet.authorImageId,
-        profileName = DemoDataProvider.tweet.author,
-        isMe = false,
-        onClick = {}
-    )
+  StoryItem(
+    profileImageId = DemoDataProvider.tweet.authorImageId,
+    profileName = DemoDataProvider.tweet.author,
+    isMe = false,
+    onClick = {}
+  )
 }
 
 @Preview
 @Composable
 fun StoryItemMePreview() {
-    StoryItem(
-        profileImageId = DemoDataProvider.tweet.authorImageId,
-        profileName = DemoDataProvider.tweet.author,
-        isMe = true,
-        onClick = {}
-    )
+  StoryItem(
+    profileImageId = DemoDataProvider.tweet.authorImageId,
+    profileName = DemoDataProvider.tweet.author,
+    isMe = true,
+    onClick = {}
+  )
 }

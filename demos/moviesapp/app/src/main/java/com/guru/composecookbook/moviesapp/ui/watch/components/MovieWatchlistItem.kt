@@ -26,39 +26,31 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MovieWatchlistItem(
-    movie: Movie,
-    onMovieSelected: () -> Unit,
-    onRemoveFromWatchlist: () -> Unit
+  movie: Movie,
+  onMovieSelected: () -> Unit,
+  onRemoveFromWatchlist: () -> Unit
 ) {
-    Box(modifier = Modifier.clickable(onClick = onMovieSelected)) {
-        Image(
-            painter = rememberImagePainter(
-                data = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}"
-            ),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(280.dp),
-            contentScale = ContentScale.Crop
-        )
-        Spacer(//overlay
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(280.dp)
-                .background(Color.Black.copy(alpha = 0.1f))
-        )
-        Text(
-            text = movie.title,
-            style = typography.h6.copy(fontWeight = FontWeight.ExtraBold),
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .padding(8.dp)
-        )
-        IconButton(
-            onClick = { onRemoveFromWatchlist.invoke() },
-            modifier = Modifier.align(Alignment.BottomEnd)
-        ) {
-            Icon(imageVector = Icons.Default.RemoveCircleOutline, contentDescription = null)
-        }
+  Box(modifier = Modifier.clickable(onClick = onMovieSelected)) {
+    Image(
+      painter =
+        rememberImagePainter(data = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}"),
+      contentDescription = null,
+      modifier = Modifier.fillMaxWidth().height(280.dp),
+      contentScale = ContentScale.Crop
+    )
+    Spacer( // overlay
+      modifier = Modifier.fillMaxWidth().height(280.dp).background(Color.Black.copy(alpha = 0.1f))
+    )
+    Text(
+      text = movie.title,
+      style = typography.h6.copy(fontWeight = FontWeight.ExtraBold),
+      modifier = Modifier.align(Alignment.BottomStart).padding(8.dp)
+    )
+    IconButton(
+      onClick = { onRemoveFromWatchlist.invoke() },
+      modifier = Modifier.align(Alignment.BottomEnd)
+    ) {
+      Icon(imageVector = Icons.Default.RemoveCircleOutline, contentDescription = null)
     }
+  }
 }

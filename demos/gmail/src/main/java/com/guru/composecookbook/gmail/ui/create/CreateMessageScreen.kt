@@ -17,39 +17,37 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.guru.composecookbook.gmail.R
 
-
 @Composable
 fun CreateMessageScreen(navController: NavHostController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Compose") },
-                backgroundColor = MaterialTheme.colors.surface,
-                contentColor = MaterialTheme.colors.onSurface,
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(
-                            imageVector = Icons.Outlined.ArrowBack,
-                            contentDescription = stringResource(id = R.string.cd_back)
-                        )
-                    }
-
-                },
-                actions = {
-                    IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Attachment, contentDescription = null)
-                    }
-                    IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Send, contentDescription = null)
-                    }
-                    CreateMessageMoreActionPopupMenu()
-                }
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        title = { Text(text = "Compose") },
+        backgroundColor = MaterialTheme.colors.surface,
+        contentColor = MaterialTheme.colors.onSurface,
+        navigationIcon = {
+          IconButton(onClick = { navController.popBackStack() }) {
+            Icon(
+              imageVector = Icons.Outlined.ArrowBack,
+              contentDescription = stringResource(id = R.string.cd_back)
             )
+          }
         },
-        content = { paddingValues ->
-            CreateMessageBody(
-                modifier = Modifier.padding(paddingValues),
-            )
-        },
-    )
+        actions = {
+          IconButton(onClick = {}) {
+            Icon(imageVector = Icons.Outlined.Attachment, contentDescription = null)
+          }
+          IconButton(onClick = {}) {
+            Icon(imageVector = Icons.Outlined.Send, contentDescription = null)
+          }
+          CreateMessageMoreActionPopupMenu()
+        }
+      )
+    },
+    content = { paddingValues ->
+      CreateMessageBody(
+        modifier = Modifier.padding(paddingValues),
+      )
+    },
+  )
 }

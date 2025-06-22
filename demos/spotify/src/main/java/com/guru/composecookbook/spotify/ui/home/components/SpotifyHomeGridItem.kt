@@ -27,34 +27,31 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SpotifyHomeGridItem(album: Album) {
-    val cardColor = if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
-    Card(
-        elevation = 4.dp,
-        backgroundColor = cardColor,
-        modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .padding(8.dp)
-            .clickable(onClick = {})
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                painter = painterResource(id = album.imageId),
-                contentDescription = null,
-                modifier = Modifier.size(55.dp),
-                contentScale = ContentScale.Crop
-            )
-            Text(
-                text = album.song,
-                style = typography.h6.copy(fontSize = 14.sp),
-                modifier = Modifier.padding(horizontal = 8.dp)
-            )
-        }
+  val cardColor = if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
+  Card(
+    elevation = 4.dp,
+    backgroundColor = cardColor,
+    modifier = Modifier.clip(RoundedCornerShape(8.dp)).padding(8.dp).clickable(onClick = {})
+  ) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+      Image(
+        painter = painterResource(id = album.imageId),
+        contentDescription = null,
+        modifier = Modifier.size(55.dp),
+        contentScale = ContentScale.Crop
+      )
+      Text(
+        text = album.song,
+        style = typography.h6.copy(fontSize = 14.sp),
+        modifier = Modifier.padding(horizontal = 8.dp)
+      )
     }
+  }
 }
 
 @Preview
 @Composable
 fun PreviewSpotifyHomeGridItem() {
-    val album = remember { AlbumsDataProvider.album }
-    SpotifyHomeGridItem(album)
+  val album = remember { AlbumsDataProvider.album }
+  SpotifyHomeGridItem(album)
 }

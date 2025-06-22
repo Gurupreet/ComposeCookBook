@@ -54,153 +54,127 @@ import com.guru.composecookbook.ui.utils.TitleText
 
 @Composable
 fun AnimationsWithVisibilityApi() {
-    Spacer(modifier = Modifier.height(50.dp))
-    TitleText(title = "Using Visibility Apis(Experimental)")
-    AnimateVisibilityAnim()
-    Divider()
-    AnimateVisibilityWithDifferentChildAnimations()
-    Divider()
-    AnimateVisibilityWithSlideInOutSample()
-    Divider()
-    VisibilityAnimationWithShrinkExpand()
-    Divider()
-    AnimateContentSize()
+  Spacer(modifier = Modifier.height(50.dp))
+  TitleText(title = "Using Visibility Apis(Experimental)")
+  AnimateVisibilityAnim()
+  Divider()
+  AnimateVisibilityWithDifferentChildAnimations()
+  Divider()
+  AnimateVisibilityWithSlideInOutSample()
+  Divider()
+  VisibilityAnimationWithShrinkExpand()
+  Divider()
+  AnimateContentSize()
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimateVisibilityAnim() {
-    SubtitleText(subtitle = "Animate view visibility via  AnimateVisibility()")
-    var expanded by remember { mutableStateOf(true) }
-    FloatingActionButton(
-        onClick = { expanded = !expanded },
-        modifier = Modifier.padding(16.dp)
-    ) {
-        Row(Modifier.padding(start = 16.dp, end = 16.dp)) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_twitter),
-                contentDescription = null
-            )
-            AnimatedVisibility(
-                expanded,
-                modifier = Modifier.align(Alignment.CenterVertically)
-            ) {
-                Text(modifier = Modifier.padding(start = 8.dp), text = "Tweet")
-            }
-        }
+  SubtitleText(subtitle = "Animate view visibility via  AnimateVisibility()")
+  var expanded by remember { mutableStateOf(true) }
+  FloatingActionButton(onClick = { expanded = !expanded }, modifier = Modifier.padding(16.dp)) {
+    Row(Modifier.padding(start = 16.dp, end = 16.dp)) {
+      Icon(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = null)
+      AnimatedVisibility(expanded, modifier = Modifier.align(Alignment.CenterVertically)) {
+        Text(modifier = Modifier.padding(start = 8.dp), text = "Tweet")
+      }
     }
-
+  }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimateVisibilityWithDifferentChildAnimations() {
-    SubtitleText(subtitle = "AnimateVisibility() with different child Animations")
-    val colors = listOf(green500, blue500, orange500, purple)
-    var expanded by remember { mutableStateOf(true) }
-    IconButton(onClick = { expanded = !expanded }) {
-        Icon(imageVector = Icons.Default.RemoveRedEye, contentDescription = "")
-    }
+  SubtitleText(subtitle = "AnimateVisibility() with different child Animations")
+  val colors = listOf(green500, blue500, orange500, purple)
+  var expanded by remember { mutableStateOf(true) }
+  IconButton(onClick = { expanded = !expanded }) {
+    Icon(imageVector = Icons.Default.RemoveRedEye, contentDescription = "")
+  }
 
-    AnimatedVisibility(visible = expanded) {
-        Column(
-            horizontalAlignment = Alignment.Start
-        ) {
-            colors.forEachIndexed { index, color ->
-
-                val springAnim = remember {
-                    spring<IntOffset>(
-                        stiffness = Spring.StiffnessLow * (1f - index * 0.2f)
-                    )
-                }
-                Material3Card(
-                    backgroundColor = color, modifier = Modifier
-                        .size(80.dp)
-                        .padding
-                            (8.dp)
-                        .animateEnterExit(
-                            enter = slideInHorizontally { it },
-                            exit = ExitTransition.None
-                        )
-                ) {
-
-                }
-            }
+  AnimatedVisibility(visible = expanded) {
+    Column(horizontalAlignment = Alignment.Start) {
+      colors.forEachIndexed { index, color ->
+        val springAnim = remember {
+          spring<IntOffset>(stiffness = Spring.StiffnessLow * (1f - index * 0.2f))
         }
+        Material3Card(
+          backgroundColor = color,
+          modifier =
+            Modifier.size(80.dp)
+              .padding(8.dp)
+              .animateEnterExit(enter = slideInHorizontally { it }, exit = ExitTransition.None)
+        ) {}
+      }
     }
-
+  }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun VisibilityAnimationWithShrinkExpand() {
-    SubtitleText(subtitle = "Visibility animation with expand/shrink as enter/exit")
-    var visibility by remember { mutableStateOf(true) }
+  SubtitleText(subtitle = "Visibility animation with expand/shrink as enter/exit")
+  var visibility by remember { mutableStateOf(true) }
 
-    Row(
-        Modifier
-            .padding(12.dp)
-            .width(200.dp)
-            .height(60.dp)
-            .background(green200)
-            .clickable(onClick = { visibility = !visibility })
+  Row(
+    Modifier.padding(12.dp)
+      .width(200.dp)
+      .height(60.dp)
+      .background(green200)
+      .clickable(onClick = { visibility = !visibility })
+  ) {
+    AnimatedVisibility(
+      visibility,
+      modifier = Modifier.align(Alignment.CenterVertically),
+      enter = expandIn(expandFrom = Alignment.Center) { it -> it * 4 },
+      exit = shrinkOut(shrinkTowards = Alignment.Center) { it -> it }
     ) {
-        AnimatedVisibility(
-            visibility,
-            modifier = Modifier.align(Alignment.CenterVertically),
-            enter = expandIn(expandFrom = Alignment.Center) { it -> it * 4 },
-            exit = shrinkOut(shrinkTowards = Alignment.Center) { it -> it }
-        ) {
-            Button(
-                modifier = Modifier.padding(start = 12.dp),
-                onClick = { visibility = !visibility }) {
-                Text(text = "Shrink/Expand")
-            }
-        }
+      Button(modifier = Modifier.padding(start = 12.dp), onClick = { visibility = !visibility }) {
+        Text(text = "Shrink/Expand")
+      }
     }
+  }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimateVisibilityWithSlideInOutSample() {
-    SubtitleText(subtitle = "Visibility animation with fade and slide as enter/exit")
-    var visibility by remember { mutableStateOf(true) }
-    Row(
-        Modifier
-            .padding(12.dp)
-            .width(200.dp)
-            .height(60.dp)
-            .background(green500)
-            .clickable(onClick = { visibility = !visibility })
-    ) {
-        AnimatedVisibility(
-            visibility,
-            enter = slideIn(
-                tween(
-                    easing = LinearOutSlowInEasing,
-                    durationMillis = 500
-                )
-            ) { IntOffset(0, 120) },
-            exit = slideOut(
-                tween(500, easing = FastOutSlowInEasing),
-            ) { IntOffset(0, 120) }
+  SubtitleText(subtitle = "Visibility animation with fade and slide as enter/exit")
+  var visibility by remember { mutableStateOf(true) }
+  Row(
+    Modifier.padding(12.dp)
+      .width(200.dp)
+      .height(60.dp)
+      .background(green500)
+      .clickable(onClick = { visibility = !visibility })
+  ) {
+    AnimatedVisibility(
+      visibility,
+      enter =
+        slideIn(tween(easing = LinearOutSlowInEasing, durationMillis = 500)) { IntOffset(0, 120) },
+      exit =
+        slideOut(
+          tween(500, easing = FastOutSlowInEasing),
         ) {
-            // Content that needs to appear/disappear goes here:
-            Text("Tap for Sliding animation")
+          IntOffset(0, 120)
         }
+    ) {
+      // Content that needs to appear/disappear goes here:
+      Text("Tap for Sliding animation")
     }
+  }
 }
 
 @Composable
 fun AnimateContentSize() {
-    SubtitleText(subtitle = "Using Modifier.animateContentSize() to animate content change")
-    var count by remember { mutableStateOf(1) }
+  SubtitleText(subtitle = "Using Modifier.animateContentSize() to animate content change")
+  var count by remember { mutableStateOf(1) }
 
-    Row(modifier = Modifier
-        .animateContentSize()
-        .clickable { if (count < 10) count += 3 else count = 1 }) {
-        (0..count).forEach { _ ->
-            Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
-        }
+  Row(
+    modifier = Modifier.animateContentSize().clickable { if (count < 10) count += 3 else count = 1 }
+  ) {
+    (0..count).forEach { _ ->
+      Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
     }
+  }
 }

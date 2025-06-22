@@ -13,19 +13,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TweetImage(
-    @DrawableRes imageId: Int,
-    modifier: Modifier = Modifier
-) {
-    if (imageId != 0) {
-        Image(
-            painter = painterResource(id = imageId),
-            contentDescription = null,
-            modifier = modifier
-                .fillMaxWidth()
-                .height(150.dp)
-                .clip(RoundedCornerShape(4.dp)),
-            contentScale = ContentScale.Crop
-        )
-    }
+fun TweetImage(@DrawableRes imageId: Int, modifier: Modifier = Modifier) {
+  if (imageId != 0) {
+    Image(
+      painter = painterResource(id = imageId),
+      contentDescription = null,
+      modifier = modifier.fillMaxWidth().height(150.dp).clip(RoundedCornerShape(4.dp)),
+      contentScale = ContentScale.Crop
+    )
+  }
 }

@@ -17,31 +17,24 @@ import com.guru.composecookbook.ui.utils.TestTags
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TemplateScreen(darkTheme: Boolean) {
-    val context = LocalContext.current
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .testTag(TestTags.TEMPLATE_SCREEN_ROOT)
-    ) {
-        items(templates.size) { index ->
-            val template = templates[index]
-            Button(
-                onClick = {
-                    context.startActivity(TemplatesActivity.newIntent(context, template, darkTheme))
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.dp)
-            ) {
-                Text(text = template, modifier = Modifier.padding(8.dp))
-            }
-        }
+  val context = LocalContext.current
+  LazyColumn(modifier = Modifier.fillMaxSize().testTag(TestTags.TEMPLATE_SCREEN_ROOT)) {
+    items(templates.size) { index ->
+      val template = templates[index]
+      Button(
+        onClick = {
+          context.startActivity(TemplatesActivity.newIntent(context, template, darkTheme))
+        },
+        modifier = Modifier.fillMaxWidth().padding(12.dp)
+      ) {
+        Text(text = template, modifier = Modifier.padding(8.dp))
+      }
     }
-
+  }
 }
 
-
-val templates = listOf(
+val templates =
+  listOf(
     "Login",
     "Profiles",
     "On-boarding",
@@ -56,4 +49,4 @@ val templates = listOf(
     "Timer",
     "Clock View",
     "Cascade Menu",
-)
+  )

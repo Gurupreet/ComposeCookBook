@@ -26,39 +26,31 @@ import com.guru.composecookbook.meditation.ui.theme.Gray
 import com.guru.composecookbook.meditation.ui.theme.TextWhite
 
 @Composable
-fun CategoryItem(
-    category: Categories,
-    selectedItem : Boolean,
-    onItemClick: () -> Unit
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .padding(end = 15.dp)
-
+fun CategoryItem(category: Categories, selectedItem: Boolean, onItemClick: () -> Unit) {
+  Column(
+    horizontalAlignment = Alignment.CenterHorizontally,
+    modifier = Modifier.padding(end = 15.dp)
+  ) {
+    Box(
+      modifier =
+        Modifier.clip(RoundedCornerShape(18.dp))
+          .background(color = if (selectedItem) Blue else Gray)
+          .clickable { onItemClick() }
     ) {
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(18.dp))
-                .background(color = if (selectedItem) Blue else Gray)
-                .clickable {
-                    onItemClick()
-                }
-        ) {
-            Icon(
-                painter = painterResource(id = category.icon),
-                contentDescription = "Category Icon",
-                tint = TextWhite,
-                modifier = Modifier.padding(18.dp).size(20.dp)
-            )
-        }
-        spacerHeight5()
-        Text(
-            text = category.title,
-            style = MaterialTheme.typography.body1,
-            fontSize = 12.sp,
-            color = if (selectedItem) DeepBlue else Gray,
-            fontWeight = FontWeight.Bold
-        )
+      Icon(
+        painter = painterResource(id = category.icon),
+        contentDescription = "Category Icon",
+        tint = TextWhite,
+        modifier = Modifier.padding(18.dp).size(20.dp)
+      )
     }
+    spacerHeight5()
+    Text(
+      text = category.title,
+      style = MaterialTheme.typography.body1,
+      fontSize = 12.sp,
+      color = if (selectedItem) DeepBlue else Gray,
+      fontWeight = FontWeight.Bold
+    )
+  }
 }

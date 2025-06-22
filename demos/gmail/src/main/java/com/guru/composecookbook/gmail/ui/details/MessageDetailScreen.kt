@@ -19,42 +19,40 @@ import com.guru.composecookbook.gmail.R
 
 @Composable
 fun MessageDetailScreen(navController: NavHostController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {},
-                backgroundColor = Color.White,
-                contentColor = Color.Black,
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(
-                            imageVector = Icons.Outlined.ArrowBack,
-                            contentDescription = stringResource(id = R.string.cd_back)
-                        )
-                    }
-
-                },
-                actions = {
-                    IconButton(onClick = {}) {
-                        Icon(
-                            imageVector = Icons.Outlined.Archive,
-                            contentDescription = stringResource(id = R.string.cd_back)
-                        )
-                    }
-                    IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Delete, contentDescription = null)
-                    }
-                    IconButton(onClick = {}) {
-                        Icon(imageVector = Icons.Outlined.Mail, contentDescription = null)
-
-                    }
-                }
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        title = {},
+        backgroundColor = Color.White,
+        contentColor = Color.Black,
+        navigationIcon = {
+          IconButton(onClick = { navController.popBackStack() }) {
+            Icon(
+              imageVector = Icons.Outlined.ArrowBack,
+              contentDescription = stringResource(id = R.string.cd_back)
             )
+          }
         },
-        content = { paddingValues ->
-            MessageDetailBody(
-                modifier = Modifier.padding(paddingValues),
+        actions = {
+          IconButton(onClick = {}) {
+            Icon(
+              imageVector = Icons.Outlined.Archive,
+              contentDescription = stringResource(id = R.string.cd_back)
             )
+          }
+          IconButton(onClick = {}) {
+            Icon(imageVector = Icons.Outlined.Delete, contentDescription = null)
+          }
+          IconButton(onClick = {}) {
+            Icon(imageVector = Icons.Outlined.Mail, contentDescription = null)
+          }
         }
-    )
+      )
+    },
+    content = { paddingValues ->
+      MessageDetailBody(
+        modifier = Modifier.padding(paddingValues),
+      )
+    }
+  )
 }

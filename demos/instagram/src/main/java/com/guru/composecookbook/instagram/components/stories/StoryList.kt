@@ -11,23 +11,19 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.model.Tweet
 
 @Composable
-fun StoryList(
-    profiles: List<Tweet>,
-    onProfileClicked: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    LazyRow(
-        modifier = modifier.padding(top = 8.dp, bottom = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(horizontal = 8.dp)
-    ) {
-        items(profiles) {
-            StoryItem(
-                profileImageId = it.authorImageId,
-                profileName = it.author,
-                isMe = it.id == 1,
-                onClick = onProfileClicked
-            )
-        }
+fun StoryList(profiles: List<Tweet>, onProfileClicked: () -> Unit, modifier: Modifier = Modifier) {
+  LazyRow(
+    modifier = modifier.padding(top = 8.dp, bottom = 8.dp),
+    horizontalArrangement = Arrangement.spacedBy(8.dp),
+    contentPadding = PaddingValues(horizontal = 8.dp)
+  ) {
+    items(profiles) {
+      StoryItem(
+        profileImageId = it.authorImageId,
+        profileName = it.author,
+        isMe = it.id == 1,
+        onClick = onProfileClicked
+      )
     }
+  }
 }

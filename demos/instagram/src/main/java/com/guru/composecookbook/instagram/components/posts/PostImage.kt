@@ -14,23 +14,23 @@ import com.guru.composecookbook.data.DemoDataProvider
 
 @Composable
 fun PostImage(
-    @DrawableRes imageId: Int,
-    contentDescription: String?,
-    modifier: Modifier = Modifier
+  @DrawableRes imageId: Int,
+  contentDescription: String?,
+  modifier: Modifier = Modifier
 ) {
-    Image(
-        painter = painterResource(id = imageId),
-        modifier = modifier.fillMaxWidth().height(450.dp),
-        contentDescription = contentDescription,
-        contentScale = ContentScale.Crop
-    )
+  Image(
+    painter = painterResource(id = imageId),
+    modifier = modifier.fillMaxWidth().height(450.dp),
+    contentDescription = contentDescription,
+    contentScale = ContentScale.Crop
+  )
 }
 
 @Preview
 @Composable
 fun PostImagePreview() {
-    PostImage(
-        imageId = DemoDataProvider.tweetList.first { it.tweetImageId != 0 }.tweetImageId,
-        contentDescription = null
-    )
+  PostImage(
+    imageId = DemoDataProvider.tweetList.first { it.tweetImageId != 0 }.tweetImageId,
+    contentDescription = null
+  )
 }

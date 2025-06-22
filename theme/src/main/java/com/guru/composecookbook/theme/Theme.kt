@@ -9,7 +9,8 @@ import androidx.compose.ui.graphics.Color
 import com.guru.composecookbook.theme.ColorPallet.*
 
 // dark palettes
-private val DarkGreenColorPalette = darkColors(
+private val DarkGreenColorPalette =
+  darkColors(
     primary = green200,
     primaryVariant = green700,
     secondary = teal200,
@@ -20,9 +21,10 @@ private val DarkGreenColorPalette = darkColors(
     onBackground = Color.White,
     onSurface = Color.White,
     error = Color.Red,
-)
+  )
 
-private val DarkPurpleColorPalette = darkColors(
+private val DarkPurpleColorPalette =
+  darkColors(
     primary = purple200,
     primaryVariant = purple700,
     secondary = teal200,
@@ -33,9 +35,10 @@ private val DarkPurpleColorPalette = darkColors(
     onBackground = Color.White,
     onSurface = Color.White,
     error = Color.Red,
-)
+  )
 
-private val DarkBlueColorPalette = darkColors(
+private val DarkBlueColorPalette =
+  darkColors(
     primary = blue200,
     primaryVariant = blue700,
     secondary = teal200,
@@ -46,9 +49,10 @@ private val DarkBlueColorPalette = darkColors(
     onBackground = Color.White,
     onSurface = Color.White,
     error = Color.Red,
-)
+  )
 
-private val DarkOrangeColorPalette = darkColors(
+private val DarkOrangeColorPalette =
+  darkColors(
     primary = orange200,
     primaryVariant = orange700,
     secondary = teal200,
@@ -59,10 +63,11 @@ private val DarkOrangeColorPalette = darkColors(
     onBackground = Color.White,
     onSurface = Color.White,
     error = Color.Red,
-)
+  )
 
 // Light pallets
-private val LightGreenColorPalette = lightColors(
+private val LightGreenColorPalette =
+  lightColors(
     primary = green500,
     primaryVariant = green700,
     secondary = teal200,
@@ -72,9 +77,10 @@ private val LightGreenColorPalette = lightColors(
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black
-)
+  )
 
-private val LightPurpleColorPalette = lightColors(
+private val LightPurpleColorPalette =
+  lightColors(
     primary = purple,
     primaryVariant = purple700,
     secondary = teal200,
@@ -84,9 +90,10 @@ private val LightPurpleColorPalette = lightColors(
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black
-)
+  )
 
-private val LightBlueColorPalette = lightColors(
+private val LightBlueColorPalette =
+  lightColors(
     primary = blue500,
     primaryVariant = blue700,
     secondary = teal200,
@@ -96,9 +103,10 @@ private val LightBlueColorPalette = lightColors(
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black
-)
+  )
 
-private val LightOrangeColorPalette = lightColors(
+private val LightOrangeColorPalette =
+  lightColors(
     primary = orange500,
     primaryVariant = orange700,
     secondary = teal200,
@@ -108,30 +116,30 @@ private val LightOrangeColorPalette = lightColors(
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black
-)
+  )
 
 enum class ColorPallet {
-    PURPLE, GREEN, ORANGE, BLUE, WALLPAPER
+  PURPLE,
+  GREEN,
+  ORANGE,
+  BLUE,
+  WALLPAPER
 }
 
 @Composable
 fun ComposeCookBookTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    colorPallet: ColorPallet = GREEN,
-    content: @Composable () -> Unit,
+  darkTheme: Boolean = isSystemInDarkTheme(),
+  colorPallet: ColorPallet = GREEN,
+  content: @Composable () -> Unit,
 ) {
-    val colors = when (colorPallet) {
-        GREEN -> if (darkTheme) DarkGreenColorPalette else LightGreenColorPalette
-        PURPLE -> if (darkTheme) DarkPurpleColorPalette else LightPurpleColorPalette
-        ORANGE -> if (darkTheme) DarkOrangeColorPalette else LightOrangeColorPalette
-        BLUE -> if (darkTheme) DarkBlueColorPalette else LightBlueColorPalette
-        else ->  if (darkTheme) DarkBlueColorPalette else LightBlueColorPalette
+  val colors =
+    when (colorPallet) {
+      GREEN -> if (darkTheme) DarkGreenColorPalette else LightGreenColorPalette
+      PURPLE -> if (darkTheme) DarkPurpleColorPalette else LightPurpleColorPalette
+      ORANGE -> if (darkTheme) DarkOrangeColorPalette else LightOrangeColorPalette
+      BLUE -> if (darkTheme) DarkBlueColorPalette else LightBlueColorPalette
+      else -> if (darkTheme) DarkBlueColorPalette else LightBlueColorPalette
     }
 
-    MaterialTheme(
-        colors = colors,
-        typography = typography,
-        shapes = shapes,
-        content = content
-    )
+  MaterialTheme(colors = colors, typography = typography, shapes = shapes, content = content)
 }

@@ -1,29 +1,30 @@
-//package com.guru.composecookbook.ui.home.advancelists
+// package com.guru.composecookbook.ui.home.advancelists
 //
-//TODO fix animation
-//import androidx.compose.animation.transition
-//import androidx.compose.foundation.background
-//import androidx.compose.foundation.layout.*
-//import androidx.compose.foundation.rememberScrollState
-//import androidx.compose.foundation.verticalScroll
-//import androidx.compose.material.MaterialTheme
-//import androidx.compose.material.Surface
-//import androidx.compose.runtime.Composable
-//import androidx.compose.runtime.mutableStateOf
-//import androidx.compose.runtime.remember
-//import androidx.compose.ui.Modifier
-//import androidx.compose.ui.graphics.Brush
-//import androidx.compose.ui.graphics.Color
-//import androidx.compose.ui.unit.dp
+// TODO fix animation
+// import androidx.compose.animation.transition
+// import androidx.compose.foundation.background
+// import androidx.compose.foundation.layout.*
+// import androidx.compose.foundation.rememberScrollState
+// import androidx.compose.foundation.verticalScroll
+// import androidx.compose.material.MaterialTheme
+// import androidx.compose.material.Surface
+// import androidx.compose.runtime.Composable
+// import androidx.compose.runtime.mutableStateOf
+// import androidx.compose.runtime.remember
+// import androidx.compose.ui.Modifier
+// import androidx.compose.ui.graphics.Brush
+// import androidx.compose.ui.graphics.Color
+// import androidx.compose.ui.unit.dp
 //
 //
-///**
+/// **
 // * Design taken from:
-// * https://github.com/Gurupreet/ComposeCookBook/blob/master/app/src/main/java/com/guru/composecookbook/ui/advancelists/Shimmer.kt
+// *
+// https://github.com/Gurupreet/ComposeCookBook/blob/master/app/src/main/java/com/guru/composecookbook/ui/advancelists/Shimmer.kt
 // */
 //
-//@Composable
-//fun LoadingListShimmer() {
+// @Composable
+// fun LoadingListShimmer() {
 //
 //    val dpStartState by remember { mutableStateOf(AnimationDefinitions.AnimationState.START) }
 //    val dpEndState by remember { mutableStateOf(AnimationDefinitions.AnimationState.END) }
@@ -56,14 +57,14 @@
 //        ShimmerCardItem(list, dpValue.value, true)
 //    }
 //
-//}
+// }
 //
-//@Composable
-//fun ShimmerCardItem(
+// @Composable
+// fun ShimmerCardItem(
 //    lists: List<Color>,
 //    floatAnim: Float = 0f,
 //    isVertical: Boolean
-//) {
+// ) {
 //
 //    val brush = if (isVertical) Brush.verticalGradient(lists, 0f, floatAnim) else
 //        Brush.horizontalGradient(lists, 0f, floatAnim)
@@ -107,7 +108,7 @@
 //            )
 //        }
 //    }
-//}
+// }
 //
 //
 //

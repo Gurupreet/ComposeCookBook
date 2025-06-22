@@ -17,34 +17,28 @@ import com.guru.composecookbook.theme.helpers.TextFieldDefaultsMaterial
 
 @Composable
 fun InputItem(
-    textFieldValue: TextFieldValue,
-    label: String,
-    onTextChanged: (TextFieldValue) -> Unit,
-    modifier: Modifier = Modifier,
-    visualTransformation: VisualTransformation = VisualTransformation.None,
-    textStyle: TextStyle = MaterialTheme.typography.labelMedium,
-    keyboardType: KeyboardType = KeyboardType.Text
+  textFieldValue: TextFieldValue,
+  label: String,
+  onTextChanged: (TextFieldValue) -> Unit,
+  modifier: Modifier = Modifier,
+  visualTransformation: VisualTransformation = VisualTransformation.None,
+  textStyle: TextStyle = MaterialTheme.typography.labelMedium,
+  keyboardType: KeyboardType = KeyboardType.Text
 ) {
-    OutlinedTextField(
-        value = textFieldValue,
-        onValueChange = { onTextChanged(it) },
-        keyboardOptions = KeyboardOptions(
-            keyboardType = keyboardType,
-            imeAction = ImeAction.Next
-        ),
-        textStyle = textStyle,
-        maxLines = 1,
-        singleLine = true,
-        label = {
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                Text(
-                    text = label,
-                    style = MaterialTheme.typography.labelMedium
-                )
-            }
-        },
-        colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
-        modifier = modifier,
-        visualTransformation = visualTransformation
-    )
+  OutlinedTextField(
+    value = textFieldValue,
+    onValueChange = { onTextChanged(it) },
+    keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = ImeAction.Next),
+    textStyle = textStyle,
+    maxLines = 1,
+    singleLine = true,
+    label = {
+      CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+        Text(text = label, style = MaterialTheme.typography.labelMedium)
+      }
+    },
+    colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
+    modifier = modifier,
+    visualTransformation = visualTransformation
+  )
 }

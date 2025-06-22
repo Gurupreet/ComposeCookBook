@@ -15,41 +15,41 @@ import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.twitter.components.TwitterHome
 
 class TwitterActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
-        setContent {
-            ComposeCookBookMaterial3Theme {
-                val tweets = remember { DemoDataProvider.tweetList }
-                TwitterHome(
-                    tweets = tweets,
-                    onMessagesClick = { /*TODO*/ },
-                    onRetweetClick = { /*TODO*/ },
-                    onLikesClick = { /*TODO*/ },
-                    onShareClick = { /*TODO*/ },
-                    onNewTweetClicked = { /*TODO*/ }
-                )
-            }
-        }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+    setContent {
+      ComposeCookBookMaterial3Theme {
+        val tweets = remember { DemoDataProvider.tweetList }
+        TwitterHome(
+          tweets = tweets,
+          onMessagesClick = { /*TODO*/},
+          onRetweetClick = { /*TODO*/},
+          onLikesClick = { /*TODO*/},
+          onShareClick = { /*TODO*/},
+          onNewTweetClicked = { /*TODO*/}
+        )
+      }
     }
+  }
 
-    companion object {
-        fun newIntent(context: Context) = Intent(context, TwitterActivity::class.java)
-    }
+  companion object {
+    fun newIntent(context: Context) = Intent(context, TwitterActivity::class.java)
+  }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookMaterial3Theme {
-        TwitterHome(
-            tweets = DemoDataProvider.tweetList,
-            onMessagesClick = { /*TODO*/ },
-            onRetweetClick = { /*TODO*/ },
-            onLikesClick = { /*TODO*/ },
-            onShareClick = { /*TODO*/ },
-            onNewTweetClicked = { /*TODO*/ }
-        )
-    }
+  ComposeCookBookMaterial3Theme {
+    TwitterHome(
+      tweets = DemoDataProvider.tweetList,
+      onMessagesClick = { /*TODO*/},
+      onRetweetClick = { /*TODO*/},
+      onLikesClick = { /*TODO*/},
+      onShareClick = { /*TODO*/},
+      onNewTweetClicked = { /*TODO*/}
+    )
+  }
 }

@@ -16,35 +16,24 @@ import org.junit.Test
  */
 class GridListTest {
 
-    @get: Rule
-    val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
+  @get:Rule val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
-    @Test
-    fun homeListOfEntriesMustBeVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
-                .assertExists()
-        }
+  @Test
+  fun homeListOfEntriesMustBeVisible() {
+    composeAndroidTestRule.apply { onNodeWithTag(TestTags.HOME_SCREEN_LIST).assertExists() }
+  }
+
+  @Test
+  fun assertIfGridListButtonVisible() {
+    composeAndroidTestRule.apply { onNodeWithTag("button-Grid ListView").assertIsDisplayed() }
+  }
+
+  @Test
+  fun assertIfGridListIsVisible() {
+    composeAndroidTestRule.apply {
+      onNodeWithTag("button-Grid ListView").assertIsDisplayed().performClick()
+
+      onNodeWithTag("${TestTags.HOME_SCREEN_LIST_ITEM}-1").assertIsDisplayed()
     }
-
-    @Test
-    fun assertIfGridListButtonVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag("button-Grid ListView")
-                .assertIsDisplayed()
-        }
-    }
-
-    @Test
-    fun assertIfGridListIsVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag("button-Grid ListView")
-                .assertIsDisplayed()
-                .performClick()
-
-            onNodeWithTag("${TestTags.HOME_SCREEN_LIST_ITEM}-1")
-                .assertIsDisplayed()
-        }
-    }
-
+  }
 }

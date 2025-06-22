@@ -26,36 +26,33 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
-    MovieHomeScreenContent(moviesHomeInteractionEvents)
+  MovieHomeScreenContent(moviesHomeInteractionEvents)
 }
 
 @Composable
 fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
-    //TODO dynamic gradient from poster via coil right now It's just getting from local images
-    val imageId = remember { mutableStateOf(R.drawable.camelia) }
-    val context = LocalContext.current
-    val defaultBitmap =
-        ImageBitmap.imageResource(context.resources, imageId.value).asAndroidBitmap()
-    val currentBitmap = remember { mutableStateOf(defaultBitmap) }
-    val swatch = currentBitmap.value.generateDominantColorState()
-    val dominantColors = listOf(Color(swatch.rgb), Color.Black)
+  // TODO dynamic gradient from poster via coil right now It's just getting from local images
+  val imageId = remember { mutableStateOf(R.drawable.camelia) }
+  val context = LocalContext.current
+  val defaultBitmap = ImageBitmap.imageResource(context.resources, imageId.value).asAndroidBitmap()
+  val currentBitmap = remember { mutableStateOf(defaultBitmap) }
+  val swatch = currentBitmap.value.generateDominantColorState()
+  val dominantColors = listOf(Color(swatch.rgb), Color.Black)
 
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalGradientBackground(dominantColors),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        // use `item` for separate elements like headers
-        // and `items` for lists of identical elements
-        item { Spacer(modifier = Modifier.height(30.dp)) }
-        item {
-            Text(
-                text = "Now Showing",
-                style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
-                modifier = Modifier.padding(16.dp)
-            )
-        }
-        item { MoviesPager(imageId, moviesHomeInteractionEvents) }
+  LazyColumn(
+    modifier = Modifier.fillMaxSize().verticalGradientBackground(dominantColors),
+    horizontalAlignment = Alignment.CenterHorizontally,
+  ) {
+    // use `item` for separate elements like headers
+    // and `items` for lists of identical elements
+    item { Spacer(modifier = Modifier.height(30.dp)) }
+    item {
+      Text(
+        text = "Now Showing",
+        style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+        modifier = Modifier.padding(16.dp)
+      )
     }
+    item { MoviesPager(imageId, moviesHomeInteractionEvents) }
+  }
 }

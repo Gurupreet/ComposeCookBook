@@ -11,19 +11,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 
 @Composable
-fun MediaItem(
-    id: Int,
-    modifier: Modifier = Modifier
-) {
-    Image(
-        painter = rememberImagePainter(
-            data = "https://picsum.photos/id/${id}/200/200"
-        ),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = modifier
-            .height(150.dp)
-            .width(120.dp)
-            .padding(2.dp),
-    )
+fun MediaItem(id: Int, modifier: Modifier = Modifier) {
+  Image(
+    painter = rememberImagePainter(data = "https://picsum.photos/id/${id}/200/200"),
+    contentDescription = null,
+    contentScale = ContentScale.Crop,
+    modifier = modifier.height(150.dp).width(120.dp).padding(2.dp),
+  )
 }

@@ -61,164 +61,146 @@ import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
 @OptIn(ExperimentalCoroutinesApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit = {}) {
-    val viewModel: CryptoHomeViewModel =
-        viewModel(factory = CryptoHomeViewModelFactory(LocalContext.current))
-    val surfaceGradient = Colors.cryptoSurfaceGradient(isSystemInDarkTheme())
-    val favCryptos by viewModel.favCryptoLiveData.observeAsState(emptyList())
-    var showFavState by remember { mutableStateOf(false) }
-    val listScrollState = rememberLazyListState()
-    val cryptos = viewModel.getAllCryptos().collectAsLazyPagingItems()
-    Scaffold(
-        floatingActionButton = {
-            CryptoFABButton(favCryptos.size) {
-                showFavState = !showFavState
-            }
-        },
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-                .horizontalGradientBackground(surfaceGradient)
-        ) {
-            MyWalletCard()
-            ShowFavorites(
-                showFave = showFavState,
-                favCryptos = favCryptos,
-                onCryptoHomeInteractionEvents
-            )
-            CryptoList(cryptos, favCryptos, listScrollState, onCryptoHomeInteractionEvents)
-        }
+  val viewModel: CryptoHomeViewModel =
+    viewModel(factory = CryptoHomeViewModelFactory(LocalContext.current))
+  val surfaceGradient = Colors.cryptoSurfaceGradient(isSystemInDarkTheme())
+  val favCryptos by viewModel.favCryptoLiveData.observeAsState(emptyList())
+  var showFavState by remember { mutableStateOf(false) }
+  val listScrollState = rememberLazyListState()
+  val cryptos = viewModel.getAllCryptos().collectAsLazyPagingItems()
+  Scaffold(
+    floatingActionButton = { CryptoFABButton(favCryptos.size) { showFavState = !showFavState } },
+  ) { paddingValues ->
+    Column(
+      modifier =
+        Modifier.padding(paddingValues).fillMaxSize().horizontalGradientBackground(surfaceGradient)
+    ) {
+      MyWalletCard()
+      ShowFavorites(showFave = showFavState, favCryptos = favCryptos, onCryptoHomeInteractionEvents)
+      CryptoList(cryptos, favCryptos, listScrollState, onCryptoHomeInteractionEvents)
     }
+  }
 }
 
 @Composable
 fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
-    val animateRotationModifier = Modifier.graphicsLayer(
-        //So on every count change this basically runs as we only add 1 at a time
-        rotationX = animateFloatAsState(if (count % 2 == 0) 360f else 0f, tween(800)).value
+  val animateRotationModifier =
+    Modifier.graphicsLayer(
+      // So on every count change this basically runs as we only add 1 at a time
+      rotationX = animateFloatAsState(if (count % 2 == 0) 360f else 0f, tween(800)).value
     )
-    ExtendedFloatingActionButton(
-        text = { Text(text = "$count coins", modifier = animateRotationModifier) },
-        onClick = { showFavState.invoke() },
-        containerColor = blue,
-        icon = {
-            Icon(
-                imageVector = Icons.Filled.Favorite,
-                tint = Color.Red,
-                contentDescription = null,
-                modifier = animateRotationModifier
-            )
-        }
-    )
+  ExtendedFloatingActionButton(
+    text = { Text(text = "$count coins", modifier = animateRotationModifier) },
+    onClick = { showFavState.invoke() },
+    containerColor = blue,
+    icon = {
+      Icon(
+        imageVector = Icons.Filled.Favorite,
+        tint = Color.Red,
+        contentDescription = null,
+        modifier = animateRotationModifier
+      )
+    }
+  )
 }
 
 @Composable
 fun ShowFavorites(
-    showFave: Boolean,
-    favCryptos: List<Crypto>,
-    onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
+  showFave: Boolean,
+  favCryptos: List<Crypto>,
+  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()
-            .height(animateDpAsState(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp).value)
-    ) {
-        Text(text = "My Favorites", modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
-        LazyRow {
-            items(
-                items = favCryptos,
-                itemContent = { crypto: Crypto ->
-                    FavoriteItem(crypto = crypto) {
-                        onCryptoHomeInteractionEvents(
-                            CryptoHomeInteractionEvents.OpenDetailScreen(crypto = crypto)
-                        )
-                    }
-                }
+  Column(
+    modifier =
+      Modifier.padding(8.dp)
+        .fillMaxWidth()
+        .height(animateDpAsState(if (showFave && favCryptos.isNotEmpty()) 100.dp else 1.dp).value)
+  ) {
+    Text(text = "My Favorites", modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
+    LazyRow {
+      items(
+        items = favCryptos,
+        itemContent = { crypto: Crypto ->
+          FavoriteItem(crypto = crypto) {
+            onCryptoHomeInteractionEvents(
+              CryptoHomeInteractionEvents.OpenDetailScreen(crypto = crypto)
             )
+          }
         }
+      )
     }
+  }
 }
 
 @Composable
 fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .padding(16.dp)
-            .background(graySurface)
-            .clip(RoundedCornerShape(8.dp))
-            .clickable(onClick = openCryptoDetail)
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Image(
-            painter = rememberImagePainter(data = crypto.image),
-            modifier = Modifier.size(24.dp),
-            contentDescription = null
-        )
-        Text(
-            text = crypto.symbol,
-            style = typography.h6.copy(fontSize = 20.sp),
-            modifier = Modifier
-                .padding(horizontal = 8.dp)
-                .height(32.dp),
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.Center
-        )
-    }
+  Row(
+    modifier =
+      Modifier.padding(16.dp)
+        .background(graySurface)
+        .clip(RoundedCornerShape(8.dp))
+        .clickable(onClick = openCryptoDetail)
+        .padding(16.dp),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
+    Image(
+      painter = rememberImagePainter(data = crypto.image),
+      modifier = Modifier.size(24.dp),
+      contentDescription = null
+    )
+    Text(
+      text = crypto.symbol,
+      style = typography.h6.copy(fontSize = 20.sp),
+      modifier = Modifier.padding(horizontal = 8.dp).height(32.dp),
+      color = MaterialTheme.colorScheme.onSurface,
+      textAlign = TextAlign.Center
+    )
+  }
 }
 
 @Composable
 fun CryptoList(
-    cryptos: LazyPagingItems<Crypto>,
-    favCryptos: List<Crypto>,
-    listScrollState: LazyListState,
-    onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
+  cryptos: LazyPagingItems<Crypto>,
+  favCryptos: List<Crypto>,
+  listScrollState: LazyListState,
+  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
 ) {
-    val context = LocalContext.current
+  val context = LocalContext.current
 
-    LazyColumn(state = listScrollState) {
-        items(
-            count = cryptos.itemCount,
-            key = { index -> cryptos[index]?.symbol ?: index.toString() }
-        ) { index ->
-            val crypto = cryptos[index]
-            crypto?.let {
-                val isFav = favCryptos.contains(crypto)
-                CryptoListItem(
-                    crypto,
-                    isFav,
-                    onCryptoHomeInteractionEvents
-                )
-            }
-        }
-
-        cryptos.apply {
-            when {
-                loadState.refresh is LoadState.Loading -> item {
-                    LottieCryptoLoadingView(context = context)
-                }
-                loadState.append is LoadState.Loading -> {
-                    item { LottieCryptoLoadingView(context = context) }
-                }
-            }
-        }
+  LazyColumn(state = listScrollState) {
+    items(
+      count = cryptos.itemCount,
+      key = { index -> cryptos[index]?.symbol ?: index.toString() }
+    ) { index ->
+      val crypto = cryptos[index]
+      crypto?.let {
+        val isFav = favCryptos.contains(crypto)
+        CryptoListItem(crypto, isFav, onCryptoHomeInteractionEvents)
+      }
     }
-    //reload if first visible item is 10 positions away
+
+    cryptos.apply {
+      when {
+        loadState.refresh is LoadState.Loading ->
+          item { LottieCryptoLoadingView(context = context) }
+        loadState.append is LoadState.Loading -> {
+          item { LottieCryptoLoadingView(context = context) }
+        }
+      }
+    }
+  }
+  // reload if first visible item is 10 positions away
 }
 
 @Preview
 @Composable
 fun PreviewCryptoHomeScreen() {
-    val crypto = CryptoDemoDataProvider.bitcoin
-    Column {
-        FavoriteItem(crypto = crypto, {})
-        // CryptoList(uiState = uiState, emptyList(), {})
-    }
+  val crypto = CryptoDemoDataProvider.bitcoin
+  Column {
+    FavoriteItem(crypto = crypto, {})
+    // CryptoList(uiState = uiState, emptyList(), {})
+  }
 }
-

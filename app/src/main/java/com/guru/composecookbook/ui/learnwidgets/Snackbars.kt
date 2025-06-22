@@ -13,37 +13,25 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SnackBars() {
-    Text(text = "Snackbars", style = typography.h6, modifier = Modifier.padding(8.dp))
-    Snackbar(modifier = Modifier.padding(4.dp)) {
-        Text(text = "This is a basic snackbar")
-    }
-    Snackbar(
-        modifier = Modifier.padding(4.dp),
-        action = {
-            TextButton(onClick = {}) {
-                Text(text = "Remove")
-            }
-        }
-    ) {
-        Text(text = "This is a basic Snackbar with action item")
-    }
-    Snackbar(
-        modifier = Modifier.padding(4.dp),
-        actionOnNewLine = true,
-        action = {
-            TextButton(onClick = {}) {
-                Text(text = "Remove")
-            }
-        }
-    ) {
-        Text(text = "Snackbar with action item below text")
-    }
+  Text(text = "Snackbars", style = typography.h6, modifier = Modifier.padding(8.dp))
+  Snackbar(modifier = Modifier.padding(4.dp)) { Text(text = "This is a basic snackbar") }
+  Snackbar(
+    modifier = Modifier.padding(4.dp),
+    action = { TextButton(onClick = {}) { Text(text = "Remove") } }
+  ) {
+    Text(text = "This is a basic Snackbar with action item")
+  }
+  Snackbar(
+    modifier = Modifier.padding(4.dp),
+    actionOnNewLine = true,
+    action = { TextButton(onClick = {}) { Text(text = "Remove") } }
+  ) {
+    Text(text = "Snackbar with action item below text")
+  }
 }
 
 @Preview
 @Composable
 fun ShowSnackbars() {
-    Column {
-        SnackBars()
-    }
+  Column { SnackBars() }
 }

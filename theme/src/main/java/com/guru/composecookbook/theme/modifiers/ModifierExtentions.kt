@@ -14,81 +14,60 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
 
-fun Modifier.horizontalGradientBackground(
-    colors: List<Color>
-) = gradientBackground(colors) { gradientColors, size ->
-    Brush.horizontalGradient(
-        colors = gradientColors,
-        startX = 0f,
-        endX = size.width
-    )
-}
+fun Modifier.horizontalGradientBackground(colors: List<Color>) =
+  gradientBackground(colors) { gradientColors, size ->
+    Brush.horizontalGradient(colors = gradientColors, startX = 0f, endX = size.width)
+  }
 
-fun Modifier.verticalGradientBackground(
-    colors: List<Color>
-) = gradientBackground(colors) { gradientColors, size ->
-    Brush.verticalGradient(
-        colors = gradientColors,
-        startY = 0f,
-        endY = size.width
-    )
-}
+fun Modifier.verticalGradientBackground(colors: List<Color>) =
+  gradientBackground(colors) { gradientColors, size ->
+    Brush.verticalGradient(colors = gradientColors, startY = 0f, endY = size.width)
+  }
 
-fun Modifier.diagonalGradientTint(
-    colors: List<Color>,
-    blendMode: BlendMode
-) = gradientTint(colors, blendMode) { gradientColors, size ->
+fun Modifier.diagonalGradientTint(colors: List<Color>, blendMode: BlendMode) =
+  gradientTint(colors, blendMode) { gradientColors, size ->
     Brush.linearGradient(
-        colors = gradientColors,
-        start = Offset(
-            x = 0f,
-            y = 0f
-        ),
-        end = Offset(
-            x = size.width,
-            y = size.height
-        ),
-        tileMode = TileMode.Clamp
+      colors = gradientColors,
+      start = Offset(x = 0f, y = 0f),
+      end = Offset(x = size.width, y = size.height),
+      tileMode = TileMode.Clamp
     )
-}
+  }
 
 fun Modifier.gradientBackground(
-    colors: List<Color>,
-    brushProvider: (List<Color>, Size) -> Brush
+  colors: List<Color>,
+  brushProvider: (List<Color>, Size) -> Brush
 ): Modifier = composed {
-    var size by remember { mutableStateOf(Size.Zero) }
-    val gradient = remember(colors, size) { brushProvider(colors, size) }
-    drawWithContent {
-        size = this.size
-        drawRect(brush = gradient)
-        drawContent()
-    }
+  var size by remember { mutableStateOf(Size.Zero) }
+  val gradient = remember(colors, size) { brushProvider(colors, size) }
+  drawWithContent {
+    size = this.size
+    drawRect(brush = gradient)
+    drawContent()
+  }
 }
 
 fun Modifier.gradientTint(
-    colors: List<Color>,
-    blendMode: BlendMode,
-    brushProvider: (List<Color>, Size) -> Brush
+  colors: List<Color>,
+  blendMode: BlendMode,
+  brushProvider: (List<Color>, Size) -> Brush
 ) = composed {
-    var size by remember { mutableStateOf(Size.Zero) }
-    val gradient = remember(colors, size) { brushProvider(colors, size) }
-    drawWithContent {
-        drawContent()
-        size = this.size
-        drawRect(
-            brush = gradient,
-            blendMode = blendMode
-        )
-    }
+  var size by remember { mutableStateOf(Size.Zero) }
+  val gradient = remember(colors, size) { brushProvider(colors, size) }
+  drawWithContent {
+    drawContent()
+    size = this.size
+    drawRect(brush = gradient, blendMode = blendMode)
+  }
 }
 
-//TODO fix drag obervers
-//fun Modifier.swipeGesture(
+// TODO fix drag obervers
+// fun Modifier.swipeGesture(
 //    swipeValue: AnimatedFloat,
 //    swipeDirection: Direction = Direction.LEFT,
 //    maxSwipe: Float,
 //    onItemSwiped: () -> Unit
-//): Modifier = composed {
+// ): Modifier = composed {
 //    (this then dragGestureFilter(
 //        canDrag = { it == swipeDirection },
 //        dragObserver = dragObserver(
@@ -102,20 +81,21 @@ fun Modifier.gradientTint(
 //            constraints: Constraints
 //        ): MeasureResult {
 //            val children = measurable.measure(constraints)
-//            //  swipeValue.setBounds(-children.width.toFloat()-100f, children.width.toFloat()+100f)
+//            //  swipeValue.setBounds(-children.width.toFloat()-100f,
+// children.width.toFloat()+100f)
 //            return layout(children.width, children.height) {
 //                children.place(swipeValue.value.toInt(), 0)
 //            }
 //        }
 //    })
-//}
+// }
 //
-//@Composable
-//fun dragObserver(
+// @Composable
+// fun dragObserver(
 //    swipeValue: AnimatedFloat,
 //    maxSwipe: Float,
 //    onItemSwiped: () -> Unit
-//): DragObserver {
+// ): DragObserver {
 //
 //    return object : DragObserver {
 //        override fun onStart(downPosition: Offset) {
@@ -151,9 +131,10 @@ fun Modifier.gradientTint(
 //                        // onItemSwiped.invoke()
 //                    }
 //                )
-//                // actually it should be in animation end but it's bit slow animation I put it out.
+//                // actually it should be in animation end but it's bit slow animation I put it
+// out.
 //                onItemSwiped.invoke()
 //            }
 //        }
 //    }
-//}
+// }

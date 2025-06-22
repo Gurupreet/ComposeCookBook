@@ -40,196 +40,171 @@ import java.util.Locale
 
 class ListViewActivity : ComponentActivity() {
 
-    private val listType: String by lazy {
-        intent?.getStringExtra(TYPE) ?: ListViewType.VERTICAL.name
-    }
+  private val listType: String by lazy {
+    intent?.getStringExtra(TYPE) ?: ListViewType.VERTICAL.name
+  }
 
-    private val isDarkTheme: Boolean by lazy {
-        intent?.getBooleanExtra(DARK_THEME, false) ?: false
-    }
+  private val isDarkTheme: Boolean by lazy { intent?.getBooleanExtra(DARK_THEME, false) ?: false }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            BaseView(isDarkTheme) {
-                ListViewContent(listType) {
-                    onBackPressed()
-                }
-            }
-        }
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContent { BaseView(isDarkTheme) { ListViewContent(listType) { onBackPressed() } } }
+  }
 
-    companion object {
-        const val TYPE = "type"
-        const val DARK_THEME = "darkTheme"
-        fun newIntent(context: Context, listViewType: String, isDarkTheme: Boolean) =
-            Intent(context, ListViewActivity::class.java).apply {
-                putExtra(TYPE, listViewType)
-                putExtra(DARK_THEME, isDarkTheme)
-            }
-    }
+  companion object {
+    const val TYPE = "type"
+    const val DARK_THEME = "darkTheme"
+    fun newIntent(context: Context, listViewType: String, isDarkTheme: Boolean) =
+      Intent(context, ListViewActivity::class.java).apply {
+        putExtra(TYPE, listViewType)
+        putExtra(DARK_THEME, isDarkTheme)
+      }
+  }
 }
 
 @Composable
 fun BaseView(isDarkTheme: Boolean, content: @Composable () -> Unit) {
-    ComposeCookBookMaterial3Theme(isDarkTheme) {
-        content()
-    }
+  ComposeCookBookMaterial3Theme(isDarkTheme) { content() }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListViewContent(listType: String, onBack: () -> Unit) {
-    Scaffold(
-        topBar = {
-            SmallTopAppBar(
-                title = {
-                    Column(modifier = Modifier.padding(4.dp)) {
-                        Text(text = "ListView")
-                        Text(
-                            text = listType.lowercase(Locale.getDefault()),
-                            style = MaterialTheme.typography.labelSmall
-                        )
-                    }
-                },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            Icons.Filled.ArrowBack,
-                            contentDescription = stringResource(id = R.string.cd_back),
-                        )
-                    }
-                },
+  Scaffold(
+    topBar = {
+      SmallTopAppBar(
+        title = {
+          Column(modifier = Modifier.padding(4.dp)) {
+            Text(text = "ListView")
+            Text(
+              text = listType.lowercase(Locale.getDefault()),
+              style = MaterialTheme.typography.labelSmall
             )
+          }
         },
-        content = { paddingValues ->
-            ListViewScreen(
-                listType = listType,
-                modifier = Modifier.padding(paddingValues),
+        navigationIcon = {
+          IconButton(onClick = onBack) {
+            Icon(
+              Icons.Filled.ArrowBack,
+              contentDescription = stringResource(id = R.string.cd_back),
             )
-        }
-    )
+          }
+        },
+      )
+    },
+    content = { paddingValues ->
+      ListViewScreen(
+        listType = listType,
+        modifier = Modifier.padding(paddingValues),
+      )
+    }
+  )
 }
 
 @Composable
 fun ListViewScreen(
-    listType: String,
-    modifier: Modifier = Modifier,
+  listType: String,
+  modifier: Modifier = Modifier,
 ) {
-    Box(modifier = modifier) {
-        when (listType) {
-            ListViewType.VERTICAL.name -> {
-                VerticalListView()
-            }
-            ListViewType.HORIZONTAL.name -> {
-                HorizontalListView()
-            }
-            ListViewType.GRID.name -> {
-                GridListView()
-            }
-            ListViewType.MIX.name -> {
-                HorizontalListView()
-            }
-        }
+  Box(modifier = modifier) {
+    when (listType) {
+      ListViewType.VERTICAL.name -> {
+        VerticalListView()
+      }
+      ListViewType.HORIZONTAL.name -> {
+        HorizontalListView()
+      }
+      ListViewType.GRID.name -> {
+        GridListView()
+      }
+      ListViewType.MIX.name -> {
+        HorizontalListView()
+      }
     }
+  }
 }
 
 @Composable
 fun VerticalListView() {
-    val list = remember { DemoDataProvider.itemList }
-    LazyColumn {
-        items(
-            items = list,
-            itemContent = { item ->
-                if ((item.id % 3) == 0) {
-                    VerticalListItemSmall(item = item)
-                } else {
-                    VerticalListItem(item = item)
-                }
-                ListItemDivider()
-            }
-        )
-    }
+  val list = remember { DemoDataProvider.itemList }
+  LazyColumn {
+    items(
+      items = list,
+      itemContent = { item ->
+        if ((item.id % 3) == 0) {
+          VerticalListItemSmall(item = item)
+        } else {
+          VerticalListItem(item = item)
+        }
+        ListItemDivider()
+      }
+    )
+  }
 }
-
 
 @Composable
 fun HorizontalListView() {
-    val list = remember { DemoDataProvider.itemList }
-    val profiles = remember { DemoDataProvider.tweetList }
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        Text(
-            modifier = Modifier.padding(16.dp),
-            text = "Good Food",
-            style = MaterialTheme.typography.labelMedium
-        )
-        LazyRow(
-            modifier = Modifier.padding(end = 16.dp)
-        ) {
-            items(
-                items = list,
-                itemContent = {
-                    HorizontalListItem(
-                        it,
-                        Modifier.padding(start = 16.dp, bottom = 16.dp)
-                    )
-                })
-        }
-        ListItemDivider()
-        Text(
-            modifier = Modifier.padding(16.dp),
-            text = "Stories",
-            style = MaterialTheme.typography.labelMedium
-        )
-        StoryList(
-            profiles = profiles,
-            onProfileClicked = {}
-        )
+  val list = remember { DemoDataProvider.itemList }
+  val profiles = remember { DemoDataProvider.tweetList }
+  Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    Text(
+      modifier = Modifier.padding(16.dp),
+      text = "Good Food",
+      style = MaterialTheme.typography.labelMedium
+    )
+    LazyRow(modifier = Modifier.padding(end = 16.dp)) {
+      items(
+        items = list,
+        itemContent = { HorizontalListItem(it, Modifier.padding(start = 16.dp, bottom = 16.dp)) }
+      )
     }
+    ListItemDivider()
+    Text(
+      modifier = Modifier.padding(16.dp),
+      text = "Stories",
+      style = MaterialTheme.typography.labelMedium
+    )
+    StoryList(profiles = profiles, onProfileClicked = {})
+  }
 }
 
 @Composable
 fun GridListView() {
-    //TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
-    // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
-    val list = remember { DemoDataProvider.itemList.take(4) }
-    val posts = remember { DemoDataProvider.tweetList }
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        VerticalGrid(columns = 2) {
-            list.forEach {
-                GridListItem(item = it)
-            }
-        }
-        VerticalGrid(columns = 4) {
-            posts.forEach {
-                StoryItem(
-                    profileImageId = it.authorImageId,
-                    profileName = it.author,
-                    isMe = it.id == 1,
-                    modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
-                    onClick = {}
-                )
-            }
-        }
+  // TODO: NO IN-BUILT GRID VIEW NOT AVAILABLE YET USING ROWS FOR NOW
+  // GRIDS are not lazy driven yet so let's wait for Lazy Layout to make grids
+  val list = remember { DemoDataProvider.itemList.take(4) }
+  val posts = remember { DemoDataProvider.tweetList }
+  Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    VerticalGrid(columns = 2) { list.forEach { GridListItem(item = it) } }
+    VerticalGrid(columns = 4) {
+      posts.forEach {
+        StoryItem(
+          profileImageId = it.authorImageId,
+          profileName = it.author,
+          isMe = it.id == 1,
+          modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
+          onClick = {}
+        )
+      }
     }
+  }
 }
 
 @Composable
 private fun ListItemDivider() {
-    Divider(
-        modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
-    )
+  Divider(
+    modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
+    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+  )
 }
-
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
-    ComposeCookBookTheme {
-        ListViewContent(
-            ListViewType.VERTICAL.name,
-            onBack = {},
-        )
-    }
+  ComposeCookBookTheme {
+    ListViewContent(
+      ListViewType.VERTICAL.name,
+      onBack = {},
+    )
+  }
 }

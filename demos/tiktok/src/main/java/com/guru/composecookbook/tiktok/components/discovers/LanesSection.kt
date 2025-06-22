@@ -27,56 +27,39 @@ import com.guru.composecookbook.tiktok.TiktokDemoDataProvider.customGray
 
 @Composable
 fun LanesSection() {
-    LazyColumn {
-        itemsIndexed(
-            items = TiktokDemoDataProvider.lanes,
-            itemContent = { _, laneItem -> LaneSection(laneItem) }
-        )
-    }
+  LazyColumn {
+    itemsIndexed(
+      items = TiktokDemoDataProvider.lanes,
+      itemContent = { _, laneItem -> LaneSection(laneItem) }
+    )
+  }
 }
 
 @Composable
-fun LaneSection(
-    laneItem: String,
-    modifier: Modifier = Modifier
-) {
-    Column(modifier = modifier.padding(vertical = 8.dp)) {
-        Row(modifier = Modifier.padding(8.dp)) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_hashtag_solid),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(32.dp)
-                    .border(
-                        border = BorderStroke(0.5.dp, Color.LightGray),
-                        shape = CircleShape
-                    )
-            )
-            Column(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .weight(1f)
-            ) {
-                Text(
-                    text = laneItem,
-                    modifier = Modifier.padding(vertical = 4.dp),
-                    style = typography.h6.copy(fontSize = 14.sp)
-                )
-                Text(text = "Trending Hashtag", style = typography.subtitle2)
-            }
-            Text(
-                text = "${laneItem.length}.2M",
-                style = typography.h6.copy(fontSize = 12.sp),
-                modifier = Modifier
-                    .background(customGray)
-                    .padding(horizontal = 16.dp, vertical = 4.dp)
-            )
-        }
-        LazyRow {
-            items(
-                items = (1..8).toList(),
-                itemContent = { MediaItem(it) }
-            )
-        }
+fun LaneSection(laneItem: String, modifier: Modifier = Modifier) {
+  Column(modifier = modifier.padding(vertical = 8.dp)) {
+    Row(modifier = Modifier.padding(8.dp)) {
+      Icon(
+        painter = painterResource(id = R.drawable.ic_hashtag_solid),
+        contentDescription = null,
+        modifier =
+          Modifier.size(32.dp)
+            .border(border = BorderStroke(0.5.dp, Color.LightGray), shape = CircleShape)
+      )
+      Column(modifier = Modifier.padding(horizontal = 16.dp).weight(1f)) {
+        Text(
+          text = laneItem,
+          modifier = Modifier.padding(vertical = 4.dp),
+          style = typography.h6.copy(fontSize = 14.sp)
+        )
+        Text(text = "Trending Hashtag", style = typography.subtitle2)
+      }
+      Text(
+        text = "${laneItem.length}.2M",
+        style = typography.h6.copy(fontSize = 12.sp),
+        modifier = Modifier.background(customGray).padding(horizontal = 16.dp, vertical = 4.dp)
+      )
     }
+    LazyRow { items(items = (1..8).toList(), itemContent = { MediaItem(it) }) }
+  }
 }

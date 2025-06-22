@@ -16,35 +16,24 @@ import org.junit.Test
  */
 class HorizontalListTest {
 
-    @get: Rule
-    val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
+  @get:Rule val composeAndroidTestRule = createAndroidComposeRule<MainActivity>()
 
-    @Test
-    fun homeListOfEntriesMustBeVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag(TestTags.HOME_SCREEN_LIST)
-                .assertExists()
-        }
+  @Test
+  fun homeListOfEntriesMustBeVisible() {
+    composeAndroidTestRule.apply { onNodeWithTag(TestTags.HOME_SCREEN_LIST).assertExists() }
+  }
+
+  @Test
+  fun assertIfHorizontalListButtonVisible() {
+    composeAndroidTestRule.apply { onNodeWithTag("button-Horizontal ListView").assertIsDisplayed() }
+  }
+
+  @Test
+  fun assertIfHorizontalListIsVisible() {
+    composeAndroidTestRule.apply {
+      onNodeWithTag("button-Horizontal ListView").assertIsDisplayed().performClick()
+
+      onNodeWithTag("${TestTags.HOME_SCREEN_LIST_ITEM}-1").assertIsDisplayed()
     }
-
-    @Test
-    fun assertIfHorizontalListButtonVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag("button-Horizontal ListView")
-                .assertIsDisplayed()
-        }
-    }
-
-    @Test
-    fun assertIfHorizontalListIsVisible() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag("button-Horizontal ListView")
-                .assertIsDisplayed()
-                .performClick()
-
-            onNodeWithTag("${TestTags.HOME_SCREEN_LIST_ITEM}-1")
-                .assertIsDisplayed()
-        }
-    }
-
+  }
 }

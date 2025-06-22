@@ -20,60 +20,44 @@ import androidx.compose.ui.graphics.Path
 
 @Composable
 fun PaintApp() {
-    val paths = remember { mutableStateOf(mutableListOf<PathState>()) }
-    Scaffold(
-        topBar = {
-            PaintAppBar { paths.value = mutableListOf() }
-        }
-    ) { paddingValues ->
-        PaintBody(
-            paths = paths,
-            modifier = Modifier.padding(paddingValues),
-        )
-    }
+  val paths = remember { mutableStateOf(mutableListOf<PathState>()) }
+  Scaffold(topBar = { PaintAppBar { paths.value = mutableListOf() } }) { paddingValues ->
+    PaintBody(
+      paths = paths,
+      modifier = Modifier.padding(paddingValues),
+    )
+  }
 }
 
 @Composable
 fun PaintAppBar(onDelete: () -> Unit) {
-    TopAppBar(
-        title = { Text("Compose Paint") },
-        actions = {
-            IconButton(
-                onClick = onDelete,
-                content = {
-                    Icon(
-                        imageVector = Icons.Default.Delete,
-                        contentDescription = null
-                    )
-                }
-            )
-        }
-    )
+  TopAppBar(
+    title = { Text("Compose Paint") },
+    actions = {
+      IconButton(
+        onClick = onDelete,
+        content = { Icon(imageVector = Icons.Default.Delete, contentDescription = null) }
+      )
+    }
+  )
 }
-
 
 @Composable
 fun PaintBody(
-    paths: MutableState<MutableList<PathState>>,
-    modifier: Modifier = Modifier,
+  paths: MutableState<MutableList<PathState>>,
+  modifier: Modifier = Modifier,
 ) {
-    Box(modifier = modifier.fillMaxSize()) {
-        val drawColor = remember { mutableStateOf(Color.Black) }
-        val drawBrush = remember { mutableStateOf(5f) }
-        val usedColors = remember {
-            mutableStateOf(mutableSetOf(Color.Black, Color.White, Color.Gray))
-        }
-        // on every change of brush or color start a new path and save old one in list
+  Box(modifier = modifier.fillMaxSize()) {
+    val drawColor = remember { mutableStateOf(Color.Black) }
+    val drawBrush = remember { mutableStateOf(5f) }
+    val usedColors = remember { mutableStateOf(mutableSetOf(Color.Black, Color.White, Color.Gray)) }
+    // on every change of brush or color start a new path and save old one in list
 
-        paths.value.add(PathState(path = Path(), color = drawColor.value, stroke = drawBrush.value))
+    paths.value.add(PathState(path = Path(), color = drawColor.value, stroke = drawBrush.value))
 
-        DrawingCanvas(drawColor, drawBrush, usedColors, paths.value)
-        DrawingTools(drawColor, drawBrush, usedColors.value)
-    }
+    DrawingCanvas(drawColor, drawBrush, usedColors, paths.value)
+    DrawingTools(drawColor, drawBrush, usedColors.value)
+  }
 }
 
-data class PathState(
-    var path: Path,
-    var color: Color,
-    val stroke: Float
-)
+data class PathState(var path: Path, var color: Color, val stroke: Float)

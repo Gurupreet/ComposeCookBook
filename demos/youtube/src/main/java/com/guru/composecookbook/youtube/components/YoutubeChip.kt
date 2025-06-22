@@ -14,37 +14,41 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) {
-    Surface(
-        color = when {
-            selected -> MaterialTheme.colorScheme.onSurface.copy(
-                alpha = if (androidx.compose.material.MaterialTheme.colors.isLight) 0.7f else 1f
-            )
-            else -> MaterialTheme.colorScheme.inverseOnSurface.copy(
-                alpha = 0.05f
-            )
-        },
-        contentColor = when {
+  Surface(
+    color =
+      when {
+        selected ->
+          MaterialTheme.colorScheme.onSurface.copy(
+            alpha = if (androidx.compose.material.MaterialTheme.colors.isLight) 0.7f else 1f
+          )
+        else -> MaterialTheme.colorScheme.inverseOnSurface.copy(alpha = 0.05f)
+      },
+    contentColor =
+      when {
+        selected -> MaterialTheme.colorScheme.surface
+        else -> MaterialTheme.colorScheme.onSurface
+      },
+    shape = CircleShape,
+    border =
+      BorderStroke(
+        width = 1.dp,
+        color =
+          when {
             selected -> MaterialTheme.colorScheme.surface
-            else -> MaterialTheme.colorScheme.onSurface
-        },
-        shape = CircleShape,
-        border = BorderStroke(
-            width = 1.dp,
-            color = when {
-                selected -> MaterialTheme.colorScheme.surface
-                else -> Color.LightGray
-            }
-        ),
-        modifier = modifier
-    ) {
-        Text(
-            text = text,
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(
-                vertical = 8.dp,
-                horizontal = 12.dp,
-            )
+            else -> Color.LightGray
+          }
+      ),
+    modifier = modifier
+  ) {
+    Text(
+      text = text,
+      textAlign = TextAlign.Center,
+      style = MaterialTheme.typography.bodyMedium,
+      modifier =
+        Modifier.padding(
+          vertical = 8.dp,
+          horizontal = 12.dp,
         )
-    }
+    )
+  }
 }

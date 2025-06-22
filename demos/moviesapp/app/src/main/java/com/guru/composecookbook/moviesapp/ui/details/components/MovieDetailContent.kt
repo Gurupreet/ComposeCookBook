@@ -46,96 +46,73 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MovieDetailContent(movie: Movie, imageId: Int) {
-    val expand = remember { mutableStateOf(false) }
-    val viewModel: MovieDetailViewModel = viewModel(
-        factory = MovieDetailViewModelFactory(LocalContext.current)
-    )
-    var dominantColors = listOf(graySurface, Color.Black)
+  val expand = remember { mutableStateOf(false) }
+  val viewModel: MovieDetailViewModel =
+    viewModel(factory = MovieDetailViewModelFactory(LocalContext.current))
+  var dominantColors = listOf(graySurface, Color.Black)
 
-    if (imageId != 0) {
-        val context = LocalContext.current
-        val currentBitmap = ImageBitmap.imageResource(context.resources, imageId)
+  if (imageId != 0) {
+    val context = LocalContext.current
+    val currentBitmap = ImageBitmap.imageResource(context.resources, imageId)
 
-        val swatch = currentBitmap.asAndroidBitmap().generateDominantColorState()
-        dominantColors = listOf(Color(swatch.rgb), Color.Black)
+    val swatch = currentBitmap.asAndroidBitmap().generateDominantColorState()
+    dominantColors = listOf(Color(swatch.rgb), Color.Black)
+  }
+
+  LazyColumn(
+    modifier =
+      Modifier.verticalGradientBackground(dominantColors)
+        .padding(animateDpAsState(if (expand.value) 1.dp else 120.dp, tween(350)).value)
+  ) {
+    item {
+      val painter =
+        rememberAsyncImagePainter(model = "https://image.tmdb.org/t/p/w500/${movie.poster_path}")
+      Image(
+        painter = painter,
+        contentScale = ContentScale.Crop,
+        contentDescription = null,
+        modifier = Modifier.height(600.dp).fillMaxWidth(),
+      )
+      when (painter.state) {
+        is AsyncImagePainter.State.Success -> expand.value = true
+        else -> expand.value = false
+      }
     }
-
-    LazyColumn(
-        modifier = Modifier
-            .verticalGradientBackground(dominantColors)
-            .padding(
-                animateDpAsState(
-                    if (expand.value) 1.dp else 120.dp,
-                    tween(350)
-                ).value
+    item {
+      Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
+        Row(
+          horizontalArrangement = Arrangement.SpaceBetween,
+          verticalAlignment = Alignment.CenterVertically,
+          modifier = Modifier.fillMaxWidth()
+        ) {
+          Text(text = movie.title, modifier = Modifier.padding(8.dp), style = typography.h6)
+          IconButton(onClick = {}) {
+            Icon(
+              imageVector = Icons.Default.LibraryAdd,
+              contentDescription = null,
+              tint = MaterialTheme.colors.primary
             )
-    ) {
-        item {            val painter = rememberAsyncImagePainter(
-                model = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-            )
-            Image(
-                painter = painter,
-                contentScale = ContentScale.Crop,
-                contentDescription = null,
-                modifier = Modifier
-                    .height(
-                        600.dp
-                    )
-                    .fillMaxWidth(),
-            )
-            when (painter.state) {
-                is AsyncImagePainter.State.Success -> expand.value = true
-                else -> expand.value = false
-            }
+          }
         }
-        item {
-            Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = movie.title,
-                        modifier = Modifier.padding(8.dp),
-                        style = typography.h6
-                    )
-                    IconButton(onClick = {}) {
-                        Icon(
-                            imageVector = Icons.Default.LibraryAdd,
-                            contentDescription = null,
-                            tint = MaterialTheme.colors.primary
-                        )
-                    }
-                }
-                GenreSection(viewModel, movie.genre_ids)
-                Text(
-                    text = "Release: ${movie.release_date}",
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                    style = typography.h6.copy(fontSize = 12.sp)
-                )
-                Text(
-                    text = "PG13  •  ${movie.vote_average}/10",
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                    style = typography.h6.copy(
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                )
-                Text(
-                    text = movie.overview,
-                    modifier = Modifier
-                        .padding(8.dp),
-                    style = typography.subtitle2
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-                SimilarMoviesSection(movie, viewModel)
-                Spacer(modifier = Modifier.height(50.dp))
-                Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
-                }
-            }
+        GenreSection(viewModel, movie.genre_ids)
+        Text(
+          text = "Release: ${movie.release_date}",
+          modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+          style = typography.h6.copy(fontSize = 12.sp)
+        )
+        Text(
+          text = "PG13  •  ${movie.vote_average}/10",
+          modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+          style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium)
+        )
+        Text(text = movie.overview, modifier = Modifier.padding(8.dp), style = typography.subtitle2)
+        Spacer(modifier = Modifier.height(20.dp))
+        SimilarMoviesSection(movie, viewModel)
+        Spacer(modifier = Modifier.height(50.dp))
+        Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
+          Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
         }
-
+      }
     }
+  }
 }

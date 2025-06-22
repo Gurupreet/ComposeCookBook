@@ -24,81 +24,76 @@ import kotlin.math.abs
 
 @Composable
 fun MoviesPager(
-    imageId: MutableState<Int>,
-    moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit
+  imageId: MutableState<Int>,
+  moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit
 ) {
-    val moviesViewModel: MoviesHomeViewModel = viewModel(
-        factory = MoviesHomeViewModelFactory(LocalContext.current)
-    )
-    val movies by moviesViewModel.nowShowingLiveData.observeAsState(emptyList())
-    val genres by moviesViewModel.genresLiveData.observeAsState(emptyList())
-    val error by moviesViewModel.errorLiveData.observeAsState()
+  val moviesViewModel: MoviesHomeViewModel =
+    viewModel(factory = MoviesHomeViewModelFactory(LocalContext.current))
+  val movies by moviesViewModel.nowShowingLiveData.observeAsState(emptyList())
+  val genres by moviesViewModel.genresLiveData.observeAsState(emptyList())
+  val error by moviesViewModel.errorLiveData.observeAsState()
 
-    if (movies.isNotEmpty()) {
-        val pagerState = remember { PagerState(maxPage = movies.size - 1) }
+  if (movies.isNotEmpty()) {
+    val pagerState = remember { PagerState(maxPage = movies.size - 1) }
 
-        Pager(state = pagerState, modifier = Modifier.height(645.dp)) {
-            val movie = movies[commingPage]
-            imageId.value = imageIds[pagerState.currentPage]
-            val isSelected = pagerState.currentPage == commingPage
+    Pager(state = pagerState, modifier = Modifier.height(645.dp)) {
+      val movie = movies[commingPage]
+      imageId.value = imageIds[pagerState.currentPage]
+      val isSelected = pagerState.currentPage == commingPage
 
-            // Only one page before and one page after the selected page needs to receive non zero offset
-            val filteredOffset = if (abs(pagerState.currentPage - commingPage) < 2) {
-                currentPageOffset
-            } else 0f
+      // Only one page before and one page after the selected page needs to receive non zero
+      // offset
+      val filteredOffset =
+        if (abs(pagerState.currentPage - commingPage) < 2) {
+          currentPageOffset
+        } else 0f
 
-            MoviePagerItem(
-                movie,
-                genres,
-                isSelected,
-                filteredOffset,
-                { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.AddToMyWatchlist(movie)) }
-            ) {
-                moviesHomeInteractionEvents(
-                    MoviesHomeInteractionEvents.OpenMovieDetail(movie, imageId.value)
-                )
-            }
-        }
-    } else {
-        if (error.isNullOrEmpty()) {
-            CircularProgressIndicator(
-                modifier = Modifier.padding(24.dp)
-            )
-        } else {
-            Text(
-                text = error ?: "Unknown error",
-                modifier = Modifier,
-                color = MaterialTheme.colors.error
-            )
-        }
+      MoviePagerItem(
+        movie,
+        genres,
+        isSelected,
+        filteredOffset,
+        { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.AddToMyWatchlist(movie)) }
+      ) {
+        moviesHomeInteractionEvents(
+          MoviesHomeInteractionEvents.OpenMovieDetail(movie, imageId.value)
+        )
+      }
     }
+  } else {
+    if (error.isNullOrEmpty()) {
+      CircularProgressIndicator(modifier = Modifier.padding(24.dp))
+    } else {
+      Text(text = error ?: "Unknown error", modifier = Modifier, color = MaterialTheme.colors.error)
+    }
+  }
 }
 
 val imageIds =
-    listOf(
-        R.drawable.camelia,
-        R.drawable.camelia,
-        R.drawable.khalid,
-        R.drawable.lana,
-        R.drawable.edsheeran,
-        R.drawable.dualipa,
-        R.drawable.sam,
-        R.drawable.marsh,
-        R.drawable.wolves,
-        R.drawable.camelia,
-        R.drawable.khalid,
-        R.drawable.lana,
-        R.drawable.edsheeran,
-        R.drawable.dualipa,
-        R.drawable.sam,
-        R.drawable.marsh,
-        R.drawable.wolves,
-        R.drawable.camelia,
-        R.drawable.khalid,
-        R.drawable.lana,
-        R.drawable.edsheeran,
-        R.drawable.dualipa,
-        R.drawable.sam,
-        R.drawable.marsh,
-        R.drawable.wolves,
-    )
+  listOf(
+    R.drawable.camelia,
+    R.drawable.camelia,
+    R.drawable.khalid,
+    R.drawable.lana,
+    R.drawable.edsheeran,
+    R.drawable.dualipa,
+    R.drawable.sam,
+    R.drawable.marsh,
+    R.drawable.wolves,
+    R.drawable.camelia,
+    R.drawable.khalid,
+    R.drawable.lana,
+    R.drawable.edsheeran,
+    R.drawable.dualipa,
+    R.drawable.sam,
+    R.drawable.marsh,
+    R.drawable.wolves,
+    R.drawable.camelia,
+    R.drawable.khalid,
+    R.drawable.lana,
+    R.drawable.edsheeran,
+    R.drawable.dualipa,
+    R.drawable.sam,
+    R.drawable.marsh,
+    R.drawable.wolves,
+  )

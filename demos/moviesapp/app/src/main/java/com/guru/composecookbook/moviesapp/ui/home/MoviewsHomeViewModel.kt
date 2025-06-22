@@ -14,48 +14,38 @@ import kotlinx.coroutines.launch
 
 @Suppress("UNCHECKED_CAST")
 class MoviesHomeViewModelFactory(val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MoviesHomeViewModel(context) as T
-    }
+  override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    return MoviesHomeViewModel(context) as T
+  }
 }
 
 class MoviesHomeViewModel(context: Context) : ViewModel() {
-    private val movieRepository: MovieRepository = MovieDIGraph.createMovieRepository(context)
+  private val movieRepository: MovieRepository = MovieDIGraph.createMovieRepository(context)
 
-    val nowShowingLiveData = MutableLiveData<List<Movie>>()
-    val errorLiveData = MutableLiveData<String>()
+  val nowShowingLiveData = MutableLiveData<List<Movie>>()
+  val errorLiveData = MutableLiveData<String>()
 
-    //live data to read room database
-    val genresLiveData = liveData(Dispatchers.IO) {
-        emitSource(movieRepository.getGenres())
-    }
-    val myWatchlist = liveData(Dispatchers.IO) {
-        emitSource(movieRepository.getMyWatchlist())
-    }
+  // live data to read room database
+  val genresLiveData = liveData(Dispatchers.IO) { emitSource(movieRepository.getGenres()) }
+  val myWatchlist = liveData(Dispatchers.IO) { emitSource(movieRepository.getMyWatchlist()) }
 
-    init {
-        viewModelScope.launch {
-            movieRepository.getNowShowing()
-                .collect { movies ->
-                    if (movies.isNotEmpty()) {
-                        nowShowingLiveData.value = movies
-                    } else {
-                        errorLiveData.value = "Failed to load movies"
-                    }
-                }
-            movieRepository.fetchAndSaveGenresToDatabase().collect { }
+  init {
+    viewModelScope.launch {
+      movieRepository.getNowShowing().collect { movies ->
+        if (movies.isNotEmpty()) {
+          nowShowingLiveData.value = movies
+        } else {
+          errorLiveData.value = "Failed to load movies"
         }
-        viewModelScope.launch(Dispatchers.IO) {
-            movieRepository.getMyWatchlist()
-        }
+      }
+      movieRepository.fetchAndSaveGenresToDatabase().collect {}
     }
+    viewModelScope.launch(Dispatchers.IO) { movieRepository.getMyWatchlist() }
+  }
 
-    fun addToMyWatchlist(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
-        movieRepository.addToMyWatchlist(movie)
-    }
+  fun addToMyWatchlist(movie: Movie) =
+    viewModelScope.launch(Dispatchers.IO) { movieRepository.addToMyWatchlist(movie) }
 
-    fun removeFromMyWatchlist(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
-        movieRepository.removeFromMyWatchlist(movie)
-    }
-
+  fun removeFromMyWatchlist(movie: Movie) =
+    viewModelScope.launch(Dispatchers.IO) { movieRepository.removeFromMyWatchlist(movie) }
 }

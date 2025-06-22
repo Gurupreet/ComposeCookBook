@@ -5,14 +5,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 data class CascadeMenuColors(
-    val backgroundColor: Color,
-    val contentColor: Color,
+  val backgroundColor: Color,
+  val contentColor: Color,
 )
 
 @Composable
 fun cascadeMenuColors(
-    backgroundColor: Color = MaterialTheme.colors.surface,
-    contentColor: Color = MaterialTheme.colors.onSurface
+  backgroundColor: Color = MaterialTheme.colors.surface,
+  contentColor: Color = MaterialTheme.colors.onSurface
 ): CascadeMenuColors {
-    return CascadeMenuColors(backgroundColor, contentColor)
+  return CascadeMenuColors(backgroundColor, contentColor)
 }

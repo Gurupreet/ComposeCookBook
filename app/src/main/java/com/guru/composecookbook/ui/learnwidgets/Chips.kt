@@ -25,85 +25,78 @@ import com.guru.composecookbook.youtube.components.YoutubeChip
 
 @Composable
 fun Chips() {
-    // There is no in-built chips but you can make yours like below
-    Text(text = "Custom Chips", style = typography.h6, modifier = Modifier.padding(8.dp))
-    SubtitleText(subtitle = "Custom chips with surface")
-    Row(modifier = Modifier.padding(8.dp)) {
-        YoutubeChip(selected = true, text = "Chip", modifier = Modifier.padding(horizontal = 8.dp))
-        YoutubeChip(
-            selected = false,
-            text = "Inactive",
-            modifier = Modifier.padding(horizontal = 8.dp)
-        )
-        CustomImageChip(text = "custom", imageId = com.guru.composecookbook.data.R.drawable.p2, selected = true)
-        Spacer(modifier = Modifier.padding(8.dp))
-        CustomImageChip(text = "custom2", imageId = com.guru.composecookbook.data.R.drawable.p6, selected = false)
+  // There is no in-built chips but you can make yours like below
+  Text(text = "Custom Chips", style = typography.h6, modifier = Modifier.padding(8.dp))
+  SubtitleText(subtitle = "Custom chips with surface")
+  Row(modifier = Modifier.padding(8.dp)) {
+    YoutubeChip(selected = true, text = "Chip", modifier = Modifier.padding(horizontal = 8.dp))
+    YoutubeChip(selected = false, text = "Inactive", modifier = Modifier.padding(horizontal = 8.dp))
+    CustomImageChip(
+      text = "custom",
+      imageId = com.guru.composecookbook.data.R.drawable.p2,
+      selected = true
+    )
+    Spacer(modifier = Modifier.padding(8.dp))
+    CustomImageChip(
+      text = "custom2",
+      imageId = com.guru.composecookbook.data.R.drawable.p6,
+      selected = false
+    )
+  }
+  SubtitleText(subtitle = "Buttons with circle clipping.")
+  Row(modifier = Modifier.padding(8.dp)) {
+    Button(onClick = {}, modifier = Modifier.padding(8.dp).clip(CircleShape)) {
+      Text(text = "Chip button")
     }
-    SubtitleText(subtitle = "Buttons with circle clipping.")
-    Row(modifier = Modifier.padding(8.dp)) {
-        Button(
-            onClick = {},
-            modifier = Modifier
-                .padding(8.dp)
-                .clip(CircleShape)
-        ) {
-            Text(text = "Chip button")
-        }
-        Button(
-            onClick = {},
-            enabled = false,
-            modifier = Modifier
-                .padding(8.dp)
-                .clip(CircleShape)
-        ) {
-            Text(text = "Disabled chip")
-        }
+    Button(onClick = {}, enabled = false, modifier = Modifier.padding(8.dp).clip(CircleShape)) {
+      Text(text = "Disabled chip")
     }
+  }
 }
 
-
-//Inspired from jetcaster sample. I hope compose can add simple Chip UI element that can
+// Inspired from jetcaster sample. I hope compose can add simple Chip UI element that can
 // support images or icons with multiple states.
 @Composable
 private fun CustomImageChip(
-    text: String,
-    imageId: Int,
-    selected: Boolean,
-    modifier: Modifier = Modifier
+  text: String,
+  imageId: Int,
+  selected: Boolean,
+  modifier: Modifier = Modifier
 ) {
-    Surface(
-        color = when {
+  Surface(
+    color =
+      when {
+        selected -> MaterialTheme.colorScheme.primary
+        else -> Color.Transparent
+      },
+    contentColor =
+      when {
+        selected -> MaterialTheme.colorScheme.onPrimary
+        else -> Color.LightGray
+      },
+    shape = RoundedCornerShape(16.dp),
+    border =
+      BorderStroke(
+        width = 1.dp,
+        color =
+          when {
             selected -> MaterialTheme.colorScheme.primary
-            else -> Color.Transparent
-        },
-        contentColor = when {
-            selected -> MaterialTheme.colorScheme.onPrimary
             else -> Color.LightGray
-        },
-        shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(
-            width = 1.dp,
-            color = when {
-                selected -> MaterialTheme.colorScheme.primary
-                else -> Color.LightGray
-            }
-        ),
-        modifier = modifier
-    ) {
-        Row(modifier = Modifier) {
-            Image(
-                painter = painterResource(imageId),
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(8.dp)
-                    .size(20.dp)
-                    .clip(CircleShape)
-            )
-            Text(
-                text = text,
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(end = 8.dp, top = 8.dp, bottom = 8.dp)
-            )
-        }
+          }
+      ),
+    modifier = modifier
+  ) {
+    Row(modifier = Modifier) {
+      Image(
+        painter = painterResource(imageId),
+        contentDescription = null,
+        modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape)
+      )
+      Text(
+        text = text,
+        style = MaterialTheme.typography.bodyMedium,
+        modifier = Modifier.padding(end = 8.dp, top = 8.dp, bottom = 8.dp)
+      )
     }
+  }
 }

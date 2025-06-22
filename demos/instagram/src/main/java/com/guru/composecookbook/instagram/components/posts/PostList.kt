@@ -9,21 +9,21 @@ import kotlin.random.Random
 
 @Composable
 fun PostList(
-    posts: List<Tweet>,
-    onLikeClicked: () -> Unit,
-    onCommentsClicked: () -> Unit,
-    onSendClicked: () -> Unit,
-    modifier: Modifier = Modifier,
+  posts: List<Tweet>,
+  onLikeClicked: () -> Unit,
+  onCommentsClicked: () -> Unit,
+  onSendClicked: () -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    LazyColumn(modifier = modifier) {
-        items(posts) {
-            PostItem(
-                post = it,
-                isLiked = Random.nextBoolean(),
-                onLikeClicked = onLikeClicked,
-                onCommentsClicked = onCommentsClicked,
-                onSendClicked = onSendClicked
-            )
-        }
+  LazyColumn(modifier = modifier) {
+    items(posts) {
+      PostItem(
+        post = it,
+        isLiked = Random.nextBoolean(),
+        onLikeClicked = onLikeClicked,
+        onCommentsClicked = onCommentsClicked,
+        onSendClicked = onSendClicked
+      )
     }
+  }
 }

@@ -24,37 +24,34 @@ import com.guru.composecookbook.theme.materialTypography
 
 @Composable
 fun TopScrollingContent(scrollState: ScrollState) {
-    val visibilityChangeFloat = scrollState.value > initialImageFloat - 20
-    Row {
-        AnimatedImage(scroll = scrollState.value.toFloat())
-        Column(
-            modifier = Modifier
-                .padding(start = 8.dp, top = 48.dp)
-                .alpha(animateFloatAsState(if (visibilityChangeFloat) 0f else 1f).value)
-        ) {
-            Text(
-                text = name,
-                style = materialTypography.headlineSmall.copy(fontSize = 18.sp),
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
-            Text(
-                text = "Android developer",
-                style = materialTypography.labelMedium
-            )
-        }
+  val visibilityChangeFloat = scrollState.value > initialImageFloat - 20
+  Row {
+    AnimatedImage(scroll = scrollState.value.toFloat())
+    Column(
+      modifier =
+        Modifier.padding(start = 8.dp, top = 48.dp)
+          .alpha(animateFloatAsState(if (visibilityChangeFloat) 0f else 1f).value)
+    ) {
+      Text(
+        text = name,
+        style = materialTypography.headlineSmall.copy(fontSize = 18.sp),
+        modifier = Modifier.padding(bottom = 4.dp)
+      )
+      Text(text = "Android developer", style = materialTypography.labelMedium)
     }
+  }
 }
 
 @Composable
 fun AnimatedImage(scroll: Float) {
-    val dynamicAnimationSizeValue = (initialImageFloat - scroll).coerceIn(36f, initialImageFloat)
-    Image(
-        painter = painterResource(id = R.drawable.p1),
-        contentScale = ContentScale.Crop,
-        contentDescription = null,
-        modifier = Modifier
-            .padding(start = 16.dp)
-            .size(animateDpAsState(Dp(dynamicAnimationSizeValue)).value)
-            .clip(CircleShape)
-    )
+  val dynamicAnimationSizeValue = (initialImageFloat - scroll).coerceIn(36f, initialImageFloat)
+  Image(
+    painter = painterResource(id = R.drawable.p1),
+    contentScale = ContentScale.Crop,
+    contentDescription = null,
+    modifier =
+      Modifier.padding(start = 16.dp)
+        .size(animateDpAsState(Dp(dynamicAnimationSizeValue)).value)
+        .clip(CircleShape)
+  )
 }

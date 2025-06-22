@@ -33,111 +33,109 @@ import com.guru.composecookbook.tiktok.components.home.TiktokCreateIcon
 import com.guru.composecookbook.tiktok.components.profile.ProfileScreen
 
 class TiktokActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // We can also use  SystemUiController(window) to control status theme inside compose.
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // We can also use  SystemUiController(window) to control status theme inside compose.
+    window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
 
-        setContent {
-            ComposeCookBookTheme(darkTheme = true) {
-                TiktokAppContent()
-            }
-        }
-    }
+    setContent { ComposeCookBookTheme(darkTheme = true) { TiktokAppContent() } }
+  }
 
-    companion object {
-        fun newIntent(context: Context) = Intent(context, TiktokActivity::class.java)
-    }
+  companion object {
+    fun newIntent(context: Context) = Intent(context, TiktokActivity::class.java)
+  }
 }
 
 @Composable
 fun TiktokAppContent() {
-    val navController = rememberNavController()
-    Scaffold(
-        bottomBar = { TikTokBottomNavigation(navController) },
-        content = { paddingValues ->
-            TikTokBodyContent(
-                navController = navController,
-                modifier = Modifier.padding(paddingValues),
-            )
-        }
-    )
+  val navController = rememberNavController()
+  Scaffold(
+    bottomBar = { TikTokBottomNavigation(navController) },
+    content = { paddingValues ->
+      TikTokBodyContent(
+        navController = navController,
+        modifier = Modifier.padding(paddingValues),
+      )
+    }
+  )
 }
 
 @Composable
 fun TikTokBottomNavigation(navController: NavHostController) {
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.arguments?.getString("route")
+  val navBackStackEntry by navController.currentBackStackEntryAsState()
+  val currentRoute = navBackStackEntry?.arguments?.getString("route")
 
-    BottomNavigation(backgroundColor = tiktokBlack) {
-        TiktokDemoDataProvider.bottomBarList.forEach { tiktokScreen ->
-            BottomNavigationItem(
-                icon = { BottomBarIcon(tiktokScreen) },
-                selected = currentRoute == tiktokScreen.route,
-                onClick = {
-                    navController.popBackStack(navController.graph.startDestinationId, false)
-                    if (currentRoute != tiktokScreen.route) {
-                        navController.navigate(tiktokScreen.route)
-                    }
-                },
-                label = {
-                    if (tiktokScreen != TikTokScreen.Create) {
-                        Text(text = tiktokScreen.route)
-                    }
-                },
-            )
-        }
+  BottomNavigation(backgroundColor = tiktokBlack) {
+    TiktokDemoDataProvider.bottomBarList.forEach { tiktokScreen ->
+      BottomNavigationItem(
+        icon = { BottomBarIcon(tiktokScreen) },
+        selected = currentRoute == tiktokScreen.route,
+        onClick = {
+          navController.popBackStack(navController.graph.startDestinationId, false)
+          if (currentRoute != tiktokScreen.route) {
+            navController.navigate(tiktokScreen.route)
+          }
+        },
+        label = {
+          if (tiktokScreen != TikTokScreen.Create) {
+            Text(text = tiktokScreen.route)
+          }
+        },
+      )
     }
+  }
 }
 
 @Composable
 fun BottomBarIcon(screen: TikTokScreen) {
-    when (screen) {
-        TikTokScreen.Home -> Icon(imageVector = Icons.Filled.Home, contentDescription = null)
-        TikTokScreen.Discover -> Icon(imageVector = Icons.Filled.Search, contentDescription = null)
-        TikTokScreen.Create -> TiktokCreateIcon()
-        TikTokScreen.Inbox -> Icon(imageVector = Icons.Filled.Inbox, contentDescription = null)
-        TikTokScreen.Me -> Icon(imageVector = Icons.Filled.Person, contentDescription = null)
-        TikTokScreen.Profile -> { /* this branch added to satisfy exhaustive when */
-        }
+  when (screen) {
+    TikTokScreen.Home -> Icon(imageVector = Icons.Filled.Home, contentDescription = null)
+    TikTokScreen.Discover -> Icon(imageVector = Icons.Filled.Search, contentDescription = null)
+    TikTokScreen.Create -> TiktokCreateIcon()
+    TikTokScreen.Inbox -> Icon(imageVector = Icons.Filled.Inbox, contentDescription = null)
+    TikTokScreen.Me -> Icon(imageVector = Icons.Filled.Person, contentDescription = null)
+    TikTokScreen.Profile -> {
+      /* this branch added to satisfy exhaustive when */
     }
+  }
 }
 
 @Composable
 fun TikTokBodyContent(
-    navController: NavHostController,
-    modifier: Modifier = Modifier,
+  navController: NavHostController,
+  modifier: Modifier = Modifier,
 ) {
-    NavHost(
-        navController = navController,
-        startDestination = TikTokScreen.Home.route,
-        modifier = modifier,
-    ) {
-        composable(TikTokScreen.Home.route) {
-            HomeScreen(tiktokInteractionEvents = { handleInteractionEvent(it, navController) })
-        }
-        composable(TikTokScreen.Discover.route) { DiscoverScreen() }
-        composable(TikTokScreen.Create.route) { Text(text = "Create:TODO") }
-        composable(TikTokScreen.Inbox.route) { Text(text = "Inbox:TODO") }
-        composable(TikTokScreen.Me.route) { ProfileScreen("10", navController) }
-        // This navigation is for going to user profile but it should be moved to separate place
-        composable("${TikTokScreen.Profile.route}/{userId}") { backStackEntry ->
-            ProfileScreen(backStackEntry.arguments?.getString("userId")!!, navController)
-        }
+  NavHost(
+    navController = navController,
+    startDestination = TikTokScreen.Home.route,
+    modifier = modifier,
+  ) {
+    composable(TikTokScreen.Home.route) {
+      HomeScreen(tiktokInteractionEvents = { handleInteractionEvent(it, navController) })
     }
+    composable(TikTokScreen.Discover.route) { DiscoverScreen() }
+    composable(TikTokScreen.Create.route) { Text(text = "Create:TODO") }
+    composable(TikTokScreen.Inbox.route) { Text(text = "Inbox:TODO") }
+    composable(TikTokScreen.Me.route) { ProfileScreen("10", navController) }
+    // This navigation is for going to user profile but it should be moved to separate place
+    composable("${TikTokScreen.Profile.route}/{userId}") { backStackEntry ->
+      ProfileScreen(backStackEntry.arguments?.getString("userId")!!, navController)
+    }
+  }
 }
 
 fun handleInteractionEvent(
-    tiktokHomeInteractionEvents: TiktokHomeInteractionEvents,
-    navController: NavHostController
+  tiktokHomeInteractionEvents: TiktokHomeInteractionEvents,
+  navController: NavHostController
 ) {
-    when (tiktokHomeInteractionEvents) {
-        is TiktokHomeInteractionEvents.OpenProfile -> {
-            navController.navigate("${TikTokScreen.Profile.route}/${tiktokHomeInteractionEvents.album.id}")
-        }
-        else -> {
-            //TODO
-        }
+  when (tiktokHomeInteractionEvents) {
+    is TiktokHomeInteractionEvents.OpenProfile -> {
+      navController.navigate(
+        "${TikTokScreen.Profile.route}/${tiktokHomeInteractionEvents.album.id}"
+      )
     }
+    else -> {
+      // TODO
+    }
+  }
 }
-

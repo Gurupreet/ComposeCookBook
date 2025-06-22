@@ -14,21 +14,19 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ProfilePicture(
-    @DrawableRes profileImageId: Int,
-    modifier: Modifier = Modifier,
-    size: Dp = ProfilePictureSizes.small
+  @DrawableRes profileImageId: Int,
+  modifier: Modifier = Modifier,
+  size: Dp = ProfilePictureSizes.small
 ) {
-    Image(
-        painter = painterResource(id = profileImageId),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = modifier
-            .size(size)
-            .clip(CircleShape)
-    )
+  Image(
+    painter = painterResource(id = profileImageId),
+    contentDescription = null,
+    contentScale = ContentScale.Crop,
+    modifier = modifier.size(size).clip(CircleShape)
+  )
 }
 
 object ProfilePictureSizes {
-    val small = 32.dp
-    val medium = 50.dp
+  val small = 32.dp
+  val medium = 50.dp
 }

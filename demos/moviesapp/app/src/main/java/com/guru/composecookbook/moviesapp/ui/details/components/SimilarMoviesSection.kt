@@ -22,28 +22,24 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) {
-    viewModel.getSimilarMovies(currentMovie?.id.toString())
-    val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
-    similarMovies?.let { movies ->
-        Text(text = "Similar Movies", style = typography.h5, modifier = Modifier.padding(8.dp))
-        LazyRow {
-            items(
-                items = movies,
-                itemContent = { movie: Movie ->
-                    Image(
-                        painter = rememberImagePainter(
-                            data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-                        ),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .width(200.dp)
-                            .height(300.dp)
-                            .padding(12.dp)
-                            .clip(RoundedCornerShape(12.dp)),
-                        contentScale = ContentScale.Crop
-                    )
-                }
-            )
+  viewModel.getSimilarMovies(currentMovie?.id.toString())
+  val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
+  similarMovies?.let { movies ->
+    Text(text = "Similar Movies", style = typography.h5, modifier = Modifier.padding(8.dp))
+    LazyRow {
+      items(
+        items = movies,
+        itemContent = { movie: Movie ->
+          Image(
+            painter =
+              rememberImagePainter(data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"),
+            contentDescription = null,
+            modifier =
+              Modifier.width(200.dp).height(300.dp).padding(12.dp).clip(RoundedCornerShape(12.dp)),
+            contentScale = ContentScale.Crop
+          )
         }
+      )
     }
+  }
 }

@@ -30,25 +30,23 @@ import com.guru.composecookbook.data.AlbumsDataProvider
 @Preview(group = "motion7")
 @Composable
 fun MotionLayoutDemo() {
-    Column() {
-        ButtonsMotionExample()
-        Spacer(modifier = Modifier.height(200.dp))
-        ImageMotionExample()
-    }
+  Column() {
+    ButtonsMotionExample()
+    Spacer(modifier = Modifier.height(200.dp))
+    ImageMotionExample()
+  }
 }
 
 @OptIn(ExperimentalMotionApi::class)
 @Composable
 private fun ButtonsMotionExample() {
-    var animateButton by remember { mutableStateOf(false) }
-    val buttonAnimationProgress by animateFloatAsState(
-        targetValue = if (animateButton) 1f else 0f,
-        animationSpec = tween(1000)
-    )
-    Spacer(modifier = Modifier.height(16.dp))
-    MotionLayout(
-        ConstraintSet(
-            """ {
+  var animateButton by remember { mutableStateOf(false) }
+  val buttonAnimationProgress by
+    animateFloatAsState(targetValue = if (animateButton) 1f else 0f, animationSpec = tween(1000))
+  Spacer(modifier = Modifier.height(16.dp))
+  MotionLayout(
+    ConstraintSet(
+      """ {
                 button1: { 
                   width: "spread",
                   height: 60,
@@ -71,9 +69,9 @@ private fun ButtonsMotionExample() {
                   top: ['button2', 'bottom', 16]
                 }
             } """
-        ),
-        ConstraintSet(
-            """ {
+    ),
+    ConstraintSet(
+      """ {
                 button1: { 
                   width: 100,
                   height: 60,
@@ -93,45 +91,32 @@ private fun ButtonsMotionExample() {
                   end: ['parent', 'end', 16]
                 }
             } """
-        ),
-        progress = buttonAnimationProgress,
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-    ) {
-        Button(
-            onClick = { animateButton = !animateButton },
-            modifier = Modifier.layoutId("button1")
-        ) {
-            Text(text = "Button1")
-        }
-        Button(
-            onClick = { animateButton = !animateButton },
-            modifier = Modifier.layoutId("button2")
-        ) {
-            Text(text = "Button2")
-        }
-        Button(
-            onClick = { animateButton = !animateButton },
-            modifier = Modifier.layoutId("button3")
-        ) {
-            Text(text = "Button3")
-        }
+    ),
+    progress = buttonAnimationProgress,
+    modifier = Modifier.fillMaxWidth().wrapContentHeight()
+  ) {
+    Button(onClick = { animateButton = !animateButton }, modifier = Modifier.layoutId("button1")) {
+      Text(text = "Button1")
     }
+    Button(onClick = { animateButton = !animateButton }, modifier = Modifier.layoutId("button2")) {
+      Text(text = "Button2")
+    }
+    Button(onClick = { animateButton = !animateButton }, modifier = Modifier.layoutId("button3")) {
+      Text(text = "Button3")
+    }
+  }
 }
 
 @OptIn(ExperimentalMotionApi::class)
 @Composable
 private fun ImageMotionExample() {
-    val albums = AlbumsDataProvider.albums.take(4)
-    var animateImage by remember { mutableStateOf(false) }
-    val imageAnimationProgress by animateFloatAsState(
-        targetValue = if (animateImage) 1f else 0f,
-        animationSpec = tween(1000)
-    )
-    MotionLayout(
-        ConstraintSet(
-            """ {
+  val albums = AlbumsDataProvider.albums.take(4)
+  var animateImage by remember { mutableStateOf(false) }
+  val imageAnimationProgress by
+    animateFloatAsState(targetValue = if (animateImage) 1f else 0f, animationSpec = tween(1000))
+  MotionLayout(
+    ConstraintSet(
+      """ {
                 image1: { 
                   width: 150,
                   height: 150,
@@ -153,9 +138,9 @@ private fun ImageMotionExample() {
                   start: ['parent', 'start', 40]
                 }
             } """
-        ),
-        ConstraintSet(
-            """ {
+    ),
+    ConstraintSet(
+      """ {
                 image1: { 
                   width: 150,
                   height: 150,
@@ -179,34 +164,29 @@ private fun ImageMotionExample() {
                   top: ['image1', 'bottom', 16]
                 }
             } """
-        ),
-        progress = imageAnimationProgress,
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Image(
-            painter = painterResource(id = albums[0].imageId),
-            contentDescription = "",
-            modifier = Modifier
-                .layoutId("image1")
-                .clickable { animateImage = !animateImage })
-        Image(
-            painter = painterResource(id = albums[1].imageId),
-            contentDescription = "",
-            modifier = Modifier
-                .layoutId("image2")
-                .clickable { animateImage = !animateImage })
-        Image(
-            painter = painterResource(id = albums[2].imageId),
-            contentDescription = "",
-            modifier = Modifier
-                .layoutId("image3")
-                .clickable { animateImage = !animateImage })
-        Image(
-            painter = painterResource(id = albums[3].imageId),
-            contentDescription = "",
-            modifier = Modifier
-                .layoutId("image4")
-                .clickable { animateImage = !animateImage })
-    }
+    ),
+    progress = imageAnimationProgress,
+    modifier = Modifier.fillMaxSize()
+  ) {
+    Image(
+      painter = painterResource(id = albums[0].imageId),
+      contentDescription = "",
+      modifier = Modifier.layoutId("image1").clickable { animateImage = !animateImage }
+    )
+    Image(
+      painter = painterResource(id = albums[1].imageId),
+      contentDescription = "",
+      modifier = Modifier.layoutId("image2").clickable { animateImage = !animateImage }
+    )
+    Image(
+      painter = painterResource(id = albums[2].imageId),
+      contentDescription = "",
+      modifier = Modifier.layoutId("image3").clickable { animateImage = !animateImage }
+    )
+    Image(
+      painter = painterResource(id = albums[3].imageId),
+      contentDescription = "",
+      modifier = Modifier.layoutId("image4").clickable { animateImage = !animateImage }
+    )
+  }
 }

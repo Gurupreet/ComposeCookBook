@@ -14,43 +14,43 @@ import com.guru.composecookbook.instagram.components.InstagramHome
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 
 class InstagramActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
-        setContent {
-            val posts = remember { DemoDataProvider.tweetList.filter { it.tweetImageId != 0 } }
-            val profiles = remember { DemoDataProvider.tweetList }
-            ComposeCookBookTheme {
-                InstagramHome(
-                    posts = posts,
-                    profiles = profiles,
-                    onLikeClicked = {},
-                    onCommentsClicked = {},
-                    onSendClicked = {},
-                    onProfileClicked = {},
-                    onMessagingClicked = {}
-                )
-            }
-        }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+    setContent {
+      val posts = remember { DemoDataProvider.tweetList.filter { it.tweetImageId != 0 } }
+      val profiles = remember { DemoDataProvider.tweetList }
+      ComposeCookBookTheme {
+        InstagramHome(
+          posts = posts,
+          profiles = profiles,
+          onLikeClicked = {},
+          onCommentsClicked = {},
+          onSendClicked = {},
+          onProfileClicked = {},
+          onMessagingClicked = {}
+        )
+      }
     }
+  }
 
-    companion object {
-        fun newIntent(context: Context) = Intent(context, InstagramActivity::class.java)
-    }
+  companion object {
+    fun newIntent(context: Context) = Intent(context, InstagramActivity::class.java)
+  }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
-    ComposeCookBookTheme {
-        InstagramHome(
-            posts = DemoDataProvider.tweetList.filter { it.tweetImageId != 0 },
-            profiles = DemoDataProvider.tweetList,
-            onLikeClicked = {},
-            onCommentsClicked = {},
-            onSendClicked = {},
-            onProfileClicked = {},
-            onMessagingClicked = {}
-        )
-    }
+  ComposeCookBookTheme {
+    InstagramHome(
+      posts = DemoDataProvider.tweetList.filter { it.tweetImageId != 0 },
+      profiles = DemoDataProvider.tweetList,
+      onLikeClicked = {},
+      onCommentsClicked = {},
+      onSendClicked = {},
+      onProfileClicked = {},
+      onMessagingClicked = {}
+    )
+  }
 }

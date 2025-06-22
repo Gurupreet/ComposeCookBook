@@ -16,40 +16,30 @@ import org.junit.Test
  */
 class FlingListActivityTest {
 
-    @get: Rule
-    val composeAndroidTestRule = createAndroidComposeRule<FlingListActivity>()
+  @get:Rule val composeAndroidTestRule = createAndroidComposeRule<FlingListActivity>()
 
-    @Test
-    fun flingListOfButtonMustBeRendered() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag(TestTags.HOME_FLING_LIST_BUTTON)
-                .assertIsDisplayed()
-        }
+  @Test
+  fun flingListOfButtonMustBeRendered() {
+    composeAndroidTestRule.apply {
+      onNodeWithTag(TestTags.HOME_FLING_LIST_BUTTON).assertIsDisplayed()
     }
+  }
 
-    @Test
-    fun flingListOfHeaderMustBeRendered() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag(TestTags.HOME_FLING_HEADER)
-                .assertIsDisplayed()
-        }
-    }
+  @Test
+  fun flingListOfHeaderMustBeRendered() {
+    composeAndroidTestRule.apply { onNodeWithTag(TestTags.HOME_FLING_HEADER).assertIsDisplayed() }
+  }
 
-    @Test
-    fun flingListOfLazyColumnMustBeRendered() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag(TestTags.HOME_FLING_LIST, true)
-                .assertExists()
-        }
-    }
+  @Test
+  fun flingListOfLazyColumnMustBeRendered() {
+    composeAndroidTestRule.apply { onNodeWithTag(TestTags.HOME_FLING_LIST, true).assertExists() }
+  }
 
-    @Test
-    fun flingListClickOnSettingsButton() {
-        composeAndroidTestRule.apply {
-            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_BUTTON, true)
-                .performClick()
-            onNodeWithTag(TestTags.HOME_FLING_SETTINGS_ROOT)
-                .assertIsDisplayed()
-        }
+  @Test
+  fun flingListClickOnSettingsButton() {
+    composeAndroidTestRule.apply {
+      onNodeWithTag(TestTags.HOME_FLING_SETTINGS_BUTTON, true).performClick()
+      onNodeWithTag(TestTags.HOME_FLING_SETTINGS_ROOT).assertIsDisplayed()
     }
+  }
 }

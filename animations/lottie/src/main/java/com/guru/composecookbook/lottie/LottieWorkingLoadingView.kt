@@ -9,11 +9,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LottieWorkingLoadingView(context: Context) {
-    LottieLoadingView(
-        context = context,
-        file = "working.json",
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(250.dp)
-    )
+  LottieLoadingView(
+    context = context,
+    file = "working.json",
+    modifier = Modifier.fillMaxWidth().height(250.dp)
+  )
 }

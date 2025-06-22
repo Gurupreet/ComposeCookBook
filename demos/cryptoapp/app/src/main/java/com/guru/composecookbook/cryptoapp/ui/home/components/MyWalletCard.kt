@@ -41,130 +41,124 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MyWalletCard() {
-    //This is dummy data for crypto wallet
-    val paddingWithStatusBarHeight = 30.dp
-    var extended by remember { mutableStateOf(false) }
-    val animateHeight = if (extended) 500.dp else 200.dp
-    val opacity = if (extended) 0.8f else 1f
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(animateDpAsState(animateHeight).value)
-            .alpha(animateFloatAsState(opacity).value)
-            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
-            .horizontalGradientBackground(gradientBluePurple)
-            .padding(top = paddingWithStatusBarHeight, bottom = 8.dp, start = 8.dp, end = 8.dp)
-    ) {
-        val (title, image, price, asset, dailyChange, send, receive, scan) = createRefs()
-        val horizontalCenterGuideline = createGuidelineFromStart(0.5f)
+  // This is dummy data for crypto wallet
+  val paddingWithStatusBarHeight = 30.dp
+  var extended by remember { mutableStateOf(false) }
+  val animateHeight = if (extended) 500.dp else 200.dp
+  val opacity = if (extended) 0.8f else 1f
+  ConstraintLayout(
+    modifier =
+      Modifier.fillMaxWidth()
+        .height(animateDpAsState(animateHeight).value)
+        .alpha(animateFloatAsState(opacity).value)
+        .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
+        .horizontalGradientBackground(gradientBluePurple)
+        .padding(top = paddingWithStatusBarHeight, bottom = 8.dp, start = 8.dp, end = 8.dp)
+  ) {
+    val (title, image, price, asset, dailyChange, send, receive, scan) = createRefs()
+    val horizontalCenterGuideline = createGuidelineFromStart(0.5f)
+    Icon(
+      painter = painterResource(id = R.drawable.ic_ethereum_brands),
+      contentDescription = null,
+      modifier =
+        Modifier.size(28.dp).alpha(0.7f).constrainAs(image) {
+          start.linkTo(parent.start)
+          top.linkTo(title.bottom, margin = 8.dp)
+        }
+    )
+    Text(
+      text = "My Wallet",
+      style = typography.body1,
+      textAlign = TextAlign.Center,
+      modifier =
+        Modifier.padding(4.dp).constrainAs(title) {
+          top.linkTo(parent.top)
+          start.linkTo(parent.start)
+          end.linkTo(parent.end)
+        }
+    )
+    Text(
+      text = "340.13 USD",
+      style = typography.h6,
+      modifier =
+        Modifier.padding(4.dp).constrainAs(price) {
+          top.linkTo(title.bottom)
+          start.linkTo(image.end)
+        }
+    )
+    Text(
+      text = "1.23 ETH",
+      textAlign = TextAlign.Right,
+      style = typography.h6.copy(fontSize = 12.sp),
+      modifier =
+        Modifier.padding(start = 4.dp).constrainAs(asset) {
+          top.linkTo(price.bottom)
+          start.linkTo(image.end)
+        }
+    )
+    Text(
+      text = "24H: +1.23%",
+      color = green500,
+      style = typography.body2.copy(fontWeight = FontWeight.Medium),
+      modifier =
+        Modifier.padding(4.dp).constrainAs(dailyChange) {
+          end.linkTo(parent.end)
+          top.linkTo(price.top)
+        }
+    )
+    ExtendedFloatingActionButton(
+      onClick = { extended = !extended },
+      modifier =
+        Modifier.padding(4.dp).border(1.dp, Color.White, RoundedCornerShape(8.dp)).constrainAs(
+          receive
+        ) {
+          start.linkTo(parent.start)
+          end.linkTo(horizontalCenterGuideline)
+          top.linkTo(asset.bottom, margin = 16.dp)
+        },
+      icon = {
         Icon(
-            painter = painterResource(id = R.drawable.ic_ethereum_brands),
-            contentDescription = null,
-            modifier = Modifier
-                .size(28.dp)
-                .alpha(0.7f)
-                .constrainAs(image) {
-                    start.linkTo(parent.start)
-                    top.linkTo(title.bottom, margin = 8.dp)
-                }
+          imageVector = Icons.Default.QrCodeScanner,
+          contentDescription = null,
+          tint = MaterialTheme.colorScheme.onSurface
         )
-        Text(
-            text = "My Wallet",
-            style = typography.body1,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(4.dp)
-                .constrainAs(title) {
-                    top.linkTo(parent.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-        )
-        Text(
-            text = "340.13 USD",
-            style = typography.h6,
-            modifier = Modifier
-                .padding(4.dp)
-                .constrainAs(price) {
-                    top.linkTo(title.bottom)
-                    start.linkTo(image.end)
-                }
-        )
-        Text(
-            text = "1.23 ETH",
-            textAlign = TextAlign.Right,
-            style = typography.h6.copy(fontSize = 12.sp),
-            modifier = Modifier
-                .padding(start = 4.dp)
-                .constrainAs(asset) {
-                    top.linkTo(price.bottom)
-                    start.linkTo(image.end)
-                }
-        )
-        Text(
-            text = "24H: +1.23%",
-            color = green500,
-            style = typography.body2.copy(fontWeight = FontWeight.Medium),
-            modifier = Modifier
-                .padding(4.dp)
-                .constrainAs(dailyChange) {
-                    end.linkTo(parent.end)
-                    top.linkTo(price.top)
-                }
-        )
-        ExtendedFloatingActionButton(
-            onClick = { extended = !extended },
-            modifier = Modifier
-                .padding(4.dp)
-                .border(1.dp, Color.White, RoundedCornerShape(8.dp))
-                .constrainAs(receive) {
-                    start.linkTo(parent.start)
-                    end.linkTo(horizontalCenterGuideline)
-                    top.linkTo(asset.bottom, margin = 16.dp)
-                },
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.QrCodeScanner,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurface
-                )
-            },
-            text = { Text(text = "Receive") },
-            containerColor = Color.Transparent,
-            elevation = FloatingActionButtonDefaults.elevation()
-        )
-        ExtendedFloatingActionButton(
-            onClick = { extended = !extended },
-            modifier = Modifier
-                .padding(4.dp)
-                .border(1.dp, Color.White, RoundedCornerShape(8.dp))
-                .constrainAs(send) {
-                    start.linkTo(horizontalCenterGuideline)
-                    end.linkTo(parent.end)
-                    top.linkTo(asset.bottom, margin = 16.dp)
-                },
-            icon = { Icon(imageVector = Icons.Default.Send, contentDescription = null) },
-            text = { Text(text = "Send") },
-            containerColor = Color.Transparent,
-            elevation = FloatingActionButtonDefaults.elevation()
-        )
-        Image(
-            imageVector = Icons.Default.QrCodeScanner,
-            contentDescription = null,
-            modifier = Modifier
-                .size(250.dp)
-                .alpha(animateFloatAsState(if (extended) 1f else 0f).value)
-                .constrainAs(scan) {
-                    top.linkTo(receive.bottom, margin = 50.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-        )
-    }
+      },
+      text = { Text(text = "Receive") },
+      containerColor = Color.Transparent,
+      elevation = FloatingActionButtonDefaults.elevation()
+    )
+    ExtendedFloatingActionButton(
+      onClick = { extended = !extended },
+      modifier =
+        Modifier.padding(4.dp).border(1.dp, Color.White, RoundedCornerShape(8.dp)).constrainAs(
+          send
+        ) {
+          start.linkTo(horizontalCenterGuideline)
+          end.linkTo(parent.end)
+          top.linkTo(asset.bottom, margin = 16.dp)
+        },
+      icon = { Icon(imageVector = Icons.Default.Send, contentDescription = null) },
+      text = { Text(text = "Send") },
+      containerColor = Color.Transparent,
+      elevation = FloatingActionButtonDefaults.elevation()
+    )
+    Image(
+      imageVector = Icons.Default.QrCodeScanner,
+      contentDescription = null,
+      modifier =
+        Modifier.size(250.dp)
+          .alpha(animateFloatAsState(if (extended) 1f else 0f).value)
+          .constrainAs(scan) {
+            top.linkTo(receive.bottom, margin = 50.dp)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+          }
+    )
+  }
 }
 
 @Preview
 @Composable
 fun PreviewWalletCard() {
-    MyWalletCard()
+  MyWalletCard()
 }

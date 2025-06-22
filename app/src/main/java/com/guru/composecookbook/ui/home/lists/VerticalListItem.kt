@@ -23,47 +23,33 @@ import com.guru.composecookbook.ui.utils.TestTags
 
 @Composable
 fun VerticalListItem(item: Item, modifier: Modifier = Modifier) {
-    val typography = MaterialTheme.typography
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
-    ) {
+  val typography = MaterialTheme.typography
+  Column(
+    modifier =
+      modifier.fillMaxWidth().padding(16.dp).testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
+  ) {
+    val imageModifier =
+      Modifier.height(150.dp)
+        .fillMaxWidth()
+        .clip(shape = androidx.compose.material.MaterialTheme.shapes.medium)
 
-        val imageModifier = Modifier
-            .height(150.dp)
-            .fillMaxWidth()
-            .clip(shape = androidx.compose.material.MaterialTheme.shapes.medium)
+    Image(
+      painter = painterResource(item.imageId),
+      modifier = imageModifier,
+      contentDescription = null,
+      contentScale = ContentScale.Crop
+    )
+    Spacer(Modifier.height(16.dp))
+    Text(text = item.title, style = typography.titleLarge)
+    Text(text = item.subtitle, style = typography.bodyMedium)
 
-        Image(
-            painter = painterResource(item.imageId),
-            modifier = imageModifier,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = item.title,
-            style = typography.titleLarge
-        )
-        Text(
-            text = item.subtitle,
-            style = typography.bodyMedium
-        )
-
-        Text(
-            text = item.source,
-            style = typography.titleSmall
-        )
-    }
+    Text(text = item.source, style = typography.titleSmall)
+  }
 }
 
 @Preview
 @Composable
 fun PreviewVerticalListItem() {
-    val item = DemoDataProvider.item
-    ComposeCookBookTheme {
-        VerticalListItem(item = item)
-    }
+  val item = DemoDataProvider.item
+  ComposeCookBookTheme { VerticalListItem(item = item) }
 }

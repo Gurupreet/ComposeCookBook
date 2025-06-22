@@ -22,33 +22,31 @@ import com.guru.composecookbook.meditation.ui.theme.DeepBlue
 import com.guru.composecookbook.meditation.ui.theme.dp10
 
 @Composable
-fun RecommendationItem(
-    recommendation: Recommendation
-) {
-    Column(
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier.wrapContentHeight().padding(horizontal = 8.dp)
-    ) {
-        Box(modifier = Modifier.clip(RoundedCornerShape(dp10))) {
-            Image(
-                painter = painterResource(id = recommendation.image),
-                contentDescription = "Recommendation Image"
-            )
-        }
-
-        Text(
-            text = recommendation.title,
-            style = MaterialTheme.typography.h6,
-            color = DeepBlue,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(top = 5.dp)
-        )
-        Text(
-            text = recommendation.description,
-            color = Color.Gray,
-            style = MaterialTheme.typography.body1,
-            fontSize = 10.sp
-        )
+fun RecommendationItem(recommendation: Recommendation) {
+  Column(
+    horizontalAlignment = Alignment.Start,
+    modifier = Modifier.wrapContentHeight().padding(horizontal = 8.dp)
+  ) {
+    Box(modifier = Modifier.clip(RoundedCornerShape(dp10))) {
+      Image(
+        painter = painterResource(id = recommendation.image),
+        contentDescription = "Recommendation Image"
+      )
     }
+
+    Text(
+      text = recommendation.title,
+      style = MaterialTheme.typography.h6,
+      color = DeepBlue,
+      fontSize = 16.sp,
+      fontWeight = FontWeight.Bold,
+      modifier = Modifier.padding(top = 5.dp)
+    )
+    Text(
+      text = recommendation.description,
+      color = Color.Gray,
+      style = MaterialTheme.typography.body1,
+      fontSize = 10.sp
+    )
+  }
 }

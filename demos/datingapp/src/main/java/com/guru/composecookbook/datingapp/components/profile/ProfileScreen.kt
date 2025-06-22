@@ -11,12 +11,10 @@ import com.guru.composecookbook.comingsoon.ComingSoon
 
 @Composable
 fun ProfileScreen() {
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        item { ComingSoon() }
-    }
+  LazyColumn(
+    modifier = Modifier.fillMaxWidth().padding(16.dp),
+    horizontalAlignment = Alignment.CenterHorizontally
+  ) {
+    item { ComingSoon() }
+  }
 }

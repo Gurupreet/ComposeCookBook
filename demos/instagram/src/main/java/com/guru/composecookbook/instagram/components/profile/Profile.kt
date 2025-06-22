@@ -17,40 +17,38 @@ import com.guru.composecookbook.data.DemoDataProvider
 
 @Composable
 fun ProfilePicture(
-    @DrawableRes imageId: Int,
-    contentDescription: String?,
-    modifier: Modifier = Modifier,
-    size: Dp = ProfileSizes.medium,
+  @DrawableRes imageId: Int,
+  contentDescription: String?,
+  modifier: Modifier = Modifier,
+  size: Dp = ProfileSizes.medium,
 ) {
-    Image(
-        painter = painterResource(id = imageId),
-        modifier = modifier
-            .size(size)
-            .clip(CircleShape),
-        contentDescription = contentDescription,
-        contentScale = ContentScale.Crop
-    )
+  Image(
+    painter = painterResource(id = imageId),
+    modifier = modifier.size(size).clip(CircleShape),
+    contentDescription = contentDescription,
+    contentScale = ContentScale.Crop
+  )
 }
 
 object ProfileSizes {
-    val small = 20.dp
-    val medium = 32.dp
-    val large = 64.dp
+  val small = 20.dp
+  val medium = 32.dp
+  val large = 64.dp
 }
 
 @Preview
 @Composable
 fun ProfilePicturePreview() {
-    Column {
-        ProfilePicture(
-            imageId = DemoDataProvider.tweetList.first().authorImageId,
-            contentDescription = "Profile picture",
-            size = ProfileSizes.small
-        )
-        ProfilePicture(
-            imageId = DemoDataProvider.tweetList.first().authorImageId,
-            contentDescription = "Profile picture",
-            size = ProfileSizes.medium
-        )
-    }
+  Column {
+    ProfilePicture(
+      imageId = DemoDataProvider.tweetList.first().authorImageId,
+      contentDescription = "Profile picture",
+      size = ProfileSizes.small
+    )
+    ProfilePicture(
+      imageId = DemoDataProvider.tweetList.first().authorImageId,
+      contentDescription = "Profile picture",
+      size = ProfileSizes.medium
+    )
+  }
 }

@@ -13,27 +13,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModelFactory(val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MovieDetailViewModel(context) as T
-    }
+  override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    return MovieDetailViewModel(context) as T
+  }
 }
 
 class MovieDetailViewModel(context: Context) : ViewModel() {
-    private val movieRepository: MovieRepository = MovieDIGraph.createMovieRepository(context)
+  private val movieRepository: MovieRepository = MovieDIGraph.createMovieRepository(context)
 
-    val similarMoviesLiveData = MutableLiveData<List<Movie>>()
-    val genresLiveData = liveData(Dispatchers.IO) {
-        emitSource(movieRepository.getGenres())
-    }
+  val similarMoviesLiveData = MutableLiveData<List<Movie>>()
+  val genresLiveData = liveData(Dispatchers.IO) { emitSource(movieRepository.getGenres()) }
 
-    fun getSimilarMovies(movieId: String) {
-        viewModelScope.launch {
-            movieRepository.getSimilarMovies(movieId)
-                .collect { movies ->
-                    if (movies.isNotEmpty()) {
-                        similarMoviesLiveData.value = movies
-                    }
-                }
+  fun getSimilarMovies(movieId: String) {
+    viewModelScope.launch {
+      movieRepository.getSimilarMovies(movieId).collect { movies ->
+        if (movies.isNotEmpty()) {
+          similarMoviesLiveData.value = movies
         }
+      }
     }
+  }
 }

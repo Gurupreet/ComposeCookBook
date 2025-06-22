@@ -36,87 +36,77 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun GmailDrawer(modifier: Modifier = Modifier) {
 
-    LazyColumn(modifier = modifier) {
-        // use `item` for separate elements like headers
-        // and `items` for lists of identical elements
-        item {
-            Text(
-                text = "Gmail",
-                color = Color.Red,
-                fontSize = 24.sp,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
-            )
-        }
-
-        item { Divider(thickness = 0.3.dp) }
-        item { Spacer(modifier.padding(top = 8.dp)) }
-        item { DrawerItem(icon = Icons.Filled.AllInbox, title = "All Inbox") }
-        item { Spacer(modifier.padding(top = 8.dp)) }
-        item { Divider(thickness = 0.3.dp) }
-
-        item { Spacer(modifier.padding(top = 8.dp)) }
-
-        item { DrawerItem(icon = Icons.Outlined.Inbox, title = "Primary") }
-        item { DrawerItem(icon = Icons.Outlined.Groups, title = "Social") }
-        item { DrawerItem(icon = Icons.Outlined.LocalOffer, title = "Promotion") }
-
-        item { DrawerCategory(title = "RECENT LABELS") }
-        item { DrawerItem(icon = Icons.Outlined.Label, title = "[Imap]/Trash") }
-        item { DrawerItem(icon = Icons.Outlined.Label, title = "facebook") }
-
-        item { DrawerCategory(title = "ALL LABELS") }
-        item { DrawerItem(icon = Icons.Outlined.StarBorder, title = "Starred") }
-        item { DrawerItem(icon = Icons.Outlined.AccessTime, title = "Snoozed") }
-        item { DrawerItem(icon = Icons.Outlined.LabelImportant, title = "Important", "99+") }
-        item { DrawerItem(icon = Icons.Outlined.Send, title = "Sent", "99+") }
-        item { DrawerItem(icon = Icons.Outlined.MoreTime, title = "Scheduled", "99+") }
-        item { DrawerItem(icon = Icons.Outlined.MarkunreadMailbox, title = "Outbox", "10") }
-
+  LazyColumn(modifier = modifier) {
+    // use `item` for separate elements like headers
+    // and `items` for lists of identical elements
+    item {
+      Text(
+        text = "Gmail",
+        color = Color.Red,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
+      )
     }
 
+    item { Divider(thickness = 0.3.dp) }
+    item { Spacer(modifier.padding(top = 8.dp)) }
+    item { DrawerItem(icon = Icons.Filled.AllInbox, title = "All Inbox") }
+    item { Spacer(modifier.padding(top = 8.dp)) }
+    item { Divider(thickness = 0.3.dp) }
+
+    item { Spacer(modifier.padding(top = 8.dp)) }
+
+    item { DrawerItem(icon = Icons.Outlined.Inbox, title = "Primary") }
+    item { DrawerItem(icon = Icons.Outlined.Groups, title = "Social") }
+    item { DrawerItem(icon = Icons.Outlined.LocalOffer, title = "Promotion") }
+
+    item { DrawerCategory(title = "RECENT LABELS") }
+    item { DrawerItem(icon = Icons.Outlined.Label, title = "[Imap]/Trash") }
+    item { DrawerItem(icon = Icons.Outlined.Label, title = "facebook") }
+
+    item { DrawerCategory(title = "ALL LABELS") }
+    item { DrawerItem(icon = Icons.Outlined.StarBorder, title = "Starred") }
+    item { DrawerItem(icon = Icons.Outlined.AccessTime, title = "Snoozed") }
+    item { DrawerItem(icon = Icons.Outlined.LabelImportant, title = "Important", "99+") }
+    item { DrawerItem(icon = Icons.Outlined.Send, title = "Sent", "99+") }
+    item { DrawerItem(icon = Icons.Outlined.MoreTime, title = "Scheduled", "99+") }
+    item { DrawerItem(icon = Icons.Outlined.MarkunreadMailbox, title = "Outbox", "10") }
+  }
 }
 
 @Composable
 fun DrawerItem(icon: ImageVector, title: String, msgCount: String = "") {
 
-    Row {
-        Icon(imageVector = icon, modifier = Modifier.padding(16.dp), contentDescription = null)
-        Text(
-            modifier = Modifier
-                .weight(1f)
-                .align(Alignment.CenterVertically)
-                .padding(start = 8.dp),
-            text = title,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 14.sp,
-            textAlign = TextAlign.Start
-        )
+  Row {
+    Icon(imageVector = icon, modifier = Modifier.padding(16.dp), contentDescription = null)
+    Text(
+      modifier = Modifier.weight(1f).align(Alignment.CenterVertically).padding(start = 8.dp),
+      text = title,
+      fontFamily = FontFamily.SansSerif,
+      fontWeight = FontWeight.SemiBold,
+      fontSize = 14.sp,
+      textAlign = TextAlign.Start
+    )
 
-        if (msgCount.isNotEmpty()) {
-            Text(
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .padding(16.dp),
-                text = msgCount,
-                style = MaterialTheme.typography.caption,
-                textAlign = TextAlign.Start
-            )
-        }
-
+    if (msgCount.isNotEmpty()) {
+      Text(
+        modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp),
+        text = msgCount,
+        style = MaterialTheme.typography.caption,
+        textAlign = TextAlign.Start
+      )
     }
-
+  }
 }
 
 @Composable
 fun DrawerCategory(title: String) {
 
-    Text(
-        text = title,
-        letterSpacing = 0.7.sp,
-        color = MaterialTheme.colors.onBackground,
-        fontSize = 12.sp,
-        modifier = Modifier.padding(16.dp)
-    )
-
+  Text(
+    text = title,
+    letterSpacing = 0.7.sp,
+    color = MaterialTheme.colors.onBackground,
+    fontSize = 12.sp,
+    modifier = Modifier.padding(16.dp)
+  )
 }
