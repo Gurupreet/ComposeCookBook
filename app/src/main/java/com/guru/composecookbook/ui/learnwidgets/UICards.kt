@@ -25,10 +25,6 @@ import com.guru.composecookbook.data.R
 import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.typography
 
-/**
- * Composable function `UICards` demonstrates the usage of UI Cards, Boxes, and ListItems with Jetpack Compose.
- * Utilizes experimental Material3 components.
- */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UICards() {
@@ -38,10 +34,8 @@ fun UICards() {
         modifier = Modifier.padding(8.dp)
     )
 
-    // Accessing demo item data from DemoDataProvider
     val item = remember { DemoDataProvider.item }
 
-    // Section demonstrating Material3Card as a container
     Text(
         text = "Inbuilt box as container for any Clipping/Alignment controls",
         style = typography.subtitle1,
@@ -69,7 +63,6 @@ fun UICards() {
     }
     Divider()
 
-    // Section demonstrating an Inbuilt Card
     Text(text = "Inbuilt Card", style = typography.subtitle1, modifier = Modifier.padding(8.dp))
     Material3Card(
         modifier = Modifier

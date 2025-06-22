@@ -24,17 +24,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.typography
 
-/**
- * A collection of text input fields including TextField and OutlinedTextField examples.
- *
- * @see TextField
- * @see OutlinedTextField
- */
 @Composable
 fun TextInputs() {
     Text(text = "Text Inputs", style = typography.h6, modifier = Modifier.padding(8.dp))
 
-    // Mutable state for text input
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
     // TODO Explore CoreTextField
@@ -44,9 +37,6 @@ fun TextInputs() {
 //        modifier = Modifier.padding(8.dp).size(0.dp),
 //        cursorColor = Color.Magenta
 //    )
-
-
-    // Basic TextField example
     TextField(
         value = text,
         onValueChange = { newValue -> text = newValue },
@@ -57,7 +47,6 @@ fun TextInputs() {
         placeholder = { Text("placeholder") },
     )
 
-    // OutlinedTextField example with password input
     OutlinedTextField(
         value = text,
         modifier = Modifier
@@ -72,7 +61,6 @@ fun TextInputs() {
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
     )
 
-    // OutlinedTextField example with leading icon
     OutlinedTextField(
         value = text,
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
@@ -86,8 +74,6 @@ fun TextInputs() {
             text = it
         }
     )
-
-    // OutlinedTextField example with leading and trailing icons
     OutlinedTextField(
         value = text,
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
@@ -103,10 +89,7 @@ fun TextInputs() {
         }
     )
 
-    // Mutable state for number input
     var numberText by remember { mutableStateOf(TextFieldValue("")) }
-
-    // OutlinedTextField example for numeric input (phone number)
     OutlinedTextField(value = numberText,
         modifier = Modifier
             .padding(8.dp)
@@ -120,10 +103,6 @@ fun TextInputs() {
     )
 }
 
-
-/**
- * Preview function for the TextInputs content.
- */
 @InternalTextApi
 @Preview
 @Composable

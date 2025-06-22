@@ -11,19 +11,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.typography
 
-/**
- * Composable function demonstrating usage of Snackbar in Jetpack Compose.
- */
 @Composable
 fun SnackBars() {
     Text(text = "Snackbars", style = typography.h6, modifier = Modifier.padding(8.dp))
-
-    // Basic Snackbar without an action
     Snackbar(modifier = Modifier.padding(4.dp)) {
         Text(text = "This is a basic snackbar")
     }
-
-    // Snackbar with an action item
     Snackbar(
         modifier = Modifier.padding(4.dp),
         action = {
@@ -34,8 +27,6 @@ fun SnackBars() {
     ) {
         Text(text = "This is a basic Snackbar with action item")
     }
-
-    // Snackbar with action item placed below text
     Snackbar(
         modifier = Modifier.padding(4.dp),
         actionOnNewLine = true,
@@ -49,10 +40,6 @@ fun SnackBars() {
     }
 }
 
-
-/**
- * Preview function for the SnackBars content.
- */
 @Preview
 @Composable
 fun ShowSnackbars() {

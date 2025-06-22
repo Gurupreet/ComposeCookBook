@@ -33,25 +33,6 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.login.HorizontalDottedProgressBar
 import kotlin.math.roundToInt
 
-
-/**
- * A customizable swipe button that supports dragging and swiping gestures.
- *
- * @param onSwiped Callback invoked when the button is fully swiped.
- * @param modifier The modifier to be applied to the button.
- * @param swipeButtonState The current state of the swipe button.
- * @param enabled Whether the button is enabled for user interaction.
- * @param interactionSource The [MutableInteractionSource] that collects interaction events.
- * @param elevation The elevation of the button.
- * @param shape The shape of the button.
- * @param border The border stroke of the button.
- * @param colors The colors used for the button's background and content.
- * @param contentPadding The padding around the button's content.
- * @param icon The icon to display on the button.
- * @param rotateIcon Whether to rotate the icon based on drag position.
- * @param iconPadding The padding around the icon.
- * @param content The content of the button composed with [RowScope].
- */
 @OptIn(ExperimentalAnimationApi::class,
 ExperimentalMaterialApi::class)
 @Composable
@@ -92,11 +73,8 @@ fun SwipeButton(
             // Content
             val maxWidth = this.constraints.maxWidth.toFloat()
 
-            // Display different components based on the button state
             when {
                 collapsed -> {
-
-                    // Animated IconButton when collapsed
                     val animatedProgress = remember { Animatable(initialValue = 0f) }
                     LaunchedEffect(Unit) {
                         animatedProgress.animateTo(
@@ -124,11 +102,9 @@ fun SwipeButton(
                     }
                 }
                 swiped -> {
-                    // Display horizontal progress bar when fully swiped
                     HorizontalDottedProgressBar()
                 }
                 else -> {
-                    // Default state with draggable IconButton
                     dragOffset.value = 0f // when button goes to inital state
                     CompositionLocalProvider() {
                         ProvideTextStyle(
@@ -146,8 +122,7 @@ fun SwipeButton(
                     }
                 }
             }
-
-            // IconButton that supports dragging for swiping action
+            // Swipe Component
             AnimatedVisibility(visible = !swiped) {
                 IconButton(onClick = { }, enabled = enabled, modifier = Modifier
                     .padding(iconPadding)
@@ -187,23 +162,6 @@ fun SwipeButton(
     }
 }
 
-
-/**
- * Represents the state of the SwipeButton.
- */
 enum class SwipeButtonState {
-    /**
-     * Initial state of the SwipeButton.
-     */
-    INITIAL,
-
-    /**
-     * Swipe action completed state.
-     */
-    SWIPED,
-
-    /**
-     * Collapsed state of the SwipeButton.
-     */
-    COLLAPSED
+    INITIAL, SWIPED, COLLAPSED
 }
