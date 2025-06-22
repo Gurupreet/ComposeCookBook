@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".BiometricActivity"
+            android:name="com.guru.pinlock.BiometricActivity"
             android:exported="true"
             android:theme="@style/Theme.Transparent" />
     </application>

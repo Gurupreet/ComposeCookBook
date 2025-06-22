@@ -307,7 +307,7 @@ fun TopicSection(topicList: List<Topic>) {
         )
         spacerHeight10()
         val itemSize: Dp = (LocalConfiguration.current.screenWidthDp.dp / 2) - 23.dp
-            StaggeredVerticalGrid(maxColumnWidth = 250.dp){
+        StaggeredVerticalGrid(maxColumnWidth = 250.dp) {
                 topicList.forEachIndexed { index, _ ->
                     TopicItem(topic = topicList[index], itemSize)
                 }
