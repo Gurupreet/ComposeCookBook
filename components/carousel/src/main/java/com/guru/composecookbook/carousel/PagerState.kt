@@ -63,7 +63,9 @@ class PagerState(currentPage: Int = 0, minPage: Int = 0, maxPage: Int = 0) {
   suspend fun fling(velocity: Float) {
     if (velocity < 0 && currentPage == maxPage) {
       currentPage = minPage
-    } else if (velocity > 0 && currentPage == minPage) return
+    } else if (velocity > 0 && currentPage == minPage)  {
+      currentPage = maxPage
+    }
 
     _currentPageOffset.animateTo(currentPageOffset.roundToInt().toFloat())
     selectPage()
