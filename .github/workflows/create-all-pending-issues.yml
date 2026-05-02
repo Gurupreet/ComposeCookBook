@@ -2,6 +2,11 @@ name: Create All Pending Issues
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - copilot/create-issues-in-repo
+    paths:
+      - .github/workflows/create-all-pending-issues.yml
 
 jobs:
   create-issues:
@@ -400,7 +405,19 @@ The project uses \`navCompose = "2.7.7"\`. Navigation Compose **2.8.0** is stabl
               },
             ];
 
+            const existing = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              per_page: 100,
+            });
+            const existingTitles = new Set(existing.map(i => i.title));
+
             for (const issue of issues) {
+              if (existingTitles.has(issue.title)) {
+                console.log(`Skipping (already exists): ${issue.title}`);
+                continue;
+              }
               const result = await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
