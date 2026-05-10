@@ -1,3 +1,5 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "ComposeCookBook"
 include(":app")
 include(":demos:instagram")

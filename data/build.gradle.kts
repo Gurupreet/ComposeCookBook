@@ -10,5 +10,5 @@ android {
 }
 
 dependencies {
-    implementation(com.guru.composecookbook.build.dependencies.Dependencies.composeRuntime)
+    implementation(libs.compose.runtime)
 }

@@ -1,7 +1,3 @@
-import com.guru.composecookbook.build.dependencies.addCoreAndroidDependencies
-import com.guru.composecookbook.build.dependencies.addDataDependencies
-import com.guru.composecookbook.build.dependencies.addNetworkingDependencies
-
 plugins {
     /**
      * See [common-kotlin-module-configs-script-plugin.gradle.kts] file
@@ -14,7 +10,13 @@ android {
 }
 
 dependencies {
-    addCoreAndroidDependencies()
-    addNetworkingDependencies()
-    addDataDependencies()
+    implementation(libs.bundles.core.android)
+    implementation(libs.bundles.networking)
+
+    // Room + Paging data layer
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.compose.runtime)
 }

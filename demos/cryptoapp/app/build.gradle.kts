@@ -1,9 +1,3 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
-import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
-
 plugins {
     /**
      * See [common-compose-module-configs-script-plugin.gradle.kts] file
@@ -25,13 +19,13 @@ dependencies {
     implementation(project(":data"))
     implementation("androidx.wear:wear:1.2.0")
 
-    addComposeOfficialDependencies()
-    addComposeThirdPartyDependencies()
+    implementation(libs.bundles.compose.official)
+    implementation(libs.bundles.compose.third.party)
 
-    addCoreAndroidUiDependencies()
-    addThirdPartyUiDependencies()
+    implementation(libs.bundles.core.android.ui)
+    implementation(libs.bundles.third.party.ui)
 
-    addCoreAndroidDependencies()
+    implementation(libs.bundles.core.android)
 
     val wear_compose_version = "1.0.0-alpha07"
     implementation("androidx.wear.compose:compose-material:$wear_compose_version")

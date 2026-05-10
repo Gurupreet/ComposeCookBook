@@ -1,8 +1,3 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
-import com.guru.composecookbook.build.dependencies.addGoogleAndroidDependencies
-import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
-
 plugins {
     /**
      * See [common-compose-module-configs-script-plugin.gradle.kts] file
@@ -20,8 +15,8 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
 
-    addComposeOfficialDependencies()
-    addCoreAndroidUiDependencies()
-    addThirdPartyUiDependencies()
-    addGoogleAndroidDependencies()
+    implementation(libs.bundles.compose.official)
+    implementation(libs.bundles.core.android.ui)
+    implementation(libs.bundles.third.party.ui)
+    implementation(libs.bundles.google.android)
 }
