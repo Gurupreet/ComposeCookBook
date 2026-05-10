@@ -1,5 +1,3 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-
 plugins {
     /**
      * See [common-compose-module-configs-script-plugin.gradle.kts] file
@@ -15,5 +13,5 @@ dependencies {
     implementation(project(":theme"))
     implementation(project(":data"))
 
-    addComposeOfficialDependencies()
+    implementation(libs.bundles.compose.official)
 }

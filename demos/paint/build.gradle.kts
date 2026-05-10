@@ -1,6 +1,3 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
-
 plugins {
     /**
      * See [common-compose-module-configs-script-plugin.gradle.kts] file
@@ -16,6 +13,6 @@ dependencies {
     implementation(project(":theme"))
     implementation(project(":components:colorpicker"))
 
-    addComposeOfficialDependencies()
-    addCoreAndroidUiDependencies()
+    implementation(libs.bundles.compose.official)
+    implementation(libs.bundles.core.android.ui)
 }

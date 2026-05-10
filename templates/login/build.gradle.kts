@@ -1,6 +1,3 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependencies
-
 plugins {
     /**
      * See [common-compose-module-configs-script-plugin.gradle.kts] file
@@ -19,6 +16,6 @@ dependencies {
     implementation(project(":components:tags"))
     implementation(project(":templates:onboarding"))
 
-    addComposeOfficialDependencies()
-    addComposeThirdPartyDependencies()
+    implementation(libs.bundles.compose.official)
+    implementation(libs.bundles.compose.third.party)
 }
