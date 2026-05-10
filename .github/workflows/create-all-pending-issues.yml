@@ -2,6 +2,11 @@ name: Create All Pending Issues
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - copilot/update-github-actions-workflow
+    paths:
+      - .github/workflows/create-all-pending-issues.yml
 
 jobs:
   create-issues:
