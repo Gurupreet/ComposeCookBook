@@ -3,7 +3,7 @@ import com.guru.composecookbook.build.configurations.ProjectConfigs
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
