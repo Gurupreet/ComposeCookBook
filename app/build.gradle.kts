@@ -18,7 +18,7 @@ import com.guru.composecookbook.build.dependencies.addThirdPartyUnitTestsDepende
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -54,9 +54,6 @@ android {
       //  useIR = true
         freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
 
-    }
-    kapt {
-        correctErrorTypes = true
     }
     buildFeatures {
         compose = true
