@@ -19,6 +19,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -52,14 +53,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
       //  useIR = true
-        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
 
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = ProjectConfigs.kotlinCompilerExtensionVersion
     }
     lint {
         abortOnError = false
