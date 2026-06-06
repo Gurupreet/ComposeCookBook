@@ -44,8 +44,8 @@ dependencies {
     implementation("com.google.devtools.ksp:symbol-processing-gradle-plugin:2.1.20-1.0.31")
 
     // in order to recognize the "plugins" block in the common script
-    implementation("com.android.tools.build:gradle:8.2.2")
+    implementation("com.android.tools.build:gradle:8.7.3")
 
     // in order to recognize the "android" block in the common script
-    implementation("com.android.tools.build:gradle-api:8.2.2")
+    implementation("com.android.tools.build:gradle-api:8.7.3")
 }
