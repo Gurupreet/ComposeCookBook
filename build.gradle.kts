@@ -10,7 +10,7 @@ buildscript {
 }
 
 plugins {
-    id("com.ncorti.ktfmt.gradle") version "0.12.0" apply false
+    id("com.ncorti.ktfmt.gradle") version "0.16.0" apply false
 }
 
 allprojects {
