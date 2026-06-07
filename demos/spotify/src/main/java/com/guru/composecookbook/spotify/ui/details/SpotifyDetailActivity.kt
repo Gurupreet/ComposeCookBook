@@ -25,6 +25,7 @@ class SpotifyDetailActivity : ComponentActivity() {
 
   companion object {
     const val ALBUM = "album"
+
     fun newIntent(context: Context, album: Album) =
       Intent(context, SpotifyDetailActivity::class.java).apply { putExtra(ALBUM, album) }
   }

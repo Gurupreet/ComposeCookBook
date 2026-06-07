@@ -18,8 +18,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.livedata.observeAsState
@@ -73,7 +73,7 @@ class FlingListActivity : ComponentActivity() {
              * to the previous page.
              */
             onBackPressed()
-          }
+          },
         ) {
           // Opens the settings activity.
           openSettings()
@@ -92,7 +92,7 @@ class FlingListActivity : ComponentActivity() {
         Toast.makeText(
             this,
             "Your settings was not saved, please click on apply in the settings page to test the custom fling behaviour",
-            Toast.LENGTH_SHORT
+            Toast.LENGTH_SHORT,
           )
           .show()
       }
@@ -132,14 +132,14 @@ fun ListViewContent(
   list: List<Item>,
   flingStateStore: State<FlingStateStore>,
   onBack: () -> Unit,
-  onSettingsClick: () -> Unit
+  onSettingsClick: () -> Unit,
 ) {
   /*
    * This is done to match up the designs of the present page with the other pages of the App.
    */
   Scaffold(
     topBar = {
-      SmallTopAppBar(
+      TopAppBar(
         title = {
           Column(modifier = Modifier.padding(4.dp)) {
             /*
@@ -153,7 +153,7 @@ fun ListViewContent(
           IconButton(onClick = onBack) {
             Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(id = R.string.cd_back))
           }
-        }
+        },
       )
     },
     content = { paddingValues ->
@@ -163,7 +163,7 @@ fun ListViewContent(
         onSettingsClick = onSettingsClick,
         modifier = Modifier.padding(paddingValues),
       )
-    }
+    },
   )
 }
 

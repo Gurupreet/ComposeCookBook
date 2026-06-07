@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.theme.typography
 
@@ -24,7 +24,7 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
     Text(
       text = title,
       style = typography.h6,
-      modifier = Modifier.padding(start = 16.dp, end = 8.dp, bottom = 8.dp, top = 24.dp)
+      modifier = Modifier.padding(start = 16.dp, end = 8.dp, bottom = 8.dp, top = 24.dp),
     )
   }
   LazyRow {
@@ -33,8 +33,8 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
       itemContent = { movie: Movie ->
         Image(
           painter =
-            rememberImagePainter(
-              data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+            rememberAsyncImagePainter(
+              model = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
             ),
           contentDescription = null,
           modifier =
@@ -43,9 +43,9 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
               .padding(12.dp)
               .clip(RoundedCornerShape(12.dp))
               .clickable(onClick = { onMovieSelected(movie) }),
-          contentScale = ContentScale.Crop
+          contentScale = ContentScale.Crop,
         )
-      }
+      },
     )
   }
 }

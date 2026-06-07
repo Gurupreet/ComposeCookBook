@@ -32,7 +32,7 @@ fun TopicItem(topic: Topic, itemSize: Dp) {
         painter = painterResource(id = topic.image),
         contentDescription = "Topic",
         contentScale = ContentScale.FillBounds,
-        modifier = Modifier.align(Alignment.TopCenter)
+        modifier = Modifier.align(Alignment.TopCenter),
       )
       Text(
         topic.title,
@@ -41,7 +41,7 @@ fun TopicItem(topic: Topic, itemSize: Dp) {
         lineHeight = 26.sp,
         color = topic.textColor,
         fontWeight = FontWeight.Bold,
-        modifier = Modifier.align(Alignment.BottomStart).padding(bottom = dp10, start = dp10)
+        modifier = Modifier.align(Alignment.BottomStart).padding(bottom = dp10, start = dp10),
       )
     }
   }

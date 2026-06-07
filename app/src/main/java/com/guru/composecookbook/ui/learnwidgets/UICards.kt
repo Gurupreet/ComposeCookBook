@@ -35,23 +35,23 @@ fun UICards() {
   Text(
     text = "Inbuilt box as container for any Clipping/Alignment controls",
     style = typography.subtitle1,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Material3Card(
     modifier = Modifier.padding(8.dp).fillMaxWidth(),
     backgroundColor = MaterialTheme.colorScheme.primary,
-    shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp)
+    shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp),
   ) {
     Column {
       Text(
         text = item.title,
         modifier = Modifier.padding(8.dp),
-        color = MaterialTheme.colorScheme.onPrimary
+        color = MaterialTheme.colorScheme.onPrimary,
       )
       Text(
         text = item.subtitle,
         modifier = Modifier.padding(8.dp),
-        color = MaterialTheme.colorScheme.onPrimary
+        color = MaterialTheme.colorScheme.onPrimary,
       )
     }
   }
@@ -61,13 +61,13 @@ fun UICards() {
   Material3Card(
     modifier = Modifier.padding(16.dp).fillMaxWidth(),
     shape = RoundedCornerShape(4.dp),
-    elevation = 4.dp
+    elevation = 4.dp,
   ) {
     Row {
       Image(
         painter = painterResource(id = R.drawable.p3),
         contentDescription = null,
-        modifier = Modifier.size(60.dp)
+        modifier = Modifier.size(60.dp),
       )
       Text(text = item.title, modifier = Modifier.padding(16.dp))
     }
@@ -80,18 +80,13 @@ fun UICards() {
   ListItem(
     text = { Text(item.title) },
     secondaryText = { Text(item.subtitle) },
-    singleLineSecondaryText = false
+    singleLineSecondaryText = false,
   )
   Divider(modifier = Modifier.padding(4.dp))
   ListItem(
     text = { Text(item.title) },
     secondaryText = { Text(item.subtitle) },
-    icon = {
-      Image(
-        painter = painterResource(R.drawable.p3),
-        contentDescription = null,
-      )
-    }
+    icon = { Image(painter = painterResource(R.drawable.p3), contentDescription = null) },
   )
   Divider(modifier = Modifier.padding(4.dp))
   // I am not sure why this is not going multiline for secondaryText...
@@ -100,7 +95,7 @@ fun UICards() {
     secondaryText = { Text(item.subtitle) },
     icon = { Image(painter = painterResource(id = R.drawable.p1), contentDescription = null) },
     overlineText = { Text("Overline text") },
-    singleLineSecondaryText = false
+    singleLineSecondaryText = false,
   )
   Divider()
   ListItem(
@@ -108,7 +103,7 @@ fun UICards() {
     secondaryText = { Text(item.subtitle) },
     icon = { Image(painter = painterResource(id = R.drawable.p2), contentDescription = null) },
     trailing = { Icon(Icons.Default.ShoppingCart, contentDescription = null) },
-    singleLineSecondaryText = false
+    singleLineSecondaryText = false,
   )
   Divider()
 }

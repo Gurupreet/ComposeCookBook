@@ -57,7 +57,7 @@ fun AllButtons() {
     Button(
       onClick = {},
       modifier = Modifier.padding(8.dp),
-      elevation = ButtonDefaults.buttonElevation()
+      elevation = ButtonDefaults.buttonElevation(),
     ) {
       Text(text = "Flat")
     }
@@ -72,7 +72,7 @@ fun AllButtons() {
         Icon(
           imageVector = Icons.Default.FavoriteBorder,
           contentDescription = null,
-          modifier = Modifier.padding(end = 4.dp)
+          modifier = Modifier.padding(end = 4.dp),
         )
         Text(text = "Icon Button")
       }
@@ -82,19 +82,16 @@ fun AllButtons() {
       Icon(
         imageVector = Icons.Default.FavoriteBorder,
         contentDescription = null,
-        modifier = Modifier.padding(start = 4.dp)
+        modifier = Modifier.padding(start = 4.dp),
       )
     }
   }
   // custom background buttons
-  val outlineButtonColor =
-    ButtonDefaults.outlinedButtonColors(
-      contentColor = purple200,
-    )
+  val outlineButtonColor = ButtonDefaults.outlinedButtonColors(contentColor = purple200)
   val mainButtonColor =
     ButtonDefaults.buttonColors(
       containerColor = purple,
-      contentColor = MaterialTheme.colorScheme.surface
+      contentColor = MaterialTheme.colorScheme.surface,
     )
   Row {
     OutlinedButton(colors = outlineButtonColor, onClick = {}, modifier = Modifier.padding(8.dp)) {
@@ -110,14 +107,14 @@ fun AllButtons() {
         colors =
           listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
         0f,
-        250f
+        250f,
       )
     val verticalGradient =
       Brush.verticalGradient(
         colors =
           listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.inversePrimary),
         startY = 0f,
-        endY = 100f
+        endY = 100f,
       )
     Text(
       text = "Horizontal gradient",
@@ -127,7 +124,7 @@ fun AllButtons() {
           .clickable(onClick = {})
           .clip(RoundedCornerShape(4.dp))
           .background(brush = horizontalGradient)
-          .padding(12.dp)
+          .padding(12.dp),
     )
     Text(
       text = "Vertical gradient",
@@ -137,7 +134,7 @@ fun AllButtons() {
           .clickable(onClick = {})
           .clip(RoundedCornerShape(4.dp))
           .background(brush = verticalGradient)
-          .padding(12.dp)
+          .padding(12.dp),
     )
   }
 
@@ -164,7 +161,7 @@ fun AllButtons() {
     iconPadding = PaddingValues(4.dp),
     swipeButtonState = SwipeButtonState.INITIAL,
     shape = CircleShape,
-    enabled = false
+    enabled = false,
   ) {
     Text(text = "Swipe", style = typography.body1)
   }

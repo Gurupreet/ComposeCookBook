@@ -1,22 +1,18 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
-
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
+  id("org.jetbrains.kotlin.plugin.serialization")
 }
 
-android {
-    namespace = "com.guru.composecookbook.gmail"
-}
+android { namespace = "com.guru.composecookbook.gmail" }
 
 dependencies {
-    implementation(project(":components:fab"))
-    implementation(project(":data"))
-    implementation(project(":theme"))
+  implementation(project(":components:fab"))
+  implementation(project(":data"))
+  implementation(project(":theme"))
 
-    addComposeOfficialDependencies()
-    addCoreAndroidUiDependencies()
+  implementation(libs.bundles.kotlin)
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.bundles.compose.official)
+  implementation(libs.bundles.core.android.ui)
 }

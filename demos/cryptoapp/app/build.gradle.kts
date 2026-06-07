@@ -1,50 +1,28 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
-import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
-
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
-    id("org.jetbrains.kotlin.android")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
+  id("org.jetbrains.kotlin.android")
 }
 
-android {
-    namespace = "com.guru.composecookbook.cryptoapp"
-}
-
+android { namespace = "com.guru.composecookbook.cryptoapp" }
 
 dependencies {
-    implementation(project(":components:charts"))
-    implementation(project(":animations:lottie"))
-    implementation(project(":demos:cryptoapp:data"))
-    implementation(project(":theme"))
-    implementation(project(":data"))
-    implementation("androidx.wear:wear:1.2.0")
+  implementation(project(":components:charts"))
+  implementation(project(":animations:lottie"))
+  implementation(project(":demos:cryptoapp:data"))
+  implementation(project(":theme"))
+  implementation(project(":data"))
+  // Wear OS (compose-material here is the Wear variant, not the mobile one)
+  implementation(libs.bundles.wear)
 
-    addComposeOfficialDependencies()
-    addComposeThirdPartyDependencies()
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.bundles.compose.official)
+  implementation(libs.bundles.compose.thirdparty)
 
-    addCoreAndroidUiDependencies()
-    addThirdPartyUiDependencies()
+  implementation(libs.bundles.core.android.ui)
+  implementation(libs.bundles.thirdparty.ui)
 
-    addCoreAndroidDependencies()
-
-    val wear_compose_version = "1.0.0-alpha07"
-    implementation("androidx.wear.compose:compose-material:$wear_compose_version")
-
-    // Foundation is additive, so you can use the mobile version in your Wear OS app.
-    implementation("androidx.wear.compose:compose-foundation:$wear_compose_version")
-
-    // If you are using Compose Navigation, use the Wear OS version (NOT THE MOBILE ONE), that is,
-    // uncomment the line below and update the version number.
-    implementation("androidx.wear.compose:compose-navigation:$wear_compose_version")
+  implementation(libs.bundles.core.android)
 }
-android {
-    buildFeatures {
-        viewBinding = true
-    }
-}
+
+android { buildFeatures { viewBinding = true } }

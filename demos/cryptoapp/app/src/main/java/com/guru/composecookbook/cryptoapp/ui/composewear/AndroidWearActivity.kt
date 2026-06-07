@@ -43,7 +43,7 @@ import androidx.wear.compose.material.rememberScalingLazyListState
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.charts.LineChart
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModel
@@ -74,12 +74,12 @@ class AndroidWearActivity : ComponentActivity() {
 
     Scaffold(
       positionIndicator = { PositionIndicator(scalingLazyListState = scrollState) },
-      vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom) }
+      vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom) },
     ) {
       val navController = rememberSwipeDismissableNavController()
       SwipeDismissableNavHost(
         navController = navController,
-        startDestination = WearScreen.StockList.route
+        startDestination = WearScreen.StockList.route,
       ) {
         composable(route = WearScreen.StockList.route) {
           StockListScreen(scrollState = scrollState, items = pagingItems) { symbol ->
@@ -88,7 +88,7 @@ class AndroidWearActivity : ComponentActivity() {
         }
         composable(
           route = WearScreen.StockDetail.route + "/{$SYMBOL_ID}",
-          arguments = listOf(navArgument(SYMBOL_ID) { type = NavType.StringType })
+          arguments = listOf(navArgument(SYMBOL_ID) { type = NavType.StringType }),
         ) { backStackEntry ->
           val symbol = backStackEntry.arguments?.getString(SYMBOL_ID) ?: "btc"
           val crypto = pagingItems.itemSnapshotList.items.firstOrNull { it.symbol == symbol }
@@ -103,18 +103,18 @@ class AndroidWearActivity : ComponentActivity() {
 fun StockListScreen(
   scrollState: ScalingLazyListState,
   items: LazyPagingItems<Crypto>,
-  onItemSelected: (String) -> Unit
+  onItemSelected: (String) -> Unit,
 ) {
   ScalingLazyColumn(
     state = scrollState,
     modifier =
-      Modifier.fillMaxSize().background(MaterialTheme.colors.background).padding(horizontal = 8.dp)
+      Modifier.fillMaxSize().background(MaterialTheme.colors.background).padding(horizontal = 8.dp),
   ) {
     item {
       Text(
         "Cookbook wear",
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth().padding(8.dp)
+        modifier = Modifier.fillMaxWidth().padding(8.dp),
       )
     }
     items(items.itemCount) {
@@ -129,10 +129,10 @@ fun WearStockListItem(crypto: Crypto, onItemSelected: (String) -> Unit) {
   Card(onClick = { onItemSelected.invoke(crypto.symbol) }, shape = MaterialTheme.shapes.small) {
     Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
       Image(
-        painter = rememberImagePainter(data = crypto.image),
+        painter = rememberAsyncImagePainter(model = crypto.image),
         modifier = Modifier.size(32.dp).padding(4.dp),
         contentDescription = null,
-        contentScale = ContentScale.Crop
+        contentScale = ContentScale.Crop,
       )
       Column(modifier = Modifier.padding(horizontal = 4.dp)) {
         Text(text = crypto.symbol.uppercase())
@@ -142,7 +142,7 @@ fun WearStockListItem(crypto: Crypto, onItemSelected: (String) -> Unit) {
       LineChart(
         modifier = Modifier.height(40.dp).padding(horizontal = 8.dp).weight(1f),
         yAxisValues = crypto.chartData,
-        lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
+        lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors,
       )
     }
   }
@@ -155,14 +155,14 @@ fun StockDetailScreen(crypto: Crypto) {
       Modifier.padding(16.dp)
         .background(MaterialTheme.colors.background)
         .verticalScroll(rememberScrollState()),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
       Image(
-        painter = rememberImagePainter(data = crypto.image),
+        painter = rememberAsyncImagePainter(model = crypto.image),
         modifier = Modifier.size(24.dp).padding(end = 8.dp),
         contentDescription = null,
-        contentScale = ContentScale.Crop
+        contentScale = ContentScale.Crop,
       )
       Text(text = crypto.symbol.uppercase(), fontWeight = FontWeight.Bold)
     }
@@ -170,12 +170,12 @@ fun StockDetailScreen(crypto: Crypto) {
     val plusMinusIndicator = if (crypto.dailyChange > 0) "+" else "-"
     Text(
       text = "$plusMinusIndicator${crypto.dailyChange} (${crypto.dailyChangePercentage}%)",
-      color = if (crypto.dailyChange > 0) green500 else Color.Red
+      color = if (crypto.dailyChange > 0) green500 else Color.Red,
     )
     LineChart(
       modifier = Modifier.height(80.dp).padding(horizontal = 8.dp).fillMaxWidth(),
       yAxisValues = crypto.chartData,
-      lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
+      lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors,
     )
     StatisticsCard(crypto)
   }
@@ -183,7 +183,7 @@ fun StockDetailScreen(crypto: Crypto) {
 
 @Composable
 fun StatisticsCard(crypto: Crypto) {
-  Card(onClick = { /*TODO*/}, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
+  Card(onClick = { /*TODO*/ }, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
       Text(text = "24H High -  ${crypto.high.roundToTwoDecimals()}")
       Spacer(modifier = Modifier.height(16.dp))
@@ -196,5 +196,6 @@ fun StatisticsCard(crypto: Crypto) {
 
 sealed class WearScreen(val route: String) {
   object StockList : WearScreen("list")
+
   object StockDetail : WearScreen("detail")
 }

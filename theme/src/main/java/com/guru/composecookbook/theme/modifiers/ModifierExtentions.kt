@@ -30,13 +30,13 @@ fun Modifier.diagonalGradientTint(colors: List<Color>, blendMode: BlendMode) =
       colors = gradientColors,
       start = Offset(x = 0f, y = 0f),
       end = Offset(x = size.width, y = size.height),
-      tileMode = TileMode.Clamp
+      tileMode = TileMode.Clamp,
     )
   }
 
 fun Modifier.gradientBackground(
   colors: List<Color>,
-  brushProvider: (List<Color>, Size) -> Brush
+  brushProvider: (List<Color>, Size) -> Brush,
 ): Modifier = composed {
   var size by remember { mutableStateOf(Size.Zero) }
   val gradient = remember(colors, size) { brushProvider(colors, size) }
@@ -50,7 +50,7 @@ fun Modifier.gradientBackground(
 fun Modifier.gradientTint(
   colors: List<Color>,
   blendMode: BlendMode,
-  brushProvider: (List<Color>, Size) -> Brush
+  brushProvider: (List<Color>, Size) -> Brush,
 ) = composed {
   var size by remember { mutableStateOf(Size.Zero) }
   val gradient = remember(colors, size) { brushProvider(colors, size) }

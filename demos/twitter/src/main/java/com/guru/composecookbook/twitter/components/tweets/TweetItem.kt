@@ -25,7 +25,7 @@ fun TweetItem(
   onRetweetClick: () -> Unit,
   onLikesClick: () -> Unit,
   onShareClick: () -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Row(modifier = modifier.padding(8.dp)) {
     ProfilePicture(profileImageId = tweet.authorImageId, size = ProfilePictureSizes.medium)
@@ -41,7 +41,7 @@ fun TweetItem(
         onRetweetClick = onRetweetClick,
         onLikesClick = onLikesClick,
         onShareClick = onShareClick,
-        modifier = Modifier.fillMaxWidth().padding(end = 16.dp)
+        modifier = Modifier.fillMaxWidth().padding(end = 16.dp),
       )
       Divider(thickness = 0.5.dp)
     }
@@ -54,9 +54,9 @@ fun PreviewTwitterItem() {
   val tweet = DemoDataProvider.tweet
   TweetItem(
     tweet = tweet,
-    onMessagesClick = { /*TODO*/},
-    onRetweetClick = { /*TODO*/},
-    onLikesClick = { /*TODO*/},
-    onShareClick = { /*TODO*/},
+    onMessagesClick = { /*TODO*/ },
+    onRetweetClick = { /*TODO*/ },
+    onLikesClick = { /*TODO*/ },
+    onShareClick = { /*TODO*/ },
   )
 }
