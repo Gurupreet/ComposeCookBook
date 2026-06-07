@@ -17,7 +17,7 @@ object CryptoDemoDataProvider {
       1992922,
       12223333.0,
       120234333.99,
-      emptyList()
+      emptyList(),
     )
 
   val demoList = mutableListOf(bitcoin, bitcoin.copy(symbol = "ETH", name = "Ethereum"))

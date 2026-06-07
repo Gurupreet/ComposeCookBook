@@ -34,7 +34,7 @@ fun animateToNext(): ContentTransform {
 
 fun <T : Any> isNavigatingBack(
   currentMenu: CascadeMenuItem<T>,
-  nextMenu: CascadeMenuItem<T>
+  nextMenu: CascadeMenuItem<T>,
 ): Boolean {
   return currentMenu.hasParent() && nextMenu == currentMenu.parent!!
 }
@@ -54,7 +54,7 @@ fun <T : Any> CascadeMenu(
     modifier = modifier.width(MAX_WIDTH).background(colors.backgroundColor),
     expanded = isOpen,
     onDismissRequest = onDismiss,
-    offset = offset
+    offset = offset,
   ) {
     val state by remember { mutableStateOf(CascadeMenuState(menu)) }
     AnimatedContent(
@@ -65,7 +65,7 @@ fun <T : Any> CascadeMenu(
         } else {
           animateToNext()
         }
-      }
+      },
     ) { targetMenu ->
       CascadeMenuContent(
         state = state,
@@ -133,12 +133,7 @@ fun CascadeMenuItemText(
       MaterialTheme.typography.subtitle1
     }
 
-  Text(
-    modifier = modifier,
-    text = text,
-    style = style,
-    color = color,
-  )
+  Text(modifier = modifier, text = text, style = style, color = color)
 }
 
 @Composable
@@ -146,20 +141,16 @@ fun CascadeMenuItem(onClick: () -> Unit, content: @Composable RowScope.() -> Uni
   DropdownMenuItem(
     onClick = onClick,
     interactionSource = remember { MutableInteractionSource() },
-    content = content
+    content = content,
   )
 }
 
 @Composable
-fun CascadeHeaderItem(
-  title: String,
-  contentColor: Color,
-  onClick: () -> Unit,
-) {
+fun CascadeHeaderItem(title: String, contentColor: Color, onClick: () -> Unit) {
   CascadeMenuItem(onClick = { onClick() }) {
     CascadeMenuItemIcon(
       icon = Icons.Rounded.ArrowLeft,
-      tint = contentColor.copy(alpha = ContentAlpha.medium)
+      tint = contentColor.copy(alpha = ContentAlpha.medium),
     )
     Spacer(modifier = Modifier.width(4.dp))
     CascadeMenuItemText(
@@ -184,11 +175,7 @@ fun <T> CascadeParentItem(
       CascadeMenuItemIcon(icon = icon, tint = contentColor)
       Space()
     }
-    CascadeMenuItemText(
-      modifier = Modifier.weight(1f),
-      text = title,
-      color = contentColor,
-    )
+    CascadeMenuItemText(modifier = Modifier.weight(1f), text = title, color = contentColor)
     Space()
     CascadeMenuItemIcon(icon = Icons.Rounded.ArrowRight, tint = contentColor)
   }
@@ -207,10 +194,6 @@ fun <T> CascadeChildItem(
       CascadeMenuItemIcon(icon = icon, tint = contentColor)
       Space()
     }
-    CascadeMenuItemText(
-      modifier = Modifier.weight(1f),
-      text = title,
-      color = contentColor,
-    )
+    CascadeMenuItemText(modifier = Modifier.weight(1f), text = title, color = contentColor)
   }
 }

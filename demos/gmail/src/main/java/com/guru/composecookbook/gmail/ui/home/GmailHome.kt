@@ -133,7 +133,7 @@ fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) 
     Icon(
       imageVector = icon,
       modifier = modifier.align(Alignment.BottomCenter),
-      contentDescription = null
+      contentDescription = null,
     )
 
     if (badge != 0) {
@@ -147,7 +147,7 @@ fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) 
             .clip(CircleShape)
             .background(Color.Red)
             .align(Alignment.TopEnd)
-            .size(16.dp)
+            .size(16.dp),
       )
     }
   }
@@ -160,17 +160,17 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
     onClick = { navController.navigate("create") },
     modifier = Modifier.padding(16.dp).height(48.dp).widthIn(min = 48.dp),
     backgroundColor = MaterialTheme.colors.surface,
-    contentColor = MaterialTheme.colors.primary
+    contentColor = MaterialTheme.colors.primary,
   ) {
     AnimatingFabContent(
       icon = {
         Icon(
           imageVector = Icons.Outlined.Edit,
-          contentDescription = stringResource(id = R.string.cd_create_new_email)
+          contentDescription = stringResource(id = R.string.cd_create_new_email),
         )
       },
       text = { Text(text = "Compose", modifier = Modifier.padding(end = 8.dp)) },
-      extended = expandState
+      extended = expandState,
     )
   }
 }
@@ -264,7 +264,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
         modifier = Modifier,
         shape = MaterialTheme.shapes.medium,
         color = background,
-        contentColor = MaterialTheme.colors.onSurface
+        contentColor = MaterialTheme.colors.onSurface,
       ) {
         Column {
           Row(verticalAlignment = Alignment.CenterVertically) {
@@ -276,7 +276,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
               text = "Google",
               textAlign = TextAlign.Center,
               fontSize = 24.sp,
-              modifier = Modifier.fillMaxWidth()
+              modifier = Modifier.fillMaxWidth(),
             )
           }
 
@@ -292,7 +292,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                 .clip(RoundedCornerShape(16.dp))
                 .clickable(onClick = {})
                 .padding(horizontal = 12.dp, vertical = 8.dp)
-                .align(Alignment.CenterHorizontally)
+                .align(Alignment.CenterHorizontally),
           )
 
           Divider(thickness = 1.dp, modifier = Modifier.fillMaxWidth())
@@ -301,49 +301,49 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
             imageId = R.drawable.p2,
             name = "Subash ",
             email = "aryal.subash@yahoo.com",
-            badgeCount = 39
+            badgeCount = 39,
           )
           GmailUserEmail(
             imageId = R.drawable.p2,
             name = "Subash Zi ",
             email = "subashz@gmail.com",
-            badgeCount = 10
+            badgeCount = 10,
           )
 
           Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
           ) {
             Icon(
               imageVector = Icons.Default.PersonAdd,
               tint = MaterialTheme.colors.onSurface,
               modifier = Modifier.padding(8.dp),
-              contentDescription = null
+              contentDescription = null,
             )
 
             Text(
               text = "Add another account",
               fontSize = 14.sp,
               color = MaterialTheme.colors.onSurface,
-              modifier = Modifier.padding(start = 8.dp)
+              modifier = Modifier.padding(start = 8.dp),
             )
           }
 
           Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
           ) {
             Icon(
               imageVector = Icons.Default.AccountCircle,
               tint = MaterialTheme.colors.onSurface,
               modifier = Modifier.padding(8.dp),
-              contentDescription = null
+              contentDescription = null,
             )
             Text(
               text = "Manage accounts on this device",
               fontSize = 14.sp,
               color = MaterialTheme.colors.onSurface,
-              modifier = Modifier.padding(start = 8.dp)
+              modifier = Modifier.padding(start = 8.dp),
             )
           }
 
@@ -351,20 +351,20 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
 
           Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(vertical = 8.dp).align(Alignment.CenterHorizontally)
+            modifier = Modifier.padding(vertical = 8.dp).align(Alignment.CenterHorizontally),
           ) {
             Text(
               text = "Privacy Policy",
               fontSize = 12.sp,
               modifier =
-                Modifier.clip(RoundedCornerShape(8.dp)).clickable(onClick = {}).padding(8.dp)
+                Modifier.clip(RoundedCornerShape(8.dp)).clickable(onClick = {}).padding(8.dp),
             )
             Text(text = "•")
             Text(
               text = "Terms of service",
               fontSize = 12.sp,
               modifier =
-                Modifier.clip(RoundedCornerShape(8.dp)).clickable(onClick = {}).padding(8.dp)
+                Modifier.clip(RoundedCornerShape(8.dp)).clickable(onClick = {}).padding(8.dp),
             )
           }
         }
@@ -380,7 +380,7 @@ fun GmailUserEmail(imageId: Int, name: String, email: String, badgeCount: Int) {
     Image(
       painter = painterResource(id = imageId),
       contentDescription = null,
-      modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = {})
+      modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = {}),
     )
 
     Column(modifier = Modifier.weight(1f).padding(start = 16.dp)) {

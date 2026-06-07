@@ -73,23 +73,23 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
             listOf(Color.Transparent, Color.Transparent)
           else surfaceGradient
         )
-        .padding(horizontal = 8.dp, vertical = 4.dp)
+        .padding(horizontal = 8.dp, vertical = 4.dp),
   ) {
     Icon(
       imageVector = Icons.Default.ArrowBack,
       tint = MaterialTheme.colors.onSurface,
-      contentDescription = stringResource(id = R.string.cd_back)
+      contentDescription = stringResource(id = R.string.cd_back),
     )
     Text(
       text = album.song,
       color = MaterialTheme.colors.onSurface,
       modifier =
-        Modifier.padding(16.dp).alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f))
+        Modifier.padding(16.dp).alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f)),
     )
     Icon(
       imageVector = Icons.Default.MoreVert,
       tint = MaterialTheme.colors.onSurface,
-      contentDescription = null
+      contentDescription = null,
     )
   }
 }

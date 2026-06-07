@@ -72,7 +72,7 @@ fun CryptoHomeScreen(onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents
   val listScrollState = rememberLazyListState()
   val cryptos = viewModel.getAllCryptos().collectAsLazyPagingItems()
   Scaffold(
-    floatingActionButton = { CryptoFABButton(favCryptos.size) { showFavState = !showFavState } },
+    floatingActionButton = { CryptoFABButton(favCryptos.size) { showFavState = !showFavState } }
   ) { paddingValues ->
     Column(
       modifier =
@@ -101,9 +101,9 @@ fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
         imageVector = Icons.Filled.Favorite,
         tint = Color.Red,
         contentDescription = null,
-        modifier = animateRotationModifier
+        modifier = animateRotationModifier,
       )
-    }
+    },
   )
 }
 
@@ -111,7 +111,7 @@ fun CryptoFABButton(count: Int, showFavState: () -> Unit) {
 fun ShowFavorites(
   showFave: Boolean,
   favCryptos: List<Crypto>,
-  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
+  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit,
 ) {
   Column(
     modifier =
@@ -129,7 +129,7 @@ fun ShowFavorites(
               CryptoHomeInteractionEvents.OpenDetailScreen(crypto = crypto)
             )
           }
-        }
+        },
       )
     }
   }
@@ -144,19 +144,19 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
         .clip(RoundedCornerShape(8.dp))
         .clickable(onClick = openCryptoDetail)
         .padding(16.dp),
-    verticalAlignment = Alignment.CenterVertically
+    verticalAlignment = Alignment.CenterVertically,
   ) {
     Image(
       painter = rememberImagePainter(data = crypto.image),
       modifier = Modifier.size(24.dp),
-      contentDescription = null
+      contentDescription = null,
     )
     Text(
       text = crypto.symbol,
       style = typography.h6.copy(fontSize = 20.sp),
       modifier = Modifier.padding(horizontal = 8.dp).height(32.dp),
       color = MaterialTheme.colorScheme.onSurface,
-      textAlign = TextAlign.Center
+      textAlign = TextAlign.Center,
     )
   }
 }
@@ -166,14 +166,14 @@ fun CryptoList(
   cryptos: LazyPagingItems<Crypto>,
   favCryptos: List<Crypto>,
   listScrollState: LazyListState,
-  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
+  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit,
 ) {
   val context = LocalContext.current
 
   LazyColumn(state = listScrollState) {
     items(
       count = cryptos.itemCount,
-      key = { index -> cryptos[index]?.symbol ?: index.toString() }
+      key = { index -> cryptos[index]?.symbol ?: index.toString() },
     ) { index ->
       val crypto = cryptos[index]
       crypto?.let {

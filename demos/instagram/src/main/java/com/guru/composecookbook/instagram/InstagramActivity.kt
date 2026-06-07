@@ -28,7 +28,7 @@ class InstagramActivity : ComponentActivity() {
           onCommentsClicked = {},
           onSendClicked = {},
           onProfileClicked = {},
-          onMessagingClicked = {}
+          onMessagingClicked = {},
         )
       }
     }
@@ -50,7 +50,7 @@ fun DefaultPreview4() {
       onCommentsClicked = {},
       onSendClicked = {},
       onProfileClicked = {},
-      onMessagingClicked = {}
+      onMessagingClicked = {},
     )
   }
 }

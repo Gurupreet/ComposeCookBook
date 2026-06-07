@@ -2,20 +2,16 @@ import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencie
 import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
 
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
 }
 
-android {
-    namespace = "com.guru.composecookbook.paint"
-}
+android { namespace = "com.guru.composecookbook.paint" }
 
 dependencies {
-    implementation(project(":theme"))
-    implementation(project(":components:colorpicker"))
+  implementation(project(":theme"))
+  implementation(project(":components:colorpicker"))
 
-    addComposeOfficialDependencies()
-    addCoreAndroidUiDependencies()
+  addComposeOfficialDependencies()
+  addCoreAndroidUiDependencies()
 }

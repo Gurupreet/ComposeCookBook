@@ -41,7 +41,7 @@ import com.guru.composecookbook.theme.typography
 fun CryptoListItem(
   crypto: Crypto,
   isFav: Boolean = false,
-  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit
+  onCryptoHomeInteractionEvents: (CryptoHomeInteractionEvents) -> Unit,
 ) {
   Row(
     modifier =
@@ -53,32 +53,32 @@ fun CryptoListItem(
         )
         .padding(16.dp),
     horizontalArrangement = Arrangement.SpaceBetween,
-    verticalAlignment = Alignment.CenterVertically
+    verticalAlignment = Alignment.CenterVertically,
   ) {
     AsyncImage(
       model = crypto.image,
       contentDescription = null,
       modifier = Modifier.size(40.dp).padding(4.dp),
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Column(modifier = Modifier.weight(0.4f)) {
       Text(
         text = crypto.symbol,
         style = typography.h6.copy(fontSize = 16.sp),
-        modifier = Modifier.padding(horizontal = 4.dp)
+        modifier = Modifier.padding(horizontal = 4.dp),
       )
       Text(
         text = "$${crypto.price}",
         style = typography.h6.copy(fontSize = 14.sp),
         textAlign = TextAlign.Center,
-        modifier = Modifier.padding(horizontal = 4.dp)
+        modifier = Modifier.padding(horizontal = 4.dp),
       )
     }
     Column(modifier = Modifier.weight(1f)) {
       LineChart(
         modifier = Modifier.width(100.dp).height(50.dp).align(Alignment.CenterHorizontally),
         yAxisValues = crypto.chartData,
-        lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
+        lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors,
       )
       Text(
         text =
@@ -87,7 +87,7 @@ fun CryptoListItem(
         style = typography.subtitle2,
         color = if (crypto.dailyChange > 0) green500 else Color.Red,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth().align(Alignment.End)
+        modifier = Modifier.fillMaxWidth().align(Alignment.End),
       )
     }
     IconToggleButton(
@@ -97,12 +97,12 @@ fun CryptoListItem(
         else {
           onCryptoHomeInteractionEvents(CryptoHomeInteractionEvents.RemoveFav(crypto))
         }
-      }
+      },
     ) {
       Icon(
         imageVector = if (isFav) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
         contentDescription = null,
-        tint = if (isFav) Color.Red else MaterialTheme.colorScheme.onSurface
+        tint = if (isFav) Color.Red else MaterialTheme.colorScheme.onSurface,
       )
     }
   }

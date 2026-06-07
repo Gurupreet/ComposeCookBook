@@ -5,5 +5,5 @@ import com.guru.composecookbook.moviesapp.data.db.models.Movie
 
 data class MovieListResponse(
   @SerializedName("pages") val pages: Int,
-  @SerializedName("results") val movies: List<Movie>
+  @SerializedName("results") val movies: List<Movie>,
 )

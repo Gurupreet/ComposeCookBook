@@ -9,5 +9,5 @@ enum class DynamicUiType {
   MODIFIERS,
   ANDROIDVIEWS,
   PULLRERESH,
-  MOTIONLAYOUT
+  MOTIONLAYOUT,
 }

@@ -19,24 +19,24 @@ import com.guru.composecookbook.lottie.LottieLoadingView
 fun OnboardingPagerItem(item: Onboard) {
   Column(
     modifier = Modifier.padding(horizontal = 16.dp),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     LottieLoadingView(
       context = LocalContext.current,
       file = item.lottieFile,
-      modifier = Modifier.fillMaxWidth().height(250.dp)
+      modifier = Modifier.fillMaxWidth().height(250.dp),
     )
     Text(
       text = item.title,
       style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.ExtraBold),
       textAlign = TextAlign.Center,
-      modifier = Modifier.padding(16.dp)
+      modifier = Modifier.padding(16.dp),
     )
     Text(
       text = item.description,
       style = MaterialTheme.typography.body1,
       textAlign = TextAlign.Center,
-      modifier = Modifier.padding(horizontal = 16.dp)
+      modifier = Modifier.padding(horizontal = 16.dp),
     )
   }
 }

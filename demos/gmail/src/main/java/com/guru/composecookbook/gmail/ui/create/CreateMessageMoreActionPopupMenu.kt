@@ -20,21 +20,21 @@ fun CreateMessageMoreActionPopupMenu() {
     onDismissRequest = { expanded.value = false },
     // toggle = iconButton,
     offset = DpOffset((-32).dp, (-32).dp),
-    modifier = Modifier.background(MaterialTheme.colors.surface)
+    modifier = Modifier.background(MaterialTheme.colors.surface),
   ) {
-    DropdownMenuItem(onClick = { /* Handle refresh! */}) { Text("Schedule send") }
-    DropdownMenuItem(onClick = { /* Handle settings! */}) { Text("Add from Contacts") }
+    DropdownMenuItem(onClick = { /* Handle refresh! */ }) { Text("Schedule send") }
+    DropdownMenuItem(onClick = { /* Handle settings! */ }) { Text("Add from Contacts") }
 
-    DropdownMenuItem(onClick = { /* Handle send feedback! */}) { Text("Confidential mode") }
+    DropdownMenuItem(onClick = { /* Handle send feedback! */ }) { Text("Confidential mode") }
 
-    DropdownMenuItem(onClick = { /* Handle send feedback! */}, enabled = false) {
+    DropdownMenuItem(onClick = { /* Handle send feedback! */ }, enabled = false) {
       Text("Save draft")
     }
 
-    DropdownMenuItem(onClick = { /* Handle send feedback! */}) { Text("Discard") }
+    DropdownMenuItem(onClick = { /* Handle send feedback! */ }) { Text("Discard") }
 
-    DropdownMenuItem(onClick = { /* Handle send feedback! */}) { Text("Settings") }
+    DropdownMenuItem(onClick = { /* Handle send feedback! */ }) { Text("Settings") }
 
-    DropdownMenuItem(onClick = { /* Handle send feedback! */}) { Text("Help and feedback") }
+    DropdownMenuItem(onClick = { /* Handle send feedback! */ }) { Text("Help and feedback") }
   }
 }
