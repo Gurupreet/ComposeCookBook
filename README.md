@@ -102,7 +102,7 @@ Please get **Android Studio Bumblebee latest Canary** [from here](https://develo
 
 ## Coming Soon
 - Some of the features that will be available in coming weeks
-  - Advance lists: Pull Refresh, Swipe lists etc
+  - Advance lists: Swipe lists etc
   - Clean Architecture Sample with coroutines.
   - Advance canvas drawing.
     Much more in pipeline stay tuned!!
