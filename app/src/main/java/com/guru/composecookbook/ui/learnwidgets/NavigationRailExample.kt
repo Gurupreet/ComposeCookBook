@@ -23,14 +23,14 @@ fun NavigationRailExample() {
         FloatingActionButton(onClick = {}, modifier = Modifier.padding(vertical = 8.dp)) {
           Icon(Icons.Default.Add, contentDescription = "Add")
         }
-      }
+      },
     ) {
       items.forEachIndexed { index, item ->
         NavigationRailItem(
           selected = selectedItem == index,
           onClick = { selectedItem = index },
           icon = { Icon(icons[index], contentDescription = item) },
-          label = { Text(item) }
+          label = { Text(item) },
         )
       }
     }

@@ -23,5 +23,5 @@ data class Movie(
   val homepage: String?,
   val status: String?,
   var addedTime: Long?,
-  var dominantRgb: Int = 0
+  var dominantRgb: Int = 0,
 ) : Serializable

@@ -2,7 +2,13 @@ package com.guru.composecookbook.build.dependencies
 
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
+/** Imports the Compose BOM so the unversioned Compose artifacts resolve consistently. */
+private fun DependencyHandler.addComposeBom(configurationName: String) {
+    add(configurationName, platform(Dependencies.composeBom))
+}
+
 fun DependencyHandler.addComposeOfficialDependencies() {
+    addComposeBom("implementation")
     composeOfficialDependencies.forEach {
         add("implementation", it)
     }
@@ -15,6 +21,7 @@ fun DependencyHandler.addComposeThirdPartyDependencies() {
 }
 
 fun DependencyHandler.addComposeDebugDependencies() {
+    addComposeBom("debugImplementation")
     composeDebugDependencies.forEach {
         add("debugImplementation", it)
     }
@@ -33,7 +40,8 @@ fun DependencyHandler.addKotlinTestDependencies() {
 }
 
 fun DependencyHandler.addDataDependencies() {
-    add("kapt", Dependencies.roomCompiler)
+    addComposeBom("implementation")
+    add("ksp", Dependencies.roomCompiler)
     dataDependencies.forEach {
         add("implementation", it)
     }
@@ -76,6 +84,7 @@ fun DependencyHandler.addThirdPartyUnitTestsDependencies() {
 }
 
 fun DependencyHandler.addAndroidInstrumentationTestsDependencies() {
+    addComposeBom("androidTestImplementation")
     androidInstrumentationTestsDependencies.forEach {
         add("androidTestImplementation", it)
     }

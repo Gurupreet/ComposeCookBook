@@ -3,18 +3,14 @@ import com.guru.composecookbook.build.dependencies.addDataDependencies
 import com.guru.composecookbook.build.dependencies.addNetworkingDependencies
 
 plugins {
-    /**
-     * See [common-kotlin-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-kotlin-module-configs-script-plugin")
+  /** See [common-kotlin-module-configs-script-plugin.gradle.kts] file */
+  id("common-kotlin-module-configs-script-plugin")
 }
 
-android {
-    namespace = "com.guru.composecookbook.moviesapp.data"
-}
+android { namespace = "com.guru.composecookbook.moviesapp.data" }
 
 dependencies {
-    addCoreAndroidDependencies()
-    addNetworkingDependencies()
-    addDataDependencies()
+  addCoreAndroidDependencies()
+  addNetworkingDependencies()
+  addDataDependencies()
 }

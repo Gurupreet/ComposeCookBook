@@ -10,8 +10,8 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,7 +29,7 @@ import com.guru.composecookbook.ui.utils.TitleText
 enum class MyAnimationState {
   START,
   MID,
-  END
+  END,
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,7 +39,7 @@ fun AnimationScreen() {
   Scaffold(
     modifier = Modifier.testTag(TestTags.ANIM_SCREEN_ROOT),
     topBar = {
-      SmallTopAppBar(
+      TopAppBar(
         title = { Text(text = "Animations") },
         navigationIcon = {
           IconButton(onClick = { animateIcon = !animateIcon }) {
@@ -47,22 +47,20 @@ fun AnimationScreen() {
               state = animateIcon,
               asset = Icons.Filled.PlayArrow,
               angle = 1440f,
-              duration = 3000
+              duration = 3000,
             )
           }
-        }
+        },
       )
     },
     content = { paddingValues ->
       AnimationScreenContent(modifier = Modifier.padding(paddingValues))
-    }
+    },
   )
 }
 
 @Composable
-fun AnimationScreenContent(
-  modifier: Modifier = Modifier,
-) {
+fun AnimationScreenContent(modifier: Modifier = Modifier) {
   LazyColumn(
     state = rememberLazyListState(),
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -77,7 +75,7 @@ fun AnimationScreenContent(
     item { AnimationsWithVisibilityApi() }
     item { AnimatableSuspendedAnimations() }
     item { TransitionAnimationsWithMultipleStates() }
-    item { ColorPicker(onColorSelected = { /*TODO*/}) }
+    item { ColorPicker(onColorSelected = { /*TODO*/ }) }
     item { Spacer(modifier = Modifier.padding(100.dp)) }
   }
 }

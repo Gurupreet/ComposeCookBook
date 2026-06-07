@@ -25,7 +25,7 @@ fun SpotifySearchBar() {
   Card(
     elevation = 4.dp,
     modifier = Modifier.fillMaxWidth().padding(12.dp).clip(RoundedCornerShape(4.dp)),
-    backgroundColor = MaterialTheme.colors.onSurface
+    backgroundColor = MaterialTheme.colors.onSurface,
   ) {
     Row(
       horizontalArrangement = Arrangement.Center,

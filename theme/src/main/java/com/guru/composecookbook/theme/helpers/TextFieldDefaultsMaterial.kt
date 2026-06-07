@@ -37,7 +37,7 @@ object TextFieldDefaultsMaterial {
     disabledLabelColor: Color = unfocusedLabelColor.copy(ContentAlpha.disabled),
     errorLabelColor: Color = MaterialTheme.colorScheme.error,
     placeholderColor: Color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.medium),
-    disabledPlaceholderColor: Color = placeholderColor.copy(ContentAlpha.disabled)
+    disabledPlaceholderColor: Color = placeholderColor.copy(ContentAlpha.disabled),
   ): TextFieldColors =
     androidx.compose.material.TextFieldDefaults.textFieldColors(
       textColor,
@@ -60,7 +60,7 @@ object TextFieldDefaultsMaterial {
       disabledLabelColor,
       errorLabelColor,
       placeholderColor,
-      disabledPlaceholderColor
+      disabledPlaceholderColor,
     )
 
   /**
@@ -91,7 +91,7 @@ object TextFieldDefaultsMaterial {
     disabledLabelColor: Color = unfocusedLabelColor.copy(ContentAlpha.disabled),
     errorLabelColor: Color = MaterialTheme.colorScheme.error,
     placeholderColor: Color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.medium),
-    disabledPlaceholderColor: Color = placeholderColor.copy(ContentAlpha.disabled)
+    disabledPlaceholderColor: Color = placeholderColor.copy(ContentAlpha.disabled),
   ): TextFieldColors =
     TextFieldDefaults.outlinedTextFieldColors(
       textColor,
@@ -114,6 +114,6 @@ object TextFieldDefaultsMaterial {
       disabledLabelColor,
       errorLabelColor,
       placeholderColor,
-      disabledPlaceholderColor
+      disabledPlaceholderColor,
     )
 }

@@ -16,13 +16,13 @@ import com.guru.composecookbook.data.DemoDataProvider
 fun PostImage(
   @DrawableRes imageId: Int,
   contentDescription: String?,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Image(
     painter = painterResource(id = imageId),
     modifier = modifier.fillMaxWidth().height(450.dp),
     contentDescription = contentDescription,
-    contentScale = ContentScale.Crop
+    contentScale = ContentScale.Crop,
   )
 }
 
@@ -31,6 +31,6 @@ fun PostImage(
 fun PostImagePreview() {
   PostImage(
     imageId = DemoDataProvider.tweetList.first { it.tweetImageId != 0 }.tweetImageId,
-    contentDescription = null
+    contentDescription = null,
   )
 }

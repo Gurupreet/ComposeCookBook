@@ -27,7 +27,7 @@ fun MoreInfoSection() {
     text = "More Info",
     style = typography.h6,
     color = MaterialTheme.colorScheme.primary,
-    modifier = Modifier.padding(start = 8.dp, top = 16.dp)
+    modifier = Modifier.padding(start = 8.dp, top = 16.dp),
   )
   Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
   ListItem(
@@ -35,17 +35,17 @@ fun MoreInfoSection() {
       Icon(
         painter = painterResource(id = R.drawable.ic_github_square_brands),
         modifier = Modifier.size(24.dp),
-        contentDescription = null
+        contentDescription = null,
       )
     },
     text = {
       Text(
         text = "Compose Cookbook github",
-        style = typography.body1.copy(fontWeight = FontWeight.Bold)
+        style = typography.body1.copy(fontWeight = FontWeight.Bold),
       )
     },
     secondaryText = { Text(text = "Tap to checkout the repo for the project") },
-    modifier = Modifier.clickable(onClick = { launchSocialActivity(context, "repository") })
+    modifier = Modifier.clickable(onClick = { launchSocialActivity(context, "repository") }),
   )
   ListItem(
     icon = { Icon(imageVector = Icons.Rounded.Email, contentDescription = null) },
@@ -53,7 +53,7 @@ fun MoreInfoSection() {
       Text(text = "Contact Me", style = typography.body1.copy(fontWeight = FontWeight.Bold))
     },
     secondaryText = { Text(text = "Tap to write me about any concern or info at $email") },
-    modifier = Modifier.clickable(onClick = { launchSocialActivity(context, "repository") })
+    modifier = Modifier.clickable(onClick = { launchSocialActivity(context, "repository") }),
   )
   ListItem(
     icon = { Icon(imageVector = Icons.Rounded.Settings, contentDescription = null) },
@@ -61,6 +61,6 @@ fun MoreInfoSection() {
       Text(text = "Demo Settings", style = typography.body1.copy(fontWeight = FontWeight.Bold))
     },
     secondaryText = { Text(text = "Not included yet. coming soon..") },
-    modifier = Modifier.clickable(onClick = {})
+    modifier = Modifier.clickable(onClick = {}),
   )
 }
