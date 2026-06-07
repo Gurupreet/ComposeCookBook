@@ -40,7 +40,7 @@ import kotlin.random.Random
 private enum class DemoTabs(val value: String) {
   APPLE("Apple"),
   GOOGLE("Google"),
-  AMAZON("Amazon")
+  AMAZON("Amazon"),
 }
 
 @Composable
@@ -57,7 +57,7 @@ fun TabLayout() {
     // Use ScrollableTabRow for list of tabs
     TabRow(
       selectedTabIndex = selectedIndex.value,
-      backgroundColor = MaterialTheme.colorScheme.surface
+      backgroundColor = MaterialTheme.colorScheme.surface,
     ) {
       tabsName.forEachIndexed { index, title ->
         Tab(
@@ -75,7 +75,7 @@ fun TabLayout() {
               }
             }
           },
-          text = { Text(title, color = MaterialTheme.colorScheme.onPrimaryContainer) }
+          text = { Text(title, color = MaterialTheme.colorScheme.onPrimaryContainer) },
         )
       }
     }
@@ -106,7 +106,7 @@ fun ScrollableListOfTabs() {
       edgePadding = 16.dp,
       indicator = noIndicator,
       backgroundColor = Color.Transparent,
-      modifier = Modifier.fillMaxWidth().padding(8.dp)
+      modifier = Modifier.fillMaxWidth().padding(8.dp),
     ) {
       tweets.forEachIndexed { index, tweet ->
         Tab(selected = index == selectedIndex.value, onClick = { selectedIndex.value = index }) {
@@ -114,7 +114,7 @@ fun ScrollableListOfTabs() {
             text = tweet.author,
             imageId = tweet.authorImageId,
             selected = index == selectedIndex.value,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 16.dp)
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 16.dp),
           )
         }
       }
@@ -124,7 +124,7 @@ fun ScrollableListOfTabs() {
       isLiked = Random.nextBoolean(),
       onLikeClicked = {},
       onCommentsClicked = {},
-      onSendClicked = {}
+      onSendClicked = {},
     )
   }
 }
@@ -136,7 +136,7 @@ private fun CustomImageChip(
   text: String,
   imageId: Int,
   selected: Boolean,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Surface(
     color =
@@ -157,20 +157,20 @@ private fun CustomImageChip(
           when {
             selected -> MaterialTheme.colorScheme.primary
             else -> Color.LightGray
-          }
+          },
       ),
-    modifier = modifier
+    modifier = modifier,
   ) {
     Row(modifier = Modifier) {
       Image(
         painter = painterResource(imageId),
         contentDescription = null,
-        modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape)
+        modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape),
       )
       Text(
         text = text,
         style = MaterialTheme.typography.labelMedium,
-        modifier = Modifier.padding(end = 8.dp, top = 8.dp, bottom = 8.dp)
+        modifier = Modifier.padding(end = 8.dp, top = 8.dp, bottom = 8.dp),
       )
     }
   }

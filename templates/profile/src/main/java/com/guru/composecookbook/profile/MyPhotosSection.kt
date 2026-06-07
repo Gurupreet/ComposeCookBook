@@ -21,7 +21,7 @@ fun MyPhotosSection() {
     text = "My Photography",
     style = typography.h6,
     color = MaterialTheme.colorScheme.primary,
-    modifier = Modifier.padding(start = 8.dp, top = 16.dp)
+    modifier = Modifier.padding(start = 8.dp, top = 16.dp),
   )
   Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
   val imageModifier =
@@ -29,48 +29,48 @@ fun MyPhotosSection() {
 
   Row(
     modifier = Modifier.padding(start = 8.dp, top = 8.dp).fillMaxWidth(),
-    horizontalArrangement = Arrangement.SpaceBetween
+    horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     Image(
       painter = painterResource(id = R.drawable.food2),
       contentDescription = null,
       modifier = imageModifier,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Image(
       painter = painterResource(id = R.drawable.food3),
       modifier = imageModifier,
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Image(
       painter = painterResource(id = R.drawable.food6),
       modifier = imageModifier,
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
   }
   Row(
     modifier = Modifier.padding(start = 8.dp, top = 8.dp).fillMaxWidth(),
-    horizontalArrangement = Arrangement.SpaceBetween
+    horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     Image(
       painter = painterResource(id = R.drawable.food12),
       modifier = imageModifier,
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Image(
       painter = painterResource(id = R.drawable.food13),
       modifier = imageModifier,
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Image(
       painter = painterResource(id = R.drawable.food15),
       modifier = imageModifier,
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
   }
 }

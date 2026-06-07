@@ -29,7 +29,7 @@ import com.guru.composecookbook.ui.utils.TitleText
 enum class MyAnimationState {
   START,
   MID,
-  END
+  END,
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,22 +47,20 @@ fun AnimationScreen() {
               state = animateIcon,
               asset = Icons.Filled.PlayArrow,
               angle = 1440f,
-              duration = 3000
+              duration = 3000,
             )
           }
-        }
+        },
       )
     },
     content = { paddingValues ->
       AnimationScreenContent(modifier = Modifier.padding(paddingValues))
-    }
+    },
   )
 }
 
 @Composable
-fun AnimationScreenContent(
-  modifier: Modifier = Modifier,
-) {
+fun AnimationScreenContent(modifier: Modifier = Modifier) {
   LazyColumn(
     state = rememberLazyListState(),
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -77,7 +75,7 @@ fun AnimationScreenContent(
     item { AnimationsWithVisibilityApi() }
     item { AnimatableSuspendedAnimations() }
     item { TransitionAnimationsWithMultipleStates() }
-    item { ColorPicker(onColorSelected = { /*TODO*/}) }
+    item { ColorPicker(onColorSelected = { /*TODO*/ }) }
     item { Spacer(modifier = Modifier.padding(100.dp)) }
   }
 }

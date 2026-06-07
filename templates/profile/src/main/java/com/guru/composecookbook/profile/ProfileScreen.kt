@@ -85,16 +85,16 @@ fun TopAppBarView(scroll: Float) {
           painter = painterResource(id = R.drawable.p1),
           contentDescription = null,
           modifier =
-            Modifier.padding(vertical = 4.dp, horizontal = 8.dp).size(32.dp).clip(CircleShape)
+            Modifier.padding(vertical = 4.dp, horizontal = 8.dp).size(32.dp).clip(CircleShape),
         )
       },
       actions = {
         Icon(
           imageVector = Icons.Default.Settings,
           contentDescription = null,
-          modifier = Modifier.padding(horizontal = 8.dp)
+          modifier = Modifier.padding(horizontal = 8.dp),
         )
-      }
+      },
     )
   }
 }

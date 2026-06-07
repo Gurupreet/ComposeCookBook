@@ -46,10 +46,7 @@ import com.guru.composecookbook.ui.utils.toFloatNum
 
 /** Entry point. */
 @Composable
-fun RenderSettingsPage(
-  onApplyClick: () -> Unit,
-  modifier: Modifier = Modifier,
-) {
+fun RenderSettingsPage(onApplyClick: () -> Unit, modifier: Modifier = Modifier) {
   // Heading.
   Column(modifier = modifier.fillMaxHeight().fillMaxWidth()) {
 
@@ -75,7 +72,7 @@ fun RenderSettingsPage(
 fun BuildRadioSelectionPage(
   radioSelection: MutableState<String>,
   flingCopyStore: FlingStateStore,
-  onApplyClick: () -> Unit
+  onApplyClick: () -> Unit,
 ) {
   /*
    * Build EditTexts if the user is selecting the custom radio button.
@@ -94,14 +91,14 @@ fun DrawApplyButton(onApplyClick: () -> Unit, flingCopyStore: FlingStateStore) {
   Column(
     modifier = Modifier.fillMaxWidth().height(60.dp),
     verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     Button(
       onClick = {
         FlingStateStore.INSTANCE = flingCopyStore
         onApplyClick()
       },
-      modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
+      modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY),
     ) {
       Text(text = "Apply")
     }
@@ -125,14 +122,14 @@ fun BuildRadioButton(radioSelection: MutableState<String>, flingCopyStore: Fling
           }
         }
       radioSelection.value = selection
-    }
+    },
   )
 }
 
 @Composable
 fun BuildEditTexts(
   /* apply callback */ onApplyClick: () -> Unit,
-  /* Fling Behaviour clone */ flingCopyStore: FlingStateStore
+  /* Fling Behaviour clone */ flingCopyStore: FlingStateStore,
 ) {
   // Used to update the scrollFriction EditText
   val scrollFriction = remember { mutableStateOf(flingCopyStore.scrollFriction.toString()) }
@@ -180,14 +177,14 @@ fun BuildEditTexts(
   Row(
     horizontalArrangement = Arrangement.Center,
     verticalAlignment = Alignment.CenterVertically,
-    modifier = Modifier.height(100.dp).testTag(TestTags.HOME_FLING_SETTINGS_EDITABLE)
+    modifier = Modifier.height(100.dp).testTag(TestTags.HOME_FLING_SETTINGS_EDITABLE),
   ) {
     Column(modifier = Modifier.weight(1f).padding(10.dp, 0.dp, 0.dp, 10.dp).width(100.dp)) {
       Text(
         text = "Scroll Friction",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = scrollFriction.value,
@@ -196,7 +193,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -213,7 +210,7 @@ fun BuildEditTexts(
             }
           }
         },
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(100.dp),
       )
     }
     Column(modifier = Modifier.weight(1f).padding(10.dp, 0.dp, 0.dp, 10.dp).width(100.dp)) {
@@ -221,7 +218,7 @@ fun BuildEditTexts(
         text = "absVelocityThreshold",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = absVelocityThreshold.value,
@@ -230,7 +227,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -256,7 +253,7 @@ fun BuildEditTexts(
         text = "gravitationalForce",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = gravitationalForce.value,
@@ -265,7 +262,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -282,7 +279,7 @@ fun BuildEditTexts(
             }
           }
         },
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(100.dp),
       )
     }
   }
@@ -293,7 +290,7 @@ fun BuildEditTexts(
         text = "inchesPerMeter",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = inchesPerMeter.value,
@@ -302,7 +299,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -319,7 +316,7 @@ fun BuildEditTexts(
             }
           }
         },
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(100.dp),
       )
     }
     Column(modifier = Modifier.weight(1f).padding(10.dp, 0.dp, 0.dp, 10.dp).width(100.dp)) {
@@ -327,7 +324,7 @@ fun BuildEditTexts(
         text = "decelerationFriction",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = decelerationFriction.value,
@@ -336,7 +333,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -362,7 +359,7 @@ fun BuildEditTexts(
         text = "decelerationRate",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = decelerationRate.value,
@@ -371,7 +368,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -388,7 +385,7 @@ fun BuildEditTexts(
             }
           }
         },
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(100.dp),
       )
     }
   }
@@ -399,7 +396,7 @@ fun BuildEditTexts(
         text = "splineInflection",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = splineInflection.value,
@@ -408,7 +405,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -425,7 +422,7 @@ fun BuildEditTexts(
             }
           }
         },
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(100.dp),
       )
     }
     Column(modifier = Modifier.weight(1f).padding(10.dp, 0.dp, 0.dp, 10.dp).width(100.dp)) {
@@ -433,7 +430,7 @@ fun BuildEditTexts(
         text = "splineStartTension",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = splineStartTension.value,
@@ -442,7 +439,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -468,7 +465,7 @@ fun BuildEditTexts(
         text = "splineEndTension",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = splineEndTension.value,
@@ -477,7 +474,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -494,7 +491,7 @@ fun BuildEditTexts(
             }
           }
         },
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(100.dp),
       )
     }
   }
@@ -505,7 +502,7 @@ fun BuildEditTexts(
         text = "numberOfSplinePoints",
         maxLines = 1,
         style = typography.caption.copy(fontSize = 10.sp),
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
         value = numberOfSplinePoints.value,
@@ -514,7 +511,7 @@ fun BuildEditTexts(
         keyboardOptions =
           KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
           ),
         onValueChange = {
           when {
@@ -531,7 +528,7 @@ fun BuildEditTexts(
             }
           }
         },
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(100.dp),
       )
     }
   }
@@ -539,14 +536,14 @@ fun BuildEditTexts(
   Column(
     modifier = Modifier.fillMaxWidth().height(60.dp),
     verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     Button(
       onClick = {
         FlingStateStore.INSTANCE = flingCopyStore
         onApplyClick()
       },
-      modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY)
+      modifier = Modifier.size(200.dp, 60.dp).testTag(TestTags.HOME_FLING_SETTINGS_APPLY),
     ) {
       Text(text = "apply")
     }
@@ -559,7 +556,7 @@ fun radioGroup(
   radioOptions: List<String> = listOf(),
   title: String = "",
   flingCopyStore: FlingStateStore,
-  onItemSelection: (selection: String) -> Unit
+  onItemSelection: (selection: String) -> Unit,
 ): String {
   if (radioOptions.isNotEmpty()) {
     val selectedOption = remember { mutableStateOf(radioOptions[flingCopyStore.type.ordinal]) }
@@ -574,13 +571,8 @@ fun radioGroup(
       elevation = 8.dp,
       shape = RoundedCornerShape(8.dp),
     ) {
-      Row(
-        modifier = Modifier.padding(10.dp),
-      ) {
-        Text(
-          text = title,
-          modifier = Modifier.padding(5.dp),
-        )
+      Row(modifier = Modifier.padding(10.dp)) {
+        Text(text = title, modifier = Modifier.padding(5.dp))
 
         radioOptions.forEach { item ->
           Row(Modifier.padding(5.dp).weight(1f), verticalAlignment = Alignment.CenterVertically) {
@@ -588,7 +580,7 @@ fun radioGroup(
               selected = (item == selectedOption.value),
               onClick = { onOptionSelected(item) },
               colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colors.primary),
-              modifier = Modifier.testTag(item)
+              modifier = Modifier.testTag(item),
             )
 
             Text(text = item, modifier = Modifier.clickable { onOptionSelected(item) })

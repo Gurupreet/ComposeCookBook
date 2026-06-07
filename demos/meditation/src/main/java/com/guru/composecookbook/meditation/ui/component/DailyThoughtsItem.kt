@@ -38,38 +38,38 @@ fun DailyThoughtsItem(dailyThought: DailyThought) {
       Image(
         painter = painterResource(id = R.drawable.ic_daily_thoughts),
         contentDescription = "Daily Thoughts",
-        Modifier.fillMaxSize()
+        Modifier.fillMaxSize(),
       )
 
       Box(modifier = Modifier.padding(horizontal = 15.dp)) {
         Row(
           horizontalArrangement = Arrangement.SpaceBetween,
           verticalAlignment = Alignment.CenterVertically,
-          modifier = Modifier.fillMaxSize()
+          modifier = Modifier.fillMaxSize(),
         ) {
           Column() {
             Text(
               text = dailyThought.title,
               style = MaterialTheme.typography.h6,
               color = dailyThought.textColor,
-              fontSize = 18.sp
+              fontSize = 18.sp,
             )
             Text(
               text = dailyThought.description,
               color = dailyThought.textColor,
               style = MaterialTheme.typography.body1,
-              fontSize = 11.sp
+              fontSize = 11.sp,
             )
           }
           Box(
             contentAlignment = Alignment.Center,
-            modifier = Modifier.size(40.dp).clip(CircleShape).background(TextWhite).padding(10.dp)
+            modifier = Modifier.size(40.dp).clip(CircleShape).background(TextWhite).padding(10.dp),
           ) {
             Icon(
               painter = painterResource(id = R.drawable.ic_play),
               contentDescription = "Play",
               tint = DeepBlue,
-              modifier = Modifier.size(16.dp)
+              modifier = Modifier.size(16.dp),
             )
           }
         }

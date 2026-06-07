@@ -50,7 +50,7 @@ fun CascadeScreen() {
   Scaffold(
     modifier = Modifier.fillMaxSize(),
     backgroundColor = Color.Transparent,
-    scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState)
+    scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState),
   ) { paddingValues ->
     Column(
       modifier = Modifier.padding(paddingValues).fillMaxSize(),
@@ -65,7 +65,7 @@ fun CascadeScreen() {
           itemSelected = {
             channel.trySend(it)
             setIsOpen(false)
-          }
+          },
         )
         IconButton(onClick = { setIsOpen(true) }) {
           Icon(imageVector = Icons.TwoTone.MoreVert, contentDescription = null)

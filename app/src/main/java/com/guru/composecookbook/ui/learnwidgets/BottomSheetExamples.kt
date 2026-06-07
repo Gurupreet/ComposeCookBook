@@ -15,7 +15,7 @@ fun BottomSheetExamples() {
 
   Column(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp)
+    verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
     // Modal Bottom Sheet
     Button(onClick = { showModalBottomSheet = true }) { Text("Show Modal Bottom Sheet") }
@@ -23,23 +23,23 @@ fun BottomSheetExamples() {
     if (showModalBottomSheet) {
       ModalBottomSheet(
         onDismissRequest = { showModalBottomSheet = false },
-        dragHandle = { BottomSheetDefaults.DragHandle() }
+        dragHandle = { BottomSheetDefaults.DragHandle() },
       ) {
         Column(
           modifier = Modifier.fillMaxWidth().padding(16.dp),
-          verticalArrangement = Arrangement.spacedBy(16.dp)
+          verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
           ListItem(
             headlineContent = { Text("Share") },
-            leadingContent = { Icon(Icons.Default.Share, contentDescription = null) }
+            leadingContent = { Icon(Icons.Default.Share, contentDescription = null) },
           )
           ListItem(
             headlineContent = { Text("Copy link") },
-            leadingContent = { Icon(Icons.Default.Share, contentDescription = null) }
+            leadingContent = { Icon(Icons.Default.Share, contentDescription = null) },
           )
           ListItem(
             headlineContent = { Text("Edit") },
-            leadingContent = { Icon(Icons.Default.Share, contentDescription = null) }
+            leadingContent = { Icon(Icons.Default.Share, contentDescription = null) },
           )
         }
       }

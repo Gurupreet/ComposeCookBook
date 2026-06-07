@@ -66,7 +66,7 @@ fun ConstraintLayoutListItem() {
         Modifier.size(120.dp).clip(CircleShape).constrainAs(image) {
           linkTo(top = parent.top, topMargin = 16.dp, bottom = parent.bottom, bottomMargin = 16.dp)
           linkTo(start = parent.start, end = title.start)
-        }
+        },
     )
     Text(
       text = item.title,
@@ -75,7 +75,7 @@ fun ConstraintLayoutListItem() {
         Modifier.constrainAs(title) {
           linkTo(start = image.end, startMargin = 16.dp, end = button.start, endMargin = 16.dp)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Text(
       text = item.subtitle,
@@ -84,7 +84,7 @@ fun ConstraintLayoutListItem() {
         Modifier.constrainAs(subtitle) {
           linkTo(start = title.start, end = parent.end)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Spacer(
       Modifier.height(8.dp).constrainAs(space) {
@@ -98,7 +98,7 @@ fun ConstraintLayoutListItem() {
         Modifier.constrainAs(source) {
           start.linkTo(title.start)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     IconButton(
       onClick = {},
@@ -106,7 +106,7 @@ fun ConstraintLayoutListItem() {
         Modifier.constrainAs(button) {
           linkTo(top = title.top, bottom = title.bottom)
           linkTo(start = title.end, end = parent.end, endMargin = 8.dp)
-        }
+        },
     ) {
       Icon(Icons.Default.FavoriteBorder, contentDescription = null)
     }
@@ -126,12 +126,9 @@ fun ConstraintLayoutBigListItem() {
       contentScale = ContentScale.Crop,
       modifier =
         Modifier.height(200.dp).constrainAs(image) {
-          linkTo(
-            start = parent.start,
-            end = parent.end,
-          )
+          linkTo(start = parent.start, end = parent.end)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Text(
       text = item.title,
@@ -141,7 +138,7 @@ fun ConstraintLayoutBigListItem() {
           linkTo(start = parent.start, startMargin = 16.dp, end = parent.end, endMargin = 16.dp)
           linkTo(top = image.bottom, topMargin = 8.dp, bottom = subtitle.top)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Text(
       text = item.subtitle,
@@ -150,7 +147,7 @@ fun ConstraintLayoutBigListItem() {
         Modifier.constrainAs(subtitle) {
           linkTo(start = title.start, end = title.end)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Text(
       text = item.source,
@@ -160,7 +157,7 @@ fun ConstraintLayoutBigListItem() {
           start.linkTo(title.start)
           linkTo(top = subtitle.bottom, bottom = parent.bottom)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     IconButton(
       onClick = {},
@@ -168,7 +165,7 @@ fun ConstraintLayoutBigListItem() {
         Modifier.constrainAs(button) {
           top.linkTo(parent.top, margin = 8.dp)
           end.linkTo(parent.end, margin = 8.dp)
-        }
+        },
     ) {
       Icon(Icons.Default.FavoriteBorder, contentDescription = null)
     }

@@ -93,7 +93,7 @@ private fun ButtonsMotionExample() {
             } """
     ),
     progress = buttonAnimationProgress,
-    modifier = Modifier.fillMaxWidth().wrapContentHeight()
+    modifier = Modifier.fillMaxWidth().wrapContentHeight(),
   ) {
     Button(onClick = { animateButton = !animateButton }, modifier = Modifier.layoutId("button1")) {
       Text(text = "Button1")
@@ -166,27 +166,27 @@ private fun ImageMotionExample() {
             } """
     ),
     progress = imageAnimationProgress,
-    modifier = Modifier.fillMaxSize()
+    modifier = Modifier.fillMaxSize(),
   ) {
     Image(
       painter = painterResource(id = albums[0].imageId),
       contentDescription = "",
-      modifier = Modifier.layoutId("image1").clickable { animateImage = !animateImage }
+      modifier = Modifier.layoutId("image1").clickable { animateImage = !animateImage },
     )
     Image(
       painter = painterResource(id = albums[1].imageId),
       contentDescription = "",
-      modifier = Modifier.layoutId("image2").clickable { animateImage = !animateImage }
+      modifier = Modifier.layoutId("image2").clickable { animateImage = !animateImage },
     )
     Image(
       painter = painterResource(id = albums[2].imageId),
       contentDescription = "",
-      modifier = Modifier.layoutId("image3").clickable { animateImage = !animateImage }
+      modifier = Modifier.layoutId("image3").clickable { animateImage = !animateImage },
     )
     Image(
       painter = painterResource(id = albums[3].imageId),
       contentDescription = "",
-      modifier = Modifier.layoutId("image4").clickable { animateImage = !animateImage }
+      modifier = Modifier.layoutId("image4").clickable { animateImage = !animateImage },
     )
   }
 }

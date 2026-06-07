@@ -25,12 +25,12 @@ fun SearchSection() {
       Icon(
         imageVector = Icons.Default.Search,
         modifier = Modifier.padding(4.dp),
-        contentDescription = null
+        contentDescription = null,
       )
       Text(
         text = "Search",
         color = Color.DarkGray,
-        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
       )
     }
     IconButton(onClick = {}) {

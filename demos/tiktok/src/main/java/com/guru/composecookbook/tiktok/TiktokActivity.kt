@@ -52,11 +52,8 @@ fun TiktokAppContent() {
   Scaffold(
     bottomBar = { TikTokBottomNavigation(navController) },
     content = { paddingValues ->
-      TikTokBodyContent(
-        navController = navController,
-        modifier = Modifier.padding(paddingValues),
-      )
-    }
+      TikTokBodyContent(navController = navController, modifier = Modifier.padding(paddingValues))
+    },
   )
 }
 
@@ -101,10 +98,7 @@ fun BottomBarIcon(screen: TikTokScreen) {
 }
 
 @Composable
-fun TikTokBodyContent(
-  navController: NavHostController,
-  modifier: Modifier = Modifier,
-) {
+fun TikTokBodyContent(navController: NavHostController, modifier: Modifier = Modifier) {
   NavHost(
     navController = navController,
     startDestination = TikTokScreen.Home.route,
@@ -126,7 +120,7 @@ fun TikTokBodyContent(
 
 fun handleInteractionEvent(
   tiktokHomeInteractionEvents: TiktokHomeInteractionEvents,
-  navController: NavHostController
+  navController: NavHostController,
 ) {
   when (tiktokHomeInteractionEvents) {
     is TiktokHomeInteractionEvents.OpenProfile -> {

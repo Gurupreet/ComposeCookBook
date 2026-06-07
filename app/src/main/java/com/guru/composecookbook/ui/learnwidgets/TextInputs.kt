@@ -52,7 +52,7 @@ fun TextInputs() {
     placeholder = { Text(text = "12334444") },
     visualTransformation = PasswordVisualTransformation(),
     onValueChange = { text = it },
-    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
   )
 
   OutlinedTextField(
@@ -62,7 +62,7 @@ fun TextInputs() {
     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
     label = { Text(text = "Email address") },
     placeholder = { Text(text = "Your email") },
-    onValueChange = { text = it }
+    onValueChange = { text = it },
   )
   OutlinedTextField(
     value = text,
@@ -72,7 +72,7 @@ fun TextInputs() {
     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
     label = { Text(text = "Email address") },
     placeholder = { Text(text = "Your email") },
-    onValueChange = { text = it }
+    onValueChange = { text = it },
   )
 
   var numberText by remember { mutableStateOf(TextFieldValue("")) }
@@ -82,7 +82,7 @@ fun TextInputs() {
     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
     label = { Text(text = "Phone number") },
     placeholder = { Text(text = "88888888") },
-    onValueChange = { numberText = it }
+    onValueChange = { numberText = it },
   )
 }
 

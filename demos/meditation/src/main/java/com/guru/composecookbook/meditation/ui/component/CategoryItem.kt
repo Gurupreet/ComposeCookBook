@@ -29,7 +29,7 @@ import com.guru.composecookbook.meditation.ui.theme.TextWhite
 fun CategoryItem(category: Categories, selectedItem: Boolean, onItemClick: () -> Unit) {
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier.padding(end = 15.dp)
+    modifier = Modifier.padding(end = 15.dp),
   ) {
     Box(
       modifier =
@@ -41,7 +41,7 @@ fun CategoryItem(category: Categories, selectedItem: Boolean, onItemClick: () ->
         painter = painterResource(id = category.icon),
         contentDescription = "Category Icon",
         tint = TextWhite,
-        modifier = Modifier.padding(18.dp).size(20.dp)
+        modifier = Modifier.padding(18.dp).size(20.dp),
       )
     }
     spacerHeight5()
@@ -50,7 +50,7 @@ fun CategoryItem(category: Categories, selectedItem: Boolean, onItemClick: () ->
       style = MaterialTheme.typography.body1,
       fontSize = 12.sp,
       color = if (selectedItem) DeepBlue else Gray,
-      fontWeight = FontWeight.Bold
+      fontWeight = FontWeight.Bold,
     )
   }
 }

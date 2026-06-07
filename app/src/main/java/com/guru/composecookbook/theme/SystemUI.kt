@@ -46,7 +46,7 @@ class SystemUiController(private val window: Window) {
   fun setStatusBarColor(
     color: Color,
     darkIcons: Boolean = color.luminance() > 0.5f,
-    transformColorForLightContent: (Color) -> Color = BlackScrimmed
+    transformColorForLightContent: (Color) -> Color = BlackScrimmed,
   ) {
     val statusBarColor =
       when {
@@ -81,7 +81,7 @@ class SystemUiController(private val window: Window) {
   fun setNavigationBarColor(
     color: Color,
     darkIcons: Boolean = color.luminance() > 0.5f,
-    transformColorForLightContent: (Color) -> Color = BlackScrimmed
+    transformColorForLightContent: (Color) -> Color = BlackScrimmed,
   ) {
     val navBarColor =
       when {
@@ -111,7 +111,7 @@ class SystemUiController(private val window: Window) {
   fun setSystemBarsColor(
     color: Color,
     darkIcons: Boolean = color.luminance() > 0.5f,
-    transformColorForLightContent: (Color) -> Color = BlackScrimmed
+    transformColorForLightContent: (Color) -> Color = BlackScrimmed,
   ) {
     setStatusBarColor(color, darkIcons, transformColorForLightContent)
     setNavigationBarColor(color, darkIcons, transformColorForLightContent)

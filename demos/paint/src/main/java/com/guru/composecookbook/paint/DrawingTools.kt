@@ -39,7 +39,7 @@ import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 fun DrawingTools(
   drawColor: MutableState<Color>,
   drawBrush: MutableState<Float>,
-  usedColors: MutableSet<Color>
+  usedColors: MutableSet<Color>,
 ) {
   var showBrushes by remember { mutableStateOf(false) }
   val strokes = remember { (1..50 step 5).toList() }
@@ -58,7 +58,7 @@ fun DrawingTools(
           imageVector = Icons.Default.Bookmark,
           contentDescription = null,
           tint = it,
-          modifier = Modifier.padding(8.dp).clickable { drawColor.value = it }
+          modifier = Modifier.padding(8.dp).clickable { drawColor.value = it },
         )
       }
     }
@@ -82,10 +82,10 @@ fun DrawingTools(
                   border =
                     BorderStroke(
                       width = with(LocalDensity.current) { it.toDp() },
-                      color = Color.Gray
+                      color = Color.Gray,
                     ),
-                  shape = CircleShape
-                )
+                  shape = CircleShape,
+                ),
           ) {}
         }
       }

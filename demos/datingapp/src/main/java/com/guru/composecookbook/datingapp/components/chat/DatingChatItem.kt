@@ -23,25 +23,21 @@ fun DatingChatItem(album: Album) {
       ImageWithChatDot(
         imageId = album.imageId,
         modifier = Modifier.size(50.dp),
-        showDot = album.id % 3 == 0
+        showDot = album.id % 3 == 0,
       )
       Column(modifier = Modifier.weight(1f)) {
         Text(
           text = album.artist,
           modifier = Modifier.padding(horizontal = 8.dp),
-          style = typography.h6.copy(fontSize = 14.sp)
+          style = typography.h6.copy(fontSize = 14.sp),
         )
         Text(
           text = randomMessages[album.id - 1],
           modifier = Modifier.padding(horizontal = 8.dp),
-          style = typography.subtitle2
+          style = typography.subtitle2,
         )
       }
-      Text(
-        text = "${Random.nextInt(1, 60)} min",
-        color = purple,
-        style = typography.body2,
-      )
+      Text(text = "${Random.nextInt(1, 60)} min", color = purple, style = typography.body2)
     }
   }
 }
