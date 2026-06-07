@@ -31,6 +31,8 @@ sealed class HomeScreenItems {
 
   object MotionLayout : HomeScreenItems()
 
+  object AdaptiveUI : HomeScreenItems()
+
   val name: String
     get() =
       when (this) {
@@ -49,5 +51,6 @@ sealed class HomeScreenItems {
         AdvanceLists -> "Advance Lists"
         PullRefresh -> "Pull refresh demos"
         CustomFling -> "Custom Fling"
+        AdaptiveUI -> "Adaptive UI (Large screens)"
       }
 }

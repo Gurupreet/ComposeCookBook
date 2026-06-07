@@ -25,6 +25,12 @@ object Dependencies {
     const val composeMaterial = "androidx.compose.material:material"
     const val composeMaterial3 = "androidx.compose.material3:material3"
     const val composeMaterial3WindowSizeClass = "androidx.compose.material3:material3-window-size-class"
+    const val composeMaterial3Adaptive = "androidx.compose.material3.adaptive:adaptive"
+    const val composeMaterial3AdaptiveLayout = "androidx.compose.material3.adaptive:adaptive-layout"
+    const val composeMaterial3AdaptiveNavigation =
+        "androidx.compose.material3.adaptive:adaptive-navigation"
+    const val composeMaterial3AdaptiveNavigationSuite =
+        "androidx.compose.material3:material3-adaptive-navigation-suite"
     const val composeMaterialIconsExtended = "androidx.compose.material:material-icons-extended"
 
     // Runtime and State Management

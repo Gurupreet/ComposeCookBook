@@ -346,6 +346,7 @@ object DemoDataProvider {
       HomeScreenItems.TabLayout,
       HomeScreenItems.BottomSheets,
       HomeScreenItems.PullRefresh,
+      HomeScreenItems.AdaptiveUI,
     )
 
   const val longText =

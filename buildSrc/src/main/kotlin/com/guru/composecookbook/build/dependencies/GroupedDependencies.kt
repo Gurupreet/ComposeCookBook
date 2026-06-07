@@ -13,6 +13,10 @@ internal val composeOfficialDependencies = listOf(
     Dependencies.composeActivity,
     Dependencies.composeNavigation,
     Dependencies.composeRuntime,
+    Dependencies.composeMaterial3Adaptive,
+    Dependencies.composeMaterial3AdaptiveLayout,
+    Dependencies.composeMaterial3AdaptiveNavigation,
+    Dependencies.composeMaterial3AdaptiveNavigationSuite,
 )
 
 internal val composeThirdPartyDependencies = listOf(

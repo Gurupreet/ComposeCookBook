@@ -100,6 +100,10 @@ Please get **Android Studio Bumblebee latest Canary** [from here](https://develo
 - __Others:__ After the above steps feel free to deep dive into Tablayouts, carousel, Dialogs and BottomSheets
 
 
+### Adaptive layouts (large screens)
+- `NavigationSuiteScaffold` switches between bottom bar, rail and drawer based on window size
+- `ListDetailPaneScaffold` two-pane layout on tablets/foldables — find it under "Adaptive UI" on the home screen
+
 ## Coming Soon
 - Some of the features that will be available in coming weeks
   - Clean Architecture Sample with coroutines.
