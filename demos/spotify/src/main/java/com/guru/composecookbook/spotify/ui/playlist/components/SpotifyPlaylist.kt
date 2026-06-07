@@ -62,19 +62,19 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
             // Disclaimer: We should pass event top level and there should startActivity
             context.startActivity(SpotifyDetailActivity.newIntent(context, album))
           }
-        )
+        ),
   ) {
     Column {
       Image(
         painter = painterResource(album.imageId),
         contentScale = ContentScale.Crop,
         contentDescription = null,
-        modifier = Modifier.height(randomHeight)
+        modifier = Modifier.height(randomHeight),
       )
       Text(
         text = album.artist,
         modifier = Modifier.padding(8.dp),
-        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp)
+        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
       )
     }
   }

@@ -15,14 +15,14 @@ fun StoryList(profiles: List<Tweet>, onProfileClicked: () -> Unit, modifier: Mod
   LazyRow(
     modifier = modifier.padding(top = 8.dp, bottom = 8.dp),
     horizontalArrangement = Arrangement.spacedBy(8.dp),
-    contentPadding = PaddingValues(horizontal = 8.dp)
+    contentPadding = PaddingValues(horizontal = 8.dp),
   ) {
     items(profiles) {
       StoryItem(
         profileImageId = it.authorImageId,
         profileName = it.author,
         isMe = it.id == 1,
-        onClick = onProfileClicked
+        onClick = onProfileClicked,
       )
     }
   }

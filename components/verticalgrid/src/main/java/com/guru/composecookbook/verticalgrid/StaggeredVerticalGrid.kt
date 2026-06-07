@@ -27,7 +27,7 @@ import kotlin.math.ceil
 fun StaggeredVerticalGrid(
   modifier: Modifier = Modifier,
   maxColumnWidth: Dp,
-  content: @Composable () -> Unit
+  content: @Composable () -> Unit,
 ) {
   Layout(content = content, modifier = modifier) { measurables, constraints ->
     val placeableXY: MutableMap<Placeable, Pair<Int, Int>> = mutableMapOf()
@@ -53,7 +53,7 @@ fun StaggeredVerticalGrid(
       placeables.forEach { placeable ->
         placeable.placeRelative(
           x = placeableXY.getValue(placeable).first,
-          y = placeableXY.getValue(placeable).second
+          y = placeableXY.getValue(placeable).second,
         )
       }
     }

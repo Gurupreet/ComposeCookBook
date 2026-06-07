@@ -18,24 +18,12 @@ fun MultiStateAnimationCircleFilledCanvas(color: Color = green500, radiusEnd: Fl
     transition.animateFloat(
       initialValue = 10f,
       targetValue = radiusEnd,
-      animationSpec = infiniteRepeatable(tween(1200), RepeatMode.Reverse)
+      animationSpec = infiniteRepeatable(tween(1200), RepeatMode.Reverse),
     )
   Canvas(modifier = Modifier.padding(16.dp)) {
     val centerOffset = Offset(10f, 10f)
-    drawCircle(
-      color = color.copy(alpha = 0.8f),
-      radius = floatAnim,
-      center = centerOffset,
-    )
-    drawCircle(
-      color = color.copy(alpha = 0.4f),
-      radius = floatAnim / 2,
-      center = centerOffset,
-    )
-    drawCircle(
-      color = color.copy(alpha = 0.2f),
-      radius = floatAnim / 4,
-      center = centerOffset,
-    )
+    drawCircle(color = color.copy(alpha = 0.8f), radius = floatAnim, center = centerOffset)
+    drawCircle(color = color.copy(alpha = 0.4f), radius = floatAnim / 2, center = centerOffset)
+    drawCircle(color = color.copy(alpha = 0.2f), radius = floatAnim / 4, center = centerOffset)
   }
 }

@@ -35,7 +35,7 @@ fun TwitterHome(
   onLikesClick: () -> Unit,
   onShareClick: () -> Unit,
   onNewTweetClicked: () -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Scaffold(
     modifier = modifier,
@@ -46,7 +46,7 @@ fun TwitterHome(
             painter = painterResource(id = R.drawable.ic_twitter),
             contentDescription = null,
             tint = twitterColor,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
           )
         },
         backgroundColor = MaterialTheme.colorScheme.surface,
@@ -56,16 +56,16 @@ fun TwitterHome(
           ProfilePicture(
             profileImageId = R.drawable.p6,
             size = ProfilePictureSizes.small,
-            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
           )
         },
         actions = {
           Icon(
             imageVector = Icons.Default.StarBorder,
             contentDescription = null,
-            modifier = Modifier.padding(horizontal = 8.dp)
+            modifier = Modifier.padding(horizontal = 8.dp),
           )
-        }
+        },
       )
     },
     floatingActionButton = {
@@ -75,7 +75,7 @@ fun TwitterHome(
           Icon(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = null)
         },
         onClick = onNewTweetClicked,
-        containerColor = twitterColor
+        containerColor = twitterColor,
       )
     },
     content = { paddingValues ->
@@ -90,7 +90,7 @@ fun TwitterHome(
           )
         }
       }
-    }
+    },
   )
 }
 
@@ -99,10 +99,10 @@ fun TwitterHome(
 fun ShowTwitterScreen() {
   TwitterHome(
     tweets = DemoDataProvider.tweetList,
-    onMessagesClick = { /*TODO*/},
-    onRetweetClick = { /*TODO*/},
-    onLikesClick = { /*TODO*/},
-    onShareClick = { /*TODO*/},
-    onNewTweetClicked = { /*TODO*/}
+    onMessagesClick = { /*TODO*/ },
+    onRetweetClick = { /*TODO*/ },
+    onLikesClick = { /*TODO*/ },
+    onShareClick = { /*TODO*/ },
+    onNewTweetClicked = { /*TODO*/ },
   )
 }

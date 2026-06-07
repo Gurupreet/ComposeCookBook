@@ -32,7 +32,7 @@ fun VerticalFlingerListItem(item: Item, modifier: Modifier = Modifier) {
       painter = painterResource(item.imageId),
       modifier = imageModifier,
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Spacer(Modifier.height(16.dp))
     Text(text = item.title, style = typography.titleLarge)

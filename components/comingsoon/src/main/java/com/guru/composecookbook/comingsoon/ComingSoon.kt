@@ -23,13 +23,13 @@ fun ComingSoon() {
         text = "Coming Soon",
         style = typography.h5,
         modifier = Modifier.padding(12.dp).fillMaxWidth(),
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
       )
       Text(
         text = "work in progress",
         style = typography.subtitle2,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
       )
     }
   }

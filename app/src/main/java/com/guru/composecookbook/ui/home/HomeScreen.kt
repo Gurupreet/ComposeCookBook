@@ -60,6 +60,7 @@ import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.orange500
 import com.guru.composecookbook.theme.purple
+import com.guru.composecookbook.ui.home.adaptive.AdaptiveUIActivity
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
 import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
@@ -75,7 +76,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeScreen(
   appThemeState: MutableState<AppThemeState>,
-  chooseColorBottomModalState: ModalBottomSheetState
+  chooseColorBottomModalState: ModalBottomSheetState,
 ) {
   val showMenu = remember { mutableStateOf(false) }
   val coroutineScope = rememberCoroutineScope()
@@ -95,7 +96,7 @@ fun HomeScreen(
             Icon(
               painter = painterResource(id = R.drawable.ic_sleep),
               contentDescription =
-                stringResource(id = com.guru.composecookbook.R.string.cd_dark_theme)
+                stringResource(id = com.guru.composecookbook.R.string.cd_dark_theme),
             )
           }
           ChangeColorIconButton(coroutineScope, chooseColorBottomModalState, showMenu)
@@ -112,9 +113,9 @@ fun HomeScreen(
           // we are just passing to till HomeScreen.
           appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
           showMenu.value = false
-        }
+        },
       )
-    }
+    },
   )
 }
 
@@ -124,7 +125,7 @@ fun HomeScreen(
 private fun ChangeColorIconButton(
   coroutineScope: CoroutineScope,
   chooseColorBottomModalState: ModalBottomSheetState,
-  showMenu: MutableState<Boolean>
+  showMenu: MutableState<Boolean>,
 ) {
   val accessibilityManager =
     LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE)
@@ -142,7 +143,7 @@ private fun ChangeColorIconButton(
   ) {
     Icon(
       imageVector = Icons.Default.Palette,
-      contentDescription = stringResource(id = com.guru.composecookbook.R.string.cd_change_color)
+      contentDescription = stringResource(id = com.guru.composecookbook.R.string.cd_change_color),
     )
   }
 }
@@ -169,7 +170,7 @@ fun HomeScreenContent(
       LazyColumn(modifier = Modifier.testTag(TestTags.HOME_SCREEN_LIST)) {
         items(
           items = list,
-          itemContent = { HomeScreenListView(it, context, isDarkTheme, isWiderScreen) }
+          itemContent = { HomeScreenListView(it, context, isDarkTheme, isWiderScreen) },
         )
       }
     }
@@ -203,7 +204,7 @@ fun PalletMenu(modifier: Modifier, onPalletChange: (ColorPallet) -> Unit) {
 fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
   Row(
     modifier = Modifier.padding(8.dp).clickable(onClick = onPalletChange),
-    verticalAlignment = Alignment.CenterVertically
+    verticalAlignment = Alignment.CenterVertically,
   ) {
     Icon(imageVector = Icons.Filled.FiberManualRecord, tint = color, contentDescription = null)
     Text(text = name, modifier = Modifier.padding(8.dp))
@@ -215,7 +216,7 @@ fun HomeScreenListView(
   homeScreenItems: HomeScreenItems,
   context: Context,
   isDarkTheme: Boolean,
-  isWiderScreen: Boolean
+  isWiderScreen: Boolean,
 ) {
   if (isWiderScreen) {
     Material3Card(
@@ -226,23 +227,23 @@ fun HomeScreenListView(
       backgroundColor = MaterialTheme.colorScheme.primary,
       shape = RoundedCornerShape(8.dp),
       elevation = 4.dp,
-      contentColor = MaterialTheme.colorScheme.onPrimary
+      contentColor = MaterialTheme.colorScheme.onPrimary,
     ) {
       Text(
         text = homeScreenItems.name,
         modifier = Modifier.padding(8.dp),
-        style = MaterialTheme.typography.titleMedium
+        style = MaterialTheme.typography.titleMedium,
       )
     }
   } else {
     Button(
       onClick = { homeItemClicked(homeScreenItems, context, isDarkTheme) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp).testTag("button-${homeScreenItems.name}")
+      modifier = Modifier.fillMaxWidth().padding(16.dp).testTag("button-${homeScreenItems.name}"),
     ) {
       Text(
         text = homeScreenItems.name,
         modifier = Modifier.padding(8.dp),
-        style = MaterialTheme.typography.labelLarge
+        style = MaterialTheme.typography.labelLarge,
       )
     }
   }
@@ -256,7 +257,7 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
         ListViewActivity.newIntent(
           context,
           homeScreenItems.type.uppercase(Locale.getDefault()),
-          isDarkTheme
+          isDarkTheme,
         )
       }
       HomeScreenItems.Dialogs -> {
@@ -300,6 +301,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
       }
       HomeScreenItems.MotionLayout -> {
         DynamicUIActivity.newIntent(context, DynamicUiType.MOTIONLAYOUT.name, isDarkTheme)
+      }
+      HomeScreenItems.AdaptiveUI -> {
+        AdaptiveUIActivity.newIntent(context, isDarkTheme)
       }
     }
   context.startActivity(intent)

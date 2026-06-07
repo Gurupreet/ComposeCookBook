@@ -76,7 +76,7 @@ private val LightGreenColorPalette =
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
   )
 
 private val LightPurpleColorPalette =
@@ -89,7 +89,7 @@ private val LightPurpleColorPalette =
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
   )
 
 private val LightBlueColorPalette =
@@ -102,7 +102,7 @@ private val LightBlueColorPalette =
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
   )
 
 private val LightOrangeColorPalette =
@@ -115,7 +115,7 @@ private val LightOrangeColorPalette =
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onBackground = Color.Black,
-    onSurface = Color.Black
+    onSurface = Color.Black,
   )
 
 enum class ColorPallet {
@@ -123,7 +123,7 @@ enum class ColorPallet {
   GREEN,
   ORANGE,
   BLUE,
-  WALLPAPER
+  WALLPAPER,
 }
 
 @Composable

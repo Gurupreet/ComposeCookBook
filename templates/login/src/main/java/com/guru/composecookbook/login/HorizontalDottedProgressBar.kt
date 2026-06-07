@@ -24,21 +24,16 @@ fun HorizontalDottedProgressBar() {
       animationSpec =
         infiniteRepeatable(
           animation = tween(durationMillis = 700, easing = LinearEasing),
-          repeatMode = RepeatMode.Reverse
-        )
+          repeatMode = RepeatMode.Reverse,
+        ),
     )
 
   DrawCanvas(state = state, color = color)
 }
 
 @Composable
-fun DrawCanvas(
-  state: Float,
-  color: Color,
-) {
-  Canvas(
-    modifier = Modifier.fillMaxWidth().height(60.dp),
-  ) {
+fun DrawCanvas(state: Float, color: Color) {
+  Canvas(modifier = Modifier.fillMaxWidth().height(60.dp)) {
     val radius = (4.dp).value
     val padding = (6.dp).value
 
@@ -48,14 +43,14 @@ fun DrawCanvas(
           radius = radius * 2,
           brush = SolidColor(color),
           center =
-            Offset(x = this.center.x + radius * 2 * (i - 3) + padding * (i - 3), y = this.center.y)
+            Offset(x = this.center.x + radius * 2 * (i - 3) + padding * (i - 3), y = this.center.y),
         )
       } else {
         drawCircle(
           radius = radius,
           brush = SolidColor(color),
           center =
-            Offset(x = this.center.x + radius * 2 * (i - 3) + padding * (i - 3), y = this.center.y)
+            Offset(x = this.center.x + radius * 2 * (i - 3) + padding * (i - 3), y = this.center.y),
         )
       }
     }

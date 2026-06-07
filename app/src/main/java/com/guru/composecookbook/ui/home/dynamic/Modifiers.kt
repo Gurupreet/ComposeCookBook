@@ -41,7 +41,7 @@ fun HowToModifiers() {
     Text(
       text = "Order in modifier values matters",
       style = typography.h6,
-      modifier = Modifier.padding(8.dp)
+      modifier = Modifier.padding(8.dp),
     )
     DemoText("No Modifiers")
     DemoElementButton(modifier = Modifier)

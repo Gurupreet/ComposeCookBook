@@ -51,7 +51,7 @@ fun PinLockView() {
 
   Column(
     modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.primaryContainer),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     Spacer(modifier = Modifier.height(100.dp))
 
@@ -61,7 +61,7 @@ fun PinLockView() {
       text = "Enter pin to unlock",
       style = typography.h6,
       modifier = Modifier.padding(16.dp),
-      color = MaterialTheme.colorScheme.onPrimary
+      color = MaterialTheme.colorScheme.onPrimary,
     )
 
     Spacer(modifier = Modifier.height(100.dp))
@@ -71,7 +71,7 @@ fun PinLockView() {
         context = context,
         file = "success.json",
         iterations = 1,
-        modifier = Modifier.size(100.dp)
+        modifier = Modifier.size(100.dp),
       )
     } else {
       // PIN ICONS
@@ -81,7 +81,7 @@ fun PinLockView() {
             imageVector = if (inputPin.size > it) Icons.Default.Circle else Icons.Outlined.Circle,
             contentDescription = it.toString(),
             modifier = Modifier.padding(8.dp),
-            tint = MaterialTheme.colorScheme.onPrimary
+            tint = MaterialTheme.colorScheme.onPrimary,
           )
         }
       }
@@ -90,7 +90,7 @@ fun PinLockView() {
     Text(
       text = error.value,
       color = MaterialTheme.colorScheme.error,
-      modifier = Modifier.padding(16.dp)
+      modifier = Modifier.padding(16.dp),
     )
 
     Spacer(modifier = Modifier.height(50.dp))
@@ -122,19 +122,19 @@ fun PinLockView() {
     Row(
       modifier = Modifier.fillMaxWidth().padding(start = 10.dp),
       horizontalArrangement = Arrangement.SpaceEvenly,
-      verticalAlignment = Alignment.CenterVertically
+      verticalAlignment = Alignment.CenterVertically,
     ) {
       FaIcon(
         faIcon = FaIcons.Fingerprint,
         size = 36.dp,
         tint = MaterialTheme.colorScheme.onPrimary,
         modifier =
-          Modifier.clickable { context.startActivity(BiometricActivity.newIntent(context)) }
+          Modifier.clickable { context.startActivity(BiometricActivity.newIntent(context)) },
       )
 
       PinKeyItem(
         onClick = { inputPin.add(0) },
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
       ) {
         Text(text = "0", style = typography.h6, modifier = Modifier.padding(4.dp))
       }
@@ -147,7 +147,7 @@ fun PinLockView() {
             if (inputPin.isNotEmpty()) {
               inputPin.removeLast()
             }
-          }
+          },
       )
     }
   }
@@ -163,7 +163,7 @@ fun PinKeyItem(
   backgroundColor: Color = MaterialTheme.colorScheme.onPrimary,
   contentColor: Color = contentColorFor(backgroundColor),
   elevation: Dp = 4.dp,
-  content: @Composable () -> Unit
+  content: @Composable () -> Unit,
 ) {
   Surface(
     modifier = modifier.clickable { onClick.invoke() },
@@ -176,7 +176,7 @@ fun PinKeyItem(
       ProvideTextStyle(MaterialTheme.typography.displayMedium) {
         Box(
           modifier = Modifier.defaultMinSize(minWidth = 64.dp, minHeight = 64.dp),
-          contentAlignment = Alignment.Center
+          contentAlignment = Alignment.Center,
         ) {
           content()
         }

@@ -84,7 +84,7 @@ class FlingSettingsPageTest {
 
       Assert.assertEquals(
         FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
-        "native"
+        "native",
       )
     }
   }
@@ -103,7 +103,7 @@ class FlingSettingsPageTest {
 
       Assert.assertEquals(
         FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
-        "smooth"
+        "smooth",
       )
     }
   }
@@ -122,7 +122,7 @@ class FlingSettingsPageTest {
 
       Assert.assertEquals(
         FlingStateStore.INSTANCE.type.name.lowercase(Locale.getDefault()),
-        "custom"
+        "custom",
       )
     }
   }
