@@ -63,7 +63,8 @@ internal val coreAndroidUiDependencies = listOf(
 )
 
 internal val googleAndroidLibraries = listOf(
-    Dependencies.androidExoPlayer,
+    Dependencies.media3Exoplayer,
+    Dependencies.media3Ui,
     Dependencies.playServicesAds,
     Dependencies.playServicesMaps
     // Removed Dependencies.googleMaps as it's not available

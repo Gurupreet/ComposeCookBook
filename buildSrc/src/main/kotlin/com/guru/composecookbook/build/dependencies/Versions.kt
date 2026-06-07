@@ -23,7 +23,7 @@ internal object Versions {
     const val playServicesAds = "22.5.0"  // Latest stable
     const val googleMaps = "2.0.1"  // Latest Google Maps version
     const val playServicesMaps = "18.2.0"  // Latest stable
-    const val exoplayer = "2.19.1"  // Latest stable
+    const val media3 = "1.5.1"  // AndroidX Media3 (ExoPlayer successor)
     const val loggingInterceptor = "4.12.0"  // Latest stable
     const val retrofit = "2.9.0"  // Latest stable
     const val gson = "2.10.1"  // Latest stable
