@@ -17,7 +17,7 @@ fun InterestsSection() {
     text = "My Interests",
     style = typography.h6,
     color = MaterialTheme.colorScheme.primary,
-    modifier = Modifier.padding(start = 8.dp, top = 16.dp)
+    modifier = Modifier.padding(start = 8.dp, top = 16.dp),
   )
   Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
   Row(modifier = Modifier.padding(start = 8.dp, top = 8.dp)) {

@@ -26,7 +26,7 @@ fun TextDemo() {
     Text(
       text = "Medium Bold",
       style = typography.body1.copy(fontWeight = FontWeight.Medium),
-      modifier = textModifier
+      modifier = textModifier,
     )
     Text(text = "Bold", style = typography.body1.copy(fontWeight = FontWeight.Bold))
     Text(text = "Extra Bold", style = typography.body1.copy(fontWeight = FontWeight.Bold))
@@ -38,17 +38,17 @@ fun TextDemo() {
     Text(
       text = "Cursive",
       style = typography.body1.copy(fontFamily = FontFamily.Cursive),
-      modifier = textModifier
+      modifier = textModifier,
     )
     Text(
       text = "SansSerif",
       style = typography.body1.copy(fontFamily = FontFamily.SansSerif),
-      modifier = textModifier
+      modifier = textModifier,
     )
     Text(
       text = "Monospace",
       style = typography.body1.copy(fontFamily = FontFamily.Monospace),
-      modifier = textModifier
+      modifier = textModifier,
     )
   }
 
@@ -61,7 +61,7 @@ fun TextDemo() {
       text = "Monospace",
       textDecoration =
         TextDecoration.combine(listOf(TextDecoration.Underline, TextDecoration.LineThrough)),
-      modifier = textModifier
+      modifier = textModifier,
     )
   }
 
@@ -70,13 +70,13 @@ fun TextDemo() {
     text = "Ellipsis: This text is supposed to ellipsis with max 1 line allowed for this",
     overflow = TextOverflow.Ellipsis,
     modifier = textModifier,
-    maxLines = 1
+    maxLines = 1,
   )
   Text(
     text = "Clip: This text is supposed to clip with max 1 line allowed for this",
     overflow = TextOverflow.Clip,
     modifier = textModifier,
-    maxLines = 1
+    maxLines = 1,
   )
 }
 

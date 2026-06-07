@@ -36,19 +36,19 @@ fun SongListScrollingSection() {
 fun DownloadedRow() {
   Row(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    horizontalArrangement = Arrangement.SpaceBetween
+    horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     Text(
       text = "Download",
       style = typography.h6.copy(fontSize = 14.sp),
-      color = MaterialTheme.colors.onSurface
+      color = MaterialTheme.colors.onSurface,
     )
     var switched by remember { mutableStateOf(true) }
     Switch(
       checked = switched,
       colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.primary),
       modifier = Modifier.padding(8.dp),
-      onCheckedChange = { switched = it }
+      onCheckedChange = { switched = it },
     )
   }
 }
@@ -65,7 +65,7 @@ fun ShuffleButton() {
       text = "SHUFFLE PLAY",
       style = typography.h6.copy(fontSize = 14.sp),
       color = MaterialTheme.colors.onSurface,
-      modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+      modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
     )
   }
 }

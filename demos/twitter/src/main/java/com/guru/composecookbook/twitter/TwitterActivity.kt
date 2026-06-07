@@ -23,11 +23,11 @@ class TwitterActivity : ComponentActivity() {
         val tweets = remember { DemoDataProvider.tweetList }
         TwitterHome(
           tweets = tweets,
-          onMessagesClick = { /*TODO*/},
-          onRetweetClick = { /*TODO*/},
-          onLikesClick = { /*TODO*/},
-          onShareClick = { /*TODO*/},
-          onNewTweetClicked = { /*TODO*/}
+          onMessagesClick = { /*TODO*/ },
+          onRetweetClick = { /*TODO*/ },
+          onLikesClick = { /*TODO*/ },
+          onShareClick = { /*TODO*/ },
+          onNewTweetClicked = { /*TODO*/ },
         )
       }
     }
@@ -45,11 +45,11 @@ fun DefaultPreview4() {
   ComposeCookBookMaterial3Theme {
     TwitterHome(
       tweets = DemoDataProvider.tweetList,
-      onMessagesClick = { /*TODO*/},
-      onRetweetClick = { /*TODO*/},
-      onLikesClick = { /*TODO*/},
-      onShareClick = { /*TODO*/},
-      onNewTweetClicked = { /*TODO*/}
+      onMessagesClick = { /*TODO*/ },
+      onRetweetClick = { /*TODO*/ },
+      onLikesClick = { /*TODO*/ },
+      onShareClick = { /*TODO*/ },
+      onNewTweetClicked = { /*TODO*/ },
     )
   }
 }

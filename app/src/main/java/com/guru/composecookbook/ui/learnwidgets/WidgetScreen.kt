@@ -31,24 +31,22 @@ fun WidgetScreen(onBackPressed: () -> Unit = {}) {
         colors =
           TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-          )
+            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+          ),
       )
-    }
+    },
   ) { paddingValues ->
     WidgetScreenContent(modifier = Modifier.padding(paddingValues))
   }
 }
 
 @Composable
-fun WidgetScreenContent(
-  modifier: Modifier = Modifier,
-) {
+fun WidgetScreenContent(modifier: Modifier = Modifier) {
   LazyColumn(
     state = rememberLazyListState(),
     modifier = modifier,
     contentPadding = PaddingValues(16.dp),
-    verticalArrangement = Arrangement.spacedBy(24.dp)
+    verticalArrangement = Arrangement.spacedBy(24.dp),
   ) {
     item { ComponentSection("Buttons", content = { AllButtons() }) }
     item { ComponentSection("Inputs", content = { TextInputs() }) }
@@ -75,14 +73,14 @@ fun ComponentSection(title: String, content: @Composable () -> Unit) {
   Surface(
     modifier = Modifier.fillMaxWidth(),
     tonalElevation = 1.dp,
-    shape = MaterialTheme.shapes.medium
+    shape = MaterialTheme.shapes.medium,
   ) {
     ElevatedCard(modifier = Modifier.fillMaxWidth()) {
       Text(
         text = title,
         style = MaterialTheme.typography.titleLarge,
         fontWeight = FontWeight.Bold,
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(16.dp),
       )
       content()
     }

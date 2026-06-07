@@ -22,7 +22,7 @@ fun PostList(
         isLiked = Random.nextBoolean(),
         onLikeClicked = onLikeClicked,
         onCommentsClicked = onCommentsClicked,
-        onSendClicked = onSendClicked
+        onSendClicked = onSendClicked,
       )
     }
   }

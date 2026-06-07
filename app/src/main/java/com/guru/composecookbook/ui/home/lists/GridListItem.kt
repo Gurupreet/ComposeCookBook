@@ -33,27 +33,27 @@ fun GridListItem(item: Item, modifier: Modifier = Modifier) {
         .width(190.dp)
         .height(220.dp)
         .padding(8.dp)
-        .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
+        .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}"),
   ) {
     Column(modifier = Modifier.clickable(onClick = {})) {
       Image(
         painter = painterResource(item.imageId),
         contentScale = ContentScale.Crop,
         contentDescription = null,
-        modifier = Modifier.height(80.dp).fillMaxWidth()
+        modifier = Modifier.height(80.dp).fillMaxWidth(),
       )
       Column(modifier = Modifier.padding(8.dp)) {
         Text(
           text = item.title,
           style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp),
           maxLines = 4,
-          overflow = TextOverflow.Ellipsis
+          overflow = TextOverflow.Ellipsis,
         )
         Text(
           text = item.subtitle,
           maxLines = 3,
           overflow = TextOverflow.Ellipsis,
-          style = MaterialTheme.typography.bodyMedium
+          style = MaterialTheme.typography.bodyMedium,
         )
         Text(text = item.source, style = MaterialTheme.typography.titleSmall)
       }

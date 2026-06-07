@@ -29,7 +29,7 @@ fun MessageDetailScreen(navController: NavHostController) {
           IconButton(onClick = { navController.popBackStack() }) {
             Icon(
               imageVector = Icons.Outlined.ArrowBack,
-              contentDescription = stringResource(id = R.string.cd_back)
+              contentDescription = stringResource(id = R.string.cd_back),
             )
           }
         },
@@ -37,7 +37,7 @@ fun MessageDetailScreen(navController: NavHostController) {
           IconButton(onClick = {}) {
             Icon(
               imageVector = Icons.Outlined.Archive,
-              contentDescription = stringResource(id = R.string.cd_back)
+              contentDescription = stringResource(id = R.string.cd_back),
             )
           }
           IconButton(onClick = {}) {
@@ -46,13 +46,9 @@ fun MessageDetailScreen(navController: NavHostController) {
           IconButton(onClick = {}) {
             Icon(imageVector = Icons.Outlined.Mail, contentDescription = null)
           }
-        }
+        },
       )
     },
-    content = { paddingValues ->
-      MessageDetailBody(
-        modifier = Modifier.padding(paddingValues),
-      )
-    }
+    content = { paddingValues -> MessageDetailBody(modifier = Modifier.padding(paddingValues)) },
   )
 }

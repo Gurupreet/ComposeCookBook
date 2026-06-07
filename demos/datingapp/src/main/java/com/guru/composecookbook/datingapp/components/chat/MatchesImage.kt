@@ -42,11 +42,11 @@ fun MatchesImage(imageId: Int) {
                 Brush.linearGradient(
                   colors = instagramGradient,
                   start = Offset(0f, 0f),
-                  end = Offset(100f, 100f)
-                )
-            )
+                  end = Offset(100f, 100f),
+                ),
+            ),
         ),
-    contentDescription = null
+    contentDescription = null,
   )
 }
 
@@ -58,13 +58,13 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
         painter = painterResource(id = imageId),
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = modifier.clip(CircleShape)
+        modifier = modifier.clip(CircleShape),
       )
       Icon(
         imageVector = Icons.Default.Lens,
         contentDescription = null,
         tint = green500,
-        modifier = Modifier.size(14.dp).align(Alignment.BottomEnd)
+        modifier = Modifier.size(14.dp).align(Alignment.BottomEnd),
       )
     }
   } else {
@@ -72,7 +72,7 @@ fun ImageWithChatDot(imageId: Int, modifier: Modifier, showDot: Boolean = true) 
       painter = painterResource(id = imageId),
       contentDescription = null,
       contentScale = ContentScale.Crop,
-      modifier = modifier.clip(CircleShape)
+      modifier = modifier.clip(CircleShape),
     )
   }
 }

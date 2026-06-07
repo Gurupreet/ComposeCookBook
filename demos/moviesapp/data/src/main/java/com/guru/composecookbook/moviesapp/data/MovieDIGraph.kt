@@ -17,7 +17,7 @@ object MovieDIGraph {
     return MovieRepositoryImpl(
       movieApi = movieApi,
       moviesDao = db.moviesDao(),
-      genreDao = db.genreDao()
+      genreDao = db.genreDao(),
     )
   }
 
