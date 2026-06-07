@@ -38,7 +38,7 @@ enum class TimerAnimation {
   SLIDE_TOP,
   SLIDE_BOTTOM,
   BOUNCE_TOP,
-  BOUNCE_BOTTOM
+  BOUNCE_BOTTOM,
 }
 
 @ExperimentalAnimationApi
@@ -57,7 +57,7 @@ fun TimerViewAnimation(
   timeDurationSlide: Int = 500,
   timeSpace: String = " : ",
   icon: Painter? = null,
-  iconColor: ColorFilter? = null
+  iconColor: ColorFilter? = null,
 ) {
   Card(
     backgroundColor = backgroundColor,
@@ -69,14 +69,14 @@ fun TimerViewAnimation(
       modifier =
         Modifier.padding(start = 8.dp, end = 8.dp).padding(all = backgroundPadding).alpha(0f),
       verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.Center
+      horizontalArrangement = Arrangement.Center,
     ) {
       icon?.let {
         Image(
           modifier = Modifier.padding(end = 4.dp),
           painter = it,
           colorFilter = iconColor ?: ColorFilter.tint(textColor),
-          contentDescription = null
+          contentDescription = null,
         )
       }
 
@@ -86,21 +86,21 @@ fun TimerViewAnimation(
         textAlign = TextAlign.Center,
         color = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
     }
 
     Row(
       modifier = Modifier.padding(start = 8.dp, end = 8.dp).padding(all = backgroundPadding),
       verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.Center
+      horizontalArrangement = Arrangement.Center,
     ) {
       icon?.let {
         Image(
           modifier = Modifier.padding(end = 4.dp),
           painter = it,
           colorFilter = iconColor ?: ColorFilter.tint(textColor),
-          contentDescription = null
+          contentDescription = null,
         )
       }
 
@@ -111,7 +111,7 @@ fun TimerViewAnimation(
         timeDurationSlide = timeDurationSlide,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
 
       TimeViewAnimationContent(
@@ -121,7 +121,7 @@ fun TimerViewAnimation(
         timeDurationSlide = timeDurationSlide,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
 
       TimeViewSeparator(
@@ -129,7 +129,7 @@ fun TimerViewAnimation(
         textStyle = textStyle,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
 
       TimeViewAnimationContent(
@@ -139,7 +139,7 @@ fun TimerViewAnimation(
         timeDurationSlide = timeDurationSlide,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
 
       TimeViewAnimationContent(
@@ -149,7 +149,7 @@ fun TimerViewAnimation(
         timeDurationSlide = timeDurationSlide,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
 
       TimeViewSeparator(
@@ -157,7 +157,7 @@ fun TimerViewAnimation(
         textStyle = textStyle,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
 
       TimeViewAnimationContent(
@@ -167,7 +167,7 @@ fun TimerViewAnimation(
         timeDurationSlide = timeDurationSlide,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
 
       TimeViewAnimationContent(
@@ -177,7 +177,7 @@ fun TimerViewAnimation(
         timeDurationSlide = timeDurationSlide,
         textColor = textColor,
         fontFamily = fontFamily,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
       )
     }
   }
@@ -220,14 +220,14 @@ fun TimeViewAnimationContent(
   timerAnimation: TimerAnimation,
   timeDurationSlide: Int,
   fontFamily: FontFamily,
-  fontWeight: FontWeight
+  fontWeight: FontWeight,
 ) {
   AnimatedContent(
     targetState = timeContent,
     transitionSpec = {
       addAnimation(timeDurationSlide = timeDurationSlide, timeAnimation = timerAnimation)
         .using(SizeTransform(clip = true))
-    }
+    },
   ) { targetCount ->
     Text(
       text = targetCount,
@@ -235,7 +235,7 @@ fun TimeViewAnimationContent(
       textAlign = TextAlign.Center,
       color = textColor,
       fontFamily = fontFamily,
-      fontWeight = fontWeight
+      fontWeight = fontWeight,
     )
   }
 }
@@ -247,7 +247,7 @@ fun TimeViewSeparator(
   textStyle: TextStyle,
   textColor: Color,
   fontFamily: FontFamily,
-  fontWeight: FontWeight
+  fontWeight: FontWeight,
 ) {
   Text(
     text = timeSpace,
@@ -255,6 +255,6 @@ fun TimeViewSeparator(
     textAlign = TextAlign.Center,
     color = textColor,
     fontFamily = fontFamily,
-    fontWeight = fontWeight
+    fontWeight = fontWeight,
   )
 }

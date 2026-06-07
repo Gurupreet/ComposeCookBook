@@ -57,7 +57,7 @@ fun DynamicSection(
   type: String,
   viewModel: TrendingViewModel,
   showLoading: MutableState<Boolean>,
-  moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit
+  moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit,
 ) {
   val movies by
     when (type) {

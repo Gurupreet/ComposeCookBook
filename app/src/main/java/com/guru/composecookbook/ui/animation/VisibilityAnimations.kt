@@ -103,7 +103,7 @@ fun AnimateVisibilityWithDifferentChildAnimations() {
           modifier =
             Modifier.size(80.dp)
               .padding(8.dp)
-              .animateEnterExit(enter = slideInHorizontally { it }, exit = ExitTransition.None)
+              .animateEnterExit(enter = slideInHorizontally { it }, exit = ExitTransition.None),
         ) {}
       }
     }
@@ -127,7 +127,7 @@ fun VisibilityAnimationWithShrinkExpand() {
       visibility,
       modifier = Modifier.align(Alignment.CenterVertically),
       enter = expandIn(expandFrom = Alignment.Center) { it -> it * 4 },
-      exit = shrinkOut(shrinkTowards = Alignment.Center) { it -> it }
+      exit = shrinkOut(shrinkTowards = Alignment.Center) { it -> it },
     ) {
       Button(modifier = Modifier.padding(start = 12.dp), onClick = { visibility = !visibility }) {
         Text(text = "Shrink/Expand")
@@ -152,12 +152,7 @@ fun AnimateVisibilityWithSlideInOutSample() {
       visibility,
       enter =
         slideIn(tween(easing = LinearOutSlowInEasing, durationMillis = 500)) { IntOffset(0, 120) },
-      exit =
-        slideOut(
-          tween(500, easing = FastOutSlowInEasing),
-        ) {
-          IntOffset(0, 120)
-        }
+      exit = slideOut(tween(500, easing = FastOutSlowInEasing)) { IntOffset(0, 120) },
     ) {
       // Content that needs to appear/disappear goes here:
       Text("Tap for Sliding animation")

@@ -60,7 +60,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         Modifier.size(50.dp).clip(CircleShape).constrainAs(image) {
           linkTo(start = parent.start, end = title.start)
           top.linkTo(title.top)
-        }
+        },
     )
     Text(
       text = item.author,
@@ -69,7 +69,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         Modifier.constrainAs(title) {
           start.linkTo(image.end, 16.dp)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Text(
       text = "5 sept",
@@ -78,7 +78,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         Modifier.constrainAs(time) {
           end.linkTo(parent.end, margin = 8.dp)
           top.linkTo(title.top)
-        }
+        },
     )
     Text(
       text = item.source,
@@ -87,7 +87,7 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
         Modifier.constrainAs(subtitle) {
           start.linkTo(image.end, 16.dp)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Text(
       text = item.text,
@@ -98,23 +98,20 @@ fun GmailListItem(item: Tweet, clickListener: (Tweet) -> Unit) {
             linkTo(start = title.start, end = starButton.start)
             width = Dimension.fillToConstraints
           }
-          .alpha(0.6f)
+          .alpha(0.6f),
     )
     IconButton(
       onClick = { stared = !stared },
       modifier =
         Modifier.constrainAs(starButton) {
-          linkTo(
-            top = source.top,
-            bottom = source.bottom,
-          )
+          linkTo(top = source.top, bottom = source.bottom)
           linkTo(start = source.end, end = parent.end)
-        }
+        },
     ) {
       Icon(
         imageVector = if (stared) Icons.Default.Star else Icons.Default.StarBorder,
         contentDescription = null,
-        tint = if (stared) Color.Yellow else MaterialTheme.colorScheme.onSurface
+        tint = if (stared) Color.Yellow else MaterialTheme.colorScheme.onSurface,
       )
     }
   }
@@ -127,14 +124,14 @@ fun GmailListActionItems(modifier: Modifier) {
       Icon(
         imageVector = Icons.Default.Delete,
         tint = MaterialTheme.colorScheme.onPrimary,
-        contentDescription = null
+        contentDescription = null,
       )
     }
     IconButton(onClick = {}) {
       Icon(
         imageVector = Icons.Default.AccountBox,
         tint = MaterialTheme.colorScheme.onPrimary,
-        contentDescription = null
+        contentDescription = null,
       )
     }
   }

@@ -71,7 +71,7 @@ fun CryptoDetailScreen(crypto: Crypto, onBack: () -> Unit) {
   Scaffold(
     bottomBar = { CryptoBottomBar(onBack) },
     floatingActionButton = { CryptoFloatingActionButton() },
-    floatingActionButtonPosition = FabPosition.Center
+    floatingActionButtonPosition = FabPosition.Center,
   ) { paddingValues ->
     Box(modifier = Modifier.padding(paddingValues).horizontalGradientBackground(surfaceGradient)) {
       val scrollState = rememberScrollState(0)
@@ -104,19 +104,19 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
       Image(
         painter = rememberImagePainter(data = crypto.image),
         modifier = Modifier.size(28.dp),
-        contentDescription = null
+        contentDescription = null,
       )
     }
 
     Text(
       text = "${crypto.price.roundToTwoDecimals()} USD",
-      style = typography.h6.copy(fontWeight = FontWeight.ExtraBold)
+      style = typography.h6.copy(fontWeight = FontWeight.ExtraBold),
     )
     Text(
       text =
         "${crypto.dailyChange.roundToTwoDecimals()} " +
           " (${crypto.dailyChangePercentage.roundToTwoDecimals()}%) Today",
-      color = if (crypto.dailyChange > 0) green700 else Color.Red
+      color = if (crypto.dailyChange > 0) green700 else Color.Red,
     )
   }
 }
@@ -126,20 +126,20 @@ fun CryptoCharts(crypto: Crypto) {
   Card(
     modifier = Modifier.padding(vertical = 8.dp),
     elevation = 8.dp,
-    shape = RoundedCornerShape(4.dp)
+    shape = RoundedCornerShape(4.dp),
   ) {
     Column {
       LineChart(
         modifier = Modifier.fillMaxWidth().height(100.dp),
         yAxisValues = crypto.chartData,
-        lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors
+        lineColors = if (crypto.dailyChange > 0) gradientGreenColors else gradientRedColors,
       )
       Spacer(modifier = Modifier.height(10.dp))
       BarCharts(
         modifier = Modifier.fillMaxWidth().height(120.dp),
         yAxisValues = crypto.chartData,
         barColors = gradientBluePurple,
-        barWidth = 2f
+        barWidth = 2f,
       )
     }
   }
@@ -151,7 +151,7 @@ fun CryptoBottomBar(onBack: () -> Unit) {
     IconButton(onClick = onBack) {
       Icon(
         imageVector = Icons.Default.ArrowBack,
-        contentDescription = stringResource(id = R.string.cd_back)
+        contentDescription = stringResource(id = R.string.cd_back),
       )
     }
     IconButton(onClick = {}) { Icon(imageVector = Icons.Default.MoreVert, contentDescription = "") }
@@ -166,7 +166,7 @@ fun CryptoFloatingActionButton() {
     text = { Text(text = "Trade") },
     onClick = { pressed = !pressed },
     containerColor = MaterialTheme.colorScheme.primary,
-    modifier = Modifier.width(animateDpAsState(if (pressed) 200.dp else 120.dp).value)
+    modifier = Modifier.width(animateDpAsState(if (pressed) 200.dp else 120.dp).value),
   )
 }
 
@@ -176,16 +176,14 @@ fun StatisticsSection(crypto: Crypto) {
   Text(
     text = "Statistics",
     modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
-    style = typography.h5
+    style = typography.h5,
   )
   Card(
     modifier = Modifier.padding(vertical = 8.dp),
     elevation = 8.dp,
-    shape = RoundedCornerShape(4.dp)
+    shape = RoundedCornerShape(4.dp),
   ) {
-    Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-    ) {
+    Row(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
       Column(modifier = Modifier.weight(1f)) {
         Text(text = "24 High", style = typography.subtitle2)
         Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
@@ -215,7 +213,7 @@ fun FavSection() {
     Text(
       text = "Favorite Cryptos",
       modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
-      style = typography.h5
+      style = typography.h5,
     )
     LazyRow { items(items = favCryptos, itemContent = { FavoriteCryptoCard(crypto = it) }) }
   }

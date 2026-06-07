@@ -14,6 +14,7 @@ import com.guru.composecookbook.moviesapp.data.db.models.Movie
 @TypeConverters(ListTypeConverter::class)
 abstract class MoviesDatabase : RoomDatabase() {
   abstract fun moviesDao(): MoviesDao
+
   abstract fun genreDao(): GenreDao
 
   companion object {
@@ -30,7 +31,7 @@ abstract class MoviesDatabase : RoomDatabase() {
       Room.databaseBuilder(
           context.applicationContext,
           MoviesDatabase::class.java,
-          "movie_database.db"
+          "movie_database.db",
         )
         .build()
   }

@@ -52,12 +52,12 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
         Text(
           text = "Sudip Kafle and others share theier thougs on Linkedin",
           fontSize = 20.sp,
-          modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp).weight(1f)
+          modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp).weight(1f),
         )
         IconButton(onClick = { isFavourite.value = !isFavourite.value }) {
           Icon(
             imageVector = if (isFavourite.value) Icons.Outlined.Star else Icons.Outlined.StarBorder,
-            contentDescription = ""
+            contentDescription = "",
           )
         }
       }
@@ -68,7 +68,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
         Image(
           painter = painterResource(id = R.drawable.p3),
           contentDescription = null,
-          modifier = Modifier.padding(horizontal = 8.dp).size(32.dp).clip(CircleShape)
+          modifier = Modifier.padding(horizontal = 8.dp).size(32.dp).clip(CircleShape),
         )
 
         Column(
@@ -80,7 +80,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
               text = "26 Oct",
               fontSize = 12.sp,
               textAlign = TextAlign.Center,
-              modifier = Modifier.padding(start = 4.dp).align(Alignment.CenterVertically)
+              modifier = Modifier.padding(start = 4.dp).align(Alignment.CenterVertically),
             )
           }
 
@@ -135,7 +135,7 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
         factory = {
           WebView(it).apply { loadDataWithBaseURL(null, sampleMessage, "text/html", "UTF-8", null) }
         },
-        modifier = Modifier.wrapContentHeight()
+        modifier = Modifier.wrapContentHeight(),
       )
     }
 
@@ -144,17 +144,17 @@ fun MessageDetailBody(modifier: Modifier = Modifier) {
         ReplyTypeAction(
           asset = Icons.AutoMirrored.Outlined.Undo,
           text = "Reply",
-          modifier = Modifier.weight(1f)
+          modifier = Modifier.weight(1f),
         )
         ReplyTypeAction(
           asset = Icons.AutoMirrored.Outlined.Reply,
           text = "Reply All",
-          modifier = Modifier.weight(1f)
+          modifier = Modifier.weight(1f),
         )
         ReplyTypeAction(
           asset = Icons.AutoMirrored.Outlined.Redo,
           text = "Forward",
-          modifier = Modifier.weight(1f)
+          modifier = Modifier.weight(1f),
         )
       }
     }

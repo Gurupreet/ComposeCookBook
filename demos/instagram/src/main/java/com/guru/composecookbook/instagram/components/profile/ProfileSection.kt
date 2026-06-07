@@ -24,7 +24,7 @@ fun ProfileSection(
   text: String,
   modifier: Modifier = Modifier,
   iconRight: @Composable () -> Unit = {},
-  size: ProfileSectionSize = ProfileSectionSizes.small()
+  size: ProfileSectionSize = ProfileSectionSizes.small(),
 ) {
   Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
     ProfilePicture(imageId = firstImageId, contentDescription = null, size = size.profileIconSize)
@@ -32,7 +32,7 @@ fun ProfileSection(
       text = text,
       style = size.textStyle,
       color = MaterialTheme.colors.onBackground,
-      modifier = Modifier.weight(1f).padding(start = 8.dp)
+      modifier = Modifier.weight(1f).padding(start = 8.dp),
     )
     iconRight()
   }
@@ -53,7 +53,7 @@ fun ProfileInfoPreview() {
     firstImageId = DemoDataProvider.tweetList.first().authorImageId,
     text = DemoDataProvider.tweetList.first().author,
     size = ProfileSectionSizes.medium(),
-    iconRight = { Icon(imageVector = Icons.Default.MoreVert, contentDescription = null) }
+    iconRight = { Icon(imageVector = Icons.Default.MoreVert, contentDescription = null) },
   )
 }
 
@@ -63,6 +63,6 @@ fun LikesSectionPreview() {
   val tweet = DemoDataProvider.tweetList.first()
   ProfileSection(
     firstImageId = tweet.authorImageId,
-    text = "Liked by ${tweet.author} and ${tweet.likesCount} others"
+    text = "Liked by ${tweet.author} and ${tweet.likesCount} others",
   )
 }

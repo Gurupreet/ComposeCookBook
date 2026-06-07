@@ -101,7 +101,7 @@ private val LightGreenColorPalette =
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black,
-    onSurfaceVariant = Color.Black
+    onSurfaceVariant = Color.Black,
   )
 
 private val LightPurpleColorPalette =

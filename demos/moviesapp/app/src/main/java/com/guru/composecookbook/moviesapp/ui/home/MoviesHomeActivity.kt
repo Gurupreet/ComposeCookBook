@@ -40,6 +40,7 @@ sealed class MoviesHomeInteractionEvents {
     MoviesHomeInteractionEvents()
 
   data class AddToMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
+
   data class RemoveFromMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
 }
 
@@ -54,10 +55,7 @@ class MoviesHomeActivity : ComponentActivity() {
         val viewModel: MoviesHomeViewModel =
           viewModel(factory = MoviesHomeViewModelFactory(LocalContext.current))
         Scaffold(bottomBar = { MoviesBottomBar(navType) }) {
-          Crossfade(
-            targetState = navType,
-            modifier = Modifier.padding(it),
-          ) { navTypeState ->
+          Crossfade(targetState = navType, modifier = Modifier.padding(it)) { navTypeState ->
             when (navTypeState.value) {
               MovieNavType.SHOWING ->
                 MovieHomeScreen(
@@ -86,7 +84,7 @@ class MoviesHomeActivity : ComponentActivity() {
 
   private fun handleInteractionEvents(
     interactionEvents: MoviesHomeInteractionEvents,
-    viewModel: MoviesHomeViewModel
+    viewModel: MoviesHomeViewModel,
   ) {
     when (interactionEvents) {
       is MoviesHomeInteractionEvents.OpenMovieDetail -> {
@@ -106,6 +104,7 @@ class MoviesHomeActivity : ComponentActivity() {
 
   companion object {
     private const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, isDarkTheme: Boolean) =
       Intent(context, MoviesHomeActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
   }
@@ -126,13 +125,13 @@ fun MoviesBottomBar(navType: MutableState<MovieNavType>) {
       icon = { Icon(imageVector = Icons.Outlined.Subscriptions, contentDescription = null) },
       selected = navType.value == MovieNavType.TRENDING,
       onClick = { navType.value = MovieNavType.TRENDING },
-      label = { Text(text = "Trending") }
+      label = { Text(text = "Trending") },
     )
     BottomNavigationItem(
       icon = { Icon(imageVector = Icons.Outlined.LibraryAdd, contentDescription = null) },
       selected = navType.value == MovieNavType.WATCHLIST,
       onClick = { navType.value = MovieNavType.WATCHLIST },
-      label = { Text(text = "Watchlist") }
+      label = { Text(text = "Watchlist") },
     )
   }
 }
@@ -140,5 +139,5 @@ fun MoviesBottomBar(navType: MutableState<MovieNavType>) {
 enum class MovieNavType {
   SHOWING,
   TRENDING,
-  WATCHLIST
+  WATCHLIST,
 }

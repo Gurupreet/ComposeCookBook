@@ -115,6 +115,6 @@ fun TimerViewPreview() {
         .padding(horizontal = 4.dp, vertical = 4.dp),
     digitStyle = typography.body1.copy(color = orange700),
     separatorModifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
-    separatorStyle = typography.body1.copy(color = teal200)
+    separatorStyle = typography.body1.copy(color = teal200),
   )
 }
