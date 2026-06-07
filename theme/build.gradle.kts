@@ -3,18 +3,14 @@ import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependenc
 import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
 
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
 }
 
-android {
-    namespace = "com.guru.composecookbook.theme"
-}
+android { namespace = "com.guru.composecookbook.theme" }
 
 dependencies {
-    addComposeOfficialDependencies()
-    addComposeThirdPartyDependencies()
-    addCoreAndroidUiDependencies()
+  addComposeOfficialDependencies()
+  addComposeThirdPartyDependencies()
+  addCoreAndroidUiDependencies()
 }

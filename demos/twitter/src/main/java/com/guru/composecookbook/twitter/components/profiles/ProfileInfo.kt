@@ -24,11 +24,11 @@ fun ProfileInfo(
   profilePing: String,
   time: String,
   modifier: Modifier = Modifier,
-  textStyle: TextStyle = MaterialTheme.typography.subtitle1
+  textStyle: TextStyle = MaterialTheme.typography.subtitle1,
 ) {
   Row(
     modifier = modifier.semantics { contentDescription = "$profilePing post a tweet $time ago" },
-    verticalAlignment = Alignment.Bottom
+    verticalAlignment = Alignment.Bottom,
   ) {
     Text(text = profileName, style = textStyle, fontWeight = FontWeight.Bold)
     Icon(
@@ -38,12 +38,12 @@ fun ProfileInfo(
       modifier =
         Modifier.size(textStyle.fontSize.value.dp)
           .align(Alignment.CenterVertically)
-          .padding(start = 2.dp)
+          .padding(start = 2.dp),
     )
     Text(
       text = "$profilePing · $time",
       modifier = Modifier.padding(start = 8.dp),
-      style = textStyle
+      style = textStyle,
     )
   }
 }

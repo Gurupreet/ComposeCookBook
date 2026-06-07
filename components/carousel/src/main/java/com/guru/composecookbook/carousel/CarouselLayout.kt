@@ -52,7 +52,7 @@ fun CarouselItem(item: Item) {
       contentScale = ContentScale.Crop,
       contentDescription = null,
       modifier =
-        Modifier.padding(18.dp).fillMaxWidth().height(180.dp).clip(RoundedCornerShape(12.dp))
+        Modifier.padding(18.dp).fillMaxWidth().height(180.dp).clip(RoundedCornerShape(12.dp)),
     )
     Text(
       text = item.title,
@@ -68,7 +68,7 @@ fun CarouselItemCircle(item: Item) {
     painter = painterResource(id = item.imageId),
     contentDescription = null,
     contentScale = ContentScale.Crop,
-    modifier = Modifier.padding(16.dp).size(160.dp).clip(CircleShape)
+    modifier = Modifier.padding(16.dp).size(160.dp).clip(CircleShape),
   )
 }
 
@@ -82,20 +82,20 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
     modifier = Modifier.size(animateDpAsState(animateSize).value).padding(24.dp),
     shape = RoundedCornerShape(16.dp),
     backgroundColor = green200,
-    contentColor = MaterialTheme.colorScheme.onPrimary
+    contentColor = MaterialTheme.colorScheme.onPrimary,
   ) {
     Column {
       Text(
         text = item.title,
         modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp),
-        style = typography.body2
+        style = typography.body2,
       )
       Image(
         painter = painterResource(id = item.imageId),
         contentScale = ContentScale.Crop,
         contentDescription = null,
         modifier =
-          Modifier.padding(4.dp).align(Alignment.CenterHorizontally).size(100.dp).clip(CircleShape)
+          Modifier.padding(4.dp).align(Alignment.CenterHorizontally).size(100.dp).clip(CircleShape),
       )
     }
   }
@@ -105,7 +105,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
 private fun ColumnScope.PrepareFirstPager(
   pagerState: PagerState,
   items: List<Item>,
-  selectedPage: MutableState<Int>
+  selectedPage: MutableState<Int>,
 ) {
   Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
     val item = items[commingPage]
@@ -118,7 +118,7 @@ private fun ColumnScope.PrepareFirstPager(
       CarouselDot(
         selected = index == selectedPage.value,
         MaterialTheme.colorScheme.primary,
-        Icons.Filled.Lens
+        Icons.Filled.Lens,
       )
     }
   }
@@ -130,7 +130,7 @@ private fun ColumnScope.PrepareFirstPager(
 private fun ColumnScope.PrepareSecondPager(
   pagerState: PagerState,
   items: List<Item>,
-  selectedPage: MutableState<Int>
+  selectedPage: MutableState<Int>,
 ) {
   Pager(state = pagerState, modifier = Modifier.height(200.dp)) {
     val item = items[commingPage]
@@ -142,7 +142,7 @@ private fun ColumnScope.PrepareSecondPager(
       CarouselDot(
         selected = index == selectedPage.value,
         MaterialTheme.colorScheme.error,
-        Icons.Filled.Favorite
+        Icons.Filled.Favorite,
       )
     }
   }
@@ -153,7 +153,7 @@ private fun ColumnScope.PrepareSecondPager(
 private fun ColumnScope.PrepareThirdPager(
   pagerState: PagerState,
   items: List<Item>,
-  selectedPage: MutableState<Int>
+  selectedPage: MutableState<Int>,
 ) {
   Pager(state = pagerState, modifier = Modifier.height(350.dp)) {
     val item = items[commingPage]
@@ -165,7 +165,7 @@ private fun ColumnScope.PrepareThirdPager(
       CarouselDot(
         selected = index == selectedPage.value,
         MaterialTheme.colorScheme.secondary,
-        Icons.Filled.Album
+        Icons.Filled.Album,
       )
     }
   }

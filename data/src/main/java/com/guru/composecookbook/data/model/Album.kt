@@ -9,5 +9,5 @@ data class Album(
   val song: String,
   val descriptions: String,
   val imageId: Int,
-  val swiped: Boolean = false
+  val swiped: Boolean = false,
 ) : Serializable

@@ -36,9 +36,9 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
             contentDescription = null,
             modifier =
               Modifier.width(200.dp).height(300.dp).padding(12.dp).clip(RoundedCornerShape(12.dp)),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
           )
-        }
+        },
       )
     }
   }

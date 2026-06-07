@@ -37,7 +37,7 @@ object DemoDIGraph {
     return CryptoRepositoryImpl(
       cryptoApi = retrofit.create(CryptoApi::class.java),
       cryptoDao = db.cryptoDao(),
-      cryptoApiMapper = CryptoApiMapper()
+      cryptoApiMapper = CryptoApiMapper(),
     )
   }
 }

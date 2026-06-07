@@ -61,7 +61,7 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
   Pager(
     state = pagerState,
     orientation = Orientation.Vertical,
-    modifier = Modifier.fillMaxSize().padding(bottom = bottomBarHeight)
+    modifier = Modifier.fillMaxSize().padding(bottom = bottomBarHeight),
   ) {
     val movie = movies[commingPage]
     val isSelected = pagerState.currentPage == commingPage
@@ -73,7 +73,7 @@ fun HomeScreen(tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit) {
 fun PagerItem(
   album: Album,
   selected: Boolean,
-  tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
+  tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit,
 ) {
   val context = LocalContext.current
 
@@ -94,7 +94,7 @@ fun VideoOverLayUI(album: Album, tiktokInteractionEvents: (TiktokHomeInteraction
 @Composable
 fun VideoIconsSection(
   album: Album,
-  tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit
+  tiktokInteractionEvents: (TiktokHomeInteractionEvents) -> Unit,
 ) {
   Column(horizontalAlignment = Alignment.CenterHorizontally) {
     ProfileImageWithFollow(
@@ -104,29 +104,29 @@ fun VideoIconsSection(
             onClick = { tiktokInteractionEvents(TiktokHomeInteractionEvents.OpenProfile(album)) }
           ),
       true,
-      album.imageId
+      album.imageId,
     )
     Spacer(modifier = Modifier.height(20.dp))
     LikeIcon(album.id)
     Text(
       text = "256.4k",
       style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
-      modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
+      modifier = Modifier.padding(top = 4.dp, bottom = 20.dp),
     )
     Icon(
       painter = painterResource(id = ThemeR.drawable.ic_comment_dots_solid),
-      contentDescription = null
+      contentDescription = null,
     )
     Text(
       text = "1223",
       style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
-      modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
+      modifier = Modifier.padding(top = 4.dp, bottom = 20.dp),
     )
     Icon(painter = painterResource(id = ThemeR.drawable.ic_share_solid), contentDescription = null)
     Text(
       text = "238",
       style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
-      modifier = Modifier.padding(top = 4.dp, bottom = 32.dp)
+      modifier = Modifier.padding(top = 4.dp, bottom = 32.dp),
     )
     val rotation = remember { Animatable(0f) }
     LaunchedEffect(Unit) {
@@ -142,7 +142,7 @@ fun VideoIconsSection(
     ProfileImageWithFollow(
       modifier = Modifier.size(64.dp).graphicsLayer(rotationZ = rotation.value),
       false,
-      album.imageId
+      album.imageId,
     )
   }
 }
@@ -153,10 +153,7 @@ fun LikeIcon(id: Int) {
   val animatedProgress = remember { Animatable(0f) }
   if (!fav) {
     LaunchedEffect(fav) {
-      animatedProgress.animateTo(
-        targetValue = 1.3f,
-        animationSpec = tween(600),
-      )
+      animatedProgress.animateTo(targetValue = 1.3f, animationSpec = tween(600))
     }
   }
   Icon(
@@ -165,7 +162,7 @@ fun LikeIcon(id: Int) {
     modifier =
       Modifier.clickable(onClick = { fav = !fav })
         .graphicsLayer(scaleX = animatedProgress.value, scaleY = animatedProgress.value),
-    tint = animateColorAsState(if (fav) tiktokRed else Color.White).value
+    tint = animateColorAsState(if (fav) tiktokRed else Color.White).value,
   )
 }
 
@@ -176,12 +173,12 @@ fun VideoInfoSection(modifier: Modifier, album: Album) {
     Text(
       text = "@${album.artist}",
       style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.ExtraBold),
-      modifier = Modifier.padding(vertical = 8.dp)
+      modifier = Modifier.padding(vertical = 8.dp),
     )
     Text(text = album.song, style = MaterialTheme.typography.body2)
     Text(
       text = "#${album.artist} #cool #tiktok #videos",
-      style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Medium)
+      style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Medium),
     )
   }
 }
@@ -200,7 +197,7 @@ fun FilterTag(text: String, modifier: Modifier) {
     text = text,
     color = Color.White,
     modifier = tagModifier,
-    style = typography.body2.copy(fontWeight = FontWeight.Bold)
+    style = typography.body2.copy(fontWeight = FontWeight.Bold),
   )
 }
 
@@ -213,7 +210,7 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
         imageVector = Icons.Filled.Add,
         contentDescription = null,
         modifier =
-          Modifier.size(20.dp).clip(CircleShape).background(tiktokRed).align(Alignment.BottomCenter)
+          Modifier.size(20.dp).clip(CircleShape).background(tiktokRed).align(Alignment.BottomCenter),
       )
     }
   } else {
@@ -230,6 +227,6 @@ fun ImageWithBorder(imageId: Int, modifier: Modifier) {
       modifier
         .padding(8.dp)
         .clip(CircleShape)
-        .border(shape = CircleShape, border = BorderStroke(1.dp, color = Color.White))
+        .border(shape = CircleShape, border = BorderStroke(1.dp, color = Color.White)),
   )
 }

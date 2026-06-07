@@ -13,7 +13,7 @@ import com.guru.composecookbook.comingsoon.ComingSoon
 fun ProfileScreen() {
   LazyColumn(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     item { ComingSoon() }
   }

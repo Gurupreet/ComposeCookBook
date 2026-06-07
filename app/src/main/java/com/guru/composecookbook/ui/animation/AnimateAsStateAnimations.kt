@@ -75,7 +75,7 @@ fun SimpleColorStateAnimation() {
   Button(
     onClick = { enabled.value = !enabled.value },
     colors = buttonColors,
-    modifier = Modifier.padding(16.dp).fillMaxWidth()
+    modifier = Modifier.padding(16.dp).fillMaxWidth(),
   ) {
     Text("Color Animation")
   }
@@ -112,7 +112,7 @@ fun SimpleFloatStateAnimation() {
   val animatedFloatState = animateFloatAsState(targetValue = if (enabled) 1f else 0.5f)
   Button(
     onClick = { enabled = !enabled },
-    modifier = Modifier.padding(16.dp).alpha(animatedFloatState.value)
+    modifier = Modifier.padding(16.dp).alpha(animatedFloatState.value),
   ) {
     Text("Opacity change")
   }
@@ -133,7 +133,7 @@ fun SimpleOffsetStateAnimation() {
         Modifier.size(100.dp)
           .padding(16.dp)
           .offset(x = Dp(animatedOffset.x), y = Dp(animatedOffset.y))
-          .clickable { enabled = !enabled }
+          .clickable { enabled = !enabled },
     )
     Image(
       painterResource(id = R.drawable.p2),
@@ -142,7 +142,7 @@ fun SimpleOffsetStateAnimation() {
         Modifier.size(100.dp)
           .padding(16.dp)
           .offset(x = -Dp(animatedOffset.x), y = -Dp(animatedOffset.y))
-          .clickable { enabled = !enabled }
+          .clickable { enabled = !enabled },
     )
   }
   Spacer(modifier = Modifier.height(20.dp))
@@ -166,14 +166,14 @@ fun SimpleAnimateCustomStateClass() {
       typeConverter =
         TwoWayConverter(
           convertToVector = { AnimationVector2D(it.width.value, it.rotation) },
-          convertFromVector = { CustomAnimationState(it.v1.dp, it.v2) }
+          convertFromVector = { CustomAnimationState(it.v1.dp, it.v2) },
         ),
-      animationSpec = tween(600)
+      animationSpec = tween(600),
     )
 
   Button(
     onClick = { enabled = !enabled },
-    modifier = Modifier.padding(16.dp).width(animatedUiState.width).rotate(animatedUiState.rotation)
+    modifier = Modifier.padding(16.dp).width(animatedUiState.width).rotate(animatedUiState.rotation),
   ) {
     Text("Custom State Animation")
   }
@@ -200,7 +200,7 @@ fun DrawLayerWithAnimateAsStateAnimations() {
             translationX = animateFloatAsState(if (draw2) 320f else 0f).value,
             translationY = 0f,
           )
-          .clickable(onClick = { draw2 = !draw2 })
+          .clickable(onClick = { draw2 = !draw2 }),
     )
     Image(
       painter = painterResource(id = R.drawable.dualipa),
@@ -210,9 +210,9 @@ fun DrawLayerWithAnimateAsStateAnimations() {
           .graphicsLayer(
             shadowElevation = animateFloatAsState(if (draw2) 30f else 10f).value,
             translationX = animateFloatAsState(if (draw2) -320f else 0f).value,
-            translationY = animateFloatAsState(if (draw2) 0f else 30f).value
+            translationY = animateFloatAsState(if (draw2) 0f else 30f).value,
           )
-          .clickable(onClick = { draw2 = !draw2 })
+          .clickable(onClick = { draw2 = !draw2 }),
     )
     Image(
       painter = painterResource(id = R.drawable.edsheeran),
@@ -221,9 +221,9 @@ fun DrawLayerWithAnimateAsStateAnimations() {
         Modifier.size(150.dp)
           .graphicsLayer(
             shadowElevation = animateFloatAsState(if (draw2) 30f else 5f).value,
-            translationY = animateFloatAsState(if (draw2) 0f else 50f).value
+            translationY = animateFloatAsState(if (draw2) 0f else 50f).value,
           )
-          .clickable(onClick = { draw2 = !draw2 })
+          .clickable(onClick = { draw2 = !draw2 }),
     )
   }
   Spacer(modifier = Modifier.padding(30.dp))
@@ -239,9 +239,9 @@ fun DrawLayerWithAnimateAsStateAnimations() {
             shadowElevation = animateFloatAsState(if (draw3) 30f else 5f).value,
             translationX = animateFloatAsState(if (draw3) 320f else 0f).value,
             rotationY = animateFloatAsState(if (draw3) 45f else 0f).value,
-            translationY = 0f
+            translationY = 0f,
           )
-          .clickable(onClick = { draw3 = !draw3 })
+          .clickable(onClick = { draw3 = !draw3 }),
     )
     Image(
       painter = painterResource(id = R.drawable.sam),
@@ -252,9 +252,9 @@ fun DrawLayerWithAnimateAsStateAnimations() {
             shadowElevation = animateFloatAsState(if (draw3) 30f else 10f).value,
             translationX = animateFloatAsState(if (draw3) -320f else 0f).value,
             rotationY = animateFloatAsState(if (draw3) 45f else 0f).value,
-            translationY = animateFloatAsState(if (draw3) 0f else 30f).value
+            translationY = animateFloatAsState(if (draw3) 0f else 30f).value,
           )
-          .clickable(onClick = { draw3 = !draw3 })
+          .clickable(onClick = { draw3 = !draw3 }),
     )
     Image(
       painter = painterResource(id = R.drawable.billie),
@@ -264,9 +264,9 @@ fun DrawLayerWithAnimateAsStateAnimations() {
           .graphicsLayer(
             shadowElevation = animateFloatAsState(if (draw3) 30f else 5f).value,
             translationY = animateFloatAsState(if (draw3) 0f else 50f).value,
-            rotationY = animateFloatAsState(if (draw3) 45f else 0f).value
+            rotationY = animateFloatAsState(if (draw3) 45f else 0f).value,
           )
-          .clickable(onClick = { draw3 = !draw3 })
+          .clickable(onClick = { draw3 = !draw3 }),
     )
   }
   Spacer(modifier = Modifier.padding(30.dp))
@@ -282,9 +282,9 @@ fun DrawLayerWithAnimateAsStateAnimations() {
             shadowElevation = animateFloatAsState(if (draw4) 30f else 5f).value,
             translationX = animateFloatAsState(if (draw4) 320f else 0f).value,
             rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
-            translationY = 0f
+            translationY = 0f,
           )
-          .clickable(onClick = { draw4 = !draw4 })
+          .clickable(onClick = { draw4 = !draw4 }),
     )
     Image(
       painter = painterResource(id = R.drawable.khalid),
@@ -295,9 +295,9 @@ fun DrawLayerWithAnimateAsStateAnimations() {
             shadowElevation = animateFloatAsState(if (draw4) 30f else 10f).value,
             translationX = animateFloatAsState(if (draw4) -320f else 0f).value,
             rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
-            translationY = animateFloatAsState(if (draw4) 0f else 30f).value
+            translationY = animateFloatAsState(if (draw4) 0f else 30f).value,
           )
-          .clickable(onClick = { draw4 = !draw4 })
+          .clickable(onClick = { draw4 = !draw4 }),
     )
     Image(
       painter = painterResource(id = R.drawable.camelia),
@@ -309,7 +309,7 @@ fun DrawLayerWithAnimateAsStateAnimations() {
             translationY = animateFloatAsState(if (draw4) 0f else 50f).value,
             rotationZ = animateFloatAsState(if (draw4) 45f else 0f).value,
           )
-          .clickable(onClick = { draw4 = !draw4 })
+          .clickable(onClick = { draw4 = !draw4 }),
     )
     Spacer(modifier = Modifier.padding(60.dp))
   }

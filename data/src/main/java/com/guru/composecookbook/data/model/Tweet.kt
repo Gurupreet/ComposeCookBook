@@ -11,5 +11,5 @@ data class Tweet(
   val commentsCount: Int,
   val retweetCount: Int,
   val source: String,
-  val tweetImageId: Int = 0
+  val tweetImageId: Int = 0,
 )

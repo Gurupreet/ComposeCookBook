@@ -34,13 +34,13 @@ fun Chips() {
     CustomImageChip(
       text = "custom",
       imageId = com.guru.composecookbook.data.R.drawable.p2,
-      selected = true
+      selected = true,
     )
     Spacer(modifier = Modifier.padding(8.dp))
     CustomImageChip(
       text = "custom2",
       imageId = com.guru.composecookbook.data.R.drawable.p6,
-      selected = false
+      selected = false,
     )
   }
   SubtitleText(subtitle = "Buttons with circle clipping.")
@@ -61,7 +61,7 @@ private fun CustomImageChip(
   text: String,
   imageId: Int,
   selected: Boolean,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Surface(
     color =
@@ -82,20 +82,20 @@ private fun CustomImageChip(
           when {
             selected -> MaterialTheme.colorScheme.primary
             else -> Color.LightGray
-          }
+          },
       ),
-    modifier = modifier
+    modifier = modifier,
   ) {
     Row(modifier = Modifier) {
       Image(
         painter = painterResource(imageId),
         contentDescription = null,
-        modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape)
+        modifier = Modifier.padding(8.dp).size(20.dp).clip(CircleShape),
       )
       Text(
         text = text,
         style = MaterialTheme.typography.bodyMedium,
-        modifier = Modifier.padding(end = 8.dp, top = 8.dp, bottom = 8.dp)
+        modifier = Modifier.padding(end = 8.dp, top = 8.dp, bottom = 8.dp),
       )
     }
   }

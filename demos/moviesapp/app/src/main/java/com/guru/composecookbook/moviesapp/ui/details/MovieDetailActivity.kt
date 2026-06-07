@@ -25,6 +25,7 @@ class MovieDetailActivity : ComponentActivity() {
   companion object {
     const val MOVIE = "movie"
     const val IMAGE_ID = "imageId"
+
     fun newIntent(context: Context, movie: Movie) =
       Intent(context, MovieDetailActivity::class.java).apply { putExtra(MOVIE, movie) }
 

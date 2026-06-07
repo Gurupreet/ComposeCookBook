@@ -58,10 +58,7 @@ fun MultiStateColorPositionAnimation() {
   val transition = updateTransition(targetState = animationState, label = "transition")
 
   val animatedColor by
-    transition.animateColor(
-      transitionSpec = { tween(500) },
-      label = "animatedColor",
-    ) { state ->
+    transition.animateColor(transitionSpec = { tween(500) }, label = "animatedColor") { state ->
       when (state) {
         MyAnimationState.START -> startColor
         MyAnimationState.MID -> midColor
@@ -70,10 +67,7 @@ fun MultiStateColorPositionAnimation() {
     }
 
   val position by
-    transition.animateDp(
-      transitionSpec = { tween(500) },
-      label = "position",
-    ) { state ->
+    transition.animateDp(transitionSpec = { tween(500) }, label = "position") { state ->
       when (state) {
         MyAnimationState.START -> 0.dp
         MyAnimationState.MID -> 80.dp
@@ -90,7 +84,7 @@ fun MultiStateColorPositionAnimation() {
           MyAnimationState.MID -> MyAnimationState.END
           MyAnimationState.END -> MyAnimationState.START
         }
-    }
+    },
   ) {
     Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
   }
@@ -109,20 +103,20 @@ fun MultiStateInfiniteTransition() {
     transition.animateColor(
       initialValue = startColor,
       targetValue = endColor,
-      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
+      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse),
     )
 
   val position by
     transition.animateFloat(
       initialValue = -80f,
       targetValue = 80f,
-      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse)
+      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse),
     )
 
   FloatingActionButton(
     containerColor = animatedColor,
     modifier = Modifier.offset(x = position.dp),
-    onClick = {}
+    onClick = {},
   ) {
     Icon(imageVector = Icons.Default.PlayCircleFilled, contentDescription = null)
   }

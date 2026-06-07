@@ -9,7 +9,7 @@ object TiktokDemoDataProvider {
       TikTokScreen.Discover,
       TikTokScreen.Create,
       TikTokScreen.Inbox,
-      TikTokScreen.Me
+      TikTokScreen.Me,
     )
 
   val lanes =

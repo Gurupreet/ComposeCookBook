@@ -17,7 +17,7 @@ data class Crypto(
   val marketCap: Long,
   val volume: Double,
   val supply: Double?,
-  val chartData: List<Float>
+  val chartData: List<Float>,
 ) : Serializable {
 
   override fun equals(other: Any?): Boolean {

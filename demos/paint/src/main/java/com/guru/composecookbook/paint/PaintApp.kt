@@ -22,10 +22,7 @@ import androidx.compose.ui.graphics.Path
 fun PaintApp() {
   val paths = remember { mutableStateOf(mutableListOf<PathState>()) }
   Scaffold(topBar = { PaintAppBar { paths.value = mutableListOf() } }) { paddingValues ->
-    PaintBody(
-      paths = paths,
-      modifier = Modifier.padding(paddingValues),
-    )
+    PaintBody(paths = paths, modifier = Modifier.padding(paddingValues))
   }
 }
 
@@ -36,17 +33,14 @@ fun PaintAppBar(onDelete: () -> Unit) {
     actions = {
       IconButton(
         onClick = onDelete,
-        content = { Icon(imageVector = Icons.Default.Delete, contentDescription = null) }
+        content = { Icon(imageVector = Icons.Default.Delete, contentDescription = null) },
       )
-    }
+    },
   )
 }
 
 @Composable
-fun PaintBody(
-  paths: MutableState<MutableList<PathState>>,
-  modifier: Modifier = Modifier,
-) {
+fun PaintBody(paths: MutableState<MutableList<PathState>>, modifier: Modifier = Modifier) {
   Box(modifier = modifier.fillMaxSize()) {
     val drawColor = remember { mutableStateOf(Color.Black) }
     val drawBrush = remember { mutableStateOf(5f) }

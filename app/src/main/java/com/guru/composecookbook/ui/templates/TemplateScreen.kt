@@ -25,7 +25,7 @@ fun TemplateScreen(darkTheme: Boolean) {
         onClick = {
           context.startActivity(TemplatesActivity.newIntent(context, template, darkTheme))
         },
-        modifier = Modifier.fillMaxWidth().padding(12.dp)
+        modifier = Modifier.fillMaxWidth().padding(12.dp),
       ) {
         Text(text = template, modifier = Modifier.padding(8.dp))
       }

@@ -24,7 +24,7 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
     Text(
       text = title,
       style = typography.h6,
-      modifier = Modifier.padding(start = 16.dp, end = 8.dp, bottom = 8.dp, top = 24.dp)
+      modifier = Modifier.padding(start = 16.dp, end = 8.dp, bottom = 8.dp, top = 24.dp),
     )
   }
   LazyRow {
@@ -33,9 +33,7 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
       itemContent = { movie: Movie ->
         Image(
           painter =
-            rememberImagePainter(
-              data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
-            ),
+            rememberImagePainter(data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"),
           contentDescription = null,
           modifier =
             Modifier.width(190.dp)
@@ -43,9 +41,9 @@ fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Mo
               .padding(12.dp)
               .clip(RoundedCornerShape(12.dp))
               .clickable(onClick = { onMovieSelected(movie) }),
-          contentScale = ContentScale.Crop
+          contentScale = ContentScale.Crop,
         )
-      }
+      },
     )
   }
 }
