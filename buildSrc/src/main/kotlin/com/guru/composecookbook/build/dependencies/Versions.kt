@@ -4,12 +4,13 @@ internal object Versions {
     const val composeBom = "2024.12.01"  // Compose BOM maps ui/material/runtime etc. versions
     const val activityCompose = "1.8.2"  // Latest stable
     const val pagingCompose = "3.2.1"  // Latest stable
-    const val navCompose = "2.7.7"  // Latest stable navigation
+    const val navCompose = "2.8.9"  // Stable navigation with type-safe routes
     const val constraintLayoutCompose = "1.1.0"  // Latest stable
     const val fontAwesomeCompose = "1.1.0"  // Keeping as is since it's a third-party lib
     const val coilCompose = "2.5.0"  // Latest stable
     const val kotlin = "2.1.20"  // Kotlin 2.x with the K2 compiler
     const val coroutines = "1.7.3"  // Latest stable
+    const val kotlinxSerializationJson = "1.8.0"  // For type-safe navigation routes
     const val androidLifecycleGrouped = "2.8.7"  // Latest stable 2.8.x
     const val flinger = "1.0.5"  // Keeping as is since it's a third-party lib
     const val paging = "3.2.1"  // Latest stable

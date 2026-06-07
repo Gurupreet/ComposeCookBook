@@ -39,7 +39,10 @@ dependencies {
     // in order to be able to apply "org.jetbrains.kotlin.plugin.compose" in the common scripts
     implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.20")
 
-    // in order to be able to apply "com.google.devtools.ksp" in the common scripts
+    // in order to be able to apply "org.jetbrains.kotlin.plugin.serialization" in module scripts
+  implementation("org.jetbrains.kotlin:kotlin-serialization:2.1.20")
+
+  // in order to be able to apply "com.google.devtools.ksp" in the common scripts
     // (KSP version must match the Kotlin version above)
     implementation("com.google.devtools.ksp:symbol-processing-gradle-plugin:2.1.20-1.0.31")
 
