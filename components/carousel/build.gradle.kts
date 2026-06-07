@@ -1,6 +1,3 @@
-import com.guru.composecookbook.build.dependencies.addAndroidInstrumentationTestsDependencies
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-
 plugins {
   /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
   id("common-compose-module-configs-script-plugin")
@@ -12,7 +9,9 @@ dependencies {
   implementation(project(":theme"))
   implementation(project(":data"))
 
-  addComposeOfficialDependencies()
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.bundles.compose.official)
 
-  addAndroidInstrumentationTestsDependencies()
+  androidTestImplementation(platform(libs.androidx.compose.bom))
+  androidTestImplementation(libs.bundles.instrumentation.test)
 }
