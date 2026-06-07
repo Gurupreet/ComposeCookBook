@@ -17,19 +17,19 @@ object Dependencies {
     // Removed googleMaps = "com.google.android.libraries.maps:maps" as it's not publicly available
     const val playServicesMaps =
         "com.google.android.gms:play-services-maps:${Versions.playServicesMaps}"
-    const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
-    const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    // Compose BOM keeps all androidx.compose artifacts below at compatible versions
+    const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
+    const val composeUi = "androidx.compose.ui:ui"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling"
     // Material Design 1 and 3 dependencies
-    const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
-    const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3}"
-    const val composeMaterial3WindowSizeClass = "androidx.compose.material3:material3-window-size-class:${Versions.material3}"
-    const val composeMaterialIconsExtended =
-        "androidx.compose.material:material-icons-extended:${Versions.compose}"
-    
+    const val composeMaterial = "androidx.compose.material:material"
+    const val composeMaterial3 = "androidx.compose.material3:material3"
+    const val composeMaterial3WindowSizeClass = "androidx.compose.material3:material3-window-size-class"
+    const val composeMaterialIconsExtended = "androidx.compose.material:material-icons-extended"
+
     // Runtime and State Management
-    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
-    const val composeRuntimeLivedata =
-        "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+    const val composeRuntime = "androidx.compose.runtime:runtime"
+    const val composeRuntimeLivedata = "androidx.compose.runtime:runtime-livedata"
     
     // Layout and Navigation
     const val composeConstraintLayout =
@@ -41,8 +41,8 @@ object Dependencies {
     const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.lottie}"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
 
-    const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
-    const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
+    const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4"
+    const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest"
 
     /**
      * Custom fling behaviour
@@ -52,11 +52,13 @@ object Dependencies {
 
     const val androidPagingRuntime = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
-    const val androidExoPlayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"
+    const val media3Exoplayer = "androidx.media3:media3-exoplayer:${Versions.media3}"
+    const val media3Ui = "androidx.media3:media3-ui:${Versions.media3}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-    const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
+    const val coilCompose = "io.coil-kt.coil3:coil-compose:${Versions.coilCompose}"
+    const val coilNetworkOkHttp = "io.coil-kt.coil3:coil-network-okhttp:${Versions.coilCompose}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val okHttpLoggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
@@ -67,6 +69,8 @@ object Dependencies {
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroid =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val kotlinxSerializationJson =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinxSerializationJson}"
     const val viewModelKtx =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidLifecycleGrouped}"
     const val liveDataKtx =

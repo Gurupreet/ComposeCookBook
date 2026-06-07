@@ -48,7 +48,7 @@ object IconCounters {
       counter = counter,
       modifier =
         modifier.semantics { contentDescription = "$counter reactions. Create a reply too!" },
-      onClick = onClick
+      onClick = onClick,
     )
   }
 
@@ -59,7 +59,7 @@ object IconCounters {
       counter = counter,
       modifier =
         modifier.semantics { contentDescription = "$counter retweets. Retweet this tweet too!" },
-      onClick = onClick
+      onClick = onClick,
     )
   }
 
@@ -69,7 +69,7 @@ object IconCounters {
       painter = rememberVectorPainter(Icons.Default.FavoriteBorder),
       counter = counter,
       modifier = modifier.semantics { contentDescription = "$counter likes. Like this tweet too!" },
-      onClick = onClick
+      onClick = onClick,
     )
   }
 }
@@ -81,7 +81,7 @@ internal fun IconCounter(
   modifier: Modifier = Modifier,
   color: Color = Color.LightGray,
   textStyle: TextStyle = MaterialTheme.typography.caption,
-  onClick: () -> Unit
+  onClick: () -> Unit,
 ) {
   IconButton(modifier = modifier, onClick = onClick) {
     Row(modifier = Modifier.height(16.dp)) {
@@ -89,13 +89,13 @@ internal fun IconCounter(
         painter = painter,
         contentDescription = null,
         modifier = Modifier.fillMaxHeight().aspectRatio(1f),
-        tint = color
+        tint = color,
       )
       Text(
         text = counter.toString(),
         modifier = Modifier.padding(start = 8.dp),
         color = color,
-        style = textStyle
+        style = textStyle,
       )
     }
   }
@@ -128,7 +128,7 @@ fun AnimatedHeartButton() {
           expandedIconSize at 50
           idleIconSize at 100
         }
-      }
+      },
     ) { needLike ->
       // in both like and not like cases, heart will have same size, we just need the
       // animation here.
@@ -154,10 +154,10 @@ fun AnimatedHeartButton() {
         .clickable(
           interactionSource = remember { MutableInteractionSource() },
           indication = null,
-          onClick = { needLike = !needLike }
+          onClick = { needLike = !needLike },
         ),
     imageVector = Icons.Default.Favorite,
     contentDescription = "",
-    colorFilter = ColorFilter.tint(heartColor)
+    colorFilter = ColorFilter.tint(heartColor),
   )
 }

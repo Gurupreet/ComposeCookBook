@@ -19,7 +19,7 @@ fun EmptyWatchlistSection() {
       text = "Watchlist is empty",
       style = typography.h6,
       modifier = Modifier.fillMaxWidth(),
-      textAlign = TextAlign.Center
+      textAlign = TextAlign.Center,
     )
     Text(
       text = "Please add some movies to your watchlist",

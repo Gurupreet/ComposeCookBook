@@ -44,7 +44,7 @@ fun GmailDrawer(modifier: Modifier = Modifier) {
         text = "Gmail",
         color = Color.Red,
         fontSize = 24.sp,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp),
       )
     }
 
@@ -85,7 +85,7 @@ fun DrawerItem(icon: ImageVector, title: String, msgCount: String = "") {
       fontFamily = FontFamily.SansSerif,
       fontWeight = FontWeight.SemiBold,
       fontSize = 14.sp,
-      textAlign = TextAlign.Start
+      textAlign = TextAlign.Start,
     )
 
     if (msgCount.isNotEmpty()) {
@@ -93,7 +93,7 @@ fun DrawerItem(icon: ImageVector, title: String, msgCount: String = "") {
         modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp),
         text = msgCount,
         style = MaterialTheme.typography.caption,
-        textAlign = TextAlign.Start
+        textAlign = TextAlign.Start,
       )
     }
   }
@@ -107,6 +107,6 @@ fun DrawerCategory(title: String) {
     letterSpacing = 0.7.sp,
     color = MaterialTheme.colors.onBackground,
     fontSize = 12.sp,
-    modifier = Modifier.padding(16.dp)
+    modifier = Modifier.padding(16.dp),
   )
 }

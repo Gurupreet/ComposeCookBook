@@ -3,7 +3,8 @@ import com.guru.composecookbook.build.configurations.ProjectConfigs
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -24,10 +25,6 @@ android {
     
     buildFeatures {
         compose = true
-    }
-    
-    composeOptions {
-        kotlinCompilerExtensionVersion = ProjectConfigs.kotlinCompilerExtensionVersion
     }
 }
 

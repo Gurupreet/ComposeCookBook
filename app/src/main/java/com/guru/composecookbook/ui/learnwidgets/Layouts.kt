@@ -45,55 +45,55 @@ fun TypesOfRows() {
   Text(text = "Arrangement.Start ", style = typography.caption, modifier = Modifier.padding(8.dp))
   Row(
     horizontalArrangement = Arrangement.Start,
-    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_START)
+    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_START),
   ) {
     MultipleTexts()
   }
   Text(text = "Arrangement.End ", style = typography.caption, modifier = Modifier.padding(8.dp))
   Row(
     horizontalArrangement = Arrangement.End,
-    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_END)
+    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_END),
   ) {
     MultipleTexts()
   }
   Text(text = "Arrangement.Center ", style = typography.caption, modifier = Modifier.padding(8.dp))
   Row(
     horizontalArrangement = Arrangement.Center,
-    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_CENTER)
+    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_CENTER),
   ) {
     MultipleTexts()
   }
   Text(
     text = "Arrangement.SpaceAround ",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Row(
     horizontalArrangement = Arrangement.SpaceAround,
-    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_AROUND)
+    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_AROUND),
   ) {
     MultipleTexts()
   }
   Text(
     text = "Arrangement.SpaceBetween ",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Row(
     horizontalArrangement = Arrangement.SpaceBetween,
     modifier =
-      Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_BETWEEN)
+      Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_BETWEEN),
   ) {
     MultipleTexts()
   }
   Text(
     text = "Arrangement.SpaceEvenly ",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Row(
     horizontalArrangement = Arrangement.SpaceEvenly,
-    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_EVENLY)
+    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_EVENLY),
   ) {
     MultipleTexts()
   }
@@ -110,59 +110,59 @@ fun TypeOfColumns() {
   Text(text = "Arrangement.Top", style = typography.caption, modifier = Modifier.padding(8.dp))
   Column(
     verticalArrangement = Arrangement.Top,
-    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_TOP)
+    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_TOP),
   ) {
     MultipleTexts()
   }
   Text(text = "Arrangement.Bottom", style = typography.caption, modifier = Modifier.padding(8.dp))
   Column(
     verticalArrangement = Arrangement.Bottom,
-    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_BOTTOM)
+    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_BOTTOM),
   ) {
     MultipleTexts()
   }
   Text(
     text = "Arrangement.Center + Alignment.CenterHorizontally",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Column(
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_CENTER)
+    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_CENTER),
   ) {
     MultipleTexts()
   }
   Text(
     text = "Arrangement.SpaceAround",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Column(
     verticalArrangement = Arrangement.SpaceAround,
-    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_AROUND)
+    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_AROUND),
   ) {
     MultipleTexts()
   }
   Text(
     text = "Arrangement.SpaceEvenly",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Column(
     verticalArrangement = Arrangement.SpaceEvenly,
-    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_EVENLY)
+    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_EVENLY),
   ) {
     MultipleTexts()
   }
   Text(
     text = "Arrangement.SpaceBetween",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Column(
     verticalArrangement = Arrangement.SpaceBetween,
-    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_BETWEEN)
+    modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_SPACE_BETWEEN),
   ) {
     MultipleTexts()
   }
@@ -179,7 +179,7 @@ fun TypeOfBoxs() {
   Text(
     text = "Children with no align",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_NO_ALIGN)) {
     Material3Card(backgroundColor = green700, elevation = 4.dp, modifier = Modifier.size(200.dp)) {}
@@ -189,23 +189,23 @@ fun TypeOfBoxs() {
   Text(
     text = "Children with Topstart, center & bottomEnd align",
     style = typography.caption,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_TOP_CENTER_AND_NO_ALIGN)) {
     Material3Card(
       backgroundColor = green700,
       elevation = 4.dp,
-      modifier = Modifier.size(200.dp).align(Alignment.TopStart)
+      modifier = Modifier.size(200.dp).align(Alignment.TopStart),
     ) {}
     Material3Card(
       backgroundColor = green500,
       elevation = 4.dp,
-      modifier = Modifier.size(150.dp).align(Alignment.Center)
+      modifier = Modifier.size(150.dp).align(Alignment.Center),
     ) {}
     Material3Card(
       backgroundColor = green200,
       elevation = 4.dp,
-      modifier = Modifier.size(100.dp).align(Alignment.BottomEnd)
+      modifier = Modifier.size(100.dp).align(Alignment.BottomEnd),
     ) {}
   }
 }
@@ -226,7 +226,7 @@ fun ConstraintLayouts() {
 
     Button(
       onClick = {},
-      modifier = Modifier.constrainAs(mainButton) { top.linkTo(parent.top, margin = 16.dp) }
+      modifier = Modifier.constrainAs(mainButton) { top.linkTo(parent.top, margin = 16.dp) },
     ) {
       Text("Main button")
     }
@@ -236,23 +236,23 @@ fun ConstraintLayouts() {
       Modifier.constrainAs(mainText) {
         top.linkTo(parent.top, margin = 16.dp)
         absoluteLeft.linkTo(mainButton.end, margin = 16.dp)
-      }
+      },
     )
     Text(
       "Secondary Text",
       Modifier.constrainAs(seconderyText) {
         top.linkTo(mainText.bottom, margin = 16.dp)
         absoluteLeft.linkTo(mainButton.end, margin = 16.dp)
-      }
+      },
     )
 
     OutlinedButton(
-      onClick = { /* Do something */},
+      onClick = { /* Do something */ },
       modifier =
         Modifier.constrainAs(outlineButton) {
           top.linkTo(seconderyText.bottom, margin = 16.dp)
           start.linkTo(seconderyText.end, margin = 16.dp)
-        }
+        },
     ) {
       Text("Outline Button")
     }

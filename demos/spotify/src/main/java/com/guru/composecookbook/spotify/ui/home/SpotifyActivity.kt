@@ -36,7 +36,7 @@ import com.guru.composecookbook.theme.graySurface
 enum class SpotifyNavType {
   HOME,
   SEARCH,
-  LIBRARY
+  LIBRARY,
 }
 
 class SpotifyActivity : ComponentActivity() {
@@ -48,6 +48,7 @@ class SpotifyActivity : ComponentActivity() {
 
   companion object {
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, isDarkTheme: Boolean) =
       Intent(context, SpotifyActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
   }
@@ -59,11 +60,8 @@ fun SpotifyAppContent() {
   Scaffold(
     bottomBar = { SpotifyBottomNavigation(spotifyNavItemState) },
     content = { paddingValues ->
-      SpotifyBodyContent(
-        spotifyNavItemState.value,
-        modifier = Modifier.padding(paddingValues),
-      )
-    }
+      SpotifyBodyContent(spotifyNavItemState.value, modifier = Modifier.padding(paddingValues))
+    },
   )
 }
 
@@ -82,26 +80,20 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
       icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
       onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
-      label = { Text(text = stringResource(id = R.string.spotify_nav_search)) }
+      label = { Text(text = stringResource(id = R.string.spotify_nav_search)) },
     )
     BottomNavigationItem(
       icon = { Icon(imageVector = Icons.Outlined.LibraryMusic, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
       onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
-      label = { Text(text = stringResource(id = R.string.spotify_nav_library)) }
+      label = { Text(text = stringResource(id = R.string.spotify_nav_library)) },
     )
   }
 }
 
 @Composable
-fun SpotifyBodyContent(
-  spotifyNavType: SpotifyNavType,
-  modifier: Modifier = Modifier,
-) {
-  Crossfade(
-    targetState = spotifyNavType,
-    modifier = modifier,
-  ) { navType ->
+fun SpotifyBodyContent(spotifyNavType: SpotifyNavType, modifier: Modifier = Modifier) {
+  Crossfade(targetState = spotifyNavType, modifier = modifier) { navType ->
     when (navType) {
       SpotifyNavType.HOME -> SpotifyHome()
       SpotifyNavType.SEARCH -> SpotifySearchScreen()

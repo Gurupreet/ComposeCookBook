@@ -35,14 +35,14 @@ fun ProfileTabs() {
     Tab(
       selected = selectedIndex == 0,
       onClick = { selectedIndex = 0 },
-      modifier = Modifier.padding(12.dp)
+      modifier = Modifier.padding(12.dp),
     ) {
       Icon(imageVector = Icons.Default.VerticalDistribute, contentDescription = null)
     }
     Tab(
       selected = selectedIndex == 0,
       onClick = { selectedIndex = 1 },
-      modifier = Modifier.padding(12.dp)
+      modifier = Modifier.padding(12.dp),
     ) {
       Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = null)
     }
@@ -55,7 +55,7 @@ fun ProfileTabs() {
         painter = painterResource(id = it.imageId),
         contentDescription = null,
         modifier = Modifier.fillMaxWidth().height(150.dp),
-        contentScale = ContentScale.Crop
+        contentScale = ContentScale.Crop,
       )
     }
   }

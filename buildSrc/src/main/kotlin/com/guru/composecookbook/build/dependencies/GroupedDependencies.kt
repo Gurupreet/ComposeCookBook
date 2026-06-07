@@ -30,7 +30,8 @@ internal val composeDebugDependencies = listOf(
 internal val kotlinDependencies = listOf(
     Dependencies.kotlinStandardLibraryJdk8,
     Dependencies.coroutinesCore,
-    Dependencies.coroutinesAndroid
+    Dependencies.coroutinesAndroid,
+    Dependencies.kotlinxSerializationJson
 )
 
 internal val kotlinTestDependencies = listOf(
@@ -62,7 +63,8 @@ internal val coreAndroidUiDependencies = listOf(
 )
 
 internal val googleAndroidLibraries = listOf(
-    Dependencies.androidExoPlayer,
+    Dependencies.media3Exoplayer,
+    Dependencies.media3Ui,
     Dependencies.playServicesAds,
     Dependencies.playServicesMaps
     // Removed Dependencies.googleMaps as it's not available
@@ -93,6 +95,7 @@ internal val androidInstrumentationTestsDependencies = listOf(
 
 internal val thirdPartyUiDependencies = listOf(
     Dependencies.coilCompose,
+    Dependencies.coilNetworkOkHttp,
     Dependencies.lottie,
     Dependencies.composeLottie
 )

@@ -45,7 +45,7 @@ fun SearchLayout(
   offset: Int,
   drawerState: DrawerState,
   showUserDialog: MutableState<Boolean>,
-  onCreateNewEmailClickListener: () -> Unit
+  onCreateNewEmailClickListener: () -> Unit,
 ) {
 
   val searchLayoutHeightDp = 70.dp
@@ -57,15 +57,13 @@ fun SearchLayout(
         .height(searchLayoutHeightDp)
         .padding(8.dp)
         .shadow(8.dp, shape = RoundedCornerShape(8.dp), clip = false)
-        .background(background, shape = RoundedCornerShape(8.dp))
+        .background(background, shape = RoundedCornerShape(8.dp)),
   ) {
     val coroutineScope = rememberCoroutineScope()
-    IconButton(
-      onClick = { coroutineScope.launch { drawerState.open() } },
-    ) {
+    IconButton(onClick = { coroutineScope.launch { drawerState.open() } }) {
       Icon(
         imageVector = Icons.Outlined.Menu,
-        contentDescription = stringResource(id = R.string.cd_gmail_menu)
+        contentDescription = stringResource(id = R.string.cd_gmail_menu),
       )
     }
 
@@ -79,21 +77,19 @@ fun SearchLayout(
           backgroundColor = background,
           cursorColor = MaterialTheme.colors.onSurface,
           focusedIndicatorColor = background,
-          disabledIndicatorColor = background
+          disabledIndicatorColor = background,
         ),
-      textStyle = typography.body2
+      textStyle = typography.body2,
     )
 
     val accessibilityManager =
       LocalContext.current.getSystemService(Context.ACCESSIBILITY_SERVICE)
         as android.view.accessibility.AccessibilityManager
     if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
-      IconButton(
-        onClick = { onCreateNewEmailClickListener.invoke() },
-      ) {
+      IconButton(onClick = { onCreateNewEmailClickListener.invoke() }) {
         Icon(
           imageVector = Icons.Outlined.Edit,
-          contentDescription = stringResource(id = R.string.cd_create_new_email)
+          contentDescription = stringResource(id = R.string.cd_create_new_email),
         )
       }
     }
@@ -105,7 +101,7 @@ fun SearchLayout(
         Modifier.padding(horizontal = 8.dp)
           .size(32.dp)
           .clip(CircleShape)
-          .clickable(onClick = { showUserDialog.value = true })
+          .clickable(onClick = { showUserDialog.value = true }),
     )
   }
 }
