@@ -1,0 +1,21 @@
+# Dependabot: security updates + routine version bumps.
+# The gradle ecosystem watches build files and (once the project migrates)
+# gradle/libs.versions.toml; the github-actions ecosystem watches workflows.
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # Compose artifacts must move together with the BOM
+      compose:
+        patterns:
+          - "androidx.compose*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
