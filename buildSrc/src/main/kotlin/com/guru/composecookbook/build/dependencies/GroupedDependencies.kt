@@ -95,6 +95,7 @@ internal val androidInstrumentationTestsDependencies = listOf(
 
 internal val thirdPartyUiDependencies = listOf(
     Dependencies.coilCompose,
+    Dependencies.coilNetworkOkHttp,
     Dependencies.lottie,
     Dependencies.composeLottie
 )

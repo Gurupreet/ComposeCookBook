@@ -32,7 +32,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
@@ -145,8 +145,8 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
   Row(modifier = animatedModifier, verticalAlignment = Alignment.CenterVertically) {
     Image(
       painter =
-        rememberImagePainter(
-          data =
+        rememberAsyncImagePainter(
+          model =
             "https://picsum.photos/id/${
                     itemIndex +
                         1
