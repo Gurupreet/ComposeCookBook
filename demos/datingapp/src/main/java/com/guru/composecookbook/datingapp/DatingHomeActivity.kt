@@ -21,8 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -115,7 +115,7 @@ fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
       DatingNavType.CHATS -> "Chats"
       DatingNavType.PROFILE -> "My Profile"
     }
-  SmallTopAppBar(
+  TopAppBar(
     title = { Text(title, style = typography.h6) },
     actions = { IconButton(onClick = {}) { Icons.Default.MyLocation } },
   )
