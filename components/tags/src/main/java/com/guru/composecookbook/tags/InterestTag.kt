@@ -26,7 +26,7 @@ interface TagColors {
 @Immutable
 private class DefaultTagColors(
   private val backgroundColor: Color,
-  private val contentColor: Color
+  private val contentColor: Color,
 ) : TagColors {
   @Composable
   override fun backgroundColor(enabled: Boolean): State<Color> {
@@ -43,7 +43,7 @@ object TagDefaults {
   @Composable
   fun tagColors(
     backgroundColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = .2f),
-    contentColor: Color = MaterialTheme.colorScheme.primary
+    contentColor: Color = MaterialTheme.colorScheme.primary,
   ): TagColors = DefaultTagColors(backgroundColor = backgroundColor, contentColor = contentColor)
 }
 
@@ -54,7 +54,7 @@ fun InterestTag(
   colors: TagColors = TagDefaults.tagColors(),
   shape: Shape = RoundedCornerShape(4.dp),
   style: TextStyle = typography.body2.copy(fontWeight = FontWeight.Bold),
-  onClick: () -> Unit = {}
+  onClick: () -> Unit = {},
 ) {
   val tagModifier =
     modifier
@@ -67,6 +67,6 @@ fun InterestTag(
     text = text,
     color = colors.contentColor(enabled = true).value,
     modifier = tagModifier,
-    style = style
+    style = style,
   )
 }

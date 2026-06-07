@@ -83,13 +83,13 @@ fun LikeButtonAnimation() {
         scale = 1f
       }
     },
-    modifier = Modifier.graphicsLayer(scaleX = scale, scaleY = scale)
+    modifier = Modifier.graphicsLayer(scaleX = scale, scaleY = scale),
   ) {
     Icon(
       Icons.Default.Favorite,
       contentDescription = "Like",
       tint = if (liked) Color.Red else Color.Gray,
-      modifier = Modifier.size(24.dp)
+      modifier = Modifier.size(24.dp),
     )
   }
 }
@@ -108,7 +108,7 @@ fun AnimatedCounter() {
           slideInVertically { it } + fadeIn() togetherWith
             slideOutVertically { -it } + fadeOut() using
             SizeTransform(clip = false)
-        }
+        },
       ) { targetCount ->
         Text("$targetCount")
       }
@@ -126,8 +126,8 @@ fun ShimmerLoadingAnimation() {
       animationSpec =
         infiniteRepeatable(
           animation = tween(1500, easing = LinearOutSlowInEasing),
-          repeatMode = RepeatMode.Restart
-        )
+          repeatMode = RepeatMode.Restart,
+        ),
     )
 
   Box(
@@ -141,7 +141,7 @@ fun ShimmerLoadingAnimation() {
             androidx.compose.ui.graphics.Brush.linearGradient(
               colors = listOf(Color.Transparent, Color.White.copy(alpha = 0.4f), Color.Transparent),
               start = androidx.compose.ui.geometry.Offset(translateAnim.value - 500f, 0f),
-              end = androidx.compose.ui.geometry.Offset(translateAnim.value, 500f)
+              end = androidx.compose.ui.geometry.Offset(translateAnim.value, 500f),
             )
         )
   )
@@ -157,8 +157,8 @@ fun PulseAnimation() {
       animationSpec =
         infiniteRepeatable(
           animation = tween(1000, easing = EaseInOut),
-          repeatMode = RepeatMode.Reverse
-        )
+          repeatMode = RepeatMode.Reverse,
+        ),
     )
 
   Box(
@@ -191,8 +191,8 @@ fun WaveLoadingAnimation() {
                   1f at 600 with LinearOutSlowInEasing
                   0f at 1200 with LinearOutSlowInEasing
                 },
-              initialStartOffset = androidx.compose.animation.core.StartOffset(delay)
-            )
+              initialStartOffset = androidx.compose.animation.core.StartOffset(delay),
+            ),
         )
 
       Box(

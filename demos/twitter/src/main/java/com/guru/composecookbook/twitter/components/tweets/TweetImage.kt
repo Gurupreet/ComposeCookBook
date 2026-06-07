@@ -19,7 +19,7 @@ fun TweetImage(@DrawableRes imageId: Int, modifier: Modifier = Modifier) {
       painter = painterResource(id = imageId),
       contentDescription = null,
       modifier = modifier.fillMaxWidth().height(150.dp).clip(RoundedCornerShape(4.dp)),
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
   }
 }

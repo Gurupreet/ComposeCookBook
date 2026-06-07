@@ -20,7 +20,7 @@ data class FlingStateStore(
   var splineInflection: Float = 0.1f,
   var splineStartTension: Float = 0.1f,
   var splineEndTension: Float = 1.0f,
-  var numberOfSplinePoints: Int = 100
+  var numberOfSplinePoints: Int = 100,
 ) {
   companion object {
     var INSTANCE = FlingStateStore()

@@ -5,28 +5,24 @@ import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
 import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
 
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
 }
 
-android {
-    namespace = "com.guru.composecookbook.moviesapp"
-}
+android { namespace = "com.guru.composecookbook.moviesapp" }
 
 dependencies {
-    implementation(project(":components:tags"))
-    implementation(project(":components:carousel"))
-    implementation(project(":demos:moviesapp:data"))
-    implementation(project(":theme"))
-    implementation(project(":data"))
+  implementation(project(":components:tags"))
+  implementation(project(":components:carousel"))
+  implementation(project(":demos:moviesapp:data"))
+  implementation(project(":theme"))
+  implementation(project(":data"))
 
-    addComposeOfficialDependencies()
-    addComposeThirdPartyDependencies()
+  addComposeOfficialDependencies()
+  addComposeThirdPartyDependencies()
 
-    addCoreAndroidUiDependencies()
-    addThirdPartyUiDependencies()
+  addCoreAndroidUiDependencies()
+  addThirdPartyUiDependencies()
 
-    addCoreAndroidDependencies()
+  addCoreAndroidDependencies()
 }

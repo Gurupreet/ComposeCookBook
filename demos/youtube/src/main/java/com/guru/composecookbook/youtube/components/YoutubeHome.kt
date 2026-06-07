@@ -43,37 +43,37 @@ fun YoutubeHome() {
             painter = painterResource(id = R.drawable.ic_youtube),
             contentDescription = null,
             tint = Color.Red,
-            modifier = Modifier.padding(start = 16.dp)
+            modifier = Modifier.padding(start = 16.dp),
           )
         },
         actions = {
           Icon(
             imageVector = Icons.Default.Videocam,
             contentDescription = null,
-            modifier = Modifier.padding(horizontal = 8.dp)
+            modifier = Modifier.padding(horizontal = 8.dp),
           )
           Icon(
             imageVector = Icons.Default.Search,
             contentDescription = null,
-            modifier = Modifier.padding(horizontal = 8.dp)
+            modifier = Modifier.padding(horizontal = 8.dp),
           )
           Image(
             painter = painterResource(id = R.drawable.p3),
             contentDescription = null,
             modifier =
-              Modifier.padding(vertical = 4.dp, horizontal = 8.dp).size(24.dp).clip(CircleShape)
+              Modifier.padding(vertical = 4.dp, horizontal = 8.dp).size(24.dp).clip(CircleShape),
           )
-        }
+        },
       )
     },
     content = { paddingValues ->
       Surface(
         elevation = if (MaterialTheme.colors.isLight) 0.dp else 8.dp,
-        modifier = Modifier.padding(paddingValues)
+        modifier = Modifier.padding(paddingValues),
       ) {
         YoutubeContent()
       }
-    }
+    },
   )
 }
 
@@ -94,12 +94,9 @@ fun YoutubeContent() {
           YoutubeChip(
             selected = it.id == 2,
             text = it.author,
-            modifier =
-              Modifier.padding(
-                horizontal = 4.dp,
-              )
+            modifier = Modifier.padding(horizontal = 4.dp),
           )
-        }
+        },
       )
     }
     LazyColumn { items(items = tweets, itemContent = { item -> YoutubeListItem(item) }) }

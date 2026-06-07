@@ -21,7 +21,7 @@ fun MatchSection() {
     text = "New matches",
     style = typography.h6.copy(fontSize = 16.sp),
     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-    color = purple
+    color = purple,
   )
   LazyRow { items(items = matches, itemContent = { MatchesImage(imageId = it.imageId) }) }
   Spacer(modifier = Modifier.height(24.dp))

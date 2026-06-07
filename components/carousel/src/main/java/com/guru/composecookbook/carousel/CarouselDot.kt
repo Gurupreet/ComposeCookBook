@@ -21,7 +21,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
     imageVector = icon,
     modifier = Modifier.padding(4.dp).size(12.dp),
     contentDescription = null,
-    tint = if (selected) color else Color.Gray
+    tint = if (selected) color else Color.Gray,
   )
 }
 

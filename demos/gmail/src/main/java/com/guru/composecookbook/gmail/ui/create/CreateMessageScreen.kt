@@ -29,7 +29,7 @@ fun CreateMessageScreen(navController: NavHostController) {
           IconButton(onClick = { navController.popBackStack() }) {
             Icon(
               imageVector = Icons.Outlined.ArrowBack,
-              contentDescription = stringResource(id = R.string.cd_back)
+              contentDescription = stringResource(id = R.string.cd_back),
             )
           }
         },
@@ -41,13 +41,9 @@ fun CreateMessageScreen(navController: NavHostController) {
             Icon(imageVector = Icons.Outlined.Send, contentDescription = null)
           }
           CreateMessageMoreActionPopupMenu()
-        }
+        },
       )
     },
-    content = { paddingValues ->
-      CreateMessageBody(
-        modifier = Modifier.padding(paddingValues),
-      )
-    },
+    content = { paddingValues -> CreateMessageBody(modifier = Modifier.padding(paddingValues)) },
   )
 }
