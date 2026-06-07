@@ -21,7 +21,7 @@ fun ClockView(
   textColor: Color = MaterialTheme.colors.onSurface,
   hourHandColor: Color = MaterialTheme.colors.onSurface,
   minuteHandColor: Color = MaterialTheme.colors.onSurface,
-  secondHandColor: Color = MaterialTheme.colors.onSurface
+  secondHandColor: Color = MaterialTheme.colors.onSurface,
 ) {
   Canvas(modifier = modifier) {
     // Outer Circle
@@ -39,12 +39,12 @@ fun ClockView(
         start =
           Offset(
             (origin + (lineInnerR * xRad)).toFloat(),
-            (origin + (lineInnerR * yRad)).toFloat()
+            (origin + (lineInnerR * yRad)).toFloat(),
           ),
         end =
           Offset(
             (origin + (lineOuterR * xRad)).toFloat(),
-            (origin + (lineOuterR * yRad)).toFloat()
+            (origin + (lineOuterR * yRad)).toFloat(),
           ),
         strokeWidth = 2.dp.toPx(),
         cap = StrokeCap.Round,
@@ -68,7 +68,7 @@ fun ClockView(
       end =
         Offset((origin + (rHour * xRadHour)).toFloat(), (origin + (rHour * yRadHour)).toFloat()),
       strokeWidth = 3.dp.toPx(),
-      cap = StrokeCap.Round
+      cap = StrokeCap.Round,
     )
 
     // Minute Hand
@@ -81,10 +81,10 @@ fun ClockView(
       end =
         Offset(
           (origin + (rMinute * xRadMinute)).toFloat(),
-          (origin + (rMinute * yRadMinute)).toFloat()
+          (origin + (rMinute * yRadMinute)).toFloat(),
         ),
       strokeWidth = 2.dp.toPx(),
-      cap = StrokeCap.Round
+      cap = StrokeCap.Round,
     )
 
     // Second Hand
@@ -97,10 +97,10 @@ fun ClockView(
       end =
         Offset(
           (origin + (rSecond * xRadSecond)).toFloat(),
-          (origin + (rSecond * yRadSecond)).toFloat()
+          (origin + (rSecond * yRadSecond)).toFloat(),
         ),
       strokeWidth = 1.dp.toPx(),
-      cap = StrokeCap.Round
+      cap = StrokeCap.Round,
     )
   }
 }

@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 fun SegmentedButtons() {
   Column(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(16.dp)
+    verticalArrangement = Arrangement.spacedBy(16.dp),
   ) {
     var selectedOption by remember { mutableStateOf(0) }
     val options = listOf("Option 1", "Option 2", "Option 3")
@@ -28,7 +28,7 @@ fun SegmentedButtons() {
           leadingIcon =
             if (selectedOption == index) {
               { Icon(Icons.Default.Done, contentDescription = null) }
-            } else null
+            } else null,
         )
       }
     }
@@ -41,7 +41,7 @@ fun SegmentedButtons() {
           selected = selectedIconOption == index,
           onClick = { selectedIconOption = index },
           label = {},
-          leadingIcon = { Icon(Icons.Default.Android, contentDescription = null) }
+          leadingIcon = { Icon(Icons.Default.Android, contentDescription = null) },
         )
       }
     }
@@ -54,10 +54,7 @@ fun SegmentedButtons() {
           selected = selected == option,
           onClick = { selected = option },
           shape =
-            SegmentedButtonDefaults.itemShape(
-              index = options.indexOf(option),
-              count = options.size
-            ),
+            SegmentedButtonDefaults.itemShape(index = options.indexOf(option), count = options.size),
         ) {
           Text(option)
         }

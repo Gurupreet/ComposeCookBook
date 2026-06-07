@@ -25,7 +25,7 @@ fun ClockDemo(viewModel: ClockViewModel = androidx.lifecycle.viewmodel.compose.v
     Column(
       modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(16.dp),
       verticalArrangement = Arrangement.Center,
-      horizontalAlignment = Alignment.CenterHorizontally
+      horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       ClockView(
         hourAngle = clockState.first,
@@ -34,7 +34,7 @@ fun ClockDemo(viewModel: ClockViewModel = androidx.lifecycle.viewmodel.compose.v
         modifier =
           Modifier.height(200.dp)
             .width(200.dp)
-            .background(color = MaterialTheme.colors.surface, shape = CircleShape)
+            .background(color = MaterialTheme.colors.surface, shape = CircleShape),
       )
     }
   }

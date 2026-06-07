@@ -47,7 +47,7 @@ fun SwipeButton(
   icon: ImageVector = Icons.Default.ArrowForward,
   rotateIcon: Boolean = true,
   iconPadding: PaddingValues = PaddingValues(2.dp),
-  content: @Composable RowScope.() -> Unit
+  content: @Composable RowScope.() -> Unit,
 ) {
   val containerColor = colors.containerColor
   val dragOffset = remember { mutableStateOf(0f) }
@@ -65,7 +65,7 @@ fun SwipeButton(
   ) {
     BoxWithConstraints(
       modifier = Modifier.fillMaxSize(),
-      contentAlignment = Alignment.CenterStart
+      contentAlignment = Alignment.CenterStart,
     ) {
       // Content
       val maxWidth = this.constraints.maxWidth.toFloat()
@@ -83,12 +83,12 @@ fun SwipeButton(
                 .padding(iconPadding)
                 .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.onPrimary)
-                .align(Alignment.Center)
+                .align(Alignment.Center),
           ) {
             Icon(
               imageVector = Icons.Default.Done,
               contentDescription = "Done",
-              tint = MaterialTheme.colorScheme.primary
+              tint = MaterialTheme.colorScheme.primary,
             )
           }
         }
@@ -103,7 +103,7 @@ fun SwipeButton(
                 Modifier.fillMaxSize().padding(contentPadding),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
-                content = content
+                content = content,
               )
             }
           }
@@ -133,9 +133,9 @@ fun SwipeButton(
                   } else {
                     dragOffset.value = 0f
                   }
-                }
+                },
               )
-              .background(MaterialTheme.colorScheme.onPrimary, shape = CircleShape)
+              .background(MaterialTheme.colorScheme.onPrimary, shape = CircleShape),
         ) {
           Icon(
             imageVector = icon,
@@ -157,5 +157,5 @@ fun SwipeButton(
 enum class SwipeButtonState {
   INITIAL,
   SWIPED,
-  COLLAPSED
+  COLLAPSED,
 }

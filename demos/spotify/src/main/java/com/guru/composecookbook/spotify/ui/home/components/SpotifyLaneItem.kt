@@ -39,14 +39,14 @@ fun SpotifyLaneItem(album: Album) {
       painter = painterResource(id = album.imageId),
       modifier = Modifier.width(180.dp).height(160.dp),
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Text(
       text = "${album.song}: ${album.descriptions}",
       style = typography.body2,
       maxLines = 2,
       overflow = TextOverflow.Ellipsis,
-      modifier = Modifier.padding(vertical = 8.dp)
+      modifier = Modifier.padding(vertical = 8.dp),
     )
   }
 }

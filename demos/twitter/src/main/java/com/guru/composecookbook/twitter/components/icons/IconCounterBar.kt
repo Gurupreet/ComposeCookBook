@@ -22,7 +22,7 @@ fun IconCounterBar(
   onRetweetClick: () -> Unit,
   onLikesClick: () -> Unit,
   onShareClick: () -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceBetween) {
     IconCounters.MessagesCounter(counter = commentCount, onClick = onMessagesClick)
@@ -33,7 +33,7 @@ fun IconCounterBar(
         imageVector = Icons.Default.Share,
         contentDescription = null,
         modifier = Modifier.size(16.dp),
-        tint = Color.LightGray
+        tint = Color.LightGray,
       )
     }
   }
@@ -46,9 +46,9 @@ fun IconCounterBarPreview() {
     commentCount = 122,
     retweetCount = 6,
     likesCount = 32,
-    onMessagesClick = { /*TODO*/},
-    onRetweetClick = { /*TODO*/},
-    onLikesClick = { /*TODO*/},
-    onShareClick = { /*TODO*/}
+    onMessagesClick = { /*TODO*/ },
+    onRetweetClick = { /*TODO*/ },
+    onLikesClick = { /*TODO*/ },
+    onShareClick = { /*TODO*/ },
   )
 }

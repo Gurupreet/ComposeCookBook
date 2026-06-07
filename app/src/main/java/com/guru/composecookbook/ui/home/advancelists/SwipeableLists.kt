@@ -23,7 +23,7 @@ fun SwipeableLists() {
   LazyColumn {
     itemsIndexed(
       items = albums,
-      itemContent = { index, album -> SwipeableListItem(index, album) { index -> } }
+      itemContent = { index, album -> SwipeableListItem(index, album) { index -> } },
     )
   }
 }
@@ -51,18 +51,18 @@ fun SwipeableListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
           Modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.errorContainer)
             .padding(horizontal = 16.dp),
-        contentAlignment = Alignment.CenterEnd
+        contentAlignment = Alignment.CenterEnd,
       ) {
         Icon(
           imageVector = Icons.Default.Delete,
           contentDescription = "Delete",
-          tint = MaterialTheme.colorScheme.onErrorContainer
+          tint = MaterialTheme.colorScheme.onErrorContainer,
         )
       }
     },
     content = { ListItemContent(album) },
     enableDismissFromStartToEnd = false,
-    enableDismissFromEndToStart = true
+    enableDismissFromEndToStart = true,
   )
 }
 
@@ -72,20 +72,20 @@ private fun ListItemContent(album: Album) {
     Row(
       modifier = Modifier.fillMaxWidth().padding(16.dp),
       horizontalArrangement = Arrangement.spacedBy(16.dp),
-      verticalAlignment = Alignment.CenterVertically
+      verticalAlignment = Alignment.CenterVertically,
     ) {
       Column(modifier = Modifier.weight(1f)) {
         Text(
           text = album.song,
           style = MaterialTheme.typography.titleMedium,
           maxLines = 1,
-          overflow = TextOverflow.Ellipsis
+          overflow = TextOverflow.Ellipsis,
         )
         Text(
           text = album.artist,
           style = MaterialTheme.typography.bodyMedium,
           maxLines = 1,
-          overflow = TextOverflow.Ellipsis
+          overflow = TextOverflow.Ellipsis,
         )
       }
       IconButton(onClick = {}) {

@@ -25,7 +25,7 @@ import kotlin.math.abs
 @Composable
 fun MoviesPager(
   imageId: MutableState<Int>,
-  moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit
+  moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit,
 ) {
   val moviesViewModel: MoviesHomeViewModel =
     viewModel(factory = MoviesHomeViewModelFactory(LocalContext.current))
@@ -53,7 +53,7 @@ fun MoviesPager(
         genres,
         isSelected,
         filteredOffset,
-        { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.AddToMyWatchlist(movie)) }
+        { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.AddToMyWatchlist(movie)) },
       ) {
         moviesHomeInteractionEvents(
           MoviesHomeInteractionEvents.OpenMovieDetail(movie, imageId.value)

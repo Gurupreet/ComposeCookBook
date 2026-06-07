@@ -19,7 +19,7 @@ val randomMessages =
     "Same here \uD83D\uDE18",
     "See ya tomorrow \uD83D\uDE00",
     "That's sad to hear \uD83D\uDE1E",
-    "Can we ? \uD83D\uDE0D\uD83D\uDE0D"
+    "Can we ? \uD83D\uDE0D\uD83D\uDE0D",
   )
 
 @Composable

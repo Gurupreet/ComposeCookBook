@@ -83,7 +83,7 @@ fun MeditationHome() {
     LazyColumn(
       verticalArrangement = Arrangement.Top,
       horizontalAlignment = Alignment.Start,
-      modifier = Modifier.padding(bottom = 100.dp)
+      modifier = Modifier.padding(bottom = 100.dp),
     ) {
       item {
         appTitle()
@@ -111,14 +111,14 @@ fun appTitle() {
   Row(
     modifier = Modifier.fillMaxWidth().padding(horizontal = 15.dp, vertical = 15.dp),
     horizontalArrangement = Arrangement.Center,
-    verticalAlignment = Alignment.CenterVertically
+    verticalAlignment = Alignment.CenterVertically,
   ) {
     Text(
       text = stringResource(R.string.silent),
       style = MaterialTheme.typography.h1,
       fontSize = 16.sp,
       textAlign = TextAlign.Center,
-      color = DeepBlue
+      color = DeepBlue,
     )
     Spacer(modifier = Modifier.width(10.dp))
     Image(painter = painterResource(id = R.drawable.ic_logo), contentDescription = "App Icon")
@@ -127,7 +127,7 @@ fun appTitle() {
       text = stringResource(R.string.moon),
       style = MaterialTheme.typography.h1,
       fontSize = 16.sp,
-      color = DeepBlue
+      color = DeepBlue,
     )
   }
 }
@@ -135,19 +135,19 @@ fun appTitle() {
 @Composable
 fun greetingSection(
   modifier: Modifier = Modifier.wrapContentHeight(),
-  name: String = stringResource(R.string.your_name)
+  name: String = stringResource(R.string.your_name),
 ) {
   Column(modifier = Modifier.padding(horizontal = 15.dp)) {
     Text(
       text = stringResource(R.string.good_morning) + " $name",
       style = MaterialTheme.typography.h1,
-      fontSize = 22.sp
+      fontSize = 22.sp,
     )
     Text(
       text = stringResource(R.string.wishing_desc),
       style = MaterialTheme.typography.body1,
       color = Gray,
-      fontSize = 18.sp
+      fontSize = 18.sp,
     )
   }
 }
@@ -160,7 +160,7 @@ fun FeatureSection() {
         stringResource(R.string.basic),
         description = stringResource(R.string.course),
         R.drawable.ic_feature_1,
-        stringResource(R.string.feature_time)
+        stringResource(R.string.feature_time),
       ),
       Modifier.weight(1f)
         .padding(end = 7.5.dp)
@@ -168,14 +168,14 @@ fun FeatureSection() {
         .clip(RoundedCornerShape(dp10))
         .background(Blue)
         .wrapContentHeight(),
-      TextWhite
+      TextWhite,
     )
     FeatureItem(
       Feature(
         stringResource(R.string.relaxation),
         stringResource(R.string.music),
         R.drawable.ic_feature_2,
-        stringResource(R.string.feature_time)
+        stringResource(R.string.feature_time),
       ),
       Modifier.weight(1f)
         .padding(start = 7.5.dp)
@@ -183,7 +183,7 @@ fun FeatureSection() {
         .clip(RoundedCornerShape(dp10))
         .background(Orange)
         .wrapContentHeight(),
-      DeepBlue
+      DeepBlue,
     )
   }
 }
@@ -195,7 +195,7 @@ fun DailyThoughtsSection() {
       DailyThought(
         stringResource(R.string.daily_thoughts),
         stringResource(R.string.meditation_time),
-        TextWhite
+        TextWhite,
       )
     )
   }
@@ -209,7 +209,7 @@ fun RecommendationSection(recommendationList: List<Recommendation>) {
       text = stringResource(R.string.recommendations),
       style = MaterialTheme.typography.h2,
       textAlign = TextAlign.Start,
-      fontSize = 20.sp
+      fontSize = 20.sp,
     )
     spacerHeight10()
     LazyRow(contentPadding = PaddingValues(horizontal = 7.dp)) {
@@ -239,14 +239,14 @@ fun BottomMenu(
   activeHighlightColor: Color = Blue,
   activeTextColor: Color = Blue,
   inactiveTextColor: Color = Gray,
-  initialSelectedItemIndex: Int = 0
+  initialSelectedItemIndex: Int = 0,
 ) {
   var selectedItemIndex by remember { mutableStateOf(initialSelectedItemIndex) }
   Box(modifier = modifier.shadow(elevation = 8.dp)) {
     Row(
       horizontalArrangement = Arrangement.SpaceAround,
       verticalAlignment = Alignment.CenterVertically,
-      modifier = modifier.fillMaxWidth().background(White).padding(15.dp).height(80.dp)
+      modifier = modifier.fillMaxWidth().background(White).padding(15.dp).height(80.dp),
     ) {
       items.forEachIndexed { index, item ->
         BottomMenuItem(
@@ -254,7 +254,7 @@ fun BottomMenu(
           isSelected = index == selectedItemIndex,
           activeHighlightColor = activeHighlightColor,
           activeTextColor = activeTextColor,
-          inactiveTextColor = inactiveTextColor
+          inactiveTextColor = inactiveTextColor,
         ) {
           selectedItemIndex = index
         }
@@ -275,7 +275,7 @@ fun TopicSection(topicList: List<Topic>) {
       style = MaterialTheme.typography.h2,
       textAlign = TextAlign.Start,
       fontSize = 20.sp,
-      modifier = Modifier.padding(start = 7.5.dp)
+      modifier = Modifier.padding(start = 7.5.dp),
     )
     spacerHeight10()
     val itemSize: Dp = (LocalConfiguration.current.screenWidthDp.dp / 2) - 23.dp

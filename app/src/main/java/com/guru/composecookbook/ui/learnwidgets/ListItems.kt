@@ -15,12 +15,12 @@ import androidx.compose.ui.unit.dp
 fun ListItems() {
   Column(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp)
+    verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
     // One-line list item
     ListItem(
       headlineContent = { Text("One-line list item") },
-      leadingContent = { Icon(Icons.Default.Star, contentDescription = null) }
+      leadingContent = { Icon(Icons.Default.Star, contentDescription = null) },
     )
 
     Divider()
@@ -30,7 +30,7 @@ fun ListItems() {
       headlineContent = { Text("Two-line list item") },
       supportingContent = { Text("Secondary text") },
       leadingContent = { Icon(Icons.Default.Favorite, contentDescription = null) },
-      trailingContent = { Text("meta") }
+      trailingContent = { Text("meta") },
     )
 
     Divider()
@@ -41,7 +41,7 @@ fun ListItems() {
       overlineContent = { Text("OVERLINE") },
       supportingContent = { Text("Secondary text\nThird line of text") },
       leadingContent = { Icon(Icons.Default.AccountCircle, contentDescription = null) },
-      trailingContent = { Switch(checked = true, onCheckedChange = {}) }
+      trailingContent = { Switch(checked = true, onCheckedChange = {}) },
     )
   }
 }

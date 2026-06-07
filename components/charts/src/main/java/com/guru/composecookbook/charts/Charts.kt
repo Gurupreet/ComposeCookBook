@@ -82,7 +82,7 @@ fun Charts() {
             LineChart(
               yAxisValues = createRandomFloatList(),
               modifier = Modifier.width(150.dp).height(100.dp),
-              lineColors = listOf(tiktokBlue, tiktokRed)
+              lineColors = listOf(tiktokBlue, tiktokRed),
             )
           }
           Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
@@ -90,12 +90,12 @@ fun Charts() {
               LineChart(
                 yAxisValues = increasingChart5Times,
                 modifier = Modifier.width(160.dp).height(100.dp),
-                lineColors = listOf(tiktokBlue, blue200)
+                lineColors = listOf(tiktokBlue, blue200),
               )
               LineChart(
                 yAxisValues = increasingChart10Times,
                 modifier = Modifier.width(160.dp).height(100.dp),
-                lineColors = listOf(orange200, orange700)
+                lineColors = listOf(orange200, orange700),
               )
             }
           }
@@ -108,7 +108,7 @@ fun Charts() {
           BarCharts(
             modifier = Modifier.fillMaxWidth().height(150.dp).padding(top = 4.dp),
             yAxisValues = createRandomFloatList(),
-            barColors = instagramGradient
+            barColors = instagramGradient,
           )
         }
       }
@@ -138,7 +138,7 @@ fun LineChart(
   lineColors: List<Color> =
     listOf(
       androidx.compose.material.MaterialTheme.colors.primary,
-      androidx.compose.material.MaterialTheme.colors.primary
+      androidx.compose.material.MaterialTheme.colors.primary,
     ),
   lineWidth: Float = 4f,
   yAxisValues: List<Float>,
@@ -164,8 +164,8 @@ fun LineChart(
       animationSpec =
         infiniteRepeatable(
           animation = tween(500, easing = LinearEasing),
-          repeatMode = RepeatMode.Reverse
-        )
+          repeatMode = RepeatMode.Reverse,
+        ),
     )
   val opacity by
     infiniteTransition.animateFloat(
@@ -174,8 +174,8 @@ fun LineChart(
       animationSpec =
         infiniteRepeatable(
           animation = tween(500, easing = LinearEasing),
-          repeatMode = RepeatMode.Reverse
-        )
+          repeatMode = RepeatMode.Reverse,
+        ),
     )
 
   Canvas(modifier = modifier.padding(8.dp)) {
@@ -200,14 +200,14 @@ fun LineChart(
     drawPath(
       path = path,
       brush = Brush.linearGradient(lineColors),
-      style = Stroke(width = lineWidth)
+      style = Stroke(width = lineWidth),
     )
     if (shouldDrawLiveDot) {
       drawCircle(
         lineColors.first(),
         radius,
         Offset(last * scaleX, size.height - (yValues[last] * scaleY) + yMove),
-        opacity
+        opacity,
       )
     }
   }
@@ -220,7 +220,7 @@ fun BarCharts(
     listOf(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primary),
   barWidth: Float = 20f,
   yAxisValues: List<Float>,
-  shouldAnimate: Boolean = true
+  shouldAnimate: Boolean = true,
 ) {
   val x = remember { Animatable(0f) }
   val yValues = remember { yAxisValues }
@@ -246,7 +246,7 @@ fun BarCharts(
         topLeft = Offset(xOffset, yOffset),
         width = barWidth,
         height = size.height - yOffset,
-        barColors
+        barColors,
       )
     }
   }
@@ -287,7 +287,7 @@ fun DrawScope.drawPieSlice(color: Color, size: Size, startAngle: Float, sweepAng
     size = size,
     startAngle = startAngle,
     sweepAngle = sweepAngle,
-    useCenter = true
+    useCenter = true,
   )
 }
 

@@ -10,7 +10,7 @@ import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 class CryptoRepositoryImpl(
   private val cryptoApi: CryptoApi,
   private val cryptoDao: CryptoDao,
-  private val cryptoApiMapper: CryptoApiMapper
+  private val cryptoApiMapper: CryptoApiMapper,
 ) : CryptoRepository {
 
   @WorkerThread
