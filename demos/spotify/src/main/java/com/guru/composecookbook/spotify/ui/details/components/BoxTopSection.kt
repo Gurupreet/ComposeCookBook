@@ -40,13 +40,13 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
     Image(
       painter = painterResource(id = album.imageId),
       contentDescription = null,
-      modifier = Modifier.size(animateImageSize).padding(8.dp)
+      modifier = Modifier.size(animateImageSize).padding(8.dp),
     )
     Text(
       text = album.song,
       style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
       modifier = Modifier.padding(8.dp),
-      color = MaterialTheme.colors.onSurface
+      color = MaterialTheme.colors.onSurface,
     )
     Text(
       text = "FOLLOWING",
@@ -56,9 +56,9 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
         Modifier.padding(4.dp)
           .border(
             border = BorderStroke(2.dp, MaterialTheme.colors.primaryVariant),
-            shape = RoundedCornerShape(12.dp)
+            shape = RoundedCornerShape(12.dp),
           )
-          .padding(vertical = 4.dp, horizontal = 24.dp)
+          .padding(vertical = 4.dp, horizontal = 24.dp),
     )
     Text(text = album.descriptions, style = typography.subtitle2, modifier = Modifier.padding(4.dp))
   }

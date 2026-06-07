@@ -23,7 +23,7 @@ fun InputItem(
   modifier: Modifier = Modifier,
   visualTransformation: VisualTransformation = VisualTransformation.None,
   textStyle: TextStyle = MaterialTheme.typography.labelMedium,
-  keyboardType: KeyboardType = KeyboardType.Text
+  keyboardType: KeyboardType = KeyboardType.Text,
 ) {
   OutlinedTextField(
     value = textFieldValue,
@@ -39,6 +39,6 @@ fun InputItem(
     },
     colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
     modifier = modifier,
-    visualTransformation = visualTransformation
+    visualTransformation = visualTransformation,
   )
 }

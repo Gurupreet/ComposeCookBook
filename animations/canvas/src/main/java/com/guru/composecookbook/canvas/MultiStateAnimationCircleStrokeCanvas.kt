@@ -20,7 +20,7 @@ fun MultiStateAnimationCircleStrokeCanvas() {
     transition.animateFloat(
       initialValue = 0f,
       targetValue = 360f,
-      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Restart)
+      animationSpec = infiniteRepeatable(tween(800), RepeatMode.Restart),
     )
   val stroke = Stroke(8f)
   Canvas(modifier = Modifier.padding(16.dp).size(100.dp)) {

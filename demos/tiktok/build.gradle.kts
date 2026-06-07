@@ -4,24 +4,20 @@ import com.guru.composecookbook.build.dependencies.addGoogleAndroidDependencies
 import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
 
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
 }
 
-android {
-    namespace = "com.guru.composecookbook.tiktok"
-}
+android { namespace = "com.guru.composecookbook.tiktok" }
 
 dependencies {
-    implementation(project(":components:carousel"))
-    implementation(project(":components:verticalgrid"))
-    implementation(project(":data"))
-    implementation(project(":theme"))
+  implementation(project(":components:carousel"))
+  implementation(project(":components:verticalgrid"))
+  implementation(project(":data"))
+  implementation(project(":theme"))
 
-    addComposeOfficialDependencies()
-    addCoreAndroidUiDependencies()
-    addThirdPartyUiDependencies()
-    addGoogleAndroidDependencies()
+  addComposeOfficialDependencies()
+  addCoreAndroidUiDependencies()
+  addThirdPartyUiDependencies()
+  addGoogleAndroidDependencies()
 }

@@ -23,7 +23,7 @@ fun SearchBars() {
 
   Column(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(16.dp)
+    verticalArrangement = Arrangement.spacedBy(16.dp),
   ) {
     // Simple SearchBar with modified layout
     Box(modifier = Modifier.fillMaxWidth()) {
@@ -41,7 +41,7 @@ fun SearchBars() {
           if (!active) searchText = ""
         },
         placeholder = { Text("Search") },
-        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) }
+        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
       ) {
         LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 300.dp)) {
           items(3) { idx ->
@@ -52,7 +52,7 @@ fun SearchBars() {
                 Modifier.clickable {
                   searchText = "Recent search $idx"
                   searchActive = false
-                }
+                },
             )
           }
         }
@@ -75,7 +75,7 @@ fun SearchBars() {
           if (!active) dockedText = ""
         },
         placeholder = { Text("Docked Search") },
-        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) }
+        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
       ) {
         Surface(modifier = Modifier.fillMaxWidth().heightIn(max = 350.dp)) {
           LazyColumn {
@@ -87,7 +87,7 @@ fun SearchBars() {
                   Modifier.clickable {
                     dockedText = "Suggestion $idx"
                     dockedActive = false
-                  }
+                  },
               )
             }
           }

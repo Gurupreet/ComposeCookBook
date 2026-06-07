@@ -2,19 +2,15 @@ import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencie
 import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
 
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
 }
 
-android {
-    namespace = "com.guru.composecookbook.charts"
-}
+android { namespace = "com.guru.composecookbook.charts" }
 
 dependencies {
-    implementation(project(":theme"))
+  implementation(project(":theme"))
 
-    addComposeOfficialDependencies()
-    addCoreAndroidUiDependencies()
+  addComposeOfficialDependencies()
+  addCoreAndroidUiDependencies()
 }

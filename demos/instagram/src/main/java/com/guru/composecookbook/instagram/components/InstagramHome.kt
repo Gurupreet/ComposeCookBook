@@ -39,7 +39,7 @@ fun InstagramHome(
   onCommentsClicked: () -> Unit,
   onSendClicked: () -> Unit,
   onProfileClicked: () -> Unit,
-  onMessagingClicked: () -> Unit
+  onMessagingClicked: () -> Unit,
 ) {
   var showStory = remember { mutableStateOf(false) }
 
@@ -55,7 +55,7 @@ fun InstagramHome(
             IconButton(onClick = {}) {
               Icon(
                 painter = painterResource(id = R.drawable.ic_instagram),
-                contentDescription = null
+                contentDescription = null,
               )
             }
           },
@@ -66,7 +66,7 @@ fun InstagramHome(
                 contentDescription = "Go to messaging screen",
               )
             }
-          }
+          },
         )
       },
       content = { paddingValues ->
@@ -77,23 +77,23 @@ fun InstagramHome(
               onProfileClicked = {
                 showStory.value = true
                 onProfileClicked.invoke()
-              }
+              },
             )
             Divider()
             PostList(
               posts = posts,
               onLikeClicked = onLikeClicked,
               onCommentsClicked = onCommentsClicked,
-              onSendClicked = onSendClicked
+              onSendClicked = onSendClicked,
             )
           }
         }
-      }
+      },
     )
     AnimatedVisibility(
       visible = showStory.value,
       enter = expandVertically() + fadeIn(),
-      exit = shrinkVertically() + fadeOut()
+      exit = shrinkVertically() + fadeOut(),
     ) {
       StoryPopup(imageIds = DemoDataProvider.itemList.take(5)) { showStory.value = false }
     }
@@ -110,6 +110,6 @@ fun PreviewInstagramHome() {
     onCommentsClicked = {},
     onSendClicked = {},
     onProfileClicked = {},
-    onMessagingClicked = {}
+    onMessagingClicked = {},
   )
 }

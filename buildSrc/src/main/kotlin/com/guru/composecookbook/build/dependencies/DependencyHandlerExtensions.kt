@@ -33,7 +33,7 @@ fun DependencyHandler.addKotlinTestDependencies() {
 }
 
 fun DependencyHandler.addDataDependencies() {
-    add("kapt", Dependencies.roomCompiler)
+    add("ksp", Dependencies.roomCompiler)
     dataDependencies.forEach {
         add("implementation", it)
     }

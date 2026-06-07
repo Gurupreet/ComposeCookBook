@@ -26,7 +26,7 @@ fun ProfilePicture(
     painter = painterResource(id = imageId),
     modifier = modifier.size(size).clip(CircleShape),
     contentDescription = contentDescription,
-    contentScale = ContentScale.Crop
+    contentScale = ContentScale.Crop,
   )
 }
 
@@ -43,12 +43,12 @@ fun ProfilePicturePreview() {
     ProfilePicture(
       imageId = DemoDataProvider.tweetList.first().authorImageId,
       contentDescription = "Profile picture",
-      size = ProfileSizes.small
+      size = ProfileSizes.small,
     )
     ProfilePicture(
       imageId = DemoDataProvider.tweetList.first().authorImageId,
       contentDescription = "Profile picture",
-      size = ProfileSizes.medium
+      size = ProfileSizes.medium,
     )
   }
 }

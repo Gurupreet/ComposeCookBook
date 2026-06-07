@@ -8,5 +8,5 @@ enum class DialogType {
   LONGDIALOG,
   ROUNDED,
   DATEPICKER,
-  TIMEPICKER
+  TIMEPICKER,
 }

@@ -55,16 +55,14 @@ class AdvanceListsActivity : ComponentActivity() {
                 IconButton(onClick = { onBackPressed() }) {
                   Icon(
                     Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(id = R.string.cd_back)
+                    contentDescription = stringResource(id = R.string.cd_back),
                   )
                 }
-              }
+              },
             )
           }
         ) { paddingValues ->
-          AdvanceListContent(
-            modifier = Modifier.padding(paddingValues),
-          )
+          AdvanceListContent(modifier = Modifier.padding(paddingValues))
         }
       }
     }
@@ -73,22 +71,21 @@ class AdvanceListsActivity : ComponentActivity() {
   companion object {
     val tabs = listOf("Shimmers", "Animated Lists", "Swipeable Lists")
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, isDarkTheme: Boolean) =
       Intent(context, AdvanceListsActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
   }
 }
 
 @Composable
-fun AdvanceListContent(
-  modifier: Modifier = Modifier,
-) {
+fun AdvanceListContent(modifier: Modifier = Modifier) {
   var selectedIndex by remember { mutableStateOf(0) }
   val pagerState: PagerState = run { remember { PagerState(0, 0, tabs.size - 1) } }
   Column(modifier = modifier) {
     ScrollableTabRow(
       backgroundColor = MaterialTheme.colorScheme.surface,
       selectedTabIndex = selectedIndex,
-      edgePadding = 12.dp
+      edgePadding = 12.dp,
     ) {
       tabs.forEachIndexed { index, title ->
         Tab(
@@ -97,7 +94,7 @@ fun AdvanceListContent(
             selectedIndex = tabs.indexOf(title)
             pagerState.currentPage = tabs.indexOf(title)
           },
-          text = { Text(title) }
+          text = { Text(title) },
         )
       }
     }
