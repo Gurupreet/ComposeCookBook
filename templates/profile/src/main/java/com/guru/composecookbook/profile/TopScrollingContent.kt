@@ -35,7 +35,7 @@ fun TopScrollingContent(scrollState: ScrollState) {
       Text(
         text = name,
         style = materialTypography.headlineSmall.copy(fontSize = 18.sp),
-        modifier = Modifier.padding(bottom = 4.dp)
+        modifier = Modifier.padding(bottom = 4.dp),
       )
       Text(text = "Android developer", style = materialTypography.labelMedium)
     }
@@ -52,6 +52,6 @@ fun AnimatedImage(scroll: Float) {
     modifier =
       Modifier.padding(start = 16.dp)
         .size(animateDpAsState(Dp(dynamicAnimationSizeValue)).value)
-        .clip(CircleShape)
+        .clip(CircleShape),
   )
 }

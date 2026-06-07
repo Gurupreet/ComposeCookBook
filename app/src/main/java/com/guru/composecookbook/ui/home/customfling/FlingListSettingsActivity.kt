@@ -99,15 +99,12 @@ fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
           IconButton(onClick = onback) {
             Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(id = R.string.cd_back))
           }
-        }
+        },
       )
     },
     content = { paddingValues ->
-      RenderSettingsPage(
-        onApplyClick = onApply,
-        modifier = Modifier.padding(paddingValues),
-      )
-    }
+      RenderSettingsPage(onApplyClick = onApply, modifier = Modifier.padding(paddingValues))
+    },
   )
 }
 

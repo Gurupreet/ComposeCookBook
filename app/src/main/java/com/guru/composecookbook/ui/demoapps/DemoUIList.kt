@@ -80,11 +80,11 @@ fun DemoUIList() {
                 else -> TODO("Create your activity to launch any new demo app")
               }
             },
-            modifier = Modifier.fillMaxWidth().padding(12.dp)
+            modifier = Modifier.fillMaxWidth().padding(12.dp),
           ) {
             Text(text = title, modifier = Modifier.padding(8.dp))
           }
-        }
+        },
       )
     }
   }

@@ -124,7 +124,7 @@ fun AndroidMapView() {
 private fun MapViewContainer(map: MapView, latitude: String, longitude: String) {
   AndroidView<MapView>(
     factory = { map },
-    modifier = Modifier.fillMaxWidth().height(400.dp).padding(8.dp).clip(RoundedCornerShape(10.dp))
+    modifier = Modifier.fillMaxWidth().height(400.dp).padding(8.dp).clip(RoundedCornerShape(10.dp)),
   ) { mapView ->
     mapView.getMapAsync { googleMap ->
       val position = LatLng(latitude.toDouble(), longitude.toDouble())

@@ -27,21 +27,21 @@ val Typography =
         color = DeepBlue,
         fontFamily = sans,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 14.sp,
       ),
     h1 =
       TextStyle(
         color = DeepBlue,
         fontFamily = sans,
         fontWeight = FontWeight.Black,
-        fontSize = 22.sp
+        fontSize = 22.sp,
       ),
     h2 =
       TextStyle(
         color = DeepBlue,
         fontFamily = sans,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 18.sp,
       ),
-    defaultFontFamily = sans
+    defaultFontFamily = sans,
   )

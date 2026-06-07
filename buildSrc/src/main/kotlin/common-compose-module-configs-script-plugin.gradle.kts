@@ -3,6 +3,7 @@ import com.guru.composecookbook.build.configurations.ProjectConfigs
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -19,13 +20,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
-        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = ProjectConfigs.kotlinCompilerExtensionVersion
     }
 }
 

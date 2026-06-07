@@ -60,12 +60,12 @@ fun SpotifySearchGridItem(album: Album) {
         .height(100.dp)
         .clip(RoundedCornerShape(8.dp))
         .horizontalGradientBackground(dominantGradient),
-    horizontalArrangement = Arrangement.SpaceBetween
+    horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     Text(
       text = album.song,
       style = typography.h6.copy(fontSize = 14.sp),
-      modifier = Modifier.padding(8.dp)
+      modifier = Modifier.padding(8.dp),
     )
     Image(
       painter = painterResource(id = album.imageId),
@@ -74,7 +74,7 @@ fun SpotifySearchGridItem(album: Album) {
       modifier =
         Modifier.size(70.dp)
           .align(Alignment.Bottom)
-          .graphicsLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f)
+          .graphicsLayer(translationX = 40f, rotationZ = 32f, shadowElevation = 16f),
     )
   }
 }
