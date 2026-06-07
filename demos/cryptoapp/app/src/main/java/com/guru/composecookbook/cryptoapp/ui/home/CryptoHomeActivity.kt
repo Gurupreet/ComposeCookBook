@@ -19,7 +19,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 sealed class CryptoHomeInteractionEvents {
   data class AddedToFav(val crypto: Crypto) : CryptoHomeInteractionEvents()
+
   data class OpenDetailScreen(val crypto: Crypto) : CryptoHomeInteractionEvents()
+
   data class RemoveFav(val crypto: Crypto) : CryptoHomeInteractionEvents()
 }
 
@@ -39,7 +41,7 @@ class CryptoHomeActivity : ComponentActivity() {
 
   private fun handleInteractionEvents(
     cryptoHomeInteractionEvents: CryptoHomeInteractionEvents,
-    viewModel: CryptoHomeViewModel
+    viewModel: CryptoHomeViewModel,
   ) {
     when (cryptoHomeInteractionEvents) {
       is CryptoHomeInteractionEvents.AddedToFav -> {
@@ -56,6 +58,7 @@ class CryptoHomeActivity : ComponentActivity() {
 
   companion object {
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, isDarkTheme: Boolean) =
       Intent(context, CryptoHomeActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
   }

@@ -8,8 +8,8 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -44,7 +44,7 @@ fun StoryItem(
       Brush.linearGradient(
         colors = instagramGradient,
         start = Offset(x = 0f, y = 0f),
-        end = Offset(x = 100f, y = 100f)
+        end = Offset(x = 100f, y = 100f),
       )
     }
   Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
@@ -55,15 +55,15 @@ fun StoryItem(
       modifier =
         Modifier.border(
             shape = CircleShape,
-            border = BorderStroke(width = 3.dp, brush = borderColor)
+            border = BorderStroke(width = 3.dp, brush = borderColor),
           )
           .clickable(
             interactionSource = interactionSource,
-            indication = rememberRipple(bounded = false, radius = ProfileSizes.large / 2),
+            indication = ripple(bounded = false, radius = ProfileSizes.large / 2),
             enabled = true,
             onClickLabel = null,
-            onClick = onClick
-          )
+            onClick = onClick,
+          ),
     )
     Text(text = profileName, style = textStyle, textAlign = TextAlign.Center)
   }
@@ -76,7 +76,7 @@ fun StoryItemPreview() {
     profileImageId = DemoDataProvider.tweet.authorImageId,
     profileName = DemoDataProvider.tweet.author,
     isMe = false,
-    onClick = {}
+    onClick = {},
   )
 }
 
@@ -87,6 +87,6 @@ fun StoryItemMePreview() {
     profileImageId = DemoDataProvider.tweet.authorImageId,
     profileName = DemoDataProvider.tweet.author,
     isMe = true,
-    onClick = {}
+    onClick = {},
   )
 }

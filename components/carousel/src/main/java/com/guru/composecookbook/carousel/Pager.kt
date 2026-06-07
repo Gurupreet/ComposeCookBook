@@ -21,7 +21,7 @@ fun Pager(
   state: PagerState,
   orientation: Orientation = Orientation.Horizontal,
   offscreenLimit: Int = 2,
-  content: @Composable PagerScope.() -> Unit
+  content: @Composable PagerScope.() -> Unit,
 ) {
   var pageSize by remember { mutableStateOf(0) }
   val coroutineScope = rememberCoroutineScope()
@@ -44,7 +44,7 @@ fun Pager(
           rememberDraggableState { deltaInPx ->
             coroutineScope.calculateNewPosition(deltaInPx, state, pageSize, offscreenLimit)
           },
-      )
+      ),
   ) { measurables, constraints ->
     layout(constraints.maxWidth, constraints.maxHeight) {
       val currentPage = state.currentPage
@@ -70,12 +70,12 @@ fun Pager(
           if (orientation == Orientation.Horizontal) {
             placeable.placeRelative(
               x = xCenterOffset + ((page - (currentPage - offset)) * placeable.width).roundToInt(),
-              y = yCenterOffset
+              y = yCenterOffset,
             )
           } else {
             placeable.placeRelative(
               x = xCenterOffset,
-              y = yCenterOffset + ((page - (currentPage - offset)) * placeable.height).roundToInt()
+              y = yCenterOffset + ((page - (currentPage - offset)) * placeable.height).roundToInt(),
             )
           }
         }
@@ -86,7 +86,7 @@ fun Pager(
 @Composable
 private fun PagerState.PrepareContent(
   offscreenLimit: Int,
-  content: @Composable PagerScope.() -> Unit
+  content: @Composable PagerScope.() -> Unit,
 ) {
   val minPage = (currentPage - offscreenLimit).coerceAtLeast(minPage)
   val maxPage = (currentPage + offscreenLimit).coerceAtMost(maxPage)
@@ -102,7 +102,7 @@ private fun CoroutineScope.calculateNewPosition(
   delta: Float,
   state: PagerState,
   pageSize: Int,
-  offscreenLimit: Int
+  offscreenLimit: Int,
 ) {
   launch {
     with(state) {

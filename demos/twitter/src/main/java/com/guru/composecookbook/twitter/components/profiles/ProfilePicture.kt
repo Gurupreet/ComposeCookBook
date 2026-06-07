@@ -16,13 +16,13 @@ import androidx.compose.ui.unit.dp
 fun ProfilePicture(
   @DrawableRes profileImageId: Int,
   modifier: Modifier = Modifier,
-  size: Dp = ProfilePictureSizes.small
+  size: Dp = ProfilePictureSizes.small,
 ) {
   Image(
     painter = painterResource(id = profileImageId),
     contentDescription = null,
     contentScale = ContentScale.Crop,
-    modifier = modifier.size(size).clip(CircleShape)
+    modifier = modifier.size(size).clip(CircleShape),
   )
 }
 

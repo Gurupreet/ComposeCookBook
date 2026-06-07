@@ -30,7 +30,7 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
       Pager(
         state = pagerState,
         orientation = Orientation.Horizontal,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
       ) {
         OnboardingPagerItem(onboardingList[commingPage])
       }
@@ -40,14 +40,14 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
         modifier =
           Modifier.align(Alignment.TopEnd)
             .padding(vertical = 48.dp, horizontal = 16.dp)
-            .clickable(onClick = onSkip)
+            .clickable(onClick = onSkip),
       )
       Row(modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp)) {
         onboardingList.forEachIndexed { index, _ ->
           OnboardingPagerSlide(
             selected = index == pagerState.currentPage,
             MaterialTheme.colorScheme.primary,
-            Icons.Filled.Album
+            Icons.Filled.Album,
           )
         }
       }
@@ -61,12 +61,12 @@ fun OnBoardingScreen(onSkip: () -> Unit) {
             .align(Alignment.BottomCenter)
             .padding(bottom = 32.dp)
             .height(50.dp)
-            .clip(CircleShape)
+            .clip(CircleShape),
       ) {
         Text(
           text = if (pagerState.currentPage == onboardingList.size - 1) "Let's Begin" else "Next",
           modifier = Modifier.padding(horizontal = 32.dp),
-          color = MaterialTheme.colorScheme.onPrimary
+          color = MaterialTheme.colorScheme.onPrimary,
         )
       }
     }
@@ -80,16 +80,16 @@ val onboardingList =
     Onboard(
       "Team Collaborations",
       "Our tools help your teams collaborate for the best output results",
-      "profile.json"
+      "profile.json",
     ),
     Onboard(
       "Improve Productivity",
       "Our tools are designed to improve productivity by automating all the stuff for you",
-      "working.json"
+      "working.json",
     ),
     Onboard(
       "Growth Tracking",
       "We provide dashboard and charts to track your growth easily and suggestions.",
-      "food.json"
-    )
+      "food.json",
+    ),
   )

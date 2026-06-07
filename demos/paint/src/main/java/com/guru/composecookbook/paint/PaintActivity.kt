@@ -18,7 +18,7 @@ class PaintActivity : ComponentActivity() {
   @OptIn(
     ExperimentalComposeUiApi::class,
     androidx.compose.foundation.ExperimentalFoundationApi::class,
-    androidx.compose.animation.ExperimentalAnimationApi::class
+    androidx.compose.animation.ExperimentalAnimationApi::class,
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class PaintActivity : ComponentActivity() {
 @OptIn(
   ExperimentalComposeUiApi::class,
   ExperimentalFoundationApi::class,
-  ExperimentalAnimationApi::class
+  ExperimentalAnimationApi::class,
 )
 @Preview(showBackground = true)
 @Composable

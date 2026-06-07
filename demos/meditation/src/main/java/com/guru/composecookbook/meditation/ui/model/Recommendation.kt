@@ -10,12 +10,12 @@ val recommendationList =
     Recommendation(
       "Happiness",
       description = "MEDITATION • 3-10 MIN",
-      R.drawable.ic_recommendation_2
+      R.drawable.ic_recommendation_2,
     ),
     Recommendation("Focus", description = "MEDITATION • 3-10 MIN", R.drawable.ic_recommendation_1),
     Recommendation(
       "Happiness",
       description = "MEDITATION • 3-10 MIN",
-      R.drawable.ic_recommendation_2
+      R.drawable.ic_recommendation_2,
     ),
   )

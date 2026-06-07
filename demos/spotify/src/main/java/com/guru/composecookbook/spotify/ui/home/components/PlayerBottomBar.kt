@@ -37,7 +37,7 @@ fun PlayerBottomBar(modifier: Modifier) {
       painter = painterResource(id = R.drawable.adele21),
       modifier = Modifier.size(65.dp),
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Text(
       text = "Someone Like you by Adele",
@@ -47,12 +47,12 @@ fun PlayerBottomBar(modifier: Modifier) {
     Icon(
       imageVector = Icons.Default.FavoriteBorder,
       modifier = Modifier.padding(8.dp),
-      contentDescription = null
+      contentDescription = null,
     )
     Icon(
       imageVector = Icons.Default.PlayArrow,
       modifier = Modifier.padding(8.dp),
-      contentDescription = null
+      contentDescription = null,
     )
   }
 }

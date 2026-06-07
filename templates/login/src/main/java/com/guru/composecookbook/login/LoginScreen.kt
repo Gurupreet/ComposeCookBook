@@ -58,14 +58,14 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         Text(
           text = "Welcome Back",
           style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.ExtraBold),
-          modifier = Modifier.padding(top = 8.dp)
+          modifier = Modifier.padding(top = 8.dp),
         )
       }
       item {
         Text(
           text = "We have missed you, Let's start by Sign In!",
           style = MaterialTheme.typography.labelMedium,
-          modifier = Modifier.padding(bottom = 12.dp)
+          modifier = Modifier.padding(bottom = 12.dp),
         )
       }
 
@@ -75,7 +75,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
           leadingIcon = {
             FaIcon(
               faIcon = FaIcons.Envelope,
-              tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+              tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
             )
           },
           maxLines = 1,
@@ -96,7 +96,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
           leadingIcon = {
             FaIcon(
               faIcon = FaIcons.Key,
-              tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+              tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
             )
           },
           trailingIcon = {
@@ -113,7 +113,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                         PasswordVisualTransformation()
                       }
                   }
-                )
+                ),
             )
           },
           colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
@@ -143,7 +143,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             }
           },
           modifier =
-            Modifier.fillMaxWidth().padding(vertical = 16.dp).height(50.dp).clip(CircleShape)
+            Modifier.fillMaxWidth().padding(vertical = 16.dp).height(50.dp).clip(CircleShape),
         ) {
           if (loading) {
             HorizontalDottedProgressBar()
@@ -167,7 +167,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             modifier =
               Modifier.align(Alignment.Center)
                 .background(MaterialTheme.colorScheme.background)
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 16.dp),
           )
         }
       }
@@ -182,7 +182,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             text = "Sign in with Facebook",
             style = MaterialTheme.typography.headlineSmall.copy(fontSize = 14.sp),
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
           )
         }
       }
@@ -199,7 +199,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             text = "Sign in with Gmail",
             style = MaterialTheme.typography.headlineSmall.copy(fontSize = 14.sp),
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
           )
         }
       }
@@ -214,7 +214,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         Text(
           text = annotatedString.toAnnotatedString(),
           modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp).clickable(onClick = {}),
-          textAlign = TextAlign.Center
+          textAlign = TextAlign.Center,
         )
       }
 

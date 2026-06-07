@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flowOn
 class MovieRepositoryImpl(
   private val movieApi: MovieApi,
   private val moviesDao: MoviesDao,
-  private val genreDao: GenreDao
+  private val genreDao: GenreDao,
 ) : MovieRepository {
 
   override suspend fun getNowShowing(): Flow<List<Movie>> =
