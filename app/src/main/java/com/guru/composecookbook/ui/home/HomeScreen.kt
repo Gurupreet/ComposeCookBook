@@ -62,6 +62,7 @@ import com.guru.composecookbook.theme.orange500
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.ui.home.adaptive.AdaptiveUIActivity
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
+import com.guru.composecookbook.ui.home.contrast.ContrastThemeActivity
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
 import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
@@ -308,6 +309,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
       }
       HomeScreenItems.PredictiveBack -> {
         PredictiveBackActivity.newIntent(context, isDarkTheme)
+      }
+      HomeScreenItems.ContrastTheme -> {
+        ContrastThemeActivity.newIntent(context)
       }
     }
   context.startActivity(intent)

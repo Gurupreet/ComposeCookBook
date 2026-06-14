@@ -28,6 +28,10 @@
             android:label="@string/title_activity_predictive_back"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
+            android:name=".ui.home.contrast.ContrastThemeActivity"
+            android:label="@string/title_activity_contrast_theme"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+        <activity
             android:name=".ui.home.advancelists.AdvanceListsActivity"
             android:label="@string/title_activity_advance_lists"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
