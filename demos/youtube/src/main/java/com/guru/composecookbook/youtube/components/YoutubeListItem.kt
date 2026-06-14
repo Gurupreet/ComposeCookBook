@@ -39,12 +39,9 @@ fun YoutubeListItem(item: Tweet) {
       contentScale = ContentScale.Crop,
       modifier =
         Modifier.height(200.dp).constrainAs(image) {
-          linkTo(
-            start = parent.start,
-            end = parent.end,
-          )
+          linkTo(start = parent.start, end = parent.end)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Image(
       painter = painterResource(id = com.guru.composecookbook.data.R.drawable.p1),
@@ -54,7 +51,7 @@ fun YoutubeListItem(item: Tweet) {
           start.linkTo(parent.start, margin = 12.dp)
           top.linkTo(image.bottom, margin = 16.dp)
           end.linkTo(title.start)
-        }
+        },
     )
     Text(
       text = item.text,
@@ -67,11 +64,11 @@ fun YoutubeListItem(item: Tweet) {
             start = authorImage.end,
             startMargin = 16.dp,
             end = button.start,
-            endMargin = 16.dp
+            endMargin = 16.dp,
           )
           linkTo(top = authorImage.top, bottom = subtitle.top)
           width = Dimension.fillToConstraints
-        }
+        },
     )
     Text(
       text = "${item.author} . ${item.likesCount}k views . 6 hours ago",
@@ -82,7 +79,7 @@ fun YoutubeListItem(item: Tweet) {
             start.linkTo(title.start)
             width = Dimension.fillToConstraints
           }
-          .padding(bottom = 24.dp)
+          .padding(bottom = 24.dp),
     )
     IconButton(
       onClick = {},
@@ -90,7 +87,7 @@ fun YoutubeListItem(item: Tweet) {
         Modifier.constrainAs(button) {
           top.linkTo(image.bottom)
           end.linkTo(parent.end)
-        }
+        },
     ) {
       Icon(Icons.Default.MoreVert, tint = Color.Gray, contentDescription = null)
     }

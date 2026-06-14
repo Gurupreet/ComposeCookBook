@@ -36,19 +36,15 @@ fun YoutubeChip(selected: Boolean, text: String, modifier: Modifier = Modifier) 
           when {
             selected -> MaterialTheme.colorScheme.surface
             else -> Color.LightGray
-          }
+          },
       ),
-    modifier = modifier
+    modifier = modifier,
   ) {
     Text(
       text = text,
       textAlign = TextAlign.Center,
       style = MaterialTheme.typography.bodyMedium,
-      modifier =
-        Modifier.padding(
-          vertical = 8.dp,
-          horizontal = 12.dp,
-        )
+      modifier = Modifier.padding(vertical = 8.dp, horizontal = 12.dp),
     )
   }
 }

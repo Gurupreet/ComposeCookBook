@@ -39,9 +39,9 @@ fun WatchlistScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -
             { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.OpenMovieDetail(movie)) },
             {
               moviesHomeInteractionEvents(MoviesHomeInteractionEvents.RemoveFromMyWatchlist(movie))
-            }
+            },
           )
-        }
+        },
       )
     }
   }

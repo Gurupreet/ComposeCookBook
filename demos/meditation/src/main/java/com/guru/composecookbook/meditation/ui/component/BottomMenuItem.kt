@@ -32,7 +32,7 @@ fun BottomMenuItem(
   activeHighlightColor: Color = ButtonBlue,
   activeTextColor: Color = Color.White,
   inactiveTextColor: Color = AquaBlue,
-  onItemClick: () -> Unit
+  onItemClick: () -> Unit,
 ) {
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -44,13 +44,13 @@ fun BottomMenuItem(
         Modifier.clip(RoundedCornerShape(15.dp))
           .background(if (isSelected) activeHighlightColor else Color.Transparent)
           .clickable { onItemClick() }
-          .padding(15.dp)
+          .padding(15.dp),
     ) {
       Icon(
         painter = painterResource(id = item.iconId),
         contentDescription = item.title,
         tint = if (isSelected) Color.White else Gray,
-        modifier = Modifier.size(20.dp)
+        modifier = Modifier.size(20.dp),
       )
     }
     spacerHeight5()
@@ -58,7 +58,7 @@ fun BottomMenuItem(
       text = item.title,
       style = MaterialTheme.typography.h2,
       color = if (isSelected) activeTextColor else inactiveTextColor,
-      fontSize = 14.sp
+      fontSize = 14.sp,
     )
   }
 }

@@ -47,7 +47,7 @@ fun VerticalFlingerListView(
           // Click event callback.
           onSettingsClick()
         },
-        modifier = Modifier.size(100.dp, 40.dp)
+        modifier = Modifier.size(100.dp, 40.dp),
       ) {
         Text(text = "Settings", modifier = Modifier.testTag(TestTags.HOME_FLING_SETTINGS_BUTTON))
       }
@@ -77,14 +77,14 @@ fun RenderListWithBehaviour(list: List<Item>, flingBehavior: FlingBehavior) {
   LazyColumn(
     // Custom Fling behaviour
     flingBehavior = flingBehavior,
-    modifier = Modifier.testTag(TestTags.HOME_FLING_LIST)
+    modifier = Modifier.testTag(TestTags.HOME_FLING_LIST),
   ) {
     items(
       items = list,
       itemContent = { item ->
         VerticalFlingerListItem(item = item)
         ListItemDivider()
-      }
+      },
     )
   }
 }

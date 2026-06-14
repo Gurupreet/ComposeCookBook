@@ -12,6 +12,6 @@ fun LottieCryptoLoadingView(context: Context) {
   LottieLoadingView(
     context = context,
     file = "cryptoload.json",
-    modifier = Modifier.fillMaxWidth().height(150.dp)
+    modifier = Modifier.fillMaxWidth().height(150.dp),
   )
 }

@@ -1,17 +1,12 @@
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-
 plugins {
-    /**
-     * See [common-compose-module-configs-script-plugin.gradle.kts] file
-     */
-    id("common-compose-module-configs-script-plugin")
+  /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
+  id("common-compose-module-configs-script-plugin")
 }
 
-android {
-    namespace = "com.guru.composecookbook.canvas"
-}
+android { namespace = "com.guru.composecookbook.canvas" }
 
 dependencies {
-    implementation(project(":theme"))
-    addComposeOfficialDependencies()
+  implementation(project(":theme"))
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.bundles.compose.official)
 }

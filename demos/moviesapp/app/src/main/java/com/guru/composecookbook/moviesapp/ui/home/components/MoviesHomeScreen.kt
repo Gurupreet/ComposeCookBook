@@ -50,7 +50,7 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
       Text(
         text = "Now Showing",
         style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(16.dp),
       )
     }
     item { MoviesPager(imageId, moviesHomeInteractionEvents) }

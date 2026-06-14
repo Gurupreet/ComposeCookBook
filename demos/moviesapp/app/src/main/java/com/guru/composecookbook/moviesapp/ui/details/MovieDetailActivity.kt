@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import coil.annotation.ExperimentalCoilApi
+import coil3.annotation.ExperimentalCoilApi
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.components.MovieDetailContent
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -25,6 +25,7 @@ class MovieDetailActivity : ComponentActivity() {
   companion object {
     const val MOVIE = "movie"
     const val IMAGE_ID = "imageId"
+
     fun newIntent(context: Context, movie: Movie) =
       Intent(context, MovieDetailActivity::class.java).apply { putExtra(MOVIE, movie) }
 

@@ -2,20 +2,42 @@ package com.guru.composecookbook.data.model
 
 sealed class HomeScreenItems {
   object Dialogs : HomeScreenItems()
+
   object TabLayout : HomeScreenItems()
+
   object Carousel : HomeScreenItems()
+
   object Layouts : HomeScreenItems()
+
   data class ListView(val type: String = "Vertical") : HomeScreenItems()
+
   object AdvanceLists : HomeScreenItems()
+
   object ConstraintsLayout : HomeScreenItems()
+
   object CollapsingAppBar : HomeScreenItems()
+
   object BottomAppBar : HomeScreenItems()
+
   object BottomSheets : HomeScreenItems()
+
   object Modifiers : HomeScreenItems()
+
   object AndroidViews : HomeScreenItems()
+
   object PullRefresh : HomeScreenItems()
+
   object CustomFling : HomeScreenItems()
+
   object MotionLayout : HomeScreenItems()
+
+  object AdaptiveUI : HomeScreenItems()
+
+  object PredictiveBack : HomeScreenItems()
+
+  object ContrastTheme : HomeScreenItems()
+
+  object SharedElement : HomeScreenItems()
 
   val name: String
     get() =
@@ -35,5 +57,9 @@ sealed class HomeScreenItems {
         AdvanceLists -> "Advance Lists"
         PullRefresh -> "Pull refresh demos"
         CustomFling -> "Custom Fling"
+        AdaptiveUI -> "Adaptive UI (Large screens)"
+        PredictiveBack -> "Predictive Back gesture"
+        ContrastTheme -> "Contrast-aware M3 theme"
+        SharedElement -> "Shared Element transitions"
       }
 }
