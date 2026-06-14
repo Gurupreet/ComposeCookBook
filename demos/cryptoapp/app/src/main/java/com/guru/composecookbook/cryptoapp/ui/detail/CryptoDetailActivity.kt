@@ -29,6 +29,7 @@ class CryptoDetailActivity : ComponentActivity() {
 
   companion object {
     const val CRYPTO = "crypto"
+
     fun newIntent(context: Context, crypto: Crypto) =
       Intent(context, CryptoDetailActivity::class.java).apply { putExtra(CRYPTO, crypto) }
   }

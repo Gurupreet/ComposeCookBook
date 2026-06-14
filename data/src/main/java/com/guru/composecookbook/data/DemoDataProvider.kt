@@ -12,98 +12,98 @@ object DemoDataProvider {
         1,
         "Fresh Vegges and Greens",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food1
+        R.drawable.food1,
       ),
       Item(
         2,
         "Best blue berries",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food2
+        R.drawable.food2,
       ),
       Item(
         3,
         "Cherries La Bloom",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food3
+        R.drawable.food3,
       ),
       Item(
         4,
         "Fruits everyday",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food4
+        R.drawable.food4,
       ),
       Item(
         5,
         "Sweet and sour",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food5
+        R.drawable.food5,
       ),
       Item(
         6,
         "Pancakes for everyone",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food6
+        R.drawable.food6,
       ),
       Item(
         7,
         "Cupcakes and sparkle",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food7
+        R.drawable.food7,
       ),
       Item(
         8,
         "Best Burgers shop",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food8
+        R.drawable.food8,
       ),
       Item(
         9,
         "Coffee of India",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food9
+        R.drawable.food9,
       ),
       Item(
         10,
         "Pizza boy town",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food10
+        R.drawable.food10,
       ),
       Item(
         11,
         "Burgers and Chips",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food11
+        R.drawable.food11,
       ),
       Item(
         12,
         "Breads and butter",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food12
+        R.drawable.food12,
       ),
       Item(
         13,
         "Cupcake factory",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food13
+        R.drawable.food13,
       ),
       Item(
         14,
         "Breakfast paradise",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food14
+        R.drawable.food14,
       ),
       Item(
         15,
         "Cake and Bake",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food15
+        R.drawable.food15,
       ),
       Item(
         16,
         "Brunch and Stakes",
         "Very awesome list item has very awesome subtitle. This is bit long",
-        R.drawable.food16
-      )
+        R.drawable.food16,
+      ),
     )
 
   val item =
@@ -111,7 +111,7 @@ object DemoDataProvider {
       1,
       "Awesome List Item",
       "Very awesome list item has very awesome subtitle. This is bit long",
-      R.drawable.food6
+      R.drawable.food6,
     )
 
   val tweet =
@@ -125,7 +125,7 @@ object DemoDataProvider {
       100,
       12,
       15,
-      "Twitter for web"
+      "Twitter for web",
     )
 
   val tweetList =
@@ -137,21 +137,21 @@ object DemoDataProvider {
         handle = "@google",
         authorImageId = R.drawable.p1,
         tweetImageId = R.drawable.food16,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 3,
         author = "Amazon",
         handle = "@Amazon",
         authorImageId = R.drawable.p2,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 4,
         author = "Facebook",
         handle = "@Facebook",
         authorImageId = R.drawable.p3,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 5,
@@ -159,7 +159,7 @@ object DemoDataProvider {
         handle = "@Instagram",
         authorImageId = R.drawable.p4,
         tweetImageId = R.drawable.food15,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 6,
@@ -167,7 +167,7 @@ object DemoDataProvider {
         handle = "@Twitter",
         authorImageId = R.drawable.p5,
         tweetImageId = R.drawable.food3,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 7,
@@ -175,35 +175,35 @@ object DemoDataProvider {
         handle = "@Netflix",
         authorImageId = R.drawable.p6,
         tweetImageId = R.drawable.food4,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 8,
         author = "Tesla",
         handle = "@Tesla",
         authorImageId = R.drawable.p7,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 9,
         author = "Microsoft",
         handle = "@Microsoft",
         authorImageId = R.drawable.p8,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 3,
         author = "Tencent",
         handle = "@Tencent",
         authorImageId = R.drawable.p9,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 4,
         author = "Snapchat",
         handle = "@Snapchat",
         authorImageId = R.drawable.p10,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 5,
@@ -211,7 +211,7 @@ object DemoDataProvider {
         handle = "@Snapchat",
         authorImageId = R.drawable.p11,
         tweetImageId = R.drawable.food5,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 6,
@@ -219,7 +219,7 @@ object DemoDataProvider {
         handle = "@Tiktok",
         authorImageId = R.drawable.p1,
         tweetImageId = R.drawable.food6,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 7,
@@ -227,35 +227,35 @@ object DemoDataProvider {
         handle = "@Samsung",
         authorImageId = R.drawable.p2,
         tweetImageId = R.drawable.food7,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 8,
         author = "Youtube",
         handle = "@Youtube",
         authorImageId = R.drawable.p3,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 9,
         author = "Gmail",
         handle = "@Gmail",
         authorImageId = R.drawable.p4,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 3,
         author = "Android",
         handle = "@Android",
         authorImageId = R.drawable.p5,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 4,
         author = "Whatsapp",
         handle = "@Whatsapp",
         authorImageId = R.drawable.p6,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 5,
@@ -263,7 +263,7 @@ object DemoDataProvider {
         handle = "@Telegram",
         authorImageId = R.drawable.p7,
         tweetImageId = R.drawable.food8,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 6,
@@ -271,7 +271,7 @@ object DemoDataProvider {
         handle = "@Spotify",
         authorImageId = R.drawable.p8,
         tweetImageId = R.drawable.food9,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 7,
@@ -279,21 +279,21 @@ object DemoDataProvider {
         handle = "@WeChat",
         authorImageId = R.drawable.p9,
         tweetImageId = R.drawable.food10,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 8,
         author = "Airbnb",
         handle = "@Airbnb",
         authorImageId = R.drawable.p10,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 9,
         author = "LinkedIn",
         handle = "@LinkedIn",
         authorImageId = R.drawable.p11,
-        time = "1h"
+        time = "1h",
       ),
       tweet.copy(
         id = 6,
@@ -301,7 +301,7 @@ object DemoDataProvider {
         handle = "@Shazam",
         authorImageId = R.drawable.p8,
         tweetImageId = R.drawable.food11,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 7,
@@ -309,7 +309,7 @@ object DemoDataProvider {
         handle = "@Chrome",
         authorImageId = R.drawable.p9,
         tweetImageId = R.drawable.food12,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 6,
@@ -317,7 +317,7 @@ object DemoDataProvider {
         handle = "@Safari",
         authorImageId = R.drawable.p8,
         tweetImageId = R.drawable.food13,
-        time = "11m"
+        time = "11m",
       ),
       tweet.copy(
         id = 7,
@@ -325,8 +325,8 @@ object DemoDataProvider {
         handle = "@Disney",
         authorImageId = R.drawable.p9,
         tweetImageId = R.drawable.food14,
-        time = "11m"
-      )
+        time = "11m",
+      ),
     )
 
   val homeScreenListItems =
@@ -346,6 +346,10 @@ object DemoDataProvider {
       HomeScreenItems.TabLayout,
       HomeScreenItems.BottomSheets,
       HomeScreenItems.PullRefresh,
+      HomeScreenItems.AdaptiveUI,
+      HomeScreenItems.PredictiveBack,
+      HomeScreenItems.ContrastTheme,
+      HomeScreenItems.SharedElement,
     )
 
   const val longText =
@@ -363,6 +367,6 @@ object DemoDataProvider {
       "DatingApp",
       "TikTok",
       "Paint",
-      "Meditation"
+      "Meditation",
     )
 }

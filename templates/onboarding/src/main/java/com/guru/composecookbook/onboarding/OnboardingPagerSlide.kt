@@ -14,6 +14,6 @@ fun OnboardingPagerSlide(selected: Boolean, color: Color, icon: ImageVector) {
     imageVector = icon,
     modifier = Modifier.padding(4.dp),
     contentDescription = null,
-    tint = if (selected) color else Color.Gray
+    tint = if (selected) color else Color.Gray,
   )
 }

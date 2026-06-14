@@ -30,27 +30,27 @@ fun HorizontalListItem(item: Item, modifier: Modifier = Modifier) {
     shape = androidx.compose.material.MaterialTheme.shapes.medium,
     modifier =
       modifier.size(280.dp, 200.dp).testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}"),
-    elevation = 2.dp
+    elevation = 2.dp,
   ) {
     Column(modifier = Modifier.clickable(onClick = {})) {
       Image(
         painter = painterResource(id = item.imageId),
         contentScale = ContentScale.Crop,
         contentDescription = null,
-        modifier = Modifier.height(100.dp).fillMaxWidth()
+        modifier = Modifier.height(100.dp).fillMaxWidth(),
       )
       Column(modifier = Modifier.padding(16.dp)) {
         Text(
           text = item.title,
           style = MaterialTheme.typography.titleLarge,
           maxLines = 2,
-          overflow = TextOverflow.Ellipsis
+          overflow = TextOverflow.Ellipsis,
         )
         Text(
           text = item.subtitle,
           maxLines = 1,
           overflow = TextOverflow.Ellipsis,
-          style = MaterialTheme.typography.bodyMedium
+          style = MaterialTheme.typography.bodyMedium,
         )
         Text(text = item.source, style = MaterialTheme.typography.titleSmall)
       }

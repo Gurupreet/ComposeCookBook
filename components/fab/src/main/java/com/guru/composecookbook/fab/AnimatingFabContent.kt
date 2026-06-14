@@ -33,7 +33,7 @@ fun AnimatingFabContent(
   icon: @Composable () -> Unit,
   text: @Composable () -> Unit,
   modifier: Modifier = Modifier,
-  extended: Boolean = true
+  extended: Boolean = true,
 ) {
   val currentState = if (extended) ExpandableFabStates.Extended else ExpandableFabStates.Collapsed
   val transition = updateTransition(targetState = currentState, label = "transition")
@@ -45,19 +45,19 @@ fun AnimatingFabContent(
           ExpandableFabStates.Extended isTransitioningTo ExpandableFabStates.Collapsed ->
             tween(
               easing = LinearEasing,
-              durationMillis = (duration / 12f * 5).roundToInt() // 5 out of 12 frames
+              durationMillis = (duration / 12f * 5).roundToInt(), // 5 out of 12 frames
             )
           ExpandableFabStates.Collapsed isTransitioningTo ExpandableFabStates.Extended -> {
             tween(
               easing = LinearEasing,
               delayMillis = (duration / 3f).roundToInt(), // 4 out of 12 frames
-              durationMillis = (duration / 12f * 5).roundToInt() // 5 out of 12 frames
+              durationMillis = (duration / 12f * 5).roundToInt(), // 5 out of 12 frames
             )
           }
           else -> snap()
         }
       },
-      label = "opacityAnim"
+      label = "opacityAnim",
     ) {
       when (it) {
         ExpandableFabStates.Collapsed -> 0f
@@ -77,7 +77,7 @@ fun AnimatingFabContent(
           else -> snap()
         }
       },
-      label = "widthAnimation"
+      label = "widthAnimation",
     ) {
       when (it) {
         ExpandableFabStates.Collapsed -> 0f
@@ -98,7 +98,7 @@ private fun IconAndTextRow(
   text: @Composable () -> Unit,
   opacityProgress: () -> Float, // Functions instead of Floats, to slightly improve performance
   widthProgress: () -> Float,
-  modifier: Modifier
+  modifier: Modifier,
 ) {
   Layout(
     modifier = modifier,
@@ -126,11 +126,11 @@ private fun IconAndTextRow(
     layout(width.roundToInt(), height) {
       iconPlaceable.placeRelative(
         iconPadding.roundToInt(),
-        constraints.maxHeight / 2 - iconPlaceable.height / 2
+        constraints.maxHeight / 2 - iconPlaceable.height / 2,
       )
       textPlaceable.placeRelative(
         (iconPlaceable.width + iconPadding * 2).roundToInt(),
-        constraints.maxHeight / 2 - textPlaceable.height / 2
+        constraints.maxHeight / 2 - textPlaceable.height / 2,
       )
     }
   }
@@ -138,5 +138,5 @@ private fun IconAndTextRow(
 
 private enum class ExpandableFabStates {
   Collapsed,
-  Extended
+  Extended,
 }

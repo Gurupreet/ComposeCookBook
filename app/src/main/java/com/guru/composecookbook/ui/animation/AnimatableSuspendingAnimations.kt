@@ -72,7 +72,7 @@ fun PointerInputWithAnimateable() {
           awaitPointerEventScope {
             horizontalDrag(
               firstDownId,
-              onDrag = { launch { pointerAnimatableX.animateTo(it.position.x) } }
+              onDrag = { launch { pointerAnimatableX.animateTo(it.position.x) } },
             )
           }
         }
@@ -80,7 +80,7 @@ fun PointerInputWithAnimateable() {
     }
   Material3Card(
     backgroundColor = green200,
-    modifier = modifier.size(100.dp).offset(x = pointerAnimatableX.value.dp)
+    modifier = modifier.size(100.dp).offset(x = pointerAnimatableX.value.dp),
   ) {}
 }
 
@@ -115,7 +115,7 @@ fun DraggableCardWithAnimatable() {
   Material3Card(
     backgroundColor = green200,
     modifier =
-      modifier.size(100.dp).offset(x = pointerAnimatableX.value.dp, y = pointerAnimatableX.value.dp)
+      modifier.size(100.dp).offset(x = pointerAnimatableX.value.dp, y = pointerAnimatableX.value.dp),
   ) {}
   Spacer(modifier = Modifier.height(100.dp))
 }

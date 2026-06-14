@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 fun DialogExamples() {
   Column(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp)
+    verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
     var showBasicDialog by remember { mutableStateOf(false) }
     var showConfirmationDialog by remember { mutableStateOf(false) }
@@ -30,7 +30,7 @@ fun DialogExamples() {
           Surface(
             modifier = Modifier.wrapContentWidth().wrapContentHeight(),
             shape = MaterialTheme.shapes.large,
-            tonalElevation = 6.dp
+            tonalElevation = 6.dp,
           ) {
             Column(modifier = Modifier.padding(16.dp)) {
               Text(text = "Basic Dialog", style = MaterialTheme.typography.headlineSmall)
@@ -39,13 +39,13 @@ fun DialogExamples() {
               Spacer(modifier = Modifier.height(24.dp))
               TextButton(
                 onClick = { showBasicDialog = false },
-                modifier = Modifier.align(Alignment.End)
+                modifier = Modifier.align(Alignment.End),
               ) {
                 Text("Dismiss")
               }
             }
           }
-        }
+        },
       )
     }
 
@@ -62,7 +62,7 @@ fun DialogExamples() {
         },
         dismissButton = {
           TextButton(onClick = { showConfirmationDialog = false }) { Text("Cancel") }
-        }
+        },
       )
     }
 
@@ -75,7 +75,7 @@ fun DialogExamples() {
         icon = { Icon(Icons.Default.Add, contentDescription = null) },
         title = { Text("Alert") },
         text = { Text("This is an important alert message.") },
-        confirmButton = { TextButton(onClick = { showAlertDialog = false }) { Text("OK") } }
+        confirmButton = { TextButton(onClick = { showAlertDialog = false }) { Text("OK") } },
       )
     }
   }

@@ -27,27 +27,24 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SpotifySongListItem(album: Album) {
-  Row(
-    modifier = Modifier.padding(8.dp),
-    verticalAlignment = Alignment.CenterVertically,
-  ) {
+  Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
     Image(
       painter = painterResource(id = album.imageId),
       contentDescription = null,
       contentScale = ContentScale.Crop,
-      modifier = Modifier.size(55.dp).padding(4.dp)
+      modifier = Modifier.size(55.dp).padding(4.dp),
     )
     Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
       Text(
         text = album.song,
         style = typography.h6.copy(fontSize = 16.sp),
-        color = MaterialTheme.colors.onSurface
+        color = MaterialTheme.colors.onSurface,
       )
       Text(
         text = "${album.artist}, ${album.descriptions}",
         style = typography.subtitle2,
         maxLines = 1,
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
     }
     if (album.id % 3 == 0) {
@@ -55,14 +52,14 @@ fun SpotifySongListItem(album: Album) {
         imageVector = Icons.Default.Favorite,
         contentDescription = null,
         tint = MaterialTheme.colors.primaryVariant,
-        modifier = Modifier.padding(4.dp).size(20.dp)
+        modifier = Modifier.padding(4.dp).size(20.dp),
       )
     }
     Icon(
       imageVector = Icons.Default.MoreVert,
       contentDescription = null,
       tint = Color.LightGray,
-      modifier = Modifier.padding(4.dp)
+      modifier = Modifier.padding(4.dp),
     )
   }
 }
