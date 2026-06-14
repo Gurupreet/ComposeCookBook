@@ -62,7 +62,7 @@ fun BottomSheetDrawer() {
       Box(modifier = Modifier.fillMaxSize()) {
         ScafoldContent(
           coroutineScope = coroutineScope,
-          showBottomSheet = { showBottomSheet.value = it }
+          showBottomSheet = { showBottomSheet.value = it },
         )
 
         if (showBottomSheet.value) {
@@ -75,7 +75,7 @@ fun BottomSheetDrawer() {
           }
         }
       }
-    }
+    },
   )
 }
 
@@ -84,7 +84,7 @@ private fun ScafoldContent(coroutineScope: CoroutineScope, showBottomSheet: (Boo
   Column(modifier = Modifier.fillMaxSize()) {
     Button(
       modifier = Modifier.fillMaxWidth().padding(16.dp).height(55.dp),
-      onClick = { showBottomSheet(true) }
+      onClick = { showBottomSheet(true) },
     ) {
       Text(text = "Show Bottom Sheet")
     }
@@ -102,14 +102,14 @@ fun FullBottomSheetContent(onClose: () -> Unit) {
     Column(
       modifier = Modifier.fillMaxSize().padding(top = 8.dp),
       verticalArrangement = Arrangement.Center,
-      horizontalAlignment = Alignment.CenterHorizontally
+      horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       LottieLoadingView(
         context = LocalContext.current,
         file = "working.json",
-        modifier = Modifier.size(400.dp)
+        modifier = Modifier.size(400.dp),
       )
-      Button(onClick = { /*TODO*/}, modifier = Modifier.fillMaxWidth()) { Text(text = "Share Me") }
+      Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) { Text(text = "Share Me") }
       TextButton(onClick = { onClose.invoke() }) { Text("back") }
     }
   }
@@ -119,7 +119,7 @@ fun FullBottomSheetContent(onClose: () -> Unit) {
 fun DrawerContent() {
   Row(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    horizontalArrangement = Arrangement.SpaceBetween
+    horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     Text(text = "Item 1")
     Icon(imageVector = Icons.Default.List, contentDescription = "List")
@@ -127,7 +127,7 @@ fun DrawerContent() {
 
   Row(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    horizontalArrangement = Arrangement.SpaceBetween
+    horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     Text(text = "Item 2")
     Icon(imageVector = Icons.Default.List, contentDescription = "List")
@@ -135,7 +135,7 @@ fun DrawerContent() {
 
   Row(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    horizontalArrangement = Arrangement.SpaceBetween
+    horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     Text(text = "Item 3")
     Icon(imageVector = Icons.Default.List, contentDescription = "List")
@@ -153,7 +153,7 @@ fun PlayerBottomSheet() {
       painter = painterResource(id = R.drawable.adele21),
       modifier = Modifier.size(65.dp),
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Text(
       text = "Someone Like you by Adele",
@@ -163,18 +163,18 @@ fun PlayerBottomSheet() {
     Icon(
       imageVector = Icons.Default.FavoriteBorder,
       modifier = Modifier.padding(8.dp),
-      contentDescription = null
+      contentDescription = null,
     )
     Icon(
       imageVector = Icons.Default.PlayArrow,
       modifier = Modifier.padding(8.dp),
-      contentDescription = null
+      contentDescription = null,
     )
   }
   Text(
     text = "Lyrics",
     style = MaterialTheme.typography.titleMedium,
-    modifier = Modifier.padding(16.dp)
+    modifier = Modifier.padding(16.dp),
   )
   Text(
     text =
@@ -188,6 +188,6 @@ fun PlayerBottomSheet() {
         "But I couldn't stay away, I couldn't fight it\n" +
         "I had hoped you'd see my face\n" +
         "And that you'd be reminded that for me, it isn't over",
-    modifier = Modifier.padding(16.dp)
+    modifier = Modifier.padding(16.dp),
   )
 }

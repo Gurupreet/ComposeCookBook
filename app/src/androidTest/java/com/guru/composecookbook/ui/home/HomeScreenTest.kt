@@ -65,7 +65,7 @@ class HomeScreenTest {
    */
   private fun hasTextInProvidedDemoData(
     homeScreenListItems: List<HomeScreenItems>,
-    ignoreCase: Boolean = false
+    ignoreCase: Boolean = false,
   ) =
     SemanticsMatcher(
       description =

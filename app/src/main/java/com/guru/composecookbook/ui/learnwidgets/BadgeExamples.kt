@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 fun BadgeExamples() {
   Column(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(16.dp)
+    verticalArrangement = Arrangement.spacedBy(16.dp),
   ) {
     // Simple Badge
     BadgedBox(badge = { Badge { Text("8") } }) {
@@ -44,7 +44,7 @@ fun BadgeExamples() {
         },
         label = { Text("Notifications") },
         selected = true,
-        onClick = {}
+        onClick = {},
       )
     }
   }

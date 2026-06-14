@@ -40,7 +40,7 @@ enum class ShimmerAnimationType {
   FADE,
   TRANSLATE,
   FADETRANSLATE,
-  VERTICAL
+  VERTICAL,
 }
 
 @Preview
@@ -54,7 +54,7 @@ fun ShimmerList() {
       initialValue = 100f,
       targetValue = 600f,
       animationSpec =
-        infiniteRepeatable(tween(durationMillis = 1200, easing = LinearEasing), RepeatMode.Restart)
+        infiniteRepeatable(tween(durationMillis = 1200, easing = LinearEasing), RepeatMode.Restart),
     )
 
   val colorAnim by
@@ -64,8 +64,8 @@ fun ShimmerList() {
       animationSpec =
         infiniteRepeatable(
           tween(durationMillis = 1200, easing = FastOutSlowInEasing),
-          RepeatMode.Restart
-        )
+          RepeatMode.Restart,
+        ),
     )
 
   val list =
@@ -92,38 +92,38 @@ fun ShimmerList() {
   Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
     Row(
       horizontalArrangement = Arrangement.SpaceAround,
-      modifier = Modifier.fillMaxWidth().padding(8.dp)
+      modifier = Modifier.fillMaxWidth().padding(8.dp),
     ) {
       Button(
         onClick = { shimmerAnimationType = ShimmerAnimationType.FADE },
         colors = buttonColors(ShimmerAnimationType.FADE),
-        modifier = Modifier.width(200.dp).padding(8.dp)
+        modifier = Modifier.width(200.dp).padding(8.dp),
       ) {
         Text(text = "Fading")
       }
       Button(
         onClick = { shimmerAnimationType = ShimmerAnimationType.TRANSLATE },
         colors = buttonColors(ShimmerAnimationType.TRANSLATE),
-        modifier = Modifier.width(200.dp).padding(8.dp)
+        modifier = Modifier.width(200.dp).padding(8.dp),
       ) {
         Text(text = "Translating")
       }
     }
     Row(
       horizontalArrangement = Arrangement.SpaceAround,
-      modifier = Modifier.fillMaxWidth().padding(8.dp)
+      modifier = Modifier.fillMaxWidth().padding(8.dp),
     ) {
       Button(
         onClick = { shimmerAnimationType = ShimmerAnimationType.FADETRANSLATE },
         colors = buttonColors(ShimmerAnimationType.FADETRANSLATE),
-        modifier = Modifier.width(200.dp).padding(8.dp)
+        modifier = Modifier.width(200.dp).padding(8.dp),
       ) {
         Text(text = "Fade+Translate")
       }
       Button(
         onClick = { shimmerAnimationType = ShimmerAnimationType.VERTICAL },
         colors = buttonColors(ShimmerAnimationType.VERTICAL),
-        modifier = Modifier.width(200.dp).padding(8.dp)
+        modifier = Modifier.width(200.dp).padding(8.dp),
       ) {
         Text(text = "Vertical")
       }

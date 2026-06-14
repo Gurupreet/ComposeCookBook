@@ -21,8 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -53,7 +53,7 @@ class DatingHomeActivity : ComponentActivity() {
         val navType = rememberSaveable { mutableStateOf(DatingNavType.PEOPLES) }
         Scaffold(
           topBar = { DatingHomeAppbar(navType) },
-          bottomBar = { DatingBottomBar(navType) }
+          bottomBar = { DatingBottomBar(navType) },
         ) { paddingValues ->
           DatingHomeContent(navType = navType, modifier = Modifier.padding(paddingValues))
         }
@@ -63,6 +63,7 @@ class DatingHomeActivity : ComponentActivity() {
 
   companion object {
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, isDarkTheme: Boolean) =
       Intent(context, DatingHomeActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
   }
@@ -70,10 +71,7 @@ class DatingHomeActivity : ComponentActivity() {
 
 @SuppressLint("UnusedCrossfadeTargetStateParameter")
 @Composable
-fun DatingHomeContent(
-  navType: MutableState<DatingNavType>,
-  modifier: Modifier = Modifier,
-) {
+fun DatingHomeContent(navType: MutableState<DatingNavType>, modifier: Modifier = Modifier) {
   Crossfade(targetState = navType, modifier = modifier) {
     when (navType.value) {
       DatingNavType.PEOPLES -> DatingHomeScreen()
@@ -88,7 +86,7 @@ fun DatingBottomBar(navType: MutableState<DatingNavType>) {
   NavigationBar(
     containerColor = MaterialTheme.colorScheme.contentColorFor(purple),
     contentColor = purple,
-    tonalElevation = 4.dp
+    tonalElevation = 4.dp,
   ) {
     NavigationBarItem(
       icon = { Icon(imageVector = Icons.Filled.Style, contentDescription = null) },
@@ -117,7 +115,7 @@ fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
       DatingNavType.CHATS -> "Chats"
       DatingNavType.PROFILE -> "My Profile"
     }
-  SmallTopAppBar(
+  TopAppBar(
     title = { Text(title, style = typography.h6) },
     actions = { IconButton(onClick = {}) { Icons.Default.MyLocation } },
   )
@@ -126,7 +124,7 @@ fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
 enum class DatingNavType {
   PEOPLES,
   CHATS,
-  PROFILE
+  PROFILE,
 }
 
 @Preview(showBackground = true)

@@ -7,11 +7,7 @@ import androidx.compose.runtime.Composable
 @Composable
 fun MeditationAppTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
-  content: @Composable() () -> Unit
+  content: @Composable() () -> Unit,
 ) {
-  MaterialTheme(
-    typography = Typography,
-    shapes = Shapes,
-    content = content,
-  )
+  MaterialTheme(typography = Typography, shapes = Shapes, content = content)
 }

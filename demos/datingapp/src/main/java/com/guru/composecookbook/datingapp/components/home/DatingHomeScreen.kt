@@ -79,7 +79,7 @@ fun DatingHomeScreen() {
                 listEmpty.value = true
               }
             }
-          }
+          },
         ) {
           CardContent(album)
         }
@@ -89,7 +89,7 @@ fun DatingHomeScreen() {
         modifier =
           Modifier.fillMaxWidth()
             .padding(top = cardHeight)
-            .alpha(animateFloatAsState(if (listEmpty.value) 0f else 1f).value)
+            .alpha(animateFloatAsState(if (listEmpty.value) 0f else 1f).value),
       ) {
         IconButton(
           onClick = {
@@ -99,13 +99,13 @@ fun DatingHomeScreen() {
             Modifier.padding(horizontal = 16.dp)
               .size(60.dp)
               .clip(CircleShape)
-              .background(MaterialTheme.colorScheme.background)
+              .background(MaterialTheme.colorScheme.background),
         ) {
           Icon(
             imageVector = Icons.Default.Cancel,
             tint = Color.Gray,
             contentDescription = null,
-            modifier = Modifier.size(36.dp)
+            modifier = Modifier.size(36.dp),
           )
         }
         IconButton(
@@ -116,13 +116,13 @@ fun DatingHomeScreen() {
             Modifier.padding(horizontal = 16.dp)
               .size(60.dp)
               .clip(CircleShape)
-              .background(MaterialTheme.colorScheme.background)
+              .background(MaterialTheme.colorScheme.background),
         ) {
           Icon(
             imageVector = Icons.Default.Favorite,
             contentDescription = null,
             tint = Color.Red,
-            modifier = Modifier.size(36.dp)
+            modifier = Modifier.size(36.dp),
           )
         }
       }
@@ -137,32 +137,32 @@ fun CardContent(album: Album) {
       painter = painterResource(album.imageId),
       contentScale = ContentScale.Crop,
       contentDescription = null,
-      modifier = Modifier.weight(1f)
+      modifier = Modifier.weight(1f),
     )
     Row(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)) {
       Text(
         text = album.artist,
         style = typography.h6,
         modifier = Modifier.padding(end = 8.dp).weight(1f),
-        textAlign = TextAlign.Start
+        textAlign = TextAlign.Start,
       )
       Icon(
         imageVector = Icons.Outlined.Place,
         modifier = Modifier.padding(horizontal = 8.dp),
         tint = purple,
-        contentDescription = null
+        contentDescription = null,
       )
       Text(text = "${Random.nextInt(1, 15)} km", style = typography.body2, color = purple)
     }
     Text(
       text = "Age: ${Random.nextInt(21, 30)}, Casually browsing..",
       style = typography.subtitle2,
-      modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp)
+      modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp),
     )
     Text(
       text = "Miami, Florida",
       style = typography.subtitle2,
-      modifier = Modifier.padding(bottom = 16.dp, start = 16.dp, end = 16.dp)
+      modifier = Modifier.padding(bottom = 16.dp, start = 16.dp, end = 16.dp),
     )
   }
 }

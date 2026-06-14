@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecimals
@@ -27,25 +27,25 @@ fun FavoriteCryptoCard(crypto: Crypto) {
     Column(modifier = Modifier.padding(16.dp).width(120.dp).height(180.dp)) {
       Row(modifier = Modifier.weight(1f)) {
         Image(
-          painter = rememberImagePainter(data = crypto.image),
+          painter = rememberAsyncImagePainter(model = crypto.image),
           modifier = Modifier.size(24.dp),
-          contentDescription = null
+          contentDescription = null,
         )
         Text(
           text = crypto.name,
           modifier = Modifier.padding(horizontal = 8.dp),
-          style = typography.body2
+          style = typography.body2,
         )
       }
       Text(
         text = crypto.price.roundToTwoDecimals() + " usd",
         style = typography.h6,
-        color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red
+        color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red,
       )
       Text(
         text = "${crypto.dailyChangePercentage.roundToTwoDecimals()} %",
         style = typography.h6,
-        color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red
+        color = if (crypto.dailyChangePercentage > 0) green500 else Color.Red,
       )
     }
   }

@@ -1,16 +1,9 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
-    }
-}
-
+// Plugin versions come from gradle/libs.versions.toml (the version catalog).
+// AGP, Kotlin, KSP, serialization and the Compose compiler plugin reach the
+// build classpath through buildSrc's dependencies (also catalog-driven), so
+// only ktfmt needs to be declared here.
 plugins {
-    id("com.ncorti.ktfmt.gradle") version "0.12.0" apply false
+    alias(libs.plugins.ktfmt) apply false
 }
 
 allprojects {

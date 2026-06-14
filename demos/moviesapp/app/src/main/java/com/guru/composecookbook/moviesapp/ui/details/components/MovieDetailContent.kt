@@ -34,8 +34,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.AsyncImagePainter
-import coil.compose.rememberAsyncImagePainter
+import coil3.compose.AsyncImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModel
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModelFactory
@@ -83,14 +83,14 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
         Row(
           horizontalArrangement = Arrangement.SpaceBetween,
           verticalAlignment = Alignment.CenterVertically,
-          modifier = Modifier.fillMaxWidth()
+          modifier = Modifier.fillMaxWidth(),
         ) {
           Text(text = movie.title, modifier = Modifier.padding(8.dp), style = typography.h6)
           IconButton(onClick = {}) {
             Icon(
               imageVector = Icons.Default.LibraryAdd,
               contentDescription = null,
-              tint = MaterialTheme.colors.primary
+              tint = MaterialTheme.colors.primary,
             )
           }
         }
@@ -98,12 +98,12 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
         Text(
           text = "Release: ${movie.release_date}",
           modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-          style = typography.h6.copy(fontSize = 12.sp)
+          style = typography.h6.copy(fontSize = 12.sp),
         )
         Text(
           text = "PG13  •  ${movie.vote_average}/10",
           modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-          style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium)
+          style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium),
         )
         Text(text = movie.overview, modifier = Modifier.padding(8.dp), style = typography.subtitle2)
         Spacer(modifier = Modifier.height(20.dp))

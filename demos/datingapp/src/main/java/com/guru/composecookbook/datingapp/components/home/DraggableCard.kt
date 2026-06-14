@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 enum class SwipeResult {
   ACCEPTED,
-  REJECTED
+  REJECTED,
 }
 
 @Composable
@@ -30,7 +30,7 @@ fun DraggableCard(
   item: Any,
   modifier: Modifier = Modifier,
   onSwiped: (Any, Any) -> Unit,
-  content: @Composable () -> Unit
+  content: @Composable () -> Unit,
 ) {
   val screenWidth = LocalConfiguration.current.screenWidthDp.dp
   val swipeXLeft = -(screenWidth.value * 3.2).toFloat()
@@ -53,7 +53,7 @@ fun DraggableCard(
             translationY = swipeY.value,
             rotationZ = rotationFraction,
           )
-          .clip(RoundedCornerShape(16.dp))
+          .clip(RoundedCornerShape(16.dp)),
     ) {
       content()
     }
@@ -68,7 +68,7 @@ fun Modifier.dragContent(
   swipeX: Animatable<Float, AnimationVector1D>,
   swipeY: Animatable<Float, AnimationVector1D>,
   maxX: Float,
-  onSwiped: (Any, Any) -> Unit
+  onSwiped: (Any, Any) -> Unit,
 ): Modifier = composed {
   val coroutineScope = rememberCoroutineScope()
   pointerInput(Unit) {
@@ -95,7 +95,7 @@ fun Modifier.dragContent(
             }
           }
         }
-      }
+      },
     ) { change, dragAmount ->
       change.consumePositionChange()
       coroutineScope.apply {
