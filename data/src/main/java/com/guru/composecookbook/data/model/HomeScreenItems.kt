@@ -37,6 +37,8 @@ sealed class HomeScreenItems {
 
   object ContrastTheme : HomeScreenItems()
 
+  object SharedElement : HomeScreenItems()
+
   val name: String
     get() =
       when (this) {
@@ -58,5 +60,6 @@ sealed class HomeScreenItems {
         AdaptiveUI -> "Adaptive UI (Large screens)"
         PredictiveBack -> "Predictive Back gesture"
         ContrastTheme -> "Contrast-aware M3 theme"
+        SharedElement -> "Shared Element transitions"
       }
 }

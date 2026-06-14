@@ -32,6 +32,10 @@
             android:label="@string/title_activity_contrast_theme"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
+            android:name=".ui.home.sharedelement.SharedElementActivity"
+            android:label="@string/title_activity_shared_element"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+        <activity
             android:name=".ui.home.advancelists.AdvanceListsActivity"
             android:label="@string/title_activity_advance_lists"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
