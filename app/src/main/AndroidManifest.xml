@@ -8,6 +8,7 @@
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +18,18 @@
         <activity
             android:name=".ui.templates.TemplatesActivity"
             android:label="@string/title_activity_templates"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+        <activity
+            android:name=".ui.home.adaptive.AdaptiveUIActivity"
+            android:label="@string/title_activity_adaptive"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+        <activity
+            android:name=".ui.home.predictiveback.PredictiveBackActivity"
+            android:label="@string/title_activity_predictive_back"
+            android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
+        <activity
+            android:name=".ui.home.contrast.ContrastThemeActivity"
+            android:label="@string/title_activity_contrast_theme"
             android:theme="@style/Theme.ComposeCookBook.NoActionBar" />
         <activity
             android:name=".ui.home.advancelists.AdvanceListsActivity"

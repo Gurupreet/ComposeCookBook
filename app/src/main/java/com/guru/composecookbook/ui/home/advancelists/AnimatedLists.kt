@@ -32,7 +32,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
 import com.guru.composecookbook.theme.typography
@@ -50,14 +50,14 @@ fun AnimatedLists() {
         YoutubeChip(
           selected = index == animationIndex,
           text = title,
-          modifier = Modifier.padding(8.dp).clickable(onClick = { animationIndex = index })
+          modifier = Modifier.padding(8.dp).clickable(onClick = { animationIndex = index }),
         )
       }
     }
     LazyColumn {
       itemsIndexed(
         items = tweets,
-        itemContent = { index, tweet -> AnimatedListItem(tweet = tweet, index, animationIndex) }
+        itemContent = { index, tweet -> AnimatedListItem(tweet = tweet, index, animationIndex) },
       )
     }
   }
@@ -80,7 +80,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         LaunchedEffect(Unit) {
           animatedProgress.animateTo(
             targetValue = 1f,
-            animationSpec = tween(300, easing = LinearEasing)
+            animationSpec = tween(300, easing = LinearEasing),
           )
         }
         Modifier.padding(8.dp)
@@ -91,7 +91,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         LaunchedEffect(Unit) {
           animatedProgress.animateTo(
             targetValue = 0f,
-            animationSpec = tween(300, easing = FastOutSlowInEasing)
+            animationSpec = tween(300, easing = FastOutSlowInEasing),
           )
         }
         Modifier.padding(8.dp).graphicsLayer(translationX = animatedProgress.value)
@@ -102,7 +102,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         LaunchedEffect(Unit) {
           animatedProgress.animateTo(
             targetValue = 0f,
-            animationSpec = tween(300, easing = LinearEasing)
+            animationSpec = tween(300, easing = LinearEasing),
           )
           opacityProgress.animateTo(targetValue = 1f, animationSpec = tween(600))
         }
@@ -116,7 +116,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         LaunchedEffect(Unit) {
           animatedProgress.animateTo(
             targetValue = 0f,
-            animationSpec = tween(300, easing = LinearEasing)
+            animationSpec = tween(300, easing = LinearEasing),
           )
           opacityProgress.animateTo(targetValue = 1f, animationSpec = tween(600))
         }
@@ -129,7 +129,7 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         LaunchedEffect(Unit) {
           animatedProgress.animateTo(
             targetValue = 360f,
-            animationSpec = tween(400, easing = FastOutSlowInEasing)
+            animationSpec = tween(400, easing = FastOutSlowInEasing),
           )
         }
         Modifier.padding(8.dp).graphicsLayer(rotationX = animatedProgress.value)
@@ -142,14 +142,11 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         Modifier.padding(8.dp).alpha(animatedProgress.value)
       }
     }
-  Row(
-    modifier = animatedModifier,
-    verticalAlignment = Alignment.CenterVertically,
-  ) {
+  Row(modifier = animatedModifier, verticalAlignment = Alignment.CenterVertically) {
     Image(
       painter =
-        rememberImagePainter(
-          data =
+        rememberAsyncImagePainter(
+          model =
             "https://picsum.photos/id/${
                     itemIndex +
                         1
@@ -157,26 +154,26 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
         ),
       contentDescription = null,
       contentScale = ContentScale.Crop,
-      modifier = Modifier.size(55.dp).padding(4.dp)
+      modifier = Modifier.size(55.dp).padding(4.dp),
     )
     Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
       Text(
         text = tweet.author,
         style = typography.h6.copy(fontSize = 16.sp),
-        color = MaterialTheme.colorScheme.onSurface
+        color = MaterialTheme.colorScheme.onSurface,
       )
       Text(
         text = tweet.text,
         style = typography.subtitle2,
         maxLines = 1,
-        overflow = TextOverflow.Ellipsis
+        overflow = TextOverflow.Ellipsis,
       )
     }
     Icon(
       imageVector = Icons.Default.MoreVert,
       contentDescription = null,
       tint = Color.LightGray,
-      modifier = Modifier.padding(4.dp)
+      modifier = Modifier.padding(4.dp),
     )
   }
 }

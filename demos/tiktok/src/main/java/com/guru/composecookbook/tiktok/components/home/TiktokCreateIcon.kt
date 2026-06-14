@@ -42,7 +42,7 @@ fun TiktokCreateIcon() {
       modifier =
         Modifier.clip(RoundedCornerShape(8.dp))
           .background(Color.White)
-          .padding(vertical = 4.dp, horizontal = 8.dp)
+          .padding(vertical = 4.dp, horizontal = 8.dp),
     )
   }
 }

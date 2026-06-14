@@ -65,7 +65,7 @@ fun StoryPopup(imageIds: List<Item>, closePopup: () -> Unit) {
     Brush.linearGradient(
       colors = instagramGradient,
       start = Offset(x = 0f, y = 0f),
-      end = Offset(x = 100f, y = 100f)
+      end = Offset(x = 100f, y = 100f),
     )
 
   BackHandler() { closePopup.invoke() }
@@ -104,7 +104,7 @@ fun StoryPopup(imageIds: List<Item>, closePopup: () -> Unit) {
       painter = painterResource(id = imageIds[currentStoryCount].imageId),
       modifier = Modifier.fillMaxSize(),
       contentDescription = null,
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Crop,
     )
     Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
       LaunchedEffect(currentStoryCount, storyPaused) { // (2)
@@ -116,8 +116,8 @@ fun StoryPopup(imageIds: List<Item>, closePopup: () -> Unit) {
             animationSpec =
               tween(
                 durationMillis = (5000 * (1f - percent.value)).toInt(), // (3)
-                easing = LinearEasing
-              )
+                easing = LinearEasing,
+              ),
           )
           if (storySize - 1 > currentStoryCount) {
             percent.snapTo(0f)
@@ -138,13 +138,13 @@ fun StoryPopup(imageIds: List<Item>, closePopup: () -> Unit) {
           LinearProgressIndicator(
             modifier = Modifier.weight(1f).padding(horizontal = 4.dp),
             progress = progress,
-            color = MaterialTheme.colors.onBackground
+            color = MaterialTheme.colors.onBackground,
           )
         }
       }
       Row(
         modifier = Modifier.fillMaxWidth().padding(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
       ) {
         ProfilePicture(
           imageId = imageIds[0].imageId,
@@ -153,19 +153,19 @@ fun StoryPopup(imageIds: List<Item>, closePopup: () -> Unit) {
           modifier =
             Modifier.border(
               shape = CircleShape,
-              border = BorderStroke(width = 3.dp, brush = brushGradient)
-            )
+              border = BorderStroke(width = 3.dp, brush = brushGradient),
+            ),
         )
         Text(
           text = "My Story",
           modifier = Modifier.padding(8.dp).weight(1f),
-          color = MaterialTheme.colors.onBackground
+          color = MaterialTheme.colors.onBackground,
         )
         IconButton(onClick = { closePopup.invoke() }) {
           Icon(
             imageVector = Icons.Default.Close,
             contentDescription = "Close",
-            tint = MaterialTheme.colors.onBackground
+            tint = MaterialTheme.colors.onBackground,
           )
         }
       }

@@ -13,8 +13,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -50,6 +50,7 @@ class DynamicUIActivity : ComponentActivity() {
   companion object {
     const val TYPE = "type"
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, dynamicUiType: String, isDarkTheme: Boolean) =
       Intent(context, DynamicUIActivity::class.java).apply {
         putExtra(TYPE, dynamicUiType)
@@ -63,29 +64,23 @@ class DynamicUIActivity : ComponentActivity() {
 fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
   Scaffold(
     topBar = {
-      SmallTopAppBar(
+      TopAppBar(
         title = { Text(text = uiType) },
         navigationIcon = {
           IconButton(onClick = onback) {
             Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(id = R.string.cd_back))
           }
-        }
+        },
       )
     },
     content = { paddingValues ->
-      DynamicUiScreen(
-        uiType = uiType,
-        modifier = Modifier.padding(paddingValues),
-      )
-    }
+      DynamicUiScreen(uiType = uiType, modifier = Modifier.padding(paddingValues))
+    },
   )
 }
 
 @Composable
-fun DynamicUiScreen(
-  uiType: String,
-  modifier: Modifier = Modifier,
-) {
+fun DynamicUiScreen(uiType: String, modifier: Modifier = Modifier) {
   // We setup a base activity and we will change content depending upon ui type so
   // we don't have to create Activity for every feature showcase
   Box(modifier = modifier) {

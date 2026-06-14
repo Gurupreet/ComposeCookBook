@@ -23,7 +23,7 @@ fun ProfileAppBar(album: Album, navHostController: NavHostController) {
       IconButton(onClick = { navHostController.popBackStack() }) {
         Icon(
           imageVector = Icons.Filled.ArrowBack,
-          contentDescription = stringResource(id = R.string.cd_back)
+          contentDescription = stringResource(id = R.string.cd_back),
         )
       }
     },
@@ -31,9 +31,9 @@ fun ProfileAppBar(album: Album, navHostController: NavHostController) {
       IconButton(onClick = {}) {
         Icon(
           imageVector = Icons.Filled.MoreVert,
-          contentDescription = stringResource(id = R.string.cd_back)
+          contentDescription = stringResource(id = R.string.cd_back),
         )
       }
-    }
+    },
   )
 }

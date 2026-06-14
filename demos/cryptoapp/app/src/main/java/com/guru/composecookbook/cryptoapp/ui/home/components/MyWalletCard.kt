@@ -64,7 +64,7 @@ fun MyWalletCard() {
         Modifier.size(28.dp).alpha(0.7f).constrainAs(image) {
           start.linkTo(parent.start)
           top.linkTo(title.bottom, margin = 8.dp)
-        }
+        },
     )
     Text(
       text = "My Wallet",
@@ -75,7 +75,7 @@ fun MyWalletCard() {
           top.linkTo(parent.top)
           start.linkTo(parent.start)
           end.linkTo(parent.end)
-        }
+        },
     )
     Text(
       text = "340.13 USD",
@@ -84,7 +84,7 @@ fun MyWalletCard() {
         Modifier.padding(4.dp).constrainAs(price) {
           top.linkTo(title.bottom)
           start.linkTo(image.end)
-        }
+        },
     )
     Text(
       text = "1.23 ETH",
@@ -94,7 +94,7 @@ fun MyWalletCard() {
         Modifier.padding(start = 4.dp).constrainAs(asset) {
           top.linkTo(price.bottom)
           start.linkTo(image.end)
-        }
+        },
     )
     Text(
       text = "24H: +1.23%",
@@ -104,7 +104,7 @@ fun MyWalletCard() {
         Modifier.padding(4.dp).constrainAs(dailyChange) {
           end.linkTo(parent.end)
           top.linkTo(price.top)
-        }
+        },
     )
     ExtendedFloatingActionButton(
       onClick = { extended = !extended },
@@ -120,12 +120,12 @@ fun MyWalletCard() {
         Icon(
           imageVector = Icons.Default.QrCodeScanner,
           contentDescription = null,
-          tint = MaterialTheme.colorScheme.onSurface
+          tint = MaterialTheme.colorScheme.onSurface,
         )
       },
       text = { Text(text = "Receive") },
       containerColor = Color.Transparent,
-      elevation = FloatingActionButtonDefaults.elevation()
+      elevation = FloatingActionButtonDefaults.elevation(),
     )
     ExtendedFloatingActionButton(
       onClick = { extended = !extended },
@@ -140,7 +140,7 @@ fun MyWalletCard() {
       icon = { Icon(imageVector = Icons.Default.Send, contentDescription = null) },
       text = { Text(text = "Send") },
       containerColor = Color.Transparent,
-      elevation = FloatingActionButtonDefaults.elevation()
+      elevation = FloatingActionButtonDefaults.elevation(),
     )
     Image(
       imageVector = Icons.Default.QrCodeScanner,
@@ -152,7 +152,7 @@ fun MyWalletCard() {
             top.linkTo(receive.bottom, margin = 50.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
-          }
+          },
     )
   }
 }

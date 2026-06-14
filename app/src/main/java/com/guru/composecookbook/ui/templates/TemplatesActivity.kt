@@ -35,7 +35,7 @@ class TemplatesActivity : ComponentActivity() {
   @OptIn(
     ExperimentalMaterial3Api::class,
     ExperimentalAnimationApi::class,
-    ExperimentalMaterialApi::class
+    ExperimentalMaterialApi::class,
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -64,7 +64,7 @@ class TemplatesActivity : ComponentActivity() {
   ExperimentalMaterial3Api::class,
   ExperimentalFoundationApi::class,
   ExperimentalAnimationApi::class,
-  ExperimentalMaterialApi::class
+  ExperimentalMaterialApi::class,
 )
 @Composable
 fun TemplateApp(templateType: String) {

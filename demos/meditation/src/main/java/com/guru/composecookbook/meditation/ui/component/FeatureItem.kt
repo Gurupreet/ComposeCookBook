@@ -38,26 +38,26 @@ fun FeatureItem(feature: Feature, modifier: Modifier = Modifier, textColor: Colo
       Image(
         painter = painterResource(id = feature.image),
         contentDescription = feature.title,
-        modifier = Modifier.align(Alignment.TopEnd)
+        modifier = Modifier.align(Alignment.TopEnd),
       )
 
       Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start,
-        modifier = Modifier.fillMaxHeight().padding(start = 15.dp)
+        modifier = Modifier.fillMaxHeight().padding(start = 15.dp),
       ) {
         Text(
           text = feature.title,
           style = MaterialTheme.typography.h6,
           color = textColor,
           fontSize = 18.sp,
-          fontWeight = FontWeight.Bold
+          fontWeight = FontWeight.Bold,
         )
         Text(
           text = feature.description,
           color = textColor,
           style = MaterialTheme.typography.body1,
-          fontSize = 14.sp
+          fontSize = 14.sp,
         )
       }
 
@@ -67,7 +67,7 @@ fun FeatureItem(feature: Feature, modifier: Modifier = Modifier, textColor: Colo
           Modifier.fillMaxWidth()
             .fillMaxHeight()
             .padding(bottom = 15.dp, start = 15.dp, end = 15.dp),
-        verticalAlignment = Alignment.Bottom
+        verticalAlignment = Alignment.Bottom,
       ) {
         Text(text = feature.time, color = textColor, fontSize = 10.sp, fontWeight = FontWeight.Bold)
         Text(
@@ -81,7 +81,7 @@ fun FeatureItem(feature: Feature, modifier: Modifier = Modifier, textColor: Colo
               }
               .clip(RoundedCornerShape(12.dp))
               .background(ButtonBlue)
-              .padding(vertical = 6.dp, horizontal = 15.dp)
+              .padding(vertical = 6.dp, horizontal = 15.dp),
         )
       }
     }
