@@ -25,7 +25,7 @@ fun Loaders() {
 
   Column(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     LinearProgressIndicator()
     Text(text = "Loading with text...", modifier = Modifier.padding(8.dp))

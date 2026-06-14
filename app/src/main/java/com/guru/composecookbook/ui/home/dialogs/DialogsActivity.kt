@@ -24,9 +24,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -65,6 +65,7 @@ class DialogsActivity : AppCompatActivity() {
 
   companion object {
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, isDarkTheme: Boolean) =
       Intent(context, DialogsActivity::class.java).apply { putExtra(DARK_THEME, isDarkTheme) }
   }
@@ -76,19 +77,19 @@ class DialogsActivity : AppCompatActivity() {
 fun DialogScreen(onBack: () -> Unit) {
   Scaffold(
     topBar = {
-      SmallTopAppBar(
+      TopAppBar(
         title = { Text(text = "Dialogs") },
         navigationIcon = {
           IconButton(onClick = onBack) {
             Icon(
               imageVector = Icons.Default.ArrowBack,
-              contentDescription = stringResource(id = R.string.cd_back)
+              contentDescription = stringResource(id = R.string.cd_back),
             )
           }
-        }
+        },
       )
     },
-    content = { DialogsOptionList() }
+    content = { DialogsOptionList() },
   )
 }
 
@@ -108,51 +109,51 @@ fun DialogsOptionList() {
   Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(16.dp)) {
     Button(
       onClick = { dialogState = dialogState.copy(showDialog = true) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Plain Message Dialog")
     }
     Button(
       onClick = { dialogState = DialogState(true, DialogType.TITLE) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Title Dialog")
     }
     Button(
       onClick = { dialogState = DialogState(true, DialogType.VERTICALBUTTON) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Dialog with Vertical buttons")
     }
     Button(
       onClick = { dialogState = DialogState(true, DialogType.IMAGE) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Dialog with Image")
     }
     Button(
       onClick = { dialogState = DialogState(true, DialogType.LONGDIALOG) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Long Dialog")
     }
     Button(
       onClick = { dialogState = DialogState(true, DialogType.ROUNDED) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Extra Rounded Dialog")
     }
 
     Button(
       onClick = { dialogState = DialogState(true, DialogType.DATEPICKER) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Date Picker Dialog")
     }
 
     Button(
       onClick = { dialogState = DialogState(true, DialogType.TIMEPICKER) },
-      modifier = Modifier.fillMaxWidth().padding(16.dp)
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
       Text(text = "Time Picker Dialog")
     }
@@ -170,7 +171,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
         confirmButton = {
           TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) { Text(text = "Ok") }
         },
-        onDismissRequest = onDismiss
+        onDismissRequest = onDismiss,
       )
     DialogType.TITLE ->
       AlertDialog(
@@ -184,7 +185,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             TextButton(onClick = onDismiss, modifier = Modifier.padding(4.dp)) { Text(text = "Ok") }
           }
         },
-        onDismissRequest = onDismiss
+        onDismissRequest = onDismiss,
       )
     DialogType.VERTICALBUTTON ->
       AlertDialog(
@@ -198,7 +199,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             Text(text = "Ok")
           }
         },
-        onDismissRequest = onDismiss
+        onDismissRequest = onDismiss,
       )
     DialogType.IMAGE ->
       AlertDialog(
@@ -210,7 +211,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
         confirmButton = {
           TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) { Text(text = "Ok") }
         },
-        onDismissRequest = onDismiss
+        onDismissRequest = onDismiss,
       )
     DialogType.LONGDIALOG ->
       AlertDialog(
@@ -220,11 +221,11 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
             Image(
               painter = painterResource(DemoDataProvider.item.imageId),
-              contentDescription = null
+              contentDescription = null,
             )
             Text(
               item.subtitle + item.title + item.subtitle + item.title,
-              style = typography.subtitle2
+              style = typography.subtitle2,
             )
           }
         },
@@ -242,7 +243,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             Image(
               painter = painterResource(DemoDataProvider.item.imageId),
               contentDescription = null,
-              modifier = Modifier.clip(RoundedCornerShape(16.dp))
+              modifier = Modifier.clip(RoundedCornerShape(16.dp)),
             )
           }
         },
@@ -250,7 +251,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
           TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) { Text(text = "Ok") }
         },
         onDismissRequest = onDismiss,
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(16.dp),
       )
     DialogType.DATEPICKER -> {
       val context = LocalContext.current

@@ -27,7 +27,7 @@ fun PostItem(
   onLikeClicked: () -> Unit,
   onCommentsClicked: () -> Unit,
   onSendClicked: () -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Column(modifier = modifier.fillMaxWidth().padding(8.dp)) {
     ProfileSection(
@@ -36,36 +36,36 @@ fun PostItem(
       size = ProfileSectionSizes.medium(),
       iconRight = {
         Icon(imageVector = Icons.Default.MoreVert, contentDescription = "See more options")
-      }
+      },
     )
     PostImage(
       imageId = post.tweetImageId,
       contentDescription = post.text,
-      modifier = Modifier.padding(top = 8.dp)
+      modifier = Modifier.padding(top = 8.dp),
     )
     PostInteractionBar(
       isLiked = isLiked,
       onLikeClicked = onLikeClicked,
       onCommentsClicked = onCommentsClicked,
-      onSendClicked = onSendClicked
+      onSendClicked = onSendClicked,
     )
     ProfileSection(
       firstImageId = post.authorImageId,
       text =
-        "Liked by ${DemoDataProvider.tweet.author} and ${DemoDataProvider.tweet.likesCount} others"
+        "Liked by ${DemoDataProvider.tweet.author} and ${DemoDataProvider.tweet.likesCount} others",
     )
     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
       Text(
         text = "View all ${post.commentsCount} comments",
         style = MaterialTheme.typography.caption,
         modifier = Modifier.padding(top = 4.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = LocalContentAlpha.current)
+        color = MaterialTheme.colors.onSurface.copy(alpha = LocalContentAlpha.current),
       )
       Text(
         text = "${post.time} ago",
         style = MaterialTheme.typography.caption,
         modifier = Modifier.padding(top = 4.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = LocalContentAlpha.current)
+        color = MaterialTheme.colors.onSurface.copy(alpha = LocalContentAlpha.current),
       )
     }
   }
@@ -79,6 +79,6 @@ fun PostItemPreview() {
     isLiked = true,
     onLikeClicked = {},
     onCommentsClicked = {},
-    onSendClicked = {}
+    onSendClicked = {},
   )
 }

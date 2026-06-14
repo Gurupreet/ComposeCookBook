@@ -33,7 +33,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.DemoMovieDataProvider
 import com.guru.composecookbook.moviesapp.data.db.models.Genre
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
@@ -50,14 +50,14 @@ fun MoviePagerItem(
   isSelected: Boolean,
   offset: Float,
   addToWatchList: () -> Unit,
-  openMovieDetail: () -> Unit
+  openMovieDetail: () -> Unit,
 ) {
   val animateHeight =
     getOffsetBasedValue(
         selectedValue = 645,
         nonSelectedValue = 360,
         isSelected = isSelected,
-        offset = offset
+        offset = offset,
       )
       .dp
   val animateWidth =
@@ -65,7 +65,7 @@ fun MoviePagerItem(
         selectedValue = 340,
         nonSelectedValue = 320,
         isSelected = isSelected,
-        offset = offset
+        offset = offset,
       )
       .dp
   val animateElevation =
@@ -73,7 +73,7 @@ fun MoviePagerItem(
         selectedValue = 12,
         nonSelectedValue = 2,
         isSelected = isSelected,
-        offset = offset
+        offset = offset,
       )
       .dp
 
@@ -94,15 +94,15 @@ fun MoviePagerItem(
   ) {
     Column {
       Image(
-        painter = rememberImagePainter(data = posterFullPath),
+        painter = rememberAsyncImagePainter(model = posterFullPath),
         contentScale = ContentScale.Crop,
         contentDescription = null,
-        modifier = Modifier.fillMaxWidth().height(360.dp)
+        modifier = Modifier.fillMaxWidth().height(360.dp),
       )
       Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
       ) {
         val clicked = remember { mutableStateOf(false) }
         Text(text = movie.title, modifier = Modifier.padding(8.dp), style = typography.h6)
@@ -119,7 +119,7 @@ fun MoviePagerItem(
             modifier =
               Modifier.graphicsLayer(
                 rotationY = animateFloatAsState(if (clicked.value) 720f else 0f, tween(400)).value
-              )
+              ),
           )
         }
       }
@@ -127,19 +127,19 @@ fun MoviePagerItem(
       Text(
         text = "Release: ${movie.release_date}",
         modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-        style = typography.h6.copy(fontSize = 12.sp)
+        style = typography.h6.copy(fontSize = 12.sp),
       )
       Text(
         text = "PG13  •  ${movie.vote_average}/10",
         modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-        style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium)
+        style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium),
       )
       Text(
         text = movie.overview,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp).weight(1f),
-        style = typography.subtitle2
+        style = typography.subtitle2,
       )
       Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
         Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))

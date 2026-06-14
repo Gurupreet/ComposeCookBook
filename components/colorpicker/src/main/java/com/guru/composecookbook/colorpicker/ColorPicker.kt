@@ -48,7 +48,7 @@ fun ColorPicker(onColorSelected: (Color) -> Unit) {
   Text(
     text = "Color picker with draggable",
     style = typography.subtitle2,
-    modifier = Modifier.padding(8.dp)
+    modifier = Modifier.padding(8.dp),
   )
   val screenWidth = LocalConfiguration.current.screenWidthDp.dp
   val screenWidthInPx = with(LocalDensity.current) { screenWidth.toPx() }
@@ -84,7 +84,7 @@ fun ColorPicker(onColorSelected: (Color) -> Unit) {
         Modifier.offset { IntOffset(dragOffset.value.roundToInt(), 0) }
           .border(
             border = BorderStroke(4.dp, MaterialTheme.colorScheme.onSurface),
-            shape = CircleShape
+            shape = CircleShape,
           )
           .draggable(
             orientation = Orientation.Horizontal,
@@ -94,8 +94,8 @@ fun ColorPicker(onColorSelected: (Color) -> Unit) {
                 dragOffset.value = newValue.coerceIn(minPx, maxPx)
                 activeColor = getActiveColor(dragOffset.value, screenWidthInPx)
                 onColorSelected.invoke(activeColor)
-              }
-          )
+              },
+          ),
     )
   }
 }

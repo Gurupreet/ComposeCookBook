@@ -46,7 +46,7 @@ fun ItemImage(item: Item, modifier: Modifier = Modifier) {
     contentScale = ContentScale.Crop,
     contentDescription = null,
     modifier =
-      modifier.size(100.dp, 80.dp).clip(androidx.compose.material.MaterialTheme.shapes.medium)
+      modifier.size(100.dp, 80.dp).clip(androidx.compose.material.MaterialTheme.shapes.medium),
   )
 }
 
@@ -55,7 +55,7 @@ fun FavIcon(modifier: Modifier = Modifier) {
   val isFavourite = remember { mutableStateOf(true) }
   IconToggleButton(
     checked = isFavourite.value,
-    onCheckedChange = { isFavourite.value = !isFavourite.value }
+    onCheckedChange = { isFavourite.value = !isFavourite.value },
   ) {
     if (isFavourite.value) {
       Icon(imageVector = Icons.Filled.Favorite, contentDescription = null, modifier = modifier)
@@ -63,7 +63,7 @@ fun FavIcon(modifier: Modifier = Modifier) {
       Icon(
         imageVector = Icons.Default.FavoriteBorder,
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier,
       )
     }
   }

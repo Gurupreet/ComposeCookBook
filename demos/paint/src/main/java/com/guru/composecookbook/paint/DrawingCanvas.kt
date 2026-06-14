@@ -21,14 +21,14 @@ import androidx.compose.ui.unit.dp
 @OptIn(
   ExperimentalComposeUiApi::class,
   ExperimentalAnimationApi::class,
-  ExperimentalFoundationApi::class
+  ExperimentalFoundationApi::class,
 )
 @Composable
 fun DrawingCanvas(
   drawColor: MutableState<Color>,
   drawBrush: MutableState<Float>,
   usedColors: MutableState<MutableSet<Color>>,
-  paths: List<PathState>
+  paths: List<PathState>,
 ) {
   val currentPath = paths.last().path
   val movePath = remember { mutableStateOf<Offset?>(null) }

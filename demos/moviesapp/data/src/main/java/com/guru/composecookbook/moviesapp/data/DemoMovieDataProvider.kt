@@ -24,7 +24,7 @@ object DemoMovieDataProvider {
       runtime = 130,
       homepage = "https://dc.com",
       status = "Running",
-      addedTime = 123434343
+      addedTime = 123434343,
     )
 
   val movies =
@@ -37,6 +37,6 @@ object DemoMovieDataProvider {
       movie.copy(id = 6, title = "Mulan"),
       movie.copy(id = 7, title = "Mulan"),
       movie.copy(id = 8, title = "Mulan"),
-      movie.copy(id = 9, title = "Mulan")
+      movie.copy(id = 9, title = "Mulan"),
     )
 }

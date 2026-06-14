@@ -33,7 +33,7 @@ fun PaymentCard(
   nameText: TextFieldValue,
   cardNumber: TextFieldValue,
   expiryNumber: TextFieldValue,
-  cvcNumber: TextFieldValue
+  cvcNumber: TextFieldValue,
 ) {
   var backVisible by remember { mutableStateOf(false) }
   var visaType by remember { mutableStateOf(CardType.None) }
@@ -73,11 +73,11 @@ fun PaymentCard(
           .height(220.dp)
           .graphicsLayer(
             rotationY = animateFloatAsState(if (backVisible) 180f else 0f).value,
-            translationY = 0f
+            translationY = 0f,
           ),
       shape = RoundedCornerShape(25.dp),
       color = animatedColor.value,
-      elevation = 18.dp
+      elevation = 18.dp,
     ) {
       Box(modifier = Modifier.fillMaxSize()) {
         AnimatedVisibility(visible = !backVisible) {
@@ -91,7 +91,7 @@ fun PaymentCard(
                 Modifier.padding(20.dp).constrainAs(symbol) {
                   start.linkTo(parent.start)
                   top.linkTo(parent.top)
-                }
+                },
             )
 
             AnimatedVisibility(
@@ -100,7 +100,7 @@ fun PaymentCard(
                 Modifier.padding(20.dp).constrainAs(logo) {
                   end.linkTo(parent.end)
                   top.linkTo(parent.top)
-                }
+                },
             ) {
               Image(painter = painterResource(id = visaType.image), contentDescription = "symbol")
             }
@@ -116,7 +116,7 @@ fun PaymentCard(
                   .constrainAs(number) {
                     linkTo(start = parent.start, end = parent.end)
                     linkTo(top = parent.top, bottom = parent.bottom)
-                  }
+                  },
             )
 
             Text(
@@ -127,7 +127,7 @@ fun PaymentCard(
                 Modifier.padding(horizontal = 16.dp).constrainAs(cardNameLabel) {
                   start.linkTo(parent.start)
                   bottom.linkTo(cardName.top)
-                }
+                },
             )
             Text(
               text = nameText.text,
@@ -139,7 +139,7 @@ fun PaymentCard(
                   .constrainAs(cardName) {
                     start.linkTo(parent.start)
                     bottom.linkTo(parent.bottom)
-                  }
+                  },
             )
 
             Text(
@@ -150,7 +150,7 @@ fun PaymentCard(
                 Modifier.padding(horizontal = 16.dp).constrainAs(expiryLabel) {
                   end.linkTo(parent.end)
                   bottom.linkTo(expiry.top)
-                }
+                },
             )
             Text(
               text = expiryNumber.text.take(4).chunked(2).joinToString("/"),
@@ -162,7 +162,7 @@ fun PaymentCard(
                   .constrainAs(expiry) {
                     end.linkTo(parent.end)
                     bottom.linkTo(parent.bottom)
-                  }
+                  },
             )
           }
         }
@@ -185,30 +185,27 @@ fun PaymentCard(
 
     AnimatedVisibility(
       visible = backVisible,
-      modifier = Modifier.padding(end = 50.dp, bottom = 50.dp).align(Alignment.BottomEnd)
+      modifier = Modifier.padding(end = 50.dp, bottom = 50.dp).align(Alignment.BottomEnd),
     ) {
       Box(
         modifier =
           Modifier.defaultMinSize(minWidth = 60.dp)
             .clip(RoundedCornerShape(4.dp))
             .background(Color.Gray),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
       ) {
         Text(
           text = cvcNumber.text,
           style = MaterialTheme.typography.body1,
           color = Color.White,
-          modifier = Modifier.animateContentSize().padding(vertical = 4.dp, horizontal = 16.dp)
+          modifier = Modifier.animateContentSize().padding(vertical = 4.dp, horizontal = 16.dp),
         )
       }
     }
   }
 }
 
-enum class CardType(
-  val title: String,
-  @DrawableRes val image: Int,
-) {
+enum class CardType(val title: String, @DrawableRes val image: Int) {
   None("", R.drawable.ic_visa_logo),
   Visa("visa", R.drawable.ic_visa_logo),
 }
@@ -221,6 +218,6 @@ fun PreviewPaymentCard() {
     TextFieldValue("Elbehiry"),
     TextFieldValue("*****************"),
     TextFieldValue("0224"),
-    TextFieldValue("123")
+    TextFieldValue("123"),
   )
 }

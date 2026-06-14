@@ -38,7 +38,7 @@ fun TitleText(modifier: Modifier = Modifier, title: String) {
   androidx.compose.material3.Text(
     text = title,
     style = typography.h6.copy(fontSize = 14.sp),
-    modifier = modifier.padding(8.dp)
+    modifier = modifier.padding(8.dp),
   )
 }
 
@@ -47,7 +47,7 @@ fun SubtitleText(subtitle: String, modifier: Modifier = Modifier) {
   androidx.compose.material3.Text(
     text = subtitle,
     style = typography.subtitle2,
-    modifier = modifier.padding(8.dp)
+    modifier = modifier.padding(8.dp),
   )
 }
 
@@ -57,7 +57,7 @@ fun RotateIcon(
   asset: ImageVector,
   angle: Float,
   duration: Int,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   FaIcon(
     faIcon = FaIcons.Play,
@@ -68,7 +68,7 @@ fun RotateIcon(
         .padding(2.dp)
         .graphicsLayer(
           rotationZ = animateFloatAsState(if (state) 0f else angle, tween(duration)).value
-        )
+        ),
   )
 }
 
