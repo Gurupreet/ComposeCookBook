@@ -67,6 +67,7 @@ import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import com.guru.composecookbook.ui.home.dynamic.DynamicUiType
 import com.guru.composecookbook.ui.home.lists.ListViewActivity
+import com.guru.composecookbook.ui.home.predictiveback.PredictiveBackActivity
 import com.guru.composecookbook.ui.utils.TestTags
 import java.util.*
 import kotlinx.coroutines.CoroutineScope
@@ -304,6 +305,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
       }
       HomeScreenItems.AdaptiveUI -> {
         AdaptiveUIActivity.newIntent(context, isDarkTheme)
+      }
+      HomeScreenItems.PredictiveBack -> {
+        PredictiveBackActivity.newIntent(context, isDarkTheme)
       }
     }
   context.startActivity(intent)

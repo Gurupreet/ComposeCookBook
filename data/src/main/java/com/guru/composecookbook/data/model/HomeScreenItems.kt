@@ -33,6 +33,8 @@ sealed class HomeScreenItems {
 
   object AdaptiveUI : HomeScreenItems()
 
+  object PredictiveBack : HomeScreenItems()
+
   val name: String
     get() =
       when (this) {
@@ -52,5 +54,6 @@ sealed class HomeScreenItems {
         PullRefresh -> "Pull refresh demos"
         CustomFling -> "Custom Fling"
         AdaptiveUI -> "Adaptive UI (Large screens)"
+        PredictiveBack -> "Predictive Back gesture"
       }
 }
