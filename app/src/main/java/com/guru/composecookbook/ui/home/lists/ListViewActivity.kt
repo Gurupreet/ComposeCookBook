@@ -54,6 +54,7 @@ class ListViewActivity : ComponentActivity() {
   companion object {
     const val TYPE = "type"
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, listViewType: String, isDarkTheme: Boolean) =
       Intent(context, ListViewActivity::class.java).apply {
         putExtra(TYPE, listViewType)
@@ -78,34 +79,25 @@ fun ListViewContent(listType: String, onBack: () -> Unit) {
             Text(text = "ListView")
             Text(
               text = listType.lowercase(Locale.getDefault()),
-              style = MaterialTheme.typography.labelSmall
+              style = MaterialTheme.typography.labelSmall,
             )
           }
         },
         navigationIcon = {
           IconButton(onClick = onBack) {
-            Icon(
-              Icons.Filled.ArrowBack,
-              contentDescription = stringResource(id = R.string.cd_back),
-            )
+            Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(id = R.string.cd_back))
           }
         },
       )
     },
     content = { paddingValues ->
-      ListViewScreen(
-        listType = listType,
-        modifier = Modifier.padding(paddingValues),
-      )
-    }
+      ListViewScreen(listType = listType, modifier = Modifier.padding(paddingValues))
+    },
   )
 }
 
 @Composable
-fun ListViewScreen(
-  listType: String,
-  modifier: Modifier = Modifier,
-) {
+fun ListViewScreen(listType: String, modifier: Modifier = Modifier) {
   Box(modifier = modifier) {
     when (listType) {
       ListViewType.VERTICAL.name -> {
@@ -137,7 +129,7 @@ fun VerticalListView() {
           VerticalListItem(item = item)
         }
         ListItemDivider()
-      }
+      },
     )
   }
 }
@@ -150,19 +142,19 @@ fun HorizontalListView() {
     Text(
       modifier = Modifier.padding(16.dp),
       text = "Good Food",
-      style = MaterialTheme.typography.labelMedium
+      style = MaterialTheme.typography.labelMedium,
     )
     LazyRow(modifier = Modifier.padding(end = 16.dp)) {
       items(
         items = list,
-        itemContent = { HorizontalListItem(it, Modifier.padding(start = 16.dp, bottom = 16.dp)) }
+        itemContent = { HorizontalListItem(it, Modifier.padding(start = 16.dp, bottom = 16.dp)) },
       )
     }
     ListItemDivider()
     Text(
       modifier = Modifier.padding(16.dp),
       text = "Stories",
-      style = MaterialTheme.typography.labelMedium
+      style = MaterialTheme.typography.labelMedium,
     )
     StoryList(profiles = profiles, onProfileClicked = {})
   }
@@ -183,7 +175,7 @@ fun GridListView() {
           profileName = it.author,
           isMe = it.id == 1,
           modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
-          onClick = {}
+          onClick = {},
         )
       }
     }
@@ -194,17 +186,12 @@ fun GridListView() {
 private fun ListItemDivider() {
   Divider(
     modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
-    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
+    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
   )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
-  ComposeCookBookTheme {
-    ListViewContent(
-      ListViewType.VERTICAL.name,
-      onBack = {},
-    )
-  }
+  ComposeCookBookTheme { ListViewContent(ListViewType.VERTICAL.name, onBack = {}) }
 }

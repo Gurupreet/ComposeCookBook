@@ -50,6 +50,7 @@ class DynamicUIActivity : ComponentActivity() {
   companion object {
     const val TYPE = "type"
     const val DARK_THEME = "darkTheme"
+
     fun newIntent(context: Context, dynamicUiType: String, isDarkTheme: Boolean) =
       Intent(context, DynamicUIActivity::class.java).apply {
         putExtra(TYPE, dynamicUiType)
@@ -69,23 +70,17 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
           IconButton(onClick = onback) {
             Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(id = R.string.cd_back))
           }
-        }
+        },
       )
     },
     content = { paddingValues ->
-      DynamicUiScreen(
-        uiType = uiType,
-        modifier = Modifier.padding(paddingValues),
-      )
-    }
+      DynamicUiScreen(uiType = uiType, modifier = Modifier.padding(paddingValues))
+    },
   )
 }
 
 @Composable
-fun DynamicUiScreen(
-  uiType: String,
-  modifier: Modifier = Modifier,
-) {
+fun DynamicUiScreen(uiType: String, modifier: Modifier = Modifier) {
   // We setup a base activity and we will change content depending upon ui type so
   // we don't have to create Activity for every feature showcase
   Box(modifier = modifier) {
