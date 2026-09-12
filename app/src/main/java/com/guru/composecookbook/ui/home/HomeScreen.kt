@@ -60,6 +60,7 @@ import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.orange500
 import com.guru.composecookbook.theme.purple
+import com.guru.composecookbook.ui.home.adaptive.AdaptiveUIActivity
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity
 import com.guru.composecookbook.ui.home.customfling.FlingListActivity
 import com.guru.composecookbook.ui.home.dialogs.DialogsActivity
@@ -300,6 +301,9 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
       }
       HomeScreenItems.MotionLayout -> {
         DynamicUIActivity.newIntent(context, DynamicUiType.MOTIONLAYOUT.name, isDarkTheme)
+      }
+      HomeScreenItems.AdaptiveUI -> {
+        AdaptiveUIActivity.newIntent(context, isDarkTheme)
       }
     }
   context.startActivity(intent)
