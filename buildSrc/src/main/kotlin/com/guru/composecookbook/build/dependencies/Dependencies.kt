@@ -52,7 +52,8 @@ object Dependencies {
 
     const val androidPagingRuntime = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
-    const val androidExoPlayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"
+    const val media3Exoplayer = "androidx.media3:media3-exoplayer:${Versions.media3}"
+    const val media3Ui = "androidx.media3:media3-ui:${Versions.media3}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
