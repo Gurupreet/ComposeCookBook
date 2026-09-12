@@ -4,6 +4,7 @@
 // only ktfmt needs to be declared here.
 plugins {
     alias(libs.plugins.ktfmt) apply false
+    alias(libs.plugins.roborazzi) apply false
 }
 
 allprojects {
