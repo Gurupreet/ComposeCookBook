@@ -17,19 +17,19 @@ object Dependencies {
     // Removed googleMaps = "com.google.android.libraries.maps:maps" as it's not publicly available
     const val playServicesMaps =
         "com.google.android.gms:play-services-maps:${Versions.playServicesMaps}"
-    const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
-    const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    // Compose BOM keeps all androidx.compose artifacts below at compatible versions
+    const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
+    const val composeUi = "androidx.compose.ui:ui"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling"
     // Material Design 1 and 3 dependencies
-    const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
-    const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3}"
-    const val composeMaterial3WindowSizeClass = "androidx.compose.material3:material3-window-size-class:${Versions.material3}"
-    const val composeMaterialIconsExtended =
-        "androidx.compose.material:material-icons-extended:${Versions.compose}"
-    
+    const val composeMaterial = "androidx.compose.material:material"
+    const val composeMaterial3 = "androidx.compose.material3:material3"
+    const val composeMaterial3WindowSizeClass = "androidx.compose.material3:material3-window-size-class"
+    const val composeMaterialIconsExtended = "androidx.compose.material:material-icons-extended"
+
     // Runtime and State Management
-    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
-    const val composeRuntimeLivedata =
-        "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+    const val composeRuntime = "androidx.compose.runtime:runtime"
+    const val composeRuntimeLivedata = "androidx.compose.runtime:runtime-livedata"
     
     // Layout and Navigation
     const val composeConstraintLayout =
@@ -41,8 +41,8 @@ object Dependencies {
     const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.lottie}"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
 
-    const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
-    const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
+    const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4"
+    const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest"
 
     /**
      * Custom fling behaviour
