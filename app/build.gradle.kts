@@ -1,19 +1,4 @@
 import com.guru.composecookbook.build.configurations.ProjectConfigs
-import com.guru.composecookbook.build.dependencies.addAndroidInstrumentationTestsDependencies
-import com.guru.composecookbook.build.dependencies.addBiometricDependency
-import com.guru.composecookbook.build.dependencies.addComposeDebugDependencies
-import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
-import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidDependencies
-import com.guru.composecookbook.build.dependencies.addCoreAndroidUiDependencies
-import com.guru.composecookbook.build.dependencies.addDataDependencies
-import com.guru.composecookbook.build.dependencies.addGoogleAndroidDependencies
-import com.guru.composecookbook.build.dependencies.addJunit5TestDependencies
-import com.guru.composecookbook.build.dependencies.addKotlinDependencies
-import com.guru.composecookbook.build.dependencies.addKotlinTestDependencies
-import com.guru.composecookbook.build.dependencies.addNetworkingDependencies
-import com.guru.composecookbook.build.dependencies.addThirdPartyUiDependencies
-import com.guru.composecookbook.build.dependencies.addThirdPartyUnitTestsDependencies
 
 plugins {
   id("com.android.application")
@@ -86,25 +71,30 @@ dependencies {
   implementation(project(":animations:canvas"))
   implementation(project(":animations:lottie"))
 
-  addKotlinDependencies()
+  implementation(libs.bundles.kotlin)
 
-  addDataDependencies()
+  implementation(platform(libs.androidx.compose.bom))
+  ksp(libs.androidx.room.compiler)
+  implementation(libs.bundles.data)
 
-  addComposeOfficialDependencies()
-  addComposeDebugDependencies()
-  addComposeThirdPartyDependencies()
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.bundles.compose.official)
+  debugImplementation(platform(libs.androidx.compose.bom))
+  debugImplementation(libs.bundles.compose.debug)
+  implementation(libs.bundles.compose.thirdparty)
 
-  addThirdPartyUiDependencies()
+  implementation(libs.bundles.thirdparty.ui)
 
-  addCoreAndroidDependencies()
-  addCoreAndroidUiDependencies()
-  addGoogleAndroidDependencies()
-  addNetworkingDependencies()
+  implementation(libs.bundles.core.android)
+  implementation(libs.bundles.core.android.ui)
+  implementation(libs.bundles.google.android)
+  implementation(libs.bundles.networking)
 
-  addKotlinTestDependencies()
-  addJunit5TestDependencies()
-  addThirdPartyUnitTestsDependencies()
+  testImplementation(libs.bundles.kotlin.test)
+  testImplementation(libs.bundles.junit5.test)
+  testImplementation(libs.truth)
 
-  addAndroidInstrumentationTestsDependencies()
-  addBiometricDependency()
+  androidTestImplementation(platform(libs.androidx.compose.bom))
+  androidTestImplementation(libs.bundles.instrumentation.test)
+  implementation(libs.androidx.biometric)
 }
