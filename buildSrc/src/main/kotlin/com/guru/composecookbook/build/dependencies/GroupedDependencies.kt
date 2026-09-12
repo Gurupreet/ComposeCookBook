@@ -30,7 +30,8 @@ internal val composeDebugDependencies = listOf(
 internal val kotlinDependencies = listOf(
     Dependencies.kotlinStandardLibraryJdk8,
     Dependencies.coroutinesCore,
-    Dependencies.coroutinesAndroid
+    Dependencies.coroutinesAndroid,
+    Dependencies.kotlinxSerializationJson
 )
 
 internal val kotlinTestDependencies = listOf(

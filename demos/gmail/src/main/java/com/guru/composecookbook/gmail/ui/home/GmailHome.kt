@@ -68,16 +68,24 @@ import com.guru.composecookbook.gmail.ui.details.MessageDetailScreen
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.green500
 import kotlin.math.absoluteValue
+import kotlinx.serialization.Serializable
+
+/** Type-safe navigation routes for the Gmail demo. */
+@Serializable object GmailHomeRoute
+
+@Serializable object GmailDetailRoute
+
+@Serializable object GmailCreateRoute
 
 @Composable
 fun GmailScreen() {
   val navController = rememberNavController()
-  NavHost(navController = navController, startDestination = "home") {
-    composable("home") { GmailHome(navController = navController) }
+  NavHost(navController = navController, startDestination = GmailHomeRoute) {
+    composable<GmailHomeRoute> { GmailHome(navController = navController) }
 
-    composable("detail") { MessageDetailScreen(navController = navController) }
+    composable<GmailDetailRoute> { MessageDetailScreen(navController = navController) }
 
-    composable("create") { CreateMessageScreen(navController = navController) }
+    composable<GmailCreateRoute> { CreateMessageScreen(navController = navController) }
   }
 }
 
@@ -157,7 +165,7 @@ fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) 
 fun GmailFloatingActionButton(navController: NavHostController, expandState: Boolean) {
 
   FloatingActionButton(
-    onClick = { navController.navigate("create") },
+    onClick = { navController.navigate(GmailCreateRoute) },
     modifier = Modifier.padding(16.dp).height(48.dp).widthIn(min = 48.dp),
     backgroundColor = MaterialTheme.colors.surface,
     contentColor = MaterialTheme.colors.primary,
@@ -241,14 +249,14 @@ fun GmailContent(
         AnimatedVisibility(visible = visible.value) {
           Box(modifier = Modifier.background(green500)) {
             GmailListActionItems(modifier = Modifier.align(Alignment.CenterEnd))
-            GmailListItem(it) { navController.navigate("detail") }
+            GmailListItem(it) { navController.navigate(GmailDetailRoute) }
           }
         }
       }
     }
 
     SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog) {
-      navController.navigate("create")
+      navController.navigate(GmailCreateRoute)
     }
   }
 }
