@@ -2,6 +2,7 @@ name: Dependency review
 
 # Flags PRs that introduce dependencies with known vulnerabilities.
 # Requires "Dependency graph" to be enabled under Settings > Code security.
+# While it is disabled the job skips with a warning instead of failing.
 on:
   pull_request:
     branches: [ master ]
@@ -15,7 +16,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Check that Dependency graph is enabled
+        id: graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${GITHUB_REPOSITORY}/dependency-graph/sbom" --silent >/dev/null 2>&1; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Dependency review skipped::Dependency graph is disabled for this repository. Enable it under Settings > Code security and analysis to activate dependency review."
+          fi
+
       - name: Dependency review
+        if: steps.graph.outputs.enabled == 'true'
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
