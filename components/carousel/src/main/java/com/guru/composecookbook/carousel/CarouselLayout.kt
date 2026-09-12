@@ -38,6 +38,15 @@ fun CarouselLayout() {
     val pagerState: PagerState = run { remember { PagerState(1, 0, items.size - 1) } }
     val selectedPage = remember { mutableStateOf(2) }
 
+    Text(
+      text = "Infinite looping carousel (auto advance)",
+      style = typography.body2,
+      modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
+    )
+    InfiniteCarousel(items = items, modifier = Modifier.height(230.dp)) { item ->
+      CarouselItem(item)
+    }
+
     PrepareFirstPager(pagerState, items, selectedPage)
     PrepareSecondPager(pagerState, items, selectedPage)
     PrepareThirdPager(pagerState, items, selectedPage)

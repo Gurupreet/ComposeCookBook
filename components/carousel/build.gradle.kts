@@ -1,3 +1,4 @@
+import com.guru.composecookbook.build.dependencies.addAndroidInstrumentationTestsDependencies
 import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
 
 plugins {
@@ -12,4 +13,6 @@ dependencies {
   implementation(project(":data"))
 
   addComposeOfficialDependencies()
+
+  addAndroidInstrumentationTestsDependencies()
 }
