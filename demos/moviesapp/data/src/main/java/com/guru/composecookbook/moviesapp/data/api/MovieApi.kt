@@ -1,5 +1,6 @@
 package com.guru.composecookbook.moviesapp.data.api
 
+import com.guru.composecookbook.moviesapp.data.BuildConfig
 import com.guru.composecookbook.moviesapp.data.api.models.GenreApiResponse
 import com.guru.composecookbook.moviesapp.data.api.models.MovieListResponse
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
@@ -45,7 +46,7 @@ interface MovieApi {
             .request()
             .url
             .newBuilder()
-            .addQueryParameter("api_key", "852eb333fbdf1f20f7da454df993da34")
+            .addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
             .build()
         val request = chain.request().newBuilder().url(url).build()
 
@@ -55,7 +56,12 @@ interface MovieApi {
       val okHttpClient =
         OkHttpClient.Builder()
           .addInterceptor(requestInterceptor)
-          .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+          .apply {
+            // Body logging leaks the API key and response payloads; debug builds only.
+            if (BuildConfig.DEBUG) {
+              addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            }
+          }
           .build()
 
       return Retrofit.Builder()

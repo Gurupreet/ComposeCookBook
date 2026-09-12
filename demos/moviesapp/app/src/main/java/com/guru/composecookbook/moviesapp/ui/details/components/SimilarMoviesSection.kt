@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -22,7 +23,8 @@ import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) {
-  viewModel.getSimilarMovies(currentMovie?.id.toString())
+  // Fetch once per movie, not on every recomposition.
+  LaunchedEffect(currentMovie?.id) { viewModel.getSimilarMovies(currentMovie?.id.toString()) }
   val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
   similarMovies?.let { movies ->
     Text(text = "Similar Movies", style = typography.h5, modifier = Modifier.padding(8.dp))

@@ -82,14 +82,16 @@ Adding card details        | CaseCade Menu
 :-------------------------:| :-------------------------: 
 ![](https://user-images.githubusercontent.com/8813304/112016144-1e21ef00-8b35-11eb-8c33-362c8cbe6c0d.gif)  | ![](https://media.giphy.com/media/WoFe2OZ7kbW2KBkzFN/giphy.gif) 
 
-### Kotlin DSL Templates
-You can find them in *buildSrc*
-- build.bradle
-- dependency
-- configurations
+### Build setup
+- Dependencies and versions live in the Gradle version catalog: `gradle/libs.versions.toml`
+- Shared module configuration (convention plugins, SDK levels) lives in *buildSrc*
 
 ## How to get started
-Please get **Android Studio Bumblebee latest Canary** [from here](https://developer.android.com/studio/preview/) and use **JDK 11** to build this project.
+Use **Android Studio Ladybug or newer** and **JDK 17** (the project targets AGP 8.7 / Kotlin 2.1).
+
+The MoviesApp demo needs a [TMDB API key](https://www.themoviedb.org/settings/api). Add it to your
+(git-ignored) `local.properties` as `tmdbApiKey=YOUR_KEY`, or export `TMDB_API_KEY`. Without it the
+demo builds fine but the movie lists stay empty.
 
 ## Features & Where to start
 - __Widgets:__ Widgets Screen show case all the available components to build UI.

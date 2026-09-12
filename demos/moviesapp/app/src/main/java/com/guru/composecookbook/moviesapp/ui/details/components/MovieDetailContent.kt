@@ -20,6 +20,9 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -67,16 +70,18 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
     item {
       val painter =
         rememberAsyncImagePainter(model = "https://image.tmdb.org/t/p/w500/${movie.poster_path}")
+      // Coil 3 exposes the painter state as a StateFlow; collect it and react outside
+      // of composition instead of comparing the flow object itself.
+      val painterState by painter.state.collectAsState()
+      LaunchedEffect(painterState) {
+        expand.value = painterState is AsyncImagePainter.State.Success
+      }
       Image(
         painter = painter,
         contentScale = ContentScale.Crop,
         contentDescription = null,
         modifier = Modifier.height(600.dp).fillMaxWidth(),
       )
-      when (painter.state) {
-        is AsyncImagePainter.State.Success -> expand.value = true
-        else -> expand.value = false
-      }
     }
     item {
       Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
