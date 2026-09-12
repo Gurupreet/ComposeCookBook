@@ -43,7 +43,7 @@ import androidx.wear.compose.material.rememberScalingLazyListState
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.charts.LineChart
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeViewModel
@@ -129,7 +129,7 @@ fun WearStockListItem(crypto: Crypto, onItemSelected: (String) -> Unit) {
   Card(onClick = { onItemSelected.invoke(crypto.symbol) }, shape = MaterialTheme.shapes.small) {
     Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
       Image(
-        painter = rememberImagePainter(data = crypto.image),
+        painter = rememberAsyncImagePainter(model = crypto.image),
         modifier = Modifier.size(32.dp).padding(4.dp),
         contentDescription = null,
         contentScale = ContentScale.Crop,
@@ -159,7 +159,7 @@ fun StockDetailScreen(crypto: Crypto) {
   ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
       Image(
-        painter = rememberImagePainter(data = crypto.image),
+        painter = rememberAsyncImagePainter(model = crypto.image),
         modifier = Modifier.size(24.dp).padding(end = 8.dp),
         contentDescription = null,
         contentScale = ContentScale.Crop,

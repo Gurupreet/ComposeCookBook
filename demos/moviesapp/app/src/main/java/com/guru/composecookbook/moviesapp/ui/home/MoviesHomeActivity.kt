@@ -26,7 +26,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.annotation.ExperimentalCoilApi
+import coil3.annotation.ExperimentalCoilApi
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailActivity
 import com.guru.composecookbook.moviesapp.ui.home.components.MovieHomeScreen

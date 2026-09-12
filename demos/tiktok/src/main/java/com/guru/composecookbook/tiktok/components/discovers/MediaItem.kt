@@ -8,12 +8,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 
 @Composable
 fun MediaItem(id: Int, modifier: Modifier = Modifier) {
   Image(
-    painter = rememberImagePainter(data = "https://picsum.photos/id/${id}/200/200"),
+    painter = rememberAsyncImagePainter(model = "https://picsum.photos/id/${id}/200/200"),
     contentDescription = null,
     contentScale = ContentScale.Crop,
     modifier = modifier.height(150.dp).width(120.dp).padding(2.dp),

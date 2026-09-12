@@ -48,7 +48,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.charts.BarCharts
 import com.guru.composecookbook.charts.LineChart
 import com.guru.composecookbook.cryptoapp.R
@@ -102,7 +102,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
     Row(modifier = Modifier.padding(top = 20.dp)) {
       Text(text = crypto.name, style = typography.h6, modifier = Modifier.padding(end = 8.dp))
       Image(
-        painter = rememberImagePainter(data = crypto.image),
+        painter = rememberAsyncImagePainter(model = crypto.image),
         modifier = Modifier.size(28.dp),
         contentDescription = null,
       )

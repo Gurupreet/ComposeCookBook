@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModel
 import com.guru.composecookbook.theme.typography
@@ -32,7 +32,9 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
         itemContent = { movie: Movie ->
           Image(
             painter =
-              rememberImagePainter(data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"),
+              rememberAsyncImagePainter(
+                model = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+              ),
             contentDescription = null,
             modifier =
               Modifier.width(200.dp).height(300.dp).padding(12.dp).clip(RoundedCornerShape(12.dp)),

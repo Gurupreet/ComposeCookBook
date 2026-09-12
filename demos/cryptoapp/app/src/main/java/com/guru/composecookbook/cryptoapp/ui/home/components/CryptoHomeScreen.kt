@@ -47,7 +47,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.cryptoapp.data.CryptoDemoDataProvider
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.home.CryptoHomeInteractionEvents
@@ -147,7 +147,7 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
     verticalAlignment = Alignment.CenterVertically,
   ) {
     Image(
-      painter = rememberImagePainter(data = crypto.image),
+      painter = rememberAsyncImagePainter(model = crypto.image),
       modifier = Modifier.size(24.dp),
       contentDescription = null,
     )

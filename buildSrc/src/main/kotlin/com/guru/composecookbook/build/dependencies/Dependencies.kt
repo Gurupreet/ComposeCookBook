@@ -57,7 +57,8 @@ object Dependencies {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-    const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
+    const val coilCompose = "io.coil-kt.coil3:coil-compose:${Versions.coilCompose}"
+    const val coilNetworkOkHttp = "io.coil-kt.coil3:coil-network-okhttp:${Versions.coilCompose}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val okHttpLoggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"

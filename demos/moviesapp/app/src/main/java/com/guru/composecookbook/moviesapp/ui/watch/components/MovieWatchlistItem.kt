@@ -20,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.theme.typography
 
@@ -33,7 +33,9 @@ fun MovieWatchlistItem(
   Box(modifier = Modifier.clickable(onClick = onMovieSelected)) {
     Image(
       painter =
-        rememberImagePainter(data = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}"),
+        rememberAsyncImagePainter(
+          model = "https://image.tmdb.org/t/p/original/${movie.backdrop_path}"
+        ),
       contentDescription = null,
       modifier = Modifier.fillMaxWidth().height(280.dp),
       contentScale = ContentScale.Crop,
