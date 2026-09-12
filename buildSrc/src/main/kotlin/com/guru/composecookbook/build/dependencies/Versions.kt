@@ -10,7 +10,7 @@ internal object Versions {
     const val coilCompose = "2.5.0"  // Latest stable
     const val kotlin = "2.1.20"  // Kotlin 2.x with the K2 compiler
     const val coroutines = "1.7.3"  // Latest stable
-    const val androidLifecycleGrouped = "2.7.0"  // Latest stable
+    const val androidLifecycleGrouped = "2.8.7"  // Latest stable 2.8.x
     const val flinger = "1.0.5"  // Keeping as is since it's a third-party lib
     const val paging = "3.2.1"  // Latest stable
     const val lottie = "6.3.0"  // Latest stable
