@@ -1,3 +1,4 @@
+import com.guru.composecookbook.build.dependencies.addAndroidInstrumentationTestsDependencies
 import com.guru.composecookbook.build.dependencies.addComposeOfficialDependencies
 import com.guru.composecookbook.build.dependencies.addComposeThirdPartyDependencies
 
@@ -17,4 +18,6 @@ dependencies {
 
   addComposeOfficialDependencies()
   addComposeThirdPartyDependencies()
+
+  addAndroidInstrumentationTestsDependencies()
 }
