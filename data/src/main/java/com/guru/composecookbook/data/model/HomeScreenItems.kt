@@ -35,6 +35,8 @@ sealed class HomeScreenItems {
 
   object PredictiveBack : HomeScreenItems()
 
+  object ContrastTheme : HomeScreenItems()
+
   val name: String
     get() =
       when (this) {
@@ -55,5 +57,6 @@ sealed class HomeScreenItems {
         CustomFling -> "Custom Fling"
         AdaptiveUI -> "Adaptive UI (Large screens)"
         PredictiveBack -> "Predictive Back gesture"
+        ContrastTheme -> "Contrast-aware M3 theme"
       }
 }
