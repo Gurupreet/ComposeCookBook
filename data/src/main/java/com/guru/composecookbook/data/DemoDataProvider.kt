@@ -349,6 +349,7 @@ object DemoDataProvider {
       HomeScreenItems.AdaptiveUI,
       HomeScreenItems.PredictiveBack,
       HomeScreenItems.ContrastTheme,
+      HomeScreenItems.SharedElement,
     )
 
   const val longText =

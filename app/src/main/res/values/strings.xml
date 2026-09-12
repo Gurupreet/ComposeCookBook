@@ -20,6 +20,7 @@
     <string name="title_activity_adaptive">Adaptive UI</string>
     <string name="title_activity_predictive_back">Predictive Back</string>
     <string name="title_activity_contrast_theme">Contrast Theme</string>
+    <string name="title_activity_shared_element">Shared Element</string>
     <string name="title_activity_custom_fling">Custom Fling</string>
     <string name="title_activity_custom_fling_settings">Custom Fling Settings</string>
     <string name="title_activity_templates">Templates</string>
