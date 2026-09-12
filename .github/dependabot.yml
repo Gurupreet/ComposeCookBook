@@ -1,0 +1,28 @@
+# Dependabot: security updates + routine version bumps.
+# The gradle ecosystem uses `directories` (glob) so every module's build file
+# is watched — root, buildSrc, each app/data/theme/component/template/demo subproject.
+# The github-actions ecosystem watches workflows; directories key does not apply there.
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directories:
+      - "/"
+      - "/**"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # Compose artifacts must move together with the BOM
+      compose:
+        patterns:
+          - "androidx.compose*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      actions:
+        patterns:
+          - "*"
