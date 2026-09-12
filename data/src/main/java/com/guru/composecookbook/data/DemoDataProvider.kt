@@ -347,6 +347,7 @@ object DemoDataProvider {
       HomeScreenItems.BottomSheets,
       HomeScreenItems.PullRefresh,
       HomeScreenItems.AdaptiveUI,
+      HomeScreenItems.PredictiveBack,
     )
 
   const val longText =
