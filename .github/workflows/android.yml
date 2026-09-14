@@ -5,24 +5,109 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
-jobs:
-  build:
+# A new push to the same PR/branch cancels the previous run.
+concurrency:
+  group: android-ci-${{ github.ref }}
+  cancel-in-progress: true
 
+jobs:
+  # Compiles every module, runs JVM unit tests and Roborazzi screenshot
+  # verification, and publishes the debug APK. This is the required PR check.
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@v4
-      - name: set up JDK 17
+
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: temurin
-          
+
+      # Pinned to a commit SHA (same pin as wrapper-validation.yml).
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/master' }}
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
+
+      - name: Assemble, unit tests, screenshot tests
+        run: ./gradlew assembleDebug testDebugUnitTest verifyRoborazziDebug --stacktrace
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ComposeCookBook
+          path: app/build/outputs/apk/debug/*.apk
+
+      - name: Upload Roborazzi diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roborazzi-diffs
+          path: '**/build/outputs/roborazzi/'
+          if-no-files-found: ignore
+
+      - name: Upload unit test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-reports
+          path: '**/build/reports/tests/'
+          if-no-files-found: ignore
+
+  # Lint runs separately so its memory footprint cannot take the build job down
+  # with it. Release-variant lint (lintVitalAnalyzeRelease) is deliberately not
+  # part of the PR gate.
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
+        with:
+          cache-read-only: true
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Lint (app)
+        run: ./gradlew :app:lintDebug --stacktrace
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-debug.html
+          if-no-files-found: ignore
+
+  # Branch protection on master requires a status check literally named
+  # "Building the APK" — that was the job name in the old build.yml, which
+  # this PR removed as a duplicate of the `build` job above. Keeping this
+  # thin job (rather than editing the protected-branch setting) makes the
+  # existing rule keep working without re-running assembleDebug a second time.
+  building-the-apk:
+    name: Building the APK
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Covered by the build job above, which assembles and uploads the debug APK."
