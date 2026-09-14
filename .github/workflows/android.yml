@@ -99,3 +99,15 @@ jobs:
           name: lint-report
           path: app/build/reports/lint-results-debug.html
           if-no-files-found: ignore
+
+  # Branch protection on master requires a status check literally named
+  # "Building the APK" — that was the job name in the old build.yml, which
+  # this PR removed as a duplicate of the `build` job above. Keeping this
+  # thin job (rather than editing the protected-branch setting) makes the
+  # existing rule keep working without re-running assembleDebug a second time.
+  building-the-apk:
+    name: Building the APK
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Covered by the build job above, which assembles and uploads the debug APK."
