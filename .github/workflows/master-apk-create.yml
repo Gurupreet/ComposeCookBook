@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -32,7 +32,7 @@ jobs:
       # Pinned to a commit SHA: third-party action with access to GITHUB_TOKEN.
       # (Replaces the archived marvinpinto/action-automatic-releases@latest.)
       - name: Update latest-master prerelease
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           tag_name: latest-master
           name: 'Staging Build'
