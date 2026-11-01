@@ -1,9 +1,9 @@
 [versions]
-agp = "8.7.3"
-kotlin = "2.1.20"
-ksp = "2.1.20-1.0.31"
-ktfmt = "0.22.0"
-roborazzi = "1.46.1"
+agp = "9.5.0"
+kotlin = "2.4.21"
+ksp = "2.3.13"
+ktfmt = "0.27.0"
+roborazzi = "1.66.0"
 robolectric = "4.14.1"
 
 activity-compose = "1.10.1"
@@ -179,7 +179,6 @@ screenshot-test = ["roborazzi", "roborazzi-compose", "robolectric"]
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

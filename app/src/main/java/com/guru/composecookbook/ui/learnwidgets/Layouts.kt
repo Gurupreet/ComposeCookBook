@@ -70,7 +70,8 @@ fun TypesOfRows() {
   )
   Row(
     horizontalArrangement = Arrangement.SpaceAround,
-    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_AROUND),
+    modifier =
+      Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_AROUND),
   ) {
     MultipleTexts()
   }
@@ -93,7 +94,8 @@ fun TypesOfRows() {
   )
   Row(
     horizontalArrangement = Arrangement.SpaceEvenly,
-    modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_EVENLY),
+    modifier =
+      Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_SPACE_EVENLY),
   ) {
     MultipleTexts()
   }
