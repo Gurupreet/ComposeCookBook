@@ -3,10 +3,17 @@ plugins {
   id("common-compose-module-configs-script-plugin")
 }
 
-android { namespace = "com.guru.composecookbook.canvas" }
+android {
+  namespace = "com.guru.composecookbook.canvas"
+
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
 
 dependencies {
   implementation(project(":theme"))
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.bundles.compose.official)
+
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.compose.robolectric.test)
 }

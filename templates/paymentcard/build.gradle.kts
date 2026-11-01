@@ -19,4 +19,5 @@ dependencies {
 
   testImplementation(platform(libs.androidx.compose.bom))
   testImplementation(libs.bundles.screenshot.test)
+  testImplementation(libs.bundles.compose.robolectric.test)
 }

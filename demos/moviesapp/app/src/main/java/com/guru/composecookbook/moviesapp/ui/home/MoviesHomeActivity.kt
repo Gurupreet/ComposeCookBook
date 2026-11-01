@@ -25,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.annotation.ExperimentalCoilApi
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
@@ -118,18 +119,21 @@ fun MoviesBottomBar(navType: MutableState<MovieNavType>) {
       icon = { Icon(imageVector = Icons.Outlined.MovieCreation, contentDescription = null) },
       selected = navType.value == MovieNavType.SHOWING,
       onClick = { navType.value = MovieNavType.SHOWING },
+      modifier = Modifier.testTag("movies_nav_showing"),
       label = { Text(text = "Showing") },
     )
     BottomNavigationItem(
       icon = { Icon(imageVector = Icons.Outlined.Subscriptions, contentDescription = null) },
       selected = navType.value == MovieNavType.TRENDING,
       onClick = { navType.value = MovieNavType.TRENDING },
+      modifier = Modifier.testTag("movies_nav_trending"),
       label = { Text(text = "Trending") },
     )
     BottomNavigationItem(
       icon = { Icon(imageVector = Icons.Outlined.LibraryAdd, contentDescription = null) },
       selected = navType.value == MovieNavType.WATCHLIST,
       onClick = { navType.value = MovieNavType.WATCHLIST },
+      modifier = Modifier.testTag("movies_nav_watchlist"),
       label = { Text(text = "Watchlist") },
     )
   }

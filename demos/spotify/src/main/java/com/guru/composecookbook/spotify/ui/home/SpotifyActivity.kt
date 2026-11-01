@@ -24,6 +24,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.guru.composecookbook.spotify.R
@@ -73,18 +74,21 @@ fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
     BottomNavigationItem(
       icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.HOME,
+      modifier = Modifier.testTag("spotify_nav_home"),
       onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
       label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
     )
     BottomNavigationItem(
       icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
+      modifier = Modifier.testTag("spotify_nav_search"),
       onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
       label = { Text(text = stringResource(id = R.string.spotify_nav_search)) },
     )
     BottomNavigationItem(
       icon = { Icon(imageVector = Icons.Outlined.LibraryMusic, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
+      modifier = Modifier.testTag("spotify_nav_library"),
       onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
       label = { Text(text = stringResource(id = R.string.spotify_nav_library)) },
     )

@@ -110,6 +110,7 @@ dependencies {
   // engine is required for the Robolectric JUnit 4 runner to be discovered.
   testImplementation(platform(libs.androidx.compose.bom))
   testImplementation(libs.bundles.screenshot.test)
+  testImplementation(libs.bundles.compose.robolectric.test)
   testImplementation(libs.junit.vintage.engine)
 
   androidTestImplementation(platform(libs.androidx.compose.bom))

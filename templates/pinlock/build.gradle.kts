@@ -23,6 +23,7 @@ dependencies {
 
   testImplementation(platform(libs.androidx.compose.bom))
   testImplementation(libs.bundles.screenshot.test)
+  testImplementation(libs.bundles.compose.robolectric.test)
   implementation(libs.bundles.compose.thirdparty)
   implementation(libs.androidx.biometric)
 }

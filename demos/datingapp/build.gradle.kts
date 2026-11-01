@@ -3,7 +3,11 @@ plugins {
   id("common-compose-module-configs-script-plugin")
 }
 
-android { namespace = "com.guru.composecookbook.datingapp" }
+android {
+  namespace = "com.guru.composecookbook.datingapp"
+
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
 
 dependencies {
   implementation(project(":animations:canvas"))
@@ -14,4 +18,7 @@ dependencies {
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.bundles.compose.official)
   implementation(libs.bundles.core.android.ui)
+
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.compose.robolectric.test)
 }
