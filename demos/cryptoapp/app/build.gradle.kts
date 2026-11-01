@@ -1,7 +1,6 @@
 plugins {
   /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
   id("common-compose-module-configs-script-plugin")
-  id("org.jetbrains.kotlin.android")
 }
 
 android { namespace = "com.guru.composecookbook.cryptoapp" }

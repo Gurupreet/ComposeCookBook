@@ -76,7 +76,9 @@ fun SpotifyTitle(text: String, modifier: Modifier = Modifier) {
     text = text,
     style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
     modifier =
-      modifier.padding(start = 8.dp, end = 4.dp, bottom = 8.dp, top = 24.dp).semantics { heading() },
+      modifier.padding(start = 8.dp, end = 4.dp, bottom = 8.dp, top = 24.dp).semantics {
+        heading()
+      },
   )
 }
 

@@ -36,8 +36,7 @@ import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.theme.graySurface
 
 sealed class MoviesHomeInteractionEvents {
-  data class OpenMovieDetail(val movie: Movie, val imageId: Int = 0) :
-    MoviesHomeInteractionEvents()
+  data class OpenMovieDetail(val movie: Movie, val imageId: Int = 0) : MoviesHomeInteractionEvents()
 
   data class AddToMyWatchlist(val movie: Movie) : MoviesHomeInteractionEvents()
 

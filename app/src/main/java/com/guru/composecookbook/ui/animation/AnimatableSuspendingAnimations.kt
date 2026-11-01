@@ -115,7 +115,9 @@ fun DraggableCardWithAnimatable() {
   Material3Card(
     backgroundColor = green200,
     modifier =
-      modifier.size(100.dp).offset(x = pointerAnimatableX.value.dp, y = pointerAnimatableX.value.dp),
+      modifier
+        .size(100.dp)
+        .offset(x = pointerAnimatableX.value.dp, y = pointerAnimatableX.value.dp),
   ) {}
   Spacer(modifier = Modifier.height(100.dp))
 }
