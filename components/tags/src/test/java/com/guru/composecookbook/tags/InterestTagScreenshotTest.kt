@@ -24,7 +24,8 @@ import org.robolectric.annotation.GraphicsMode
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(qualifiers = "w360dp-h640dp")
+// Pin to SDK 35: Robolectric 4.17 needs Java 21 for SDK 36/37, but CI runs JDK 17.
+@Config(sdk = [35], qualifiers = "w360dp-h640dp")
 class InterestTagScreenshotTest {
 
   @Test

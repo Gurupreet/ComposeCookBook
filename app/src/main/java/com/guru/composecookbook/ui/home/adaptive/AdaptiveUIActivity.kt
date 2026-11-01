@@ -34,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,6 +44,7 @@ import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
+import kotlinx.coroutines.launch
 
 /**
  * Demonstrates adaptive layouts for large screens:
@@ -104,8 +106,9 @@ fun AdaptiveDemoScreen() {
 @Composable
 fun AlbumListDetail() {
   val navigator = rememberListDetailPaneScaffoldNavigator<Album>()
+  val scope = rememberCoroutineScope()
 
-  BackHandler(navigator.canNavigateBack()) { navigator.navigateBack() }
+  BackHandler(navigator.canNavigateBack()) { scope.launch { navigator.navigateBack() } }
 
   ListDetailPaneScaffold(
     directive = navigator.scaffoldDirective,
@@ -117,7 +120,7 @@ fun AlbumListDetail() {
             ListItem(
               modifier =
                 Modifier.fillMaxWidth().clickable {
-                  navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, album)
+                  scope.launch { navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, album) }
                 },
               headlineContent = { Text(album.song) },
               supportingContent = { Text(album.artist) },
@@ -132,7 +135,7 @@ fun AlbumListDetail() {
     },
     detailPane = {
       AnimatedPane {
-        val album = navigator.currentDestination?.content
+        val album = navigator.currentDestination?.contentKey
         AlbumDetailPane(album)
       }
     },
