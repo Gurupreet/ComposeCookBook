@@ -19,7 +19,7 @@
       <img src = "https://img.shields.io/badge/Master-Master?color=7885FF&label=Sample%20App&logo=android&style=for-the-badge" />
     </a>
     <a href = "https://developer.android.com/develop/ui/compose/bom/bom-mapping">
-      <img src = "https://img.shields.io/badge/Jetpack%20Compose-BOM%202024.12.01-brightgreen" />
+      <img src = "https://img.shields.io/badge/Jetpack%20Compose-BOM%202026.09.00-brightgreen" />
     </a>
   <a href = "https://github.com/Gurupreet/ComposeCookBook/actions/workflows/android.yml">
       <img src = "https://github.com/Gurupreet/ComposeCookBook/actions/workflows/android.yml/badge.svg" />
@@ -87,7 +87,7 @@ Adding card details        | CaseCade Menu
 - Shared module configuration (convention plugins, SDK levels) lives in *buildSrc*
 
 ## How to get started
-Use **Android Studio Ladybug or newer** and **JDK 17** (the project targets AGP 8.7 / Kotlin 2.1).
+Use the **latest stable Android Studio** and **JDK 17 or newer** (the project targets AGP 9.5 / Kotlin 2.4).
 
 The MoviesApp demo needs a [TMDB API key](https://www.themoviedb.org/settings/api). Add it to your
 (git-ignored) `local.properties` as `tmdbApiKey=YOUR_KEY`, or export `TMDB_API_KEY`. Without it the
