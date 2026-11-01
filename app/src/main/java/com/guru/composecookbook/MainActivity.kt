@@ -1,9 +1,12 @@
 package com.guru.composecookbook
 
 import android.content.res.Configuration.ORIENTATION_PORTRAIT
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -27,6 +30,7 @@ import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -48,7 +53,6 @@ import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.AppThemeState
 import com.guru.composecookbook.theme.ColorPallet
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.SystemUiController
 import com.guru.composecookbook.theme.blue700
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.orange700
@@ -73,22 +77,18 @@ class MainActivity : ComponentActivity() {
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
     // for adView demo
     MobileAds.initialize(this)
     setContent {
-      val systemUiController = remember { SystemUiController(window) }
       val appTheme = remember { mutableStateOf(AppThemeState()) }
-      BaseView(appTheme.value, systemUiController) { MainAppContent(appTheme) }
+      BaseView(appTheme.value) { MainAppContent(appTheme) }
     }
   }
 }
 
 @Composable
-fun BaseView(
-  appThemeState: AppThemeState,
-  systemUiController: SystemUiController?,
-  content: @Composable () -> Unit,
-) {
+fun BaseView(appThemeState: AppThemeState, content: @Composable () -> Unit) {
   val color =
     when (appThemeState.pallet) {
       ColorPallet.GREEN -> green700
@@ -101,10 +101,14 @@ fun BaseView(
     darkTheme = appThemeState.darkTheme,
     colorPallet = appThemeState.pallet,
   ) {
-    systemUiController?.setStatusBarColor(
-      color = MaterialTheme.colorScheme.onPrimaryContainer,
-      darkIcons = appThemeState.darkTheme,
-    )
+    val activity = LocalContext.current as? ComponentActivity
+    DisposableEffect(appThemeState.darkTheme) {
+      // re-applied on in-app theme switch so system bar icons follow the app theme, not the OS
+      val style =
+        SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT) { appThemeState.darkTheme }
+      activity?.enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
+      onDispose {}
+    }
     content()
   }
 }
@@ -419,5 +423,5 @@ private fun NavigationRailContent(
 @Composable
 fun DefaultPreview() {
   val appThemeState = remember { mutableStateOf(AppThemeState(false, ColorPallet.GREEN)) }
-  BaseView(appThemeState.value, null) { MainAppContent(appThemeState) }
+  BaseView(appThemeState.value) { MainAppContent(appThemeState) }
 }

@@ -3,15 +3,17 @@ package com.guru.composecookbook.ui.templates
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.biometric.BiometricPrompt
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.guru.composecookbook.cascademenu.CascadeScreen
@@ -39,11 +41,13 @@ class TemplatesActivity : ComponentActivity() {
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+    enableEdgeToEdge()
     //   val prompt = createBiometricPrompt(this as FragmentActivity)
     setContent {
       ComposeCookBookMaterial3Theme(darkTheme = darkTheme) {
-        androidx.compose.material3.Surface { TemplateApp(templateType) }
+        androidx.compose.material3.Surface(Modifier.systemBarsPadding()) {
+          TemplateApp(templateType)
+        }
       }
     }
   }
