@@ -5,8 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.outlined.Circle
@@ -21,14 +19,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.lottie.LottieLoadingView
-import com.guru.composecookbook.theme.typography
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 
 const val pinSize = 4
 const val password = "2580"
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 @Preview
 fun PinLockView() {
@@ -50,7 +47,7 @@ fun PinLockView() {
   }
 
   Column(
-    modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.primaryContainer),
+    modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.primary),
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     Spacer(modifier = Modifier.height(100.dp))
@@ -59,7 +56,7 @@ fun PinLockView() {
 
     Text(
       text = "Enter pin to unlock",
-      style = typography.h6,
+      style = MaterialTheme.typography.titleLarge,
       modifier = Modifier.padding(16.dp),
       color = MaterialTheme.colorScheme.onPrimary,
     )
@@ -98,7 +95,7 @@ fun PinLockView() {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
       (1..3).forEach {
         PinKeyItem(onClick = { inputPin.add(it) }) {
-          Text(text = it.toString(), style = typography.h6)
+          Text(text = it.toString(), style = MaterialTheme.typography.titleLarge)
         }
       }
     }
@@ -106,7 +103,7 @@ fun PinLockView() {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
       (4..6).forEach {
         PinKeyItem(onClick = { inputPin.add(it) }) {
-          Text(text = it.toString(), style = typography.h6)
+          Text(text = it.toString(), style = MaterialTheme.typography.titleLarge)
         }
       }
     }
@@ -114,7 +111,11 @@ fun PinLockView() {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
       (7..9).forEach {
         PinKeyItem(onClick = { inputPin.add(it) }) {
-          Text(text = it.toString(), style = typography.h6, modifier = Modifier.padding(4.dp))
+          Text(
+            text = it.toString(),
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(4.dp),
+          )
         }
       }
     }
@@ -136,7 +137,11 @@ fun PinLockView() {
         onClick = { inputPin.add(0) },
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
       ) {
-        Text(text = "0", style = typography.h6, modifier = Modifier.padding(4.dp))
+        Text(
+          text = "0",
+          style = MaterialTheme.typography.titleLarge,
+          modifier = Modifier.padding(4.dp),
+        )
       }
       FaIcon(
         faIcon = FaIcons.Backspace,
@@ -153,13 +158,11 @@ fun PinLockView() {
   }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PinKeyItem(
   onClick: () -> Unit,
   modifier: Modifier = Modifier.padding(8.dp),
-  shape: Shape =
-    androidx.compose.material.MaterialTheme.shapes.small.copy(CornerSize(percent = 50)),
+  shape: Shape = MaterialTheme.shapes.small.copy(CornerSize(percent = 50)),
   backgroundColor: Color = MaterialTheme.colorScheme.onPrimary,
   contentColor: Color = contentColorFor(backgroundColor),
   elevation: Dp = 4.dp,
@@ -172,14 +175,12 @@ fun PinKeyItem(
     contentColor = contentColor,
     tonalElevation = elevation,
   ) {
-    CompositionLocalProvider(LocalContentAlpha provides contentColor.alpha) {
-      ProvideTextStyle(MaterialTheme.typography.displayMedium) {
-        Box(
-          modifier = Modifier.defaultMinSize(minWidth = 64.dp, minHeight = 64.dp),
-          contentAlignment = Alignment.Center,
-        ) {
-          content()
-        }
+    ProvideTextStyle(MaterialTheme.typography.titleLarge) {
+      Box(
+        modifier = Modifier.defaultMinSize(minWidth = 64.dp, minHeight = 64.dp),
+        contentAlignment = Alignment.Center,
+      ) {
+        content()
       }
     }
   }

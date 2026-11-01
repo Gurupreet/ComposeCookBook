@@ -8,10 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Close
 import androidx.compose.material.icons.twotone.DeleteSweep
@@ -20,7 +16,11 @@ import androidx.compose.material.icons.twotone.FileCopy
 import androidx.compose.material.icons.twotone.Language
 import androidx.compose.material.icons.twotone.MoreVert
 import androidx.compose.material.icons.twotone.Share
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -49,8 +49,8 @@ fun CascadeScreen() {
   }
   Scaffold(
     modifier = Modifier.fillMaxSize(),
-    backgroundColor = Color.Transparent,
-    scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState),
+    containerColor = Color.Transparent,
+    snackbarHost = { SnackbarHost(snackbarHostState) },
   ) { paddingValues ->
     Column(
       modifier = Modifier.padding(paddingValues).fillMaxSize(),

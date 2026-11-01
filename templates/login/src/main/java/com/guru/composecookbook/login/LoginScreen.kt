@@ -9,10 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material3.*
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.lottie.LottieWorkingLoadingView
 import com.guru.composecookbook.onboarding.OnBoardingScreen
-import com.guru.composecookbook.theme.helpers.TextFieldDefaultsMaterial
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.delay
@@ -75,7 +71,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
           leadingIcon = {
             FaIcon(
               faIcon = FaIcons.Envelope,
-              tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+              tint = LocalContentColor.current.copy(alpha = 0.54f),
             )
           },
           maxLines = 1,
@@ -83,7 +79,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
           modifier = Modifier.fillMaxWidth(),
           keyboardOptions =
             KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next),
-          colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
+          colors = OutlinedTextFieldDefaults.colors(),
           label = { Text(text = "Email address") },
           placeholder = { Text(text = "abc@gmail.com") },
           onValueChange = { email = it },
@@ -96,13 +92,13 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
           leadingIcon = {
             FaIcon(
               faIcon = FaIcons.Key,
-              tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+              tint = LocalContentColor.current.copy(alpha = 0.54f),
             )
           },
           trailingIcon = {
             FaIcon(
               faIcon = FaIcons.EyeSlash,
-              tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+              tint = LocalContentColor.current.copy(alpha = 0.54f),
               modifier =
                 Modifier.clickable(
                   onClick = {
@@ -116,7 +112,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                 ),
             )
           },
-          colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
+          colors = OutlinedTextFieldDefaults.colors(),
           maxLines = 1,
           isError = hasError,
           modifier = Modifier.fillMaxWidth(),
@@ -176,7 +172,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         OutlinedButton(onClick = {}, modifier = Modifier.fillMaxWidth().height(50.dp)) {
           FaIcon(
             faIcon = FaIcons.Facebook,
-            tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+            tint = LocalContentColor.current,
           )
           Text(
             text = "Sign in with Facebook",
@@ -193,7 +189,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         OutlinedButton(onClick = {}, modifier = Modifier.fillMaxWidth().height(50.dp)) {
           FaIcon(
             faIcon = FaIcons.Google,
-            tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+            tint = LocalContentColor.current,
           )
           Text(
             text = "Sign in with Gmail",

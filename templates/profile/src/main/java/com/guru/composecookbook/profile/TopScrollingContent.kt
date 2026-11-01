@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,7 +21,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.data.R
-import com.guru.composecookbook.theme.materialTypography
 
 @Composable
 fun TopScrollingContent(scrollState: ScrollState) {
@@ -34,10 +34,14 @@ fun TopScrollingContent(scrollState: ScrollState) {
     ) {
       Text(
         text = name,
-        style = materialTypography.headlineSmall.copy(fontSize = 18.sp),
+        style = MaterialTheme.typography.headlineSmall.copy(fontSize = 18.sp),
         modifier = Modifier.padding(bottom = 4.dp),
       )
-      Text(text = "Android developer", style = materialTypography.labelMedium)
+      Text(
+        text = "Android developer",
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+      )
     }
   }
 }
