@@ -7,7 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.instagram.components.InstagramHome
@@ -39,7 +39,7 @@ class InstagramActivity : ComponentActivity() {
   }
 }
 
-@Preview(showBackground = true)
+@PreviewLightDark
 @Composable
 fun DefaultPreview4() {
   ComposeCookBookTheme {

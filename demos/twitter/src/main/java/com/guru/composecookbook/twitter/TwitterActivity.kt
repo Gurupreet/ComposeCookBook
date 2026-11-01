@@ -8,7 +8,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewDynamicColors
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
@@ -39,7 +40,8 @@ class TwitterActivity : ComponentActivity() {
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-@Preview(showBackground = true)
+@PreviewLightDark
+@PreviewDynamicColors
 @Composable
 fun DefaultPreview4() {
   ComposeCookBookMaterial3Theme {

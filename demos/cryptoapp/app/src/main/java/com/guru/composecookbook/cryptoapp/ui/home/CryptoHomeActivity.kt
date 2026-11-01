@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.cryptoapp.data.db.models.Crypto
 import com.guru.composecookbook.cryptoapp.ui.detail.CryptoDetailActivity
@@ -65,6 +66,7 @@ class CryptoHomeActivity : ComponentActivity() {
 }
 
 @OptIn(ExperimentalCoroutinesApi::class)
+@PreviewLightDark
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview5() {

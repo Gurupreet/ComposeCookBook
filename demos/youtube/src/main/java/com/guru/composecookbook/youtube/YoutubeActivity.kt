@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.youtube.components.YoutubeHome
@@ -26,6 +27,7 @@ class YoutubeActivity : ComponentActivity() {
 }
 
 @OptIn(ExperimentalAnimationApi::class)
+@PreviewLightDark
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {

@@ -25,7 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.guru.composecookbook.spotify.R
 import com.guru.composecookbook.spotify.ui.home.components.SpotifyHome
 import com.guru.composecookbook.spotify.ui.playlist.components.SpotifyPlayList
@@ -102,7 +102,7 @@ fun SpotifyBodyContent(spotifyNavType: SpotifyNavType, modifier: Modifier = Modi
   }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 fun DefaultPreview() {
   ComposeCookBookTheme { SpotifyAppContent() }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 
@@ -36,6 +37,7 @@ class PaintActivity : ComponentActivity() {
   ExperimentalFoundationApi::class,
   ExperimentalAnimationApi::class,
 )
+@PreviewLightDark
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview4() {
