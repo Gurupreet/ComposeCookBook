@@ -124,7 +124,7 @@ private fun AlbumList(
                 animatedVisibilityScope = animatedScope,
                 enter = fadeIn(),
                 exit = fadeOut(),
-                resizeMode = SharedTransitionScope.ResizeMode.ScaleToBounds(),
+                resizeMode = SharedTransitionScope.ResizeMode.scaleToBounds(),
               )
         ) {
           Row(modifier = Modifier.padding(12.dp)) {
@@ -158,7 +158,7 @@ private fun AlbumDetail(
             animatedVisibilityScope = animatedScope,
             enter = fadeIn(),
             exit = fadeOut(),
-            resizeMode = SharedTransitionScope.ResizeMode.ScaleToBounds(),
+            resizeMode = SharedTransitionScope.ResizeMode.scaleToBounds(),
           )
     ) {
       AlbumArt(
