@@ -1,7 +1,5 @@
 package com.guru.composecookbook.carousel
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -30,8 +28,10 @@ class CarouselScreenshotTest {
   fun carousel_dot_light() {
     captureRoboImage("src/test/screenshots/carousel_dot.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme {
-          Surface(color = MaterialTheme.colors.background) { PreviewPaginationPionters() }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          PreviewPaginationPionters()
         }
       }
     }
@@ -41,8 +41,10 @@ class CarouselScreenshotTest {
   fun carousel_dot_dark() {
     captureRoboImage("src/test/screenshots/carousel_dot_dark.png") {
       ComposeCookBookTheme(darkTheme = true) {
-        MaterialTheme {
-          Surface(color = MaterialTheme.colors.background) { PreviewPaginationPionters() }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          PreviewPaginationPionters()
         }
       }
     }

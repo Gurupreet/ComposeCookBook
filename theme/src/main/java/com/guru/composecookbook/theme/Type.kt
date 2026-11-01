@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
+// Material 2 bridge for unmigrated modules; removed in the #238 cleanup PR.
 val typography =
   Typography(
     body1 =
@@ -33,6 +34,10 @@ val typography =
       ),
   )
 
+// Legacy explicit text styles used directly by some screens; not installed as the theme
+// typography (ComposeCookBookTheme/ComposeCookBookMaterial3Theme keep the Material 3
+// Typography defaults). The role names below therefore do not imply an M2 -> M3 mapping.
+// Bridge kept for unmigrated call sites; removed in the #238 cleanup PR.
 val materialTypography =
   androidx.compose.material3.Typography(
     bodyLarge =

@@ -11,8 +11,9 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -45,7 +46,6 @@ fun createRandomFloatList(): List<Float> {
   return list
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Charts() {
   Scaffold { paddingValues ->
@@ -55,7 +55,11 @@ fun Charts() {
       item { Spacer(modifier = Modifier.height(10.dp)) }
 
       item {
-        Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+        Card(
+          modifier = Modifier.padding(16.dp),
+          shape = RoundedCornerShape(4.dp),
+          elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+        ) {
           val mutableChartData = remember {
             mutableStateListOf<Float>().apply { addAll(createRandomFloatList()) }
           }
@@ -78,14 +82,22 @@ fun Charts() {
 
       item {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-          Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+          Card(
+            modifier = Modifier.padding(16.dp),
+            shape = RoundedCornerShape(4.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+          ) {
             LineChart(
               yAxisValues = createRandomFloatList(),
               modifier = Modifier.width(150.dp).height(100.dp),
               lineColors = listOf(tiktokBlue, tiktokRed),
             )
           }
-          Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+          Card(
+            modifier = Modifier.padding(16.dp),
+            shape = RoundedCornerShape(4.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+          ) {
             Box {
               LineChart(
                 yAxisValues = increasingChart5Times,
@@ -104,7 +116,11 @@ fun Charts() {
       item { Spacer(modifier = Modifier.height(20.dp)) }
 
       item {
-        Card(modifier = Modifier.padding(8.dp), elevation = 16.dp) {
+        Card(
+          modifier = Modifier.padding(8.dp),
+          shape = RoundedCornerShape(4.dp),
+          elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+        ) {
           BarCharts(
             modifier = Modifier.fillMaxWidth().height(150.dp).padding(top = 4.dp),
             yAxisValues = createRandomFloatList(),
@@ -116,11 +132,19 @@ fun Charts() {
 
       item {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-          Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+          Card(
+            modifier = Modifier.padding(16.dp),
+            shape = RoundedCornerShape(4.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+          ) {
             val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
             PieCharts(pieChartValues)
           }
-          Card(modifier = Modifier.padding(16.dp), elevation = 16.dp) {
+          Card(
+            modifier = Modifier.padding(16.dp),
+            shape = RoundedCornerShape(4.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+          ) {
             val pieChartValues: List<Float> = (0..5).map { Random.nextFloat() * 10 }
             PieCharts(pieChartValues)
           }
@@ -137,8 +161,8 @@ fun LineChart(
   modifier: Modifier = Modifier,
   lineColors: List<Color> =
     listOf(
-      androidx.compose.material.MaterialTheme.colors.primary,
-      androidx.compose.material.MaterialTheme.colors.primary,
+      MaterialTheme.colorScheme.primary,
+      MaterialTheme.colorScheme.primary,
     ),
   lineWidth: Float = 4f,
   yAxisValues: List<Float>,

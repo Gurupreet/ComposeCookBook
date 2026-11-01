@@ -10,11 +10,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.theme.materialShapes
 
 @Composable
 fun Material3Card(
   modifier: Modifier = Modifier,
-  shape: Shape = androidx.compose.material.MaterialTheme.shapes.medium,
+  shape: Shape = materialShapes.medium,
   backgroundColor: Color = MaterialTheme.colorScheme.surface,
   contentColor: Color = contentColorFor(backgroundColor),
   border: BorderStroke? = null,
