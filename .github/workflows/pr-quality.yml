@@ -1,0 +1,148 @@
+name: PR Quality Gate
+
+# The four required PR checks: unit tests, Roborazzi screenshot verification,
+# Android Lint, and ktfmt formatting. Each job runs independently (parallel) on
+# ubuntu-latest / JDK 17 with Gradle dependency caching (gradle/actions/setup-gradle)
+# and the Gradle configuration cache enabled per invocation (passed as the
+# --configuration-cache flag on every gradle command; it is NOT set in
+# gradle.properties).
+#
+# Trigger: runs on pull_request to master only (not on push), so a merge commit
+# re-runs nothing here and the android.yml build job alone covers master.
+#
+# Branch protection: the four job ids (unit-tests, screenshot-verification,
+# lint, ktfmt) must be registered as required status checks on master in
+# repository settings. That is a repo-settings action for the maintainer and is
+# NOT automated from this workflow.
+on:
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  contents: read
+
+# A new push to the same PR/branch cancels the previous run.
+concurrency:
+  group: pr-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/master' }}
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest --configuration-cache --stacktrace
+
+      - name: Upload unit test reports
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: unit-test-reports
+          path: '**/build/reports/tests/'
+          if-no-files-found: ignore
+
+  screenshot-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/master' }}
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # Fails when any committed golden differs; Roborazzi writes per-image diff
+      # PNGs under build/outputs/roborazzi/, uploaded below for review.
+      - name: Verify Roborazzi goldens
+        run: ./gradlew verifyRoborazziDebug --configuration-cache --stacktrace
+
+      - name: Upload Roborazzi diffs
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: roborazzi-diffs
+          path: '**/build/outputs/roborazzi/'
+          if-no-files-found: ignore
+
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/master' }}
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # Compose lint rules run as part of lintDebug; --continue so one module's
+      # error does not hide the others'.
+      - name: Lint all modules (debug)
+        run: ./gradlew lintDebug --continue --configuration-cache
+
+      - name: Upload lint reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: lint-reports
+          path: '**/build/reports/lint-results-debug.html'
+          if-no-files-found: ignore
+
+  ktfmt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/master' }}
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Check formatting
+        run: ./gradlew ktfmtCheck --configuration-cache
