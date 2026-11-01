@@ -5,6 +5,7 @@ plugins {
   id("com.android.application")
   id("com.google.devtools.ksp")
   id("org.jetbrains.kotlin.plugin.compose")
+  alias(libs.plugins.roborazzi)
 }
 
 android {
@@ -35,7 +36,16 @@ android {
   }
   buildFeatures { compose = true }
   lint { abortOnError = false }
-  testOptions { unitTests.all { it.useJUnitPlatform() } }
+  // useJUnitPlatform: unit tests run on the JUnit Platform (Jupiter engine for
+  // the existing tests, Vintage engine for the Robolectric JUnit 4 screenshot
+  // tests). isIncludeAndroidResources is required for Roborazzi/Robolectric to
+  // render Compose with real resources on the JVM.
+  testOptions {
+    unitTests {
+      isIncludeAndroidResources = true
+      all { it.useJUnitPlatform() }
+    }
+  }
 }
 
 // AGP 9.0 ships built-in Kotlin (replacing the kotlin-android plugin), so the
@@ -94,6 +104,13 @@ dependencies {
   testImplementation(libs.bundles.kotlin.test)
   testImplementation(libs.bundles.junit5.test)
   testImplementation(libs.truth)
+
+  // Roborazzi screenshot tests run under Robolectric (JUnit 4). This module's
+  // unit tests use the JUnit Platform (useJUnitPlatform), so the JUnit Vintage
+  // engine is required for the Robolectric JUnit 4 runner to be discovered.
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.screenshot.test)
+  testImplementation(libs.junit.vintage.engine)
 
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.bundles.instrumentation.test)

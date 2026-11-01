@@ -119,6 +119,7 @@ junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.re
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 junit = { module = "junit:junit", version.ref = "junit4" }
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit-jupiter" }
 androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "junit-androidx" }
 
 # Screenshot testing
