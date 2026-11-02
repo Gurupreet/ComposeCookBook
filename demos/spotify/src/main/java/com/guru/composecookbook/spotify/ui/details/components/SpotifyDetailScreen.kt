@@ -13,12 +13,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -48,7 +48,7 @@ fun SpotifyDetailScreen(album: Album) {
   val context = LocalContext.current
   val image = ImageBitmap.imageResource(context.resources, id = album.imageId).asAndroidBitmap()
   val swatch = remember(album.id) { image.generateDominantColorState() }
-  val dominantColors = listOf(Color(swatch.rgb), MaterialTheme.colors.surface)
+  val dominantColors = listOf(Color(swatch.rgb), MaterialTheme.colorScheme.surface)
   val dominantGradient = remember { dominantColors }
   val surfaceGradient =
     SpotifyDataProvider.spotifySurfaceGradient(isSystemInDarkTheme()).asReversed()
@@ -77,18 +77,18 @@ fun AnimatedToolBar(album: Album, scrollState: ScrollState, surfaceGradient: Lis
   ) {
     Icon(
       imageVector = Icons.Default.ArrowBack,
-      tint = MaterialTheme.colors.onSurface,
+      tint = MaterialTheme.colorScheme.onSurface,
       contentDescription = stringResource(id = R.string.cd_back),
     )
     Text(
       text = album.song,
-      color = MaterialTheme.colors.onSurface,
+      color = MaterialTheme.colorScheme.onSurface,
       modifier =
         Modifier.padding(16.dp).alpha(((scrollState.value + 0.001f) / 1000).coerceIn(0f, 1f)),
     )
     Icon(
       imageVector = Icons.Default.MoreVert,
-      tint = MaterialTheme.colors.onSurface,
+      tint = MaterialTheme.colorScheme.onSurface,
       contentDescription = null,
     )
   }

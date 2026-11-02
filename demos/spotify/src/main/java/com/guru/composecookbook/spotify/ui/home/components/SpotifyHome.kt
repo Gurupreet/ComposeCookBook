@@ -13,11 +13,11 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -32,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 @Composable
@@ -43,7 +42,7 @@ fun SpotifyHome() {
     ScrollableContent(scrollState = scrollState, surfaceGradient = surfaceGradient)
     Icon(
       imageVector = Icons.Outlined.Settings,
-      tint = MaterialTheme.colors.onSurface,
+      tint = MaterialTheme.colorScheme.onSurface,
       contentDescription = null,
       modifier =
         Modifier.align(Alignment.TopEnd)
@@ -74,7 +73,7 @@ fun ScrollableContent(scrollState: ScrollState, surfaceGradient: List<Color>) {
 fun SpotifyTitle(text: String, modifier: Modifier = Modifier) {
   Text(
     text = text,
-    style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.ExtraBold),
     modifier =
       modifier.padding(start = 8.dp, end = 4.dp, bottom = 8.dp, top = 24.dp).semantics {
         heading()

@@ -9,7 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -19,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.spotify.data.SpotifyDataProvider
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SpotifySearchScreen() {
@@ -29,7 +29,7 @@ fun SpotifySearchScreen() {
   Box(modifier = Modifier.fillMaxSize().horizontalGradientBackground(surfaceGradient)) {
     Text(
       text = "Search",
-      style = typography.h3.copy(fontWeight = FontWeight.ExtraBold),
+      style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.ExtraBold),
       textAlign = TextAlign.Center,
       modifier =
         Modifier.padding(top = 80.dp, bottom = 40.dp)

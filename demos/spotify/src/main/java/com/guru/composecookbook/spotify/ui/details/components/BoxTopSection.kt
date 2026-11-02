@@ -15,18 +15,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.data.model.Album
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun BoxTopSection(album: Album, scrollState: ScrollState) {
@@ -44,23 +44,28 @@ fun BoxTopSection(album: Album, scrollState: ScrollState) {
     )
     Text(
       text = album.song,
-      style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+      style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.ExtraBold),
       modifier = Modifier.padding(8.dp),
-      color = MaterialTheme.colors.onSurface,
+      color = MaterialTheme.colorScheme.onSurface,
     )
     Text(
       text = "FOLLOWING",
-      color = MaterialTheme.colors.onSurface,
-      style = typography.h6.copy(fontSize = 12.sp),
+      color = MaterialTheme.colorScheme.onSurface,
+      style = MaterialTheme.typography.titleLarge.copy(fontSize = 12.sp),
       modifier =
         Modifier.padding(4.dp)
           .border(
-            border = BorderStroke(2.dp, MaterialTheme.colors.primaryVariant),
+            border = BorderStroke(2.dp, MaterialTheme.colorScheme.primaryContainer),
             shape = RoundedCornerShape(12.dp),
           )
           .padding(vertical = 4.dp, horizontal = 24.dp),
     )
-    Text(text = album.descriptions, style = typography.subtitle2, modifier = Modifier.padding(4.dp))
+    Text(
+      text = album.descriptions,
+      style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+      color = Color.Gray,
+      modifier = Modifier.padding(4.dp),
+    )
   }
 }
 
@@ -73,7 +78,7 @@ fun TopSectionOverlay(scrollState: ScrollState) {
       Modifier.fillMaxWidth()
         .height(400.dp)
         .background(
-          MaterialTheme.colors.surface.copy(alpha = animateFloatAsState(dynamicAlpha).value)
+          MaterialTheme.colorScheme.surface.copy(alpha = animateFloatAsState(dynamicAlpha).value)
         )
   )
 }

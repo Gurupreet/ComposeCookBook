@@ -6,7 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -19,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SpotifyLaneItem(album: Album) {
@@ -43,7 +43,7 @@ fun SpotifyLaneItem(album: Album) {
     )
     Text(
       text = "${album.song}: ${album.descriptions}",
-      style = typography.body2,
+      style = MaterialTheme.typography.bodyMedium,
       maxLines = 2,
       overflow = TextOverflow.Ellipsis,
       modifier = Modifier.padding(vertical = 8.dp),
