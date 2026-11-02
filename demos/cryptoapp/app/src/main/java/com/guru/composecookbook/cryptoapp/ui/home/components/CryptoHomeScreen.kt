@@ -58,7 +58,6 @@ import com.guru.composecookbook.lottie.LottieCryptoLoadingView
 import com.guru.composecookbook.theme.blue
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
-import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @OptIn(ExperimentalCoroutinesApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
@@ -153,7 +152,7 @@ fun FavoriteItem(crypto: Crypto, openCryptoDetail: () -> Unit) {
     )
     Text(
       text = crypto.symbol,
-      style = typography.h6.copy(fontSize = 20.sp),
+      style = MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp),
       modifier = Modifier.padding(horizontal = 8.dp).height(32.dp),
       color = MaterialTheme.colorScheme.onSurface,
       textAlign = TextAlign.Center,

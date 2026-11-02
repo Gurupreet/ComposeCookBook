@@ -12,13 +12,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -45,7 +45,6 @@ import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModelFactory
 import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.graySurface
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MovieDetailContent(movie: Movie, imageId: Int) {
@@ -84,18 +83,23 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
       )
     }
     item {
-      Column(modifier = Modifier.background(MaterialTheme.colors.onSurface)) {
+      Column(modifier = Modifier.background(MaterialTheme.colorScheme.onSurface)) {
         Row(
           horizontalArrangement = Arrangement.SpaceBetween,
           verticalAlignment = Alignment.CenterVertically,
           modifier = Modifier.fillMaxWidth(),
         ) {
-          Text(text = movie.title, modifier = Modifier.padding(8.dp), style = typography.h6)
+          Text(
+            text = movie.title,
+            modifier = Modifier.padding(8.dp),
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.background,
+          )
           IconButton(onClick = {}) {
             Icon(
               imageVector = Icons.Default.LibraryAdd,
               contentDescription = null,
-              tint = MaterialTheme.colors.primary,
+              tint = MaterialTheme.colorScheme.primary,
             )
           }
         }
@@ -103,14 +107,23 @@ fun MovieDetailContent(movie: Movie, imageId: Int) {
         Text(
           text = "Release: ${movie.release_date}",
           modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-          style = typography.h6.copy(fontSize = 12.sp),
+          style = MaterialTheme.typography.titleLarge.copy(fontSize = 12.sp),
         )
         Text(
           text = "PG13  •  ${movie.vote_average}/10",
           modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-          style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium),
+          style =
+            MaterialTheme.typography.titleLarge.copy(
+              fontSize = 12.sp,
+              fontWeight = FontWeight.Medium,
+            ),
         )
-        Text(text = movie.overview, modifier = Modifier.padding(8.dp), style = typography.subtitle2)
+        Text(
+          text = movie.overview,
+          modifier = Modifier.padding(8.dp),
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
+        )
         Spacer(modifier = Modifier.height(20.dp))
         SimilarMoviesSection(movie, viewModel)
         Spacer(modifier = Modifier.height(50.dp))

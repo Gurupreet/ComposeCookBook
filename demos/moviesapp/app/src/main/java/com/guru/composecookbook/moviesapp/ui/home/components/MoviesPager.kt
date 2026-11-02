@@ -2,9 +2,9 @@ package com.guru.composecookbook.moviesapp.ui.home.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -64,7 +64,11 @@ fun MoviesPager(
     if (error.isNullOrEmpty()) {
       CircularProgressIndicator(modifier = Modifier.padding(24.dp))
     } else {
-      Text(text = error ?: "Unknown error", modifier = Modifier, color = MaterialTheme.colors.error)
+      Text(
+        text = error ?: "Unknown error",
+        modifier = Modifier,
+        color = MaterialTheme.colorScheme.error,
+      )
     }
   }
 }

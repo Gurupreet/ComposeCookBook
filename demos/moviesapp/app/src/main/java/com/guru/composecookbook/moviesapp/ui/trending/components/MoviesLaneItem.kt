@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -16,14 +17,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MoviesLaneItem(movies: List<Movie>, title: String = "", onMovieSelected: (Movie) -> Unit) {
   if (title.isNotEmpty()) {
     Text(
       text = title,
-      style = typography.h6,
+      style = MaterialTheme.typography.titleLarge,
       modifier = Modifier.padding(start = 16.dp, end = 8.dp, bottom = 8.dp, top = 24.dp),
     )
   }
