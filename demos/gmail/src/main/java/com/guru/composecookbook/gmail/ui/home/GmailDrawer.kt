@@ -4,10 +4,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AllInbox
 import androidx.compose.material.icons.outlined.AccessTime
@@ -20,6 +16,10 @@ import androidx.compose.material.icons.outlined.MarkunreadMailbox
 import androidx.compose.material.icons.outlined.MoreTime
 import androidx.compose.material.icons.outlined.Send
 import androidx.compose.material.icons.outlined.StarBorder
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,11 +48,11 @@ fun GmailDrawer(modifier: Modifier = Modifier) {
       )
     }
 
-    item { Divider(thickness = 0.3.dp) }
+    item { HorizontalDivider(thickness = 0.3.dp) }
     item { Spacer(modifier.padding(top = 8.dp)) }
     item { DrawerItem(icon = Icons.Filled.AllInbox, title = "All Inbox") }
     item { Spacer(modifier.padding(top = 8.dp)) }
-    item { Divider(thickness = 0.3.dp) }
+    item { HorizontalDivider(thickness = 0.3.dp) }
 
     item { Spacer(modifier.padding(top = 8.dp)) }
 
@@ -92,7 +92,7 @@ fun DrawerItem(icon: ImageVector, title: String, msgCount: String = "") {
       Text(
         modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp),
         text = msgCount,
-        style = MaterialTheme.typography.caption,
+        style = MaterialTheme.typography.bodySmall,
         textAlign = TextAlign.Start,
       )
     }
@@ -105,7 +105,7 @@ fun DrawerCategory(title: String) {
   Text(
     text = title,
     letterSpacing = 0.7.sp,
-    color = MaterialTheme.colors.onBackground,
+    color = MaterialTheme.colorScheme.onBackground,
     fontSize = 12.sp,
     modifier = Modifier.padding(16.dp),
   )

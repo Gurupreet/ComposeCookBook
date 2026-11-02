@@ -21,17 +21,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Divider
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PersonAdd
@@ -39,7 +28,23 @@ import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Mail
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -89,47 +94,80 @@ fun GmailScreen() {
   }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GmailHome(navController: NavHostController) {
 
-  val scaffoldState = rememberScaffoldState()
+  val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
   val fabExpandState = remember { mutableStateOf(false) }
   val showUserDialog = remember { mutableStateOf(false) }
+  // M2 BottomNavigationItem used the onBackground content color at 0.6 alpha for unselected
+  // items; the M3 default (onSurfaceVariant) is full contrast in this theme.
+  val navigationBarItemColors =
+    NavigationBarItemDefaults.colors(
+      selectedIconColor = MaterialTheme.colorScheme.onSurface,
+      selectedTextColor = MaterialTheme.colorScheme.onSurface,
+      unselectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+      unselectedTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+    )
 
-  Scaffold(
-    floatingActionButton = { GmailFloatingActionButton(navController, fabExpandState.value) },
-    drawerContent = { GmailDrawer() },
-    drawerBackgroundColor = MaterialTheme.colors.background,
-    drawerContentColor = MaterialTheme.colors.onBackground,
-    scaffoldState = scaffoldState,
-    content = { paddingValues ->
-      GmailContent(
-        fabExpandState = fabExpandState,
-        scaffoldState = scaffoldState,
-        navController = navController,
-        showUserDialog = showUserDialog,
-        modifier = Modifier.padding(paddingValues),
-      )
-    },
-    bottomBar = {
-      val background = if (isSystemInDarkTheme()) graySurface else Color.White
-      BottomNavigation(backgroundColor = background) {
-        BottomNavigationItem(
-          icon = { IconWithBadge(badge = 1, icon = Icons.Outlined.Mail) },
-          onClick = {},
-          selected = true,
-          label = { Text("Mail") },
-        )
-
-        BottomNavigationItem(
-          icon = { IconWithBadge(badge = 0, icon = Icons.Outlined.Call) },
-          onClick = {},
-          selected = true,
-          label = { Text("Meet") },
-        )
+  // The M2 Scaffold's drawerContent maps to the M3 ModalNavigationDrawer, which wraps the
+  // Scaffold instead of hosting it. The M3 drawer needs its own sheet for the background,
+  // width and content color that the M2 Scaffold used to provide (M2
+  // drawerBackgroundColor/drawerContentColor), so GmailDrawer is wrapped in a
+  // ModalDrawerSheet. The scrim keeps the M2 onSurface look (colorScheme.scrim is
+  // Color.White in this theme's dark scheme).
+  ModalNavigationDrawer(
+    drawerContent = {
+      ModalDrawerSheet(
+        drawerContainerColor = MaterialTheme.colorScheme.background,
+        drawerContentColor = MaterialTheme.colorScheme.onBackground,
+      ) {
+        GmailDrawer()
       }
     },
-  )
+    drawerState = drawerState,
+    scrimColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.32f),
+  ) {
+    Scaffold(
+      floatingActionButton = { GmailFloatingActionButton(navController, fabExpandState.value) },
+      content = { paddingValues ->
+        GmailContent(
+          fabExpandState = fabExpandState,
+          drawerState = drawerState,
+          navController = navController,
+          showUserDialog = showUserDialog,
+          modifier = Modifier.padding(paddingValues),
+        )
+      },
+      bottomBar = {
+        val background = if (isSystemInDarkTheme()) graySurface else Color.White
+        NavigationBar(
+          containerColor = background,
+          contentColor = MaterialTheme.colorScheme.onSurface,
+          // tonalElevation 0 keeps the bar's exact background (background == surface would
+          // otherwise pick up a surfaceTint wash).
+          tonalElevation = 0.dp,
+        ) {
+          NavigationBarItem(
+            icon = { IconWithBadge(badge = 1, icon = Icons.Outlined.Mail) },
+            onClick = {},
+            selected = true,
+            colors = navigationBarItemColors,
+            label = { Text("Mail") },
+          )
+
+          NavigationBarItem(
+            icon = { IconWithBadge(badge = 0, icon = Icons.Outlined.Call) },
+            onClick = {},
+            selected = false,
+            colors = navigationBarItemColors,
+            label = { Text("Meet") },
+          )
+        }
+      },
+    )
+  }
 
   UserEmailDialog(showUserDialog)
 }
@@ -149,7 +187,7 @@ fun IconWithBadge(badge: Int, icon: ImageVector, modifier: Modifier = Modifier) 
         text = "$badge",
         textAlign = TextAlign.Center,
         fontSize = 12.sp,
-        color = MaterialTheme.colors.surface,
+        color = MaterialTheme.colorScheme.surface,
         modifier =
           Modifier.padding(top = 4.dp)
             .clip(CircleShape)
@@ -167,8 +205,8 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
   FloatingActionButton(
     onClick = { navController.navigate(GmailCreateRoute) },
     modifier = Modifier.padding(16.dp).height(48.dp).widthIn(min = 48.dp),
-    backgroundColor = MaterialTheme.colors.surface,
-    contentColor = MaterialTheme.colors.primary,
+    containerColor = MaterialTheme.colorScheme.surface,
+    contentColor = MaterialTheme.colorScheme.primary,
   ) {
     AnimatingFabContent(
       icon = {
@@ -186,7 +224,7 @@ fun GmailFloatingActionButton(navController: NavHostController, expandState: Boo
 @Composable
 fun GmailContent(
   fabExpandState: MutableState<Boolean>,
-  scaffoldState: ScaffoldState,
+  drawerState: DrawerState,
   navController: NavHostController,
   showUserDialog: MutableState<Boolean>,
   modifier: Modifier = Modifier,
@@ -255,7 +293,7 @@ fun GmailContent(
       }
     }
 
-    SearchLayout(searchOffsetY.value, scaffoldState.drawerState, showUserDialog) {
+    SearchLayout(searchOffsetY.value, drawerState, showUserDialog) {
       navController.navigate(GmailCreateRoute)
     }
   }
@@ -272,7 +310,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
         modifier = Modifier,
         shape = MaterialTheme.shapes.medium,
         color = background,
-        contentColor = MaterialTheme.colors.onSurface,
+        contentColor = MaterialTheme.colorScheme.onSurface,
       ) {
         Column {
           Row(verticalAlignment = Alignment.CenterVertically) {
@@ -303,7 +341,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
                 .align(Alignment.CenterHorizontally),
           )
 
-          Divider(thickness = 1.dp, modifier = Modifier.fillMaxWidth())
+          HorizontalDivider(thickness = 1.dp, modifier = Modifier.fillMaxWidth())
 
           GmailUserEmail(
             imageId = R.drawable.p2,
@@ -324,7 +362,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
           ) {
             Icon(
               imageVector = Icons.Default.PersonAdd,
-              tint = MaterialTheme.colors.onSurface,
+              tint = MaterialTheme.colorScheme.onSurface,
               modifier = Modifier.padding(8.dp),
               contentDescription = null,
             )
@@ -332,7 +370,7 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
             Text(
               text = "Add another account",
               fontSize = 14.sp,
-              color = MaterialTheme.colors.onSurface,
+              color = MaterialTheme.colorScheme.onSurface,
               modifier = Modifier.padding(start = 8.dp),
             )
           }
@@ -343,19 +381,19 @@ fun UserEmailDialog(showUserDialog: MutableState<Boolean>) {
           ) {
             Icon(
               imageVector = Icons.Default.AccountCircle,
-              tint = MaterialTheme.colors.onSurface,
+              tint = MaterialTheme.colorScheme.onSurface,
               modifier = Modifier.padding(8.dp),
               contentDescription = null,
             )
             Text(
               text = "Manage accounts on this device",
               fontSize = 14.sp,
-              color = MaterialTheme.colors.onSurface,
+              color = MaterialTheme.colorScheme.onSurface,
               modifier = Modifier.padding(start = 8.dp),
             )
           }
 
-          Divider(thickness = 1.dp, modifier = Modifier.fillMaxWidth())
+          HorizontalDivider(thickness = 1.dp, modifier = Modifier.fillMaxWidth())
 
           Row(
             verticalAlignment = Alignment.CenterVertically,

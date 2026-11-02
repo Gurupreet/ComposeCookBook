@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +35,7 @@ fun CreateMessageBody(modifier: Modifier = Modifier) {
         modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp),
       )
     }
-    Divider(color = Color.LightGray, thickness = 0.5.dp)
+    HorizontalDivider(color = Color.LightGray, thickness = 0.5.dp)
     Row {
       Text(text = "To", modifier = Modifier.padding(16.dp).align(Alignment.CenterVertically))
       BasicTextField(
@@ -52,7 +52,7 @@ fun CreateMessageBody(modifier: Modifier = Modifier) {
       )
     }
 
-    Divider(color = Color.LightGray, thickness = 0.5.dp)
+    HorizontalDivider(color = Color.LightGray, thickness = 0.5.dp)
     BasicTextField(
       value = TextFieldValue("Subject"),
       onValueChange = {},
@@ -60,7 +60,7 @@ fun CreateMessageBody(modifier: Modifier = Modifier) {
       keyboardActions = KeyboardActions(onDone = {}),
       modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp, horizontal = 16.dp),
     )
-    Divider(color = Color.LightGray, thickness = 0.5.dp)
+    HorizontalDivider(color = Color.LightGray, thickness = 0.5.dp)
     BasicTextField(
       value = TextFieldValue("Compose email"),
       onValueChange = {},
