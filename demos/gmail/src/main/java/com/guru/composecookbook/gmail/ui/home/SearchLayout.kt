@@ -11,16 +11,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.DrawerState
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.rememberCoroutineScope
@@ -37,7 +37,6 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.R
 import com.guru.composecookbook.theme.graySurface
-import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.launch
 
 @Composable
@@ -73,13 +72,21 @@ fun SearchLayout(
       onValueChange = {},
       modifier = Modifier.weight(1f),
       colors =
-        TextFieldDefaults.textFieldColors(
-          backgroundColor = background,
-          cursorColor = MaterialTheme.colors.onSurface,
+        TextFieldDefaults.colors(
+          focusedContainerColor = background,
+          unfocusedContainerColor = background,
+          cursorColor = MaterialTheme.colorScheme.onSurface,
           focusedIndicatorColor = background,
+          // The M2 code left the unfocused indicator at its default (onSurface at 0.42
+          // alpha), so keep a visible underline instead of hiding it.
+          unfocusedIndicatorColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.42f),
           disabledIndicatorColor = background,
+          // The M3 placeholder defaults to onSurfaceVariant (full contrast in this
+          // theme); the M2 placeholder was onSurface at 0.6 alpha.
+          focusedPlaceholderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+          unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
         ),
-      textStyle = typography.body2,
+      textStyle = MaterialTheme.typography.bodyMedium,
     )
 
     val accessibilityManager =
