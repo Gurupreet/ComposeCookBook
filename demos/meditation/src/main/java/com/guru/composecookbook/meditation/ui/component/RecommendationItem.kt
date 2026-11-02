@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,7 +36,7 @@ fun RecommendationItem(recommendation: Recommendation) {
 
     Text(
       text = recommendation.title,
-      style = MaterialTheme.typography.h6,
+      style = MaterialTheme.typography.titleLarge,
       color = DeepBlue,
       fontSize = 16.sp,
       fontWeight = FontWeight.Bold,
@@ -45,7 +45,7 @@ fun RecommendationItem(recommendation: Recommendation) {
     Text(
       text = recommendation.description,
       color = Color.Gray,
-      style = MaterialTheme.typography.body1,
+      style = MaterialTheme.typography.bodyLarge,
       fontSize = 10.sp,
     )
   }

@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -44,7 +45,6 @@ import com.guru.composecookbook.datingapp.DatingHomeViewModel
 import com.guru.composecookbook.datingapp.util.orFalse
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
 import com.guru.composecookbook.theme.purple
-import com.guru.composecookbook.theme.typography
 import kotlin.random.Random
 
 @Composable
@@ -138,7 +138,7 @@ fun CardContent(album: Album) {
     Row(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)) {
       Text(
         text = album.artist,
-        style = typography.h6,
+        style = MaterialTheme.typography.titleLarge,
         modifier = Modifier.padding(end = 8.dp).weight(1f),
         textAlign = TextAlign.Start,
       )
@@ -148,16 +148,22 @@ fun CardContent(album: Album) {
         tint = purple,
         contentDescription = null,
       )
-      Text(text = "${Random.nextInt(1, 15)} km", style = typography.body2, color = purple)
+      Text(
+        text = "${Random.nextInt(1, 15)} km",
+        style = MaterialTheme.typography.bodyMedium,
+        color = purple,
+      )
     }
     Text(
       text = "Age: ${Random.nextInt(21, 30)}, Casually browsing..",
-      style = typography.subtitle2,
+      style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+      color = Color.Gray,
       modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp),
     )
     Text(
       text = "Miami, Florida",
-      style = typography.subtitle2,
+      style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+      color = Color.Gray,
       modifier = Modifier.padding(bottom = 16.dp, start = 16.dp, end = 16.dp),
     )
   }
