@@ -1,10 +1,16 @@
 plugins {
   /** See [common-compose-module-configs-script-plugin.gradle.kts] file */
   id("common-compose-module-configs-script-plugin")
+  alias(libs.plugins.roborazzi)
   id("org.jetbrains.kotlin.plugin.serialization")
 }
 
-android { namespace = "com.guru.composecookbook.gmail" }
+android {
+  namespace = "com.guru.composecookbook.gmail"
+
+  // Roborazzi renders Compose under Robolectric on the JVM; it needs Android resources.
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
 
 dependencies {
   implementation(project(":components:fab"))
@@ -14,5 +20,8 @@ dependencies {
   implementation(libs.bundles.kotlin)
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.bundles.compose.official)
+
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.screenshot.test)
   implementation(libs.bundles.core.android.ui)
 }
