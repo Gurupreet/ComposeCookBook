@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -36,6 +35,7 @@ import com.guru.composecookbook.instagram.components.stories.StoryItem
 import com.guru.composecookbook.instagram.components.stories.StoryList
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.enableEdgeToEdge
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import java.util.Locale
 
@@ -49,7 +49,7 @@ class ListViewActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge()
+    enableEdgeToEdge(isDarkTheme)
     setContent { BaseView(isDarkTheme) { ListViewContent(listType) { onBackPressed() } } }
   }
 

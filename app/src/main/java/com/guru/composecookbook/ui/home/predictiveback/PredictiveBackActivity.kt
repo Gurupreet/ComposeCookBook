@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.PredictiveBackHandler
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -39,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
+import com.guru.composecookbook.theme.enableEdgeToEdge
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import kotlin.coroutines.cancellation.CancellationException
 
@@ -56,7 +56,7 @@ class PredictiveBackActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge()
+    enableEdgeToEdge(isDarkTheme)
     setContent { ComposeCookBookMaterial3Theme(isDarkTheme) { PredictiveBackDemoScreen() } }
   }
 

@@ -5,10 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.biometric.BiometricPrompt
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,6 +25,7 @@ import com.guru.composecookbook.onboarding.OnBoardingScreen
 import com.guru.composecookbook.paymentcard.AddPaymentScreen
 import com.guru.composecookbook.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
+import com.guru.composecookbook.theme.enableEdgeToEdge
 import com.guru.composecookbook.ui.home.clock.ClockDemo
 import com.guru.composecookbook.ui.home.timer.TimerDemo
 import com.guru.pinlock.PinLockView
@@ -41,12 +43,12 @@ class TemplatesActivity : ComponentActivity() {
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge()
+    enableEdgeToEdge(darkTheme)
     //   val prompt = createBiometricPrompt(this as FragmentActivity)
     setContent {
       ComposeCookBookMaterial3Theme(darkTheme = darkTheme) {
-        androidx.compose.material3.Surface(Modifier.systemBarsPadding()) {
-          TemplateApp(templateType)
+        androidx.compose.material3.Surface(Modifier.fillMaxSize()) {
+          Box(Modifier.systemBarsPadding()) { TemplateApp(templateType) }
         }
       }
     }

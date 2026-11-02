@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ScrollableTabRow
@@ -33,6 +32,7 @@ import com.guru.composecookbook.carousel.Pager
 import com.guru.composecookbook.carousel.PagerState
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.enableEdgeToEdge
 import com.guru.composecookbook.ui.home.advancelists.AdvanceListsActivity.Companion.tabs
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
@@ -45,7 +45,7 @@ class AdvanceListsActivity : ComponentActivity() {
   @OptIn(ExperimentalMaterial3Api::class)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge()
+    enableEdgeToEdge(isDarkTheme)
     setContent {
       ComposeCookBookMaterial3Theme(isDarkTheme) {
         // A surface container using the 'background' color from the theme
