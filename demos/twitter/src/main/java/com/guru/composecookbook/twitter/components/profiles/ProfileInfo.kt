@@ -3,14 +3,15 @@ package com.guru.composecookbook.twitter.components.profiles
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -24,7 +25,10 @@ fun ProfileInfo(
   profilePing: String,
   time: String,
   modifier: Modifier = Modifier,
-  textStyle: TextStyle = MaterialTheme.typography.subtitle1,
+  // The old Material 2 subtitle1 default was 16sp Normal in Color.Gray; titleMedium keeps the size
+  // but is Medium with no color, so re-apply the Normal weight and gray here.
+  textStyle: TextStyle =
+    MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Normal, color = Color.Gray),
 ) {
   Row(
     modifier = modifier.semantics { contentDescription = "$profilePing post a tweet $time ago" },

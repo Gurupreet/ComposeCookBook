@@ -4,7 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,7 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.twitter.components.icons.IconCounterBar
 import com.guru.composecookbook.twitter.components.profiles.ProfileInfo
 import com.guru.composecookbook.twitter.components.profiles.ProfilePicture
@@ -31,7 +31,7 @@ fun TweetItem(
     ProfilePicture(profileImageId = tweet.authorImageId, size = ProfilePictureSizes.medium)
     Column(modifier = Modifier.padding(start = 8.dp).fillMaxWidth()) {
       ProfileInfo(profileName = tweet.author, profilePing = tweet.handle, time = tweet.time)
-      Text(text = tweet.text, style = typography.body1)
+      Text(text = tweet.text, style = MaterialTheme.typography.bodyLarge)
       TweetImage(imageId = tweet.tweetImageId, modifier = Modifier.padding(top = 8.dp))
       IconCounterBar(
         commentCount = tweet.commentsCount,
@@ -43,7 +43,7 @@ fun TweetItem(
         onShareClick = onShareClick,
         modifier = Modifier.fillMaxWidth().padding(end = 16.dp),
       )
-      Divider(thickness = 0.5.dp)
+      HorizontalDivider(thickness = 0.5.dp)
     }
   }
 }

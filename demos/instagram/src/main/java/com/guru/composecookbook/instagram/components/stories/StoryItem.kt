@@ -7,7 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -34,7 +34,7 @@ fun StoryItem(
   isMe: Boolean,
   onClick: () -> Unit,
   modifier: Modifier = Modifier,
-  textStyle: TextStyle = MaterialTheme.typography.caption,
+  textStyle: TextStyle = MaterialTheme.typography.bodySmall,
   interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
   val borderColor =

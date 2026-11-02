@@ -1,7 +1,5 @@
 package com.guru.composecookbook.twitter
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.twitter.components.icons.IconCounterPreview
@@ -31,7 +29,11 @@ class TwitterScreenshotTest {
   fun twitter_icon_counter_light() {
     captureRoboImage("src/test/screenshots/twitter_icon_counter.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { IconCounterPreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          IconCounterPreview()
+        }
       }
     }
   }
