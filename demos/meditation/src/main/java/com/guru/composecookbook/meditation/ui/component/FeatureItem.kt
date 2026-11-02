@@ -13,8 +13,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,7 +48,7 @@ fun FeatureItem(feature: Feature, modifier: Modifier = Modifier, textColor: Colo
       ) {
         Text(
           text = feature.title,
-          style = MaterialTheme.typography.h6,
+          style = MaterialTheme.typography.titleLarge,
           color = textColor,
           fontSize = 18.sp,
           fontWeight = FontWeight.Bold,
@@ -56,7 +56,7 @@ fun FeatureItem(feature: Feature, modifier: Modifier = Modifier, textColor: Colo
         Text(
           text = feature.description,
           color = textColor,
-          style = MaterialTheme.typography.body1,
+          style = MaterialTheme.typography.bodyLarge,
           fontSize = 14.sp,
         )
       }

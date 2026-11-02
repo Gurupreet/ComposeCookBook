@@ -1,8 +1,8 @@
 package com.guru.composecookbook.meditation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.meditation.ui.screen.MeditationHome
 import com.guru.composecookbook.meditation.ui.theme.MeditationAppTheme
@@ -33,7 +33,7 @@ class MeditationScreenshotTest {
   fun meditation_home_light() {
     captureRoboImage("src/test/screenshots/meditation_home.png") {
       MeditationAppTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { MeditationHome() } }
+        Surface(color = MaterialTheme.colorScheme.background) { MeditationHome() }
       }
     }
   }

@@ -22,8 +22,8 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -117,7 +117,7 @@ fun appTitle() {
   ) {
     Text(
       text = stringResource(R.string.silent),
-      style = MaterialTheme.typography.h1,
+      style = MaterialTheme.typography.displayLarge,
       fontSize = 16.sp,
       textAlign = TextAlign.Center,
       color = DeepBlue,
@@ -127,7 +127,7 @@ fun appTitle() {
     Spacer(modifier = Modifier.width(10.dp))
     Text(
       text = stringResource(R.string.moon),
-      style = MaterialTheme.typography.h1,
+      style = MaterialTheme.typography.displayLarge,
       fontSize = 16.sp,
       color = DeepBlue,
     )
@@ -142,12 +142,12 @@ fun greetingSection(
   Column(modifier = Modifier.padding(horizontal = 15.dp)) {
     Text(
       text = stringResource(R.string.good_morning) + " $name",
-      style = MaterialTheme.typography.h1,
+      style = MaterialTheme.typography.displayLarge,
       fontSize = 22.sp,
     )
     Text(
       text = stringResource(R.string.wishing_desc),
-      style = MaterialTheme.typography.body1,
+      style = MaterialTheme.typography.bodyLarge,
       color = Gray,
       fontSize = 18.sp,
     )
@@ -209,7 +209,7 @@ fun RecommendationSection(recommendationList: List<Recommendation>) {
     Text(
       modifier = Modifier.padding(start = 15.dp),
       text = stringResource(R.string.recommendations),
-      style = MaterialTheme.typography.h2,
+      style = MaterialTheme.typography.displayMedium,
       textAlign = TextAlign.Start,
       fontSize = 20.sp,
     )
@@ -274,7 +274,7 @@ fun TopicSection(topicList: List<Topic>) {
   Column(modifier = Modifier.padding(horizontal = 7.5.dp)) {
     Text(
       text = stringResource(R.string.topics),
-      style = MaterialTheme.typography.h2,
+      style = MaterialTheme.typography.displayMedium,
       textAlign = TextAlign.Start,
       fontSize = 20.sp,
       modifier = Modifier.padding(start = 7.5.dp),

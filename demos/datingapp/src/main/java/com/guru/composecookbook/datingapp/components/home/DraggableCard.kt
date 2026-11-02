@@ -5,7 +5,9 @@ import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -44,7 +46,8 @@ fun DraggableCard(
   if (abs(swipeX.value) < swipeXRight - 50f) {
     val rotationFraction = (swipeX.value / 60).coerceIn(-40f, 40f)
     Card(
-      elevation = 16.dp,
+      elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
+      colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
       modifier =
         modifier
           .dragContent(swipeX = swipeX, swipeY = swipeY, maxX = swipeXRight, onSwiped = { _, _ -> })

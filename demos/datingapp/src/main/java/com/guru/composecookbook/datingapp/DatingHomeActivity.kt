@@ -40,7 +40,6 @@ import com.guru.composecookbook.datingapp.components.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.R
 import com.guru.composecookbook.theme.purple
-import com.guru.composecookbook.theme.typography
 
 class DatingHomeActivity : ComponentActivity() {
 
@@ -121,7 +120,7 @@ fun DatingHomeAppbar(navType: MutableState<DatingNavType>) {
       DatingNavType.PROFILE -> "My Profile"
     }
   TopAppBar(
-    title = { Text(title, style = typography.h6) },
+    title = { Text(title, style = MaterialTheme.typography.titleLarge) },
     actions = { IconButton(onClick = {}) { Icons.Default.MyLocation } },
   )
 }

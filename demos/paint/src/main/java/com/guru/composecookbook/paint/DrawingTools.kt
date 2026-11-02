@@ -7,19 +7,21 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Brush
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -64,6 +66,8 @@ fun DrawingTools(
     }
     FloatingActionButton(
       onClick = { showBrushes = !showBrushes },
+      containerColor = MaterialTheme.colorScheme.secondary,
+      contentColor = MaterialTheme.colorScheme.onSecondary,
       modifier = Modifier.padding(vertical = 4.dp),
     ) {
       Icon(imageVector = Icons.Default.Brush, contentDescription = null, tint = drawColor.value)
@@ -71,13 +75,16 @@ fun DrawingTools(
     AnimatedVisibility(visible = showBrushes) {
       LazyColumn {
         items(strokes) {
-          IconButton(
-            onClick = {
-              drawBrush.value = it.toFloat()
-              showBrushes = false
-            },
+          // M3 IconButton is a fixed 40dp box; the old M2 one enforced a 48dp minimum. Keep the
+          // 48dp circle with a clickable Box sized explicitly.
+          Box(
             modifier =
               Modifier.padding(8.dp)
+                .size(48.dp)
+                .clickable {
+                  drawBrush.value = it.toFloat()
+                  showBrushes = false
+                }
                 .border(
                   border =
                     BorderStroke(
@@ -85,7 +92,7 @@ fun DrawingTools(
                       color = Color.Gray,
                     ),
                   shape = CircleShape,
-                ),
+                )
           ) {}
         }
       }

@@ -1,7 +1,7 @@
 package com.guru.composecookbook.paint
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import org.junit.Test
@@ -12,7 +12,7 @@ import org.robolectric.annotation.GraphicsMode
 
 /**
  * Roborazzi screenshot (golden) tests for the paint module. The preview is wrapped in the module
- * theme over a filled background. PaintApp is a full-screen M2 Scaffold (top app bar + canvas), so
+ * theme over a filled background. PaintApp is a full-screen M3 Scaffold (top app bar + canvas), so
  * light and dark differ via the theme's bar/text colors; both variants are kept.
  *
  * Record / refresh goldens: `./gradlew :demos:paint:recordRoborazziDebug` Verify against goldens:
@@ -28,7 +28,7 @@ class PaintScreenshotTest {
   fun paint_light() {
     captureRoboImage("src/test/screenshots/paint.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { PaintApp() } }
+        Surface(color = MaterialTheme.colorScheme.background) { PaintApp() }
       }
     }
   }
@@ -37,7 +37,7 @@ class PaintScreenshotTest {
   fun paint_dark() {
     captureRoboImage("src/test/screenshots/paint_dark.png") {
       ComposeCookBookTheme(darkTheme = true) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { PaintApp() } }
+        MaterialTheme { Surface(color = MaterialTheme.colorScheme.background) { PaintApp() } }
       }
     }
   }

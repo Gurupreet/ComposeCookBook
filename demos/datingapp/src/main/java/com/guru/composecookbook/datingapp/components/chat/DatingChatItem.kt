@@ -5,20 +5,30 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.theme.purple
-import com.guru.composecookbook.theme.typography
 import kotlin.random.Random
 
 @Composable
 fun DatingChatItem(album: Album) {
-  Card(modifier = Modifier.padding(6.dp).clickable(onClick = {}), elevation = 2.dp) {
+  Card(
+    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+    shape = RoundedCornerShape(4.dp),
+    modifier = Modifier.padding(6.dp).clickable(onClick = {}),
+  ) {
     Row(modifier = Modifier.padding(12.dp)) {
       ImageWithChatDot(
         imageId = album.imageId,
@@ -29,15 +39,24 @@ fun DatingChatItem(album: Album) {
         Text(
           text = album.artist,
           modifier = Modifier.padding(horizontal = 8.dp),
-          style = typography.h6.copy(fontSize = 14.sp),
+          style =
+            MaterialTheme.typography.titleLarge.copy(
+              fontSize = 14.sp,
+              lineHeight = TextUnit.Unspecified,
+            ),
         )
         Text(
           text = randomMessages[album.id - 1],
           modifier = Modifier.padding(horizontal = 8.dp),
-          style = typography.subtitle2,
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
         )
       }
-      Text(text = "${Random.nextInt(1, 60)} min", color = purple, style = typography.body2)
+      Text(
+        text = "${Random.nextInt(1, 60)} min",
+        color = purple,
+        style = MaterialTheme.typography.bodyMedium,
+      )
     }
   }
 }

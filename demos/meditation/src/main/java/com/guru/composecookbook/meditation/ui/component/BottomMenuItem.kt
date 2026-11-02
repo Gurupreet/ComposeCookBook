@@ -8,9 +8,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,7 +56,7 @@ fun BottomMenuItem(
     spacerHeight5()
     Text(
       text = item.title,
-      style = MaterialTheme.typography.h2,
+      style = MaterialTheme.typography.displayMedium,
       color = if (isSelected) activeTextColor else inactiveTextColor,
       fontSize = 14.sp,
     )
