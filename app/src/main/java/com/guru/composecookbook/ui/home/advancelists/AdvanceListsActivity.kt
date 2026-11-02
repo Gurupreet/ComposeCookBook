@@ -7,8 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ScrollableTabRow
-import androidx.compose.material.Tab
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +14,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SecondaryScrollableTabRow
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -82,10 +83,22 @@ fun AdvanceListContent(modifier: Modifier = Modifier) {
   var selectedIndex by remember { mutableStateOf(0) }
   val pagerState: PagerState = run { remember { PagerState(0, 0, tabs.size - 1) } }
   Column(modifier = modifier) {
-    ScrollableTabRow(
-      backgroundColor = MaterialTheme.colorScheme.surface,
+    // The old M2 ScrollableTabRow(backgroundColor = surface) drew its content and the 2.dp
+    // indicator in onSurface (contentColorFor(surface)). M3 defaults its contentColor to
+    // primary, so pass contentColor = onSurface and an explicit 2.dp onSurface indicator to
+    // match the old look.
+    SecondaryScrollableTabRow(
+      containerColor = MaterialTheme.colorScheme.surface,
+      contentColor = MaterialTheme.colorScheme.onSurface,
       selectedTabIndex = selectedIndex,
       edgePadding = 12.dp,
+      indicator = {
+        TabRowDefaults.SecondaryIndicator(
+          Modifier.tabIndicatorOffset(selectedIndex),
+          height = 2.dp,
+          color = MaterialTheme.colorScheme.onSurface,
+        )
+      },
     ) {
       tabs.forEachIndexed { index, title ->
         Tab(

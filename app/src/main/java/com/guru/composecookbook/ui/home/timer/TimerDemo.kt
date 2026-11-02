@@ -22,10 +22,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.guru.composecookbook.R
-import com.guru.composecookbook.theme.typography
 
 @ExperimentalAnimationApi
 @Composable
@@ -54,12 +54,19 @@ fun TimerDemo(timerViewModel: TimerViewModel = viewModel()) {
                 shape = RoundedCornerShape(4.dp),
               )
               .padding(horizontal = 4.dp, vertical = 4.dp),
-          digitStyle = typography.body1.copy(color = MaterialTheme.colorScheme.onPrimary),
+          digitStyle =
+            MaterialTheme.typography.bodyLarge.copy(
+              color = MaterialTheme.colorScheme.onPrimary,
+              lineHeight = TextUnit.Unspecified,
+              letterSpacing = TextUnit.Unspecified,
+            ),
           separatorModifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
           separatorStyle =
-            typography.body1.copy(
+            MaterialTheme.typography.bodyLarge.copy(
               color = MaterialTheme.colorScheme.onSurface,
               fontWeight = FontWeight.Bold,
+              lineHeight = TextUnit.Unspecified,
+              letterSpacing = TextUnit.Unspecified,
             ),
         )
         Spacer(modifier = Modifier.height(12.dp))

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -45,8 +46,7 @@ fun ItemImage(item: Item, modifier: Modifier = Modifier) {
     painter = painterResource(id = item.imageId),
     contentScale = ContentScale.Crop,
     contentDescription = null,
-    modifier =
-      modifier.size(100.dp, 80.dp).clip(androidx.compose.material.MaterialTheme.shapes.medium),
+    modifier = modifier.size(100.dp, 80.dp).clip(RoundedCornerShape(4.dp)),
   )
 }
 

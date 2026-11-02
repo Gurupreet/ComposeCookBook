@@ -22,6 +22,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -38,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentActivity
@@ -47,7 +49,6 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 class DialogsActivity : AppCompatActivity() {
@@ -175,7 +176,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
       )
     DialogType.TITLE ->
       AlertDialog(
-        title = { Text(text = item.title, style = typography.h6) },
+        title = { Text(text = item.title, style = MaterialTheme.typography.titleLarge) },
         text = { Text(item.subtitle) },
         confirmButton = {
           Row(modifier = Modifier) {
@@ -189,7 +190,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
       )
     DialogType.VERTICALBUTTON ->
       AlertDialog(
-        title = { Text(text = item.title, style = typography.h6) },
+        title = { Text(text = item.title, style = MaterialTheme.typography.titleLarge) },
         text = { Text(item.subtitle) },
         confirmButton = {
           OutlinedButton(onClick = onDismiss, modifier = Modifier.padding(8.dp).width(100.dp)) {
@@ -203,7 +204,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
       )
     DialogType.IMAGE ->
       AlertDialog(
-        title = { Text(text = item.title, style = typography.h6) },
+        title = { Text(text = item.title, style = MaterialTheme.typography.titleLarge) },
         text = {
           Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
           Image(painter = painterResource(DemoDataProvider.item.imageId), contentDescription = null)
@@ -215,7 +216,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
       )
     DialogType.LONGDIALOG ->
       AlertDialog(
-        title = { Text(text = item.title, style = typography.h6) },
+        title = { Text(text = item.title, style = MaterialTheme.typography.titleLarge) },
         text = {
           Column {
             Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
@@ -225,7 +226,10 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             )
             Text(
               item.subtitle + item.title + item.subtitle + item.title,
-              style = typography.subtitle2,
+              // Legacy subtitle2 was 14sp Normal gray; M3 titleSmall is Medium weight with no
+              // color, so reset the weight and keep the gray.
+              style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+              color = Color.Gray,
             )
           }
         },
@@ -236,7 +240,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
       )
     DialogType.ROUNDED ->
       AlertDialog(
-        title = { Text(text = item.title, style = typography.h6) },
+        title = { Text(text = item.title, style = MaterialTheme.typography.titleLarge) },
         text = {
           Column {
             Text(item.subtitle, modifier = Modifier.padding(bottom = 8.dp))

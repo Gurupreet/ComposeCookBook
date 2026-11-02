@@ -1,7 +1,5 @@
 package com.guru.composecookbook.ui.home
 
-import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.mutableStateOf
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.theme.AppThemeState
@@ -41,9 +39,8 @@ class HomeScreenScreenshotTest {
     captureRoboImage("src/test/screenshots/home_screen.png") {
       ComposeCookBookMaterial3Theme(darkTheme = false) {
         val appThemeState = mutableStateOf(AppThemeState(false, ColorPallet.GREEN))
-        val chooseColorBottomModalState =
-          rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
-        HomeScreen(appThemeState, chooseColorBottomModalState)
+        val showPaletteSheet = mutableStateOf(false)
+        HomeScreen(appThemeState, showPaletteSheet)
       }
     }
   }

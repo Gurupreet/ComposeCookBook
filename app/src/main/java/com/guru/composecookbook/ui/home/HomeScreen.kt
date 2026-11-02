@@ -19,13 +19,9 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetState
-import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -39,7 +35,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -72,17 +67,14 @@ import com.guru.composecookbook.ui.home.predictiveback.PredictiveBackActivity
 import com.guru.composecookbook.ui.home.sharedelement.SharedElementActivity
 import com.guru.composecookbook.ui.utils.TestTags
 import java.util.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
   appThemeState: MutableState<AppThemeState>,
-  chooseColorBottomModalState: ModalBottomSheetState,
+  showPaletteSheet: MutableState<Boolean>,
 ) {
   val showMenu = remember { mutableStateOf(false) }
-  val coroutineScope = rememberCoroutineScope()
 
   Scaffold(
     modifier = Modifier.testTag(TestTags.HOME_SCREEN_ROOT),
@@ -102,7 +94,7 @@ fun HomeScreen(
                 stringResource(id = com.guru.composecookbook.R.string.cd_dark_theme),
             )
           }
-          ChangeColorIconButton(coroutineScope, chooseColorBottomModalState, showMenu)
+          ChangeColorIconButton(showPaletteSheet, showMenu)
         },
       )
     },
@@ -123,11 +115,10 @@ fun HomeScreen(
 }
 
 @SuppressLint("ServiceCast")
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ChangeColorIconButton(
-  coroutineScope: CoroutineScope,
-  chooseColorBottomModalState: ModalBottomSheetState,
+  showPaletteSheet: MutableState<Boolean>,
   showMenu: MutableState<Boolean>,
 ) {
   val accessibilityManager =
@@ -136,9 +127,10 @@ private fun ChangeColorIconButton(
   IconButton(
     onClick = {
       if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
-        // Showing modal bottom sheet instead when user use a screen reader (otherwise it's
-        // not accessible)
-        coroutineScope.launch { chooseColorBottomModalState.show() }
+        // Showing the modal bottom sheet instead when a user has a screen reader enabled
+        // (otherwise the inline menu is not accessible). The sheet is composed by
+        // MainAppContent while this flag is true.
+        showPaletteSheet.value = true
       } else {
         showMenu.value = !showMenu.value
       }
@@ -321,12 +313,12 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
   context.startActivity(intent)
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @PreviewScreenSizes
 @Composable
 fun PreviewHomeScreen() {
   val state = remember { mutableStateOf(AppThemeState(false, ColorPallet.GREEN)) }
-  val chooseColorBottomModalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+  val showPaletteSheet = remember { mutableStateOf(false) }
 
-  HomeScreen(state, chooseColorBottomModalState)
+  HomeScreen(state, showPaletteSheet)
 }

@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,11 +32,11 @@ fun AnimatableSuspendedAnimations() {
   TitleText(title = "Suspending Animations via Animatable(floatValue) with Bounds")
   SubtitleText(subtitle = "Use it with PointerInput or LaunchedEffects")
   SimpleDismissUsingAnimatable()
-  Divider()
+  HorizontalDivider()
   PointerInputWithAnimateable()
-  Divider()
+  HorizontalDivider()
   DraggableCardWithAnimatable()
-  Divider()
+  HorizontalDivider()
 }
 
 @Composable

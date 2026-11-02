@@ -29,13 +29,14 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Tweet
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import com.guru.composecookbook.youtube.components.YoutubeChip
 
@@ -159,12 +160,20 @@ fun AnimatedListItem(tweet: Tweet, itemIndex: Int, animationIndex: Int) {
     Column(modifier = Modifier.padding(horizontal = 4.dp).weight(1f)) {
       Text(
         text = tweet.author,
-        style = typography.h6.copy(fontSize = 16.sp),
+        style =
+          MaterialTheme.typography.titleLarge.copy(
+            fontSize = 16.sp,
+            // M2 h6 had no lineHeight; resetting it keeps the row height unchanged.
+            lineHeight = TextUnit.Unspecified,
+          ),
         color = MaterialTheme.colorScheme.onSurface,
       )
       Text(
         text = tweet.text,
-        style = typography.subtitle2,
+        // Legacy subtitle2 was 14sp Normal gray; M3 titleSmall is Medium weight with no color,
+        // so reset the weight and keep the gray.
+        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+        color = Color.Gray,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
       )

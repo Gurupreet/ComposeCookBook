@@ -14,13 +14,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.RadioButton
-import androidx.compose.material.RadioButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -32,9 +32,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.ui.utils.toFloatNum
 
@@ -167,6 +167,14 @@ fun BuildEditTexts(
     mutableStateOf(flingCopyStore.numberOfSplinePoints.toString())
   }
 
+  // The settings labels share one style: the M2 caption at 10sp with no lineHeight (resetting
+  // the lineHeight keeps the row height unchanged). Extracted to avoid repeating it.
+  val labelStyle =
+    MaterialTheme.typography.bodySmall.copy(
+      fontSize = 10.sp,
+      lineHeight = TextUnit.Unspecified,
+    )
+
   // This is obtained to dismiss the keyboard in the future.
   val focusManager = LocalFocusManager.current
 
@@ -183,7 +191,7 @@ fun BuildEditTexts(
       Text(
         text = "Scroll Friction",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -217,7 +225,7 @@ fun BuildEditTexts(
       Text(
         text = "absVelocityThreshold",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -252,7 +260,7 @@ fun BuildEditTexts(
       Text(
         text = "gravitationalForce",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -289,7 +297,7 @@ fun BuildEditTexts(
       Text(
         text = "inchesPerMeter",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -323,7 +331,7 @@ fun BuildEditTexts(
       Text(
         text = "decelerationFriction",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -358,7 +366,7 @@ fun BuildEditTexts(
       Text(
         text = "decelerationRate",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -395,7 +403,7 @@ fun BuildEditTexts(
       Text(
         text = "splineInflection",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -429,7 +437,7 @@ fun BuildEditTexts(
       Text(
         text = "splineStartTension",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -464,7 +472,7 @@ fun BuildEditTexts(
       Text(
         text = "splineEndTension",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -501,7 +509,7 @@ fun BuildEditTexts(
       Text(
         text = "numberOfSplinePoints",
         maxLines = 1,
-        style = typography.caption.copy(fontSize = 10.sp),
+        style = labelStyle,
         overflow = TextOverflow.Ellipsis,
       )
       OutlinedTextField(
@@ -565,11 +573,15 @@ fun radioGroup(
       selectedOption.value = selection
       onItemSelection(selection)
     }
-    // Background CardView
-    Card(
+    // Background CardView. M2 Card default background was surface with an 8.dp drop shadow. The
+    // M3 Card elevation is tonal, so cardElevation(8.dp) would tint the surface toward the
+    // surfaceTint (the palette primary) instead of keeping it plain; use a Surface with a drop
+    // shadow (shadowElevation) to keep the old flat surface look and shadow.
+    Surface(
       modifier = Modifier.padding(10.dp).fillMaxWidth(),
-      elevation = 8.dp,
+      color = MaterialTheme.colorScheme.surface,
       shape = RoundedCornerShape(8.dp),
+      shadowElevation = 8.dp,
     ) {
       Row(modifier = Modifier.padding(10.dp)) {
         Text(text = title, modifier = Modifier.padding(5.dp))
@@ -579,7 +591,8 @@ fun radioGroup(
             RadioButton(
               selected = (item == selectedOption.value),
               onClick = { onOptionSelected(item) },
-              colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colors.primary),
+              colors =
+                RadioButtonDefaults.colors(selectedColor = MaterialTheme.colorScheme.primary),
               modifier = Modifier.testTag(item),
             )
 

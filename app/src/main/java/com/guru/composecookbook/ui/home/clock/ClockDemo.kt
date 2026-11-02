@@ -9,8 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -34,7 +34,7 @@ fun ClockDemo(viewModel: ClockViewModel = androidx.lifecycle.viewmodel.compose.v
         modifier =
           Modifier.height(200.dp)
             .width(200.dp)
-            .background(color = MaterialTheme.colors.surface, shape = CircleShape),
+            .background(color = MaterialTheme.colorScheme.surface, shape = CircleShape),
       )
     }
   }

@@ -32,7 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
-import com.guru.composecookbook.theme.typography
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -40,7 +39,7 @@ fun HowToModifiers() {
   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
     Text(
       text = "Order in modifier values matters",
-      style = typography.h6,
+      style = MaterialTheme.typography.titleLarge,
       modifier = Modifier.padding(8.dp),
     )
     DemoText("No Modifiers")
@@ -133,7 +132,11 @@ fun DemoElementText(modifier: Modifier) {
 
 @Composable
 fun DemoText(text: String) {
-  Text(text = text, style = typography.body2.copy(Color.Gray), modifier = Modifier.padding(4.dp))
+  Text(
+    text = text,
+    style = MaterialTheme.typography.bodyMedium.copy(Color.Gray),
+    modifier = Modifier.padding(4.dp),
+  )
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
