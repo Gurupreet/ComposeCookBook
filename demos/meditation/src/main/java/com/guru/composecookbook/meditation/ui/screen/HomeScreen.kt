@@ -41,6 +41,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -75,6 +76,7 @@ import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.launch
 
 @ExperimentalFoundationApi
+@PreviewLightDark
 @Preview(showBackground = true)
 @Composable
 fun MeditationHome() {

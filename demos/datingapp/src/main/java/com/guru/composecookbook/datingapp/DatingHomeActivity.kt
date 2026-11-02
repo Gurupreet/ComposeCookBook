@@ -30,6 +30,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.datingapp.components.chat.DatingChatScreen
@@ -127,6 +128,7 @@ enum class DatingNavType {
   PROFILE,
 }
 
+@PreviewLightDark
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview9() {

@@ -8,7 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.core.content.ContextCompat
 import com.guru.composecookbook.gmail.ui.home.GmailScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
@@ -28,7 +28,7 @@ class GmailActivity : ComponentActivity() {
 }
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class)
-@Preview(showBackground = true)
+@PreviewLightDark
 @Composable
 fun DefaultPreview4() {
   ComposeCookBookTheme { GmailScreen() }

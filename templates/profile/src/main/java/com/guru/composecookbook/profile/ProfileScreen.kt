@@ -29,9 +29,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.R
+import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
 
 const val initialImageFloat = 170f
@@ -106,8 +108,9 @@ private fun TopBackground() {
   Spacer(modifier = Modifier.height(150.dp).fillMaxWidth().horizontalGradientBackground(gradient))
 }
 
-@Preview
+@PreviewLightDark
+@PreviewFontScale
 @Composable
 fun ShowProfileScreen() {
-  ProfileScreen()
+  ComposeCookBookMaterial3Theme { ProfileScreen() }
 }

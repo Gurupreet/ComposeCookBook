@@ -31,6 +31,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.rememberAsyncImagePainter
@@ -161,6 +162,7 @@ private fun getOffsetBasedValue(
   return min(selectedValue, nonSelectedValue) + offsetBasedDelta
 }
 
+@PreviewLightDark
 @Preview
 @Composable
 fun PreviewMoviePagerItem() {

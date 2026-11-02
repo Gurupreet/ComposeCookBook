@@ -48,7 +48,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.HomeScreenItems
@@ -322,7 +322,7 @@ fun homeItemClicked(homeScreenItems: HomeScreenItems, context: Context, isDarkTh
 }
 
 @OptIn(ExperimentalMaterialApi::class)
-@Preview
+@PreviewScreenSizes
 @Composable
 fun PreviewHomeScreen() {
   val state = remember { mutableStateOf(AppThemeState(false, ColorPallet.GREEN)) }
