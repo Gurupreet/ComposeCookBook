@@ -28,11 +28,6 @@ fun WidgetScreen(onBackPressed: () -> Unit = {}) {
         navigationIcon = {
           IconButton(onClick = onBackPressed) { Icon(Icons.Default.ArrowBack, "Back") }
         },
-        colors =
-          TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-          ),
       )
     },
   ) { paddingValues ->

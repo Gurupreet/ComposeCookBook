@@ -35,7 +35,7 @@ import com.guru.composecookbook.instagram.components.stories.StoryItem
 import com.guru.composecookbook.instagram.components.stories.StoryList
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.theme.enableEdgeToEdge
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 import java.util.Locale
 
@@ -49,7 +49,7 @@ class ListViewActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge(isDarkTheme)
+    enableThemedEdgeToEdge(isDarkTheme)
     setContent { BaseView(isDarkTheme) { ListViewContent(listType) { onBackPressed() } } }
   }
 

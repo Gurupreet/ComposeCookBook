@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.guru.composecookbook.R
 import com.guru.composecookbook.carousel.CarouselLayout
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.enableEdgeToEdge
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.ui.home.androidviews.AndroidViews
 import com.guru.composecookbook.ui.home.constraintlayout.ConstraintLayoutDemos
 import com.guru.composecookbook.ui.home.dialogs.BottomSheetLayouts
@@ -41,7 +41,7 @@ class DynamicUIActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge(isDarkTheme)
+    enableThemedEdgeToEdge(isDarkTheme)
     setContent {
       ComposeCookBookMaterial3Theme(isDarkTheme) {
         DynamicUiWrapper(dynamicUiType) { onBackPressed() }

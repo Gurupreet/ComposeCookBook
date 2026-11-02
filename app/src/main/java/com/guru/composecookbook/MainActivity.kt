@@ -27,8 +27,8 @@ import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,7 +50,7 @@ import com.guru.composecookbook.theme.AppThemeState
 import com.guru.composecookbook.theme.ColorPallet
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.blue700
-import com.guru.composecookbook.theme.enableEdgeToEdge
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.orange700
 import com.guru.composecookbook.theme.purple700
@@ -75,12 +75,12 @@ class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val appTheme = mutableStateOf(AppThemeState())
-    enableEdgeToEdge(appTheme.value.darkTheme)
+    enableThemedEdgeToEdge(appTheme.value.darkTheme)
     // for adView demo
     MobileAds.initialize(this)
     setContent {
       // re-applied on in-app theme switch so system bar icons follow the app theme, not the OS
-      LaunchedEffect(appTheme.value.darkTheme) { enableEdgeToEdge(appTheme.value.darkTheme) }
+      SideEffect { enableThemedEdgeToEdge(appTheme.value.darkTheme) }
       BaseView(appTheme.value) { MainAppContent(appTheme) }
     }
   }

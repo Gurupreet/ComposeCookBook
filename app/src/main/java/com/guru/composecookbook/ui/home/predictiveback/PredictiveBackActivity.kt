@@ -38,7 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.enableEdgeToEdge
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 import kotlin.coroutines.cancellation.CancellationException
 
@@ -56,7 +56,7 @@ class PredictiveBackActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge(isDarkTheme)
+    enableThemedEdgeToEdge(isDarkTheme)
     setContent { ComposeCookBookMaterial3Theme(isDarkTheme) { PredictiveBackDemoScreen() } }
   }
 

@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.enableEdgeToEdge
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 /**
@@ -60,7 +60,7 @@ class AdaptiveUIActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    enableEdgeToEdge(isDarkTheme)
+    enableThemedEdgeToEdge(isDarkTheme)
     setContent { ComposeCookBookMaterial3Theme(isDarkTheme) { AdaptiveDemoScreen() } }
   }
 
