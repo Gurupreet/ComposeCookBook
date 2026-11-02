@@ -7,7 +7,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -19,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.moviesapp.ui.details.MovieDetailViewModel
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) {
@@ -27,7 +27,11 @@ fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) 
   LaunchedEffect(currentMovie?.id) { viewModel.getSimilarMovies(currentMovie?.id.toString()) }
   val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
   similarMovies?.let { movies ->
-    Text(text = "Similar Movies", style = typography.h5, modifier = Modifier.padding(8.dp))
+    Text(
+      text = "Similar Movies",
+      style = MaterialTheme.typography.headlineSmall,
+      modifier = Modifier.padding(8.dp),
+    )
     LazyRow {
       items(
         items = movies,

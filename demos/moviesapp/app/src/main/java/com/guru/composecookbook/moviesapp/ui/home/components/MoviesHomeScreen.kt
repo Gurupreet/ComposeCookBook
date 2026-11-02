@@ -5,7 +5,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,7 +23,6 @@ import com.guru.composecookbook.data.R
 import com.guru.composecookbook.moviesapp.ui.home.MoviesHomeInteractionEvents
 import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.modifiers.verticalGradientBackground
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
@@ -49,7 +49,7 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
     item {
       Text(
         text = "Now Showing",
-        style = typography.h5.copy(fontWeight = FontWeight.ExtraBold),
+        style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.ExtraBold),
         modifier = Modifier.padding(16.dp),
       )
     }

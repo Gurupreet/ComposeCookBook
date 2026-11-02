@@ -12,20 +12,21 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LibraryAdd
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -39,11 +40,9 @@ import com.guru.composecookbook.moviesapp.data.DemoMovieDataProvider
 import com.guru.composecookbook.moviesapp.data.db.models.Genre
 import com.guru.composecookbook.moviesapp.data.db.models.Movie
 import com.guru.composecookbook.tags.InterestTag
-import com.guru.composecookbook.theme.typography
 import kotlin.math.abs
 import kotlin.math.min
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MoviePagerItem(
   movie: Movie,
@@ -77,6 +76,7 @@ fun MoviePagerItem(
         offset = offset,
       )
       .dp
+  val cardElevationState = animateDpAsState(animateElevation)
 
   val posterFullPath = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
 
@@ -86,11 +86,18 @@ fun MoviePagerItem(
     }
 
   Card(
-    elevation = animateDpAsState(animateElevation).value,
+    colors =
+      CardDefaults.cardColors(
+        containerColor = MaterialTheme.colorScheme.onBackground,
+        contentColor = MaterialTheme.colorScheme.background,
+      ),
+    elevation =
+      CardDefaults.cardElevation(
+        defaultElevation = cardElevationState.value,
+        pressedElevation = cardElevationState.value,
+      ),
     modifier = Modifier.width(animateWidth).height(animateHeight).padding(24.dp),
     shape = RoundedCornerShape(16.dp),
-    backgroundColor = MaterialTheme.colors.onBackground,
-    contentColor = MaterialTheme.colors.background,
     onClick = { openMovieDetail.invoke() },
   ) {
     Column {
@@ -106,7 +113,11 @@ fun MoviePagerItem(
         modifier = Modifier.fillMaxWidth(),
       ) {
         val clicked = remember { mutableStateOf(false) }
-        Text(text = movie.title, modifier = Modifier.padding(8.dp), style = typography.h6)
+        Text(
+          text = movie.title,
+          modifier = Modifier.padding(8.dp),
+          style = MaterialTheme.typography.titleLarge,
+        )
         IconButton(
           onClick = {
             addToWatchList.invoke()
@@ -115,7 +126,7 @@ fun MoviePagerItem(
         ) {
           Icon(
             imageVector = Icons.Default.LibraryAdd,
-            tint = MaterialTheme.colors.primary,
+            tint = MaterialTheme.colorScheme.primary,
             contentDescription = null,
             modifier =
               Modifier.graphicsLayer(
@@ -128,19 +139,24 @@ fun MoviePagerItem(
       Text(
         text = "Release: ${movie.release_date}",
         modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-        style = typography.h6.copy(fontSize = 12.sp),
+        style = MaterialTheme.typography.titleLarge.copy(fontSize = 12.sp),
       )
       Text(
         text = "PG13  •  ${movie.vote_average}/10",
         modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-        style = typography.h6.copy(fontSize = 12.sp, fontWeight = FontWeight.Medium),
+        style =
+          MaterialTheme.typography.titleLarge.copy(
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Medium,
+          ),
       )
       Text(
         text = movie.overview,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp).weight(1f),
-        style = typography.subtitle2,
+        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+        color = Color.Gray,
       )
       Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
         Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))

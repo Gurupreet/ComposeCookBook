@@ -17,15 +17,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.BottomAppBar
-import androidx.compose.material.Card
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
@@ -62,7 +62,6 @@ import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
-import com.guru.composecookbook.theme.typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -100,7 +99,11 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
   ) {
     Spacer(modifier = Modifier.height(50.dp))
     Row(modifier = Modifier.padding(top = 20.dp)) {
-      Text(text = crypto.name, style = typography.h6, modifier = Modifier.padding(end = 8.dp))
+      Text(
+        text = crypto.name,
+        style = MaterialTheme.typography.titleLarge,
+        modifier = Modifier.padding(end = 8.dp),
+      )
       Image(
         painter = rememberAsyncImagePainter(model = crypto.image),
         modifier = Modifier.size(28.dp),
@@ -110,7 +113,7 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
 
     Text(
       text = "${crypto.price.roundToTwoDecimals()} USD",
-      style = typography.h6.copy(fontWeight = FontWeight.ExtraBold),
+      style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.ExtraBold),
     )
     Text(
       text =
@@ -125,7 +128,8 @@ fun CryptoTopSection(crypto: Crypto, scrollState: ScrollState) {
 fun CryptoCharts(crypto: Crypto) {
   Card(
     modifier = Modifier.padding(vertical = 8.dp),
-    elevation = 8.dp,
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
     shape = RoundedCornerShape(4.dp),
   ) {
     Column {
@@ -147,15 +151,27 @@ fun CryptoCharts(crypto: Crypto) {
 
 @Composable
 fun CryptoBottomBar(onBack: () -> Unit) {
-  BottomAppBar(cutoutShape = CircleShape) {
-    IconButton(onClick = onBack) {
-      Icon(
-        imageVector = Icons.Default.ArrowBack,
-        contentDescription = stringResource(id = R.string.cd_back),
-      )
-    }
-    IconButton(onClick = {}) { Icon(imageVector = Icons.Default.MoreVert, contentDescription = "") }
-  }
+  // The Material 3 BottomAppBar has no cutoutShape (a Material 2-only parameter); the Scaffold
+  // floats the centered FAB above the bar instead of cutting a hole out of it. The bar keeps the
+  // old Material 2 primarySurface default (primary in light, surface in dark).
+  val dark = isSystemInDarkTheme()
+  BottomAppBar(
+    containerColor =
+      if (dark) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.primary,
+    contentColor =
+      if (dark) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onPrimary,
+    content = {
+      IconButton(onClick = onBack) {
+        Icon(
+          imageVector = Icons.Default.ArrowBack,
+          contentDescription = stringResource(id = R.string.cd_back),
+        )
+      }
+      IconButton(onClick = {}) {
+        Icon(imageVector = Icons.Default.MoreVert, contentDescription = "")
+      }
+    },
+  )
 }
 
 @Composable
@@ -176,28 +192,53 @@ fun StatisticsSection(crypto: Crypto) {
   Text(
     text = "Statistics",
     modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
-    style = typography.h5,
+    style = MaterialTheme.typography.headlineSmall,
   )
   Card(
     modifier = Modifier.padding(vertical = 8.dp),
-    elevation = 8.dp,
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
     shape = RoundedCornerShape(4.dp),
   ) {
     Row(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
       Column(modifier = Modifier.weight(1f)) {
-        Text(text = "24 High", style = typography.subtitle2)
+        Text(
+          text = "24 High",
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
+        )
         Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-        Text(text = "24 Low", style = typography.subtitle2)
+        Text(
+          text = "24 Low",
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
+        )
         Text(text = crypto.high.roundToTwoDecimals(), modifier = valueModifier)
-        Text(text = "24h Change", style = typography.subtitle2)
+        Text(
+          text = "24h Change",
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
+        )
         Text(text = crypto.dailyChange.roundToTwoDecimals(), modifier = valueModifier)
       }
       Column(modifier = Modifier.weight(1f)) {
-        Text(text = "Volume", style = typography.subtitle2)
+        Text(
+          text = "Volume",
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
+        )
         Text(text = crypto.volume.toString(), modifier = valueModifier)
-        Text(text = "Supply", style = typography.subtitle2)
+        Text(
+          text = "Supply",
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
+        )
         Text(text = crypto.supply.toString(), modifier = valueModifier)
-        Text(text = "Market Cap", style = typography.subtitle2)
+        Text(
+          text = "Market Cap",
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+          color = Color.Gray,
+        )
         Text(text = crypto.marketCap.toString(), modifier = valueModifier)
       }
     }
@@ -213,7 +254,7 @@ fun FavSection() {
     Text(
       text = "Favorite Cryptos",
       modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
-      style = typography.h5,
+      style = MaterialTheme.typography.headlineSmall,
     )
     LazyRow { items(items = favCryptos, itemContent = { FavoriteCryptoCard(crypto = it) }) }
   }

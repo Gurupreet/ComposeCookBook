@@ -9,11 +9,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Icon
-import androidx.compose.material.IconToggleButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,7 +36,6 @@ import com.guru.composecookbook.cryptoapp.ui.internal.extensions.roundToTwoDecim
 import com.guru.composecookbook.theme.gradientGreenColors
 import com.guru.composecookbook.theme.gradientRedColors
 import com.guru.composecookbook.theme.green500
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun CryptoListItem(
@@ -64,12 +64,12 @@ fun CryptoListItem(
     Column(modifier = Modifier.weight(0.4f)) {
       Text(
         text = crypto.symbol,
-        style = typography.h6.copy(fontSize = 16.sp),
+        style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp),
         modifier = Modifier.padding(horizontal = 4.dp),
       )
       Text(
         text = "$${crypto.price}",
-        style = typography.h6.copy(fontSize = 14.sp),
+        style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp),
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(horizontal = 4.dp),
       )
@@ -84,7 +84,7 @@ fun CryptoListItem(
         text =
           crypto.dailyChange.roundToThreeDecimals() +
             " (${crypto.dailyChangePercentage.roundToTwoDecimals()} %)",
-        style = typography.subtitle2,
+        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
         color = if (crypto.dailyChange > 0) green500 else Color.Red,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth().align(Alignment.End),

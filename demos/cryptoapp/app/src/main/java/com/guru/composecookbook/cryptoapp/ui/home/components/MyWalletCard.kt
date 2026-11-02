@@ -37,7 +37,6 @@ import com.guru.composecookbook.data.R
 import com.guru.composecookbook.theme.gradientBluePurple
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MyWalletCard() {
@@ -68,7 +67,7 @@ fun MyWalletCard() {
     )
     Text(
       text = "My Wallet",
-      style = typography.body1,
+      style = MaterialTheme.typography.bodyLarge,
       textAlign = TextAlign.Center,
       modifier =
         Modifier.padding(4.dp).constrainAs(title) {
@@ -79,7 +78,7 @@ fun MyWalletCard() {
     )
     Text(
       text = "340.13 USD",
-      style = typography.h6,
+      style = MaterialTheme.typography.titleLarge,
       modifier =
         Modifier.padding(4.dp).constrainAs(price) {
           top.linkTo(title.bottom)
@@ -89,7 +88,7 @@ fun MyWalletCard() {
     Text(
       text = "1.23 ETH",
       textAlign = TextAlign.Right,
-      style = typography.h6.copy(fontSize = 12.sp),
+      style = MaterialTheme.typography.titleLarge.copy(fontSize = 12.sp),
       modifier =
         Modifier.padding(start = 4.dp).constrainAs(asset) {
           top.linkTo(price.bottom)
@@ -99,7 +98,7 @@ fun MyWalletCard() {
     Text(
       text = "24H: +1.23%",
       color = green500,
-      style = typography.body2.copy(fontWeight = FontWeight.Medium),
+      style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
       modifier =
         Modifier.padding(4.dp).constrainAs(dailyChange) {
           end.linkTo(parent.end)
