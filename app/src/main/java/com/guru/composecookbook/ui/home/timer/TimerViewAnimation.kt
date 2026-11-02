@@ -15,9 +15,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,7 +30,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 enum class TimerAnimation {
   NONE,
@@ -45,7 +46,11 @@ enum class TimerAnimation {
 @Composable
 fun TimerViewAnimation(
   timerData: TimerData,
-  textStyle: TextStyle = TextStyle(fontSize = MaterialTheme.typography.h6.fontSize),
+  // The old default style was M2 h6. The project M2 typography does not override h6, so it was
+  // the M2 library default: 20sp Medium with lineHeight 24sp and letterSpacing 0.15sp. The row
+  // only uses the font size here (weight/spacing come from the explicit params and M3
+  // titleLarge), so pin 20sp and reset the lineHeight to keep the row height unchanged.
+  textStyle: TextStyle = TextStyle(fontSize = 20.sp, lineHeight = TextUnit.Unspecified),
   textColor: Color = Color.Black,
   fontFamily: FontFamily = FontFamily.Default,
   fontWeight: FontWeight = FontWeight.SemiBold,
@@ -59,10 +64,15 @@ fun TimerViewAnimation(
   icon: Painter? = null,
   iconColor: ColorFilter? = null,
 ) {
-  Card(
-    backgroundColor = backgroundColor,
+  /**
+   * M2 Card(backgroundColor, shape, elevation) on a hardcoded color -> M3 Surface with
+   * shadowElevation: the hardcoded color keeps its exact shade (a tonal CardElevation would tint
+   * it) and the shadow is preserved.
+   */
+  Surface(
+    color = backgroundColor,
     shape = backgroundShape,
-    elevation = backgroundElevation,
+    shadowElevation = backgroundElevation,
   ) {
     /** Row (alpha = 0) */
     Row(

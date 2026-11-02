@@ -1,8 +1,6 @@
 package com.guru.composecookbook
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsDisplayed
@@ -49,15 +47,14 @@ class AppBottomNavUiTest {
 
   private fun setShell(navState: androidx.compose.runtime.MutableState<BottomNavType>) {
     val appThemeState = mutableStateOf(AppThemeState(false, ColorPallet.GREEN))
+    val showPaletteSheet = mutableStateOf(false)
     composeTestRule.setContent {
       ComposeCookBookMaterial3Theme(darkTheme = false) {
-        val chooseColorBottomModalState =
-          rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
         Column {
           HomeScreenContent(
             homeScreen = navState.value,
             appThemeState = appThemeState,
-            chooseColorBottomModalState = chooseColorBottomModalState,
+            showPaletteSheet = showPaletteSheet,
             modifier = Modifier.weight(1f),
           )
           BottomNavigationContent(modifier = Modifier, homeScreenState = navState)

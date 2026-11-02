@@ -7,25 +7,24 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetState
-import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -69,7 +68,7 @@ class MainActivity : ComponentActivity() {
   @OptIn(
     ExperimentalAnimationApi::class,
     ExperimentalFoundationApi::class,
-    ExperimentalMaterialApi::class,
+    ExperimentalMaterial3Api::class,
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -112,20 +111,20 @@ fun BaseView(
 @OptIn(
   ExperimentalAnimationApi::class,
   ExperimentalFoundationApi::class,
-  ExperimentalMaterialApi::class,
+  ExperimentalMaterial3Api::class,
 )
 @Composable
 fun HomeScreenContent(
   homeScreen: BottomNavType,
   appThemeState: MutableState<AppThemeState>,
-  chooseColorBottomModalState: ModalBottomSheetState, // use for a11y
+  showPaletteSheet: MutableState<Boolean>, // controls the a11y palette bottom sheet
   modifier: Modifier,
 ) {
   Column(modifier = modifier) {
     Crossfade(homeScreen) { screen ->
       Surface(color = MaterialTheme.colorScheme.background) {
         when (screen) {
-          BottomNavType.HOME -> HomeScreen(appThemeState, chooseColorBottomModalState)
+          BottomNavType.HOME -> HomeScreen(appThemeState, showPaletteSheet)
           BottomNavType.WIDGETS -> WidgetScreen()
           BottomNavType.ANIMATION -> AnimationScreen()
           BottomNavType.DEMOUI -> DemoUIList()
@@ -139,35 +138,32 @@ fun HomeScreenContent(
 @OptIn(
   ExperimentalAnimationApi::class,
   ExperimentalFoundationApi::class,
-  ExperimentalMaterialApi::class,
+  ExperimentalMaterial3Api::class,
 )
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
   // Default home screen state is always HOME
   val homeScreenState = rememberSaveable { mutableStateOf(BottomNavType.HOME) }
   val bottomNavBarContentDescription = stringResource(id = R.string.a11y_bottom_navigation_bar)
-  val chooseColorBottomModalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+  // The M3 ModalBottomSheet shows itself when it enters composition, so composing it
+  // unconditionally covers the Home screen at every launch (and after dismissing it the sheet's
+  // invisible "Close sheet" scrim keeps swallowing taps). It is therefore composed only while
+  // showPaletteSheet is true (set from the palette icon for talkback users); the sheetState is
+  // kept so the sheet can be hidden after a palette pick.
+  val chooseColorBottomModalState = rememberModalBottomSheetState()
+  val showPaletteSheet = remember { mutableStateOf(false) }
 
   val coroutineScope = rememberCoroutineScope()
 
-  ModalBottomSheetLayout(
-    sheetState = chooseColorBottomModalState,
-    sheetContent = {
-      // Modal used only when user use talkback for the sake of accessibility
-      PalletMenu(modifier = Modifier.align(Alignment.CenterHorizontally)) { newPalletSelected ->
-        appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
-        coroutineScope.launch { chooseColorBottomModalState.hide() }
-      }
-    },
-  ) {
+  Box(modifier = Modifier.fillMaxSize()) {
     val config = LocalConfiguration.current
     val orientation = config.orientation
     if (orientation == ORIENTATION_PORTRAIT) {
-      Column {
+      Column(modifier = Modifier.fillMaxSize()) {
         HomeScreenContent(
           homeScreen = homeScreenState.value,
           appThemeState = appThemeState,
-          chooseColorBottomModalState = chooseColorBottomModalState,
+          showPaletteSheet = showPaletteSheet,
           modifier = Modifier.weight(1f),
         )
         BottomNavigationContent(
@@ -188,9 +184,35 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
         HomeScreenContent(
           homeScreen = homeScreenState.value,
           appThemeState = appThemeState,
-          chooseColorBottomModalState = chooseColorBottomModalState,
+          showPaletteSheet = showPaletteSheet,
           modifier = Modifier.weight(1f),
         )
+      }
+    }
+
+    // The palette sheet is composed only while showPaletteSheet is true. Composing it
+    // unconditionally would let the M3 ModalBottomSheet (which shows on entering composition)
+    // cover the Home screen at launch, and its "Close sheet" scrim would keep swallowing taps
+    // after it is dismissed. onDismissRequest and the post-pick hide() both clear the flag so the
+    // sheet (and its scrim) leave composition.
+    if (showPaletteSheet.value) {
+      ModalBottomSheet(
+        onDismissRequest = { showPaletteSheet.value = false },
+        sheetState = chooseColorBottomModalState,
+        containerColor = MaterialTheme.colorScheme.surface,
+      ) {
+        // The M3 sheet content lambda is a ColumnScope (the M2 sheetContent was a BoxScope), so
+        // the menu is centered with a Box contentAlignment instead of the old Modifier.align.
+        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+          // Modal used only when user use talkback for the sake of accessibility
+          PalletMenu(modifier = Modifier) { newPalletSelected ->
+            appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
+            coroutineScope.launch {
+              chooseColorBottomModalState.hide()
+              showPaletteSheet.value = false
+            }
+          }
+        }
       }
     }
   }
@@ -207,7 +229,7 @@ fun BottomNavigationContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.Home,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.HOME,
@@ -227,7 +249,7 @@ fun BottomNavigationContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.Tools,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.WIDGETS,
@@ -264,7 +286,7 @@ fun BottomNavigationContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.LaptopCode,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.DEMOUI,
@@ -284,7 +306,7 @@ fun BottomNavigationContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.LayerGroup,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.TEMPLATE,
@@ -314,7 +336,7 @@ private fun NavigationRailContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.Home,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.HOME,
@@ -334,7 +356,7 @@ private fun NavigationRailContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.Tools,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.WIDGETS,
@@ -371,7 +393,7 @@ private fun NavigationRailContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.LaptopCode,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.DEMOUI,
@@ -391,7 +413,7 @@ private fun NavigationRailContent(
       icon = {
         FaIcon(
           faIcon = FaIcons.LayerGroup,
-          tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+          tint = LocalContentColor.current,
         )
       },
       selected = homeScreenState.value == BottomNavType.TEMPLATE,
@@ -413,7 +435,7 @@ private fun NavigationRailContent(
 @OptIn(
   ExperimentalAnimationApi::class,
   ExperimentalFoundationApi::class,
-  ExperimentalMaterialApi::class,
+  ExperimentalMaterial3Api::class,
 )
 @Preview(showBackground = true)
 @Composable

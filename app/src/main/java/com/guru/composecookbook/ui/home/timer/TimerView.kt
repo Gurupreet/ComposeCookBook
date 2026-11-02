@@ -5,18 +5,18 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.blue200
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.orange700
 import com.guru.composecookbook.theme.teal200
-import com.guru.composecookbook.theme.typography
 import java.util.concurrent.TimeUnit
 
 enum class TimerType(private val type: Int) {
@@ -68,10 +68,21 @@ fun TimerView(
   modifier: Modifier = Modifier,
   componentModifier: Modifier = Modifier,
   digitModifier: Modifier = Modifier,
-  digitStyle: TextStyle = LocalTextStyle.current,
+  // The old effective style had no lineHeight or letterSpacing (the M2 theme's body1 was a
+  // 16sp Normal with neither; under an M3-only theme it was TextStyle.Default). bodyLarge adds
+  // both, so they are reset to Unspecified to keep the old row height and spacing.
+  digitStyle: TextStyle =
+    MaterialTheme.typography.bodyLarge.copy(
+      lineHeight = TextUnit.Unspecified,
+      letterSpacing = TextUnit.Unspecified,
+    ),
   separator: String = ":",
   separatorModifier: Modifier = Modifier,
-  separatorStyle: TextStyle = LocalTextStyle.current,
+  separatorStyle: TextStyle =
+    MaterialTheme.typography.bodyLarge.copy(
+      lineHeight = TextUnit.Unspecified,
+      letterSpacing = TextUnit.Unspecified,
+    ),
 ) {
   Row(modifier = modifier) {
     if (type.hourEnabled()) {
@@ -113,8 +124,8 @@ fun TimerViewPreview() {
     componentModifier =
       Modifier.background(color = blue200, shape = RoundedCornerShape(4.dp))
         .padding(horizontal = 4.dp, vertical = 4.dp),
-    digitStyle = typography.body1.copy(color = orange700),
+    digitStyle = MaterialTheme.typography.bodyLarge.copy(color = orange700),
     separatorModifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
-    separatorStyle = typography.body1.copy(color = teal200),
+    separatorStyle = MaterialTheme.typography.bodyLarge.copy(color = teal200),
   )
 }

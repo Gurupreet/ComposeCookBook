@@ -9,7 +9,6 @@ import androidx.activity.compose.setContent
 import androidx.biometric.BiometricPrompt
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.core.content.ContextCompat
@@ -35,7 +34,6 @@ class TemplatesActivity : ComponentActivity() {
   @OptIn(
     ExperimentalMaterial3Api::class,
     ExperimentalAnimationApi::class,
-    ExperimentalMaterialApi::class,
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -64,7 +62,6 @@ class TemplatesActivity : ComponentActivity() {
   ExperimentalMaterial3Api::class,
   ExperimentalFoundationApi::class,
   ExperimentalAnimationApi::class,
-  ExperimentalMaterialApi::class,
 )
 @Composable
 fun TemplateApp(templateType: String) {

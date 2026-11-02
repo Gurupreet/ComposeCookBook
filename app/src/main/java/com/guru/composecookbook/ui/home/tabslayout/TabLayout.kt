@@ -11,16 +11,17 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ScrollableTabRow
-import androidx.compose.material.Tab
-import androidx.compose.material.TabPosition
-import androidx.compose.material.TabRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SecondaryScrollableTabRow
+import androidx.compose.material3.SecondaryTabRow
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabIndicatorScope
+import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -54,14 +55,29 @@ fun TabLayout() {
     // by overriding right/left swipe on content and updating state of selectedTab or using
     // pager
 
-    // Use ScrollableTabRow for list of tabs
-    TabRow(
+    // The old M2 TabRow(backgroundColor = surface) drew a full-width 2.dp onSurface indicator and
+    // a default 1.dp onSurface(12%) divider on a surface background, and dimmed the unselected
+    // tab text to ContentAlpha.medium (0.6f). M3 splits TabRow into Primary/Secondary variants; the
+    // Secondary variant's full-width indicator is closest to the M2 look, so use it with
+    // containerColor = surface, contentColor = onSurface, a full-tab-width 2.dp onSurface indicator
+    // (matching the M2 2.dp height), and the M3 default divider (a 1.dp HorizontalDivider that
+    // approximates the M2 divider). The unselected tab text is dimmed to the old 0.6f.
+    SecondaryTabRow(
       selectedTabIndex = selectedIndex.value,
-      backgroundColor = MaterialTheme.colorScheme.surface,
+      containerColor = MaterialTheme.colorScheme.surface,
+      contentColor = MaterialTheme.colorScheme.onSurface,
+      indicator = {
+        TabRowDefaults.SecondaryIndicator(
+          Modifier.tabIndicatorOffset(selectedIndex.value),
+          height = 2.dp,
+          color = MaterialTheme.colorScheme.onSurface,
+        )
+      },
     ) {
       tabsName.forEachIndexed { index, title ->
+        val selected = index == selectedIndex.value
         Tab(
-          selected = index == selectedIndex.value,
+          selected = selected,
           onClick = {
             when (title) {
               DemoTabs.APPLE.value -> {
@@ -75,7 +91,15 @@ fun TabLayout() {
               }
             }
           },
-          text = { Text(title, color = MaterialTheme.colorScheme.onPrimaryContainer) },
+          text = {
+            Text(
+              title,
+              color =
+                MaterialTheme.colorScheme.onPrimaryContainer.copy(
+                  alpha = if (selected) 1f else 0.6f
+                ),
+            )
+          },
         )
       }
     }
@@ -100,12 +124,15 @@ fun ScrollableListOfTabs() {
   val tweets = remember { DemoDataProvider.tweetList.filter { it.tweetImageId > 0 } }
   val selectedIndex = remember { mutableStateOf(0) }
   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-    ScrollableTabRow(
+    // Same Secondary-variant mapping as above: the M2 ScrollableTabRow here had no indicator and
+    // no divider, so the M3 scrollable Secondary variant with indicator = noIndicator and
+    // divider = {} keeps the transparent, chip-only look.
+    SecondaryScrollableTabRow(
       selectedTabIndex = selectedIndex.value,
       divider = {}, /* Disable the built-in divider */
       edgePadding = 16.dp,
       indicator = noIndicator,
-      backgroundColor = Color.Transparent,
+      containerColor = Color.Transparent,
       modifier = Modifier.fillMaxWidth().padding(8.dp),
     ) {
       tweets.forEachIndexed { index, tweet ->
@@ -176,7 +203,7 @@ private fun CustomImageChip(
   }
 }
 
-private val noIndicator: @Composable (List<TabPosition>) -> Unit = {}
+private val noIndicator: @Composable TabIndicatorScope.() -> Unit = {}
 
 @Preview
 @Composable

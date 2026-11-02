@@ -8,15 +8,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -77,14 +81,31 @@ class FlingListSettingsActivity : ComponentActivity() {
   }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
   /*
    * This is done to match up the designs of the present page with the other pages of the App.
    */
+  // The old M2 TopAppBar used the default primarySurface background (primary in light, an elevated
+  // surface in dark) and carried an 8.dp elevation. The M3 bar has no static elevation (accepted
+  // standard-M3 delta: flat bar), so the background is reproduced from the colorScheme: primary /
+  // onPrimary in light, surfaceContainer / onSurface in dark (derived from the surface
+  // luminance, never isSystemInDarkTheme).
+  val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+  val barContainer =
+    if (isDark) MaterialTheme.colorScheme.surfaceContainer else MaterialTheme.colorScheme.primary
+  val barContent =
+    if (isDark) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onPrimary
   Scaffold(
     topBar = {
       TopAppBar(
+        colors =
+          TopAppBarDefaults.topAppBarColors(
+            containerColor = barContainer,
+            titleContentColor = barContent,
+            navigationIconContentColor = barContent,
+          ),
         title = {
           Column(modifier = Modifier.padding(4.dp)) {
             /*
@@ -94,7 +115,6 @@ fun SettingsContent(onback: () -> Unit, onApply: () -> Unit) {
             Text(text = "Settings", modifier = Modifier.testTag(TestTags.HOME_FLING_SETTINGS_ROOT))
           }
         },
-        elevation = 8.dp,
         navigationIcon = {
           IconButton(onClick = onback) {
             Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(id = R.string.cd_back))
