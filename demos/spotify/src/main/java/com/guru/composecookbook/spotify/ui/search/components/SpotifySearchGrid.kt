@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,7 +30,6 @@ import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.spotify.ui.details.SpotifyDetailActivity
 import com.guru.composecookbook.theme.extensions.generateDominantColorState
 import com.guru.composecookbook.theme.modifiers.horizontalGradientBackground
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.verticalgrid.VerticalGrid
 
 @Composable
@@ -64,7 +64,7 @@ fun SpotifySearchGridItem(album: Album) {
   ) {
     Text(
       text = album.song,
-      style = typography.h6.copy(fontSize = 14.sp),
+      style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp),
       modifier = Modifier.padding(8.dp),
     )
     Image(

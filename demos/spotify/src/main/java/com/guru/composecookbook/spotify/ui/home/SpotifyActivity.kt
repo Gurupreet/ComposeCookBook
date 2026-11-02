@@ -9,16 +9,17 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -27,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.spotify.R
 import com.guru.composecookbook.spotify.ui.home.components.SpotifyHome
 import com.guru.composecookbook.spotify.ui.playlist.components.SpotifyPlayList
@@ -69,25 +71,44 @@ fun SpotifyAppContent() {
 @Composable
 fun SpotifyBottomNavigation(spotifyNavItemState: MutableState<SpotifyNavType>) {
   val bottomNavBackground =
-    if (isSystemInDarkTheme()) graySurface else MaterialTheme.colors.background
-  BottomNavigation(backgroundColor = bottomNavBackground) {
-    BottomNavigationItem(
+    if (isSystemInDarkTheme()) graySurface else MaterialTheme.colorScheme.background
+  // M2 BottomNavigation's onBackground content color maps to the M3 onSurface role; the M2
+  // unselected icon/text alpha of 0.6 is kept (the M3 default is onSurfaceVariant, which
+  // is full contrast in this theme).
+  val navigationBarItemColors =
+    NavigationBarItemDefaults.colors(
+      selectedIconColor = MaterialTheme.colorScheme.onSurface,
+      selectedTextColor = MaterialTheme.colorScheme.onSurface,
+      unselectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+      unselectedTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+    )
+  NavigationBar(
+    containerColor = bottomNavBackground,
+    contentColor = MaterialTheme.colorScheme.onSurface,
+    // tonalElevation 0 keeps the bar's exact background (background == surface would
+    // otherwise pick up a surfaceTint wash).
+    tonalElevation = 0.dp,
+  ) {
+    NavigationBarItem(
       icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.HOME,
+      colors = navigationBarItemColors,
       modifier = Modifier.testTag("spotify_nav_home"),
       onClick = { spotifyNavItemState.value = SpotifyNavType.HOME },
       label = { Text(text = stringResource(id = R.string.spotify_nav_home)) },
     )
-    BottomNavigationItem(
+    NavigationBarItem(
       icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.SEARCH,
+      colors = navigationBarItemColors,
       modifier = Modifier.testTag("spotify_nav_search"),
       onClick = { spotifyNavItemState.value = SpotifyNavType.SEARCH },
       label = { Text(text = stringResource(id = R.string.spotify_nav_search)) },
     )
-    BottomNavigationItem(
+    NavigationBarItem(
       icon = { Icon(imageVector = Icons.Outlined.LibraryMusic, contentDescription = null) },
       selected = spotifyNavItemState.value == SpotifyNavType.LIBRARY,
+      colors = navigationBarItemColors,
       modifier = Modifier.testTag("spotify_nav_library"),
       onClick = { spotifyNavItemState.value = SpotifyNavType.LIBRARY },
       label = { Text(text = stringResource(id = R.string.spotify_nav_library)) },

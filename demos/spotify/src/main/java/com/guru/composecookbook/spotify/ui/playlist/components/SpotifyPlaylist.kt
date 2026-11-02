@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -54,7 +56,11 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
   val randomHeight = remember(album.id) { Random.nextInt(180, 380).dp }
 
   Card(
-    elevation = 8.dp,
+    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+    shape = RoundedCornerShape(4.dp),
+    // The M2 Card defaulted to the surface color; the M3 default is
+    // surfaceContainerHighest, so keep the old white/black card.
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
     modifier =
       Modifier.padding(6.dp)
         .clickable(
@@ -74,7 +80,7 @@ fun PlaylistItemWithRandomHeight(album: Album, context: Context) {
       Text(
         text = album.artist,
         modifier = Modifier.padding(8.dp),
-        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+        style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp),
       )
     }
   }
