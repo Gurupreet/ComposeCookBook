@@ -14,19 +14,20 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.R
@@ -43,7 +44,7 @@ fun ProfileTopSection(album: Album) {
   )
   Text(
     text = "@${album.artist.trim()}",
-    style = MaterialTheme.typography.h6,
+    style = MaterialTheme.typography.titleLarge,
     modifier = Modifier.padding(8.dp),
   )
   Row(
@@ -54,28 +55,40 @@ fun ProfileTopSection(album: Album) {
       horizontalAlignment = Alignment.CenterHorizontally,
       modifier = Modifier.padding(horizontal = 24.dp),
     ) {
-      Text(text = "15", style = MaterialTheme.typography.h6)
-      Text(text = "Following", style = MaterialTheme.typography.subtitle2)
+      Text(text = "15", style = MaterialTheme.typography.titleLarge)
+      Text(
+        text = "Following",
+        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+        color = Color.Gray,
+      )
     }
     Column(
       horizontalAlignment = Alignment.CenterHorizontally,
       modifier = Modifier.padding(horizontal = 24.dp),
     ) {
-      Text(text = "157k", style = MaterialTheme.typography.h6)
-      Text(text = "Followers", style = MaterialTheme.typography.subtitle2)
+      Text(text = "157k", style = MaterialTheme.typography.titleLarge)
+      Text(
+        text = "Followers",
+        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+        color = Color.Gray,
+      )
     }
     Column(
       horizontalAlignment = Alignment.CenterHorizontally,
       modifier = Modifier.padding(horizontal = 32.dp),
     ) {
-      Text(text = "1.78M", style = MaterialTheme.typography.h6)
-      Text(text = "Likes", style = MaterialTheme.typography.subtitle2)
+      Text(text = "1.78M", style = MaterialTheme.typography.titleLarge)
+      Text(
+        text = "Likes",
+        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+        color = Color.Gray,
+      )
     }
   }
   Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
     Button(
       onClick = {},
-      colors = ButtonDefaults.buttonColors(backgroundColor = tiktokRed, contentColor = Color.White),
+      colors = ButtonDefaults.buttonColors(containerColor = tiktokRed, contentColor = Color.White),
       modifier = Modifier.height(50.dp).padding(horizontal = 2.dp),
     ) {
       Text(text = "Follow", modifier = Modifier.padding(horizontal = 32.dp))
@@ -88,7 +101,7 @@ fun ProfileTopSection(album: Album) {
           .width(50.dp)
           .padding(2.dp)
           .border(
-            border = BorderStroke(1.dp, color = MaterialTheme.colors.onSurface),
+            border = BorderStroke(1.dp, color = MaterialTheme.colorScheme.onSurface),
             shape = RoundedCornerShape(4.dp),
           ),
     )
@@ -100,7 +113,7 @@ fun ProfileTopSection(album: Album) {
           .width(50.dp)
           .padding(2.dp)
           .border(
-            border = BorderStroke(1.dp, color = MaterialTheme.colors.onSurface),
+            border = BorderStroke(1.dp, color = MaterialTheme.colorScheme.onSurface),
             shape = RoundedCornerShape(4.dp),
           ),
     )
@@ -108,7 +121,7 @@ fun ProfileTopSection(album: Album) {
   Text(
     text = "My Songs and albums- ${album.song}, ${album.descriptions}: Stay Tuned",
     modifier = Modifier.padding(vertical = 8.dp, horizontal = 32.dp),
-    style = MaterialTheme.typography.body2,
+    style = MaterialTheme.typography.bodyMedium,
     textAlign = TextAlign.Center,
   )
   ProfileTabs()

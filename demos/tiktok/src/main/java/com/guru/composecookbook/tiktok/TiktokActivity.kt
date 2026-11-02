@@ -6,19 +6,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Inbox
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
@@ -64,12 +67,31 @@ fun TikTokBottomNavigation(navController: NavHostController) {
   val navBackStackEntry by navController.currentBackStackEntryAsState()
   val currentDestination = navBackStackEntry?.destination
 
-  BottomNavigation(backgroundColor = tiktokBlack) {
+  // M2 BottomNavigation derived its content color from the background (tiktokBlack -> white
+  // icons/labels). The demo hardcodes the bar background to tiktokBlack in both light and dark
+  // (it forces darkTheme = true), so onSurface (white in the dark palette) reproduces the old
+  // white-on-black look. The M3 selected indicator pill is new and acceptable; the unselected
+  // 0.6 alpha is kept from the M2 unselected content alpha.
+  NavigationBar(
+    containerColor = tiktokBlack,
+    contentColor = MaterialTheme.colorScheme.onSurface,
+    tonalElevation = 0.dp,
+  ) {
+    val onSurface = MaterialTheme.colorScheme.onSurface
+    val itemColors =
+      NavigationBarItemDefaults.colors(
+        selectedIconColor = onSurface,
+        selectedTextColor = onSurface,
+        indicatorColor = onSurface.copy(alpha = 0.12f),
+        unselectedIconColor = onSurface.copy(alpha = 0.6f),
+        unselectedTextColor = onSurface.copy(alpha = 0.6f),
+      )
     TiktokDemoDataProvider.bottomBarList.forEach { tiktokScreen ->
       val isSelected = currentDestination?.hasRoute(tiktokScreen::class) == true
-      BottomNavigationItem(
+      NavigationBarItem(
         icon = { BottomBarIcon(tiktokScreen) },
         selected = isSelected,
+        colors = itemColors,
         onClick = {
           navController.popBackStack(navController.graph.startDestinationId, false)
           if (!isSelected) {

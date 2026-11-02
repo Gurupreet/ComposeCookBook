@@ -12,16 +12,18 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.R
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.tiktok.TiktokDemoDataProvider
 import com.guru.composecookbook.tiktok.TiktokDemoDataProvider.customGray
 
@@ -50,13 +52,27 @@ fun LaneSection(laneItem: String, modifier: Modifier = Modifier) {
         Text(
           text = laneItem,
           modifier = Modifier.padding(vertical = 4.dp),
-          style = typography.h6.copy(fontSize = 14.sp),
+          style =
+            MaterialTheme.typography.titleLarge.copy(
+              fontSize = 14.sp,
+              // M2 h6 had no lineHeight; resetting it keeps the row height unchanged.
+              lineHeight = TextUnit.Unspecified,
+            ),
         )
-        Text(text = "Trending Hashtag", style = typography.subtitle2)
+        Text(
+          text = "Trending Hashtag",
+          color = Color.Gray,
+          style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Normal),
+        )
       }
       Text(
         text = "${laneItem.length}.2M",
-        style = typography.h6.copy(fontSize = 12.sp),
+        style =
+          MaterialTheme.typography.titleLarge.copy(
+            fontSize = 12.sp,
+            // M2 h6 had no lineHeight; resetting it keeps the row height unchanged.
+            lineHeight = TextUnit.Unspecified,
+          ),
         modifier = Modifier.background(customGray).padding(horizontal = 16.dp, vertical = 4.dp),
       )
     }
