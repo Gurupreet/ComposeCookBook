@@ -21,11 +21,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -42,6 +42,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.carousel.Pager
@@ -50,7 +51,6 @@ import com.guru.composecookbook.data.AlbumsDataProvider
 import com.guru.composecookbook.data.model.Album
 import com.guru.composecookbook.theme.R as ThemeR
 import com.guru.composecookbook.theme.tiktokRed
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.tiktok.TiktokDemoDataProvider
 import com.guru.composecookbook.tiktok.TiktokHomeInteractionEvents
 
@@ -112,7 +112,12 @@ fun VideoIconsSection(
     LikeIcon(album.id)
     Text(
       text = "256.4k",
-      style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+      style =
+        MaterialTheme.typography.bodyMedium.copy(
+          fontSize = 12.sp,
+          // M2 body2 had no lineHeight; resetting it keeps the row height unchanged.
+          lineHeight = TextUnit.Unspecified,
+        ),
       modifier = Modifier.padding(top = 4.dp, bottom = 20.dp),
     )
     Icon(
@@ -121,13 +126,23 @@ fun VideoIconsSection(
     )
     Text(
       text = "1223",
-      style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+      style =
+        MaterialTheme.typography.bodyMedium.copy(
+          fontSize = 12.sp,
+          // M2 body2 had no lineHeight; resetting it keeps the row height unchanged.
+          lineHeight = TextUnit.Unspecified,
+        ),
       modifier = Modifier.padding(top = 4.dp, bottom = 20.dp),
     )
     Icon(painter = painterResource(id = ThemeR.drawable.ic_share_solid), contentDescription = null)
     Text(
       text = "238",
-      style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+      style =
+        MaterialTheme.typography.bodyMedium.copy(
+          fontSize = 12.sp,
+          // M2 body2 had no lineHeight; resetting it keeps the row height unchanged.
+          lineHeight = TextUnit.Unspecified,
+        ),
       modifier = Modifier.padding(top = 4.dp, bottom = 32.dp),
     )
     val rotation = remember { Animatable(0f) }
@@ -174,13 +189,13 @@ fun VideoInfoSection(modifier: Modifier, album: Album) {
     FilterTag(text = album.genre, modifier = Modifier)
     Text(
       text = "@${album.artist}",
-      style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.ExtraBold),
+      style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.ExtraBold),
       modifier = Modifier.padding(vertical = 8.dp),
     )
-    Text(text = album.song, style = MaterialTheme.typography.body2)
+    Text(text = album.song, style = MaterialTheme.typography.bodyMedium)
     Text(
       text = "#${album.artist} #cool #tiktok #videos",
-      style = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Medium),
+      style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
     )
   }
 }
@@ -199,7 +214,7 @@ fun FilterTag(text: String, modifier: Modifier) {
     text = text,
     color = Color.White,
     modifier = tagModifier,
-    style = typography.body2.copy(fontWeight = FontWeight.Bold),
+    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
   )
 }
 

@@ -1,7 +1,7 @@
 package com.guru.composecookbook.tiktok
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.tiktok.components.home.TiktokCreateIcon
@@ -30,7 +30,7 @@ class TiktokScreenshotTest {
   fun tiktok_create_icon_light() {
     captureRoboImage("src/test/screenshots/tiktok_create_icon.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { TiktokCreateIcon() } }
+        Surface(color = MaterialTheme.colorScheme.background) { TiktokCreateIcon() }
       }
     }
   }
