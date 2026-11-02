@@ -3,7 +3,11 @@ plugins {
   id("common-compose-module-configs-script-plugin")
 }
 
-android { namespace = "com.guru.composecookbook.moviesapp" }
+android {
+  namespace = "com.guru.composecookbook.moviesapp"
+
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
 
 dependencies {
   implementation(project(":components:tags"))
@@ -20,4 +24,7 @@ dependencies {
   implementation(libs.bundles.thirdparty.ui)
 
   implementation(libs.bundles.core.android)
+
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.compose.robolectric.test)
 }

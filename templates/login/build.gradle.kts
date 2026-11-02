@@ -3,7 +3,11 @@ plugins {
   id("common-compose-module-configs-script-plugin")
 }
 
-android { namespace = "com.guru.composecookbook.login" }
+android {
+  namespace = "com.guru.composecookbook.login"
+
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
 
 dependencies {
   implementation(project(":theme"))
@@ -18,4 +22,7 @@ dependencies {
 
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.bundles.instrumentation.test)
+
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.compose.robolectric.test)
 }

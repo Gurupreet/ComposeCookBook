@@ -63,6 +63,7 @@ compose-material-icons-extended = { module = "androidx.compose.material:material
 compose-runtime = { module = "androidx.compose.runtime:runtime" }
 compose-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata" }
 compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+compose-ui-test-junit4-accessibility = { module = "androidx.compose.ui:ui-test-junit4-accessibility" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 # Compose adjacent
@@ -176,6 +177,12 @@ instrumentation-test = ["compose-ui-test-junit4", "compose-activity", "androidx-
 thirdparty-ui = ["coil-compose", "coil-network-okhttp", "lottie", "lottie-compose"]
 wear = ["androidx-wear", "androidx-wear-compose-material", "androidx-wear-compose-foundation", "androidx-wear-compose-navigation"]
 screenshot-test = ["roborazzi", "roborazzi-compose", "robolectric"]
+compose-robolectric-test = [
+    "compose-ui-test-junit4",
+    "compose-ui-test-junit4-accessibility",
+    "compose-ui-test-manifest",
+    "robolectric",
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

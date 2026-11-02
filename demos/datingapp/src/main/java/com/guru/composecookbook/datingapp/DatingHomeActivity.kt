@@ -29,6 +29,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -93,16 +94,19 @@ fun DatingBottomBar(navType: MutableState<DatingNavType>) {
       icon = { Icon(imageVector = Icons.Filled.Style, contentDescription = null) },
       selected = navType.value == DatingNavType.PEOPLES,
       onClick = { navType.value = DatingNavType.PEOPLES },
+      modifier = Modifier.testTag("dating_nav_peoples"),
     )
     NavigationBarItem(
       icon = { Icon(imageVector = Icons.Filled.Textsms, contentDescription = null) },
       selected = navType.value == DatingNavType.CHATS,
       onClick = { navType.value = DatingNavType.CHATS },
+      modifier = Modifier.testTag("dating_nav_chats"),
     )
     NavigationBarItem(
       icon = { Icon(imageVector = Icons.Filled.PersonPin, contentDescription = null) },
       selected = navType.value == DatingNavType.PROFILE,
       onClick = { navType.value = DatingNavType.PROFILE },
+      modifier = Modifier.testTag("dating_nav_profile"),
     )
   }
 }

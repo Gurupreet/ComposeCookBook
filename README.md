@@ -123,6 +123,8 @@ demo builds fine but the movie lists stay empty.
 - [Composables](https://composables.com/)
 
 ## Contribution Info
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow, the PR quality
+  gates, and how to update Roborazzi golden screenshots.
 - All the contributions are welcomed keeping following points in mind.
   - If it's a widget/tool/UI element newly added please add to Widget Screen
   - Any feature showcase like Collapsing AppBar, BottomSheets, Dialogs etc add in HomeScreen list

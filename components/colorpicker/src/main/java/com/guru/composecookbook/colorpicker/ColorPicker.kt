@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.theme.typography
@@ -64,6 +65,7 @@ fun ColorPicker(onColorSelected: (Color) -> Unit) {
       modifier =
         Modifier.height(10.dp)
           .fillMaxWidth()
+          .testTag("colorpicker_slider")
           .clip(RoundedCornerShape(4.dp))
           .background(brush = colorMapGradient(screenWidthInPx))
           .align(Alignment.Center)

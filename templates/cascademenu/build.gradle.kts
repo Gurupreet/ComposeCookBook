@@ -3,7 +3,11 @@ plugins {
   id("common-compose-module-configs-script-plugin")
 }
 
-android { namespace = "com.guru.composecookbook.cascademenu" }
+android {
+  namespace = "com.guru.composecookbook.cascademenu"
+
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
 
 dependencies {
   implementation(project(":theme"))
@@ -13,4 +17,7 @@ dependencies {
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.bundles.compose.official)
   implementation(libs.bundles.compose.thirdparty)
+
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.compose.robolectric.test)
 }

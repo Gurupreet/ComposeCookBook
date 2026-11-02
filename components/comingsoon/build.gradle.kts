@@ -3,7 +3,11 @@ plugins {
   id("common-compose-module-configs-script-plugin")
 }
 
-android { namespace = "com.guru.composecookbook.comingsoon" }
+android {
+  namespace = "com.guru.composecookbook.comingsoon"
+
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
 
 dependencies {
   implementation(project(":animations:lottie"))
@@ -11,4 +15,7 @@ dependencies {
 
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.bundles.compose.official)
+
+  testImplementation(platform(libs.androidx.compose.bom))
+  testImplementation(libs.bundles.compose.robolectric.test)
 }
