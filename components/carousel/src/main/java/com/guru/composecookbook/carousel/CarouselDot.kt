@@ -2,12 +2,12 @@ package com.guru.composecookbook.carousel
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Album
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lens
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,7 +28,7 @@ fun CarouselDot(selected: Boolean, color: Color, icon: ImageVector) {
 @Preview
 @Composable
 fun PreviewPaginationPionters() {
-  CarouselDot(true, MaterialTheme.colors.onPrimary, Icons.Filled.Lens)
-  CarouselDot(true, MaterialTheme.colors.onPrimary, Icons.Filled.Album)
-  CarouselDot(true, MaterialTheme.colors.error, Icons.Filled.Favorite)
+  CarouselDot(true, MaterialTheme.colorScheme.onPrimary, Icons.Filled.Lens)
+  CarouselDot(true, MaterialTheme.colorScheme.onPrimary, Icons.Filled.Album)
+  CarouselDot(true, MaterialTheme.colorScheme.error, Icons.Filled.Favorite)
 }

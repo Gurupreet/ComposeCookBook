@@ -40,7 +40,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.theme.materialTypography
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
@@ -48,7 +48,7 @@ import kotlin.random.Random
 fun ColorPicker(onColorSelected: (Color) -> Unit) {
   Text(
     text = "Color picker with draggable",
-    style = typography.subtitle2,
+    style = materialTypography.labelMedium,
     modifier = Modifier.padding(8.dp),
   )
   val screenWidth = LocalConfiguration.current.screenWidthDp.dp

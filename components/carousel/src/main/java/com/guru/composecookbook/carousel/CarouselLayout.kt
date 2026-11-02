@@ -29,7 +29,7 @@ import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.data.model.Item
 import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.green200
-import com.guru.composecookbook.theme.typography
+import com.guru.composecookbook.theme.materialTypography
 
 @Composable
 fun CarouselLayout() {
@@ -40,7 +40,7 @@ fun CarouselLayout() {
 
     Text(
       text = "Infinite looping carousel (auto advance)",
-      style = typography.body2,
+      style = materialTypography.bodyMedium,
       modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
     )
     InfiniteCarousel(items = items, modifier = Modifier.height(230.dp)) { item ->
@@ -65,7 +65,7 @@ fun CarouselItem(item: Item) {
     )
     Text(
       text = item.title,
-      style = typography.h6.copy(color = Color.White),
+      style = materialTypography.titleLarge.copy(color = Color.White),
       modifier = Modifier.fillMaxWidth().padding(24.dp).align(Alignment.BottomStart),
     )
   }
@@ -97,7 +97,7 @@ fun CarouselItemCard(item: Item, pagerState: PagerState, selectedPage: MutableSt
       Text(
         text = item.title,
         modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp),
-        style = typography.body2,
+        style = materialTypography.bodyMedium,
       )
       Image(
         painter = painterResource(id = item.imageId),

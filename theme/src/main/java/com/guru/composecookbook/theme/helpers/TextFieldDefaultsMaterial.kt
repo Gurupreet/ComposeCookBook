@@ -1,3 +1,4 @@
+// Material 2 bridge for unmigrated modules; removed in the #238 cleanup PR.
 package com.guru.composecookbook.theme.helpers
 
 import androidx.compose.material.ContentAlpha
