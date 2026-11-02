@@ -1,6 +1,6 @@
 package com.guru.composecookbook.verticalgrid
 
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.accessibility.enableAccessibilityChecks
 import androidx.compose.ui.test.junit4.createComposeRule
