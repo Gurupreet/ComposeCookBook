@@ -4,10 +4,10 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,7 +31,7 @@ fun ProfileSection(
     Text(
       text = text,
       style = size.textStyle,
-      color = MaterialTheme.colors.onBackground,
+      color = MaterialTheme.colorScheme.onBackground,
       modifier = Modifier.weight(1f).padding(start = 8.dp),
     )
     iconRight()
@@ -41,9 +41,11 @@ fun ProfileSection(
 data class ProfileSectionSize(val profileIconSize: Dp, val textStyle: TextStyle)
 
 object ProfileSectionSizes {
-  @Composable fun small() = ProfileSectionSize(ProfileSizes.small, MaterialTheme.typography.caption)
+  @Composable
+  fun small() = ProfileSectionSize(ProfileSizes.small, MaterialTheme.typography.bodySmall)
 
-  @Composable fun medium() = ProfileSectionSize(ProfileSizes.medium, MaterialTheme.typography.body1)
+  @Composable
+  fun medium() = ProfileSectionSize(ProfileSizes.medium, MaterialTheme.typography.bodyLarge)
 }
 
 @Preview

@@ -1,7 +1,5 @@
 package com.guru.composecookbook.instagram
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.instagram.components.profile.LikesSectionPreview
 import com.guru.composecookbook.instagram.components.profile.ProfileInfoPreview
@@ -34,7 +32,11 @@ class InstagramScreenshotTest {
   fun story_item_light() {
     captureRoboImage("src/test/screenshots/instagram_story_item.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { StoryItemPreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          StoryItemPreview()
+        }
       }
     }
   }
@@ -43,7 +45,11 @@ class InstagramScreenshotTest {
   fun story_item_dark() {
     captureRoboImage("src/test/screenshots/instagram_story_item_dark.png") {
       ComposeCookBookTheme(darkTheme = true) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { StoryItemPreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          StoryItemPreview()
+        }
       }
     }
   }
@@ -52,7 +58,11 @@ class InstagramScreenshotTest {
   fun story_item_me_light() {
     captureRoboImage("src/test/screenshots/instagram_story_item_me.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { StoryItemMePreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          StoryItemMePreview()
+        }
       }
     }
   }
@@ -61,7 +71,11 @@ class InstagramScreenshotTest {
   fun story_item_me_dark() {
     captureRoboImage("src/test/screenshots/instagram_story_item_me_dark.png") {
       ComposeCookBookTheme(darkTheme = true) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { StoryItemMePreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          StoryItemMePreview()
+        }
       }
     }
   }
@@ -70,7 +84,11 @@ class InstagramScreenshotTest {
   fun profile_info_light() {
     captureRoboImage("src/test/screenshots/instagram_profile_info.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { ProfileInfoPreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          ProfileInfoPreview()
+        }
       }
     }
   }
@@ -79,7 +97,11 @@ class InstagramScreenshotTest {
   fun profile_info_dark() {
     captureRoboImage("src/test/screenshots/instagram_profile_info_dark.png") {
       ComposeCookBookTheme(darkTheme = true) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { ProfileInfoPreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          ProfileInfoPreview()
+        }
       }
     }
   }
@@ -88,7 +110,11 @@ class InstagramScreenshotTest {
   fun likes_section_light() {
     captureRoboImage("src/test/screenshots/instagram_likes_section.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { LikesSectionPreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          LikesSectionPreview()
+        }
       }
     }
   }
@@ -97,7 +123,11 @@ class InstagramScreenshotTest {
   fun likes_section_dark() {
     captureRoboImage("src/test/screenshots/instagram_likes_section_dark.png") {
       ComposeCookBookTheme(darkTheme = true) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { LikesSectionPreview() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          LikesSectionPreview()
+        }
       }
     }
   }

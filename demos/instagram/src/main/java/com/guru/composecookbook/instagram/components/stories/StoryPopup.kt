@@ -16,13 +16,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -136,9 +136,12 @@ fun StoryPopup(imageIds: List<Item>, closePopup: () -> Unit) {
               else -> percent.value
             }
           LinearProgressIndicator(
+            progress = { progress },
             modifier = Modifier.weight(1f).padding(horizontal = 4.dp),
-            progress = progress,
-            color = MaterialTheme.colors.onBackground,
+            color = MaterialTheme.colorScheme.onBackground,
+            trackColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.24f),
+            gapSize = 0.dp,
+            drawStopIndicator = {},
           )
         }
       }
@@ -159,13 +162,13 @@ fun StoryPopup(imageIds: List<Item>, closePopup: () -> Unit) {
         Text(
           text = "My Story",
           modifier = Modifier.padding(8.dp).weight(1f),
-          color = MaterialTheme.colors.onBackground,
+          color = MaterialTheme.colorScheme.onBackground,
         )
         IconButton(onClick = { closePopup.invoke() }) {
           Icon(
             imageVector = Icons.Default.Close,
             contentDescription = "Close",
-            tint = MaterialTheme.colors.onBackground,
+            tint = MaterialTheme.colorScheme.onBackground,
           )
         }
       }

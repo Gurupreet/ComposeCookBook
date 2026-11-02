@@ -3,15 +3,12 @@ package com.guru.composecookbook.instagram.components.posts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -54,20 +51,19 @@ fun PostItem(
       text =
         "Liked by ${DemoDataProvider.tweet.author} and ${DemoDataProvider.tweet.likesCount} others",
     )
-    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-      Text(
-        text = "View all ${post.commentsCount} comments",
-        style = MaterialTheme.typography.caption,
-        modifier = Modifier.padding(top = 4.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = LocalContentAlpha.current),
-      )
-      Text(
-        text = "${post.time} ago",
-        style = MaterialTheme.typography.caption,
-        modifier = Modifier.padding(top = 4.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = LocalContentAlpha.current),
-      )
-    }
+    val mediumAlpha = 0.6f
+    Text(
+      text = "View all ${post.commentsCount} comments",
+      style = MaterialTheme.typography.bodySmall,
+      modifier = Modifier.padding(top = 4.dp),
+      color = MaterialTheme.colorScheme.onSurface.copy(alpha = mediumAlpha),
+    )
+    Text(
+      text = "${post.time} ago",
+      style = MaterialTheme.typography.bodySmall,
+      modifier = Modifier.padding(top = 4.dp),
+      color = MaterialTheme.colorScheme.onSurface.copy(alpha = mediumAlpha),
+    )
   }
 }
 
