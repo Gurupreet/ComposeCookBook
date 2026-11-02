@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.ui.utils.TestTags
 
 /**
@@ -36,6 +37,7 @@ class FlingListSettingsActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    enableThemedEdgeToEdge(isDarkTheme)
     setContent {
       BaseView(isDarkTheme) {
         SettingsContent({
