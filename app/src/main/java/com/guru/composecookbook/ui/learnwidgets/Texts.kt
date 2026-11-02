@@ -3,6 +3,7 @@ package com.guru.composecookbook.ui.learnwidgets
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,12 +13,15 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.SubtitleText
 
 @Composable
 fun TextDemo() {
-  Text(text = "Text Views", style = typography.h5, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Text Views",
+    style = MaterialTheme.typography.headlineSmall,
+    modifier = Modifier.padding(8.dp),
+  )
 
   SubtitleText(subtitle = "font weights")
   val textModifier = Modifier.padding(horizontal = 8.dp)
@@ -25,11 +29,17 @@ fun TextDemo() {
     Text(text = "Plain", modifier = textModifier)
     Text(
       text = "Medium Bold",
-      style = typography.body1.copy(fontWeight = FontWeight.Medium),
+      style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
       modifier = textModifier,
     )
-    Text(text = "Bold", style = typography.body1.copy(fontWeight = FontWeight.Bold))
-    Text(text = "Extra Bold", style = typography.body1.copy(fontWeight = FontWeight.Bold))
+    Text(
+      text = "Bold",
+      style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+    )
+    Text(
+      text = "Extra Bold",
+      style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+    )
   }
 
   SubtitleText(subtitle = "font family dynamic")
@@ -37,17 +47,17 @@ fun TextDemo() {
     Text(text = "Default", modifier = textModifier)
     Text(
       text = "Cursive",
-      style = typography.body1.copy(fontFamily = FontFamily.Cursive),
+      style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Cursive),
       modifier = textModifier,
     )
     Text(
       text = "SansSerif",
-      style = typography.body1.copy(fontFamily = FontFamily.SansSerif),
+      style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.SansSerif),
       modifier = textModifier,
     )
     Text(
       text = "Monospace",
-      style = typography.body1.copy(fontFamily = FontFamily.Monospace),
+      style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Monospace),
       modifier = textModifier,
     )
   }

@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Button
@@ -30,18 +29,22 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.composecookbook.theme.purple
 import com.guru.composecookbook.theme.purple200
-import com.guru.composecookbook.theme.typography
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalAnimationApi::class)
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AllButtons() {
-  Text(text = "Buttons", style = typography.h5, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Buttons",
+    style = MaterialTheme.typography.headlineSmall,
+    modifier = Modifier.padding(8.dp),
+  )
 
   Row {
     Button(onClick = {}, modifier = Modifier.padding(8.dp)) { Text(text = "Main Button") }
@@ -118,7 +121,7 @@ fun AllButtons() {
       )
     Text(
       text = "Horizontal gradient",
-      style = typography.body2.copy(color = Color.White),
+      style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
       modifier =
         Modifier.padding(12.dp)
           .clickable(onClick = {})
@@ -128,7 +131,7 @@ fun AllButtons() {
     )
     Text(
       text = "Vertical gradient",
-      style = typography.body1.copy(color = Color.White),
+      style = MaterialTheme.typography.bodyLarge.copy(color = Color.White),
       modifier =
         Modifier.padding(12.dp)
           .clickable(onClick = {})
@@ -153,7 +156,15 @@ fun AllButtons() {
     iconPadding = PaddingValues(4.dp),
     shape = CircleShape,
   ) {
-    Text(text = "PAY NOW", style = typography.h6.copy(fontSize = 16.sp))
+    Text(
+      text = "PAY NOW",
+      style =
+        MaterialTheme.typography.titleLarge.copy(
+          fontSize = 16.sp,
+          // M2 h6 had no lineHeight; resetting it keeps the row height unchanged.
+          lineHeight = TextUnit.Unspecified,
+        ),
+    )
   }
   SwipeButton(
     onSwiped = {},
@@ -163,11 +174,11 @@ fun AllButtons() {
     shape = CircleShape,
     enabled = false,
   ) {
-    Text(text = "Swipe", style = typography.body1)
+    Text(text = "Swipe", style = MaterialTheme.typography.bodyLarge)
   }
 }
 
-@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
+@OptIn(ExperimentalAnimationApi::class)
 @Preview
 @Composable
 fun PreviewButtons() {

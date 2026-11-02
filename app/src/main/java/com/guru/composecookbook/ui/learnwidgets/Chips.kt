@@ -19,14 +19,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.R
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.SubtitleText
 import com.guru.composecookbook.youtube.components.YoutubeChip
 
 @Composable
 fun Chips() {
   // There is no in-built chips but you can make yours like below
-  Text(text = "Custom Chips", style = typography.h6, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Custom Chips",
+    style = MaterialTheme.typography.titleLarge,
+    modifier = Modifier.padding(8.dp),
+  )
   SubtitleText(subtitle = "Custom chips with surface")
   Row(modifier = Modifier.padding(8.dp)) {
     YoutubeChip(selected = true, text = "Chip", modifier = Modifier.padding(horizontal = 8.dp))

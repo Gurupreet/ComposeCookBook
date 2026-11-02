@@ -26,7 +26,6 @@ import com.guru.composecookbook.theme.components.Material3Card
 import com.guru.composecookbook.theme.green200
 import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.green700
-import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.utils.TestTags
 
 @Composable
@@ -41,22 +40,38 @@ fun Layouts() {
 
 @Composable
 fun TypesOfRows() {
-  Text(text = "Rows", style = typography.h6, modifier = Modifier.padding(8.dp))
-  Text(text = "Arrangement.Start ", style = typography.caption, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Rows",
+    style = MaterialTheme.typography.titleLarge,
+    modifier = Modifier.padding(8.dp),
+  )
+  Text(
+    text = "Arrangement.Start ",
+    style = MaterialTheme.typography.bodySmall,
+    modifier = Modifier.padding(8.dp),
+  )
   Row(
     horizontalArrangement = Arrangement.Start,
     modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_START),
   ) {
     MultipleTexts()
   }
-  Text(text = "Arrangement.End ", style = typography.caption, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Arrangement.End ",
+    style = MaterialTheme.typography.bodySmall,
+    modifier = Modifier.padding(8.dp),
+  )
   Row(
     horizontalArrangement = Arrangement.End,
     modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_END),
   ) {
     MultipleTexts()
   }
-  Text(text = "Arrangement.Center ", style = typography.caption, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Arrangement.Center ",
+    style = MaterialTheme.typography.bodySmall,
+    modifier = Modifier.padding(8.dp),
+  )
   Row(
     horizontalArrangement = Arrangement.Center,
     modifier = Modifier.padding(8.dp).fillMaxWidth().testTag(TestTags.HOME_LAYOUTS_ROW_CENTER),
@@ -65,7 +80,7 @@ fun TypesOfRows() {
   }
   Text(
     text = "Arrangement.SpaceAround ",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Row(
@@ -77,7 +92,7 @@ fun TypesOfRows() {
   }
   Text(
     text = "Arrangement.SpaceBetween ",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Row(
@@ -89,7 +104,7 @@ fun TypesOfRows() {
   }
   Text(
     text = "Arrangement.SpaceEvenly ",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Row(
@@ -108,15 +123,27 @@ fun TypeOfColumns() {
       .fillMaxWidth()
       .height(150.dp)
       .background(MaterialTheme.colorScheme.surfaceVariant)
-  Text(text = "Column", style = typography.h6, modifier = Modifier.padding(8.dp))
-  Text(text = "Arrangement.Top", style = typography.caption, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Column",
+    style = MaterialTheme.typography.titleLarge,
+    modifier = Modifier.padding(8.dp),
+  )
+  Text(
+    text = "Arrangement.Top",
+    style = MaterialTheme.typography.bodySmall,
+    modifier = Modifier.padding(8.dp),
+  )
   Column(
     verticalArrangement = Arrangement.Top,
     modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_TOP),
   ) {
     MultipleTexts()
   }
-  Text(text = "Arrangement.Bottom", style = typography.caption, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "Arrangement.Bottom",
+    style = MaterialTheme.typography.bodySmall,
+    modifier = Modifier.padding(8.dp),
+  )
   Column(
     verticalArrangement = Arrangement.Bottom,
     modifier = columnModifier.testTag(TestTags.HOME_LAYOUTS_COLUMN_BOTTOM),
@@ -125,7 +152,7 @@ fun TypeOfColumns() {
   }
   Text(
     text = "Arrangement.Center + Alignment.CenterHorizontally",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Column(
@@ -137,7 +164,7 @@ fun TypeOfColumns() {
   }
   Text(
     text = "Arrangement.SpaceAround",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Column(
@@ -148,7 +175,7 @@ fun TypeOfColumns() {
   }
   Text(
     text = "Arrangement.SpaceEvenly",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Column(
@@ -159,7 +186,7 @@ fun TypeOfColumns() {
   }
   Text(
     text = "Arrangement.SpaceBetween",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Column(
@@ -172,7 +199,7 @@ fun TypeOfColumns() {
 
 @Composable
 fun TypeOfBoxs() {
-  Text(text = "Box", style = typography.h6, modifier = Modifier.padding(8.dp))
+  Text(text = "Box", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(8.dp))
   val boxModifier =
     Modifier.padding(8.dp)
       .background(MaterialTheme.colorScheme.surfaceVariant)
@@ -180,7 +207,7 @@ fun TypeOfBoxs() {
       .height(250.dp)
   Text(
     text = "Children with no align",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_NO_ALIGN)) {
@@ -190,7 +217,7 @@ fun TypeOfBoxs() {
   }
   Text(
     text = "Children with Topstart, center & bottomEnd align",
-    style = typography.caption,
+    style = MaterialTheme.typography.bodySmall,
     modifier = Modifier.padding(8.dp),
   )
   Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_TOP_CENTER_AND_NO_ALIGN)) {
@@ -214,7 +241,11 @@ fun TypeOfBoxs() {
 
 @Composable
 fun ConstraintLayouts() {
-  Text(text = "ConstraintLayouts", style = typography.h6, modifier = Modifier.padding(8.dp))
+  Text(
+    text = "ConstraintLayouts",
+    style = MaterialTheme.typography.titleLarge,
+    modifier = Modifier.padding(8.dp),
+  )
 
   ConstraintLayout(
     modifier =
