@@ -3,7 +3,7 @@ package com.guru.composecookbook.profile
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,17 +13,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.guru.composecookbook.data.R
-import com.guru.composecookbook.theme.typography
 
 @Composable
 fun MyPhotosSection() {
   Text(
     text = "My Photography",
-    style = typography.h6,
+    style = MaterialTheme.typography.titleLarge,
     color = MaterialTheme.colorScheme.primary,
     modifier = Modifier.padding(start = 8.dp, top = 16.dp),
   )
-  Divider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
+  HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp))
   val imageModifier =
     Modifier.padding(vertical = 8.dp, horizontal = 4.dp).size(120.dp).clip(RoundedCornerShape(8.dp))
 

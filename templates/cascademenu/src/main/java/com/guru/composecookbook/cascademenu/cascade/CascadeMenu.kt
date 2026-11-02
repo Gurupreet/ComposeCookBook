@@ -7,11 +7,12 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowLeft
 import androidx.compose.material.icons.rounded.ArrowRight
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -128,9 +129,9 @@ fun CascadeMenuItemText(
 ) {
   val style =
     if (isHeaderText) {
-      MaterialTheme.typography.subtitle2
+      MaterialTheme.typography.titleSmall
     } else {
-      MaterialTheme.typography.subtitle1
+      MaterialTheme.typography.titleMedium
     }
 
   Text(modifier = modifier, text = text, style = style, color = color)
@@ -141,7 +142,7 @@ fun CascadeMenuItem(onClick: () -> Unit, content: @Composable RowScope.() -> Uni
   DropdownMenuItem(
     onClick = onClick,
     interactionSource = remember { MutableInteractionSource() },
-    content = content,
+    text = { Row(verticalAlignment = Alignment.CenterVertically) { content() } },
   )
 }
 
@@ -150,13 +151,13 @@ fun CascadeHeaderItem(title: String, contentColor: Color, onClick: () -> Unit) {
   CascadeMenuItem(onClick = { onClick() }) {
     CascadeMenuItemIcon(
       icon = Icons.Rounded.ArrowLeft,
-      tint = contentColor.copy(alpha = ContentAlpha.medium),
+      tint = contentColor.copy(alpha = 0.6f),
     )
     Spacer(modifier = Modifier.width(4.dp))
     CascadeMenuItemText(
       modifier = Modifier.weight(1f),
       text = title,
-      color = contentColor.copy(alpha = ContentAlpha.medium),
+      color = contentColor.copy(alpha = 0.6f),
       isHeaderText = true,
     )
   }

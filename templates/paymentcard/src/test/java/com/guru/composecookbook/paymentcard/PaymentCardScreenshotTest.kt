@@ -1,7 +1,5 @@
 package com.guru.composecookbook.paymentcard
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import org.junit.Test
@@ -30,7 +28,11 @@ class PaymentCardScreenshotTest {
   fun payment_card_light() {
     captureRoboImage("src/test/screenshots/payment_card.png") {
       ComposeCookBookTheme(darkTheme = false) {
-        MaterialTheme { Surface(color = MaterialTheme.colors.background) { PreviewPaymentCard() } }
+        androidx.compose.material3.Surface(
+          color = androidx.compose.material3.MaterialTheme.colorScheme.background
+        ) {
+          PreviewPaymentCard()
+        }
       }
     }
   }

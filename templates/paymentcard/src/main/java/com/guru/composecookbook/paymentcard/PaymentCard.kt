@@ -12,9 +12,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,7 +77,7 @@ fun PaymentCard(
           ),
       shape = RoundedCornerShape(25.dp),
       color = animatedColor.value,
-      elevation = 18.dp,
+      shadowElevation = 18.dp,
     ) {
       Box(modifier = Modifier.fillMaxSize()) {
         AnimatedVisibility(visible = !backVisible) {
@@ -107,7 +107,7 @@ fun PaymentCard(
 
             Text(
               text = initial.chunked(4).joinToString(" "),
-              style = MaterialTheme.typography.h5,
+              style = MaterialTheme.typography.headlineSmall,
               maxLines = 1,
               color = Color.White,
               modifier =
@@ -121,7 +121,7 @@ fun PaymentCard(
 
             Text(
               text = "CARD HOLDER",
-              style = MaterialTheme.typography.caption,
+              style = MaterialTheme.typography.bodySmall,
               color = Color.White,
               modifier =
                 Modifier.padding(horizontal = 16.dp).constrainAs(cardNameLabel) {
@@ -131,7 +131,7 @@ fun PaymentCard(
             )
             Text(
               text = nameText.text,
-              style = MaterialTheme.typography.body1,
+              style = MaterialTheme.typography.bodyLarge,
               color = Color.White,
               modifier =
                 Modifier.animateContentSize(TweenSpec(300))
@@ -144,7 +144,7 @@ fun PaymentCard(
 
             Text(
               text = "Expiry",
-              style = MaterialTheme.typography.caption,
+              style = MaterialTheme.typography.bodySmall,
               color = Color.White,
               modifier =
                 Modifier.padding(horizontal = 16.dp).constrainAs(expiryLabel) {
@@ -154,7 +154,7 @@ fun PaymentCard(
             )
             Text(
               text = expiryNumber.text.take(4).chunked(2).joinToString("/"),
-              style = MaterialTheme.typography.body1,
+              style = MaterialTheme.typography.bodyLarge,
               color = Color.White,
               modifier =
                 Modifier.animateContentSize(TweenSpec(300))
@@ -196,7 +196,7 @@ fun PaymentCard(
       ) {
         Text(
           text = cvcNumber.text,
-          style = MaterialTheme.typography.body1,
+          style = MaterialTheme.typography.bodyLarge,
           color = Color.White,
           modifier = Modifier.animateContentSize().padding(vertical = 4.dp, horizontal = 16.dp),
         )
