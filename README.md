@@ -123,13 +123,7 @@ demo builds fine but the movie lists stay empty.
 - [Composables](https://composables.com/)
 
 ## Contribution Info
-- All the contributions are welcomed keeping following points in mind.
-  - If it's a widget/tool/UI element newly added please add to Widget Screen
-  - Any feature showcase like Collapsing AppBar, BottomSheets, Dialogs etc add in HomeScreen list
-  - Any Demo UI please add to Demo UI section
-  - Try not to add new Icons/Images unless must be needed.
-  - Please make sure whatever you add also supports dark mode as well.
-    Thanks happy coding
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for where new samples go, the local setup and the pull request checklist.
 
 
 ## Please Share & Star the repository to keep me motivated.
