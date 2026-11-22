@@ -28,6 +28,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,8 +49,8 @@ import com.google.android.gms.ads.MobileAds
 import com.guru.composecookbook.theme.AppThemeState
 import com.guru.composecookbook.theme.ColorPallet
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
-import com.guru.composecookbook.theme.SystemUiController
 import com.guru.composecookbook.theme.blue700
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.theme.green700
 import com.guru.composecookbook.theme.orange700
 import com.guru.composecookbook.theme.purple700
@@ -73,22 +74,20 @@ class MainActivity : ComponentActivity() {
   )
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    val appTheme = mutableStateOf(AppThemeState())
+    enableThemedEdgeToEdge(appTheme.value.darkTheme)
     // for adView demo
     MobileAds.initialize(this)
     setContent {
-      val systemUiController = remember { SystemUiController(window) }
-      val appTheme = remember { mutableStateOf(AppThemeState()) }
-      BaseView(appTheme.value, systemUiController) { MainAppContent(appTheme) }
+      // re-applied on in-app theme switch so system bar icons follow the app theme, not the OS
+      SideEffect { enableThemedEdgeToEdge(appTheme.value.darkTheme) }
+      BaseView(appTheme.value) { MainAppContent(appTheme) }
     }
   }
 }
 
 @Composable
-fun BaseView(
-  appThemeState: AppThemeState,
-  systemUiController: SystemUiController?,
-  content: @Composable () -> Unit,
-) {
+fun BaseView(appThemeState: AppThemeState, content: @Composable () -> Unit) {
   val color =
     when (appThemeState.pallet) {
       ColorPallet.GREEN -> green700
@@ -101,10 +100,6 @@ fun BaseView(
     darkTheme = appThemeState.darkTheme,
     colorPallet = appThemeState.pallet,
   ) {
-    systemUiController?.setStatusBarColor(
-      color = MaterialTheme.colorScheme.onPrimaryContainer,
-      darkIcons = appThemeState.darkTheme,
-    )
     content()
   }
 }
@@ -419,5 +414,5 @@ private fun NavigationRailContent(
 @Composable
 fun DefaultPreview() {
   val appThemeState = remember { mutableStateOf(AppThemeState(false, ColorPallet.GREEN)) }
-  BaseView(appThemeState.value, null) { MainAppContent(appThemeState) }
+  BaseView(appThemeState.value) { MainAppContent(appThemeState) }
 }

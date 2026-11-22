@@ -37,7 +37,6 @@ import com.guru.composecookbook.tiktok.components.profile.ProfileScreen
 class TiktokActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    // We can also use  SystemUiController(window) to control status theme inside compose.
     window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
 
     setContent { ComposeCookBookTheme(darkTheme = true) { TiktokAppContent() } }

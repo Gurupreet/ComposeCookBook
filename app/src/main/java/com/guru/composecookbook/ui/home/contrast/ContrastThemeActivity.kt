@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
 /**
@@ -56,6 +57,7 @@ class ContrastThemeActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    enableThemedEdgeToEdge(isDarkTheme)
     setContent { ContrastThemeDemo(isDarkTheme) }
   }
 

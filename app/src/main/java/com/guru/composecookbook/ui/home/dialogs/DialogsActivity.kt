@@ -47,6 +47,7 @@ import com.guru.composecookbook.R
 import com.guru.composecookbook.data.DemoDataProvider
 import com.guru.composecookbook.theme.ComposeCookBookMaterial3Theme
 import com.guru.composecookbook.theme.ComposeCookBookTheme
+import com.guru.composecookbook.theme.enableThemedEdgeToEdge
 import com.guru.composecookbook.theme.typography
 import com.guru.composecookbook.ui.home.dynamic.DynamicUIActivity
 
@@ -58,6 +59,7 @@ class DialogsActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    enableThemedEdgeToEdge(isDarkTheme)
     setContent {
       ComposeCookBookMaterial3Theme(isDarkTheme) { DialogScreen(onBack = { onBackPressed() }) }
     }
