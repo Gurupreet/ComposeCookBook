@@ -173,7 +173,8 @@ fun SimpleAnimateCustomStateClass() {
 
   Button(
     onClick = { enabled = !enabled },
-    modifier = Modifier.padding(16.dp).width(animatedUiState.width).rotate(animatedUiState.rotation),
+    modifier =
+      Modifier.padding(16.dp).width(animatedUiState.width).rotate(animatedUiState.rotation),
   ) {
     Text("Custom State Animation")
   }

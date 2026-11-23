@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    // in order to be able to use "kotlin-android" in the common script
+    // for the Kotlin Gradle plugin DSL (kotlin { compilerOptions }, JvmTarget) in the common scripts
     implementation(libs.kotlin.gradle.plugin)
 
     // in order to be able to apply "org.jetbrains.kotlin.plugin.compose" in the common scripts
@@ -27,7 +27,7 @@ dependencies {
     implementation(libs.kotlin.serialization.plugin)
 
     // in order to be able to apply "com.google.devtools.ksp" in the common scripts
-    // (the KSP version in the catalog must match the Kotlin version)
+    // (KSP 2.3.x is versioned independently of Kotlin since Kotlin 2.2)
     implementation(libs.ksp.gradle.plugin)
 
     // in order to recognize the "plugins" block in the common script

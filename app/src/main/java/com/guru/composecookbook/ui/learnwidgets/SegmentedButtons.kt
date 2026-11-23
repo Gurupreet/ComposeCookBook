@@ -54,7 +54,10 @@ fun SegmentedButtons() {
           selected = selected == option,
           onClick = { selected = option },
           shape =
-            SegmentedButtonDefaults.itemShape(index = options.indexOf(option), count = options.size),
+            SegmentedButtonDefaults.itemShape(
+              index = options.indexOf(option),
+              count = options.size,
+            ),
         ) {
           Text(option)
         }

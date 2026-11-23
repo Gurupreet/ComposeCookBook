@@ -37,14 +37,13 @@ fun StaggeredVerticalGrid(
     val columnWidth = constraints.maxWidth / columns
     val itemConstraints = constraints.copy(maxWidth = columnWidth)
     val colHeights = IntArray(columns) { 0 } // track each column's height
-    val placeables =
-      measurables.map { measurable ->
-        val column = shortestColumn(colHeights)
-        val placeable = measurable.measure(itemConstraints)
-        placeableXY[placeable] = Pair(columnWidth * column, colHeights[column])
-        colHeights[column] += placeable.height
-        placeable
-      }
+    val placeables = measurables.map { measurable ->
+      val column = shortestColumn(colHeights)
+      val placeable = measurable.measure(itemConstraints)
+      placeableXY[placeable] = Pair(columnWidth * column, colHeights[column])
+      colHeights[column] += placeable.height
+      placeable
+    }
 
     val height =
       colHeights.maxOrNull()?.coerceIn(constraints.minHeight, constraints.maxHeight)

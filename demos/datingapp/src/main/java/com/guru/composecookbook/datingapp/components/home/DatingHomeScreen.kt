@@ -92,9 +92,7 @@ fun DatingHomeScreen() {
             .alpha(animateFloatAsState(if (listEmpty.value) 0f else 1f).value),
       ) {
         IconButton(
-          onClick = {
-            /* TODO Hook to swipe event */
-          },
+          onClick = { /* TODO Hook to swipe event */ },
           modifier =
             Modifier.padding(horizontal = 16.dp)
               .size(60.dp)
@@ -109,9 +107,7 @@ fun DatingHomeScreen() {
           )
         }
         IconButton(
-          onClick = {
-            /* TODO Hook to swipe event */
-          },
+          onClick = { /* TODO Hook to swipe event */ },
           modifier =
             Modifier.padding(horizontal = 16.dp)
               .size(60.dp)

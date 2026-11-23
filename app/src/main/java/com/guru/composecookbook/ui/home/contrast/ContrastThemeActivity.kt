@@ -141,7 +141,10 @@ fun ContrastThemeDemo(dark: Boolean) {
               selected = level == value,
               onClick = { level = value },
               shape =
-                SegmentedButtonDefaults.itemShape(index = index, count = ContrastLevel.entries.size),
+                SegmentedButtonDefaults.itemShape(
+                  index = index,
+                  count = ContrastLevel.entries.size,
+                ),
             ) {
               Text(value.label)
             }

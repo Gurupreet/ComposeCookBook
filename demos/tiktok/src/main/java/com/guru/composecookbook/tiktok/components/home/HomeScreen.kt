@@ -210,7 +210,10 @@ fun ProfileImageWithFollow(modifier: Modifier, showFollow: Boolean, imageId: Int
         imageVector = Icons.Filled.Add,
         contentDescription = null,
         modifier =
-          Modifier.size(20.dp).clip(CircleShape).background(tiktokRed).align(Alignment.BottomCenter),
+          Modifier.size(20.dp)
+            .clip(CircleShape)
+            .background(tiktokRed)
+            .align(Alignment.BottomCenter),
       )
     }
   } else {

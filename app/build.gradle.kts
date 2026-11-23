@@ -1,8 +1,8 @@
 import com.guru.composecookbook.build.configurations.ProjectConfigs
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
   id("com.android.application")
-  id("kotlin-android")
   id("com.google.devtools.ksp")
   id("org.jetbrains.kotlin.plugin.compose")
 }
@@ -31,15 +31,14 @@ android {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
   }
-  kotlinOptions {
-    jvmTarget = "1.8"
-    //  useIR = true
-    freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
-  }
   buildFeatures { compose = true }
   lint { abortOnError = false }
   testOptions { unitTests.all { it.useJUnitPlatform() } }
 }
+
+// AGP 9.0 ships built-in Kotlin (replacing the kotlin-android plugin), so the
+// JVM target is configured through the Kotlin compiler options.
+kotlin { compilerOptions { jvmTarget.set(JvmTarget.JVM_1_8) } }
 
 dependencies {
   implementation(project(":data"))
